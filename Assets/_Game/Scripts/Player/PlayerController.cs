@@ -4,7 +4,7 @@ namespace _Game.Scripts.Player
 {
 public class PlayerController: MonoBehaviour
 {
-    [SerializeField] private float _moveSpeed;
+    [SerializeField] private PlayerConfig _config;
 
     private Rigidbody2D _rigidbody;
 
@@ -18,8 +18,8 @@ public class PlayerController: MonoBehaviour
 
     private void Update()
     {
-        _horizontalVelocity = Input.GetAxis("Horizontal") * _moveSpeed;
-        _verticalVelocity = Input.GetAxis("Vertical") * _moveSpeed;
+        _horizontalVelocity = Input.GetAxis("Horizontal") * _config.MoveSpeed;
+        _verticalVelocity = Input.GetAxis("Vertical") * _config.MoveSpeed;
     }
 
     private void FixedUpdate()
