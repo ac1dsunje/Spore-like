@@ -11,11 +11,13 @@ public class EntryPoint : MonoBehaviour
     [Header("UI")]
     [SerializeField] private CameraController _camera;
     [SerializeField] private OverlayScreen _overlayScreen;
+    [SerializeField] private BuffChooseScreen _buffScreen;
 
     private void Awake()
     {
         _camera.Construct(_player.transform);
         _overlayScreen.Construct(_player);
+        _buffScreen.Construct(_player);
     }
 }
 }

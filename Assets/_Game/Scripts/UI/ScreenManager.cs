@@ -1,8 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace _Game.Scripts.UI
 {
+[RequireComponent(typeof(CanvasGroup))]
 public abstract class ScreenManager: MonoBehaviour
 {
     private CanvasGroup _screen;
@@ -12,14 +12,14 @@ public abstract class ScreenManager: MonoBehaviour
         _screen =  GetComponent<CanvasGroup>();
     }
 
-    public void ShowScreen()
+    protected void ShowScreen()
     {
         _screen.alpha = 1;
         _screen.blocksRaycasts = true;
         _screen.interactable = true;
     }
 
-    public void HideScreen()
+    protected void HideScreen()
     {
         _screen.alpha = 0;
         _screen.blocksRaycasts = false;
