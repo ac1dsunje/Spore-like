@@ -1510,7 +1510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4755174928454083572, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 4755174928454083572, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1612,6 +1612,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7839408227657056900, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
+      propertyPath: _buffs.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839408227657056900, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
+      propertyPath: '_buffs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 4f4c172944860244b9c7c6814864b33d, type: 2}
+    - target: {fileID: 7839408227657056900, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
+      propertyPath: '_buffs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a43ea66e0841d043a899e6222c9f718, type: 2}
+    - target: {fileID: 7839408227657056900, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
+      propertyPath: '_buffs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 03b69bbfa61740544beb9c187ab4dbaf, type: 2}
+    - target: {fileID: 7839408227657056900, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
+      propertyPath: '_buffs.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 1cffec99d5d42134b9b022390e1a5fd3, type: 2}
+    - target: {fileID: 7839408227657056900, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
+      propertyPath: '_buffs.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 31ba72f168042d741933c1a2c8dbd650, type: 2}
+    - target: {fileID: 7839408227657056900, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
+      propertyPath: '_buffs.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 22bfe7788447192419b6866608da4efd, type: 2}
     - target: {fileID: 7904489158777163350, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

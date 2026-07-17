@@ -12,26 +12,26 @@ public class BuffSlotUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _name;
     [SerializeField] private TextMeshProUGUI _description;
 
-    private int _buffIndex;
+    private Buff _buff;
 
-    public event Action<int> OnSlotClicked;
+    public event Action<Buff> OnSlotClicked;
 
     private void OnEnable()
     {
         _button.onClick.AddListener(OnButtonClick);
     }
 
-    public void SetBuff(int buffIndex)
+    public void SetBuff(Buff buff)
     {
-        //ToDo: set buff config here
-        _buffIndex = buffIndex;
-        _name.text = $"Buff {buffIndex}";
-        _description.text = $"description of buff {buffIndex}";
+        _buff = buff;
+        _image.sprite = _buff.Sprite;
+        _name.text = $"Buff {_buff.Name}";
+        _description.text = $"{_buff.Description} {_buff.Type.ToString()} by {_buff.Value}";
     }
 
     private void OnButtonClick()
     {
-        OnSlotClicked?.Invoke(_buffIndex);
+        OnSlotClicked?.Invoke(_buff);
     }
 
     private void OnDestroy()

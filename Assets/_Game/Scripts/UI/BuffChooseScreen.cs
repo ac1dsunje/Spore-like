@@ -1,12 +1,14 @@
-﻿using _Game.Scripts.Buffs;
+﻿using System.Collections.Generic;
+using _Game.Scripts.Buffs;
 using _Game.Scripts.Player;
 using UnityEngine;
 
 namespace _Game.Scripts.UI
 {
-public class BuffChooseScreen: ScreenManager
+public class BuffChooseScreen : ScreenManager
 {
     [SerializeField] private BuffSlotUI[] _slots;
+    [SerializeField] private Buff[] _buffs;
     private PlayerController _player;
     
     public void Construct(PlayerController player)
@@ -23,9 +25,12 @@ public class BuffChooseScreen: ScreenManager
         }
     }
 
-    private void BuffChoose(int index)
+    private void BuffChoose(Buff buff)
     {
-        Debug.Log($"Buff {index} clicked");
+        Debug.Log($"Buff {buff.Name} clicked");
+        
+        // TODO: applyBuff
+        
         HideScreen();
         Time.timeScale = 1;
     }
@@ -38,11 +43,21 @@ public class BuffChooseScreen: ScreenManager
     private void UpdateLevel(int level)
     {
         ShowScreen();
-        for (var i = 0; i < _slots.Length; i++)
+        
+        var availableBuffs = new List<Buff>(_buffs);
+        
+        var slotsToFill = Mathf.Min(_slots.Length, availableBuffs.Count);
+
+        for (var i = 0; i < slotsToFill; i++)
         {
-            //ToDo: choose buffs to set for slots (actually not here, in other business-logic script)
-            _slots[i].SetBuff(i + 1);
+            var randomIndex = Random.Range(0, availableBuffs.Count);
+            var chosenBuff = availableBuffs[randomIndex];
+            
+            _slots[i].SetBuff(chosenBuff); 
+            
+            availableBuffs.RemoveAt(randomIndex);
         }
+        
         Time.timeScale = 0;
     }
 
