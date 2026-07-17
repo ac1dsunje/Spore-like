@@ -4,7 +4,7 @@ namespace _Game.Scripts.Food
 {
 public class FoodController: MonoBehaviour
 {
-    [SerializeField] private int _feedAmount = 1;
+    [SerializeField] private float _feedAmount = 1;
     
     private void OnTriggerEnter2D(Collider2D other)
     {

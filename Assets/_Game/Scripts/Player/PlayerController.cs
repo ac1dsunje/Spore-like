@@ -1,4 +1,5 @@
-﻿using _Game.Scripts.Food;
+﻿using System;
+using _Game.Scripts.Food;
 using UnityEngine;
 
 namespace _Game.Scripts.Player
@@ -6,20 +7,26 @@ namespace _Game.Scripts.Player
 public class PlayerController: MonoBehaviour, IEater
 {
     [SerializeField] private PlayerConfig _config;
-    // SerializeFields must be deleted after overlay added
-    [SerializeField] private int _experience;
-    [SerializeField] private int _level;
-    [SerializeField] private int _levelSet = 2;
-    [SerializeField] private int _levelScaler = 2;
+    
+    [SerializeField] private float _levelSet = 3;
+    [SerializeField] private float _levelScaler = 1.5f;
+    
+    private float _experience;
+    private int _level;
+    
+    public event Action<float> OnExperienceChanged;
+    public event Action<int> OnLevelChanged;
+    
 
     private Rigidbody2D _rigidbody;
 
     private float _horizontalVelocity;
     private float _verticalVelocity;
 
-    public void Eat(int amount)
+    public void Eat(float amount)
     {
         _experience += amount;
+        OnExperienceChanged?.Invoke(_experience);
         
         if (_experience < _levelSet) return;
         
@@ -29,7 +36,9 @@ public class PlayerController: MonoBehaviour, IEater
     private void UpdateLevel()
     {
         _experience -= _levelSet;
+        OnExperienceChanged?.Invoke(_experience);
         _level++;
+        OnLevelChanged?.Invoke(_level);
         _levelSet *= _levelScaler;
     }
     
