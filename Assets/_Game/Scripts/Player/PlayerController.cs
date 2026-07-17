@@ -28,18 +28,19 @@ public class PlayerController: MonoBehaviour, IEater
         _experience += amount;
         OnExperienceChanged?.Invoke(_experience);
         
-        if (_experience < _levelSet) return;
-        
         UpdateLevel();
     }
 
     private void UpdateLevel()
     {
-        _experience -= _levelSet;
-        OnExperienceChanged?.Invoke(_experience);
-        _level++;
-        OnLevelChanged?.Invoke(_level);
-        _levelSet *= _levelScaler;
+        while (_experience >= _levelSet)
+        {
+            _experience -= _levelSet;
+            OnExperienceChanged?.Invoke(_experience);
+            _level++;
+            OnLevelChanged?.Invoke(_level);
+            _levelSet *= _levelScaler;
+        }
     }
     
     private void Awake()
