@@ -70,7 +70,30 @@ public class EvolutionChooseScreen : ScreenManager
 
     private EvolutionRarityConfig GetRandomRarity()
     {
-        return _evolutionsDatabase.Rarities[Random.Range(0, _evolutionsDatabase.Rarities.Length)];
+        var rarities = _evolutionsDatabase.Rarities;
+
+        var totalWeight = 0f;
+        
+        foreach (var rarity in rarities)
+        {
+            totalWeight += rarity.Chance;
+        }
+
+        var randomValue = Random.Range(0f, totalWeight);
+
+        var currentWeight = 0f;
+
+        foreach (var rarity in rarities)
+        {
+            currentWeight += rarity.Chance;
+
+            if (randomValue <= currentWeight)
+            {
+                return rarity;
+            }
+        }
+
+        return rarities[rarities.Length - 1];
     }
 
     private void OnDestroy()
