@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cc4acad348242399834f2083ebcf8c3, type: 3}
+  m_Name: Common
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Evolutions.EvolutionRarityConfig
+  <Name>k__BackingField: Common
+  <Sprite>k__BackingField: {fileID: 2850270285713178146, guid: 775b84172382f7943b8b26179ab3f588, type: 3}
+  <Scaler>k__BackingField: 1
+  <Chance>k__BackingField: 51.61

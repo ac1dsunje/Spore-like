@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d6c9da9091c4c0b4ba595677bdd2e09c
+guid: 3ef8358c4899a10428dd19482f7a5de5
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Vision
+  - name: Uncommon
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: -0.033333335}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 16
-      height: 16
-    spriteID: 67d5dc2c272fee641a1c0d56d623f7cb
+      width: 30
+      height: 30
+    spriteID: a553c8478926098409df55163cba8edb
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 4095857606
+      value0: 2846065684
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Vision
+    name: Uncommon
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Vision
+    - name: Uncommon
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      spriteId: 67d5dc2c272fee641a1c0d56d623f7cb
+        x: 1
+        y: 1
+        width: 30
+        height: 30
+      spriteId: a553c8478926098409df55163cba8edb
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -181,5 +181,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 16, y: 16}
-  previousTextureSize: {x: 32, y: 32}
+  canvasSize: {x: 32, y: 32}
+  previousTextureSize: {x: 64, y: 64}

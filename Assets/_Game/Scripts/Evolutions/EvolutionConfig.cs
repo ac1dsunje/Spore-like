@@ -3,7 +3,7 @@
 namespace _Game.Scripts.Evolutions
 {
 
-[CreateAssetMenu(fileName = "New evolution", menuName = "Configs/Game/Evolution")]
+[CreateAssetMenu(fileName = "New evolution", menuName = "Configs/Game/Evolutions/Evolution")]
 public class EvolutionConfig: ScriptableObject
 {
     [field: SerializeField] public string Name { get; private set; }
