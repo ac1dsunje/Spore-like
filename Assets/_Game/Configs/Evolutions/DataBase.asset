@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46ae3101a2c2455dab99dfb95bcf8256, type: 3}
+  m_Name: DataBase
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Evolutions.Rarities.EvolutionRaritiesDatabase
+  <Evolutions>k__BackingField:
+  - {fileID: 11400000, guid: 4f4c172944860244b9c7c6814864b33d, type: 2}
+  - {fileID: 11400000, guid: 8a43ea66e0841d043a899e6222c9f718, type: 2}
+  - {fileID: 11400000, guid: 03b69bbfa61740544beb9c187ab4dbaf, type: 2}
+  <Rarities>k__BackingField:
+  - {fileID: 11400000, guid: 5106979986a9e964e868b6a2c5eff072, type: 2}
+  - {fileID: 11400000, guid: ee6a8b413676f184e8b76de691dddd29, type: 2}
+  - {fileID: 11400000, guid: dfaf582e50689234fb8b34f490d70918, type: 2}
+  - {fileID: 11400000, guid: 30b62f0c17461d74e84e4f83da7338e8, type: 2}
+  - {fileID: 11400000, guid: b1776a920191b7346a08fe1fa0dc4d73, type: 2}

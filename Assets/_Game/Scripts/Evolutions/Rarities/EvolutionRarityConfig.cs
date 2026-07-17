@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Game.Scripts.Evolutions
+namespace _Game.Scripts.Evolutions.Rarities
 {
 [CreateAssetMenu(fileName = "New evolution", menuName = "Configs/Game/Evolutions/Rarities/Rarity")]
 public class EvolutionRarityConfig: ScriptableObject

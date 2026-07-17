@@ -1617,6 +1617,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7839408227657056900, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
+      propertyPath: _raritiesDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 89e0fac1fa9071a41bafa6ee877795b5, type: 2}
+    - target: {fileID: 7839408227657056900, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
+      propertyPath: _evolutionsDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 89e0fac1fa9071a41bafa6ee877795b5, type: 2}
+    - target: {fileID: 7839408227657056900, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
       propertyPath: _rarities.Array.size
       value: 5
       objectReference: {fileID: 0}
