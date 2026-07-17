@@ -180,3 +180,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.PlayerController
   _config: {fileID: 11400000, guid: ba7be4736a4236543ba175179ecef16d, type: 2}
+  _levelSet: 3
+  _levelScaler: 1.5
