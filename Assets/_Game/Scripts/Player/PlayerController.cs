@@ -7,21 +7,22 @@ namespace _Game.Scripts.Player
 public class PlayerController: MonoBehaviour, IEater
 {
     [SerializeField] private PlayerConfig _config;
+    [SerializeField] private int _experience; // SerializeField must be deleted after overlay added
 
     private Rigidbody2D _rigidbody;
 
     private float _horizontalVelocity;
     private float _verticalVelocity;
 
-    public bool Eat(int amount)
+    public void Eat(int amount)
     {
-        Debug.Log($"Eater amount: {amount}");
-        return true;
+        _experience += amount;
     }
     
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _experience = 0;
     }
 
     private void Update()

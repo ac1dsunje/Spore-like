@@ -2,6 +2,6 @@
 {
 public interface IEater
 {
-    public bool Eat(int amount);
+    public void Eat(int amount);
 }
 }
