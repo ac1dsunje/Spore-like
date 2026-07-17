@@ -15,11 +15,26 @@ public class BuffChooseScreen: ScreenManager
         _player.OnLevelChanged += UpdateLevel;
     }
 
+    private void OnEnable()
+    {
+        foreach (var slot in _slots)
+        {
+            slot.OnSlotClicked += BuffChoose;
+        }
+    }
+
+    private void BuffChoose(int index)
+    {
+        Debug.Log($"Buff {index} clicked");
+        HideScreen();
+        Time.timeScale = 1;
+    }
+
     private void Start()
     {
         HideScreen();
     }
-
+    
     private void UpdateLevel(int level)
     {
         ShowScreen();
@@ -28,11 +43,16 @@ public class BuffChooseScreen: ScreenManager
             //ToDo: choose buffs to set for slots (actually not here, in other business-logic script)
             _slots[i].SetBuff(i + 1);
         }
+        Time.timeScale = 0;
     }
 
     private void OnDestroy()
     {
         _player.OnLevelChanged -= UpdateLevel;
+        foreach (var slot in _slots)
+        {
+            slot.OnSlotClicked -= BuffChoose;
+        }
     }
 }
 }

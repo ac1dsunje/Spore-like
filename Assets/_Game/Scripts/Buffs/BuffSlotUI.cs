@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,8 @@ public class BuffSlotUI : MonoBehaviour
 
     private int _buffIndex;
 
+    public event Action<int> OnSlotClicked;
+
     private void OnEnable()
     {
         _button.onClick.AddListener(OnButtonClick);
@@ -23,11 +26,12 @@ public class BuffSlotUI : MonoBehaviour
         //ToDo: set buff config here
         _buffIndex = buffIndex;
         _name.text = $"Buff {buffIndex}";
+        _description.text = $"description of buff {buffIndex}";
     }
 
     private void OnButtonClick()
     {
-        Debug.Log($"Buff {_buffIndex} clicked");
+        OnSlotClicked?.Invoke(_buffIndex);
     }
 
     private void OnDestroy()
