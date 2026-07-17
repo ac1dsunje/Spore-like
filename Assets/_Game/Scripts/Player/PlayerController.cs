@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using _Game.Scripts.Food;
+using Unity.VisualScripting;
+using UnityEngine;
 
 namespace _Game.Scripts.Player
 {
-public class PlayerController: MonoBehaviour
+public class PlayerController: MonoBehaviour, IEater
 {
     [SerializeField] private PlayerConfig _config;
 
@@ -10,6 +12,12 @@ public class PlayerController: MonoBehaviour
 
     private float _horizontalVelocity;
     private float _verticalVelocity;
+
+    public bool Eat(int amount)
+    {
+        Debug.Log($"Eater amount: {amount}");
+        return true;
+    }
     
     private void Awake()
     {
