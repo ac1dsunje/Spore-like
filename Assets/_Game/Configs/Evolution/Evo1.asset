@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f724526a32e44aa591a5df78fb049629, type: 3}
-  m_Name: Buff1 2
+  m_Name: Evo1
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Buffs.Buff
-  <Name>k__BackingField: Movespeed
-  <Type>k__BackingField: 2
-  <Value>k__BackingField: 0.5
+  <Name>k__BackingField: Vision
+  <Type>k__BackingField: 0
+  <Value>k__BackingField: 5
   <Description>k__BackingField: increase
-  <Sprite>k__BackingField: {fileID: -6394535587875924177, guid: 376fe4385df109d4db84f57f13512761, type: 3}
+  <Sprite>k__BackingField: {fileID: -7076529034579859471, guid: d6c9da9091c4c0b4ba595677bdd2e09c, type: 3}

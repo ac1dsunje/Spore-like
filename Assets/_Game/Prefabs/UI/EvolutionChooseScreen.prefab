@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7839408227657056900}
   - component: {fileID: 8991086698402249234}
   m_Layer: 5
-  m_Name: BuffChooseScreen
+  m_Name: EvolutionChooseScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,6 +109,13 @@ MonoBehaviour:
   - {fileID: 3760554242993601372}
   - {fileID: 1094065703580961305}
   - {fileID: 778240219501793561}
+  _buffs:
+  - {fileID: 11400000, guid: 4f4c172944860244b9c7c6814864b33d, type: 2}
+  - {fileID: 11400000, guid: 8a43ea66e0841d043a899e6222c9f718, type: 2}
+  - {fileID: 11400000, guid: 03b69bbfa61740544beb9c187ab4dbaf, type: 2}
+  - {fileID: 11400000, guid: 1cffec99d5d42134b9b022390e1a5fd3, type: 2}
+  - {fileID: 11400000, guid: 31ba72f168042d741933c1a2c8dbd650, type: 2}
+  - {fileID: 11400000, guid: 22bfe7788447192419b6866608da4efd, type: 2}
 --- !u!114 &8991086698402249234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,7 +230,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5056076894087960484, guid: d399f39aaf800e441b6a1a9a1f7eeef8, type: 3}
       propertyPath: m_Name
-      value: BuffSlotUI
+      value: EvolutionSlotUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7706436245628126322, guid: d399f39aaf800e441b6a1a9a1f7eeef8, type: 3}
+      propertyPath: m_Name
+      value: Name
+      objectReference: {fileID: 0}
+    - target: {fileID: 7807055068334918042, guid: d399f39aaf800e441b6a1a9a1f7eeef8, type: 3}
+      propertyPath: m_Name
+      value: Description
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913696036548432069, guid: d399f39aaf800e441b6a1a9a1f7eeef8, type: 3}
+      propertyPath: m_Name
+      value: Image
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -336,7 +355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5056076894087960484, guid: d399f39aaf800e441b6a1a9a1f7eeef8, type: 3}
       propertyPath: m_Name
-      value: BuffSlotUI (2)
+      value: EvolutionSlotUI (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -449,7 +468,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5056076894087960484, guid: d399f39aaf800e441b6a1a9a1f7eeef8, type: 3}
       propertyPath: m_Name
-      value: BuffSlotUI (1)
+      value: EvolutionSlotUI (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

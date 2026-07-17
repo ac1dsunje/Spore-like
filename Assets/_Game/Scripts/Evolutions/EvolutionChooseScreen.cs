@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
-using _Game.Scripts.Buffs;
 using _Game.Scripts.Player;
+using _Game.Scripts.UI;
 using UnityEngine;
 
-namespace _Game.Scripts.UI
+namespace _Game.Scripts.Evolutions
 {
-public class BuffChooseScreen : ScreenManager
+public class EvolutionChooseScreen : ScreenManager
 {
-    [SerializeField] private BuffSlotUI[] _slots;
-    [SerializeField] private Buff[] _buffs;
+    [SerializeField] private EvolutionSlotUI[] _slots;
+    [SerializeField] private EvolutionConfig[] _evolutions;
     private PlayerController _player;
     
     public void Construct(PlayerController player)
@@ -21,15 +21,15 @@ public class BuffChooseScreen : ScreenManager
     {
         foreach (var slot in _slots)
         {
-            slot.OnSlotClicked += BuffChoose;
+            slot.OnSlotClicked += EvolutionChosen;
         }
     }
 
-    private void BuffChoose(Buff buff)
+    private void EvolutionChosen(EvolutionConfig evolutionConfig)
     {
-        Debug.Log($"Buff {buff.Name} clicked");
+        Debug.Log($"Evolution {evolutionConfig.Name} clicked");
         
-        // TODO: applyBuff
+        // TODO: apply
         
         HideScreen();
         Time.timeScale = 1;
@@ -44,18 +44,18 @@ public class BuffChooseScreen : ScreenManager
     {
         ShowScreen();
         
-        var availableBuffs = new List<Buff>(_buffs);
+        var availableEvolutions = new List<EvolutionConfig>(_evolutions);
         
-        var slotsToFill = Mathf.Min(_slots.Length, availableBuffs.Count);
+        var slotsToFill = Mathf.Min(_slots.Length, availableEvolutions.Count);
 
         for (var i = 0; i < slotsToFill; i++)
         {
-            var randomIndex = Random.Range(0, availableBuffs.Count);
-            var chosenBuff = availableBuffs[randomIndex];
+            var randomIndex = Random.Range(0, availableEvolutions.Count);
+            var chosen = availableEvolutions[randomIndex];
             
-            _slots[i].SetBuff(chosenBuff); 
+            _slots[i].SetBuff(chosen); 
             
-            availableBuffs.RemoveAt(randomIndex);
+            availableEvolutions.RemoveAt(randomIndex);
         }
         
         Time.timeScale = 0;
@@ -66,7 +66,7 @@ public class BuffChooseScreen : ScreenManager
         _player.OnLevelChanged -= UpdateLevel;
         foreach (var slot in _slots)
         {
-            slot.OnSlotClicked -= BuffChoose;
+            slot.OnSlotClicked -= EvolutionChosen;
         }
     }
 }
