@@ -8,16 +8,13 @@ public class PlayerController: MonoBehaviour, IEater
 {
     [SerializeField] private PlayerConfig _config;
     
-    [SerializeField] private float _levelSet = 3;
-    [SerializeField] private float _levelScaler = 1.5f;
-    
     private float _experience;
+    private float _levelSet;
     private int _level;
     
     public event Action<float> OnExperienceChanged;
     public event Action<int> OnLevelChanged;
     
-
     private Rigidbody2D _rigidbody;
 
     private float _horizontalVelocity;
@@ -25,9 +22,7 @@ public class PlayerController: MonoBehaviour, IEater
 
     public void Eat(float amount)
     {
-        _experience += amount;
-        OnExperienceChanged?.Invoke(_experience);
-        
+        UpdateExperience(amount);
         UpdateLevel();
     }
 
@@ -35,12 +30,17 @@ public class PlayerController: MonoBehaviour, IEater
     {
         while (_experience >= _levelSet)
         {
-            _experience -= _levelSet;
-            OnExperienceChanged?.Invoke(_experience);
+            UpdateExperience(-_levelSet);
             _level++;
             OnLevelChanged?.Invoke(_level);
-            _levelSet *= _levelScaler;
+            _levelSet *= _config.ExperienceConfig._levelScaler;
         }
+    }
+
+    private void UpdateExperience(float amount)
+    {
+        _experience += amount;
+        OnExperienceChanged?.Invoke(_experience);
     }
     
     private void Awake()
@@ -53,6 +53,7 @@ public class PlayerController: MonoBehaviour, IEater
     {
         _experience = 0;
         _level = 0;
+        _levelSet = _config.ExperienceConfig._levelSet;
     }
 
     private void Update()
@@ -62,8 +63,8 @@ public class PlayerController: MonoBehaviour, IEater
 
     private void GetVelocity()
     {
-        _horizontalVelocity = Input.GetAxis("Horizontal") * _config.MoveSpeed;
-        _verticalVelocity = Input.GetAxis("Vertical") * _config.MoveSpeed;
+        _horizontalVelocity = Input.GetAxis("Horizontal") * _config.MovementConfig.MoveSpeed;
+        _verticalVelocity = Input.GetAxis("Vertical") * _config.MovementConfig.MoveSpeed;
     }
 
     private void FixedUpdate()

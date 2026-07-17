@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Evo2
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Buffs.Buff
   <Name>k__BackingField: Attack
-  <Type>k__BackingField: 1
-  <Value>k__BackingField: 1
+  <BasicValue>k__BackingField: 5
   <Description>k__BackingField: increase
   <Sprite>k__BackingField: {fileID: 8408282269372428049, guid: 782e470d90559ce47aa71c4e4dc09a18, type: 3}

@@ -228,7 +228,7 @@ MonoBehaviour:
   _player: {fileID: 1325505445}
   _camera: {fileID: 519420033}
   _overlayScreen: {fileID: 1380803056}
-  _evolutionScreen: {fileID: 0}
+  _evolutionScreen: {fileID: 1080735611}
 --- !u!1001 &329519288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -938,6 +938,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4755174928454083572, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
   m_PrefabInstance: {fileID: 4498920137526282035}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1080735611 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7839408227657056900, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
+  m_PrefabInstance: {fileID: 4498920137526282035}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cbbc8764e2843ffa604fb629f6ed5dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.UI.BuffChooseScreen
 --- !u!4 &1096539911 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1600029849925267869, guid: 3abfb2ade61687241bc1ec0dea4169b8, type: 3}
@@ -1607,7 +1618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7839408227657056900, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
       propertyPath: _evolutions.Array.size
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7839408227657056900, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
       propertyPath: '_evolutions.Array.data[0]'

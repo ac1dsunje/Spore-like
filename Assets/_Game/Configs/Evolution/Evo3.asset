@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Evo3
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Buffs.Buff
   <Name>k__BackingField: Movespeed
-  <Type>k__BackingField: 2
-  <Value>k__BackingField: 0.5
+  <BasicValue>k__BackingField: 5
   <Description>k__BackingField: increase
   <Sprite>k__BackingField: {fileID: -6394535587875924177, guid: 376fe4385df109d4db84f57f13512761, type: 3}

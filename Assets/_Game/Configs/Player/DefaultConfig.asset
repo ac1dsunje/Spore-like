@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c3f912d6e474dd783046a56684a3418, type: 3}
   m_Name: DefaultConfig
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.PlayerConfig
-  <MoveSpeed>k__BackingField: 1
+  <MovementConfig>k__BackingField: {fileID: 11400000, guid: c8969c74902ae4442aa9f171bc124a2d, type: 2}
+  <ExperienceConfig>k__BackingField: {fileID: 11400000, guid: 6ca48198dec476b4f9cde410c88c74c5, type: 2}
