@@ -25,7 +25,7 @@ public class Evolution
 
     private void ParseConfig()
     {
-        Name = _config.Name;
+        Name = $"{_rarity.Name}  {_config.Name}";
         Description = _config.Description;
         Sprite = _config.Sprite;
     }

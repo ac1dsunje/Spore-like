@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using _Game.Scripts.Evolutions.Rarities;
 using _Game.Scripts.Player;
 using _Game.Scripts.UI;
@@ -29,7 +28,7 @@ public class EvolutionChooseScreen : ScreenManager
 
     private void EvolutionChosen(Evolution evolution)
     {
-        Debug.Log($"Evolution {evolution.Name} clicked");
+        Debug.Log($"{evolution.Name} clicked");
         
         // TODO: apply
         
