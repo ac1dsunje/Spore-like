@@ -12,5 +12,6 @@ public class EvolutionConfig: ScriptableObject
     [field: SerializeField] public Sprite Sprite { get; private set; }
     
     [field: SerializeField] public EvolutionConfig[] Unlocks { get; private set; }
+    [field: SerializeField] public EvolutionConfig[] Blocks { get; private set; }
 }
 }

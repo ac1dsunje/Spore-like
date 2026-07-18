@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f724526a32e44aa591a5df78fb049629, type: 3}
-  m_Name: Evo3
+  m_Name: Camera Eyes
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Buffs.Buff
-  <Name>k__BackingField: Movespeed
+  <Name>k__BackingField: Camera Eyes
   <BasicValue>k__BackingField: 5
   <Description>k__BackingField: increase
-  <Sprite>k__BackingField: {fileID: -6394535587875924177, guid: 376fe4385df109d4db84f57f13512761, type: 3}
+  <Sprite>k__BackingField: {fileID: -7076529034579859471, guid: d6c9da9091c4c0b4ba595677bdd2e09c, type: 3}
+  <Unlocks>k__BackingField: []
+  <Blocks>k__BackingField:
+  - {fileID: 11400000, guid: d89f14a023616e446aa43645d3085005, type: 2}

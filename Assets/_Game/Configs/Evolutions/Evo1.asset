@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f724526a32e44aa591a5df78fb049629, type: 3}
   m_Name: Evo1
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Buffs.Buff
-  <Name>k__BackingField: Vision
+  <Name>k__BackingField: EyeSpots
   <BasicValue>k__BackingField: 5
   <Description>k__BackingField: increase
   <Sprite>k__BackingField: {fileID: -7076529034579859471, guid: d6c9da9091c4c0b4ba595677bdd2e09c, type: 3}
+  <Unlocks>k__BackingField:
+  - {fileID: 11400000, guid: 7668f5ba42c500a4cba3716c7c393ac2, type: 2}
+  - {fileID: 11400000, guid: d89f14a023616e446aa43645d3085005, type: 2}
+  <Blocks>k__BackingField: []
