@@ -14,12 +14,14 @@ public class EntryPoint : MonoBehaviour
     [SerializeField] private CameraController _camera;
     [SerializeField] private OverlayScreen _overlayScreen;
     [SerializeField] private EvolutionChooseScreen _evolutionScreen;
+    [Header("Evolutions")]
+    [SerializeField] private EvolutionsManager _evolutionsManager;
 
     private void Awake()
     {
         _camera.Construct(_player.transform);
         _overlayScreen.Construct(_player);
-        _evolutionScreen.Construct(_player);
+        _evolutionsManager.Construct(_player, _evolutionScreen);
     }
 }
 }

@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using _Game.Scripts.Evolutions.Rarities;
-using _Game.Scripts.Player;
+﻿using System;
+using System.Collections.Generic;
 using _Game.Scripts.UI;
 using UnityEngine;
 
@@ -9,14 +8,8 @@ namespace _Game.Scripts.Evolutions.UI
 public class EvolutionChooseScreen : ScreenManager
 {
     [SerializeField] private EvolutionSlotUI[] _slots;
-    [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
-    private PlayerController _player;
     
-    public void Construct(PlayerController player)
-    {
-        _player = player;
-        _player.OnLevelChanged += OnLevelUpdated;
-    }
+    public event Action<Evolution> OnEvolutionChosen;
 
     private void OnEnable()
     {
@@ -24,80 +17,26 @@ public class EvolutionChooseScreen : ScreenManager
         {
             slot.OnSlotClicked += EvolutionChosen;
         }
+
+        Hide();
     }
 
-    private void EvolutionChosen(Evolution evolution)
-    {
-        Debug.Log($"{evolution.Name} clicked");
-        
-        // TODO: apply
-        
-        HideScreen();
-        Time.timeScale = 1;
-    }
+    private void EvolutionChosen(Evolution evolution) => OnEvolutionChosen?.Invoke(evolution);
 
-    private void Start()
-    {
-        HideScreen();
-    }
-    
-    private void OnLevelUpdated(int level)
-    {
-        ShowScreen();
+    public void Show() => ShowScreen();
 
-        GenerateEvolutions();
-        
-        Time.timeScale = 0;
-    }
+    public void Hide() => HideScreen();
 
-    private void GenerateEvolutions()
+    public void SetSlots(List<Evolution> evolutions)
     {
-        var availableEvolutions = new List<EvolutionConfig>(_evolutionsDatabase.Evolutions);
-        
-        var slotsToFill = Mathf.Min(_slots.Length, availableEvolutions.Count);
-
-        for (var i = 0; i < slotsToFill; i++)
+        for(var i = 0; i < evolutions.Count; i++)
         {
-            var randomEvolutionIndex = Random.Range(0, availableEvolutions.Count);
-            var chosen = new Evolution(availableEvolutions[randomEvolutionIndex], GetRandomRarity());
-            
-            _slots[i].SetBuff(chosen); 
-            
-            availableEvolutions.RemoveAt(randomEvolutionIndex);
+            _slots[i].SetBuff(evolutions[i]);
         }
-    }
-
-    private EvolutionRarityConfig GetRandomRarity()
-    {
-        var rarities = _evolutionsDatabase.Rarities;
-
-        var totalWeight = 0f;
-        
-        foreach (var rarity in rarities)
-        {
-            totalWeight += rarity.Chance;
-        }
-
-        var randomValue = Random.Range(0f, totalWeight);
-
-        var currentWeight = 0f;
-
-        foreach (var rarity in rarities)
-        {
-            currentWeight += rarity.Chance;
-
-            if (randomValue <= currentWeight)
-            {
-                return rarity;
-            }
-        }
-
-        return rarities[rarities.Length - 1];
     }
 
     private void OnDestroy()
     {
-        _player.OnLevelChanged -= OnLevelUpdated;
         foreach (var slot in _slots)
         {
             slot.OnSlotClicked -= EvolutionChosen;

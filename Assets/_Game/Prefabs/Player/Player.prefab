@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4836715229422371908}
   - component: {fileID: 3490300740950370897}
   - component: {fileID: 2108220050117646386}
+  - component: {fileID: 3239805194620180843}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -180,5 +181,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.PlayerController
   _config: {fileID: 11400000, guid: ba7be4736a4236543ba175179ecef16d, type: 2}
-  _levelSet: 3
-  _levelScaler: 1.5
+--- !u!114 &3239805194620180843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254078283856608112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b12fde8bac24b85b403b6577e6f449c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Evolutions.EvolutionsManager
+  _evolutionsDatabase: {fileID: 11400000, guid: 89e0fac1fa9071a41bafa6ee877795b5, type: 2}

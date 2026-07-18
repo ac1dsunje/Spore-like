@@ -109,13 +109,6 @@ MonoBehaviour:
   - {fileID: 3760554242993601372}
   - {fileID: 1094065703580961305}
   - {fileID: 778240219501793561}
-  _buffs:
-  - {fileID: 11400000, guid: 4f4c172944860244b9c7c6814864b33d, type: 2}
-  - {fileID: 11400000, guid: 8a43ea66e0841d043a899e6222c9f718, type: 2}
-  - {fileID: 11400000, guid: 03b69bbfa61740544beb9c187ab4dbaf, type: 2}
-  - {fileID: 11400000, guid: 1cffec99d5d42134b9b022390e1a5fd3, type: 2}
-  - {fileID: 11400000, guid: 31ba72f168042d741933c1a2c8dbd650, type: 2}
-  - {fileID: 11400000, guid: 22bfe7788447192419b6866608da4efd, type: 2}
 --- !u!114 &8991086698402249234
 MonoBehaviour:
   m_ObjectHideFlags: 0
