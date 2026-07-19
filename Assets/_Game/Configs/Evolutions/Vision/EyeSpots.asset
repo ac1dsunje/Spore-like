@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1f196ffbfb1491f9416d2a232f6c1e4, type: 3}
+  m_Name: EyeSpots
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Evolutions.Types.Vision.EyeSpots.EyeSpotsConfig
+  <Name>k__BackingField: Eye Spots
+  <BasicValue>k__BackingField: 75
+  <Description>k__BackingField: Increases vision radius
+  <Sprite>k__BackingField: {fileID: -7076529034579859471, guid: d6c9da9091c4c0b4ba595677bdd2e09c, type: 3}
+  <State>k__BackingField: 1
+  <Unlocks>k__BackingField:
+  - {fileID: 11400000, guid: f687280283047b844942e94341a97e9d, type: 2}
+  - {fileID: 11400000, guid: c7ed36e692a39ff4094908430d853439, type: 2}
+  <Blocks>k__BackingField: []

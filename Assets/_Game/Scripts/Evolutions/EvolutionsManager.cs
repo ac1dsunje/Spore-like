@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using _Game.Scripts.Evolutions.UI;
 using _Game.Scripts.Player;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class EvolutionsManager: MonoBehaviour
     [SerializeField] private int _minEvolutions = 3;
     private PlayerController _player;
     private EvolutionChooseScreen _screen;
+    
+    private readonly List<Evolution> _evolutions = new();
 
     public void Construct(PlayerController player, EvolutionChooseScreen screen)
     {
@@ -19,29 +22,58 @@ public class EvolutionsManager: MonoBehaviour
         
         _screen = screen;
         _screen.OnEvolutionChosen += OnEvolutionChosen;
+
+        GenerateEvolutionsFromConfigs();
+    }
+
+    private void GenerateEvolutionsFromConfigs()
+    {
+        foreach(var evo in _evolutionsDatabase.Evolutions)
+        {
+            _evolutions.Add(evo.CreateEvolution());
+        }
     }
     
     private void OnLevelUpdated(int level)
     {
         _screen.Show();
 
-        GenerateEvolutions();
+        FillSlots();
         
         Time.timeScale = 0;
     }
 
     private void OnEvolutionChosen(Evolution evolution)
     {
-        // TODO: apply
+        evolution.Apply();
+
+        UnlockEvolutions(evolution);
+        BlockEvolutions(evolution);
         
         _screen.Hide();
         Time.timeScale = 1;
     }
 
-    private void GenerateEvolutions()
+    private void UnlockEvolutions(Evolution evolution)
     {
-        var availableEvolutions = new List<EvolutionConfig>(_evolutionsDatabase.Evolutions);
-        
+        foreach (var evo in _evolutions.Where(evo => evolution.Unlocks.Contains(evo.Config)))
+        {
+            evo.Unlock();
+        }
+    }
+    
+    private void BlockEvolutions(Evolution evolution)
+    {
+        foreach (var evo in _evolutions.Where(evo => evolution.Blocks.Contains(evo.Config)))
+        {
+            evo.Block();
+        }
+    }
+
+    private void FillSlots()
+    {
+        var availableEvolutions = _evolutions.Where(evolution => evolution.State == EvolutionState.IsAble).ToList();
+
         var slotsToFill = Mathf.Min(_minEvolutions, availableEvolutions.Count);
         
         var evolutions = new List<Evolution>(slotsToFill);
@@ -49,7 +81,7 @@ public class EvolutionsManager: MonoBehaviour
         for (var i = 0; i < slotsToFill; i++)
         {
             var randomEvolutionIndex = Random.Range(0, availableEvolutions.Count);
-            var chosen = new Evolution(availableEvolutions[randomEvolutionIndex]);
+            var chosen = availableEvolutions[randomEvolutionIndex];
             chosen.SetRarity(GetRandomRarity());
             
             evolutions.Add(chosen);
@@ -64,12 +96,7 @@ public class EvolutionsManager: MonoBehaviour
     {
         var rarities = _evolutionsDatabase.Rarities;
 
-        var totalWeight = 0f;
-        
-        foreach (var rarity in rarities)
-        {
-            totalWeight += rarity.Chance;
-        }
+        var totalWeight = rarities.Sum(rarity => rarity.Chance);
 
         var randomValue = Random.Range(0f, totalWeight);
 

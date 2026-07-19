@@ -21,7 +21,14 @@ public class EvolutionChooseScreen : ScreenManager
         Hide();
     }
 
-    private void EvolutionChosen(Evolution evolution) => OnEvolutionChosen?.Invoke(evolution);
+    private void EvolutionChosen(Evolution evolution)
+    {
+        OnEvolutionChosen?.Invoke(evolution);
+        foreach (var slot in _slots)
+        {
+            slot.Clear();
+        }
+    }
 
     public void Show() => ShowScreen();
 
