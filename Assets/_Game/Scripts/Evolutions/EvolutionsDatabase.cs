@@ -1,5 +1,4 @@
-﻿using _Game.Scripts.Evolutions.Rarities;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace _Game.Scripts.Evolutions
 {

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using _Game.Scripts.Evolutions.Rarities;
 using _Game.Scripts.Evolutions.UI;
 using _Game.Scripts.Player;
 using UnityEngine;
@@ -9,6 +8,7 @@ namespace _Game.Scripts.Evolutions
 public class EvolutionsManager: MonoBehaviour
 {
     [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
+    [SerializeField] private int _minEvolutions = 3;
     private PlayerController _player;
     private EvolutionChooseScreen _screen;
 
@@ -42,14 +42,15 @@ public class EvolutionsManager: MonoBehaviour
     {
         var availableEvolutions = new List<EvolutionConfig>(_evolutionsDatabase.Evolutions);
         
-        var slotsToFill = Mathf.Min(3, availableEvolutions.Count);
+        var slotsToFill = Mathf.Min(_minEvolutions, availableEvolutions.Count);
         
         var evolutions = new List<Evolution>(slotsToFill);
 
         for (var i = 0; i < slotsToFill; i++)
         {
             var randomEvolutionIndex = Random.Range(0, availableEvolutions.Count);
-            var chosen = new Evolution(availableEvolutions[randomEvolutionIndex], GetRandomRarity());
+            var chosen = new Evolution(availableEvolutions[randomEvolutionIndex]);
+            chosen.SetRarity(GetRandomRarity());
             
             evolutions.Add(chosen);
             

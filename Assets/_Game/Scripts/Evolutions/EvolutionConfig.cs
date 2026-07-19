@@ -2,7 +2,6 @@
 
 namespace _Game.Scripts.Evolutions
 {
-
 [CreateAssetMenu(fileName = "New evolution", menuName = "Configs/Game/Evolutions/Evolution")]
 public class EvolutionConfig: ScriptableObject
 {
