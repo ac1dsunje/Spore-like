@@ -16,6 +16,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6a8a719ffa31b3548b3fa18f8c62f385, type: 2}
   - {fileID: 11400000, guid: c7ed36e692a39ff4094908430d853439, type: 2}
   - {fileID: 11400000, guid: f687280283047b844942e94341a97e9d, type: 2}
+  - {fileID: 11400000, guid: e54f3bfbec391c54395b638b610f01c7, type: 2}
   <Rarities>k__BackingField:
   - {fileID: 11400000, guid: 5106979986a9e964e868b6a2c5eff072, type: 2}
   - {fileID: 11400000, guid: ee6a8b413676f184e8b76de691dddd29, type: 2}

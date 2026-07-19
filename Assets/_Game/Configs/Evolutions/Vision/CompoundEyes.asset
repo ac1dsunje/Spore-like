@@ -16,7 +16,7 @@ MonoBehaviour:
   <BasicValue>k__BackingField: 75
   <Description>k__BackingField: Increases vision radius
   <Sprite>k__BackingField: {fileID: -7076529034579859471, guid: d6c9da9091c4c0b4ba595677bdd2e09c, type: 3}
-  <State>k__BackingField: 1
+  <State>k__BackingField: 0
   <Unlocks>k__BackingField: []
   <Blocks>k__BackingField:
   - {fileID: 11400000, guid: c7ed36e692a39ff4094908430d853439, type: 2}
