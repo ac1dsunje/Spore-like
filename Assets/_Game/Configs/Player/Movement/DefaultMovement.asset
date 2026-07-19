@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db77f54468eb4b8aa5c6c06b30aa22ed, type: 3}
   m_Name: DefaultMovement
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Movement.MovementConfig
-  <MoveSpeed>k__BackingField: 5
+  <MoveSpeed>k__BackingField: 1
