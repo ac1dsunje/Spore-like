@@ -36,10 +36,10 @@ public class EvolutionsManager: MonoBehaviour
     
     private void OnLevelUpdated(int level)
     {
-        _screen.Show();
-
-        FillSlots();
+        if (_evolutions.Count(evolution => evolution.State == EvolutionState.IsAble) <= 0) return;
         
+        FillSlots();
+        _screen.Show();
         Time.timeScale = 0;
     }
 
