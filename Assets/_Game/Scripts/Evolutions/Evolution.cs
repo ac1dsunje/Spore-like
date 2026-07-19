@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using _Game.Scripts.Player;
+using UnityEngine;
 
 namespace _Game.Scripts.Evolutions
 {
@@ -14,6 +15,7 @@ public abstract class Evolution
 {
     public EvolutionConfig Config { get; private set; }
     private EvolutionRarityConfig _rarity;
+    private PlayerController _player;
     
     public EvolutionState State { get; private set; }
     
@@ -31,8 +33,19 @@ public abstract class Evolution
         Config = config;
         ParseConfig();
     }
+    
+    public void SetPlayer(PlayerController player) => _player = player;
+    
+    public void SetRarity(EvolutionRarityConfig rarity)
+    {
+        _rarity = rarity;
+        
+        Name = $"{_rarity.Name} {Config.Name}";
+        Value = Config.BasicValue * _rarity.Scaler;
+        Frame = _rarity.Sprite;
+    }
 
-    public void Apply()
+    public virtual void Apply()
     {
         Debug.Log($"Applying {Name} with Rarity {_rarity.Name}");
         SetState(EvolutionState.IsActive);
@@ -62,15 +75,6 @@ public abstract class Evolution
         Blocks = Config.Blocks;
         
         SetState(Config.State);
-    }
-
-    public void SetRarity(EvolutionRarityConfig rarity)
-    {
-        _rarity = rarity;
-        
-        Name = $"{_rarity.Name} {Config.Name}";
-        Value = Config.BasicValue * _rarity.Scaler;
-        Frame = _rarity.Sprite;
     }
 }
 }

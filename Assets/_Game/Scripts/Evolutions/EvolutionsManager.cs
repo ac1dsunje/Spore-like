@@ -28,9 +28,11 @@ public class EvolutionsManager: MonoBehaviour
 
     private void GenerateEvolutionsFromConfigs()
     {
-        foreach(var evo in _evolutionsDatabase.Evolutions)
+        foreach(var evolution in _evolutionsDatabase.Evolutions)
         {
-            _evolutions.Add(evo.CreateEvolution());
+            var evo = evolution.CreateEvolution();
+            evo.SetPlayer(_player);
+            _evolutions.Add(evo);
         }
     }
     
