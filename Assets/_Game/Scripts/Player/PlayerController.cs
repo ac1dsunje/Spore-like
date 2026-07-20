@@ -16,6 +16,7 @@ public class PlayerController: MonoBehaviour, IEater
     public event Action<int> OnLevelChanged;
     
     private Rigidbody2D _rigidbody;
+    private bool _isActive;
 
     private float _horizontalVelocity;
     private float _verticalVelocity;
@@ -28,12 +29,12 @@ public class PlayerController: MonoBehaviour, IEater
 
     public void Stop()
     {
-        Time.timeScale = 0;
+        _isActive = false;
     }
 
     public void Resume()
     {
-        Time.timeScale = 1;
+        _isActive = true;
     }
 
     private void UpdateLevel()
@@ -68,13 +69,14 @@ public class PlayerController: MonoBehaviour, IEater
 
     private void Update()
     {
-        GetVelocity();
+        if (!_isActive) return;
+        ReadInput();
     }
 
-    private void GetVelocity()
+    private void ReadInput()
     {
-        _horizontalVelocity = Input.GetAxis("Horizontal") * _config.MovementConfig.MoveSpeed;
-        _verticalVelocity = Input.GetAxis("Vertical") * _config.MovementConfig.MoveSpeed;
+        _horizontalVelocity = Input.GetAxis("Horizontal");
+        _verticalVelocity = Input.GetAxis("Vertical");
     }
 
     private void FixedUpdate()
@@ -84,7 +86,7 @@ public class PlayerController: MonoBehaviour, IEater
 
     private void Move()
     {
-        _rigidbody.linearVelocity = new Vector2(_horizontalVelocity, _verticalVelocity);
+        _rigidbody.linearVelocity = new Vector2(_horizontalVelocity * _config.MovementConfig.MoveSpeed, _verticalVelocity * _config.MovementConfig.MoveSpeed);
     }
 }
 }
