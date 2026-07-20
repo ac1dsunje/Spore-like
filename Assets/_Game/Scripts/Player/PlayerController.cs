@@ -26,6 +26,16 @@ public class PlayerController: MonoBehaviour, IEater
         UpdateLevel();
     }
 
+    public void Stop()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1;
+    }
+
     private void UpdateLevel()
     {
         while (_experience >= _levelSet)

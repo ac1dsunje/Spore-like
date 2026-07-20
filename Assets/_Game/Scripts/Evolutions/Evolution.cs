@@ -14,11 +14,7 @@ public enum EvolutionState
 public abstract class Evolution
 {
     public EvolutionConfig Config { get; private set; }
-    private EvolutionRarityConfig _rarity;
-    private PlayerController _player;
-    
     public EvolutionState State { get; private set; }
-    
     public string Name { get; private set; }
     public float Value { get; private set; }
     public string Description { get; private set; }
@@ -27,11 +23,21 @@ public abstract class Evolution
     
     public EvolutionConfig[] Unlocks { get; private set; }
     public EvolutionConfig[] Blocks { get; private set; }
+    
+    private EvolutionRarityConfig _rarity;
+    private PlayerController _player;
 
     public void SetConfig(EvolutionConfig config)
     {
         Config = config;
-        ParseConfig();
+        Name = $"{Config.Name}";
+        Description = Config.Description;
+        Sprite = Config.Sprite;
+        
+        Unlocks = Config.Unlocks;
+        Blocks = Config.Blocks;
+        
+        SetState(Config.State);
     }
     
     public void SetPlayer(PlayerController player) => _player = player;
@@ -64,17 +70,5 @@ public abstract class Evolution
     }
 
     private void SetState(EvolutionState state) => State = state;
-
-    private void ParseConfig()
-    {
-        Name = $"{Config.Name}";
-        Description = Config.Description;
-        Sprite = Config.Sprite;
-        
-        Unlocks = Config.Unlocks;
-        Blocks = Config.Blocks;
-        
-        SetState(Config.State);
-    }
 }
 }
