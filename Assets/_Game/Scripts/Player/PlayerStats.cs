@@ -1,16 +1,14 @@
 ﻿using System;
-using _Game.Scripts.Player.Experience;
-using _Game.Scripts.Player.Movement;
 
 namespace _Game.Scripts.Player
 {
 public class PlayerStats
 {
-    public MovementConfig Movement { get; private set; }
-    private readonly ExperienceConfig _experienceConfig;
+    public float MoveSpeed { get; private set; }
     
-    private float _experience;
+    private readonly float _levelScaler;
     private float _levelSet;
+    private float _experience;
     private int _level;
     
     public event Action<float> OnExperienceChanged;
@@ -18,9 +16,10 @@ public class PlayerStats
 
     public PlayerStats(PlayerConfig config)
     {
-        Movement = config.MovementConfig;
-        _experienceConfig = config.ExperienceConfig;
-        _levelSet = _experienceConfig._levelSet;
+        MoveSpeed = config.MovementConfig.MoveSpeed;
+        
+        _levelSet = config.ExperienceConfig.LevelSet;
+        _levelScaler = config.ExperienceConfig.LevelScaler;
     }
 
     public void AddExperience(float amount)
@@ -37,7 +36,7 @@ public class PlayerStats
             AddExperience(-_levelSet);
             _level++;
             OnLevelChanged?.Invoke(_level);
-            _levelSet *= _experienceConfig._levelScaler;
+            _levelSet *= _levelScaler;
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using _Game.Scripts.Food;
+﻿using _Game.Scripts.Food;
 using UnityEngine;
 
 namespace _Game.Scripts.Player
@@ -56,7 +55,7 @@ public class PlayerController: MonoBehaviour, IEater
 
     private void Move()
     {
-        _rigidbody.linearVelocity = new Vector2(_horizontalVelocity * Stats.Movement.MoveSpeed, _verticalVelocity * Stats.Movement.MoveSpeed);
+        _rigidbody.linearVelocity = new Vector2(_horizontalVelocity * Stats.MoveSpeed, _verticalVelocity * Stats.MoveSpeed);
     }
     
     private void SetState(PlayerState state) => _state = state;
