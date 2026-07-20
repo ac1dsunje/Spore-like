@@ -7,28 +7,11 @@ namespace _Game.Scripts.Evolutions.UI
 {
 public class EvolutionChooseScreen : ScreenManager
 {
-    [SerializeField] private EvolutionSlotUI[] _slots;
+    [SerializeField] private GameObject _slotPrefab;
+    
+    private readonly List<EvolutionSlotUI> _slots = new();
     
     public event Action<Evolution> OnEvolutionChosen;
-
-    private void OnEnable()
-    {
-        foreach (var slot in _slots)
-        {
-            slot.OnSlotClicked += EvolutionChosen;
-        }
-
-        Hide();
-    }
-
-    private void EvolutionChosen(Evolution evolution)
-    {
-        OnEvolutionChosen?.Invoke(evolution);
-        foreach (var slot in _slots)
-        {
-            slot.Clear();
-        }
-    }
 
     public void Show() => ShowScreen();
 
@@ -36,10 +19,26 @@ public class EvolutionChooseScreen : ScreenManager
 
     public void SetSlots(List<Evolution> evolutions)
     {
-        for(var i = 0; i < evolutions.Count; i++)
+        foreach (var t in evolutions)
         {
-            _slots[i].SetEvolution(evolutions[i]);
+            var slot = Instantiate(_slotPrefab, transform).GetComponent<EvolutionSlotUI>();
+            slot.SetEvolution(t);
+            _slots.Add(slot);
+            slot.OnSlotClicked += EvolutionChosen;
         }
+    }
+    
+    private void OnEnable() => Hide();
+
+    private void EvolutionChosen(Evolution evolution)
+    {
+        OnEvolutionChosen?.Invoke(evolution);
+        foreach (var slot in _slots)
+        {
+            slot.OnSlotClicked -= EvolutionChosen;
+            Destroy(slot.gameObject);
+        }
+        _slots.Clear();
     }
 
     private void OnDestroy()

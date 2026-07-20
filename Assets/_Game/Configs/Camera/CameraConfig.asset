@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad9c30dc7c8485c94fddf96471eaa7b, type: 3}
   m_Name: CameraConfig
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Camera.CameraConfig
-  <FollowSpeed>k__BackingField: 0.804
+  <FollowSpeed>k__BackingField: 1
   <Offset>k__BackingField: {x: 0, y: 0, z: -10}
