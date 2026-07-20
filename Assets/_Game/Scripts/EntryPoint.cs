@@ -1,4 +1,3 @@
-using _Game.Scripts.Camera;
 using _Game.Scripts.Evolutions;
 using _Game.Scripts.Evolutions.UI;
 using _Game.Scripts.Player;
@@ -11,7 +10,7 @@ public class EntryPoint : MonoBehaviour
 {
     [SerializeField] private PlayerController _player;
     [SerializeField] private PlayerConfig _playerConfig;
-    [Header("UI")] [SerializeField] private CameraController _camera;
+    [Header("UI")]
     [SerializeField] private OverlayScreen _overlayScreen;
     [SerializeField] private EvolutionChooseScreen _evolutionChooseScreen;
 
@@ -20,8 +19,6 @@ public class EntryPoint : MonoBehaviour
 
     private void Awake()
     {
-        _camera.Construct(_player.transform);
-
         var playerStats = new PlayerStats(_playerConfig);
         _overlayScreen.Construct(playerStats);
 
