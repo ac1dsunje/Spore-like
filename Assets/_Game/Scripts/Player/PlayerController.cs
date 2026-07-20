@@ -4,6 +4,11 @@ using UnityEngine;
 
 namespace _Game.Scripts.Player
 {
+public enum PlayerState
+{
+    Moving, 
+    ChoosingEvolution
+}
 public class PlayerController: MonoBehaviour, IEater
 {
     [SerializeField] private PlayerConfig _config;
@@ -16,7 +21,7 @@ public class PlayerController: MonoBehaviour, IEater
     public event Action<int> OnLevelChanged;
     
     private Rigidbody2D _rigidbody;
-    private bool _isActive;
+    private PlayerState _state;
 
     private float _horizontalVelocity;
     private float _verticalVelocity;
@@ -27,15 +32,9 @@ public class PlayerController: MonoBehaviour, IEater
         UpdateLevel();
     }
 
-    public void Stop()
-    {
-        _isActive = false;
-    }
+    public void ChooseEvolution() => SetState(PlayerState.ChoosingEvolution);
 
-    public void Resume()
-    {
-        _isActive = true;
-    }
+    public void EnableMoving() => SetState(PlayerState.Moving);
 
     private void UpdateLevel()
     {
@@ -69,7 +68,7 @@ public class PlayerController: MonoBehaviour, IEater
 
     private void Update()
     {
-        if (!_isActive) return;
+        if (_state == PlayerState.ChoosingEvolution) return;
         ReadInput();
     }
 
@@ -88,5 +87,7 @@ public class PlayerController: MonoBehaviour, IEater
     {
         _rigidbody.linearVelocity = new Vector2(_horizontalVelocity * _config.MovementConfig.MoveSpeed, _verticalVelocity * _config.MovementConfig.MoveSpeed);
     }
+    
+    private void SetState(PlayerState state) => _state = state;
 }
 }

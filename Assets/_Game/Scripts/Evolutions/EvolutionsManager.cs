@@ -43,7 +43,7 @@ public class EvolutionsManager: MonoBehaviour
         
         FillSlots();
         _screen.Show();
-        _player.Stop();
+        _player.ChooseEvolution();
     }
 
     private void OnEvolutionChosen(Evolution evolution)
@@ -56,7 +56,7 @@ public class EvolutionsManager: MonoBehaviour
         BlockEvolutions(evolution);
         
         _screen.Hide();
-        _player.Resume();
+        _player.EnableMoving();
     }
 
     private void UnlockEvolutions(Evolution evolution)
