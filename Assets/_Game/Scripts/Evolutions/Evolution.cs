@@ -42,8 +42,6 @@ public abstract class Evolution
     public void SetRarity(EvolutionRarityConfig rarity)
     {
         _rarity = rarity;
-        
-        Name = $"{_rarity.Name} {Config.Name}";
         Value = Config.BasicValue * _rarity.Scaler;
         Frame = _rarity.Sprite;
     }
