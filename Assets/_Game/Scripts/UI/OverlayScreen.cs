@@ -9,9 +9,9 @@ public class OverlayScreen: ScreenManager
     [SerializeField] private TextMeshProUGUI _experienceText;
     [SerializeField] private TextMeshProUGUI _levelText;
     
-    private PlayerController _player;
+    private PlayerStats _player;
 
-    public void Construct(PlayerController player)
+    public void Construct(PlayerStats player)
     {
         _player = player;
         _player.OnExperienceChanged += UpdateExperience;

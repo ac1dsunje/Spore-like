@@ -19,7 +19,7 @@ public class EvolutionsManager: MonoBehaviour
     public void Construct(PlayerController player, EvolutionChooseScreen screen)
     {
         _player = player;
-        _player.OnLevelChanged += OnLevelUpdated;
+        _player.Stats.OnLevelChanged += OnLevelUpdated;
         
         _screen = screen;
         _screen.OnEvolutionChosen += OnEvolutionChosen;
@@ -32,7 +32,6 @@ public class EvolutionsManager: MonoBehaviour
         foreach(var evolution in _evolutionsDatabase.Evolutions)
         {
             var evo = evolution.CreateEvolution();
-            evo.SetPlayer(_player);
             _evolutions.Add(evo);
         }
     }
@@ -122,7 +121,7 @@ public class EvolutionsManager: MonoBehaviour
 
     private void OnDestroy()
     {
-        _player.OnLevelChanged -= OnLevelUpdated;
+        _player.Stats.OnLevelChanged -= OnLevelUpdated;
         _screen.OnEvolutionChosen -= OnEvolutionChosen;
     }
 }

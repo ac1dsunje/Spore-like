@@ -11,14 +11,7 @@ public enum PlayerState
 }
 public class PlayerController: MonoBehaviour, IEater
 {
-    [SerializeField] private PlayerConfig _config;
-    
-    private float _experience;
-    private float _levelSet;
-    private int _level;
-    
-    public event Action<float> OnExperienceChanged;
-    public event Action<int> OnLevelChanged;
+    public PlayerStats Stats { get; private set; }
     
     private Rigidbody2D _rigidbody;
     private PlayerState _state;
@@ -28,42 +21,21 @@ public class PlayerController: MonoBehaviour, IEater
 
     public void Eat(float amount)
     {
-        UpdateExperience(amount);
-        UpdateLevel();
+        Stats.AddExperience(amount);
     }
 
     public void Disable() => SetState(PlayerState.Disabled);
 
     public void Enable() => SetState(PlayerState.Moving);
-
-    private void UpdateLevel()
-    {
-        while (_experience >= _levelSet)
-        {
-            UpdateExperience(-_levelSet);
-            _level++;
-            OnLevelChanged?.Invoke(_level);
-            _levelSet *= _config.ExperienceConfig._levelScaler;
-        }
-    }
-
-    private void UpdateExperience(float amount)
-    {
-        _experience += amount;
-        OnExperienceChanged?.Invoke(_experience);
-    }
     
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        Reset();
     }
 
-    private void Reset()
+    public void Construct(PlayerStats stats)
     {
-        _experience = 0;
-        _level = 0;
-        _levelSet = _config.ExperienceConfig._levelSet;
+        Stats = stats;
     }
 
     private void Update()
@@ -84,7 +56,7 @@ public class PlayerController: MonoBehaviour, IEater
 
     private void Move()
     {
-        _rigidbody.linearVelocity = new Vector2(_horizontalVelocity * _config.MovementConfig.MoveSpeed, _verticalVelocity * _config.MovementConfig.MoveSpeed);
+        _rigidbody.linearVelocity = new Vector2(_horizontalVelocity * Stats.Movement.MoveSpeed, _verticalVelocity * Stats.Movement.MoveSpeed);
     }
     
     private void SetState(PlayerState state) => _state = state;

@@ -25,7 +25,6 @@ public abstract class Evolution
     public EvolutionConfig[] Blocks { get; private set; }
     
     private EvolutionRarityConfig _rarity;
-    private PlayerController _player;
 
     public void SetConfig(EvolutionConfig config)
     {
@@ -39,8 +38,6 @@ public abstract class Evolution
         
         SetState(Config.State);
     }
-    
-    public void SetPlayer(PlayerController player) => _player = player;
     
     public void SetRarity(EvolutionRarityConfig rarity)
     {
