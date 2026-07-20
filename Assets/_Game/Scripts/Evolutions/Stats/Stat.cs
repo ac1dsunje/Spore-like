@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine;
 
 namespace _Game.Scripts.Evolutions.Stats
 {
@@ -7,14 +6,20 @@ public enum EvolutionType
 {
     MoveSpeed,
     VisionRadius,
-    SensoricsRadius
-
+    SensoricsRadius,
+    Acceleration,
+    DamageReflection,
+    EatingSpeed,
+    PhysicalDamage,
+    RegenerationSpeed,
+    Inertia,
+    Stamina,
 }
 
 [Serializable]
 public class Stat
 {
-    [field: SerializeField] public EvolutionType Type { get; private set; }
+    public EvolutionType Type;
     public float Value;
 }
 }

@@ -1,5 +1,6 @@
 ﻿using _Game.Scripts.Food;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace _Game.Scripts.Player
 {
@@ -10,6 +11,7 @@ public enum PlayerState
 }
 public class PlayerController: MonoBehaviour, IEater
 {
+    [SerializeField] private Light2D _light;
     public PlayerStats Stats { get; private set; }
     
     private Rigidbody2D _rigidbody;
@@ -40,6 +42,7 @@ public class PlayerController: MonoBehaviour, IEater
     private void Update()
     {
         ReadInput();
+        _light.pointLightOuterRadius = Stats.VisionRadius;
     }
 
     private void ReadInput()

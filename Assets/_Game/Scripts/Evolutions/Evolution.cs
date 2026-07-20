@@ -37,10 +37,7 @@ public abstract class Evolution
         Unlocks = Config.Unlocks;
         Blocks = Config.Blocks;
 
-        foreach (var stat in Config.Stats)
-        {
-            Stats.Add(stat);
-        }
+        SetStats();
         
         SetState(Config.State);
     }
@@ -71,6 +68,20 @@ public abstract class Evolution
     {
         Debug.Log($"{Name} is blocked");
         SetState(EvolutionState.IsLocked);
+    }
+
+    private void SetStats()
+    {
+        Stats.Clear();
+        foreach (var stat in Config.Stats)
+        {
+            var newStat = new Stat
+            {
+                Type = stat.Type,
+                Value = stat.Value
+            };
+            Stats.Add(newStat);
+        }
     }
 
     private void SetState(EvolutionState state) => State = state;

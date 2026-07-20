@@ -9,6 +9,13 @@ public class PlayerStats
     public float MoveSpeed => _stats.GetValueOrDefault(EvolutionType.MoveSpeed);
     public float VisionRadius => _stats.GetValueOrDefault(EvolutionType.VisionRadius);
     public float SensoricsRadius => _stats.GetValueOrDefault(EvolutionType.SensoricsRadius);
+    public float Acceleration => _stats.GetValueOrDefault(EvolutionType.Acceleration);
+    public float DamageReflection => _stats.GetValueOrDefault(EvolutionType.DamageReflection);
+    public float EatingSpeed => _stats.GetValueOrDefault(EvolutionType.EatingSpeed);
+    public float PhysicalDamage => _stats.GetValueOrDefault(EvolutionType.PhysicalDamage);
+    public float RegenerationSpeed => _stats.GetValueOrDefault(EvolutionType.RegenerationSpeed);
+    public float Inertia => _stats.GetValueOrDefault(EvolutionType.Inertia);
+    public float Stamina => _stats.GetValueOrDefault(EvolutionType.Stamina);
 
     //Level
     private readonly float _levelScaler;
