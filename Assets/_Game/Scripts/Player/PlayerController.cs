@@ -7,7 +7,7 @@ namespace _Game.Scripts.Player
 public enum PlayerState
 {
     Moving, 
-    ChoosingEvolution
+    Disabled
 }
 public class PlayerController: MonoBehaviour, IEater
 {
@@ -32,9 +32,9 @@ public class PlayerController: MonoBehaviour, IEater
         UpdateLevel();
     }
 
-    public void ChooseEvolution() => SetState(PlayerState.ChoosingEvolution);
+    public void Disable() => SetState(PlayerState.Disabled);
 
-    public void EnableMoving() => SetState(PlayerState.Moving);
+    public void Enable() => SetState(PlayerState.Moving);
 
     private void UpdateLevel()
     {
@@ -68,7 +68,7 @@ public class PlayerController: MonoBehaviour, IEater
 
     private void Update()
     {
-        if (_state == PlayerState.ChoosingEvolution) return;
+        if (_state == PlayerState.Disabled) return;
         ReadInput();
     }
 
