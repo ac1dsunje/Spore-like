@@ -17,7 +17,7 @@ public abstract class Evolution
     public EvolutionConfig Config { get; private set; }
     public EvolutionState State { get; private set; }
     public string Name { get; private set; }
-    public List<Stat> Stats { get; set; } = new();
+    public List<Stat> Stats { get; private set; } = new();
     public string Description { get; private set; }
     public Sprite Sprite { get; private set; }
     public Sprite Frame { get; private set; }
@@ -30,7 +30,7 @@ public abstract class Evolution
     public void SetConfig(EvolutionConfig config)
     {
         Config = config;
-        Name = $"{Config.Name}";
+        Name = Config.Name;
         Description = Config.Description;
         Sprite = Config.Sprite;
         
