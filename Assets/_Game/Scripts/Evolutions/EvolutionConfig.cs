@@ -1,11 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using _Game.Scripts.Evolutions.Stats;
+using UnityEngine;
 
 namespace _Game.Scripts.Evolutions
 {
 public abstract class EvolutionConfig: ScriptableObject
 {
     [field: SerializeField] public string Name { get; private set; }
-    [field: SerializeField] public float BasicValue { get; private set; }
+    [field: SerializeField] public List<Stat> Stats { get; private set; }
     [field: SerializeField] public string Description { get; private set; }
     [field: SerializeField] public Sprite Sprite { get; private set; }
     

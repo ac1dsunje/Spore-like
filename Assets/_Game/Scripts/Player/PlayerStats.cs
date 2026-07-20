@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Game.Scripts.Evolutions;
-
+using _Game.Scripts.Evolutions.Stats;
 namespace _Game.Scripts.Player
 {
 public class PlayerStats
 {
-    // Movement
-    public float MoveSpeed { get; private set; }
-    
+    public float MoveSpeed => _stats.GetValueOrDefault(EvolutionType.MoveSpeed);
+    public float VisionRadius => _stats.GetValueOrDefault(EvolutionType.VisionRadius);
+    public float SensoricsRadius => _stats.GetValueOrDefault(EvolutionType.SensoricsRadius);
+
     //Level
     private readonly float _levelScaler;
     private float _levelSet;
@@ -20,10 +21,11 @@ public class PlayerStats
     
     //Evolutions
     private readonly List<Evolution> _evolutions = new();
+    private readonly Dictionary<EvolutionType, float> _stats = new();
 
     public PlayerStats(PlayerConfig config)
     {
-        MoveSpeed = config.MovementConfig.MoveSpeed;
+        AddStats(config.Stats);
         
         _levelSet = config.ExperienceConfig.LevelSet;
         _levelScaler = config.ExperienceConfig.LevelScaler;
@@ -50,6 +52,23 @@ public class PlayerStats
     public void AddEvolution(Evolution evolution)
     {
         _evolutions.Add(evolution);
+        
+        AddStats(evolution.Stats);
+    }
+
+    private void AddStats(List<Stat> stat)
+    {
+        foreach (var stats in stat)
+        {
+            if (!_stats.ContainsKey(stats.Type))
+            {
+                _stats.Add(stats.Type, stats.Value);
+            }
+            else
+            {
+                _stats[stats.Type] *= 1 + stats.Value/100;
+            }
+        }
     }
 }
 }

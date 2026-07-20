@@ -1,4 +1,5 @@
-﻿using _Game.Scripts.Player;
+﻿using System.Collections.Generic;
+using _Game.Scripts.Evolutions.Stats;
 using UnityEngine;
 
 namespace _Game.Scripts.Evolutions
@@ -16,7 +17,7 @@ public abstract class Evolution
     public EvolutionConfig Config { get; private set; }
     public EvolutionState State { get; private set; }
     public string Name { get; private set; }
-    public float Value { get; private set; }
+    public List<Stat> Stats { get; set; } = new();
     public string Description { get; private set; }
     public Sprite Sprite { get; private set; }
     public Sprite Frame { get; private set; }
@@ -35,6 +36,11 @@ public abstract class Evolution
         
         Unlocks = Config.Unlocks;
         Blocks = Config.Blocks;
+
+        foreach (var stat in Config.Stats)
+        {
+            Stats.Add(stat);
+        }
         
         SetState(Config.State);
     }
@@ -42,7 +48,10 @@ public abstract class Evolution
     public void SetRarity(EvolutionRarityConfig rarity)
     {
         _rarity = rarity;
-        Value = Config.BasicValue * _rarity.Scaler;
+        for (var i = 0; i < Stats.Count; i++)
+        {
+            Stats[i].Value = Config.Stats[i].Value * _rarity.Scaler;
+        }
         Frame = _rarity.Sprite;
     }
 
