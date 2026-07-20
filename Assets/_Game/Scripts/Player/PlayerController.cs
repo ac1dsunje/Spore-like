@@ -68,14 +68,13 @@ public class PlayerController: MonoBehaviour, IEater
 
     private void Update()
     {
-        if (_state == PlayerState.Disabled) return;
         ReadInput();
     }
 
     private void ReadInput()
     {
-        _horizontalVelocity = Input.GetAxis("Horizontal");
-        _verticalVelocity = Input.GetAxis("Vertical");
+        _horizontalVelocity = IsInState(PlayerState.Disabled)? 0: Input.GetAxis("Horizontal");
+        _verticalVelocity = IsInState(PlayerState.Disabled)? 0: Input.GetAxis("Vertical");
     }
 
     private void FixedUpdate()
@@ -89,5 +88,6 @@ public class PlayerController: MonoBehaviour, IEater
     }
     
     private void SetState(PlayerState state) => _state = state;
+    private bool IsInState(PlayerState state) => _state == state;
 }
 }
