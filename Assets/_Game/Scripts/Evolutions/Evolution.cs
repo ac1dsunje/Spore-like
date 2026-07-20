@@ -50,7 +50,7 @@ public abstract class Evolution
 
     public virtual void Apply()
     {
-        Debug.Log($"Applying {Name} with Rarity {_rarity.Name}");
+        Debug.Log($"Applying{_rarity.Name} {Name}");
         SetState(EvolutionState.IsActive);
     }
 

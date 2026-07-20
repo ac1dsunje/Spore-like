@@ -31,7 +31,7 @@ public class EvolutionSlotUI : MonoBehaviour
         _description.text = $" ";
     }
 
-    public void SetBuff(Evolution evolution)
+    public void SetEvolution(Evolution evolution)
     {
         _evolution = evolution;
         _evolutionImage.sprite = evolution.Sprite;

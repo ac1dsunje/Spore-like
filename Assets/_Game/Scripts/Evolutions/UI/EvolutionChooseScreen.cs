@@ -38,7 +38,7 @@ public class EvolutionChooseScreen : ScreenManager
     {
         for(var i = 0; i < evolutions.Count; i++)
         {
-            _slots[i].SetBuff(evolutions[i]);
+            _slots[i].SetEvolution(evolutions[i]);
         }
     }
 

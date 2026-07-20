@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using _Game.Scripts.Evolutions;
 
 namespace _Game.Scripts.Player
 {
 public class PlayerStats
 {
+    // Movement
     public float MoveSpeed { get; private set; }
     
+    //Level
     private readonly float _levelScaler;
     private float _levelSet;
     private float _experience;
@@ -13,6 +17,9 @@ public class PlayerStats
     
     public event Action<float> OnExperienceChanged;
     public event Action<int> OnLevelChanged;
+    
+    //Evolutions
+    private readonly List<Evolution> _evolutions = new();
 
     public PlayerStats(PlayerConfig config)
     {
@@ -38,6 +45,11 @@ public class PlayerStats
             OnLevelChanged?.Invoke(_level);
             _levelSet *= _levelScaler;
         }
+    }
+
+    public void AddEvolution(Evolution evolution)
+    {
+        _evolutions.Add(evolution);
     }
 }
 }

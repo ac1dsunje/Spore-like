@@ -14,7 +14,6 @@ public class EvolutionsManager: MonoBehaviour
     private EvolutionChooseScreen _screen;
     
     private readonly List<Evolution> _evolutions = new();
-    private readonly List<Evolution> _activeEvolutions = new();
     
     public void Construct(PlayerController player, EvolutionChooseScreen screen)
     {
@@ -48,8 +47,7 @@ public class EvolutionsManager: MonoBehaviour
     private void OnEvolutionChosen(Evolution evolution)
     {
         evolution.Apply();
-        
-        _activeEvolutions.Add(evolution);
+        _player.Stats.AddEvolution(evolution);
 
         UnlockEvolutions(evolution);
         BlockEvolutions(evolution);
