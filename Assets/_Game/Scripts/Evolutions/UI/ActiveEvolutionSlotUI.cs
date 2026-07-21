@@ -10,7 +10,7 @@ public class ActiveEvolutionSlotUI: MonoBehaviour
 
     public void Construct(Evolution evolution)
     {
-        _image.sprite = evolution.Sprite;
+        _image.sprite = evolution.Config.Sprite;
         _frame.sprite = evolution.Frame;
     }
 }

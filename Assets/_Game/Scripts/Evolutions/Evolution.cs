@@ -13,19 +13,17 @@ public abstract class Evolution: IDisposable
     public EvolutionState State { get; private set; }
     public string Name { get; private set; }
     public List<Stat> Stats { get; private set; } = new();
-    public string Description { get; private set; }
-    public Sprite Sprite { get; private set; }
     public Sprite Frame { get; private set; }
-    
-    public EvolutionConfig[] Unlocks { get; private set; }
-    public EvolutionConfig[] Blocks { get; private set; }
     
     private RarityConfig _rarity;
     protected PlayerStats Player;
     
     //Level
     private int _experiencePoints;
+    private int _level;
+    private int _levelSet = 5;
     public event Action<int> OnEvolutionExperienceChanged;
+    public event Action<int> OnLevelChanged;
 
     protected Evolution(EvolutionConfig config)
     {
@@ -35,12 +33,6 @@ public abstract class Evolution: IDisposable
     private void SetConfig(EvolutionConfig config)
     {
         Config = config;
-        Name = Config.Name;
-        Description = Config.Description;
-        Sprite = Config.Sprite;
-        
-        Unlocks = Config.Unlocks;
-        Blocks = Config.Blocks;
 
         SetStats();
         
@@ -55,6 +47,7 @@ public abstract class Evolution: IDisposable
         {
             Stats[i].SetValue(Config.Stats[i].Value * _rarity.Scaler);
         }
+        _level = _rarity.Index;
         Frame = _rarity.Sprite;
     }
 
@@ -62,13 +55,6 @@ public abstract class Evolution: IDisposable
     {
         Player = playerStats;
         SetState(EvolutionState.IsActive);
-    }
-
-    protected void UpdateExperience(int amount)
-    {
-        _experiencePoints += amount;
-        OnEvolutionExperienceChanged?.Invoke(_experiencePoints);
-        Debug.Log($"{Name}`s experience: {_experiencePoints}");
     }
 
     public void Unlock() => SetState(EvolutionState.IsAble);
@@ -83,6 +69,28 @@ public abstract class Evolution: IDisposable
             var newStat = new Stat(stat.Type, stat.Value);
             Stats.Add(newStat);
         }
+    }
+
+    protected void UpdateExperience(int amount)
+    {
+        _experiencePoints += amount;
+        OnEvolutionExperienceChanged?.Invoke(_experiencePoints);
+
+        if (_experiencePoints >= _levelSet)
+        {
+            UpdateLevel();
+            UpdateExperience(-_levelSet);
+        }
+        _levelSet++;
+    }
+
+    private void UpdateLevel()
+    {
+        _level++;
+        Debug.Log($"{Name}`s level {_level}");
+        OnLevelChanged?.Invoke(_level);
+        
+        // ToDo: set next rarity
     }
 
     private void SetState(EvolutionState state) => State = state;

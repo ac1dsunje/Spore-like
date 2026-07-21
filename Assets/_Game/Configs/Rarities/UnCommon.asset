@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc4acad348242399834f2083ebcf8c3, type: 3}
   m_Name: UnCommon
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Evolutions.EvolutionRarityConfig
+  <Index>k__BackingField: 2
   <Name>k__BackingField: Uncommon
   <Sprite>k__BackingField: {fileID: 1209373171055765762, guid: 3ef8358c4899a10428dd19482f7a5de5, type: 3}
   <Scaler>k__BackingField: 1.2

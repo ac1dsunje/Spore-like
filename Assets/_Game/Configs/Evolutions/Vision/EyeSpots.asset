@@ -16,7 +16,8 @@ MonoBehaviour:
   <Stats>k__BackingField:
   - <Type>k__BackingField: 1
     <Value>k__BackingField: 75
-  <Description>k__BackingField: Increases vision radius
+  <Description>k__BackingField: Simple eyespots expand your vision and open the path
+    to advanced visual mutations
   <Sprite>k__BackingField: {fileID: -7076529034579859471, guid: d6c9da9091c4c0b4ba595677bdd2e09c, type: 3}
   <State>k__BackingField: 1
   <Unlocks>k__BackingField:

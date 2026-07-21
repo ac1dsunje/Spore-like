@@ -55,7 +55,7 @@ public class EvolutionsManager: MonoBehaviour
 
     private void UnlockEvolutions(Evolution evolution)
     {
-        foreach (var evo in _evolutions.Where(evo => evolution.Unlocks.Contains(evo.Config)))
+        foreach (var evo in _evolutions.Where(evo => evolution.Config.Unlocks.Contains(evo.Config)))
         {
             evo.Unlock();
         }
@@ -63,7 +63,7 @@ public class EvolutionsManager: MonoBehaviour
     
     private void BlockEvolutions(Evolution evolution)
     {
-        foreach (var evo in _evolutions.Where(evo => evolution.Blocks.Contains(evo.Config)))
+        foreach (var evo in _evolutions.Where(evo => evolution.Config.Blocks.Contains(evo.Config)))
         {
             evo.Block();
         }

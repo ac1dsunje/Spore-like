@@ -33,20 +33,19 @@ public class EvolutionChooseScreen : ScreenManager
     private void EvolutionChosen(Evolution evolution)
     {
         OnEvolutionChosen?.Invoke(evolution);
+        ClearSlots();
+    }
+
+    private void OnDestroy() => ClearSlots();
+
+    private void ClearSlots()
+    {
         foreach (var slot in _slots)
         {
             slot.OnSlotClicked -= EvolutionChosen;
             Destroy(slot.gameObject);
         }
         _slots.Clear();
-    }
-
-    private void OnDestroy()
-    {
-        foreach (var slot in _slots)
-        {
-            slot.OnSlotClicked -= EvolutionChosen;
-        }
     }
 }
 }

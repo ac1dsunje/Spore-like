@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc4acad348242399834f2083ebcf8c3, type: 3}
   m_Name: Epic
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Evolutions.EvolutionRarityConfig
+  <Index>k__BackingField: 4
   <Name>k__BackingField: Epic
   <Sprite>k__BackingField: {fileID: 5560345163352902019, guid: 7e326c0a59f7e5847aaf9bac84b3e3b2, type: 3}
   <Scaler>k__BackingField: 1.75

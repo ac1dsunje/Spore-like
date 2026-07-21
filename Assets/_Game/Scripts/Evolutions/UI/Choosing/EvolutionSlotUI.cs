@@ -22,22 +22,13 @@ public class EvolutionSlotUI : MonoBehaviour
         _button.onClick.AddListener(OnButtonClick);
     }
 
-    public void Clear()
-    {
-        _evolution = null;
-        _evolutionImage.sprite = null;
-        _rarityFrameImage.sprite = null;
-        _name.text = $" ";
-        _description.text = $" ";
-    }
-
     public void SetEvolution(Evolution evolution)
     {
         _evolution = evolution;
-        _evolutionImage.sprite = evolution.Sprite;
+        _evolutionImage.sprite = evolution.Config.Sprite;
         _rarityFrameImage.sprite = evolution.Frame;
         _name.text = $"{evolution.Name}";
-        _description.text = $"{evolution.Description}";
+        _description.text = $"{evolution.Config.Description}";
     }
 
     private void OnButtonClick()
