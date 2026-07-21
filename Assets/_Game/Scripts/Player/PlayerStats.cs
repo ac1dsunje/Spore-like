@@ -18,9 +18,14 @@ public class PlayerStats
     public float RegenerationSpeed => _stats.GetValueOrDefault(EvolutionType.RegenerationSpeed);
     public float Inertia => _stats.GetValueOrDefault(EvolutionType.Inertia);
     public float Stamina => _stats.GetValueOrDefault(EvolutionType.Stamina);
-    public float MaxHealth => _stats.GetValueOrDefault(EvolutionType.MaxHealth);
     
+    // Health
+    public float MaxHealth => _stats.GetValueOrDefault(EvolutionType.MaxHealth);
     public float Health { get; private set; }
+    
+    public event Action OnDeath;
+    public event Action OnDamageTaken;
+    public event Action<float, float> OnHealthChanged;
 
     //Level
     private int _levelSet;
@@ -83,11 +88,22 @@ public class PlayerStats
     public float TakeDamage(float damage)
     {
         Health -= damage;
+        OnDamageTaken?.Invoke();
+        OnHealthChanged?.Invoke(Health, MaxHealth);
 
         var reflection = damage * DamageReflection / 100;
         
-        Debug.Log($"Got damage {damage}, reflection: {reflection}");
+        Debug.Log($"Got damage {damage}, HP: {Health}, reflection: {reflection}");
+        if (Health <= 0)
+        {
+            Die();
+        }
         return reflection;
+    }
+
+    private void Die()
+    {
+        OnDeath?.Invoke();
     }
 
     private void AddStats(List<Stat> stat)
