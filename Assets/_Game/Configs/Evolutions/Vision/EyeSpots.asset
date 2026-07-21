@@ -24,3 +24,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f687280283047b844942e94341a97e9d, type: 2}
   - {fileID: 11400000, guid: c7ed36e692a39ff4094908430d853439, type: 2}
   <Blocks>k__BackingField: []
+  <ExperienceForFirstLevel>k__BackingField: 10

@@ -17,13 +17,14 @@ public abstract class Evolution: IDisposable
     
     private RarityConfig _rarity;
     protected PlayerStats Player;
+    public event Action OnRarityChanged;
     
     //Level
     private int _experiencePoints;
+    private int _levelSet;
     private int _level;
-    private int _levelSet = 5;
     public event Action<int> OnEvolutionExperienceChanged;
-    public event Action<int> OnLevelChanged;
+    public event Action<Evolution, int> OnLevelUp;
 
     protected Evolution(EvolutionConfig config)
     {
@@ -33,6 +34,7 @@ public abstract class Evolution: IDisposable
     private void SetConfig(EvolutionConfig config)
     {
         Config = config;
+        _levelSet = config.ExperienceForFirstLevel;
 
         SetStats();
         
@@ -47,8 +49,13 @@ public abstract class Evolution: IDisposable
         {
             Stats[i].SetValue(Config.Stats[i].Value * _rarity.Scaler);
         }
-        _level = _rarity.Index;
+
+        if (_level == 0)
+        {
+            _level = _rarity.Index;
+        }
         Frame = _rarity.Sprite;
+        OnRarityChanged?.Invoke();
     }
 
     public virtual void Apply(PlayerStats playerStats)
@@ -81,16 +88,13 @@ public abstract class Evolution: IDisposable
             UpdateLevel();
             UpdateExperience(-_levelSet);
         }
-        _levelSet++;
     }
 
     private void UpdateLevel()
     {
         _level++;
-        Debug.Log($"{Name}`s level {_level}");
-        OnLevelChanged?.Invoke(_level);
-        
-        // ToDo: set next rarity
+        _levelSet += (int)(Config.ExperienceForFirstLevel / 2f * Math.Pow(2, _level - 2));
+        OnLevelUp?.Invoke(this, _level);
     }
 
     private void SetState(EvolutionState state) => State = state;

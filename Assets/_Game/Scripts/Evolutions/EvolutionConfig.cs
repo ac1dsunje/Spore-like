@@ -17,6 +17,8 @@ public abstract class EvolutionConfig: ScriptableObject
     [field: SerializeField] public EvolutionConfig[] Unlocks { get; private set; }
     [field: SerializeField] public EvolutionConfig[] Blocks { get; private set; }
     
+    [field: SerializeField] public int ExperienceForFirstLevel { get; private set; }
+    
     public abstract Evolution CreateEvolution();
 }
 }

@@ -23,3 +23,4 @@ MonoBehaviour:
   <Unlocks>k__BackingField: []
   <Blocks>k__BackingField:
   - {fileID: 11400000, guid: f687280283047b844942e94341a97e9d, type: 2}
+  <ExperienceForFirstLevel>k__BackingField: 20

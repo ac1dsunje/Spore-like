@@ -19,15 +19,16 @@ public class EvolutionChooseScreen : ScreenManager
 
     public void SetSlots(List<Evolution> evolutions)
     {
-        foreach (var t in evolutions)
+        ClearSlots();
+        foreach (var evolution in evolutions)
         {
             var slot = Instantiate(_slotPrefab, transform).GetComponent<EvolutionSlotUI>();
-            slot.SetEvolution(t);
+            slot.SetEvolution(evolution);
             _slots.Add(slot);
             slot.OnSlotClicked += EvolutionChosen;
         }
     }
-    
+
     private void OnEnable() => Hide();
 
     private void EvolutionChosen(Evolution evolution)
@@ -35,7 +36,7 @@ public class EvolutionChooseScreen : ScreenManager
         OnEvolutionChosen?.Invoke(evolution);
         ClearSlots();
     }
-
+    
     private void OnDestroy() => ClearSlots();
 
     private void ClearSlots()

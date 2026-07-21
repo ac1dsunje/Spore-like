@@ -29,6 +29,7 @@ public class EvolutionsManager: MonoBehaviour
         foreach (var evolution in _evolutionsDatabase.GenerateEvolutions())
         {
             _evolutions.Add(evolution);
+            evolution.OnLevelUp += OnEvolutionLevelUp;
         }
     }
     
@@ -51,6 +52,17 @@ public class EvolutionsManager: MonoBehaviour
         
         _screen.Hide();
         _player.Enable();
+    }
+
+    private void OnEvolutionLevelUp(Evolution evolution, int level)
+    {
+        foreach (var rarity in _raritiesDatabase.Rarities)
+        {
+            if (rarity.Index != level) continue;
+            
+            evolution.SetRarity(rarity);
+            return;
+        }
     }
 
     private void UnlockEvolutions(Evolution evolution)
@@ -109,6 +121,7 @@ public class EvolutionsManager: MonoBehaviour
 
         foreach (var evolution in _evolutions)
         {
+            evolution.OnLevelUp -= OnEvolutionLevelUp;
             evolution.Dispose();
         }
     }
