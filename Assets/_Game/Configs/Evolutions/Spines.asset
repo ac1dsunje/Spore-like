@@ -15,7 +15,7 @@ MonoBehaviour:
   <Name>k__BackingField: Spines
   <Stats>k__BackingField:
   - <Type>k__BackingField: 0
-    Value: 50
+    <Value>k__BackingField: 50
   <Description>k__BackingField: Get damage back
   <Sprite>k__BackingField: {fileID: -7953839269348762367, guid: 6d941b6ae772f2f4ca5dcf0957d42010, type: 3}
   <State>k__BackingField: 1

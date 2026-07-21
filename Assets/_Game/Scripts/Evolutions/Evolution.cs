@@ -47,14 +47,14 @@ public abstract class Evolution
         _rarity = rarity;
         for (var i = 0; i < Stats.Count; i++)
         {
-            Stats[i].Value = Config.Stats[i].Value * _rarity.Scaler;
+            Stats[i].SetValue(Config.Stats[i].Value * _rarity.Scaler);
         }
         Frame = _rarity.Sprite;
     }
 
     public virtual void Apply()
     {
-        Debug.Log($"Applying{_rarity.Name} {Name}");
+        Debug.Log($"Applying {_rarity.Name} {Name}");
         SetState(EvolutionState.IsActive);
     }
 
@@ -75,11 +75,7 @@ public abstract class Evolution
         Stats.Clear();
         foreach (var stat in Config.Stats)
         {
-            var newStat = new Stat
-            {
-                Type = stat.Type,
-                Value = stat.Value
-            };
+            var newStat = new Stat(stat.Type, stat.Value);
             Stats.Add(newStat);
         }
     }
