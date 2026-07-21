@@ -7,14 +7,6 @@ using UnityEngine;
 
 namespace _Game.Scripts.Evolutions
 {
-public enum EvolutionState
-{
-    IsHidden,
-    IsAble,
-    IsActive,
-    IsLocked
-}
-
 public abstract class Evolution: IDisposable
 {
     public EvolutionConfig Config { get; private set; }
