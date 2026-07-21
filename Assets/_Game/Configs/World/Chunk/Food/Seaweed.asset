@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0663d01e2e0a47ab8a06f22bb0d6ec05, type: 3}
+  m_Name: Seaweed
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Food.FoodConfig
+  <FeedAmount>k__BackingField: 1
+  <Sprites>k__BackingField:
+  - {fileID: -1332720460, guid: 04103b75e60816744aa30558263308b1, type: 3}
+  - {fileID: -188858274, guid: 04103b75e60816744aa30558263308b1, type: 3}
+  - {fileID: 932916273, guid: 04103b75e60816744aa30558263308b1, type: 3}
+  - {fileID: 898257432, guid: 04103b75e60816744aa30558263308b1, type: 3}
+  - {fileID: 2119011937, guid: 04103b75e60816744aa30558263308b1, type: 3}
+  - {fileID: -1621749570, guid: 04103b75e60816744aa30558263308b1, type: 3}
+  - {fileID: 341992235, guid: 04103b75e60816744aa30558263308b1, type: 3}

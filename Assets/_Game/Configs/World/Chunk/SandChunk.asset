@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cd718c0929d462fb114a4db40ae7d6e, type: 3}
+  m_Name: SandChunk
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.ChunkConfig
+  <Name>k__BackingField: Sand
+  <ChunkSize>k__BackingField: 10
+  <Foods>k__BackingField:
+  - {fileID: 11400000, guid: 9a21ac57ea8593e4d886bb44158380de, type: 2}
+  - {fileID: 11400000, guid: 19b346d806a9bb14abc60e72468578a3, type: 2}
+  - {fileID: 11400000, guid: 9d50cf5fb2d330841a57f5848790522e, type: 2}
+  <PlantChance>k__BackingField: 50
