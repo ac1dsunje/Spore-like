@@ -1,0 +1,214 @@
+{
+  "main": {
+    "id": "bfbf44278610f192",
+    "type": "split",
+    "children": [
+      {
+        "id": "0fb33f589196d706",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ed160aa885f4b5da",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Граф"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "616039f3c991f133",
+    "type": "split",
+    "children": [
+      {
+        "id": "87da14fef9e8b321",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "79479fc331e878b7",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Файловый менеджер"
+            }
+          },
+          {
+            "id": "a593cb5fffe19ea6",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Поиск"
+            }
+          },
+          {
+            "id": "cd795211632c992e",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Закладки"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 212.5
+  },
+  "right": {
+    "id": "2f51398b67d39650",
+    "type": "split",
+    "children": [
+      {
+        "id": "2a846ccdb7ec62a3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "19ed716e6128dd5a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Обратные ссылки"
+            }
+          },
+          {
+            "id": "64b295e95f81364a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Исходящие ссылки"
+            }
+          },
+          {
+            "id": "eb97e9a134a8aaae",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Теги"
+            }
+          },
+          {
+            "id": "1ed5eefbb72df01b",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Все свойства"
+            }
+          },
+          {
+            "id": "cada54e71eca1913",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Структура"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Меню быстрого перехода": false,
+      "graph:Граф": false,
+      "canvas:Создать новый холст": false,
+      "daily-notes:Сегодняшняя заметка": false,
+      "templates:Вставить шаблон": false,
+      "command-palette:Открыть палитру команд": false,
+      "bases:Создать новую базу": false
+    }
+  },
+  "active": "ed160aa885f4b5da",
+  "lastOpenFiles": [
+    "Эволюции/Глотка.md",
+    "Эволюции/Глазные пятна.md",
+    "Эволюции/Биолюминесценция.md",
+    "Эволюции/Мимикрия.md",
+    "Навыки/Хеморецепция.md",
+    "Эволюции/Хеморецепторы.md",
+    "Эволюции/Восковой слой.md",
+    "Шаблоны/Эволюция шаблон.md",
+    "Эволюции/Камерные глаза.md",
+    "Эволюции/Фасеточные глаза.md",
+    "Эволюции/Тёрка.md",
+    "Эволюции/Кутикула.md",
+    "Эволюции/Кожа.md",
+    "Эволюции/Жабры.md",
+    "Эволюции/Восстановление тканей.md",
+    "Эволюции/Внутреннее ухо.md",
+    "Эволюции/Внешнее пищеварение.md",
+    "Баффы/Сопротивление урону.md",
+    "Баффы/Расход выносливости.md",
+    "Эволюции/Адаптация жабр.md",
+    "Баффы/Инерция.md",
+    "Эволюции/Вестибулярный аппарат.md",
+    "Баффы/Регенерация.md",
+    "Навыки/Метки шума.md",
+    "Навыки/Разложение.md",
+    "Эволюции/Челюсти.md",
+    "Навыки",
+    "Баффы",
+    "Эволюции/Без названия",
+    "Группы",
+    "Шаблоны",
+    "Эволюции"
+  ]
+}
