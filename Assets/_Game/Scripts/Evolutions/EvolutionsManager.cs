@@ -15,7 +15,7 @@ public class EvolutionsManager: MonoBehaviour
     private PlayerController _player;
     private EvolutionChooseScreen _screen;
     
-    private List<Evolution> _evolutions = new();
+    private readonly List<Evolution> _evolutions = new();
     
     public void Construct(PlayerController player, EvolutionChooseScreen screen)
     {
@@ -25,7 +25,10 @@ public class EvolutionsManager: MonoBehaviour
         _screen = screen;
         _screen.OnEvolutionChosen += OnEvolutionChosen;
 
-        _evolutions = _evolutionsDatabase.GenerateEvolutions();
+        foreach (var evolution in _evolutionsDatabase.GenerateEvolutions())
+        {
+            _evolutions.Add(evolution);
+        }
     }
     
     private void OnLevelUpdated(int level)
@@ -39,7 +42,7 @@ public class EvolutionsManager: MonoBehaviour
 
     private void OnEvolutionChosen(Evolution evolution)
     {
-        evolution.Apply();
+        evolution.Apply(_player.Stats);
         _player.Stats.AddEvolution(evolution);
 
         UnlockEvolutions(evolution);
@@ -102,6 +105,11 @@ public class EvolutionsManager: MonoBehaviour
     {
         _player.Stats.OnLevelChanged -= OnLevelUpdated;
         _screen.OnEvolutionChosen -= OnEvolutionChosen;
+
+        foreach (var evolution in _evolutions)
+        {
+            evolution.Dispose();
+        }
     }
 }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using _Game.Scripts.Evolutions.Stats;
+using _Game.Scripts.Player;
 using UnityEngine;
 
 namespace _Game.Scripts.Evolutions

@@ -18,12 +18,13 @@ public class PlayerStats
     public float Stamina => _stats.GetValueOrDefault(EvolutionType.Stamina);
 
     //Level
-    private readonly float _levelScaler;
-    private float _levelSet;
-    private float _experience;
+    private int _levelSet;
+    private int _experience;
     private int _level;
+    private int _levelScaler;
     
-    public event Action<float> OnExperienceChanged;
+    public event Action<int> OnExperienceChanged;
+    public event Action<int> OnExperienceGained;
     public event Action<int> OnLevelChanged;
     
     //Evolutions
@@ -38,7 +39,13 @@ public class PlayerStats
         _levelScaler = config.ExperienceConfig.LevelScaler;
     }
 
-    public void AddExperience(float amount)
+    public void AddExperience(int amount)
+    {
+        OnExperienceGained?.Invoke(amount);
+        UpdateExperience(amount);
+    }
+
+    private void UpdateExperience(int amount)
     {
         _experience += amount;
         OnExperienceChanged?.Invoke(_experience);
@@ -49,10 +56,11 @@ public class PlayerStats
     {
         while (_experience >= _levelSet)
         {
-            AddExperience(-_levelSet);
+            UpdateExperience(-_levelSet);
             _level++;
             OnLevelChanged?.Invoke(_level);
-            _levelSet *= _levelScaler;
+            _levelSet += _levelScaler;
+            _levelScaler++;
         }
     }
 

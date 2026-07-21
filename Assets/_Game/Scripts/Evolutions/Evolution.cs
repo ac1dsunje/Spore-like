@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _Game.Scripts.Evolutions.Stats;
+using _Game.Scripts.Player;
 using _Game.Scripts.Rarities;
 using UnityEngine;
 
@@ -13,7 +15,7 @@ public enum EvolutionState
     IsLocked
 }
 
-public abstract class Evolution
+public abstract class Evolution: IDisposable
 {
     public EvolutionConfig Config { get; private set; }
     public EvolutionState State { get; private set; }
@@ -27,8 +29,18 @@ public abstract class Evolution
     public EvolutionConfig[] Blocks { get; private set; }
     
     private RarityConfig _rarity;
+    protected PlayerStats Player;
+    
+    //Level
+    private int _experiencePoints;
+    public event Action<int> OnEvolutionExperienceChanged;
 
-    public void SetConfig(EvolutionConfig config)
+    protected Evolution(EvolutionConfig config)
+    {
+        SetConfig(config);
+    }
+
+    private void SetConfig(EvolutionConfig config)
     {
         Config = config;
         Name = Config.Name;
@@ -54,23 +66,22 @@ public abstract class Evolution
         Frame = _rarity.Sprite;
     }
 
-    public virtual void Apply()
+    public virtual void Apply(PlayerStats playerStats)
     {
-        Debug.Log($"Applying {Name}");
+        Player = playerStats;
         SetState(EvolutionState.IsActive);
     }
 
-    public void Unlock()
+    protected void UpdateExperience(int amount)
     {
-        Debug.Log($"{Name} is unlocked");
-        SetState(EvolutionState.IsAble);
+        _experiencePoints += amount;
+        OnEvolutionExperienceChanged?.Invoke(_experiencePoints);
+        Debug.Log($"{Name}`s experience: {_experiencePoints}");
     }
 
-    public void Block()
-    {
-        Debug.Log($"{Name} is blocked");
-        SetState(EvolutionState.IsLocked);
-    }
+    public void Unlock() => SetState(EvolutionState.IsAble);
+
+    public void Block() => SetState(EvolutionState.IsLocked);
 
     private void SetStats()
     {
@@ -83,5 +94,7 @@ public abstract class Evolution
     }
 
     private void SetState(EvolutionState state) => State = state;
+
+    public abstract void Dispose();
 }
 }

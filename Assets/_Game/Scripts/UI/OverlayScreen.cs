@@ -18,7 +18,7 @@ public class OverlayScreen: ScreenManager
         _player.OnLevelChanged += UpdateLevel;
     }
 
-    private void UpdateExperience(float amount)
+    private void UpdateExperience(int amount)
     {
         _experienceText.text = $"Experience: {amount}";
     }

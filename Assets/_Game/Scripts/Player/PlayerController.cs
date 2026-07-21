@@ -20,7 +20,7 @@ public class PlayerController: MonoBehaviour, IEater
     private float _horizontalVelocity;
     private float _verticalVelocity;
 
-    public void Eat(float amount)
+    public void Eat(int amount)
     {
         Stats.AddExperience(amount);
     }
