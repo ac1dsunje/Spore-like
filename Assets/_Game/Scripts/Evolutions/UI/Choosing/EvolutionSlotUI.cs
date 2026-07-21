@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _Game.Scripts.Evolutions.UI
+namespace _Game.Scripts.Evolutions.UI.Choosing
 {
 public class EvolutionSlotUI : MonoBehaviour
 {

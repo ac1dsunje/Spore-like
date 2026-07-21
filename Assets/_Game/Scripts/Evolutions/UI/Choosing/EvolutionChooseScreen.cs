@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using _Game.Scripts.UI;
 using UnityEngine;
 
-namespace _Game.Scripts.Evolutions.UI
+namespace _Game.Scripts.Evolutions.UI.Choosing
 {
 public class EvolutionChooseScreen : ScreenManager
 {

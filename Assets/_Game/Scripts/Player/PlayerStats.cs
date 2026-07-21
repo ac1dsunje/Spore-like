@@ -29,6 +29,8 @@ public class PlayerStats
     
     //Evolutions
     private readonly List<Evolution> _evolutions = new();
+    public event Action<Evolution> OnEvolutionAdded;
+    //Stats
     private readonly Dictionary<EvolutionType, float> _stats = new();
 
     public PlayerStats(PlayerConfig config)
@@ -67,6 +69,7 @@ public class PlayerStats
     public void AddEvolution(Evolution evolution)
     {
         _evolutions.Add(evolution);
+        OnEvolutionAdded?.Invoke(evolution);
         
         AddStats(evolution.Stats);
     }
