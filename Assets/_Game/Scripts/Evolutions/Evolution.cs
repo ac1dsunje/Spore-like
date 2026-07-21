@@ -46,6 +46,7 @@ public abstract class Evolution
     public void SetRarity(RarityConfig rarity)
     {
         _rarity = rarity;
+        Name = $"{_rarity.Name} {Config.Name}";
         for (var i = 0; i < Stats.Count; i++)
         {
             Stats[i].SetValue(Config.Stats[i].Value * _rarity.Scaler);
@@ -55,7 +56,7 @@ public abstract class Evolution
 
     public virtual void Apply()
     {
-        Debug.Log($"Applying {_rarity.Name} {Name}");
+        Debug.Log($"Applying {Name}");
         SetState(EvolutionState.IsActive);
     }
 

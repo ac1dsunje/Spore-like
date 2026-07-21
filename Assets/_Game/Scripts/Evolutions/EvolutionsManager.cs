@@ -76,24 +76,35 @@ public class EvolutionsManager: MonoBehaviour
 
     private void FillSlots()
     {
+        var evolutions = GetRandomEvolutions(_minEvolutions);
+
+        foreach (var evolution in evolutions)
+        {
+            evolution.SetRarity(_raritiesDatabase.GetRandom());
+        }
+        
+        _screen.SetSlots(evolutions);
+    }
+
+    private List<Evolution> GetRandomEvolutions(int amount)
+    {
         var availableEvolutions = _evolutions.Where(evolution => evolution.State == EvolutionState.IsAble).ToList();
 
-        var slotsToFill = Mathf.Min(_minEvolutions, availableEvolutions.Count);
+        var slotsToFill = Mathf.Min(amount, availableEvolutions.Count);
         
         var evolutions = new List<Evolution>(slotsToFill);
-
+        
         for (var i = 0; i < slotsToFill; i++)
         {
             var randomEvolutionIndex = Random.Range(0, availableEvolutions.Count);
             var chosen = availableEvolutions[randomEvolutionIndex];
-            chosen.SetRarity(_raritiesDatabase.GetRandom());
             
             evolutions.Add(chosen);
             
             availableEvolutions.RemoveAt(randomEvolutionIndex);
         }
-        
-        _screen.SetSlots(evolutions);
+
+        return evolutions;
     }
 
     private void OnDestroy()
