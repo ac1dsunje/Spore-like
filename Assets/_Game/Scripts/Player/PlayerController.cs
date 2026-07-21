@@ -9,7 +9,7 @@ public enum PlayerState
     Moving, 
     Disabled
 }
-public class PlayerController: MonoBehaviour, IEater
+public class PlayerController: MonoBehaviour, IEater, IDamageAble
 {
     [SerializeField] private Light2D _light;
     public PlayerStats Stats { get; private set; }
@@ -23,6 +23,11 @@ public class PlayerController: MonoBehaviour, IEater
     public void Eat(int amount)
     {
         Stats.AddExperience(amount);
+    }
+
+    public float TakeDamage(float amount)
+    {
+        return Stats.TakeDamage(amount);
     }
 
     public void Disable() => SetState(PlayerState.Disabled);

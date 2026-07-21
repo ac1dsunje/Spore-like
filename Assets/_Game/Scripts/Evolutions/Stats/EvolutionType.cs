@@ -12,5 +12,6 @@ public enum EvolutionType
     RegenerationSpeed,
     Inertia,
     Stamina,
+    MaxHealth
 }
 }

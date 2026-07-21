@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using _Game.Scripts.Evolutions;
 using _Game.Scripts.Evolutions.Stats;
+using UnityEngine;
+
 namespace _Game.Scripts.Player
 {
 public class PlayerStats
@@ -16,6 +18,9 @@ public class PlayerStats
     public float RegenerationSpeed => _stats.GetValueOrDefault(EvolutionType.RegenerationSpeed);
     public float Inertia => _stats.GetValueOrDefault(EvolutionType.Inertia);
     public float Stamina => _stats.GetValueOrDefault(EvolutionType.Stamina);
+    public float MaxHealth => _stats.GetValueOrDefault(EvolutionType.MaxHealth);
+    
+    public float Health { get; private set; }
 
     //Level
     private int _levelSet;
@@ -39,6 +44,7 @@ public class PlayerStats
         
         _levelSet = config.ExperienceConfig.LevelSet;
         _levelScaler = config.ExperienceConfig.LevelScaler;
+        Health = MaxHealth;
     }
 
     public void AddExperience(int amount)
@@ -72,6 +78,16 @@ public class PlayerStats
         OnEvolutionAdded?.Invoke(evolution);
         
         AddStats(evolution.Stats);
+    }
+
+    public float TakeDamage(float damage)
+    {
+        Health -= damage;
+
+        var reflection = damage * DamageReflection / 100;
+        
+        Debug.Log($"Got damage {damage}, reflection: {reflection}");
+        return reflection;
     }
 
     private void AddStats(List<Stat> stat)
