@@ -1,4 +1,4 @@
-﻿using _Game.Scripts.Food;
+﻿using _Game.Scripts.World.Food;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 

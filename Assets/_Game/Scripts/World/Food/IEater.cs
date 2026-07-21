@@ -1,4 +1,4 @@
-﻿namespace _Game.Scripts.Food
+﻿namespace _Game.Scripts.World.Food
 {
 public interface IEater
 {

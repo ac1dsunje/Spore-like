@@ -1,7 +1,7 @@
-﻿using _Game.Scripts.Food;
+﻿using _Game.Scripts.World.Food;
 using UnityEngine;
 
-namespace _Game.Scripts.World
+namespace _Game.Scripts.World.Chunk
 {
 [CreateAssetMenu(fileName = "New Chunk Config", menuName = "Configs/Game/World/Chunk")]
 public class ChunkConfig: ScriptableObject

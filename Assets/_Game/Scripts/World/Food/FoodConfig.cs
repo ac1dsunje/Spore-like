@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Game.Scripts.Food
+namespace _Game.Scripts.World.Food
 {
 [CreateAssetMenu(fileName = "New Food Config", menuName = "Configs/Game/World/Food")]
 public class FoodConfig: ScriptableObject

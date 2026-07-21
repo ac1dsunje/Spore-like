@@ -1,8 +1,8 @@
-﻿using _Game.Scripts.Food;
+﻿using _Game.Scripts.World.Food;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace _Game.Scripts.World
+namespace _Game.Scripts.World.Chunk
 {
 public class Chunk: MonoBehaviour
 {

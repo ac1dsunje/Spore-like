@@ -1,7 +1,7 @@
 ﻿using _Game.Scripts.Rarities;
 using UnityEngine;
 
-namespace _Game.Scripts.Food
+namespace _Game.Scripts.World.Food
 {
 public class FoodItem: MonoBehaviour
 {
