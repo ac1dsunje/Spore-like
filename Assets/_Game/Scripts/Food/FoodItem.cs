@@ -18,7 +18,7 @@ public class FoodItem: MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         other.TryGetComponent<IEater>(out var eater);
-        eater?.Eat(_expAmount * _rarity.ID);
+        eater?.Eat(_expAmount * _rarity.Scaler);
         Destroy(gameObject);
     }
 }

@@ -15,7 +15,7 @@ public class EvolutionsManager: MonoBehaviour
     private PlayerController _player;
     private EvolutionChooseScreen _screen;
     
-    private readonly List<Evolution> _evolutions = new();
+    private List<Evolution> _evolutions = new();
     
     public void Construct(PlayerController player, EvolutionChooseScreen screen)
     {
@@ -25,16 +25,7 @@ public class EvolutionsManager: MonoBehaviour
         _screen = screen;
         _screen.OnEvolutionChosen += OnEvolutionChosen;
 
-        GenerateEvolutionsFromConfigs();
-    }
-
-    private void GenerateEvolutionsFromConfigs()
-    {
-        foreach(var evolution in _evolutionsDatabase.Evolutions)
-        {
-            var evo = evolution.CreateEvolution();
-            _evolutions.Add(evo);
-        }
+        _evolutions = _evolutionsDatabase.GenerateEvolutions();
     }
     
     private void OnLevelUpdated(int level)
