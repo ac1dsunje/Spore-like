@@ -17,9 +17,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c7ed36e692a39ff4094908430d853439, type: 2}
   - {fileID: 11400000, guid: f687280283047b844942e94341a97e9d, type: 2}
   - {fileID: 11400000, guid: e54f3bfbec391c54395b638b610f01c7, type: 2}
-  <Rarities>k__BackingField:
-  - {fileID: 11400000, guid: 5106979986a9e964e868b6a2c5eff072, type: 2}
-  - {fileID: 11400000, guid: ee6a8b413676f184e8b76de691dddd29, type: 2}
-  - {fileID: 11400000, guid: dfaf582e50689234fb8b34f490d70918, type: 2}
-  - {fileID: 11400000, guid: 30b62f0c17461d74e84e4f83da7338e8, type: 2}
-  - {fileID: 11400000, guid: b1776a920191b7346a08fe1fa0dc4d73, type: 2}
+  <RaritiesDatabase>k__BackingField: {fileID: 11400000, guid: 844b6b4bf98611044bf03a16ce2009a0, type: 2}

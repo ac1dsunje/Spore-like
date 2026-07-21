@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e52edad986f4b21b7a2d55b0a3e7c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Food.FoodController
-  _feedAmount: 1
+  _expAmount: 1
+  _raritiesData: {fileID: 11400000, guid: 844b6b4bf98611044bf03a16ce2009a0, type: 2}
 --- !u!212 &4304779492291803553
 SpriteRenderer:
   serializedVersion: 2

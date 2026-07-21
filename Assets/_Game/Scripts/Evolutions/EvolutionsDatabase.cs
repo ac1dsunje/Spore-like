@@ -7,6 +7,5 @@ namespace _Game.Scripts.Evolutions
 public class EvolutionsDatabase: ScriptableObject
 {
     [field: SerializeField] public EvolutionConfig[] Evolutions { get; private set; }
-    [field: SerializeField] public EvolutionRarityConfig[] Rarities { get; private set; }
 }
 }

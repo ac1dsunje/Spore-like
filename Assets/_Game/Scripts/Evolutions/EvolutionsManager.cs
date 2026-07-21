@@ -2,6 +2,7 @@
 using System.Linq;
 using _Game.Scripts.Evolutions.UI;
 using _Game.Scripts.Player;
+using _Game.Scripts.Rarities;
 using UnityEngine;
 
 namespace _Game.Scripts.Evolutions
@@ -9,6 +10,7 @@ namespace _Game.Scripts.Evolutions
 public class EvolutionsManager: MonoBehaviour
 {
     [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
+    [SerializeField] private RaritiesDatabase _raritiesDatabase;
     [SerializeField] private int _minEvolutions = 3;
     private PlayerController _player;
     private EvolutionChooseScreen _screen;
@@ -84,7 +86,7 @@ public class EvolutionsManager: MonoBehaviour
         {
             var randomEvolutionIndex = Random.Range(0, availableEvolutions.Count);
             var chosen = availableEvolutions[randomEvolutionIndex];
-            chosen.SetRarity(GetRandomRarity());
+            chosen.SetRarity(_raritiesDatabase.GetRandom());
             
             evolutions.Add(chosen);
             
@@ -92,29 +94,6 @@ public class EvolutionsManager: MonoBehaviour
         }
         
         _screen.SetSlots(evolutions);
-    }
-    
-    private EvolutionRarityConfig GetRandomRarity()
-    {
-        var rarities = _evolutionsDatabase.Rarities;
-
-        var totalWeight = rarities.Sum(rarity => rarity.Chance);
-
-        var randomValue = Random.Range(0f, totalWeight);
-
-        var currentWeight = 0f;
-
-        foreach (var rarity in rarities)
-        {
-            currentWeight += rarity.Chance;
-
-            if (randomValue <= currentWeight)
-            {
-                return rarity;
-            }
-        }
-
-        return rarities[rarities.Length - 1];
     }
 
     private void OnDestroy()
