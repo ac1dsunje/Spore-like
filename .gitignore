@@ -106,7 +106,8 @@ InitTestScene*.unity*
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
-# Obsidian vault settings.obsidian/workspace.json
+# Obsidian vault settings
+.obsidian/workspace.json
 .obsidian/workspace-mobile.json
 .obsidian/cache
 .obsidian/hotkeys.json
