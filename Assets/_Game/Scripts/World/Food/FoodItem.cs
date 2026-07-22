@@ -5,25 +5,19 @@ namespace _Game.Scripts.World.Food
 {
 public class FoodItem: MonoBehaviour
 {
-    [SerializeField] private RaritiesDatabase _raritiesData;
-
-    private FoodConfig _config;
+    [field: SerializeField] private int _feedAmount;
     
     private RarityConfig _rarity;
 
-    public void SetConfig(FoodConfig config)
+    public void SetRarity(RaritiesDatabase raritiesData)
     {
-        _config = config;
-        
-        _rarity = _raritiesData.GetRandom();
-        var spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = _config.Sprites[_rarity.Index - 1];
+        _rarity = raritiesData.GetRandom();
     }
     
     private void OnTriggerEnter2D(Collider2D other)
     {
         other.TryGetComponent<IEater>(out var eater);
-        eater?.Eat(_config.FeedAmount * _rarity.FoodScaler);
+        eater?.Eat(_feedAmount * _rarity.FoodScaler);
         Destroy(gameObject);
     }
 }

@@ -1449,7 +1449,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Chunk
   _config: {fileID: 11400000, guid: 25884b14be8a12042a3f9772c76819bc, type: 2}
-  _plantPrefab: {fileID: 2242808679465882649, guid: 3abfb2ade61687241bc1ec0dea4169b8, type: 3}
+  _plantPrefabs:
+  - {fileID: 2242808679465882649, guid: 3abfb2ade61687241bc1ec0dea4169b8, type: 3}
+  - {fileID: 2242808679465882649, guid: 531ed792fe9f15541abc265b55d4d14c, type: 3}
   _plantPositions:
   - {fileID: 3138914943136007958}
   - {fileID: 5861178428966013972}
@@ -1460,6 +1462,7 @@ MonoBehaviour:
   - {fileID: 7887772484111328037}
   - {fileID: 5038630212361899487}
   - {fileID: 8647547490589994422}
+  _raritiesDatabase: {fileID: 11400000, guid: 844b6b4bf98611044bf03a16ce2009a0, type: 2}
 --- !u!1 &5230520805442698204
 GameObject:
   m_ObjectHideFlags: 0
