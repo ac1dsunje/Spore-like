@@ -253,6 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6f8be6a5c94e08b0408b38c4016f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.PlayerController
+  _spriteRenderer: {fileID: 1447118476083940304}
 --- !u!1 &8352832263387622762
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,6 +395,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: -8435245712485981826, guid: 7e660a4087c8141408b939d08c80a53f, type: 3}
+--- !u!212 &1447118476083940304 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3626916397498700004, guid: 7e660a4087c8141408b939d08c80a53f, type: 3}
+  m_PrefabInstance: {fileID: 2756299357259062068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5410461934206592057 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: 7e660a4087c8141408b939d08c80a53f, type: 3}

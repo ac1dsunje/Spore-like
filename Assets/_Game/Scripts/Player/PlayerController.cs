@@ -10,6 +10,7 @@ public enum PlayerState
 }
 public class PlayerController: MonoBehaviour, IEater, IDamageAble
 {
+    [SerializeField] private SpriteRenderer _spriteRenderer;
     public PlayerStats Stats { get; private set; }
     
     private Rigidbody2D _rigidbody;
@@ -61,6 +62,17 @@ public class PlayerController: MonoBehaviour, IEater, IDamageAble
     private void Move()
     {
         _rigidbody.linearVelocity = new Vector2(_horizontalVelocity * Stats.MoveSpeed, _verticalVelocity * Stats.MoveSpeed);
+        Flip();
+    }
+
+    private void Flip()
+    {
+        _spriteRenderer.flipX = _rigidbody.linearVelocity.x switch
+        {
+            < 0.1f => true,
+            > 0.1f => false,
+            _ => _spriteRenderer.flipX
+        };
     }
 
     private void SetState(PlayerState state) => _state = state;
