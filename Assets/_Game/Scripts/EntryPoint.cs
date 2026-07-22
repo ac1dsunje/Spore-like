@@ -2,6 +2,7 @@ using _Game.Scripts.Evolutions;
 using _Game.Scripts.Evolutions.UI.Choosing;
 using _Game.Scripts.Player;
 using _Game.Scripts.Player.Modules;
+using _Game.Scripts.Player.Modules.Vision;
 using _Game.Scripts.UI;
 using UnityEngine;
 
@@ -26,7 +27,7 @@ public class EntryPoint : MonoBehaviour
         var playerStats = new PlayerStats(_playerConfig);
         _overlayScreen.Construct(playerStats);
 
-        _playerVision.Construct(playerStats);
+        _playerVision.Construct(playerStats.Vision);
         _playerMovement.Construct(playerStats);
         _player.Construct(playerStats, _playerMovement);
         

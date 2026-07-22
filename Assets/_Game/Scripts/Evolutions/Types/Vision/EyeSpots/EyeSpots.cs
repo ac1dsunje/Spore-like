@@ -13,8 +13,7 @@ public class EyeSpots: Evolution
     public override void Apply(PlayerStats playerStats)
     {
         base.Apply(playerStats);
-        Player.OnFoodDiscovered += OnFoodDiscovered;
-        Player.OnFoodEaten += OnFoodEaten;
+        Player.Vision.OnFoodDiscovered += OnFoodDiscovered;
     }
 
     private void OnFoodDiscovered(FoodItem food)
@@ -25,20 +24,11 @@ public class EyeSpots: Evolution
         UpdateExperience(food.FeedAmount);
     }
 
-    private void OnFoodEaten(FoodItem food)
-    {
-        if (_discoveredFood.Contains(food))
-        {
-            _discoveredFood.Remove(food);
-        }
-    }
-
     public override void Dispose()
     {
         if (Player == null) return;
             
-        Player.OnFoodDiscovered -= OnFoodDiscovered;
-        Player.OnFoodEaten += OnFoodEaten;
+        Player.Vision.OnFoodDiscovered -= OnFoodDiscovered;
     }
 }
 }

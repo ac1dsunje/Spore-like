@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using _Game.Scripts.Evolutions;
 using _Game.Scripts.Evolutions.Stats;
+using _Game.Scripts.Player.Modules.Vision;
 using _Game.Scripts.World.Food;
-using UnityEditor;
 using UnityEngine;
 
 namespace _Game.Scripts.Player
@@ -20,13 +20,11 @@ public class PlayerStats
     public float Stamina => _stats.GetValueOrDefault(EvolutionType.Stamina);
 
     public event Action<Stat> OnStatUpdated;
+    public event Action<FoodItem> OnFoodEaten;
     
     // Vision
     
-    public float VisionRadius => _stats.GetValueOrDefault(EvolutionType.VisionRadius);
-    public float SensoricsRadius => _stats.GetValueOrDefault(EvolutionType.SensoricsRadius);
-    public event Action<FoodItem> OnFoodDiscovered;
-    public event Action<FoodItem> OnFoodEaten;
+    public VisionStats  Vision { get; } = new();
     
     // Health
     public float MaxHealth => _stats.GetValueOrDefault(EvolutionType.MaxHealth);
@@ -59,11 +57,8 @@ public class PlayerStats
         _levelSet = config.ExperienceConfig.LevelSet;
         _levelScaler = config.ExperienceConfig.LevelScaler;
         Health = MaxHealth;
-    }
 
-    public void DiscoverFood(FoodItem food)
-    {
-        OnFoodDiscovered?.Invoke(food);
+        Vision.UpdateRadius(_stats.GetValueOrDefault(EvolutionType.VisionRadius));
     }
 
     public void Eat(int amount, FoodItem food)
@@ -138,7 +133,12 @@ public class PlayerStats
             }
             else
             {
-                _stats[stat.Type] *= 1 + stat.Value/100;
+                _stats[stat.Type] *= 1 + stat.Value / 100f;
+            }
+
+            if (stat.Type == EvolutionType.VisionRadius)
+            {
+                Vision.UpdateRadius(_stats[EvolutionType.VisionRadius]);
             }
 
             OnStatUpdated?.Invoke(stat);
