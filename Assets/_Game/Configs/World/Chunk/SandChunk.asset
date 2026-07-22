@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.ChunkConfig
   <Name>k__BackingField: Sand
   <ChunkSize>k__BackingField: 10
-  <Foods>k__BackingField:
-  - {fileID: 11400000, guid: 9a21ac57ea8593e4d886bb44158380de, type: 2}
-  - {fileID: 11400000, guid: 19b346d806a9bb14abc60e72468578a3, type: 2}
-  - {fileID: 11400000, guid: 9d50cf5fb2d330841a57f5848790522e, type: 2}
+  <PlantPrefabs>k__BackingField:
+  - {fileID: 2242808679465882649, guid: 531ed792fe9f15541abc265b55d4d14c, type: 3}
+  - {fileID: 2242808679465882649, guid: 3abfb2ade61687241bc1ec0dea4169b8, type: 3}
   <PlantChance>k__BackingField: 50

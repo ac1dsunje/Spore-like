@@ -8,6 +8,7 @@ public class ChunkConfig: ScriptableObject
 {
     [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public int ChunkSize { get; private set; } = 10;
+    [field: SerializeField] public GameObject[] PlantPrefabs { get; private set; }
     [field: SerializeField] public float PlantChance { get; private set; }
 }
 }
