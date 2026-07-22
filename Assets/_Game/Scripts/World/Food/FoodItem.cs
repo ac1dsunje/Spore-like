@@ -14,9 +14,9 @@ public class FoodItem: MonoBehaviour
         _rarity = raritiesData.GetRandom();
     }
     
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        other.gameObject.TryGetComponent<IEater>(out var eater);
+        other.TryGetComponent<IEater>(out var eater);
         eater?.Eat(FeedAmount * _rarity.FoodScaler, this);
     }
 

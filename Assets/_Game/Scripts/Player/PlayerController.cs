@@ -1,6 +1,5 @@
 ﻿using _Game.Scripts.World.Food;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 namespace _Game.Scripts.Player
 {
@@ -11,8 +10,6 @@ public enum PlayerState
 }
 public class PlayerController: MonoBehaviour, IEater, IDamageAble
 {
-    [SerializeField] private Light2D _light;
-    [SerializeField] private CircleCollider2D _visionCollider;
     public PlayerStats Stats { get; private set; }
     
     private Rigidbody2D _rigidbody;
@@ -48,8 +45,6 @@ public class PlayerController: MonoBehaviour, IEater, IDamageAble
     private void Update()
     {
         ReadInput();
-        _light.pointLightOuterRadius = Stats.VisionRadius;
-        _visionCollider.radius = Stats.VisionRadius;
     }
 
     private void ReadInput()
@@ -66,13 +61,6 @@ public class PlayerController: MonoBehaviour, IEater, IDamageAble
     private void Move()
     {
         _rigidbody.linearVelocity = new Vector2(_horizontalVelocity * Stats.MoveSpeed, _verticalVelocity * Stats.MoveSpeed);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        other.TryGetComponent<FoodItem>(out var food);
-        if (food == null) return;
-        Stats.DiscoverFood(food);
     }
 
     private void SetState(PlayerState state) => _state = state;

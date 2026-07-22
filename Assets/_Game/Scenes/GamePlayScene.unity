@@ -1681,6 +1681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.EntryPoint
   _player: {fileID: 1325505445}
   _playerConfig: {fileID: 11400000, guid: ba7be4736a4236543ba175179ecef16d, type: 2}
+  _playerVision: {fileID: 1168374145786107144}
   _overlayScreen: {fileID: 1380803056}
   _evolutionChooseScreen: {fileID: 1080735611}
   _evolutionsManager: {fileID: 1168374145786107143}
@@ -6682,7 +6683,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
 --- !u!114 &1168374145786107143 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3239805194620180843, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4101494365095354266, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
   m_PrefabInstance: {fileID: 1168374145786107142}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -6691,6 +6692,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b12fde8bac24b85b403b6577e6f449c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Evolutions.EvolutionsManager
+--- !u!114 &1168374145786107144 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1241412678200770851, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
+  m_PrefabInstance: {fileID: 1168374145786107142}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c760f8ec579e40c2baa7f7c1fd152345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.VisionModule.PlayerVision
 --- !u!4 &1168374145786107147 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4515079076315579977, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
