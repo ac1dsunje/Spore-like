@@ -4,7 +4,6 @@ using _Game.Scripts.Evolutions;
 using _Game.Scripts.Evolutions.Stats;
 using _Game.Scripts.Player.Modules.Vision;
 using _Game.Scripts.World.Food;
-using UnityEngine;
 
 namespace _Game.Scripts.Player
 {
@@ -104,18 +103,25 @@ public class PlayerStats
 
     public float TakeDamage(float damage)
     {
-        Health -= damage;
+        LowerHealth(damage);
+        return ReturnDamage(damage);
+    }
+
+    private void LowerHealth(float amount)
+    {
+        Health -= amount;
         OnDamageTaken?.Invoke();
         OnHealthChanged?.Invoke(Health, MaxHealth);
-
-        var reflection = damage * DamageReflection / 100;
         
-        Debug.Log($"Got damage {damage}, HP: {Health}, reflection: {reflection}");
         if (Health <= 0)
         {
             Die();
         }
-        return reflection;
+    }
+
+    private float ReturnDamage(float damage)
+    {
+        return damage * DamageReflection / 100;
     }
 
     private void Die()

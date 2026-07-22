@@ -11,7 +11,6 @@ public class PlayerVision: MonoBehaviour
         
     private VisionStats _stats;
         
-    // Мы инжектим только то, что нужно этому модулю!
     public void Construct(VisionStats stats)
     {
         _stats = stats;

@@ -8,7 +8,6 @@ public class VisionStats
     public float VisionRadius { get; private set; }
     public float SensoricsRadius { get; private set; }
 
-    // Специфичные события вместо общего OnStatUpdated
     public event Action<float> OnVisionRadiusChanged;
     public event Action<FoodItem> OnFoodDiscovered;
 
