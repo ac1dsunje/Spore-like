@@ -10,7 +10,7 @@ public class VisionStats
 
     public event Action<float> OnVisionRadiusChanged;
     public event Action<FoodItem> OnFoodDiscovered;
-
+    
     public void UpdateRadius(float newRadius)
     {
         VisionRadius = newRadius;

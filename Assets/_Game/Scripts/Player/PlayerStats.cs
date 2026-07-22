@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _Game.Scripts.Evolutions;
 using _Game.Scripts.Evolutions.Stats;
 using _Game.Scripts.Player.Modules.Experience;
+using _Game.Scripts.Player.Modules.Health;
 using _Game.Scripts.Player.Modules.Movement;
 using _Game.Scripts.Player.Modules.Vision;
 using _Game.Scripts.World.Food;
@@ -14,7 +15,6 @@ public class PlayerStats
     public float DamageReflection => _stats.GetValueOrDefault(EvolutionType.DamageReflection);
     public float EatingSpeed => _stats.GetValueOrDefault(EvolutionType.EatingSpeed);
     public float PhysicalDamage => _stats.GetValueOrDefault(EvolutionType.PhysicalDamage);
-    public float RegenerationSpeed => _stats.GetValueOrDefault(EvolutionType.RegenerationSpeed);
     public float Inertia => _stats.GetValueOrDefault(EvolutionType.Inertia);
     public float Stamina => _stats.GetValueOrDefault(EvolutionType.Stamina);
 
@@ -25,16 +25,7 @@ public class PlayerStats
     public VisionStats Vision { get; } = new();
     public MovementStats Movement { get; } = new();
     public ExperienceStats Experience { get; }  = new();
-    
-    // Health
-    public float MaxHealth => _stats.GetValueOrDefault(EvolutionType.MaxHealth);
-    public float Health { get; private set; }
-    
-    public event Action OnDeath;
-    public event Action OnDamageTaken;
-    public event Action<float, float> OnHealthChanged;
-
-    //Level
+    public HealthStats Health { get; } = new();
     
     //Evolutions
     private readonly List<Evolution> _evolutions = new();
@@ -46,9 +37,7 @@ public class PlayerStats
     {
         AddStats(config.Stats);
         Experience.Initialize(config.ExperienceConfig);
-        Health = MaxHealth;
-
-        Vision.UpdateRadius(_stats.GetValueOrDefault(EvolutionType.VisionRadius));
+        Health.Initialize(_stats.GetValueOrDefault(EvolutionType.MaxHealth));
     }
 
     public void Eat(int amount, FoodItem food)
@@ -69,30 +58,13 @@ public class PlayerStats
 
     public float TakeDamage(float damage)
     {
-        LowerHealth(damage);
+        Health.TakeDamage(damage);
         return ReturnDamage(damage);
-    }
-
-    private void LowerHealth(float amount)
-    {
-        Health -= amount;
-        OnDamageTaken?.Invoke();
-        OnHealthChanged?.Invoke(Health, MaxHealth);
-        
-        if (Health <= 0)
-        {
-            Die();
-        }
     }
 
     private float ReturnDamage(float damage)
     {
         return damage * DamageReflection / 100;
-    }
-
-    private void Die()
-    {
-        OnDeath?.Invoke();
     }
 
     private void AddStats(List<Stat> stats)
@@ -121,6 +93,12 @@ public class PlayerStats
                     break;
                 case EvolutionType.Acceleration:
                     Movement.UpdateAcceleration(_stats[EvolutionType.Acceleration]);
+                    break;
+                case EvolutionType.MaxHealth:
+                    Health.UpdateMaxHealth(_stats[EvolutionType.MaxHealth]);
+                    break;
+                case EvolutionType.RegenerationSpeed:
+                    Health.UpdateRegeneration(_stats[EvolutionType.RegenerationSpeed]);
                     break;
             }
         }
