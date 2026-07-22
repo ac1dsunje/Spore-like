@@ -190,8 +190,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 686545156412143248}
   - {fileID: 1559730753700608439}
+  - {fileID: 686545156412143248}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1839735485 &693606077229725401
@@ -1449,9 +1449,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Chunk
   _config: {fileID: 11400000, guid: 25884b14be8a12042a3f9772c76819bc, type: 2}
-  _plantPrefabs:
-  - {fileID: 2242808679465882649, guid: 3abfb2ade61687241bc1ec0dea4169b8, type: 3}
-  - {fileID: 2242808679465882649, guid: 531ed792fe9f15541abc265b55d4d14c, type: 3}
   _plantPositions:
   - {fileID: 3138914943136007958}
   - {fileID: 5861178428966013972}
