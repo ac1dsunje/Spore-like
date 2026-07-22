@@ -17,8 +17,8 @@ public class PlayerMovement: MonoBehaviour
     
     [SerializeField] private Rigidbody2D _rigidbody;
     
-    private float _horizontalVelocity;
-    private float _verticalVelocity;
+    private float _horizontalInput;
+    private float _verticalInput;
 
     public void Disable() => SetState(MovementState.Disabled);
 
@@ -36,8 +36,8 @@ public class PlayerMovement: MonoBehaviour
 
     private void ReadInput()
     {
-        _horizontalVelocity = IsInState(MovementState.Disabled)? 0: Input.GetAxis("Horizontal");
-        _verticalVelocity = IsInState(MovementState.Disabled)? 0: Input.GetAxis("Vertical");
+        _horizontalInput = IsInState(MovementState.Disabled)? 0: Input.GetAxisRaw("Horizontal");
+        _verticalInput = IsInState(MovementState.Disabled)? 0: Input.GetAxisRaw("Vertical");
     }
 
     private void FixedUpdate()
@@ -47,15 +47,24 @@ public class PlayerMovement: MonoBehaviour
 
     private void Move()
     {
-        _rigidbody.linearVelocity = new Vector2(_horizontalVelocity * _stats.MoveSpeed, _verticalVelocity * _stats.MoveSpeed);
+        var targetVelocity = new Vector2(_horizontalInput, _verticalInput) * _stats.MoveSpeed;
+
+        var accelerationThisFrame = _stats.Acceleration * Time.fixedDeltaTime;
+
+        _rigidbody.linearVelocity = Vector2.MoveTowards(
+            _rigidbody.linearVelocity, 
+            targetVelocity, 
+            accelerationThisFrame
+        );
+        
         Flip();
     }
 
     private void Flip()
     {
-        if (_rigidbody.linearVelocity.x != 0)
+        if (_horizontalInput != 0)
         {
-            _spriteRenderer.flipX = _rigidbody.linearVelocity.x < 0;
+            _spriteRenderer.flipX = _horizontalInput < 0;
         }
     }
 
