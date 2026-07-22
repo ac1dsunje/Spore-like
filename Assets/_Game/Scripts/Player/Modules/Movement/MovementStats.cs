@@ -4,6 +4,7 @@ public class MovementStats
 {
     public float MoveSpeed { get; private set; }
     public float Acceleration { get; private set; }
+    public float Inertia { get; private set; }
 
     public void UpdateMoveSpeed(float newValue)
     {
@@ -13,6 +14,11 @@ public class MovementStats
     public void UpdateAcceleration(float newValue)
     {
         Acceleration = newValue;
+    }
+
+    public void UpdateInertia(float newValue)
+    {
+        Inertia = newValue;
     }
 }
 }

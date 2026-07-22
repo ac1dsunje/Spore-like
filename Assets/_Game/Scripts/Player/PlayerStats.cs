@@ -15,7 +15,6 @@ public class PlayerStats
     public float DamageReflection => _stats.GetValueOrDefault(EvolutionType.DamageReflection);
     public float EatingSpeed => _stats.GetValueOrDefault(EvolutionType.EatingSpeed);
     public float PhysicalDamage => _stats.GetValueOrDefault(EvolutionType.PhysicalDamage);
-    public float Inertia => _stats.GetValueOrDefault(EvolutionType.Inertia);
     public float Stamina => _stats.GetValueOrDefault(EvolutionType.Stamina);
 
     public event Action<FoodItem> OnFoodEaten;
@@ -93,6 +92,9 @@ public class PlayerStats
                     break;
                 case EvolutionType.Acceleration:
                     Movement.UpdateAcceleration(_stats[EvolutionType.Acceleration]);
+                    break;
+                case EvolutionType.Inertia:
+                    Movement.UpdateInertia(_stats[EvolutionType.Inertia]);
                     break;
                 case EvolutionType.MaxHealth:
                     Health.UpdateMaxHealth(_stats[EvolutionType.MaxHealth]);
