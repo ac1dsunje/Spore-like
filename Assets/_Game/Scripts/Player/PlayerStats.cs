@@ -18,6 +18,8 @@ public class PlayerStats
     public float RegenerationSpeed => _stats.GetValueOrDefault(EvolutionType.RegenerationSpeed);
     public float Inertia => _stats.GetValueOrDefault(EvolutionType.Inertia);
     public float Stamina => _stats.GetValueOrDefault(EvolutionType.Stamina);
+
+    public event Action<Stat> OnStatUpdated;
     
     // Vision
     
@@ -126,18 +128,20 @@ public class PlayerStats
         OnDeath?.Invoke();
     }
 
-    private void AddStats(List<Stat> stat)
+    private void AddStats(List<Stat> stats)
     {
-        foreach (var stats in stat)
+        foreach (var stat in stats)
         {
-            if (!_stats.ContainsKey(stats.Type))
+            if (!_stats.ContainsKey(stat.Type))
             {
-                _stats.Add(stats.Type, stats.Value);
+                _stats.Add(stat.Type, stat.Value);
             }
             else
             {
-                _stats[stats.Type] *= 1 + stats.Value/100;
+                _stats[stat.Type] *= 1 + stat.Value/100;
             }
+
+            OnStatUpdated?.Invoke(stat);
         }
     }
 }

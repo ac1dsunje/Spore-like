@@ -1,4 +1,5 @@
-﻿using _Game.Scripts.World.Food;
+﻿using _Game.Scripts.Evolutions.Stats;
+using _Game.Scripts.World.Food;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -13,11 +14,14 @@ public class PlayerVision: MonoBehaviour
     
     public void Construct(PlayerStats playerStats)
     {
-        _stats = playerStats;   
+        _stats = playerStats;
+        _stats.OnStatUpdated += TryUpdateVision;
     }
-    
-    private void Update()
+
+    private void TryUpdateVision(Stat stat)
     {
+        if (stat.Type != EvolutionType.VisionRadius) return;
+        
         _light.pointLightOuterRadius = _stats.VisionRadius;
         _visionCollider.radius = _stats.VisionRadius;
     }
@@ -27,6 +31,11 @@ public class PlayerVision: MonoBehaviour
         other.TryGetComponent<FoodItem>(out var food);
         if (food == null) return;
         _stats.DiscoverFood(food);
+    }
+
+    private void OnDestroy()
+    {
+        _stats.OnStatUpdated -= TryUpdateVision;
     }
 }
 }
