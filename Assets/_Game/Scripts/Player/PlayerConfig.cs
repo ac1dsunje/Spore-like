@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.Player
 {
-[CreateAssetMenu(fileName = "NewPlayerConfig", menuName = "Configs/Game/Player")]
+[CreateAssetMenu(fileName = "NewPlayerConfig", menuName = "Configs/Game/Player/Config")]
 public class PlayerConfig: ScriptableObject
 {
     [field: SerializeField] public List<Stat> Stats { get; private set; }

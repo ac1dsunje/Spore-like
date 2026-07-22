@@ -1,43 +1,73 @@
-﻿using _Game.Scripts.Rarities;
+﻿using System.Collections.Generic;
+using _Game.Scripts.Rarities;
 using _Game.Scripts.World.Food;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace _Game.Scripts.World.Chunk
 {
-public class Chunk: MonoBehaviour
+public class Chunk : MonoBehaviour
 {
     [SerializeField] private ChunkConfig _config;
-    [SerializeField] private Transform[] _plantPositions;
+    [SerializeField] private Transform[] _positions;
     [SerializeField] private RaritiesDatabase _raritiesDatabase;
 
+    private readonly List<Transform> _busyPositions = new();
+    
     private void Awake()
     {
+        SpawnEnvironment();
+    }
+
+    private void SpawnEnvironment()
+    {
         SpawnPlants();
+        SpawnSpikes();
     }
 
     private void SpawnPlants()
     {
-        foreach (var pos in  _plantPositions)
+        foreach (var spawnPoint in _positions)
         {
-            if (!IsAbleToPlant()) continue;
+            if (!IsAbleToSpawn(_config.Environment.Plants.Chance, spawnPoint)) continue;
 
-            SetRandomPlant(pos.position);
+            SetRandomPlant(spawnPoint.position);
+            
+            _busyPositions.Add(spawnPoint); 
+        }
+    }
+    
+    private void SpawnSpikes()
+    {
+        foreach (var spawnPoint in _positions)
+        {
+            if (!IsAbleToSpawn(_config.Environment.Spikes.Chance, spawnPoint)) continue;
+
+            SetRandomSpike(spawnPoint.position);
+            
+            _busyPositions.Add(spawnPoint); 
         }
     }
 
-    private bool IsAbleToPlant()
+    private bool IsAbleToSpawn(float chance, Transform pos)
     {
         var rand = Random.Range(0, 100);
-        return rand < _config.PlantChance;
+        return (rand < chance) & !_busyPositions.Contains(pos);
     }
 
     private void SetRandomPlant(Vector2 pos)
     {
-        var randPlant = Random.Range(0, _config.PlantPrefabs.Length);
+        var rand = Random.Range(0, _config.Environment.Plants.Prefabs.Length);
             
-        var plant = Instantiate(_config.PlantPrefabs[randPlant], pos, Quaternion.identity, transform).GetComponent<FoodItem>();
-        plant.SetRarity(_raritiesDatabase);
+        var obj = Instantiate(_config.Environment.Plants.Prefabs[rand], pos, Quaternion.identity, transform).GetComponent<FoodItem>();
+        obj.SetRarity(_raritiesDatabase);
+    }
+    
+    private void SetRandomSpike(Vector2 pos)
+    {
+        var rand = Random.Range(0, _config.Environment.Spikes.Prefabs.Length);
+            
+        Instantiate(_config.Environment.Spikes.Prefabs[rand], pos, Quaternion.identity, transform);
     }
 }
 }

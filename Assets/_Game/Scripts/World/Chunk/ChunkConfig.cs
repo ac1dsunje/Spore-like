@@ -1,4 +1,5 @@
-﻿using _Game.Scripts.World.Food;
+﻿using _Game.Scripts.World.Chunk.Environment;
+using _Game.Scripts.World.Food;
 using UnityEngine;
 
 namespace _Game.Scripts.World.Chunk
@@ -8,7 +9,6 @@ public class ChunkConfig: ScriptableObject
 {
     [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public int ChunkSize { get; private set; } = 10;
-    [field: SerializeField] public GameObject[] PlantPrefabs { get; private set; }
-    [field: SerializeField] public float PlantChance { get; private set; }
+    [field: SerializeField] public EnvironmentConfig Environment { get; private set; }
 }
 }
