@@ -13,19 +13,13 @@ public class VisionStats
 
     public void UpdateRadius(float newRadius)
     {
-        if (Math.Abs(VisionRadius - newRadius) > 0.01f)
-        {
-            VisionRadius = newRadius;
-            OnVisionRadiusChanged?.Invoke(VisionRadius);
-        }
+        VisionRadius = newRadius;
+        OnVisionRadiusChanged?.Invoke(VisionRadius);
     }
 
     public void UpdateSensoricsRadius(float newRadius)
     {
-        if (Math.Abs(SensoricsRadius - newRadius) > 0.01f)
-        {
-            SensoricsRadius = newRadius;
-        }
+        SensoricsRadius = newRadius;
     }
 
     public void DiscoverFood(FoodItem food)

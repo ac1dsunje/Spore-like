@@ -1,4 +1,5 @@
 ﻿using _Game.Scripts.Player.Modules;
+using _Game.Scripts.Player.Modules.Movement;
 using _Game.Scripts.World.Food;
 using UnityEngine;
 

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Game.Scripts.Player.Modules
+namespace _Game.Scripts.Player.Modules.Movement
 {
 public enum MovementState
 {
@@ -13,7 +13,7 @@ public class PlayerMovement: MonoBehaviour
     [SerializeField] private SpriteRenderer _spriteRenderer;
     
     private MovementState _state;
-    private PlayerStats _stats;
+    private MovementStats _stats;
     
     [SerializeField] private Rigidbody2D _rigidbody;
     
@@ -24,7 +24,7 @@ public class PlayerMovement: MonoBehaviour
 
     public void Enable() => SetState(MovementState.Enabled);
     
-    public void Construct(PlayerStats stats)
+    public void Construct(MovementStats stats)
     {
         _stats = stats;
     }

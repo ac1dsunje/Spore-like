@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _Game.Scripts.Evolutions;
 using _Game.Scripts.Evolutions.Stats;
+using _Game.Scripts.Player.Modules.Movement;
 using _Game.Scripts.Player.Modules.Vision;
 using _Game.Scripts.World.Food;
 
@@ -9,8 +10,6 @@ namespace _Game.Scripts.Player
 {
 public class PlayerStats
 {
-    public float MoveSpeed => _stats.GetValueOrDefault(EvolutionType.MoveSpeed);
-    public float Acceleration => _stats.GetValueOrDefault(EvolutionType.Acceleration);
     public float DamageReflection => _stats.GetValueOrDefault(EvolutionType.DamageReflection);
     public float EatingSpeed => _stats.GetValueOrDefault(EvolutionType.EatingSpeed);
     public float PhysicalDamage => _stats.GetValueOrDefault(EvolutionType.PhysicalDamage);
@@ -18,12 +17,12 @@ public class PlayerStats
     public float Inertia => _stats.GetValueOrDefault(EvolutionType.Inertia);
     public float Stamina => _stats.GetValueOrDefault(EvolutionType.Stamina);
 
-    public event Action<Stat> OnStatUpdated;
     public event Action<FoodItem> OnFoodEaten;
     
-    // Vision
+    // Modules
     
-    public VisionStats  Vision { get; } = new();
+    public VisionStats Vision { get; } = new();
+    public MovementStats Movement { get; } = new();
     
     // Health
     public float MaxHealth => _stats.GetValueOrDefault(EvolutionType.MaxHealth);
@@ -142,12 +141,21 @@ public class PlayerStats
                 _stats[stat.Type] *= 1 + stat.Value / 100f;
             }
 
-            if (stat.Type == EvolutionType.VisionRadius)
+            switch (stat.Type)
             {
-                Vision.UpdateRadius(_stats[EvolutionType.VisionRadius]);
+                case EvolutionType.VisionRadius:
+                    Vision.UpdateRadius(_stats[EvolutionType.VisionRadius]);
+                    break;
+                case EvolutionType.SensoricsRadius:
+                    Vision.UpdateSensoricsRadius(_stats[EvolutionType.SensoricsRadius]);
+                    break;
+                case EvolutionType.MoveSpeed:
+                    Movement.UpdateMoveSpeed(_stats[EvolutionType.MoveSpeed]);
+                    break;
+                case EvolutionType.Acceleration:
+                    Movement.UpdateAcceleration(_stats[EvolutionType.Acceleration]);
+                    break;
             }
-
-            OnStatUpdated?.Invoke(stat);
         }
     }
 }
