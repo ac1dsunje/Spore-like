@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using _Game.Scripts.Evolutions;
 using _Game.Scripts.Evolutions.Stats;
+using _Game.Scripts.World.Food;
+using UnityEditor;
 using UnityEngine;
 
 namespace _Game.Scripts.Player
@@ -9,8 +11,6 @@ namespace _Game.Scripts.Player
 public class PlayerStats
 {
     public float MoveSpeed => _stats.GetValueOrDefault(EvolutionType.MoveSpeed);
-    public float VisionRadius => _stats.GetValueOrDefault(EvolutionType.VisionRadius);
-    public float SensoricsRadius => _stats.GetValueOrDefault(EvolutionType.SensoricsRadius);
     public float Acceleration => _stats.GetValueOrDefault(EvolutionType.Acceleration);
     public float DamageReflection => _stats.GetValueOrDefault(EvolutionType.DamageReflection);
     public float EatingSpeed => _stats.GetValueOrDefault(EvolutionType.EatingSpeed);
@@ -18,6 +18,13 @@ public class PlayerStats
     public float RegenerationSpeed => _stats.GetValueOrDefault(EvolutionType.RegenerationSpeed);
     public float Inertia => _stats.GetValueOrDefault(EvolutionType.Inertia);
     public float Stamina => _stats.GetValueOrDefault(EvolutionType.Stamina);
+    
+    // Vision
+    
+    public float VisionRadius => _stats.GetValueOrDefault(EvolutionType.VisionRadius);
+    public float SensoricsRadius => _stats.GetValueOrDefault(EvolutionType.SensoricsRadius);
+    public event Action<FoodItem> OnFoodDiscovered;
+    public event Action<FoodItem> OnFoodEaten;
     
     // Health
     public float MaxHealth => _stats.GetValueOrDefault(EvolutionType.MaxHealth);
@@ -52,7 +59,20 @@ public class PlayerStats
         Health = MaxHealth;
     }
 
-    public void AddExperience(int amount)
+    public void DiscoverFood(FoodItem food)
+    {
+        OnFoodDiscovered?.Invoke(food);
+    }
+
+    public void Eat(int amount, FoodItem food)
+    {
+        AddExperience(amount);
+        OnFoodEaten?.Invoke(food);
+
+        food.Release();
+    }
+
+    private void AddExperience(int amount)
     {
         OnExperienceGained?.Invoke(amount);
         UpdateExperience(amount);

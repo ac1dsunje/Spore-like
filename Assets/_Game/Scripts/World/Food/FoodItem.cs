@@ -5,7 +5,7 @@ namespace _Game.Scripts.World.Food
 {
 public class FoodItem: MonoBehaviour
 {
-    [field: SerializeField] private int _feedAmount;
+    [field: SerializeField] public int FeedAmount { get; private set; } = 1;
     
     private RarityConfig _rarity;
 
@@ -14,10 +14,14 @@ public class FoodItem: MonoBehaviour
         _rarity = raritiesData.GetRandom();
     }
     
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        other.TryGetComponent<IEater>(out var eater);
-        eater?.Eat(_feedAmount * _rarity.FoodScaler);
+        other.gameObject.TryGetComponent<IEater>(out var eater);
+        eater?.Eat(FeedAmount * _rarity.FoodScaler, this);
+    }
+
+    public void Release()
+    {
         Destroy(gameObject);
     }
 }
