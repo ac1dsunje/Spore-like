@@ -1,5 +1,4 @@
 using _Game.Scripts.Evolutions;
-using _Game.Scripts.Evolutions.UI;
 using _Game.Scripts.Evolutions.UI.Choosing;
 using _Game.Scripts.Player;
 using _Game.Scripts.Player.Modules;
