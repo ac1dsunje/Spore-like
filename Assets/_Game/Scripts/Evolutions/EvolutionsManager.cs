@@ -21,7 +21,7 @@ public class EvolutionsManager: MonoBehaviour
     public void Construct(PlayerController player, EvolutionChooseScreen screen)
     {
         _player = player;
-        _player.Stats.OnLevelChanged += OnLevelUpdated;
+        _player.Stats.Experience.OnLevelChanged += OnLevelUpdated;
         
         _screen = screen;
         _screen.OnEvolutionChosen += OnEvolutionChosen;
@@ -116,7 +116,7 @@ public class EvolutionsManager: MonoBehaviour
 
     private void OnDestroy()
     {
-        _player.Stats.OnLevelChanged -= OnLevelUpdated;
+        _player.Stats.Experience.OnLevelChanged -= OnLevelUpdated;
         _screen.OnEvolutionChosen -= OnEvolutionChosen;
 
         foreach (var evolution in _evolutions)

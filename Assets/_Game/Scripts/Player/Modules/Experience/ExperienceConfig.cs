@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Game.Scripts.Player.Experience
+namespace _Game.Scripts.Player.Modules.Experience
 {
 [CreateAssetMenu(fileName = "New Experience Config", menuName = "Configs/Game/Player/Experience")]
 public class ExperienceConfig: ScriptableObject

@@ -19,8 +19,8 @@ public class OverlayScreen: ScreenManager
     public void Construct(PlayerStats player)
     {
         _player = player;
-        _player.OnExperienceChanged += UpdateExperience;
-        _player.OnLevelChanged += UpdateLevel;
+        _player.Experience.OnExperienceChanged += UpdateExperience;
+        _player.Experience.OnLevelChanged += UpdateLevel;
         _player.OnEvolutionAdded += AddEvolution;
     }
 
@@ -42,8 +42,8 @@ public class OverlayScreen: ScreenManager
 
     private void OnDestroy()
     {
-        _player.OnExperienceChanged -= UpdateExperience;
-        _player.OnLevelChanged -= UpdateLevel;
+        _player.Experience.OnExperienceChanged -= UpdateExperience;
+        _player.Experience.OnLevelChanged -= UpdateLevel;
         _player.OnEvolutionAdded -= AddEvolution;
     }
 }

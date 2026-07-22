@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _Game.Scripts.Evolutions;
 using _Game.Scripts.Evolutions.Stats;
+using _Game.Scripts.Player.Modules.Experience;
 using _Game.Scripts.Player.Modules.Movement;
 using _Game.Scripts.Player.Modules.Vision;
 using _Game.Scripts.World.Food;
@@ -23,6 +24,7 @@ public class PlayerStats
     
     public VisionStats Vision { get; } = new();
     public MovementStats Movement { get; } = new();
+    public ExperienceStats Experience { get; }  = new();
     
     // Health
     public float MaxHealth => _stats.GetValueOrDefault(EvolutionType.MaxHealth);
@@ -33,14 +35,6 @@ public class PlayerStats
     public event Action<float, float> OnHealthChanged;
 
     //Level
-    private int _levelSet;
-    private int _experience;
-    private int _level;
-    private int _levelScaler;
-    
-    public event Action<int> OnExperienceChanged;
-    public event Action<int> OnExperienceGained;
-    public event Action<int> OnLevelChanged;
     
     //Evolutions
     private readonly List<Evolution> _evolutions = new();
@@ -51,9 +45,7 @@ public class PlayerStats
     public PlayerStats(PlayerConfig config)
     {
         AddStats(config.Stats);
-        
-        _levelSet = config.ExperienceConfig.LevelSet;
-        _levelScaler = config.ExperienceConfig.LevelScaler;
+        Experience.Initialize(config.ExperienceConfig);
         Health = MaxHealth;
 
         Vision.UpdateRadius(_stats.GetValueOrDefault(EvolutionType.VisionRadius));
@@ -61,35 +53,10 @@ public class PlayerStats
 
     public void Eat(int amount, FoodItem food)
     {
-        AddExperience(amount);
+        Experience.AddExperience(amount);
         OnFoodEaten?.Invoke(food);
 
         food.Release();
-    }
-
-    private void AddExperience(int amount)
-    {
-        OnExperienceGained?.Invoke(amount);
-        UpdateExperience(amount);
-    }
-
-    private void UpdateExperience(int amount)
-    {
-        _experience += amount;
-        OnExperienceChanged?.Invoke(_experience);
-        UpdateLevel();
-    }
-    
-    private void UpdateLevel()
-    {
-        while (_experience >= _levelSet)
-        {
-            UpdateExperience(-_levelSet);
-            _level++;
-            OnLevelChanged?.Invoke(_level);
-            _levelSet += _levelScaler;
-            _levelScaler++;
-        }
     }
 
     public void AddEvolution(Evolution evolution)
