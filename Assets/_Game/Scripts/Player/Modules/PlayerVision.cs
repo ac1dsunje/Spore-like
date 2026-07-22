@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-namespace _Game.Scripts.Player.VisionModule
+namespace _Game.Scripts.Player.Modules
 {
 public class PlayerVision: MonoBehaviour
 {
