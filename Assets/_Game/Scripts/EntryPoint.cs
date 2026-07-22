@@ -9,9 +9,11 @@ namespace _Game.Scripts
 {
 public class EntryPoint : MonoBehaviour
 {
+    [Header("Player")]
     [SerializeField] private PlayerController _player;
     [SerializeField] private PlayerConfig _playerConfig;
     [SerializeField] private PlayerVision _playerVision;
+    [SerializeField] private PlayerMovement _playerMovement;
     [Header("UI")]
     [SerializeField] private OverlayScreen _overlayScreen;
     [SerializeField] private EvolutionChooseScreen _evolutionChooseScreen;
@@ -25,7 +27,8 @@ public class EntryPoint : MonoBehaviour
         _overlayScreen.Construct(playerStats);
 
         _playerVision.Construct(playerStats);
-        _player.Construct(playerStats);
+        _playerMovement.Construct(playerStats);
+        _player.Construct(playerStats, _playerMovement);
         
         _evolutionsManager.Construct(_player, _evolutionChooseScreen);
     }

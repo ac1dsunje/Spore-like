@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 1241412678200770851}
   - component: {fileID: 8203668397215118327}
   m_Layer: 0
-  m_Name: VisionModule
+  m_Name: Vision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,12 +73,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5439879452342028256}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4515079076315579977}
+  m_Children:
+  - {fileID: 8198906980829431778}
+  m_Father: {fileID: 8081464728478508327}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1241412678200770851
 MonoBehaviour:
@@ -139,9 +140,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4515079076315579977}
-  - component: {fileID: 4836715229422371908}
+  - component: {fileID: 5451021253237555291}
   - component: {fileID: 3490300740950370897}
   - component: {fileID: 2108220050117646386}
+  - component: {fileID: 1354067261797318336}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -162,13 +164,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8198906980829431778}
-  - {fileID: 1421485344981635687}
   - {fileID: 1955810942114369999}
   - {fileID: 5410461934206592057}
+  - {fileID: 8081464728478508327}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &4836715229422371908
+--- !u!50 &5451021253237555291
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -253,7 +254,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6f8be6a5c94e08b0408b38c4016f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.PlayerController
+--- !u!114 &1354067261797318336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254078283856608112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28d0016c3217408bb4f98ccd4b3f6036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.PlayerMovement
   _spriteRenderer: {fileID: 1447118476083940304}
+  _rigidbody: {fileID: 5451021253237555291}
 --- !u!1 &8352832263387622762
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,12 +293,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8352832263387622762}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4515079076315579977}
+  m_Father: {fileID: 1421485344981635687}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3516047642189768381
 MonoBehaviour:
@@ -338,6 +352,38 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &8527591295361904753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8081464728478508327}
+  m_Layer: 0
+  m_Name: Modules
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8081464728478508327
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8527591295361904753}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1421485344981635687}
+  m_Father: {fileID: 4515079076315579977}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2756299357259062068
 PrefabInstance:
   m_ObjectHideFlags: 0
