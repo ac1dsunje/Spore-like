@@ -1,10 +1,12 @@
-﻿using _Game.Scripts.Evolutions.Stats;
+﻿using System;
+using _Game.Scripts.Evolutions.Stats;
 
 namespace _Game.Scripts.Player.Modules.Attack
 {
 public class AttackModule: StatModule
 {
     public float DamageReflection { get; private set; }
+    public event Action<int> OnDamageReflected;
     public float PhysicalDamage { get; private set; }
 
     public AttackModule(PlayerStats playerStats): base(playerStats) {}
@@ -24,6 +26,9 @@ public class AttackModule: StatModule
     
     public float ReflectDamage(float damage)
     {
+        if (DamageReflection <= 0) return 0;
+
+        OnDamageReflected?.Invoke(1);
         return damage * DamageReflection;
     }
 
