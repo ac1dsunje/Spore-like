@@ -60,7 +60,7 @@ public class EvolutionsManager: MonoBehaviour
         {
             if (rarity.Index != level) continue;
             
-            evolution.SetRarity(rarity);
+            evolution.UpdateRarity(rarity);
             return;
         }
     }

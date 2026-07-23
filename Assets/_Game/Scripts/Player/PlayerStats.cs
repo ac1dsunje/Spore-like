@@ -10,6 +10,7 @@ using _Game.Scripts.Player.Modules.Health;
 using _Game.Scripts.Player.Modules.Mouth;
 using _Game.Scripts.Player.Modules.Movement;
 using _Game.Scripts.Player.Modules.Vision;
+using UnityEngine;
 
 namespace _Game.Scripts.Player
 {
@@ -70,6 +71,11 @@ public class PlayerStats: IDisposable
         OnEvolutionAdded?.Invoke(evolution);
         
         AddStats(evolution.Stats);
+    }
+
+    public void UpdateEvolution(Evolution evolution)
+    {
+        Debug.Log("Update evolution");
     }
 
     private void AddInitialStats(List<Stat> stats)
