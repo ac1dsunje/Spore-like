@@ -1,19 +1,35 @@
 ﻿using System;
+using _Game.Scripts.Evolutions.Stats;
 using _Game.Scripts.World.Food;
 
 namespace _Game.Scripts.Player.Modules.Mouth
 {
-public class EatStats
+public class EatStats: IDisposable
 {
     public float EatingSpeed { get; private set; }
 
     public event Action<FoodItem> OnFoodEaten;
     public event Action<int> OnFoodPointsAchieved;
 
-    public void UpdateEatingSpeed(float eatingSpeed)
+    private PlayerStats _stats;
+
+    public EatStats(PlayerStats stats)
     {
-        EatingSpeed = eatingSpeed;
+        _stats = stats;
+        _stats.OnStatUpdated += OnStatUpdated;
     }
+
+    private void OnStatUpdated(EvolutionType type, float value)
+    {
+        switch (type)
+        {
+            case EvolutionType.EatingSpeed:
+                UpdateEatingSpeed(value);
+                break;
+        }
+    }
+
+    private void UpdateEatingSpeed(float eatingSpeed) => EatingSpeed = eatingSpeed;
 
     public void EatFood(FoodItem food)
     {
@@ -21,6 +37,11 @@ public class EatStats
         OnFoodPointsAchieved?.Invoke(food.FeedAmount);
 
         food.Release();
+    }
+
+    public void Dispose()
+    {
+        _stats.OnStatUpdated -= OnStatUpdated;
     }
 }
 }

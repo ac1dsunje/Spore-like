@@ -48,7 +48,6 @@ public abstract class Evolution: IDisposable
         foreach (var stat in Stats)
         {
             stat.UseRarity(_rarity.Scaler);
-            stat.SetPercentValue(Player.HasStat(stat));
         }
 
         if (_level == 0)

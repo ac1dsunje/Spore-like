@@ -1,9 +1,10 @@
 ﻿using System;
+using _Game.Scripts.Evolutions.Stats;
 using UnityEngine;
 
 namespace _Game.Scripts.Player.Modules.Health
 {
-public class HealthStats
+public class HealthStats: IDisposable
 {
     public float MaxHealth {get;  private set; }
     public float Health { get; private set; }
@@ -12,11 +13,25 @@ public class HealthStats
     public event Action OnDeath;
     public event Action OnDamageTaken;
     public event Action<float, float> OnHealthChanged;
+    
+    private PlayerStats _stats;
 
-    public void Initialize(float maxHealth)
+    public HealthStats(PlayerStats stats)
     {
-        MaxHealth = maxHealth;
-        Health = maxHealth;
+        _stats.OnStatUpdated += OnStatUpdated;
+    }
+
+    private void OnStatUpdated(EvolutionType type, float value)
+    {
+        switch (type)
+        {
+            case EvolutionType.MaxHealth:
+                UpdateMaxHealth(value);
+                break;
+            case EvolutionType.RegenerationSpeed:
+                UpdateRegeneration(value);
+                break;
+        }
     }
     
     public void TakeDamage(float amount)
@@ -42,7 +57,7 @@ public class HealthStats
         OnHealthChanged?.Invoke(Health, MaxHealth);
     }
     
-    public void UpdateMaxHealth(float newMaxHealth)
+    private void UpdateMaxHealth(float newMaxHealth)
     {
         var difference = newMaxHealth - MaxHealth;
         MaxHealth = newMaxHealth;
@@ -52,7 +67,7 @@ public class HealthStats
         OnHealthChanged?.Invoke(Health, MaxHealth);
     }
 
-    public void UpdateRegeneration(float newRegeneration)
+    private void UpdateRegeneration(float newRegeneration)
     {
         Regeneration = newRegeneration;
     }
@@ -60,6 +75,11 @@ public class HealthStats
     private void Die()
     {
         OnDeath?.Invoke();
+    }
+
+    public void Dispose()
+    {
+        _stats.OnStatUpdated -= OnStatUpdated;
     }
 }
 }

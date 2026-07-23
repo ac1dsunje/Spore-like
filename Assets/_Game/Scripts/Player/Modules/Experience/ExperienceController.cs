@@ -3,7 +3,7 @@ using _Game.Scripts.Player.Modules.Mouth;
 
 namespace _Game.Scripts.Player.Modules.Experience
 {
-public class ExperienceStats: IDisposable
+public class ExperienceController: IDisposable
 {
     private int _levelSet;
     private int _experience;
@@ -16,7 +16,7 @@ public class ExperienceStats: IDisposable
     
     private EatStats _eatStats;
     
-    public void Initialize(ExperienceConfig config, EatStats eatStats)
+    public ExperienceController(ExperienceConfig config, EatStats eatStats)
     {
         _levelSet = config.LevelSet;
         _levelScaler = config.LevelScaler;

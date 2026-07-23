@@ -1,6 +1,4 @@
-﻿using System;
-using _Game.Scripts.Evolutions.Stats;
-using _Game.Scripts.Player.Modules.Movement;
+﻿using _Game.Scripts.Player.Modules.Movement;
 using UnityEngine;
 
 namespace _Game.Scripts.Player

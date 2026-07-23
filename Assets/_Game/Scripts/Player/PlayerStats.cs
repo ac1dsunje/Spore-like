@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using _Game.Scripts.Evolutions;
 using _Game.Scripts.Evolutions.Stats;
 using _Game.Scripts.Player.Modules.Attack;
@@ -13,28 +14,36 @@ namespace _Game.Scripts.Player
 {
 public class PlayerStats: IDisposable
 {
-    public float Stamina => _stats.GetValueOrDefault(EvolutionType.Stamina);
-    
     // Modules
-    
-    public VisionStats Vision { get; } = new();
-    public MovementStats Movement { get; } = new();
-    public ExperienceStats Experience { get; }  = new();
-    public HealthStats Health { get; } = new();
-    public EatStats EatStats { get; } = new();
-    public AttackStats Attack { get; } = new();
+    public VisionStats Vision { get; }
+    public MovementStats Movement { get; }
+    public ExperienceController Experience { get; }
+    public HealthStats Health { get; }
+    public EatStats EatStats { get; }
+    public AttackStats Attack { get; }
     
     //Evolutions
     private readonly List<Evolution> _evolutions = new();
     public event Action<Evolution> OnEvolutionAdded;
     //Stats
     private readonly Dictionary<EvolutionType, float> _stats = new();
-
+    public event Action<EvolutionType, float> OnStatUpdated;
+    
+    private PlayerConfig _config;
+    private readonly Dictionary<EvolutionType, float> _basicStats = new();
+    
+    
     public PlayerStats(PlayerConfig config)
     {
-        AddStats(config.Stats);
-        Experience.Initialize(config.ExperienceConfig, EatStats);
-        Health.Initialize(_stats.GetValueOrDefault(EvolutionType.MaxHealth));
+        _config = config;
+        
+        Vision = new(this);
+        Movement = new(this);
+        Health = new(this);
+        EatStats = new (this);
+        Experience = new(config.ExperienceConfig, EatStats);
+        Attack = new(this);
+        AddInitialStats(_config.InitialConfig.Stats);
     }
 
     public bool HasStat(Stat stat)
@@ -50,63 +59,49 @@ public class PlayerStats: IDisposable
         AddStats(evolution.Stats);
     }
 
+    private void AddInitialStats(List<Stat> stats)
+    {
+        foreach (var stat in stats)
+        {
+            _stats.Add(stat.Type, stat.Value);
+            _basicStats.Add(stat.Type, stat.Value);
+        }
+    }
+
     private void AddStats(List<Stat> stats)
     {
         foreach (var stat in stats)
         {
-            if (!_stats.ContainsKey(stat.Type))
+            if (!HasStat(stat))
             {
-                _stats.Add(stat.Type, stat.BasicValue);
-            }
-            else
-            {
-                _stats[stat.Type] *= 1 + stat.Value / 100f;
-            }
+                var basicStat = _config.BasicConfig.Stats
+                    .First(t => t.Type == stat.Type);
 
-            UpdateStats(stat);
+                _stats.Add(stat.Type, basicStat.Value);
+                _basicStats.Add(stat.Type, basicStat.Value);
+            }
+            _stats[stat.Type] *= 1 + stat.Value / 100f;
+
+            UpdateStat(stat);
         }
     }
 
-    private void UpdateStats(Stat stat)
+    private void UpdateStat(Stat stat)
     {
-        switch (stat.Type)
-        {
-            case EvolutionType.VisionRadius:
-                Vision.UpdateRadius(_stats[EvolutionType.VisionRadius]);
-                break;
-            case EvolutionType.SensoricsRadius:
-                Vision.UpdateSensoricsRadius(_stats[EvolutionType.SensoricsRadius]);
-                break;
-            case EvolutionType.MoveSpeed:
-                Movement.UpdateMoveSpeed(_stats[EvolutionType.MoveSpeed]);
-                break;
-            case EvolutionType.Acceleration:
-                Movement.UpdateAcceleration(_stats[EvolutionType.Acceleration]);
-                break;
-            case EvolutionType.Inertia:
-                Movement.UpdateInertia(_stats[EvolutionType.Inertia]);
-                break;
-            case EvolutionType.MaxHealth:
-                Health.UpdateMaxHealth(_stats[EvolutionType.MaxHealth]);
-                break;
-            case EvolutionType.RegenerationSpeed:
-                Health.UpdateRegeneration(_stats[EvolutionType.RegenerationSpeed]);
-                break;
-            case EvolutionType.EatingSpeed:
-                EatStats.UpdateEatingSpeed(_stats[EvolutionType.EatingSpeed]);
-                break;
-            case EvolutionType.DamageReflection:
-                Attack.UpdateDamageReflection(_stats[EvolutionType.DamageReflection]);
-                break;
-            case EvolutionType.PhysicalDamage:
-                Attack.UpdatePhysicalDamage(_stats[EvolutionType.PhysicalDamage]);
-                break;
-        }
+        OnStatUpdated?.Invoke(
+            stat.Type,
+            _stats[stat.Type]
+        );
     }
 
     public void Dispose()
     {
+        Vision.Dispose();
+        Movement.Dispose();
         Experience.Dispose();
+        Health.Dispose();
+        EatStats.Dispose();
+        Attack.Dispose();
     }
 }
 }

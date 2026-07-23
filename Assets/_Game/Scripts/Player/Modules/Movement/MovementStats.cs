@@ -1,24 +1,54 @@
-﻿namespace _Game.Scripts.Player.Modules.Movement
+﻿using System;
+using _Game.Scripts.Evolutions.Stats;
+
+namespace _Game.Scripts.Player.Modules.Movement
 {
-public class MovementStats
+public class MovementStats: IDisposable
 {
     public float MoveSpeed { get; private set; }
     public float Acceleration { get; private set; }
     public float Inertia { get; private set; }
+    public float Stamina { get; private set; }
 
-    public void UpdateMoveSpeed(float newValue)
+    private readonly PlayerStats _stats;
+
+    public MovementStats(PlayerStats stats)
     {
-        MoveSpeed = newValue;
+        _stats = stats;
+        _stats.OnStatUpdated += OnStatUpdated;
     }
 
-    public void UpdateAcceleration(float newValue)
+    private void OnStatUpdated(EvolutionType type, float value)
     {
-        Acceleration = newValue;
-    }
+        switch (type)
+        {
+            case EvolutionType.MoveSpeed:
+                UpdateMoveSpeed(value);
+                break;
 
-    public void UpdateInertia(float newValue)
+            case EvolutionType.Acceleration:
+                UpdateAcceleration(value);
+                break;
+
+            case EvolutionType.Inertia:
+                UpdateInertia(value);
+                break;
+            case EvolutionType.Stamina:
+                UpdateStamina(value);
+                break;
+        }
+    }
+    
+    private void UpdateMoveSpeed(float newValue) => MoveSpeed = newValue;
+
+    private void UpdateAcceleration(float newValue) => Acceleration = newValue;
+
+    private void UpdateInertia(float newValue) => Inertia = newValue;
+    private void UpdateStamina(float newValue) => Stamina = newValue;
+
+    public void Dispose()
     {
-        Inertia = newValue;
+        _stats.OnStatUpdated -= OnStatUpdated;
     }
 }
 }
