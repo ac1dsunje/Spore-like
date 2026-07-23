@@ -13,7 +13,7 @@ public class PlayerMovement: MonoBehaviour
     [SerializeField] private SpriteRenderer _spriteRenderer;
     
     private MovementState _state;
-    private MovementStats _stats;
+    private MovementModule _module;
     
     [SerializeField] private Rigidbody2D _rigidbody;
     
@@ -24,9 +24,9 @@ public class PlayerMovement: MonoBehaviour
 
     public void Enable() => SetState(MovementState.Enabled);
     
-    public void Construct(MovementStats stats)
+    public void Construct(MovementModule module)
     {
-        _stats = stats;
+        _module = module;
     }
 
     private void Update()
@@ -47,9 +47,9 @@ public class PlayerMovement: MonoBehaviour
 
     private void Move()
     {
-        var targetVelocity = new Vector2(_horizontalInput, _verticalInput) * _stats.MoveSpeed;
+        var targetVelocity = new Vector2(_horizontalInput, _verticalInput) * _module.MoveSpeed;
 
-        var accelerationThisFrame = _stats.Acceleration * Time.fixedDeltaTime;
+        var accelerationThisFrame = _module.Acceleration * Time.fixedDeltaTime;
 
         _rigidbody.linearVelocity = Vector2.MoveTowards(
             _rigidbody.linearVelocity, 

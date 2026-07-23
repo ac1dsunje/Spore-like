@@ -15,12 +15,12 @@ namespace _Game.Scripts.Player
 public class PlayerStats: IDisposable
 {
     // Modules
-    public VisionStats Vision { get; }
-    public MovementStats Movement { get; }
+    public VisionModule Vision { get; }
+    public MovementModule Movement { get; }
     public ExperienceController Experience { get; }
-    public HealthStats Health { get; }
-    public EatStats EatStats { get; }
-    public AttackStats Attack { get; }
+    public HealthModule Health { get; }
+    public EatModule EatModule { get; }
+    public AttackModule Attack { get; }
     
     //Evolutions
     private readonly List<Evolution> _evolutions = new();
@@ -40,8 +40,8 @@ public class PlayerStats: IDisposable
         Vision = new(this);
         Movement = new(this);
         Health = new(this);
-        EatStats = new (this);
-        Experience = new(config.ExperienceConfig, EatStats);
+        EatModule = new (this);
+        Experience = new(config.ExperienceConfig, EatModule);
         Attack = new(this);
         AddInitialStats(_config.InitialConfig.Stats);
     }
@@ -100,7 +100,7 @@ public class PlayerStats: IDisposable
         Movement.Dispose();
         Experience.Dispose();
         Health.Dispose();
-        EatStats.Dispose();
+        EatModule.Dispose();
         Attack.Dispose();
     }
 }

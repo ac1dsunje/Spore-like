@@ -3,14 +3,14 @@ using _Game.Scripts.Evolutions.Stats;
 
 namespace _Game.Scripts.Player.Modules.Attack
 {
-public class AttackStats: IDisposable
+public class AttackModule: IDisposable
 {
     public float DamageReflection { get; private set; }
     public float PhysicalDamage { get; private set; }
 
     private PlayerStats _stats;
 
-    public AttackStats(PlayerStats playerStats)
+    public AttackModule(PlayerStats playerStats)
     {
         _stats = playerStats;
         _stats.OnStatUpdated += OnStatUpdated;

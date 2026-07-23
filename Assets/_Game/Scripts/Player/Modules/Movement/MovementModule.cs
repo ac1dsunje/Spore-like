@@ -3,7 +3,7 @@ using _Game.Scripts.Evolutions.Stats;
 
 namespace _Game.Scripts.Player.Modules.Movement
 {
-public class MovementStats: IDisposable
+public class MovementModule: IDisposable
 {
     public float MoveSpeed { get; private set; }
     public float Acceleration { get; private set; }
@@ -12,7 +12,7 @@ public class MovementStats: IDisposable
 
     private readonly PlayerStats _stats;
 
-    public MovementStats(PlayerStats stats)
+    public MovementModule(PlayerStats stats)
     {
         _stats = stats;
         _stats.OnStatUpdated += OnStatUpdated;

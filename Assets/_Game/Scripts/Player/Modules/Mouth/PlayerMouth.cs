@@ -5,11 +5,11 @@ namespace _Game.Scripts.Player.Modules.Mouth
 {
 public class PlayerMouth: MonoBehaviour
 {
-    private EatStats _stats;
+    private EatModule _module;
     
-    public void Construct(EatStats stats)
+    public void Construct(EatModule module)
     {
-        _stats = stats;
+        _module = module;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -22,7 +22,7 @@ public class PlayerMouth: MonoBehaviour
         other.TryGetComponent<FoodItem>(out var food);
         if (food == null) return;
         
-        _stats.EatFood(food.Get());
+        _module.EatFood(food.Get());
         food.Release();
     }
 }

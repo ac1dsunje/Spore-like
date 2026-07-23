@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.Player.Modules.Health
 {
-public class HealthStats: IDisposable
+public class HealthModule: IDisposable
 {
     public float MaxHealth {get;  private set; }
     public float Health { get; private set; }
@@ -16,7 +16,7 @@ public class HealthStats: IDisposable
     
     private PlayerStats _stats;
 
-    public HealthStats(PlayerStats stats)
+    public HealthModule(PlayerStats stats)
     {
         _stats.OnStatUpdated += OnStatUpdated;
     }

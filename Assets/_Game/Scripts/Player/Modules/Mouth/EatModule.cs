@@ -4,7 +4,7 @@ using _Game.Scripts.World.Food;
 
 namespace _Game.Scripts.Player.Modules.Mouth
 {
-public class EatStats: IDisposable
+public class EatModule: IDisposable
 {
     public float EatingSpeed { get; private set; }
 
@@ -13,7 +13,7 @@ public class EatStats: IDisposable
 
     private PlayerStats _stats;
 
-    public EatStats(PlayerStats stats)
+    public EatModule(PlayerStats stats)
     {
         _stats = stats;
         _stats.OnStatUpdated += OnStatUpdated;

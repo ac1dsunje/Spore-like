@@ -9,15 +9,15 @@ public class PlayerVision: MonoBehaviour
     [SerializeField] private Light2D _light;
     [SerializeField] private CircleCollider2D _visionCollider;
         
-    private VisionStats _stats;
+    private VisionModule _module;
         
-    public void Construct(VisionStats stats)
+    public void Construct(VisionModule module)
     {
-        _stats = stats;
+        _module = module;
             
-        _stats.OnVisionRadiusChanged += UpdateVisuals;
+        _module.OnVisionRadiusChanged += UpdateVisuals;
             
-        UpdateVisuals(_stats.VisionRadius);
+        UpdateVisuals(_module.VisionRadius);
     }
 
     private void UpdateVisuals(float radius)
@@ -30,15 +30,15 @@ public class PlayerVision: MonoBehaviour
     {
         if (other.TryGetComponent<FoodItem>(out var food))
         {
-            _stats.DiscoverFood(food);
+            _module.DiscoverFood(food);
         }
     }
 
     private void OnDestroy()
     {
-        if (_stats != null)
+        if (_module != null)
         {
-            _stats.OnVisionRadiusChanged -= UpdateVisuals;
+            _module.OnVisionRadiusChanged -= UpdateVisuals;
         }
     }
 }

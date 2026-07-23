@@ -14,15 +14,15 @@ public class ExperienceController: IDisposable
     public event Action<int> OnExperienceGained;
     public event Action<int> OnLevelChanged;
     
-    private EatStats _eatStats;
+    private EatModule _eatModule;
     
-    public ExperienceController(ExperienceConfig config, EatStats eatStats)
+    public ExperienceController(ExperienceConfig config, EatModule eatModule)
     {
         _levelSet = config.LevelSet;
         _levelScaler = config.LevelScaler;
         
-        _eatStats = eatStats;
-        _eatStats.OnFoodPointsAchieved += AddExperience;
+        _eatModule = eatModule;
+        _eatModule.OnFoodPointsAchieved += AddExperience;
     }
 
     private void AddExperience(int amount)
@@ -52,7 +52,7 @@ public class ExperienceController: IDisposable
 
     public void Dispose()
     {
-        _eatStats.OnFoodPointsAchieved -= AddExperience;
+        _eatModule.OnFoodPointsAchieved -= AddExperience;
     }
 }
 }

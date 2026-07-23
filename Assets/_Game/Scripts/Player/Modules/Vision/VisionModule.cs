@@ -4,7 +4,7 @@ using _Game.Scripts.World.Food;
 
 namespace _Game.Scripts.Player.Modules.Vision
 {
-public class VisionStats: IDisposable
+public class VisionModule: IDisposable
 {
     public float VisionRadius { get; private set; }
     public float SensoricsRadius { get; private set; }
@@ -14,7 +14,7 @@ public class VisionStats: IDisposable
 
     private readonly PlayerStats _stats;
 
-    public VisionStats(PlayerStats stats)
+    public VisionModule(PlayerStats stats)
     {
         _stats = stats;
         _stats.OnStatUpdated += OnStatUpdated;

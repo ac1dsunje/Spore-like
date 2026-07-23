@@ -31,7 +31,7 @@ public class EntryPoint : MonoBehaviour
 
         _playerVision.Construct(playerStats.Vision);
         _playerMovement.Construct(playerStats.Movement);
-        _playerMouth.Construct(playerStats.EatStats);
+        _playerMouth.Construct(playerStats.EatModule);
         _player.Construct(playerStats);
         
         _evolutionsManager.Construct(_player, _evolutionChooseScreen);
