@@ -13,6 +13,7 @@ public class ExperienceController: IDisposable
     public event Action<int> OnExperienceChanged;
     public event Action<int> OnExperienceGained;
     public event Action<int> OnLevelChanged;
+    public event Action<int> OnLevelSetChanged;
     
     private EatModule _eatModule;
     
@@ -46,6 +47,7 @@ public class ExperienceController: IDisposable
             _level++;
             OnLevelChanged?.Invoke(_level);
             _levelSet += _levelScaler;
+            OnLevelSetChanged?.Invoke(_levelSet);
             _levelScaler++;
         }
     }
