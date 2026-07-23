@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1600029849925267869}
-  - component: {fileID: -9222977691739916474}
   - component: {fileID: 4191804910957168955}
+  - component: {fileID: -3341965493316085557}
+  - component: {fileID: -9222977691739916474}
   m_Layer: 0
   m_Name: Seaweed
   m_TagString: Untagged
@@ -34,19 +35,6 @@ Transform:
   - {fileID: 5979756665101651282}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-9222977691739916474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2242808679465882649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e52edad986f4b21b7a2d55b0a3e7c76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Food.FoodController
-  <FeedAmount>k__BackingField: 1
 --- !u!61 &4191804910957168955
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -93,6 +81,31 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.7029029, y: 0.8239887}
   m_EdgeRadius: 0
+--- !u!114 &-3341965493316085557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2242808679465882649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ddc9450d02945ceab666ceebec57bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Chunk.Environment.Plants.Plant
+--- !u!114 &-9222977691739916474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2242808679465882649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e52edad986f4b21b7a2d55b0a3e7c76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Food.FoodController
+  <FeedAmount>k__BackingField: 1
 --- !u!1001 &4587436147030946399
 PrefabInstance:
   m_ObjectHideFlags: 0

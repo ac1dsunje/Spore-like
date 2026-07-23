@@ -19,7 +19,7 @@ public class PlayerMouth: MonoBehaviour
 
     private void TryEat(Collider2D other)
     {
-        other.TryGetComponent<IFood>(out var food);
+        other.TryGetComponent<FoodItem>(out var food);
         if (food == null) return;
         
         _stats.EatFood(food.Get());

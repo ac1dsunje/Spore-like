@@ -3,15 +3,15 @@ using UnityEngine;
 
 namespace _Game.Scripts.World.Food
 {
-public class FoodItem: MonoBehaviour, IFood
+public class FoodItem: MonoBehaviour
 {
     [field: SerializeField] public int FeedAmount { get; private set; } = 1;
     
     private RarityConfig _rarity;
 
-    public void SetRarity(RaritiesDatabase raritiesData)
+    public void SetRarity(RarityConfig rarity)
     {
-        _rarity = raritiesData.GetRandom();
+        _rarity = rarity;
         FeedAmount *= _rarity.FoodScaler;
     }
 

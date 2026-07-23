@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using _Game.Scripts.Rarities;
-using _Game.Scripts.World.Food;
+using _Game.Scripts.World.Chunk.Environment.Plants;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -59,7 +59,7 @@ public class Chunk : MonoBehaviour
     {
         var rand = Random.Range(0, _config.Environment.Plants.Prefabs.Length);
             
-        var obj = Instantiate(_config.Environment.Plants.Prefabs[rand], pos, Quaternion.identity, transform).GetComponent<FoodItem>();
+        var obj = Instantiate(_config.Environment.Plants.Prefabs[rand], pos, Quaternion.identity, transform).GetComponent<Plant>();
         obj.SetRarity(_raritiesDatabase);
     }
     
