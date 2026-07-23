@@ -8,6 +8,7 @@ public class Stat
 {
     [field: SerializeField] public EvolutionType Type {get; private set;}
     [field: SerializeField] public float Value {get; private set;}
+    [field: SerializeField] public float BasicValue {get; private set;}
 
     public Stat(EvolutionType type, float value)
     {

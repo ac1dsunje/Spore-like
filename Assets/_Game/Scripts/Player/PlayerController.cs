@@ -1,4 +1,6 @@
-﻿using _Game.Scripts.Player.Modules.Movement;
+﻿using System;
+using _Game.Scripts.Evolutions.Stats;
+using _Game.Scripts.Player.Modules.Movement;
 using UnityEngine;
 
 namespace _Game.Scripts.Player
@@ -7,16 +9,21 @@ public class PlayerController: MonoBehaviour, IDamageAble
 {
     public PlayerStats Stats { get; private set; }
     private PlayerMovement _movement;
-    
-    public void Construct(PlayerStats stats, PlayerMovement playerMovement)
+
+    private void Awake()
+    {
+        _movement = GetComponent<PlayerMovement>();
+    }
+
+    public void Construct(PlayerStats stats)
     {
         Stats = stats;
-        _movement = playerMovement;
     }
 
     public float TakeDamage(float amount)
     {
-        return Stats.TakeDamage(amount);
+        Stats.Health.TakeDamage(amount);
+        return Stats.Attack.ReflectDamage(amount);
     }
 
     public void Disable() => _movement.Disable();

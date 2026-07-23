@@ -32,7 +32,7 @@ public class EntryPoint : MonoBehaviour
         _playerVision.Construct(playerStats.Vision);
         _playerMovement.Construct(playerStats.Movement);
         _playerMouth.Construct(playerStats.EatStats);
-        _player.Construct(playerStats, _playerMovement);
+        _player.Construct(playerStats);
         
         _evolutionsManager.Construct(_player, _evolutionChooseScreen);
     }
