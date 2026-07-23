@@ -8,7 +8,6 @@ namespace _Game.Scripts.Player
 public class PlayerConfig: ScriptableObject
 {
     [field: SerializeField] public StatsConfig InitialConfig { get; set; }
-    [field: SerializeField] public StatsConfig BasicConfig { get; set; }
     [field: SerializeField] public ExperienceConfig  ExperienceConfig { get; private set; }
 }
 }

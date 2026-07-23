@@ -15,8 +15,7 @@ MonoBehaviour:
   <Name>k__BackingField: Camera Eyes
   <Stats>k__BackingField:
   - <Type>k__BackingField: 1
-    <Value>k__BackingField: 50
-    <BasicValue>k__BackingField: 1
+    <Value>k__BackingField: 0.5
   <Description>k__BackingField: Highly specialized eyes grant exceptional range and
     visual clarity
   <Sprite>k__BackingField: {fileID: -7076529034579859471, guid: d6c9da9091c4c0b4ba595677bdd2e09c, type: 3}

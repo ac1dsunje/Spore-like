@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using _Game.Scripts.Evolutions;
 using _Game.Scripts.Evolutions.Stats;
 using _Game.Scripts.Player.Modules;
@@ -24,16 +23,18 @@ public class PlayerStats: IDisposable
     public AttackModule Attack { get; private set; }
     private List<StatModule> _modules = new();
     public ExperienceController Experience { get; }
-    
     //Evolutions
     private readonly List<Evolution> _evolutions = new();
     public event Action<Evolution> OnEvolutionAdded;
+
     //Stats
     private readonly Dictionary<EvolutionType, float> _stats = new();
+    private readonly Dictionary<EvolutionType, float> _basicStats = new();
+    private readonly Dictionary<Evolution, Dictionary<EvolutionType, float>> _evolutionStats = new();
+
     public event Action<EvolutionType, float> OnStatUpdated;
     
     private PlayerConfig _config;
-    private readonly Dictionary<EvolutionType, float> _basicStats = new();
     
     
     public PlayerStats(PlayerConfig config)
@@ -53,6 +54,7 @@ public class PlayerStats: IDisposable
         Health = new(this);
         EatModule = new (this);
         Attack = new(this);
+
         _modules.Add(Vision);
         _modules.Add(Movement);
         _modules.Add(Health);
@@ -60,61 +62,84 @@ public class PlayerStats: IDisposable
         _modules.Add(Attack);
     }
 
-    public bool HasStat(Stat stat)
-    {
-        return _stats.ContainsKey(stat.Type);
-    }
-    
     public void AddEvolution(Evolution evolution)
     {
         _evolutions.Add(evolution);
         OnEvolutionAdded?.Invoke(evolution);
         
-        AddStats(evolution.Stats);
+        AddEvolutionStats(evolution);
+
+        foreach (var stat in evolution.Stats)
+        {
+            RecalculateStat(stat.Type);
+        }
     }
 
     public void UpdateEvolution(Evolution evolution)
     {
+        var changedStats = new HashSet<EvolutionType>();
+
         foreach (var stat in evolution.Stats)
         {
+            if (!_evolutionStats[evolution].ContainsKey(stat.Type) ||
+                !Mathf.Approximately(_evolutionStats[evolution][stat.Type], stat.CurrentValue))
+            {
+                changedStats.Add(stat.Type);
+            }
             
+            _evolutionStats[evolution][stat.Type] = stat.CurrentValue;
         }
-        Debug.Log("ToDo: Update evolution");
+
+        foreach (var statType in changedStats)
+        {
+            RecalculateStat(statType);
+        }
     }
 
     private void AddInitialStats(List<Stat> stats)
     {
         foreach (var stat in stats)
         {
-            _stats.Add(stat.Type, stat.Value);
             _basicStats.Add(stat.Type, stat.Value);
+            _stats.Add(stat.Type, stat.Value);
 
-            UpdateStat(stat);
+            UpdateStat(stat.Type);
         }
     }
 
-    private void AddStats(List<Stat> stats)
+    private void AddEvolutionStats(Evolution evolution)
     {
-        foreach (var stat in stats)
+        if (_evolutionStats.ContainsKey(evolution))
+            return;
+
+        var stats = new Dictionary<EvolutionType, float>();
+
+        foreach (var stat in evolution.Stats)
         {
-            if (!HasStat(stat))
-            {
-                var basicStat = _config.BasicConfig.Stats
-                    .First(t => t.Type == stat.Type);
-
-                _stats.Add(stat.Type, basicStat.Value);
-                _basicStats.Add(stat.Type, basicStat.Value);
-            }
-            _stats[stat.Type] *= 1 + stat.CurrentValue / 100f;
-
-            UpdateStat(stat);
+            stats.Add(stat.Type, stat.CurrentValue);
         }
+
+        _evolutionStats.Add(evolution, stats);
     }
 
-    private void UpdateStat(Stat stat)
+    private void RecalculateStat(EvolutionType type)
     {
-        OnStatUpdated?.Invoke(stat.Type, _stats[stat.Type]);
+        var value = _basicStats.GetValueOrDefault(type, 0f);
+
+        foreach (var evolution in _evolutionStats)
+        {
+            if (evolution.Value.TryGetValue(type, out var statValue))
+            {
+                value += statValue;
+            }
+        }
+
+        _stats[type] = value;
+
+        UpdateStat(type);
     }
+
+    private void UpdateStat(EvolutionType type) => OnStatUpdated?.Invoke(type, _stats[type]);
 
     public void Dispose()
     {

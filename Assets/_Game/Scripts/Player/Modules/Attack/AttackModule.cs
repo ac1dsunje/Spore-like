@@ -7,8 +7,6 @@ public class AttackModule: StatModule
     public float DamageReflection { get; private set; }
     public float PhysicalDamage { get; private set; }
 
-    private PlayerStats _stats;
-
     public AttackModule(PlayerStats playerStats): base(playerStats) {}
 
     protected override void OnStatUpdated(EvolutionType type, float value)
@@ -26,7 +24,7 @@ public class AttackModule: StatModule
     
     public float ReflectDamage(float damage)
     {
-        return damage * DamageReflection / 100;
+        return damage * DamageReflection;
     }
 
     private void UpdateDamageReflection(float newValue) => DamageReflection = newValue;
