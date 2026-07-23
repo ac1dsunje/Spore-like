@@ -1,22 +1,17 @@
-﻿using System;
-using _Game.Scripts.Evolutions.Stats;
+﻿using _Game.Scripts.Evolutions.Stats;
 
 namespace _Game.Scripts.Player.Modules.Attack
 {
-public class AttackModule: IDisposable
+public class AttackModule: StatModule
 {
     public float DamageReflection { get; private set; }
     public float PhysicalDamage { get; private set; }
 
     private PlayerStats _stats;
 
-    public AttackModule(PlayerStats playerStats)
-    {
-        _stats = playerStats;
-        _stats.OnStatUpdated += OnStatUpdated;
-    }
+    public AttackModule(PlayerStats playerStats): base(playerStats) {}
 
-    private void OnStatUpdated(EvolutionType type, float value)
+    protected override void OnStatUpdated(EvolutionType type, float value)
     {
         switch (type)
         {
@@ -37,10 +32,5 @@ public class AttackModule: IDisposable
     private void UpdateDamageReflection(float newValue) => DamageReflection = newValue;
 
     private void UpdatePhysicalDamage(float newValue) => PhysicalDamage = newValue;
-
-    public void Dispose()
-    {
-        _stats.OnStatUpdated -= OnStatUpdated;
-    }
 }
 }

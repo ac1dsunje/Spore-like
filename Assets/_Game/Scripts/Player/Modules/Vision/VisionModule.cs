@@ -4,7 +4,7 @@ using _Game.Scripts.World.Food;
 
 namespace _Game.Scripts.Player.Modules.Vision
 {
-public class VisionModule: IDisposable
+public class VisionModule: StatModule
 {
     public float VisionRadius { get; private set; }
     public float SensoricsRadius { get; private set; }
@@ -12,15 +12,9 @@ public class VisionModule: IDisposable
     public event Action<float> OnVisionRadiusChanged;
     public event Action<FoodItem> OnFoodDiscovered;
 
-    private readonly PlayerStats _stats;
+    public VisionModule(PlayerStats stats): base(stats) {}
 
-    public VisionModule(PlayerStats stats)
-    {
-        _stats = stats;
-        _stats.OnStatUpdated += OnStatUpdated;
-    }
-
-    private void OnStatUpdated(EvolutionType type, float value)
+    protected override void OnStatUpdated(EvolutionType type, float value)
     {
         switch (type)
         {
@@ -44,11 +38,6 @@ public class VisionModule: IDisposable
     public void DiscoverFood(FoodItem food)
     {
         OnFoodDiscovered?.Invoke(food);
-    }
-
-    public void Dispose()
-    {
-        _stats.OnStatUpdated -= OnStatUpdated;
     }
 }
 }

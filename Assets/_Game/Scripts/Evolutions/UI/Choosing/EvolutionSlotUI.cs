@@ -41,7 +41,7 @@ public class EvolutionSlotUI : MonoBehaviour
         foreach (var stat in _evolution.Stats)
         {
             text.Append($"{stat.Type} +");
-            text.AppendLine($"{stat.Value}%");
+            text.AppendLine($"{stat.CurrentValue}%");
         }
 
         return text.ToString();

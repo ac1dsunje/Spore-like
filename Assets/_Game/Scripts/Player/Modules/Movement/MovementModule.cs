@@ -1,24 +1,17 @@
-﻿using System;
-using _Game.Scripts.Evolutions.Stats;
+﻿using _Game.Scripts.Evolutions.Stats;
 
 namespace _Game.Scripts.Player.Modules.Movement
 {
-public class MovementModule: IDisposable
+public class MovementModule: StatModule
 {
     public float MoveSpeed { get; private set; }
     public float Acceleration { get; private set; }
     public float Inertia { get; private set; }
     public float Stamina { get; private set; }
 
-    private readonly PlayerStats _stats;
+    public MovementModule(PlayerStats stats): base(stats) {}
 
-    public MovementModule(PlayerStats stats)
-    {
-        _stats = stats;
-        _stats.OnStatUpdated += OnStatUpdated;
-    }
-
-    private void OnStatUpdated(EvolutionType type, float value)
+    protected override void OnStatUpdated(EvolutionType type, float value)
     {
         switch (type)
         {
@@ -45,10 +38,5 @@ public class MovementModule: IDisposable
 
     private void UpdateInertia(float newValue) => Inertia = newValue;
     private void UpdateStamina(float newValue) => Stamina = newValue;
-
-    public void Dispose()
-    {
-        _stats.OnStatUpdated -= OnStatUpdated;
-    }
 }
 }

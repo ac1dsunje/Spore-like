@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.Player.Modules.Health
 {
-public class HealthModule: IDisposable
+public class HealthModule: StatModule
 {
     public float MaxHealth {get;  private set; }
     public float Health { get; private set; }
@@ -13,15 +13,10 @@ public class HealthModule: IDisposable
     public event Action OnDeath;
     public event Action OnDamageTaken;
     public event Action<float, float> OnHealthChanged;
-    
-    private PlayerStats _stats;
 
-    public HealthModule(PlayerStats stats)
-    {
-        _stats.OnStatUpdated += OnStatUpdated;
-    }
+    public HealthModule(PlayerStats stats): base(stats) {}
 
-    private void OnStatUpdated(EvolutionType type, float value)
+    protected override void OnStatUpdated(EvolutionType type, float value)
     {
         switch (type)
         {
@@ -75,11 +70,6 @@ public class HealthModule: IDisposable
     private void Die()
     {
         OnDeath?.Invoke();
-    }
-
-    public void Dispose()
-    {
-        _stats.OnStatUpdated -= OnStatUpdated;
     }
 }
 }
