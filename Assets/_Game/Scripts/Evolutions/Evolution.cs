@@ -45,9 +45,10 @@ public abstract class Evolution: IDisposable
     {
         _rarity = rarity;
         Name = $"{_rarity.Name} {Config.Name}";
-        for (var i = 0; i < Stats.Count; i++)
+        foreach (var stat in Stats)
         {
-            Stats[i].SetValue(Config.Stats[i].Value * _rarity.Scaler);
+            stat.UseRarity(_rarity.Scaler);
+            stat.SetPercentValue(Player.HasStat(stat));
         }
 
         if (_level == 0)
@@ -58,9 +59,13 @@ public abstract class Evolution: IDisposable
         OnRarityChanged?.Invoke();
     }
 
-    public virtual void Apply(PlayerStats playerStats)
+    public void SetPlayer(PlayerStats playerStats)
     {
         Player = playerStats;
+    }
+
+    public virtual void Apply()
+    {
         SetState(EvolutionState.IsActive);
     }
 
@@ -73,7 +78,7 @@ public abstract class Evolution: IDisposable
         Stats.Clear();
         foreach (var stat in Config.Stats)
         {
-            var newStat = new Stat(stat.Type, stat.Value);
+            var newStat = new Stat(stat);
             Stats.Add(newStat);
         }
     }

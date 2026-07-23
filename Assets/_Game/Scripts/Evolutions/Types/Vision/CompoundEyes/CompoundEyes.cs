@@ -10,9 +10,9 @@ public class CompoundEyes: Evolution
     
     public CompoundEyes(EvolutionConfig config) : base(config) {}
 
-    public override void Apply(PlayerStats playerStats)
+    public override void Apply()
     {
-        base.Apply(playerStats);
+        base.Apply();
         Player.Vision.OnFoodDiscovered += OnFoodDiscovered;
     }
 

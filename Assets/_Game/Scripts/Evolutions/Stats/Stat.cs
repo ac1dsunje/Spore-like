@@ -10,15 +10,24 @@ public class Stat
     [field: SerializeField] public float Value {get; private set;}
     [field: SerializeField] public float BasicValue {get; private set;}
 
-    public Stat(EvolutionType type, float value)
+    public bool UsePercentValue {get; private set;}
+
+    public Stat(Stat stat)
     {
-        Type = type;
-        Value = value;
+        Type = stat.Type;
+        Value = stat.Value;
+        BasicValue = stat.BasicValue;
     }
 
-    public void SetValue(float value)
+    public void UseRarity(float scaler)
     {
-        Value = value;
+        Value *= scaler;
+        BasicValue *= scaler;
+    }
+
+    public void SetPercentValue(bool set)
+    {
+        UsePercentValue = set;
     }
 }
 }

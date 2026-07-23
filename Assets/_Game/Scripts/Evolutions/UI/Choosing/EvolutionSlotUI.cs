@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,7 @@ public class EvolutionSlotUI : MonoBehaviour
     [SerializeField] private Button _button;
     [SerializeField] private TextMeshProUGUI _name;
     [SerializeField] private TextMeshProUGUI _description;
+    [SerializeField] private TextMeshProUGUI _statsDescription;
 
     private Evolution _evolution;
 
@@ -29,6 +31,27 @@ public class EvolutionSlotUI : MonoBehaviour
         _rarityFrameImage.sprite = evolution.Frame;
         _name.text = $"{evolution.Name}";
         _description.text = $"{evolution.Config.Description}";
+        _statsDescription.text = GetStatsDescription();
+    }
+    
+    private string GetStatsDescription()
+    {
+        var text = new StringBuilder();
+
+        foreach (var stat in _evolution.Stats)
+        {
+            text.Append($"{stat.Type} +");
+            if (stat.UsePercentValue)
+            {
+                text.AppendLine($"{stat.Value}%");
+            }
+            else
+            {
+                text.AppendLine($"{stat.BasicValue}");
+            }
+        }
+
+        return text.ToString();
     }
 
     private void OnButtonClick()

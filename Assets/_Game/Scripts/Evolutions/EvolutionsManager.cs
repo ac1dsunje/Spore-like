@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using _Game.Scripts.Evolutions.UI;
 using _Game.Scripts.Evolutions.UI.Choosing;
 using _Game.Scripts.Player;
 using _Game.Scripts.Rarities;
@@ -29,6 +28,7 @@ public class EvolutionsManager: MonoBehaviour
         foreach (var evolution in _evolutionsDatabase.GenerateEvolutions())
         {
             _evolutions.Add(evolution);
+            evolution.SetPlayer(_player.Stats);
             evolution.OnLevelUp += OnEvolutionLevelUp;
         }
     }
@@ -44,7 +44,7 @@ public class EvolutionsManager: MonoBehaviour
 
     private void OnEvolutionChosen(Evolution evolution)
     {
-        evolution.Apply(_player.Stats);
+        evolution.Apply();
         _player.Stats.AddEvolution(evolution);
 
         UnlockEvolutions(evolution);

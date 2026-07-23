@@ -37,6 +37,11 @@ public class PlayerStats: IDisposable
         Health.Initialize(_stats.GetValueOrDefault(EvolutionType.MaxHealth));
     }
 
+    public bool HasStat(Stat stat)
+    {
+        return _stats.ContainsKey(stat.Type);
+    }
+    
     public void AddEvolution(Evolution evolution)
     {
         _evolutions.Add(evolution);
@@ -51,7 +56,7 @@ public class PlayerStats: IDisposable
         {
             if (!_stats.ContainsKey(stat.Type))
             {
-                _stats.Add(stat.Type, stat.Value);
+                _stats.Add(stat.Type, stat.BasicValue);
             }
             else
             {

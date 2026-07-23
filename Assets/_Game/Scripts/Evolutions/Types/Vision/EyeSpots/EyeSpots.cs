@@ -10,9 +10,9 @@ public class EyeSpots: Evolution
 
     private readonly List<FoodItem> _discoveredFood = new();
 
-    public override void Apply(PlayerStats playerStats)
+    public override void Apply()
     {
-        base.Apply(playerStats);
+        base.Apply();
         Player.Vision.OnFoodDiscovered += OnFoodDiscovered;
     }
 
