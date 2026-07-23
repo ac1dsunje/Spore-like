@@ -42,20 +42,20 @@ public abstract class Evolution: IDisposable
     
     public void SetRarity(RarityConfig rarity)
     {
-        _rarity = rarity;
-        Name = $"{_rarity.Name} {Config.Name}";
-        foreach (var stat in Stats)
-        {
-            stat.UseRarity(_rarity.Scaler);
-        }
+        UseRarity(rarity);
 
-        _level = _rarity.Index;
-        _levelSet = Config.ExperienceForFirstLevel + (int)(Config.ExperienceForFirstLevel / 2f * (Math.Pow(2, _level - 1) - 1));
-        
-        Frame = _rarity.Sprite;
+        SetInitialLevel(_rarity.Index);
     }
 
     public void UpdateRarity(RarityConfig rarity)
+    {
+        UseRarity(rarity);
+        
+        OnRarityChanged?.Invoke();
+        Player.UpdateEvolution(this);
+    }
+
+    private void UseRarity(RarityConfig rarity)
     {
         _rarity = rarity;
         Name = $"{_rarity.Name} {Config.Name}";
@@ -63,9 +63,13 @@ public abstract class Evolution: IDisposable
         {
             stat.UseRarity(_rarity.Scaler);
         }
-        Frame = _rarity.Sprite;
-        OnRarityChanged?.Invoke();
-        Player.UpdateEvolution(this);
+        Frame = _rarity.Sprite; 
+    }
+
+    private void SetInitialLevel(int value)
+    {
+        _level = value;
+        _levelSet = Config.ExperienceForFirstLevel + (int)(Config.ExperienceForFirstLevel / 2f * (Math.Pow(2, _level - 1) - 1));
     }
 
     public void SetPlayer(PlayerStats playerStats)

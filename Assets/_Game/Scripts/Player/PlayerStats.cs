@@ -75,7 +75,11 @@ public class PlayerStats: IDisposable
 
     public void UpdateEvolution(Evolution evolution)
     {
-        Debug.Log("Update evolution");
+        foreach (var stat in evolution.Stats)
+        {
+            
+        }
+        Debug.Log("ToDo: Update evolution");
     }
 
     private void AddInitialStats(List<Stat> stats)
