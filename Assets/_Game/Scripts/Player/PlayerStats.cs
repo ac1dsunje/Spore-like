@@ -4,20 +4,17 @@ using _Game.Scripts.Evolutions;
 using _Game.Scripts.Evolutions.Stats;
 using _Game.Scripts.Player.Modules.Experience;
 using _Game.Scripts.Player.Modules.Health;
+using _Game.Scripts.Player.Modules.Mouth;
 using _Game.Scripts.Player.Modules.Movement;
 using _Game.Scripts.Player.Modules.Vision;
-using _Game.Scripts.World.Food;
 
 namespace _Game.Scripts.Player
 {
-public class PlayerStats
+public class PlayerStats: IDisposable
 {
     public float DamageReflection => _stats.GetValueOrDefault(EvolutionType.DamageReflection);
-    public float EatingSpeed => _stats.GetValueOrDefault(EvolutionType.EatingSpeed);
     public float PhysicalDamage => _stats.GetValueOrDefault(EvolutionType.PhysicalDamage);
     public float Stamina => _stats.GetValueOrDefault(EvolutionType.Stamina);
-
-    public event Action<FoodItem> OnFoodEaten;
     
     // Modules
     
@@ -25,6 +22,7 @@ public class PlayerStats
     public MovementStats Movement { get; } = new();
     public ExperienceStats Experience { get; }  = new();
     public HealthStats Health { get; } = new();
+    public EatStats EatStats { get; } = new();
     
     //Evolutions
     private readonly List<Evolution> _evolutions = new();
@@ -35,16 +33,8 @@ public class PlayerStats
     public PlayerStats(PlayerConfig config)
     {
         AddStats(config.Stats);
-        Experience.Initialize(config.ExperienceConfig);
+        Experience.Initialize(config.ExperienceConfig, EatStats);
         Health.Initialize(_stats.GetValueOrDefault(EvolutionType.MaxHealth));
-    }
-
-    public void Eat(int amount, FoodItem food)
-    {
-        Experience.AddExperience(amount);
-        OnFoodEaten?.Invoke(food);
-
-        food.Release();
     }
 
     public void AddEvolution(Evolution evolution)
@@ -102,8 +92,16 @@ public class PlayerStats
                 case EvolutionType.RegenerationSpeed:
                     Health.UpdateRegeneration(_stats[EvolutionType.RegenerationSpeed]);
                     break;
+                case EvolutionType.EatingSpeed:
+                    EatStats.UpdateEatingSpeed(_stats[EvolutionType.EatingSpeed]);
+                    break;
             }
         }
+    }
+
+    public void Dispose()
+    {
+        Experience.Dispose();
     }
 }
 }

@@ -1,8 +1,9 @@
 ﻿using System;
+using _Game.Scripts.Player.Modules.Mouth;
 
 namespace _Game.Scripts.Player.Modules.Experience
 {
-public class ExperienceStats
+public class ExperienceStats: IDisposable
 {
     private int _levelSet;
     private int _experience;
@@ -13,13 +14,18 @@ public class ExperienceStats
     public event Action<int> OnExperienceGained;
     public event Action<int> OnLevelChanged;
     
-    public void Initialize(ExperienceConfig config)
+    private EatStats _eatStats;
+    
+    public void Initialize(ExperienceConfig config, EatStats eatStats)
     {
         _levelSet = config.LevelSet;
         _levelScaler = config.LevelScaler;
+        
+        _eatStats = eatStats;
+        _eatStats.OnFoodPointsAchieved += AddExperience;
     }
-    
-    public void AddExperience(int amount)
+
+    private void AddExperience(int amount)
     {
         OnExperienceGained?.Invoke(amount);
         UpdateExperience(amount);
@@ -42,6 +48,11 @@ public class ExperienceStats
             _levelSet += _levelScaler;
             _levelScaler++;
         }
+    }
+
+    public void Dispose()
+    {
+        _eatStats.OnFoodPointsAchieved -= AddExperience;
     }
 }
 }

@@ -1,24 +1,17 @@
-﻿using _Game.Scripts.Player.Modules;
-using _Game.Scripts.Player.Modules.Movement;
-using _Game.Scripts.World.Food;
+﻿using _Game.Scripts.Player.Modules.Movement;
 using UnityEngine;
 
 namespace _Game.Scripts.Player
 {
-public class PlayerController: MonoBehaviour, IEater, IDamageAble
+public class PlayerController: MonoBehaviour, IDamageAble
 {
     public PlayerStats Stats { get; private set; }
-    private PlayerMovement _playerMovement;
+    private PlayerMovement _movement;
     
     public void Construct(PlayerStats stats, PlayerMovement playerMovement)
     {
         Stats = stats;
-        _playerMovement = playerMovement;
-    }
-    
-    public void Eat(int amount, FoodItem food)
-    {
-        Stats.Eat(amount, food);
+        _movement = playerMovement;
     }
 
     public float TakeDamage(float amount)
@@ -26,8 +19,13 @@ public class PlayerController: MonoBehaviour, IEater, IDamageAble
         return Stats.TakeDamage(amount);
     }
 
-    public void Disable() => _playerMovement.Disable();
+    public void Disable() => _movement.Disable();
 
-    public void Enable() => _playerMovement.Enable();
+    public void Enable() => _movement.Enable();
+
+    private void OnDestroy()
+    {
+        Stats.Dispose();
+    }
 }
 }

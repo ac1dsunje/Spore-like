@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.World.Food
 {
-public class FoodItem: MonoBehaviour
+public class FoodItem: MonoBehaviour, IFood
 {
     [field: SerializeField] public int FeedAmount { get; private set; } = 1;
     
@@ -12,17 +12,11 @@ public class FoodItem: MonoBehaviour
     public void SetRarity(RaritiesDatabase raritiesData)
     {
         _rarity = raritiesData.GetRandom();
-    }
-    
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        other.TryGetComponent<IEater>(out var eater);
-        eater?.Eat(FeedAmount * _rarity.FoodScaler, this);
+        FeedAmount *= _rarity.FoodScaler;
     }
 
-    public void Release()
-    {
-        Destroy(gameObject);
-    }
+    public FoodItem Get() => this;
+
+    public void Release() => Destroy(gameObject);
 }
 }

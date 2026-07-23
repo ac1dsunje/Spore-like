@@ -1,6 +1,7 @@
 using _Game.Scripts.Evolutions;
 using _Game.Scripts.Evolutions.UI.Choosing;
 using _Game.Scripts.Player;
+using _Game.Scripts.Player.Modules.Mouth;
 using _Game.Scripts.Player.Modules.Movement;
 using _Game.Scripts.Player.Modules.Vision;
 using _Game.Scripts.UI;
@@ -15,6 +16,7 @@ public class EntryPoint : MonoBehaviour
     [SerializeField] private PlayerConfig _playerConfig;
     [SerializeField] private PlayerVision _playerVision;
     [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private PlayerMouth _playerMouth;
     [Header("UI")]
     [SerializeField] private OverlayScreen _overlayScreen;
     [SerializeField] private EvolutionChooseScreen _evolutionChooseScreen;
@@ -29,6 +31,7 @@ public class EntryPoint : MonoBehaviour
 
         _playerVision.Construct(playerStats.Vision);
         _playerMovement.Construct(playerStats.Movement);
+        _playerMouth.Construct(playerStats.EatStats);
         _player.Construct(playerStats, _playerMovement);
         
         _evolutionsManager.Construct(_player, _evolutionChooseScreen);
