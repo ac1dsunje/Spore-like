@@ -1,0 +1,23 @@
+{
+  "id": "conv-1785002914743-expxuu66c",
+  "providerId": "claude",
+  "title": "привет",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1785002914749,
+  "updatedAt": 1785006450495,
+  "lastResponseAt": 1785006039916,
+  "sessionId": "8ca12e08-2a36-49b6-a4e3-a4662b957537",
+  "selectedModel": "haiku",
+  "providerState": {
+    "providerSessionId": "8ca12e08-2a36-49b6-a4e3-a4662b957537"
+  },
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 0,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 0,
+    "contextWindow": 200000,
+    "contextTokens": 0,
+    "percentage": 0
+  }
+}
