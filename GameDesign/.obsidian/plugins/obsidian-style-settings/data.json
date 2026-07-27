@@ -27,7 +27,6 @@
   "baseline-style@@hover-ribbon": false,
   "baseline-style@@hover-sidedock": false,
   "baseline-style@@plugins-grid-off": false,
-  "baseline-style@@colorful-frame": false,
   "baseline-style@@tab-right-style": "tab-right-labeled",
   "baseline-style@@background-contrast-dark": "contrast-dark-black",
   "baseline-style@@hover-sidedock-trigger-area": "4px",
@@ -71,5 +70,6 @@
   "baseline-style@@active-line-style": "active-line-off",
   "baseline-style@@line-width": "700px",
   "baseline-style@@inline-title-font": "unbounded ",
-  "baseline-style@@banner-off": false
+  "baseline-style@@banner-off": false,
+  "baseline-style@@callouts-style": "callouts-default"
 }
