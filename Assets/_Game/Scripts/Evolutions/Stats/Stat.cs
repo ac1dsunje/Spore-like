@@ -8,6 +8,7 @@ public class Stat
 {
     [field: SerializeField] public EvolutionType Type {get; private set;}
     [field: SerializeField] public float Value {get; private set;}
+    [field: SerializeField] public bool UpdatesByRarity {get; private set;}
     
     public float CurrentValue {get; private set;}
 
@@ -19,7 +20,7 @@ public class Stat
 
     public void UseRarity(float scaler)
     {
-        CurrentValue = Value * scaler;
+        CurrentValue = UpdatesByRarity ? Value * scaler : Value;
     }
 }
 }
