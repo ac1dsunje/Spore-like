@@ -1,7 +1,7 @@
 ﻿using _Game.Scripts.Player;
 using UnityEngine;
 
-namespace _Game.Scripts.World.Obstacles
+namespace _Game.Scripts.World.Biome.Chunk.Environment.Obstacles
 {
 public class Spike: MonoBehaviour
 {

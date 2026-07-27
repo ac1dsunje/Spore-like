@@ -5,12 +5,15 @@ using _Game.Scripts.Player.Modules.Mouth;
 using _Game.Scripts.Player.Modules.Movement;
 using _Game.Scripts.Player.Modules.Vision;
 using _Game.Scripts.UI;
+using _Game.Scripts.World;
 using UnityEngine;
 
 namespace _Game.Scripts
 {
 public class EntryPoint : MonoBehaviour
 {
+    [Header("World")]
+    [SerializeField] private WorldGenerator _worldGenerator;
     [Header("Player")]
     [SerializeField] private PlayerController _player;
     [SerializeField] private PlayerConfig _playerConfig;
@@ -33,6 +36,8 @@ public class EntryPoint : MonoBehaviour
         _playerMovement.Construct(playerStats.Movement);
         _playerMouth.Construct(playerStats.EatModule);
         _player.Construct(playerStats);
+        
+        _worldGenerator.Construct(_player.transform);
         
         _evolutionsManager.Construct(_player, _evolutionChooseScreen);
     }

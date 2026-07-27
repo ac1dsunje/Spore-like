@@ -2,7 +2,7 @@
 using _Game.Scripts.World.Food;
 using UnityEngine;
 
-namespace _Game.Scripts.World.Chunk.Environment.Plants
+namespace _Game.Scripts.World.Biome.Chunk.Environment.Plants
 {
 public class Plant: MonoBehaviour
 {

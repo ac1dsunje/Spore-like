@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c5e318468840168bc12909558c5b5a, type: 3}
+  m_Name: Sand
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Biome.BiomeConfig
+  <Tiles>k__BackingField:
+  - {fileID: 11400000, guid: 4f64627fa3324d44c94426114142bb1c, type: 2}
+  - {fileID: 11400000, guid: 52a5d9006ffbf0541a6027aec7b3143a, type: 2}
+  - {fileID: 11400000, guid: f8e352c0b4746e54ca6f665dfb0c9693, type: 2}
+  - {fileID: 11400000, guid: e9a4ec9881c774b4ebde688e26065859, type: 2}
+  - {fileID: 11400000, guid: de3893987b9af6349840ade6e268491c, type: 2}
+  - {fileID: 11400000, guid: b211fe7c1b5e8e84eb626ea4dc72738f, type: 2}
