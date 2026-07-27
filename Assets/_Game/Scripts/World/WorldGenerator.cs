@@ -54,17 +54,26 @@ public class WorldGenerator: MonoBehaviour
         {
             for (var y = _playerPos().y - GetDistance(); y < _playerPos().y + GetDistance(); y++)
             {
-                PlaceTile(new Vector3Int(x, y, 0));
+                TryPlaceTile(new Vector3Int(x, y, 0));
             }
         }
     }
 
-    private void PlaceTile(Vector3Int position)
+    private void TryPlaceTile(Vector3Int position)
     {
         var biome = CheckBiome(position);
         if (_tilemaps[biome.Height].HasTile(position)) return;
         
         _tilemaps[biome.Height].SetTile(position,CheckBiome(position).RandomTile);
+        TryPlaceEnvironment(position, biome);
+    }
+
+    private void TryPlaceEnvironment(Vector3Int position, BiomeConfig biome)
+    {
+        var rand = Random.Range(0, 100);
+        if (rand >= biome.ChanceEnvironment) return;
+        var environment = biome.GetRandomEnvironment();
+        Instantiate(environment.Prefabs[Random.Range(0, environment.Prefabs.Length)], position, Quaternion.identity, _tilemaps[biome.Height].transform);
     }
 
     private BiomeConfig CheckBiome(Vector3Int position)
