@@ -15,13 +15,15 @@ MonoBehaviour:
   <Name>k__BackingField: Compound eyes
   <Stats>k__BackingField:
   - <Type>k__BackingField: 1
-    <Value>k__BackingField: 0.25
+    <Value>k__BackingField: 1
+    <UpdatesByRarity>k__BackingField: 0
   - <Type>k__BackingField: 2
     <Value>k__BackingField: 0.15
+    <UpdatesByRarity>k__BackingField: 0
   <Description>k__BackingField: Thousands of tiny lenses work together to reveal
     a wider world
   <Sprite>k__BackingField: {fileID: -7076529034579859471, guid: d6c9da9091c4c0b4ba595677bdd2e09c, type: 3}
-  <State>k__BackingField: 0
+  <State>k__BackingField: 1
   <Unlocks>k__BackingField: []
   <Blocks>k__BackingField:
   - {fileID: 11400000, guid: c7ed36e692a39ff4094908430d853439, type: 2}

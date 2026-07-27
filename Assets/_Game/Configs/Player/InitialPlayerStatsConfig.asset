@@ -14,12 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Evolutions.Stats.StatsConfig
   <Stats>k__BackingField:
   - <Type>k__BackingField: 1
-    <Value>k__BackingField: 1
+    <Value>k__BackingField: 3
+    <UpdatesByRarity>k__BackingField: 0
   - <Type>k__BackingField: 0
     <Value>k__BackingField: 1
+    <UpdatesByRarity>k__BackingField: 0
   - <Type>k__BackingField: 3
     <Value>k__BackingField: 0.5
+    <UpdatesByRarity>k__BackingField: 0
   - <Type>k__BackingField: 7
     <Value>k__BackingField: 1
+    <UpdatesByRarity>k__BackingField: 0
   - <Type>k__BackingField: 10
     <Value>k__BackingField: 50
+    <UpdatesByRarity>k__BackingField: 0
