@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using _Game.Scripts.Player;
-using _Game.Scripts.World.Food;
 using UnityEngine;
 
 namespace _Game.Scripts.Evolutions.Types.Vision.CameraEyes
