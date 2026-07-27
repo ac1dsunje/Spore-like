@@ -2,6 +2,7 @@
 using _Game.Scripts.World.Biome;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Random = UnityEngine.Random;
 
 namespace _Game.Scripts.World
 {
@@ -9,22 +10,35 @@ public class WorldGenerator: MonoBehaviour
 {
     [SerializeField] private int _chunkSize = 16;
     [SerializeField] private int _renderDistanceChunks = 1;
-    [SerializeField] private Tilemap _tilemap;
     [SerializeField] private List<BiomeConfig> _biomeConfigs;
+    [SerializeField] private Tilemap[] _tilemaps;
+    
+    [Header("Noise Settings")]
+    [SerializeField] private float _scale = 0.03f;
+    [SerializeField] private int _seed;
     
     private Transform _player;
+
+    private void Awake()
+    {
+        _seed = Random.Range(0, 99999);
+    }
 
     public void Construct(Transform player)
     {
         _player = player;
-        _tilemap.ClearAllTiles();
+        foreach (var tilemap in _tilemaps)
+        {
+            tilemap.ClearAllTiles();
+        }
     }
 
-    private Vector3Int _playerPos() => new(
-                                            (int)_player.position.x, 
-                                            (int)_player.position.y, 
-                                            (int)_player.position.z
-                                        );
+    private Vector3Int _playerPos() => 
+        new(
+            (int)_player.position.x, 
+            (int)_player.position.y, 
+            (int)_player.position.z
+        );
 
     private void Update()
     {
@@ -47,14 +61,25 @@ public class WorldGenerator: MonoBehaviour
 
     private void PlaceTile(Vector3Int position)
     {
-        if (_tilemap.HasTile(position)) return;
+        var biome = CheckBiome(position);
+        if (_tilemaps[biome.Height].HasTile(position)) return;
         
-        _tilemap.SetTile(position, GetRandomBiomeConfig(_biomeConfigs).RandomTile);
+        _tilemaps[biome.Height].SetTile(position,CheckBiome(position).RandomTile);
     }
 
-    private BiomeConfig GetRandomBiomeConfig(List<BiomeConfig> biomeConfigs)
+    private BiomeConfig CheckBiome(Vector3Int position)
     {
-        return biomeConfigs[Random.Range(0, biomeConfigs.Count)];
+        var x = (position.x + _seed * 1000f) * _scale;
+        var y = (position.y + _seed * 1000f) * _scale;
+    
+        var noiseValue = Mathf.PerlinNoise(x, y);
+    
+        var biomeCount = _biomeConfigs.Count;
+        var biomeIndex = Mathf.FloorToInt(noiseValue * biomeCount);
+    
+        biomeIndex = Mathf.Clamp(biomeIndex, 0, biomeCount - 1);
+    
+        return _biomeConfigs[biomeIndex];
     }
 }
 }
