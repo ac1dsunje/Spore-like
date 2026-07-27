@@ -1,34 +1,35 @@
 ﻿using System.Collections.Generic;
 using _Game.Scripts.Player;
 using _Game.Scripts.World.Food;
+using UnityEngine;
 
 namespace _Game.Scripts.Evolutions.Types.Vision.CameraEyes
 {
 public class CameraEyes: Evolution
 {
-    private readonly List<FoodItem> _discoveredFood = new();
+    private readonly List<GameObject> _discoveredObjects = new();
     
     public CameraEyes(EvolutionConfig config) : base(config) {}
 
     public override void Apply()
     {
         base.Apply();
-        Player.Vision.OnFoodDiscovered += OnFoodDiscovered;
+        Player.Vision.OnGameObjectDiscovered += OnGameObjectDiscovered;
     }
 
-    private void OnFoodDiscovered(FoodItem food)
+    private void OnGameObjectDiscovered(GameObject gameObject)
     {
-        if (_discoveredFood.Contains(food)) return;
+        if (_discoveredObjects.Contains(gameObject)) return;
         
-        _discoveredFood.Add(food);
-        UpdateExperience(food.FeedAmount);
+        _discoveredObjects.Add(gameObject);
+        UpdateExperience(1);
     }
 
     public override void Dispose()
     {
         if (Player == null) return;
             
-        Player.Vision.OnFoodDiscovered -= OnFoodDiscovered;
+        Player.Vision.OnGameObjectDiscovered -= OnGameObjectDiscovered;
     }
 }
 }

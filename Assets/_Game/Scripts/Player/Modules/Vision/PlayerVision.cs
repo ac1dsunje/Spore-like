@@ -28,10 +28,8 @@ public class PlayerVision: MonoBehaviour
         
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent<FoodItem>(out var food))
-        {
-            _module.DiscoverFood(food);
-        }
+        if (other.CompareTag("Ground")) return;
+        _module.DiscoverGameObject(other.gameObject);
     }
 
     private void OnDestroy()
