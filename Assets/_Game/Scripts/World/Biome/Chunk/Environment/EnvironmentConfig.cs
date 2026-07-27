@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Game.Scripts.World.Chunk.Environment
+namespace _Game.Scripts.World.Biome.Chunk.Environment
 {
 [CreateAssetMenu(fileName = "New Environment Config", menuName = "Configs/Game/World/Chunk/Environment")]
 public class EnvironmentConfig: ScriptableObject
