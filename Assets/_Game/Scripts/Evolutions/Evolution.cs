@@ -13,7 +13,7 @@ public abstract class Evolution: IDisposable
     public EvolutionState State { get; private set; }
     public string Name { get; private set; }
     public List<Stat> Stats { get; private set; } = new();
-    public Sprite Frame { get; private set; }
+    public Sprite Frame => _rarity.Sprite;
     
     private RarityConfig _rarity;
     protected PlayerStats Player;
@@ -63,7 +63,6 @@ public abstract class Evolution: IDisposable
         {
             stat.UseRarity(_rarity.Scaler);
         }
-        Frame = _rarity.Sprite; 
     }
 
     private void SetInitialLevel(int value)
@@ -100,8 +99,8 @@ public abstract class Evolution: IDisposable
     {
         _experiencePoints += amount;
         OnEvolutionExperienceChanged?.Invoke(_experiencePoints);
-
-        if (_experiencePoints >= _levelSet)
+        
+        while (_experiencePoints >= _levelSet)
         {
             UpdateLevel();
             UpdateExperience(-_levelSet);
