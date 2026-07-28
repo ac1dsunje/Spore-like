@@ -11,14 +11,14 @@ public class AttackModule: StatModule
 
     public AttackModule(PlayerStats playerStats): base(playerStats) {}
 
-    protected override void OnStatUpdated(EvolutionType type, float value)
+    protected override void OnStatUpdated(StatType type, float value)
     {
         switch (type)
         {
-            case EvolutionType.DamageReflection:
+            case StatType.DamageReflection:
                 UpdateDamageReflection(value);
                 break;
-            case EvolutionType.PhysicalDamage:
+            case StatType.PhysicalDamage:
                 UpdatePhysicalDamage(value);
                 break;
         }

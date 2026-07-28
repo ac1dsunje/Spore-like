@@ -6,7 +6,7 @@ namespace _Game.Scripts.Evolutions.Stats
 [Serializable]
 public class Stat
 {
-    [field: SerializeField] public EvolutionType Type {get; private set;}
+    [field: SerializeField] public StatType Type {get; private set;}
     [field: SerializeField] public float Value {get; private set;}
     [field: SerializeField] public bool UpdatesByRarity {get; private set;}
     

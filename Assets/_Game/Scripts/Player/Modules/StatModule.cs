@@ -13,7 +13,7 @@ public abstract class StatModule: IDisposable
         _stats.OnStatUpdated += OnStatUpdated;
     }
 
-    protected abstract void OnStatUpdated(EvolutionType type, float value);
+    protected abstract void OnStatUpdated(StatType type, float value);
     
     public virtual void Dispose()
     {

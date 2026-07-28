@@ -21,30 +21,26 @@ public class PlayerStats: IDisposable
     public HealthModule Health { get; private set; }
     public EatModule EatModule { get; private set; }
     public AttackModule Attack { get; private set; }
-    private List<StatModule> _modules = new();
+    private readonly List<StatModule> _modules = new();
     public ExperienceController Experience { get; }
     //Evolutions
     private readonly List<Evolution> _evolutions = new();
     public event Action<Evolution> OnEvolutionAdded;
 
     //Stats
-    private readonly Dictionary<EvolutionType, float> _stats = new();
-    private readonly Dictionary<EvolutionType, float> _basicStats = new();
-    private readonly Dictionary<Evolution, Dictionary<EvolutionType, float>> _evolutionStats = new();
+    private readonly Dictionary<StatType, float> _stats = new();
+    private readonly Dictionary<StatType, float> _basicStats = new();
+    private readonly Dictionary<Evolution, Dictionary<StatType, float>> _evolutionStats = new();
 
-    public event Action<EvolutionType, float> OnStatUpdated;
-    
-    private PlayerConfig _config;
-    
-    
+    public event Action<StatType, float> OnStatUpdated;
+
+
     public PlayerStats(PlayerConfig config)
     {
-        _config = config;
-        
         AddModules();
         Experience = new(config.ExperienceConfig, EatModule);
         
-        AddInitialStats(_config.InitialConfig.Stats);
+        AddInitialStats(config.InitialConfig.Stats);
     }
 
     private void AddModules()
@@ -77,7 +73,7 @@ public class PlayerStats: IDisposable
 
     public void UpdateEvolution(Evolution evolution)
     {
-        var changedStats = new HashSet<EvolutionType>();
+        var changedStats = new HashSet<StatType>();
 
         foreach (var stat in evolution.Stats)
         {
@@ -112,7 +108,7 @@ public class PlayerStats: IDisposable
         if (_evolutionStats.ContainsKey(evolution))
             return;
 
-        var stats = new Dictionary<EvolutionType, float>();
+        var stats = new Dictionary<StatType, float>();
 
         foreach (var stat in evolution.Stats)
         {
@@ -122,7 +118,7 @@ public class PlayerStats: IDisposable
         _evolutionStats.Add(evolution, stats);
     }
 
-    private void RecalculateStat(EvolutionType type)
+    private void RecalculateStat(StatType type)
     {
         var value = _basicStats.GetValueOrDefault(type, 0f);
 
@@ -139,7 +135,7 @@ public class PlayerStats: IDisposable
         UpdateStat(type);
     }
 
-    private void UpdateStat(EvolutionType type) => OnStatUpdated?.Invoke(type, _stats[type]);
+    private void UpdateStat(StatType type) => OnStatUpdated?.Invoke(type, _stats[type]);
 
     public void Dispose()
     {

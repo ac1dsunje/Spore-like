@@ -16,14 +16,14 @@ public class HealthModule: StatModule
 
     public HealthModule(PlayerStats stats): base(stats) {}
 
-    protected override void OnStatUpdated(EvolutionType type, float value)
+    protected override void OnStatUpdated(StatType type, float value)
     {
         switch (type)
         {
-            case EvolutionType.MaxHealth:
+            case StatType.MaxHealth:
                 UpdateMaxHealth(value);
                 break;
-            case EvolutionType.RegenerationSpeed:
+            case StatType.Regeneration:
                 UpdateRegeneration(value);
                 break;
         }

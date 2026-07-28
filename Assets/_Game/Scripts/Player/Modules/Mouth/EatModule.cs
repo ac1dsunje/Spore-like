@@ -13,11 +13,11 @@ public class EatModule: StatModule
 
     public EatModule(PlayerStats stats): base(stats) {}
 
-    protected override void OnStatUpdated(EvolutionType type, float value)
+    protected override void OnStatUpdated(StatType type, float value)
     {
         switch (type)
         {
-            case EvolutionType.EatingSpeed:
+            case StatType.EatingSpeed:
                 UpdateEatingSpeed(value);
                 break;
         }

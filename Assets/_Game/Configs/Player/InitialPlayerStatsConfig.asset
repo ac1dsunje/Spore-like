@@ -28,3 +28,6 @@ MonoBehaviour:
   - <Type>k__BackingField: 10
     <Value>k__BackingField: 50
     <UpdatesByRarity>k__BackingField: 0
+  - <Type>k__BackingField: 5
+    <Value>k__BackingField: 1
+    <UpdatesByRarity>k__BackingField: 0

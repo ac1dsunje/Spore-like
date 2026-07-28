@@ -15,14 +15,14 @@ public class VisionModule: StatModule
 
     public VisionModule(PlayerStats stats): base(stats) {}
 
-    protected override void OnStatUpdated(EvolutionType type, float value)
+    protected override void OnStatUpdated(StatType type, float value)
     {
         switch (type)
         {
-            case EvolutionType.VisionRadius:
+            case StatType.VisionRadius:
                 UpdateRadius(value);
                 break;
-            case EvolutionType.SensoricsRadius:
+            case StatType.SensoricsRadius:
                 UpdateSensoricsRadius(value);
                 break;
         }

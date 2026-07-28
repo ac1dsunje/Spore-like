@@ -7,27 +7,27 @@ public class MovementModule: StatModule
     public float MoveSpeed { get; private set; }
     public float Acceleration { get; private set; }
     public float Inertia { get; private set; }
-    public float Stamina { get; private set; }
+    public float StaminaRecovery { get; private set; }
 
     public MovementModule(PlayerStats stats): base(stats) {}
 
-    protected override void OnStatUpdated(EvolutionType type, float value)
+    protected override void OnStatUpdated(StatType type, float value)
     {
         switch (type)
         {
-            case EvolutionType.MoveSpeed:
+            case StatType.MoveSpeed:
                 UpdateMoveSpeed(value);
                 break;
 
-            case EvolutionType.Acceleration:
+            case StatType.Acceleration:
                 UpdateAcceleration(value);
                 break;
 
-            case EvolutionType.Inertia:
+            case StatType.Inertia:
                 UpdateInertia(value);
                 break;
-            case EvolutionType.Stamina:
-                UpdateStamina(value);
+            case StatType.StaminaRecovery:
+                UpdateStaminaRecovery(value);
                 break;
         }
     }
@@ -37,6 +37,6 @@ public class MovementModule: StatModule
     private void UpdateAcceleration(float newValue) => Acceleration = newValue;
 
     private void UpdateInertia(float newValue) => Inertia = newValue;
-    private void UpdateStamina(float newValue) => Stamina = newValue;
+    private void UpdateStaminaRecovery(float newValue) => StaminaRecovery = newValue;
 }
 }
