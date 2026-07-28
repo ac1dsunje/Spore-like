@@ -14,7 +14,7 @@ public class EvolutionsDatabase: ScriptableObject
         var evolutions = new List<Evolution>();
         foreach(var evolution in Evolutions)
         {
-            var evo = evolution.CreateEvolution();
+            var evo = new Evolution(evolution);
             evolutions.Add(evo);
         }
         return evolutions;

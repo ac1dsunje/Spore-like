@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Game.Scripts.Evolutions.Experience;
+using _Game.Scripts.Evolutions.Experience.Types;
 using _Game.Scripts.Evolutions.Stats;
 using _Game.Scripts.Player;
 using _Game.Scripts.Rarities;
@@ -7,7 +9,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.Evolutions
 {
-public abstract class Evolution: IDisposable
+public class Evolution: IDisposable
 {
     public EvolutionConfig Config { get; private set; }
     public EvolutionState State { get; private set; }
@@ -16,29 +18,40 @@ public abstract class Evolution: IDisposable
     public Sprite Frame => _rarity.Sprite;
     
     private RarityConfig _rarity;
-    protected PlayerStats Player;
+    private PlayerStats _player;
     public event Action OnRarityChanged;
     
     //Level
+    private EvolutionExperienceFactory _expFactory = new();
+    private IEvolutionExperience _experienceManager;
     private int _experiencePoints;
     private int _levelSet;
     private int _level;
     public event Action<int> OnEvolutionExperienceChanged;
     public event Action<Evolution, int> OnLevelUp;
 
-    protected Evolution(EvolutionConfig config)
+    public Evolution(EvolutionConfig config)
     {
         SetConfig(config);
     }
 
-    private void SetConfig(EvolutionConfig config)
+    public void SetPlayer(PlayerStats playerStats)
     {
-        Config = config;
-
-        SetStats();
-        
-        SetState(Config.State);
+        _player = playerStats;
     }
+
+    public void Apply()
+    {
+        SetState(EvolutionState.IsActive);
+
+        _experienceManager = _expFactory.GetMethod(Config.ExperienceType, _player);
+
+        _experienceManager.OnExperienceGained += UpdateExperience;
+    }
+
+    public void Unlock() => SetState(EvolutionState.IsAble);
+
+    public void Block() => SetState(EvolutionState.IsLocked);
     
     public void SetRarity(RarityConfig rarity)
     {
@@ -52,7 +65,16 @@ public abstract class Evolution: IDisposable
         UseRarity(rarity);
         
         OnRarityChanged?.Invoke();
-        Player.UpdateEvolution(this);
+        _player.UpdateEvolution(this);
+    }
+
+    private void SetConfig(EvolutionConfig config)
+    {
+        Config = config;
+
+        SetStats();
+        
+        SetState(Config.State);
     }
 
     private void UseRarity(RarityConfig rarity)
@@ -71,20 +93,6 @@ public abstract class Evolution: IDisposable
         _levelSet = Config.ExperienceForFirstLevel + (int)(Config.ExperienceForFirstLevel / 2f * (Math.Pow(2, _level - 1) - 1));
     }
 
-    public void SetPlayer(PlayerStats playerStats)
-    {
-        Player = playerStats;
-    }
-
-    public virtual void Apply()
-    {
-        SetState(EvolutionState.IsActive);
-    }
-
-    public void Unlock() => SetState(EvolutionState.IsAble);
-
-    public void Block() => SetState(EvolutionState.IsLocked);
-
     private void SetStats()
     {
         Stats.Clear();
@@ -95,12 +103,12 @@ public abstract class Evolution: IDisposable
         }
     }
 
-    protected void UpdateExperience(int amount)
+    private void UpdateExperience(int amount)
     {
         _experiencePoints += amount;
         OnEvolutionExperienceChanged?.Invoke(_experiencePoints);
         
-        while (_experiencePoints >= _levelSet)
+        if (_experiencePoints >= _levelSet)
         {
             UpdateLevel();
             UpdateExperience(-_levelSet);
@@ -116,6 +124,11 @@ public abstract class Evolution: IDisposable
 
     private void SetState(EvolutionState state) => State = state;
 
-    public abstract void Dispose();
+    public void Dispose()
+    {
+        if (_experienceManager == null) return;
+        _experienceManager.Dispose();
+        _experienceManager.OnExperienceGained -= UpdateExperience;
+    }
 }
 }
