@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcff48d5c74c49db9a4cce20da6b7cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Obstacles.Spike
-  _damage: 1
+  _damage: 3
+  _health: 10
 --- !u!212 &993223613056865060
 SpriteRenderer:
   serializedVersion: 2

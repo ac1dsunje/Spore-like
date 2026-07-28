@@ -26,10 +26,11 @@ public class AttackModule: StatModule
     
     public float ReflectDamage(float damage)
     {
-        if (DamageReflection <= 0) return 0;
+        if (damage < 1f) return 0f;
 
         OnDamageReflected?.Invoke(1);
-        return damage * DamageReflection;
+        var returnedDamage = damage * DamageReflection;
+        return returnedDamage;
     }
 
     private void UpdateDamageReflection(float newValue) => DamageReflection = newValue;
