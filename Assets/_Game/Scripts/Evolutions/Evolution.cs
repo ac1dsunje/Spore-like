@@ -19,6 +19,8 @@ public class Evolution: IDisposable
     
     private RarityConfig _rarity;
     private PlayerStats _player;
+
+    public int Chance { get; private set; }
     public event Action OnRarityChanged;
     
     //Level
@@ -35,7 +37,16 @@ public class Evolution: IDisposable
         SetConfig(config);
     }
 
-    public void SetPlayer(PlayerStats playerStats) => _player = playerStats;
+    public void Initialize(PlayerStats playerStats, int chance)
+    {
+        _player = playerStats;
+        Chance = chance;
+    }
+
+    public void IncreaseChance(int amount)
+    {
+        Chance += amount;
+    }
 
     public void Apply()
     {

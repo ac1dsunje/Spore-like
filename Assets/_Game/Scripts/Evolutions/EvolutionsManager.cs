@@ -12,6 +12,8 @@ public class EvolutionsManager: MonoBehaviour
     [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
     [SerializeField] private RaritiesDatabase _raritiesDatabase;
     [SerializeField] private int _minEvolutions = 3;
+    [SerializeField] private int _basicChance = 10;
+    [SerializeField] private int _chanceScaler = 5;
     private PlayerController _player;
     private EvolutionChooseScreen _screen;
     
@@ -28,7 +30,7 @@ public class EvolutionsManager: MonoBehaviour
         foreach (var evolution in _evolutionsDatabase.GenerateEvolutions())
         {
             _evolutions.Add(evolution);
-            evolution.SetPlayer(_player.Stats);
+            evolution.Initialize(_player.Stats, _basicChance);
             evolution.OnLevelUp += OnEvolutionLevelUp;
         }
     }
@@ -49,6 +51,7 @@ public class EvolutionsManager: MonoBehaviour
 
         UnlockEvolutions();
         BlockEvolutions(evolution);
+        UpdateChances(evolution);
         
         _screen.Hide();
         _player.Enable();
@@ -62,6 +65,14 @@ public class EvolutionsManager: MonoBehaviour
             
             evolution.UpdateRarity(rarity);
             return;
+        }
+    }
+
+    private void UpdateChances(Evolution evolution)
+    {
+        foreach (var evo in _evolutions.Where(evo => evo.Config.CreatureType == evolution.Config.CreatureType))
+        {
+            evo.IncreaseChance(_chanceScaler);
         }
     }
 
@@ -113,19 +124,28 @@ public class EvolutionsManager: MonoBehaviour
     private List<Evolution> GetRandomEvolutions(int amount)
     {
         var availableEvolutions = _evolutions.Where(evolution => evolution.State == EvolutionState.IsAble).ToList();
-
         var slotsToFill = Mathf.Min(amount, availableEvolutions.Count);
-        
+    
         var evolutions = new List<Evolution>(slotsToFill);
-        
+    
         for (var i = 0; i < slotsToFill; i++)
         {
-            var randomEvolutionIndex = Random.Range(0, availableEvolutions.Count);
-            var chosen = availableEvolutions[randomEvolutionIndex];
-            
-            evolutions.Add(chosen);
-            
-            availableEvolutions.RemoveAt(randomEvolutionIndex);
+            var totalWeight = availableEvolutions.Sum(evolution => evolution.Chance);
+
+            var randomValue = Random.Range(0, totalWeight);
+
+            var currentWeight = 0;
+            for (var j = 0; j < availableEvolutions.Count; j++)
+            {
+                currentWeight += availableEvolutions[j].Chance;
+
+                if (randomValue >= currentWeight) continue;
+                
+                evolutions.Add(availableEvolutions[j]);
+                
+                availableEvolutions.RemoveAt(j); 
+                break;
+            }
         }
 
         return evolutions;
