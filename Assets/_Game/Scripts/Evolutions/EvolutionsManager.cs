@@ -47,7 +47,7 @@ public class EvolutionsManager: MonoBehaviour
         evolution.Apply();
         _player.Stats.AddEvolution(evolution);
 
-        UnlockEvolutions(evolution);
+        UnlockEvolutions();
         BlockEvolutions(evolution);
         
         _screen.Hide();
@@ -65,11 +65,28 @@ public class EvolutionsManager: MonoBehaviour
         }
     }
 
-    private void UnlockEvolutions(Evolution evolution)
+    private void UnlockEvolutions()
     {
-        foreach (var evo in _evolutions.Where(evo => evolution.Config.Unlocks.Contains(evo.Config)))
+        foreach (var evolution in _evolutions)
         {
-            evo.Unlock();
+            if (evolution.State != EvolutionState.IsHidden) continue;
+            
+            var counter = 0;
+            
+            foreach (var requiredConfig in evolution.Config.Requires)
+            {
+                var requiredEvolution = _evolutions.FirstOrDefault(e => e.Config == requiredConfig);
+                
+                if (requiredEvolution != null && requiredEvolution.State == EvolutionState.IsActive)
+                {
+                    counter++;
+                }
+            }
+
+            if (counter == evolution.Config.Requires.Length)
+            {
+                evolution.Unlock();
+            }
         }
     }
     

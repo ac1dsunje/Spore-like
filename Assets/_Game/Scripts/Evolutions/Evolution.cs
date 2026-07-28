@@ -13,7 +13,7 @@ public class Evolution: IDisposable
 {
     public EvolutionConfig Config { get; private set; }
     public EvolutionState State { get; private set; }
-    public string Name { get; private set; }
+    public string Name => _rarity ? $"{_rarity.Name} {Config.Name}" : $"{Config.Name}";
     public List<Stat> Stats { get; private set; } = new();
     public Sprite Frame => _rarity.Sprite;
     
@@ -77,7 +77,6 @@ public class Evolution: IDisposable
     private void UseRarity(RarityConfig rarity)
     {
         _rarity = rarity;
-        Name = $"{_rarity.Name} {Config.Name}";
         foreach (var stat in Stats)
         {
             stat.UseRarity(_rarity.Scaler);

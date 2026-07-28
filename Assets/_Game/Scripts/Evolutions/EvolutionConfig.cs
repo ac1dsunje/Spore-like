@@ -8,6 +8,8 @@ namespace _Game.Scripts.Evolutions
 [CreateAssetMenu(fileName = "NewEvolutionConfig", menuName = "Configs/Game/Evolutions/Evolution")]
 public class EvolutionConfig: ScriptableObject
 {
+    [Header("Creature")]
+    [field: SerializeField] public CreatureType CreatureType { get; private set; }
     [Header("Visual")]
     [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public string Description { get; private set; }
@@ -17,7 +19,7 @@ public class EvolutionConfig: ScriptableObject
     [Header("InitialState")]
     [field: SerializeField] public EvolutionState State { get; private set; }
     [Header("References")]
-    [field: SerializeField] public EvolutionConfig[] Unlocks { get; private set; }
+    [field: SerializeField] public EvolutionConfig[] Requires { get; private set; }
     [field: SerializeField] public EvolutionConfig[] Blocks { get; private set; }
     [Header("Experience")]
     [field: SerializeField] public int ExperienceForFirstLevel { get; private set; }
