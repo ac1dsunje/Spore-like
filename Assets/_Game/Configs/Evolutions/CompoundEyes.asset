@@ -13,16 +13,13 @@ MonoBehaviour:
   m_Name: CompoundEyes
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Evolutions.EvolutionConfig
   <CreatureType>k__BackingField: 2
-  <Name>k__BackingField: Camera Eyes
+  <Name>k__BackingField: Compound Eyes
   <Description>k__BackingField: Thousands of tiny lenses work together to reveal    
     a wider world
   <Sprite>k__BackingField: {fileID: -7076529034579859471, guid: d6c9da9091c4c0b4ba595677bdd2e09c, type: 3}
   <Stats>k__BackingField:
   - <Type>k__BackingField: 1
     <Value>k__BackingField: 1
-    <UpdatesByRarity>k__BackingField: 1
-  - <Type>k__BackingField: 2
-    <Value>k__BackingField: 0.25
     <UpdatesByRarity>k__BackingField: 1
   <State>k__BackingField: 1
   <Requires>k__BackingField: []

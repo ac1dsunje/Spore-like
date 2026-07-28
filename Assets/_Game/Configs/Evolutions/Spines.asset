@@ -20,7 +20,7 @@ MonoBehaviour:
   - <Type>k__BackingField: 4
     <Value>k__BackingField: 0.2
     <UpdatesByRarity>k__BackingField: 1
-  <State>k__BackingField: 0
+  <State>k__BackingField: 1
   <Requires>k__BackingField: []
   <Blocks>k__BackingField: []
   <ExperienceForFirstLevel>k__BackingField: 10

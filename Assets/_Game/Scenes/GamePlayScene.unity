@@ -1212,6 +1212,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8904416929590881299, guid: ffc9f964b29ebe84f8c6b786f6206e2e, type: 3}
+      propertyPath: _biomeConfigs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8904416929590881299, guid: ffc9f964b29ebe84f8c6b786f6206e2e, type: 3}
+      propertyPath: '_biomeConfigs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: c8cbb44a6f3b0cd40bee69b804b4632c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
