@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2137967969705614062}
   - component: {fileID: 993223613056865060}
   - component: {fileID: 7437015074573969314}
+  - component: {fileID: 907072873164215148}
   m_Layer: 0
   m_Name: Spike
   m_TagString: Untagged
@@ -47,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Obstacles.Spike
   _damage: 3
-  _health: 10
+  _health: 40
 --- !u!212 &993223613056865060
 SpriteRenderer:
   serializedVersion: 2
@@ -143,3 +144,30 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!50 &907072873164215148
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2453553538165317395}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 6200000, guid: 5367a90434f92034bb18444317c0573b, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

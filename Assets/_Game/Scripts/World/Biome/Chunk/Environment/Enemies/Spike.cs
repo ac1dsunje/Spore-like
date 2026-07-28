@@ -22,12 +22,12 @@ public class Spike: MonoBehaviour, IDamageAble
     public float TakeDamage(float amount)
     {
         _health -= amount;
-        _health = Mathf.Max(_health, 0f);
+        _health = Mathf.Max(0f, _health);
         if (_health <= 0f)
         {
             Destroy(gameObject);
         }
-        return _health;
+        return 0;
     }
 }
 }
