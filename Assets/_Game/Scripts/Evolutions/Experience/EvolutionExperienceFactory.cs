@@ -6,12 +6,12 @@ namespace _Game.Scripts.Evolutions.Experience
 {
 public class EvolutionExperienceFactory
 {
-    public IEvolutionExperience GetMethod(ExperienceType experienceType, PlayerStats playerStats)
+    public IEvolutionExperience GetMethod(EvolutionExperienceType experienceType, PlayerStats playerStats)
     {
         return experienceType switch
         {
-            ExperienceType.DamageReflection => new DamageReflecting(playerStats),
-            ExperienceType.ObjectDiscover => new ObjectsDiscovering(playerStats),
+            EvolutionExperienceType.DamageReflection => new DamageReflecting(playerStats),
+            EvolutionExperienceType.ObjectDiscover => new ObjectsDiscovering(playerStats),
             _ => throw new ArgumentOutOfRangeException(nameof(experienceType), experienceType, null)
         };
     }

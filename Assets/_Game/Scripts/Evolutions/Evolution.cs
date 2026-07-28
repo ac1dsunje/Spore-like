@@ -22,7 +22,7 @@ public class Evolution: IDisposable
     public event Action OnRarityChanged;
     
     //Level
-    private EvolutionExperienceFactory _expFactory = new();
+    private readonly EvolutionExperienceFactory _expFactory = new();
     private IEvolutionExperience _experienceManager;
     private int _experiencePoints;
     private int _levelSet;
@@ -35,10 +35,7 @@ public class Evolution: IDisposable
         SetConfig(config);
     }
 
-    public void SetPlayer(PlayerStats playerStats)
-    {
-        _player = playerStats;
-    }
+    public void SetPlayer(PlayerStats playerStats) => _player = playerStats;
 
     public void Apply()
     {

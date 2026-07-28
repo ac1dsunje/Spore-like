@@ -16,6 +16,7 @@ public class Stat
     {
         Type = stat.Type;
         Value = stat.Value;
+        UpdatesByRarity = stat.UpdatesByRarity;
     }
 
     public void UseRarity(float scaler)

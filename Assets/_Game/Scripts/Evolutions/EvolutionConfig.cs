@@ -1,14 +1,10 @@
 ﻿using System.Collections.Generic;
+using _Game.Scripts.Evolutions.Experience;
 using _Game.Scripts.Evolutions.Stats;
 using UnityEngine;
 
 namespace _Game.Scripts.Evolutions
 {
-public enum ExperienceType
-{
-    ObjectDiscover,
-    DamageReflection
-}
 [CreateAssetMenu(fileName = "NewEvolutionConfig", menuName = "Configs/Game/Evolutions/Evolution")]
 public class EvolutionConfig: ScriptableObject
 {
@@ -25,6 +21,6 @@ public class EvolutionConfig: ScriptableObject
     [field: SerializeField] public EvolutionConfig[] Blocks { get; private set; }
     [Header("Experience")]
     [field: SerializeField] public int ExperienceForFirstLevel { get; private set; }
-    [field: SerializeField] public ExperienceType ExperienceType { get; private set; }
+    [field: SerializeField] public EvolutionExperienceType ExperienceType { get; private set; }
 }
 }
