@@ -7,7 +7,6 @@ public class MovementModule: StatModule
     public float MoveSpeed { get; private set; }
     public float Acceleration { get; private set; }
     public float Inertia { get; private set; }
-    public float StaminaRecovery { get; private set; }
 
     public MovementModule(PlayerStats stats): base(stats) {}
 
@@ -26,9 +25,6 @@ public class MovementModule: StatModule
             case StatType.Inertia:
                 UpdateInertia(value);
                 break;
-            case StatType.StaminaRecovery:
-                UpdateStaminaRecovery(value);
-                break;
         }
     }
     
@@ -37,6 +33,5 @@ public class MovementModule: StatModule
     private void UpdateAcceleration(float newValue) => Acceleration = newValue;
 
     private void UpdateInertia(float newValue) => Inertia = newValue;
-    private void UpdateStaminaRecovery(float newValue) => StaminaRecovery = newValue;
 }
 }

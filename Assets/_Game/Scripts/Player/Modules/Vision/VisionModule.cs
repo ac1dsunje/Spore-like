@@ -1,6 +1,5 @@
 ﻿using System;
 using _Game.Scripts.Evolutions.Stats;
-using _Game.Scripts.World.Food;
 using UnityEngine;
 
 namespace _Game.Scripts.Player.Modules.Vision
@@ -8,7 +7,6 @@ namespace _Game.Scripts.Player.Modules.Vision
 public class VisionModule: StatModule
 {
     public float VisionRadius { get; private set; }
-    public float SensoricsRadius { get; private set; }
 
     public event Action<float> OnVisionRadiusChanged;
     public event Action<GameObject> OnGameObjectDiscovered;
@@ -22,9 +20,6 @@ public class VisionModule: StatModule
             case StatType.VisionRadius:
                 UpdateRadius(value);
                 break;
-            case StatType.SensoricsRadius:
-                UpdateSensoricsRadius(value);
-                break;
         }
     }
     
@@ -33,8 +28,6 @@ public class VisionModule: StatModule
         VisionRadius = newRadius;
         OnVisionRadiusChanged?.Invoke(VisionRadius);
     }
-
-    private void UpdateSensoricsRadius(float newRadius) => SensoricsRadius = newRadius;
 
     public void DiscoverGameObject(GameObject gameObject)
     {
