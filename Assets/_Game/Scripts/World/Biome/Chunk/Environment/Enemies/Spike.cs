@@ -10,6 +10,11 @@ public class Spike: MonoBehaviour, IDamageAble
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        TryAttack(other);
+    }
+
+    private void TryAttack(Collision2D other)
+    {
         if (!other.collider.TryGetComponent(out IDamageAble damageAble)) return;
         TakeDamage(damageAble.TakeDamage(_damage));
     }
