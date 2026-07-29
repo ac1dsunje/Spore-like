@@ -12,17 +12,15 @@ public class EvolutionsManager: MonoBehaviour
     [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
     [SerializeField] private RaritiesDatabase _raritiesDatabase;
     [SerializeField] private int _minEvolutions = 3;
-    [SerializeField] private int _basicChance = 10;
-    [SerializeField] private int _chanceScaler = 5;
-    private PlayerController _player;
+    private PlayerStats _player;
     private EvolutionChooseScreen _screen;
     
     private readonly List<Evolution> _evolutions = new();
     
-    public void Construct(PlayerController player, EvolutionChooseScreen screen)
+    public void Construct(PlayerStats player, EvolutionChooseScreen screen)
     {
         _player = player;
-        _player.Stats.Experience.OnLevelChanged += OnLevelUpdated;
+        _player.Experience.OnLevelChanged += OnLevelUpdated;
         
         _screen = screen;
         _screen.OnEvolutionChosen += OnEvolutionChosen;
@@ -30,7 +28,7 @@ public class EvolutionsManager: MonoBehaviour
         foreach (var evolution in _evolutionsDatabase.GenerateEvolutions())
         {
             _evolutions.Add(evolution);
-            evolution.Initialize(_player.Stats, _basicChance);
+            evolution.Initialize(_player, _evolutionsDatabase.BasicChance);
             evolution.OnLevelUp += OnEvolutionLevelUp;
         }
     }
@@ -41,20 +39,20 @@ public class EvolutionsManager: MonoBehaviour
         
         FillSlots();
         _screen.Show();
-        _player.Disable();
+        _player.Movement.Disable();
     }
 
     private void OnEvolutionChosen(Evolution evolution)
     {
         evolution.Apply();
-        _player.Stats.AddEvolution(evolution);
+        _player.AddEvolution(evolution);
 
         UnlockEvolutions();
         BlockEvolutions(evolution);
         UpdateChances(evolution);
         
         _screen.Hide();
-        _player.Enable();
+        _player.Movement.Enable();
     }
 
     private void OnEvolutionLevelUp(Evolution evolution, int level)
@@ -72,7 +70,7 @@ public class EvolutionsManager: MonoBehaviour
     {
         foreach (var evo in _evolutions.Where(evo => evo.Config.CreatureType == evolution.Config.CreatureType))
         {
-            evo.IncreaseChance(_chanceScaler);
+            evo.IncreaseChance(_evolutionsDatabase.ChanceScaler);
         }
     }
 
@@ -153,7 +151,7 @@ public class EvolutionsManager: MonoBehaviour
 
     private void OnDestroy()
     {
-        _player.Stats.Experience.OnLevelChanged -= OnLevelUpdated;
+        _player.Experience.OnLevelChanged -= OnLevelUpdated;
         _screen.OnEvolutionChosen -= OnEvolutionChosen;
 
         foreach (var evolution in _evolutions)

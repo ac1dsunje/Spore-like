@@ -39,7 +39,7 @@ public class EntryPoint : MonoBehaviour
         
         _worldGenerator.Construct(_player.transform);
         
-        _evolutionsManager.Construct(_player, _evolutionChooseScreen);
+        _evolutionsManager.Construct(playerStats, _evolutionChooseScreen);
     }
 }
 }

@@ -2,27 +2,16 @@
 
 namespace _Game.Scripts.Player.Modules.Movement
 {
-public enum MovementState
-{
-    Enabled, 
-    Disabled
-}
 
 public class PlayerMovement: MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _spriteRenderer;
-    
-    private MovementState _state;
-    private MovementModule _module;
-    
     [SerializeField] private Rigidbody2D _rigidbody;
+    
+    private MovementModule _module;
     
     private float _horizontalInput;
     private float _verticalInput;
-
-    public void Disable() => SetState(MovementState.Disabled);
-
-    public void Enable() => SetState(MovementState.Enabled);
     
     public void Construct(MovementModule module)
     {
@@ -36,8 +25,8 @@ public class PlayerMovement: MonoBehaviour
 
     private void ReadInput()
     {
-        _horizontalInput = IsInState(MovementState.Disabled)? 0: Input.GetAxisRaw("Horizontal");
-        _verticalInput = IsInState(MovementState.Disabled)? 0: Input.GetAxisRaw("Vertical");
+        _horizontalInput = Input.GetAxisRaw("Horizontal");
+        _verticalInput = Input.GetAxisRaw("Vertical");
     }
 
     private void FixedUpdate()
@@ -47,15 +36,11 @@ public class PlayerMovement: MonoBehaviour
 
     private void Move()
     {
-        var targetVelocity = new Vector2(_horizontalInput, _verticalInput) * _module.MoveSpeed;
+        var targetVelocity = new Vector2(_horizontalInput, _verticalInput).normalized * _module.MoveSpeed;
 
         var accelerationThisFrame = _module.Acceleration * Time.fixedDeltaTime;
 
-        _rigidbody.linearVelocity = Vector2.MoveTowards(
-            _rigidbody.linearVelocity, 
-            targetVelocity, 
-            accelerationThisFrame
-        );
+        _rigidbody.linearVelocity = Vector2.MoveTowards(_rigidbody.linearVelocity, targetVelocity, accelerationThisFrame);
         
         Flip();
     }
@@ -67,8 +52,5 @@ public class PlayerMovement: MonoBehaviour
             _spriteRenderer.flipX = _horizontalInput < 0;
         }
     }
-
-    private void SetState(MovementState state) => _state = state;
-    private bool IsInState(MovementState state) => _state == state;
 }
 }
