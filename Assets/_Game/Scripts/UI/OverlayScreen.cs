@@ -1,6 +1,7 @@
 ﻿using _Game.Scripts.Evolutions;
 using _Game.Scripts.Evolutions.UI;
 using _Game.Scripts.Player;
+using _Game.Scripts.Player.Modules.Health;
 using TMPro;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ public class OverlayScreen: ScreenManager
     [SerializeField] private TextMeshProUGUI _experienceText;
     [SerializeField] private TextMeshProUGUI _levelText;
     [SerializeField] private TextMeshProUGUI _levelSetText;
+    
+    [SerializeField] private HealthBarUI _healthBarUI;
     
     [SerializeField] private GameObject _evolutionSlotPrefab;
     [SerializeField] private Transform  _evolutionsParent;
@@ -24,6 +27,8 @@ public class OverlayScreen: ScreenManager
         _player.Experience.OnLevelChanged += UpdateLevel;
         _player.Experience.OnLevelSetChanged += UpdateLevelSet;
         _player.OnEvolutionAdded += AddEvolution;
+        
+        _healthBarUI.Construct(_player.Health);
     }
 
     private void UpdateExperience(int amount)
