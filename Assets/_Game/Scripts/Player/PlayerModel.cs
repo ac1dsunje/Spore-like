@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using _Game.Scripts.Player.Modules;
 using _Game.Scripts.Player.Modules.Attack;
 using _Game.Scripts.Player.Modules.Experience;
 using _Game.Scripts.Player.Modules.Health;
@@ -13,15 +12,15 @@ namespace _Game.Scripts.Player
 {
 public class PlayerModel: IDisposable
 {
+    public PlayerStatsModule Stats { get; private set; }
+    
+    private readonly List<IDisposable> _modules = new();
     public VisionModule Vision { get; private set; }
     public MovementModule Movement { get; private set; }
     public HealthModule Health { get; private set; }
     public EatModule EatModule { get; private set; }
     public AttackModule Attack { get; private set; }
-    
-    private readonly List<StatModule> _modules = new();
     public ExperienceController Experience { get; }
-    public PlayerStatsModule Stats { get; private set; }
 
     public PlayerModel(PlayerConfig config)
     {
@@ -29,6 +28,7 @@ public class PlayerModel: IDisposable
         AddModules();
         Stats.Initialize(config.InitialConfig);
         Experience = new(config.ExperienceConfig, EatModule);
+        _modules.Add(Experience);
     }
 
     private void AddModules()
@@ -52,7 +52,6 @@ public class PlayerModel: IDisposable
         {
             module.Dispose();
         }
-        Experience.Dispose();
     }
 }
 }
