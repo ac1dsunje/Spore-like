@@ -529,17 +529,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c79b9df990af48ce8113f1b94aa5651a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.WorldGenerator
-  _chunkSize: 16
-  _renderDistanceChunks: 1
-  _biomeConfigs:
-  - {fileID: 11400000, guid: 8bb4609730817674fa0e0a5301c5334d, type: 2}
-  - {fileID: 11400000, guid: 171b515d0a90b4748bed52a9310c6d8a, type: 2}
+  _renderDistance: 1
   _tilemaps:
   - {fileID: 6756391337653597309}
   - {fileID: 6055113463674019934}
   - {fileID: 1740028671109648243}
-  _scale: 0.03
-  _seed: 0
+  _config: {fileID: 11400000, guid: 86a2a7edd3ffa1b4fbb90f25e00c0843, type: 2}
 --- !u!1 &5069196060522753295
 GameObject:
   m_ObjectHideFlags: 0

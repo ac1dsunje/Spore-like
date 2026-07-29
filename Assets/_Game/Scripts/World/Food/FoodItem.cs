@@ -23,6 +23,7 @@ public class FoodItem: MonoBehaviour
     public void TakeHit(float damage)
     {
         _health -= damage;
+        Instantiate(_config.Particle, transform.position, Quaternion.identity);
         if (!IsAlive) Destroy(gameObject);
     }
 }
