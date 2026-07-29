@@ -17,7 +17,7 @@ public class WorldGenerator: MonoBehaviour
 
     private void Awake()
     {
-        _seed = _config.GenerateRandomSeed ? Random.Range(0, 99999) : 0;
+        _seed = _config.GenerateRandomSeed ? Random.Range(0, 99999) : _config.Seed;
     }
 
     public void Construct(Transform player)
