@@ -189,6 +189,7 @@ GameObject:
   - component: {fileID: 2108220050117646386}
   - component: {fileID: 1354067261797318336}
   - component: {fileID: 6488647832735213282}
+  - component: {fileID: 6159143780847964758}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -327,6 +328,18 @@ MonoBehaviour:
   _evolutionsDatabase: {fileID: 11400000, guid: 89e0fac1fa9071a41bafa6ee877795b5, type: 2}
   _raritiesDatabase: {fileID: 11400000, guid: 844b6b4bf98611044bf03a16ce2009a0, type: 2}
   _minEvolutions: 3
+--- !u!114 &6159143780847964758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254078283856608112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5bff76f551f46b2a71c67b4f6088033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.Health.PlayerHealth
 --- !u!1 &8352832263387622762
 GameObject:
   m_ObjectHideFlags: 0
