@@ -1,0 +1,13 @@
+﻿using _Game.Scripts.Rarities;
+using UnityEngine;
+
+namespace _Game.Scripts.World.Food
+{
+[CreateAssetMenu(fileName = "New Food Config", menuName = "Configs/Game/Food/Config")]
+public class FoodConfig: ScriptableObject
+{
+    [field: SerializeField] public RaritiesDatabase Rarities { get; private set; }
+    [field: SerializeField] public float MaxHealth { get; private set; } = 10;
+    [field: SerializeField] public int FeedAmount { get; private set; } = 1;
+}
+}

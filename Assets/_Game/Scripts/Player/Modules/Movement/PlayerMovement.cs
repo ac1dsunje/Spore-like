@@ -5,7 +5,6 @@ namespace _Game.Scripts.Player.Modules.Movement
 
 public class PlayerMovement: MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Rigidbody2D _rigidbody;
     
     private MovementModule _module;
@@ -49,7 +48,7 @@ public class PlayerMovement: MonoBehaviour
     {
         if (_horizontalInput != 0)
         {
-            _spriteRenderer.flipX = _horizontalInput < 0;
+            transform.localScale = new Vector3(_horizontalInput < 0 ? -1 : 1, 1, 1);
         }
     }
 }

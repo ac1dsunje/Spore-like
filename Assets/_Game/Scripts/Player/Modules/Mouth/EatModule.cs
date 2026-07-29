@@ -1,15 +1,12 @@
 ﻿using System;
 using _Game.Scripts.Evolutions.Stats;
 using _Game.Scripts.Player.Modules.Stats;
-using _Game.Scripts.World.Food;
 
 namespace _Game.Scripts.Player.Modules.Mouth
 {
 public class EatModule: StatModule
 {
-    public float EatingSpeed { get; private set; }
-
-    public event Action<FoodItem> OnFoodEaten;
+    public float EatingStrength { get; private set; }
     public event Action<int> OnFoodPointsAchieved;
 
     public EatModule(PlayerStats playerStats): base(playerStats) {}
@@ -18,20 +15,17 @@ public class EatModule: StatModule
     {
         switch (type)
         {
-            case StatType.EatingSpeed:
-                UpdateEatingSpeed(value);
+            case StatType.EatingStrength:
+                UpdateEatingStrength(value);
                 break;
         }
     }
 
-    private void UpdateEatingSpeed(float eatingSpeed) => EatingSpeed = eatingSpeed;
+    private void UpdateEatingStrength(float newValue) => EatingStrength = newValue;
 
-    public void EatFood(FoodItem food)
+    public void GetExperienceFromFood(int value)
     {
-        OnFoodEaten?.Invoke(food);
-        OnFoodPointsAchieved?.Invoke(food.FeedAmount);
-
-        food.Release();
+        OnFoodPointsAchieved?.Invoke(value);
     }
 }
 }

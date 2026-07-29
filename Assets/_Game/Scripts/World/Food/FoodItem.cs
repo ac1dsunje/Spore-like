@@ -5,16 +5,25 @@ namespace _Game.Scripts.World.Food
 {
 public class FoodItem: MonoBehaviour
 {
-    [SerializeField] private RaritiesDatabase _rarities;
-    [field: SerializeField] public int FeedAmount { get; private set; } = 1;
+    [SerializeField] private FoodConfig _config;
+
+    public bool IsAlive => _health > 0f;
+    public int FeedAmount { get; private set; }
+    
+    private RarityConfig _rarity;
+    private float _health;
 
     private void Awake()
     {
-        FeedAmount *= _rarities.GetRandom().FoodScaler;
+        _rarity = _config.Rarities.GetRandom();
+        _health = _config.MaxHealth * _rarity.FoodScaler;
+        FeedAmount = _config.FeedAmount * _rarity.FoodScaler;
     }
 
-    public FoodItem Get() => this;
-
-    public void Release() => Destroy(gameObject);
+    public void TakeHit(float damage)
+    {
+        _health -= damage;
+        if (!IsAlive) Destroy(gameObject);
+    }
 }
 }

@@ -1,4 +1,5 @@
-﻿using _Game.Scripts.World.Food;
+﻿using System.Collections;
+using _Game.Scripts.World.Food;
 using UnityEngine;
 
 namespace _Game.Scripts.Player.Modules.Mouth
@@ -6,6 +7,7 @@ namespace _Game.Scripts.Player.Modules.Mouth
 public class PlayerMouth: MonoBehaviour
 {
     private EatModule _module;
+    private FoodItem _currentFood;
     
     public void Construct(EatModule module)
     {
@@ -14,16 +16,37 @@ public class PlayerMouth: MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        TryEat(other);
+        TryCatchFood(other);
     }
 
-    private void TryEat(Collider2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        other.TryGetComponent<FoodItem>(out var food);
-        if (food == null) return;
+        if (!other.TryGetComponent<FoodItem>(out var food)) return;
+        _currentFood = null;
+        StopAllCoroutines();
+    }
+
+    private void TryCatchFood(Collider2D other)
+    {
+        if (!other.TryGetComponent<FoodItem>(out var food)) return;
+        _currentFood = food;
+        StartCoroutine(Eat(_currentFood));
+    }
+
+    private IEnumerator Eat(FoodItem food)
+    {
+        while (food.IsAlive)
+        {
+            yield return new WaitForSeconds(1f);
+            food.TakeHit(_module.EatingStrength);
+        }
         
-        _module.EatFood(food.Get());
-        food.Release();
+        _module.GetExperienceFromFood(food.FeedAmount);
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 }
 }
