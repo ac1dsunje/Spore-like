@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Game.Scripts.Player;
+using _Game.Scripts.Player.Modules.Stats;
 using UnityEngine;
 
 namespace _Game.Scripts.Evolutions.Experience.Types
@@ -9,13 +10,13 @@ public class ObjectsDiscovering: IEvolutionExperience
 {
     private readonly List<GameObject> _discoveredObjects = new();
     
-    private readonly PlayerStats _playerStats;
+    private readonly PlayerModel _playerModel;
 
     public event Action<int> OnExperienceGained;
-    public ObjectsDiscovering(PlayerStats playerStats)
+    public ObjectsDiscovering(PlayerModel playerModel)
     {
-        _playerStats = playerStats;
-        _playerStats.Vision.OnGameObjectDiscovered += OnObjectDiscovered;
+        _playerModel = playerModel;
+        _playerModel.Vision.OnGameObjectDiscovered += OnObjectDiscovered;
     }
     
     private void OnObjectDiscovered(GameObject go)
@@ -27,7 +28,7 @@ public class ObjectsDiscovering: IEvolutionExperience
 
     public void Dispose()
     {
-        _playerStats.Vision.OnGameObjectDiscovered -= OnObjectDiscovered;
+        _playerModel.Vision.OnGameObjectDiscovered -= OnObjectDiscovered;
     }
 }
 }

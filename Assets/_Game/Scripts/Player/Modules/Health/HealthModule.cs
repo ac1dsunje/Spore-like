@@ -1,5 +1,6 @@
 ﻿using System;
 using _Game.Scripts.Evolutions.Stats;
+using _Game.Scripts.Player.Modules.Stats;
 using UnityEngine;
 
 namespace _Game.Scripts.Player.Modules.Health
@@ -14,9 +15,9 @@ public class HealthModule: StatModule
     public event Action OnDamageTaken;
     public event Action<float, float> OnHealthChanged;
 
-    public HealthModule(PlayerStats stats): base(stats) {}
+    public HealthModule(PlayerStatsModule playerStatsModule): base(playerStatsModule) {}
 
-    protected override void OnStatUpdated(StatType type, float value)
+    protected override void PlayerStatModuleUpdated(StatType type, float value)
     {
         switch (type)
         {

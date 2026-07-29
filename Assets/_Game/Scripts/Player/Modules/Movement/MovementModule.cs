@@ -1,4 +1,5 @@
 ﻿using _Game.Scripts.Evolutions.Stats;
+using _Game.Scripts.Player.Modules.Stats;
 
 namespace _Game.Scripts.Player.Modules.Movement
 {
@@ -19,13 +20,13 @@ public class MovementModule: StatModule
 
     private MovementState _state;
 
-    public MovementModule(PlayerStats stats): base(stats) {}
+    public MovementModule(PlayerStatsModule playerStatsModule): base(playerStatsModule) {}
     
     public void Disable() => SetState(MovementState.Disabled);
 
     public void Enable() => SetState(MovementState.Enabled);
 
-    protected override void OnStatUpdated(StatType type, float value)
+    protected override void PlayerStatModuleUpdated(StatType type, float value)
     {
         switch (type)
         {

@@ -29,17 +29,16 @@ public class EntryPoint : MonoBehaviour
 
     private void Awake()
     {
-        var playerStats = new PlayerStats(_playerConfig);
-        _overlayScreen.Construct(playerStats);
-
-        _playerVision.Construct(playerStats.Vision);
-        _playerMovement.Construct(playerStats.Movement);
-        _playerMouth.Construct(playerStats.EatModule);
-        _player.Construct(playerStats);
+        var playerModel = new PlayerModel(_playerConfig);
+        _playerVision.Construct(playerModel.Vision);
+        _playerMovement.Construct(playerModel.Movement);
+        _playerMouth.Construct(playerModel.EatModule);
+        _player.Construct(playerModel);
+        _overlayScreen.Construct(playerModel);
         
         _worldGenerator.Construct(_player.transform);
         
-        _evolutionsManager.Construct(playerStats, _evolutionChooseScreen);
+        _evolutionsManager.Construct(playerModel, _evolutionChooseScreen);
     }
 }
 }

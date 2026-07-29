@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Game.Scripts.Evolutions.Experience;
-using _Game.Scripts.Evolutions.Experience.Types;
 using _Game.Scripts.Evolutions.Stats;
 using _Game.Scripts.Player;
 using _Game.Scripts.Rarities;
@@ -18,7 +17,7 @@ public class Evolution: IDisposable
     public Sprite Frame => _rarity.Sprite;
     
     private RarityConfig _rarity;
-    private PlayerStats _player;
+    private PlayerModel _player;
 
     public int Chance { get; private set; }
     public event Action OnRarityChanged;
@@ -37,9 +36,9 @@ public class Evolution: IDisposable
         SetConfig(config);
     }
 
-    public void Initialize(PlayerStats playerStats, int chance)
+    public void Initialize(PlayerModel playerModel, int chance)
     {
-        _player = playerStats;
+        _player = playerModel;
         Chance = chance;
     }
 
@@ -73,7 +72,7 @@ public class Evolution: IDisposable
         UseRarity(rarity);
         
         OnRarityChanged?.Invoke();
-        _player.UpdateEvolution(this);
+        _player.Stats.UpdateEvolution(this);
     }
 
     private void SetConfig(EvolutionConfig config)

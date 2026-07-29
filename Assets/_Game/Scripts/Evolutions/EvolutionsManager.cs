@@ -12,12 +12,12 @@ public class EvolutionsManager: MonoBehaviour
     [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
     [SerializeField] private RaritiesDatabase _raritiesDatabase;
     [SerializeField] private int _minEvolutions = 3;
-    private PlayerStats _player;
+    private PlayerModel _player;
     private EvolutionChooseScreen _screen;
     
     private readonly List<Evolution> _evolutions = new();
     
-    public void Construct(PlayerStats player, EvolutionChooseScreen screen)
+    public void Construct(PlayerModel player, EvolutionChooseScreen screen)
     {
         _player = player;
         _player.Experience.OnLevelChanged += OnLevelUpdated;
@@ -45,7 +45,7 @@ public class EvolutionsManager: MonoBehaviour
     private void OnEvolutionChosen(Evolution evolution)
     {
         evolution.Apply();
-        _player.AddEvolution(evolution);
+        _player.Stats.AddEvolution(evolution);
 
         UnlockEvolutions();
         BlockEvolutions(evolution);

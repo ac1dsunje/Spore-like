@@ -1,5 +1,6 @@
 ﻿using System;
 using _Game.Scripts.Evolutions.Stats;
+using _Game.Scripts.Player.Modules.Stats;
 
 namespace _Game.Scripts.Player.Modules.Attack
 {
@@ -9,9 +10,9 @@ public class AttackModule: StatModule
     public event Action<int> OnDamageReflected;
     public float PhysicalDamage { get; private set; }
 
-    public AttackModule(PlayerStats playerStats): base(playerStats) {}
+    public AttackModule(PlayerStatsModule playerStatsModule): base(playerStatsModule) {}
 
-    protected override void OnStatUpdated(StatType type, float value)
+    protected override void PlayerStatModuleUpdated(StatType type, float value)
     {
         switch (type)
         {

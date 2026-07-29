@@ -1,23 +1,24 @@
 ﻿using System;
 using _Game.Scripts.Evolutions.Stats;
+using _Game.Scripts.Player.Modules.Stats;
 
 namespace _Game.Scripts.Player.Modules
 {
 public abstract class StatModule: IDisposable
 {
-    protected readonly PlayerStats _stats;
+    protected readonly PlayerStatsModule PlayerStatsModule;
 
-    protected StatModule(PlayerStats stats)
+    protected StatModule(PlayerStatsModule playerStatsModule)
     {
-        _stats = stats;
-        _stats.OnStatUpdated += OnStatUpdated;
+        PlayerStatsModule = playerStatsModule;
+        PlayerStatsModule.OnStatUpdated += PlayerStatModuleUpdated;
     }
 
-    protected abstract void OnStatUpdated(StatType type, float value);
+    protected abstract void PlayerStatModuleUpdated(StatType type, float value);
     
     public virtual void Dispose()
     {
-        _stats.OnStatUpdated -= OnStatUpdated;   
+        PlayerStatsModule.OnStatUpdated -= PlayerStatModuleUpdated;   
     }
 }
 }

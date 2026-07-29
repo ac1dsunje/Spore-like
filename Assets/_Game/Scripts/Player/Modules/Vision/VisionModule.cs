@@ -1,5 +1,6 @@
 ﻿using System;
 using _Game.Scripts.Evolutions.Stats;
+using _Game.Scripts.Player.Modules.Stats;
 using UnityEngine;
 
 namespace _Game.Scripts.Player.Modules.Vision
@@ -11,9 +12,9 @@ public class VisionModule: StatModule
     public event Action<float> OnVisionRadiusChanged;
     public event Action<GameObject> OnGameObjectDiscovered;
 
-    public VisionModule(PlayerStats stats): base(stats) {}
+    public VisionModule(PlayerStatsModule playerStatsModule): base(playerStatsModule) {}
 
-    protected override void OnStatUpdated(StatType type, float value)
+    protected override void PlayerStatModuleUpdated(StatType type, float value)
     {
         switch (type)
         {

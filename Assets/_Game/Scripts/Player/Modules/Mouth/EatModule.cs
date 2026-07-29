@@ -1,5 +1,6 @@
 ﻿using System;
 using _Game.Scripts.Evolutions.Stats;
+using _Game.Scripts.Player.Modules.Stats;
 using _Game.Scripts.World.Food;
 
 namespace _Game.Scripts.Player.Modules.Mouth
@@ -11,9 +12,9 @@ public class EatModule: StatModule
     public event Action<FoodItem> OnFoodEaten;
     public event Action<int> OnFoodPointsAchieved;
 
-    public EatModule(PlayerStats stats): base(stats) {}
+    public EatModule(PlayerStatsModule playerStatsModule): base(playerStatsModule) {}
 
-    protected override void OnStatUpdated(StatType type, float value)
+    protected override void PlayerStatModuleUpdated(StatType type, float value)
     {
         switch (type)
         {

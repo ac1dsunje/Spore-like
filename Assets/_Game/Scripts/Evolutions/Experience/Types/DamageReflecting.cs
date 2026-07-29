@@ -5,13 +5,13 @@ namespace _Game.Scripts.Evolutions.Experience.Types
 {
 public class DamageReflecting: IEvolutionExperience
 {
-    private readonly PlayerStats _playerStats;
+    private readonly PlayerModel _playerModel;
 
     public event Action<int> OnExperienceGained;
-    public DamageReflecting(PlayerStats playerStats)
+    public DamageReflecting(PlayerModel playerModel)
     {
-        _playerStats = playerStats;
-        _playerStats.Attack.OnDamageReflected += OnDamageReflected;
+        _playerModel = playerModel;
+        _playerModel.Attack.OnDamageReflected += OnDamageReflected;
     }
     
     private void OnDamageReflected(int damage)
@@ -21,7 +21,7 @@ public class DamageReflecting: IEvolutionExperience
 
     public void Dispose()
     {
-        _playerStats.Attack.OnDamageReflected -= OnDamageReflected;
+        _playerModel.Attack.OnDamageReflected -= OnDamageReflected;
     }
 }
 }

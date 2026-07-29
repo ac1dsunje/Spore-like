@@ -2,27 +2,12 @@
 using System.Collections.Generic;
 using _Game.Scripts.Evolutions;
 using _Game.Scripts.Evolutions.Stats;
-using _Game.Scripts.Player.Modules;
-using _Game.Scripts.Player.Modules.Attack;
-using _Game.Scripts.Player.Modules.Experience;
-using _Game.Scripts.Player.Modules.Health;
-using _Game.Scripts.Player.Modules.Mouth;
-using _Game.Scripts.Player.Modules.Movement;
-using _Game.Scripts.Player.Modules.Vision;
 using UnityEngine;
 
-namespace _Game.Scripts.Player
+namespace _Game.Scripts.Player.Modules.Stats
 {
-public class PlayerStats: IDisposable
+public class PlayerStatsModule
 {
-    // Modules
-    public VisionModule Vision { get; private set; }
-    public MovementModule Movement { get; private set; }
-    public HealthModule Health { get; private set; }
-    public EatModule EatModule { get; private set; }
-    public AttackModule Attack { get; private set; }
-    private readonly List<StatModule> _modules = new();
-    public ExperienceController Experience { get; }
     //Evolutions
     private readonly List<Evolution> _evolutions = new();
     public event Action<Evolution> OnEvolutionAdded;
@@ -35,27 +20,9 @@ public class PlayerStats: IDisposable
     public event Action<StatType, float> OnStatUpdated;
 
 
-    public PlayerStats(PlayerConfig config)
+    public void Initialize(StatsConfig config)
     {
-        AddModules();
-        Experience = new(config.ExperienceConfig, EatModule);
-        
-        AddInitialStats(config.InitialConfig.Stats);
-    }
-
-    private void AddModules()
-    {
-        Vision = new(this);
-        Movement = new(this);
-        Health = new(this);
-        EatModule = new (this);
-        Attack = new(this);
-
-        _modules.Add(Vision);
-        _modules.Add(Movement);
-        _modules.Add(Health);
-        _modules.Add(EatModule);
-        _modules.Add(Attack);
+        AddInitialStats(config.Stats);
     }
 
     public void AddEvolution(Evolution evolution)
@@ -136,14 +103,5 @@ public class PlayerStats: IDisposable
     }
 
     private void UpdateStat(StatType type) => OnStatUpdated?.Invoke(type, _stats[type]);
-
-    public void Dispose()
-    {
-        foreach (var module in _modules)
-        {
-            module.Dispose();
-        }
-        Experience.Dispose();
-    }
 }
 }
