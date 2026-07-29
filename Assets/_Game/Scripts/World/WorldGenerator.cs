@@ -9,7 +9,7 @@ namespace _Game.Scripts.World
 public class WorldGenerator: MonoBehaviour
 {
     [SerializeField] private int _chunkSize = 16;
-    [SerializeField] private int _renderDistanceChunks = 1;
+    [SerializeField] private int _renderDistance = 1;
     [SerializeField] private List<BiomeConfig> _biomeConfigs;
     [SerializeField] private Tilemap[] _tilemaps;
     
@@ -46,7 +46,7 @@ public class WorldGenerator: MonoBehaviour
         Generate();
     }
 
-    private int GetDistance() => _renderDistanceChunks * _chunkSize;
+    private int GetDistance() => _renderDistance * _chunkSize;
 
     private void Generate()
     {
