@@ -1,19 +1,16 @@
 ﻿using _Game.Scripts.Evolutions;
 using _Game.Scripts.Evolutions.UI;
 using _Game.Scripts.Player;
+using _Game.Scripts.Player.Modules.Experience;
 using _Game.Scripts.Player.Modules.Health;
-using TMPro;
 using UnityEngine;
 
 namespace _Game.Scripts.UI
 {
 public class OverlayScreen: ScreenManager
 {
-    [SerializeField] private TextMeshProUGUI _experienceText;
-    [SerializeField] private TextMeshProUGUI _levelText;
-    [SerializeField] private TextMeshProUGUI _levelSetText;
-    
     [SerializeField] private HealthBarUI _healthBarUI;
+    [SerializeField] private ExperienceBarUI _experienceBarUI;
     
     [SerializeField] private GameObject _evolutionSlotPrefab;
     [SerializeField] private Transform  _evolutionsParent;
@@ -23,27 +20,10 @@ public class OverlayScreen: ScreenManager
     public void Construct(PlayerStats player)
     {
         _player = player;
-        _player.Experience.OnExperienceChanged += UpdateExperience;
-        _player.Experience.OnLevelChanged += UpdateLevel;
-        _player.Experience.OnLevelSetChanged += UpdateLevelSet;
         _player.OnEvolutionAdded += AddEvolution;
         
         _healthBarUI.Construct(_player.Health);
-    }
-
-    private void UpdateExperience(int amount)
-    {
-        _experienceText.text = $"Experience: {amount}";
-    }
-
-    private void UpdateLevelSet(int amount)
-    {
-        _levelSetText.text =  $"LevelSet: {amount}";
-    }
-
-    private void UpdateLevel(int amount)
-    {
-        _levelText.text = $"Level: {amount}";
+        _experienceBarUI.Construct(_player.Experience);
     }
 
     private void AddEvolution(Evolution evolution)
@@ -54,9 +34,6 @@ public class OverlayScreen: ScreenManager
 
     private void OnDestroy()
     {
-        _player.Experience.OnExperienceChanged -= UpdateExperience;
-        _player.Experience.OnLevelChanged -= UpdateLevel;
-        _player.Experience.OnLevelSetChanged -= UpdateLevelSet;
         _player.OnEvolutionAdded -= AddEvolution;
     }
 }

@@ -1,12 +1,11 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace _Game.Scripts.Player.Modules.Health
 {
 public class HealthBarUI: MonoBehaviour
 {
-    [SerializeField] private Image _healthBar;
+    [SerializeField] private Image _bar;
 
     private HealthModule _module;
     
@@ -18,7 +17,7 @@ public class HealthBarUI: MonoBehaviour
 
     private void UpdateBar(float amount, float maxHealth)
     {
-        _healthBar.fillAmount = amount/maxHealth;
+        _bar.fillAmount = amount/maxHealth;
     }
 
     private void OnDestroy()

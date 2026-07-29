@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.8454825, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -161,9 +161,9 @@ GameObject:
   - component: {fileID: 4454104221756158071}
   - component: {fileID: 3060402410953687105}
   - component: {fileID: 5994144659684222534}
-  - component: {fileID: 4262685544791667004}
+  - component: {fileID: 299623326402479662}
   m_Layer: 5
-  m_Name: HealthBar
+  m_Name: ExperienceBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4262685544791667004
+--- !u!114 &299623326402479662
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4885946919802144898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa70138c90884a97b8a5d0248c6770e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c3ac4b1f97a417e917727cb463bc38c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.Health.HealthBarUI
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.Experience.ExperienceBarUI
   _bar: {fileID: 4382242598425639510}
