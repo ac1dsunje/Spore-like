@@ -10,10 +10,12 @@ public enum MovementState
 public class MovementModule: StatModule
 {
     public float MoveSpeed => _state == MovementState.Enabled? _moveSpeed : 0;
-    public float Acceleration { get; private set; }
-    public float Inertia { get; private set; }
+    public float Acceleration => _acceleration / 100f;
+    public float Inertia => _inertia / 100f;
     
     private float _moveSpeed;
+    private float _acceleration;
+    private float _inertia;
 
     private MovementState _state;
 
@@ -43,9 +45,9 @@ public class MovementModule: StatModule
     
     private void UpdateMoveSpeed(float newValue) => _moveSpeed = newValue;
 
-    private void UpdateAcceleration(float newValue) => Acceleration = newValue;
+    private void UpdateAcceleration(float newValue) => _acceleration = newValue;
 
-    private void UpdateInertia(float newValue) => Inertia = newValue;
+    private void UpdateInertia(float newValue) => _inertia = newValue;
 
     private void SetState(MovementState newState) => _state = newState;
 }
