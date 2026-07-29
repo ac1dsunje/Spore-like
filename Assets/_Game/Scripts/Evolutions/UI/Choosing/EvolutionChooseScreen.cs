@@ -13,6 +13,12 @@ public class EvolutionChooseScreen : ScreenManager
     
     public event Action<Evolution> OnEvolutionChosen;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        HideScreen();
+    }
+
     public void Show() => ShowScreen();
 
     public void Hide() => HideScreen();
@@ -29,15 +35,11 @@ public class EvolutionChooseScreen : ScreenManager
         }
     }
 
-    private void OnEnable() => Hide();
-
     private void EvolutionChosen(Evolution evolution)
     {
         OnEvolutionChosen?.Invoke(evolution);
         ClearSlots();
     }
-    
-    private void OnDestroy() => ClearSlots();
 
     private void ClearSlots()
     {
@@ -48,5 +50,7 @@ public class EvolutionChooseScreen : ScreenManager
         }
         _slots.Clear();
     }
+    
+    private void OnDestroy() => ClearSlots();
 }
 }

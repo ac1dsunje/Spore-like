@@ -7,7 +7,7 @@ public abstract class ScreenManager: MonoBehaviour
 {
     private CanvasGroup _screen;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _screen =  GetComponent<CanvasGroup>();
     }
