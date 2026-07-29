@@ -3,7 +3,6 @@ using _Game.Scripts.Evolutions.UI;
 using _Game.Scripts.Player;
 using _Game.Scripts.Player.Modules.Experience;
 using _Game.Scripts.Player.Modules.Health;
-using _Game.Scripts.Player.Modules.Stats;
 using UnityEngine;
 
 namespace _Game.Scripts.UI

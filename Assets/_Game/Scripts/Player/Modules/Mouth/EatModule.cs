@@ -12,9 +12,9 @@ public class EatModule: StatModule
     public event Action<FoodItem> OnFoodEaten;
     public event Action<int> OnFoodPointsAchieved;
 
-    public EatModule(PlayerStatsModule playerStatsModule): base(playerStatsModule) {}
+    public EatModule(PlayerStats playerStats): base(playerStats) {}
 
-    protected override void PlayerStatModuleUpdated(StatType type, float value)
+    protected override void PlayerStatUpdated(StatType type, float value)
     {
         switch (type)
         {

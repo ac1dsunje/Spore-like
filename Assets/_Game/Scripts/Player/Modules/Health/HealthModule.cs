@@ -15,9 +15,9 @@ public class HealthModule: StatModule
     public event Action OnDamageTaken;
     public event Action<float, float> OnHealthChanged;
 
-    public HealthModule(PlayerStatsModule playerStatsModule): base(playerStatsModule) {}
+    public HealthModule(PlayerStats playerStats): base(playerStats) {}
 
-    protected override void PlayerStatModuleUpdated(StatType type, float value)
+    protected override void PlayerStatUpdated(StatType type, float value)
     {
         switch (type)
         {

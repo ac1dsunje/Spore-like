@@ -6,19 +6,19 @@ namespace _Game.Scripts.Player.Modules
 {
 public abstract class StatModule: IDisposable
 {
-    protected readonly PlayerStatsModule PlayerStatsModule;
+    protected readonly PlayerStats PlayerStats;
 
-    protected StatModule(PlayerStatsModule playerStatsModule)
+    protected StatModule(PlayerStats playerStats)
     {
-        PlayerStatsModule = playerStatsModule;
-        PlayerStatsModule.OnStatUpdated += PlayerStatModuleUpdated;
+        PlayerStats = playerStats;
+        PlayerStats.OnStatUpdated += PlayerStatUpdated;
     }
 
-    protected abstract void PlayerStatModuleUpdated(StatType type, float value);
+    protected abstract void PlayerStatUpdated(StatType type, float value);
     
     public virtual void Dispose()
     {
-        PlayerStatsModule.OnStatUpdated -= PlayerStatModuleUpdated;   
+        PlayerStats.OnStatUpdated -= PlayerStatUpdated;   
     }
 }
 }

@@ -12,7 +12,7 @@ namespace _Game.Scripts.Player
 {
 public class PlayerModel: IDisposable
 {
-    public PlayerStatsModule Stats { get; private set; }
+    public PlayerStats Stats { get; private set; }
     
     private readonly List<IDisposable> _modules = new();
     public VisionModule Vision { get; private set; }

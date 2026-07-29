@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.Player.Modules.Stats
 {
-public class PlayerStatsModule
+public class PlayerStats
 {
     //Evolutions
     private readonly List<Evolution> _evolutions = new();

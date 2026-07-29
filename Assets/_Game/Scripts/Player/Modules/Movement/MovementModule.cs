@@ -20,13 +20,13 @@ public class MovementModule: StatModule
 
     private MovementState _state;
 
-    public MovementModule(PlayerStatsModule playerStatsModule): base(playerStatsModule) {}
+    public MovementModule(PlayerStats playerStats): base(playerStats) {}
     
     public void Disable() => SetState(MovementState.Disabled);
 
     public void Enable() => SetState(MovementState.Enabled);
 
-    protected override void PlayerStatModuleUpdated(StatType type, float value)
+    protected override void PlayerStatUpdated(StatType type, float value)
     {
         switch (type)
         {

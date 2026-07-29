@@ -10,9 +10,9 @@ public class AttackModule: StatModule
     public event Action<int> OnDamageReflected;
     public float PhysicalDamage { get; private set; }
 
-    public AttackModule(PlayerStatsModule playerStatsModule): base(playerStatsModule) {}
+    public AttackModule(PlayerStats playerStats): base(playerStats) {}
 
-    protected override void PlayerStatModuleUpdated(StatType type, float value)
+    protected override void PlayerStatUpdated(StatType type, float value)
     {
         switch (type)
         {
