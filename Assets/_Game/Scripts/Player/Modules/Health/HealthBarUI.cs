@@ -1,23 +1,15 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using _Game.Scripts.UI;
 
 namespace _Game.Scripts.Player.Modules.Health
 {
-public class HealthBarUI: MonoBehaviour
+public class HealthBarUI: BarUI
 {
-    [SerializeField] private Image _bar;
-
     private HealthModule _module;
     
     public void Construct(HealthModule module)
     {
         _module = module;
         _module.OnHealthChanged += UpdateBar;
-    }
-
-    private void UpdateBar(float amount, float maxHealth)
-    {
-        _bar.fillAmount = amount/maxHealth;
     }
 
     private void OnDestroy()

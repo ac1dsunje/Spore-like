@@ -1,12 +1,9 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using _Game.Scripts.UI;
 
 namespace _Game.Scripts.Player.Modules.Experience
 {
-public class ExperienceBarUI: MonoBehaviour
+public class ExperienceBarUI: BarUI
 {
-    [SerializeField] private Image _bar;
-
     private ExperienceController _module;
     private int _experience;
     private int _set;
@@ -24,18 +21,13 @@ public class ExperienceBarUI: MonoBehaviour
     private void UpdateExperience(int amount)
     {
         _experience = amount;
-        UpdateUI();
+        UpdateBar(_experience, _set);
     }
 
     private void UpdateLevelSet(int amount)
     {
         _set = amount;
-        UpdateUI();
-    }
-
-    private void UpdateUI()
-    {
-        _bar.fillAmount = (float)_experience / _set;
+        UpdateBar(_experience, _set);
     }
 
     private void OnDestroy()
