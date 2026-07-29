@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using _Game.Scripts.World.Biome;
+﻿using _Game.Scripts.World.Biome;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
@@ -8,20 +7,17 @@ namespace _Game.Scripts.World
 {
 public class WorldGenerator: MonoBehaviour
 {
-    [SerializeField] private int _chunkSize = 16;
     [SerializeField] private int _renderDistance = 1;
-    [SerializeField] private List<BiomeConfig> _biomeConfigs;
     [SerializeField] private Tilemap[] _tilemaps;
-    
-    [Header("Noise Settings")]
-    [SerializeField] private float _scale = 0.03f;
-    [SerializeField] private int _seed;
+    [SerializeField] private WorldGenerationConfig _config;
     
     private Transform _player;
 
+    private int _seed;
+
     private void Awake()
     {
-        _seed = Random.Range(0, 99999);
+        _seed = _config.GenerateRandomSeed ? Random.Range(0, 99999) : 0;
     }
 
     public void Construct(Transform player)
@@ -46,7 +42,7 @@ public class WorldGenerator: MonoBehaviour
         Generate();
     }
 
-    private int GetDistance() => _renderDistance * _chunkSize;
+    private int GetDistance() => _renderDistance * _config.ChunkSize;
 
     private void Generate()
     {
@@ -78,17 +74,17 @@ public class WorldGenerator: MonoBehaviour
 
     private BiomeConfig CheckBiome(Vector3Int position)
     {
-        var x = (position.x + _seed * 1000f) * _scale;
-        var y = (position.y + _seed * 1000f) * _scale;
+        var x = (position.x + _seed * 1000f) * _config.Scale;
+        var y = (position.y + _seed * 1000f) * _config.Scale;
     
         var noiseValue = Mathf.PerlinNoise(x, y);
     
-        var biomeCount = _biomeConfigs.Count;
+        var biomeCount = _config.BiomeConfigs.Count;
         var biomeIndex = Mathf.FloorToInt(noiseValue * biomeCount);
     
         biomeIndex = Mathf.Clamp(biomeIndex, 0, biomeCount - 1);
     
-        return _biomeConfigs[biomeIndex];
+        return _config.BiomeConfigs[biomeIndex];
     }
 }
 }
