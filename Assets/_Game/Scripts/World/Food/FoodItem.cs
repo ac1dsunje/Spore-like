@@ -5,14 +5,12 @@ namespace _Game.Scripts.World.Food
 {
 public class FoodItem: MonoBehaviour
 {
+    [SerializeField] private RaritiesDatabase _rarities;
     [field: SerializeField] public int FeedAmount { get; private set; } = 1;
-    
-    private RarityConfig _rarity;
 
-    public void SetRarity(RarityConfig rarity)
+    private void Awake()
     {
-        _rarity = rarity;
-        FeedAmount *= _rarity.FoodScaler;
+        FeedAmount *= _rarities.GetRandom().FoodScaler;
     }
 
     public FoodItem Get() => this;
