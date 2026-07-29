@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Obstacles.Spike
   _damage: 3
-  _health: 40
+  _maxHealth: 40
 --- !u!212 &993223613056865060
 SpriteRenderer:
   serializedVersion: 2

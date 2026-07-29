@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.Player.Modules.Health
 {
-public class HealthModule: StatModule
+public class HealthModule: StatModule, IHealth
 {
     public float MaxHealth {get;  private set; }
     public float Health { get; private set; }
