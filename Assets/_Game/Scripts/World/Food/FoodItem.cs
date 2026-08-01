@@ -24,7 +24,7 @@ public class FoodItem: MonoBehaviour
 
     public void TakeHit(float damage, float penetration)
     {
-        var dmg = penetration >= _shield ? damage : 0;
+        var dmg = penetration - _shield >= 0 ? damage : 0;
         if (dmg <= 0) return;
         _health -= damage;
         Instantiate(_config.Particle, transform.position, Quaternion.identity, transform);

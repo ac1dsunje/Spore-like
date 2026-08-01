@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Game.Scripts.Player;
-using _Game.Scripts.Player.Modules.Stats;
 using UnityEngine;
 
 namespace _Game.Scripts.Evolutions.Experience.Types
