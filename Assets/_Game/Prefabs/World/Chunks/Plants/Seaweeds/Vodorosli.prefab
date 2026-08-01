@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e52edad986f4b21b7a2d55b0a3e7c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Food.FoodController
-  _config: {fileID: 11400000, guid: 0ee50afcce5a4264bacb827e4e47b871, type: 2}
+  _config: {fileID: 11400000, guid: 50f484e37a6981d40bebc653fb44bb00, type: 2}
 --- !u!1001 &4587436147030946399
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -123,7 +123,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 8e3447b9397ed424e8f50118639fc8b2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 8e3447b9397ed424e8f50118639fc8b2, type: 3}
       propertyPath: m_LocalPosition.z
