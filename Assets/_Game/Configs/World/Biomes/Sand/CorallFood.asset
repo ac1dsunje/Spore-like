@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0030ccaa56b24bdfbe9c600651de2505, type: 3}
-  m_Name: SeaweedFood
+  m_Name: CorallFood
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Food.FoodConfig
   <Rarities>k__BackingField: {fileID: 11400000, guid: 683917d79f8bbe74f8d5c3f50863c7a1, type: 2}
-  <MaxHealth>k__BackingField: 5
-  <Shield>k__BackingField: 0
+  <MaxHealth>k__BackingField: 10
+  <Shield>k__BackingField: 1
   <FeedAmount>k__BackingField: 1
   <Particle>k__BackingField: {fileID: 7897101249626353857, guid: d8e716c34125011438a86971c35e78c7, type: 3}

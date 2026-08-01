@@ -38,7 +38,7 @@ public class PlayerMouth: MonoBehaviour
         while (food.IsAlive)
         {
             yield return new WaitForSeconds(1f);
-            food.TakeHit(_module.EatingStrength);
+            food.TakeHit(_module.EatingStrength, _module.EatingPenetration);
         }
         
         _module.GetExperienceFromFood(food.FeedAmount);

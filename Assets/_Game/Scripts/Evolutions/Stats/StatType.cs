@@ -10,6 +10,7 @@ public enum StatType
     Regeneration = 7,
     Acceleration = 3,
     PhysicalDamage = 6,
-    EatingStrength = 11
+    EatingStrength = 11,
+    EatingPenetration = 12
 }
 }
