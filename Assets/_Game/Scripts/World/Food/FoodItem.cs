@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace _Game.Scripts.World.Food
 {
@@ -6,8 +7,8 @@ public class FoodItem: MonoBehaviour
 {
     [SerializeField] private FoodConfig _config;
 
-    public bool IsAlive => _health > 0f;
-    public int FeedAmount { get; private set; }
+    private int _feedAmount;
+    public event Action<int> OnDeath;
     
     private float _health;
     private float _shield;
@@ -16,7 +17,7 @@ public class FoodItem: MonoBehaviour
     {
         _health = _config.MaxHealth;
         _shield = _config.Shield;
-        FeedAmount = _config.FeedAmount;
+        _feedAmount = _config.FeedAmount;
     }
 
     public void TakeHit(float damage, float penetration)
@@ -25,7 +26,7 @@ public class FoodItem: MonoBehaviour
         if (dmg <= 0) return;
         _health -= dmg;
         SpawnParticles(_config.Particle, transform);
-        if (!IsAlive) Die();
+        if (_health <= 0f) Die();
     }
 
     private void SpawnParticles(GameObject particle, Transform parent)
@@ -35,6 +36,7 @@ public class FoodItem: MonoBehaviour
 
     private void Die()
     {
+        OnDeath?.Invoke(_feedAmount);
         Destroy(gameObject);
     }
 }

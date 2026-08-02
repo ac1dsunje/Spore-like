@@ -22,25 +22,30 @@ public class PlayerMouth: MonoBehaviour
     {
         if (!other.TryGetComponent<FoodItem>(out var food)) return;
         _currentFood = food;
+        _currentFood.OnDeath += OnFoodDeath;
         StartCoroutine(Eat(_currentFood));
     }
 
     private void TryReleaseFood(Collider2D other)
     {
         if (!other.TryGetComponent<FoodItem>(out var food)) return;
+        _currentFood.OnDeath -= OnFoodDeath;
         _currentFood = null;
         StopAllCoroutines();
     }
 
     private IEnumerator Eat(FoodItem food)
     {
-        while (food.IsAlive)
+        while (true)
         {
             yield return new WaitForSeconds(1f);
             food.TakeHit(_module.EatingStrength, _module.EatingPenetration);
         }
-        
-        _module.GetExperienceFromFood(food.FeedAmount);
+    }
+
+    private void OnFoodDeath(int foodAmount)
+    {
+        _module.GetExperienceFromFood(foodAmount);
     }
 
     private void OnDestroy()
