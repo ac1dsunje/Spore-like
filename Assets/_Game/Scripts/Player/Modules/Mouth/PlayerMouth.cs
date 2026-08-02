@@ -14,23 +14,22 @@ public class PlayerMouth: MonoBehaviour
         _module = module;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        TryCatchFood(other);
-    }
+    private void OnTriggerEnter2D(Collider2D other) => TryCatchFood(other);
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (!other.TryGetComponent<FoodItem>(out var food)) return;
-        _currentFood = null;
-        StopAllCoroutines();
-    }
+    private void OnTriggerExit2D(Collider2D other) => TryReleaseFood(other);
 
     private void TryCatchFood(Collider2D other)
     {
         if (!other.TryGetComponent<FoodItem>(out var food)) return;
         _currentFood = food;
         StartCoroutine(Eat(_currentFood));
+    }
+
+    private void TryReleaseFood(Collider2D other)
+    {
+        if (!other.TryGetComponent<FoodItem>(out var food)) return;
+        _currentFood = null;
+        StopAllCoroutines();
     }
 
     private IEnumerator Eat(FoodItem food)

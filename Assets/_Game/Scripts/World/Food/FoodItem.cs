@@ -24,8 +24,18 @@ public class FoodItem: MonoBehaviour
         var dmg = penetration - _shield >= 0 ? damage : 0;
         if (dmg <= 0) return;
         _health -= dmg;
-        Instantiate(_config.Particle, transform.position, Quaternion.identity, transform);
-        if (!IsAlive) Destroy(gameObject);
+        SpawnParticles(_config.Particle, transform);
+        if (!IsAlive) Die();
+    }
+
+    private void SpawnParticles(GameObject particle, Transform parent)
+    {
+        Instantiate(particle, parent.position, Quaternion.identity, parent);
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }
 }

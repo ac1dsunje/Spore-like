@@ -1,5 +1,4 @@
-﻿using _Game.Scripts.Rarities;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace _Game.Scripts.World.Food
 {
