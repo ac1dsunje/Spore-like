@@ -17,4 +17,5 @@ MonoBehaviour:
   - {fileID: 2242808679465882649, guid: 3abfb2ade61687241bc1ec0dea4169b8, type: 3}
   - {fileID: 2242808679465882649, guid: fb18b5f42f61c0248906eabff0079a6b, type: 3}
   - {fileID: 2242808679465882649, guid: a024b8fc5f8474244ae0cc89e88249f8, type: 3}
+  - {fileID: 2242808679465882649, guid: 5726641cccb5b5a4597e29fbdf029b32, type: 3}
   <Chance>k__BackingField: 50

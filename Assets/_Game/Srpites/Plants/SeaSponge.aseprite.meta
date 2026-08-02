@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 834e743eb36fca84e87393360e1a0044
+guid: 4d65fd748bfa53344b2d40217c068f0a
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -36,7 +36,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 64
+    spritePixelsToUnits: 16
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -76,7 +76,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
@@ -91,7 +91,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639212910273091596
+  platformSettingsDirtyTick: 639212911356549927
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Tooth
+  - name: SeaSponge
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 12
-      height: 32
-    spriteID: 0c6aafb84f6af3c4bbdd610ba393f48f
+      width: 14
+      height: 16
+    spriteID: ae5c0076cad93ac4aace741bef4bd6fb
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 3618269964
+      value0: 2833619475
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Tooth
+    name: SeaSponge
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Tooth
+    - name: SeaSponge
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 10
+        x: 1
         y: 0
-        width: 12
-        height: 32
-      spriteId: 0c6aafb84f6af3c4bbdd610ba393f48f
+        width: 14
+        height: 16
+      spriteId: ae5c0076cad93ac4aace741bef4bd6fb
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -217,5 +217,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 32, y: 32}
-  previousTextureSize: {x: 32, y: 64}
+  canvasSize: {x: 16, y: 16}
+  previousTextureSize: {x: 32, y: 32}
