@@ -19,4 +19,4 @@ MonoBehaviour:
   <Height>k__BackingField: 0
   <EnvironmentConfigs>k__BackingField:
   - {fileID: 11400000, guid: c612701b96db6564c88bbf950a6f987a, type: 2}
-  <ChanceEnvironment>k__BackingField: 25
+  <ChanceEnvironment>k__BackingField: 1
