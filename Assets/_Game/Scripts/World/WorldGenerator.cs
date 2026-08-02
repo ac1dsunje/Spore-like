@@ -69,7 +69,9 @@ public class WorldGenerator: MonoBehaviour
         var rand = Random.Range(0, 100);
         if (rand >= biome.ChanceEnvironment) return;
         var environment = biome.GetRandomEnvironment();
-        Instantiate(environment.Prefabs[Random.Range(0, environment.Prefabs.Length)], new Vector3(position.x + 0.5f, position.y + 0.5f, position.z), Quaternion.identity, _tilemaps[biome.Height].transform);
+        var prefab = environment.Prefabs[Random.Range(0, environment.Prefabs.Length)];
+        var setPos = new Vector3(position.x + 0.5f, position.y + 0.5f, position.z);
+        Instantiate(prefab, setPos, Quaternion.identity, _tilemaps[biome.Height].transform);
     }
 
     private BiomeConfig CheckBiome(Vector3Int position)
