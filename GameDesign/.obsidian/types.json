@@ -1,0 +1,13 @@
+{
+  "types": {
+    "aliases": "aliases",
+    "cssclasses": "multitext",
+    "tags": "tags",
+    "Баффы": "multitext",
+    "Блокирует": "multitext",
+    "Требует": "multitext",
+    "Дебаффы": "multitext",
+    "Даёт навык": "multitext",
+    "Класс": "multitext"
+  }
+}
