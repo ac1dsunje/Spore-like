@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e52edad986f4b21b7a2d55b0a3e7c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Food.FoodController
-  _config: {fileID: 11400000, guid: 56af688c73a837f499d7ecbeaca5241c, type: 2}
+  _config: {fileID: 11400000, guid: 56fea54bd5a3a5243a536ec8c1a37b7c, type: 2}
 --- !u!1001 &8297040173925487139
 PrefabInstance:
   m_ObjectHideFlags: 0

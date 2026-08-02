@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0030ccaa56b24bdfbe9c600651de2505, type: 3}
-  m_Name: Corall
+  m_Name: Coral
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Food.FoodConfig
   <MaxHealth>k__BackingField: 10
   <Shield>k__BackingField: 1.5

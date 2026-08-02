@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.WorldGenerationConfig
   <ChunkSize>k__BackingField: 16
   <BiomeConfigs>k__BackingField:
+  - {fileID: 11400000, guid: bc74543dbae08d84793d92d8336c6dee, type: 2}
   - {fileID: 11400000, guid: 8bb4609730817674fa0e0a5301c5334d, type: 2}
   - {fileID: 11400000, guid: 171b515d0a90b4748bed52a9310c6d8a, type: 2}
   <Scale>k__BackingField: 0.03

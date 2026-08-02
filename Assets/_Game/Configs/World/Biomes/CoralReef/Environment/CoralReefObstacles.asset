@@ -10,11 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83806caa17d9442d950970dd922c6565, type: 3}
-  m_Name: UnderWaterPlants
+  m_Name: CoralReefObstacles
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Biome.EnvironmentConfig
   <Prefabs>k__BackingField:
-  - {fileID: 2242808679465882649, guid: 531ed792fe9f15541abc265b55d4d14c, type: 3}
-  - {fileID: 2242808679465882649, guid: 3abfb2ade61687241bc1ec0dea4169b8, type: 3}
-  - {fileID: 2242808679465882649, guid: fb18b5f42f61c0248906eabff0079a6b, type: 3}
-  - {fileID: 2242808679465882649, guid: 5726641cccb5b5a4597e29fbdf029b32, type: 3}
-  <Chance>k__BackingField: 50
+  - {fileID: 2453553538165317395, guid: bca1838abf7c0854ea5d10dbf45cf4c8, type: 3}
+  <Chance>k__BackingField: 20
