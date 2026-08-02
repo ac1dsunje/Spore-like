@@ -1,12 +1,114 @@
 {
-  "presetFields": [],
+  "presetFields": [
+    {
+      "type": "Multi",
+      "tagName": "multi",
+      "icon": "bullet-list",
+      "tooltip": "Accepts multiple values from a list",
+      "colorClass": "multi",
+      "options": {
+        "sourceType": "ValuesFromDVQuery",
+        "valuesList": {},
+        "valuesFromDVQuery": "dv.pages('\"Постоянные баффы и дебаффы\"')\n  .map(p => `[[${p.file.name}]]`)\n  .array()"
+      },
+      "name": "Дебаффы",
+      "id": "2uVOrk",
+      "path": ""
+    },
+    {
+      "type": "Select",
+      "tagName": "select",
+      "icon": "right-triangle",
+      "tooltip": "Accepts a single value from a list",
+      "colorClass": "select",
+      "options": {
+        "sourceType": "ValuesFromDVQuery",
+        "valuesList": {},
+        "valuesFromDVQuery": "dv.pages('\"Этапы\"')\n  .map(p => `[[${p.file.name}]]`)\n  .array()"
+      },
+      "name": "Этап",
+      "id": "3dLHmH",
+      "path": ""
+    },
+    {
+      "type": "Multi",
+      "tagName": "multi",
+      "icon": "bullet-list",
+      "tooltip": "Accepts multiple values from a list",
+      "colorClass": "multi",
+      "options": {
+        "sourceType": "ValuesFromDVQuery",
+        "valuesList": {},
+        "valuesFromDVQuery": "dv.pages('\"Постоянные баффы и дебаффы\"')\n  .map(p => `[[${p.file.name}]]`)\n  .array()"
+      },
+      "name": "Баффы",
+      "id": "8QmuYe",
+      "path": ""
+    },
+    {
+      "type": "Select",
+      "tagName": "select",
+      "icon": "right-triangle",
+      "tooltip": "Accepts a single value from a list",
+      "colorClass": "select",
+      "options": {
+        "sourceType": "ValuesFromDVQuery",
+        "valuesList": {},
+        "valuesFromDVQuery": "dv.pages('\"Группы\"')\n  .map(p => `[[${p.file.name}]]`)\n  .array()"
+      },
+      "name": "Группа",
+      "id": "PSklWQ",
+      "path": ""
+    },
+    {
+      "type": "Multi",
+      "tagName": "multi",
+      "icon": "bullet-list",
+      "tooltip": "Accepts multiple values from a list",
+      "colorClass": "multi",
+      "options": {
+        "sourceType": "ValuesFromDVQuery",
+        "valuesList": {},
+        "valuesFromDVQuery": "dv.pages('\"Классы\"')\n  .map(p => `[[${p.file.name}]]`)\n  .array()"
+      },
+      "name": "Классы",
+      "id": "bF10vP",
+      "path": ""
+    },
+    {
+      "type": "Select",
+      "tagName": "select",
+      "icon": "right-triangle",
+      "tooltip": "Accepts a single value from a list",
+      "colorClass": "select",
+      "options": {
+        "sourceType": "ValuesFromDVQuery",
+        "valuesList": {},
+        "valuesFromDVQuery": "dv.pages('\"Эволюции/Типы\"')\n  .map(p => `[[${p.file.name}]]`)\n  .array()"
+      },
+      "name": "Тип",
+      "id": "xO229W",
+      "path": ""
+    },
+    {
+      "type": "Boolean",
+      "tagName": "boolean",
+      "icon": "toggle-left",
+      "tooltip": "Accepts true or false",
+      "colorClass": "boolean",
+      "options": {},
+      "name": "Реализовано",
+      "id": "HkkOqu",
+      "path": ""
+    }
+  ],
   "fileClassQueries": [],
   "displayFieldsInContextMenu": true,
   "globallyIgnoredFields": [],
   "classFilesPath": null,
   "isAutosuggestEnabled": true,
   "fileClassAlias": "fileClass",
-  "settingsVersion": "5.0",
+  "settingsVersion": "5.26",
   "firstDayOfWeek": 1,
   "enableLinks": true,
   "enableTabHeader": true,
