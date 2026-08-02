@@ -13,6 +13,7 @@ public class EvolutionExperienceFactory
         {
             EvolutionExperienceType.DamageReflection => new DamageReflecting(playerModel),
             EvolutionExperienceType.ObjectDiscover => new ObjectsDiscovering(playerModel),
+            EvolutionExperienceType.FoodEating => new FoodEating(playerModel),
             _ => throw new ArgumentOutOfRangeException(nameof(experienceType), experienceType, null)
         };
     }

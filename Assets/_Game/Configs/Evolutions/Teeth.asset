@@ -15,12 +15,15 @@ MonoBehaviour:
   <CreatureType>k__BackingField: 0
   <Name>k__BackingField: Teeth
   <Description>k__BackingField: You dont have to go to the dentist anymore
-  <Sprite>k__BackingField: {fileID: -7953839269348762367, guid: 6d941b6ae772f2f4ca5dcf0957d42010, type: 3}
+  <Sprite>k__BackingField: {fileID: 1548770688848624167, guid: 834e743eb36fca84e87393360e1a0044, type: 3}
   <Stats>k__BackingField:
-  - <Type>k__BackingField: 12
+  - <Type>k__BackingField: 11
     <Value>k__BackingField: 1
     <UpdatesByRarity>k__BackingField: 1
-  - <Type>k__BackingField: 11
+  - <Type>k__BackingField: 13
+    <Value>k__BackingField: -100
+    <UpdatesByRarity>k__BackingField: 1
+  - <Type>k__BackingField: 12
     <Value>k__BackingField: 1
     <UpdatesByRarity>k__BackingField: 1
   <State>k__BackingField: 1

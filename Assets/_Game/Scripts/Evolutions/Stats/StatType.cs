@@ -11,6 +11,7 @@ public enum StatType
     Acceleration = 3,
     PhysicalDamage = 6,
     EatingStrength = 11,
-    EatingPenetration = 12
+    EatingPenetration = 12,
+    EatingTime = 13,
 }
 }

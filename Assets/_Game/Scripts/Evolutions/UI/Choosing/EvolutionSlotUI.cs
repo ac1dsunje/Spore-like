@@ -40,9 +40,9 @@ public class EvolutionSlotUI : MonoBehaviour
 
         foreach (var stat in _evolution.Stats)
         {
-            text.Append($"{stat.Type} +");
-            var value = stat.CurrentValue >= 1 ? $"{stat.CurrentValue}" : $"{stat.CurrentValue * 100}%";
-            text.AppendLine(value);
+            text.Append($"{stat.Type}");
+            text.Append(stat.Value > 0 ? " +" : " ");
+            text.AppendLine($"{stat.CurrentValue}");
         }
 
         return text.ToString();

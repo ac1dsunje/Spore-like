@@ -2,7 +2,8 @@
 {
 public enum EvolutionExperienceType
 {
-    ObjectDiscover,
-    DamageReflection
+    ObjectDiscover = 0,
+    FoodEating = 1,
+    DamageReflection = 2
 }
 }
