@@ -15,7 +15,10 @@ public class ExperienceBarUI: BarUI
         _module.OnExperienceChanged += UpdateExperience;
         _module.OnLevelSetChanged += UpdateLevelSet;
 
+        _experience = _module.Experience;
         _set = _module.LevelSet;
+        
+        UpdateBar(_experience, _set);
     }
     
     private void UpdateExperience(int amount)

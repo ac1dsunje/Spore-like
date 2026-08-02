@@ -6,7 +6,7 @@ namespace _Game.Scripts.Player.Modules.Experience
 public class ExperienceController: IDisposable
 {
     public int LevelSet { get; private set; }
-    private int _experience;
+    public int Experience { get; private set; }
     private int _level;
     private int _levelScaler;
     
@@ -34,14 +34,14 @@ public class ExperienceController: IDisposable
 
     private void UpdateExperience(int amount)
     {
-        _experience += amount;
-        OnExperienceChanged?.Invoke(_experience);
+        Experience += amount;
+        OnExperienceChanged?.Invoke(Experience);
         UpdateLevel();
     }
     
     private void UpdateLevel()
     {
-        while (_experience >= LevelSet)
+        while (Experience >= LevelSet)
         {
             UpdateExperience(-LevelSet);
             _level++;
