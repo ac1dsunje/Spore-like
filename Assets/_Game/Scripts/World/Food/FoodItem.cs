@@ -26,7 +26,7 @@ public class FoodItem: MonoBehaviour
     {
         var dmg = penetration - _shield >= 0 ? damage : 0;
         if (dmg <= 0) return;
-        _health -= damage;
+        _health -= dmg;
         Instantiate(_config.Particle, transform.position, Quaternion.identity, transform);
         if (!IsAlive) Destroy(gameObject);
     }
