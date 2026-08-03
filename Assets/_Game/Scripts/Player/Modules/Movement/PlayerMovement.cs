@@ -37,10 +37,17 @@ public class PlayerMovement: MonoBehaviour
     {
         var targetVelocity = new Vector2(_horizontalInput, _verticalInput).normalized * _module.MoveSpeed;
 
-        var accelerationThisFrame = _module.Acceleration * Time.fixedDeltaTime;
+        var time = (Mathf.Abs(_horizontalInput) > 0.1f || Mathf.Abs(_verticalInput) > 0.1f)
+            ? _module.Acceleration
+            : _module.Inertia;
 
-        _rigidbody.linearVelocity = Vector2.MoveTowards(_rigidbody.linearVelocity, targetVelocity, accelerationThisFrame);
-        
+        var rate = _module.MoveSpeed / time;
+
+        _rigidbody.linearVelocity = Vector2.MoveTowards(
+            _rigidbody.linearVelocity,
+            targetVelocity,
+            rate * Time.fixedDeltaTime);
+
         Flip();
     }
 
