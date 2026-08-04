@@ -15,10 +15,10 @@ public class EnduranceModule: StatModule
 
     public EnduranceModule(PlayerStats playerStats): base(playerStats) {}
 
-    public void Regenerate()
+    public void AddEndurance(float value)
     {
         var endurance = Endurance;
-        Endurance += EnduranceRecovery;
+        Endurance += value;
         if (Endurance > MaxEndurance)
         {
             Endurance = MaxEndurance;

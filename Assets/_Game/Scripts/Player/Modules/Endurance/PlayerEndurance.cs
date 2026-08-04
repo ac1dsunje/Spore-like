@@ -18,7 +18,7 @@ public class PlayerEndurance: MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1f);
-            _module.Regenerate();
+            _module.AddEndurance(_module.EnduranceRecovery);
         }
     }
 
