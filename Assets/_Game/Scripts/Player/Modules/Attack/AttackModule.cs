@@ -6,9 +6,12 @@ namespace _Game.Scripts.Player.Modules.Attack
 {
 public class AttackModule: StatModule
 {
+    public float DamageResistance => _damageResistance / 100f;
+    
     private float _damageReflection;
     public event Action<int> OnDamageReflected;
     private float _physicalDamage;
+    private float _damageResistance;
 
     public AttackModule(PlayerStats playerStats): base(playerStats) {}
 
@@ -22,10 +25,14 @@ public class AttackModule: StatModule
             case StatType.PhysicalDamage:
                 UpdatePhysicalDamage(value);
                 break;
+            
+            case StatType.DamageResistance:
+                UpdateDamageResistance(value);
+                break;
         }
     }
     
-    public void ReflectDamage(float damage, IDamageAble damager)
+    public void TakeDamage(float damage, IDamageAble damager)
     {
         var returnedDamage = damage * _damageReflection;
         if (returnedDamage >= 1f) OnDamageReflected?.Invoke((int)returnedDamage);
@@ -35,5 +42,7 @@ public class AttackModule: StatModule
     private void UpdateDamageReflection(float newValue) => _damageReflection = newValue;
 
     private void UpdatePhysicalDamage(float newValue) => _physicalDamage = newValue;
+    
+    private void UpdateDamageResistance(float newValue) => _damageResistance = newValue;
 }
 }

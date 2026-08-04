@@ -1,5 +1,6 @@
 ﻿using System;
 using _Game.Scripts.Evolutions.Stats;
+using _Game.Scripts.Player.Modules.Attack;
 using _Game.Scripts.Player.Modules.Stats;
 using UnityEngine;
 
