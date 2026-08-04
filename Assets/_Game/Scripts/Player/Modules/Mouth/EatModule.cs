@@ -8,7 +8,9 @@ public class EatModule: StatModule
 {
     public float EatingStrength { get; private set; }
     public float EatingPenetration { get; private set; }
-    public float EatingTime { get; private set; }
+    public float EatingTime => _eatingTime / 100f;
+
+    private float _eatingTime;
     public event Action<int> OnFoodPointsAchieved;
 
     public EatModule(PlayerStats playerStats): base(playerStats) {}
@@ -33,7 +35,7 @@ public class EatModule: StatModule
 
     private void UpdateEatingStrength(float newValue) => EatingStrength = newValue;
     private void UpdateEatingPenetration(float newValue) => EatingPenetration = newValue;
-    private void UpdateEatingTime(float newValue) => EatingTime = newValue;
+    private void UpdateEatingTime(float newValue) => _eatingTime = newValue;
 
     public void GetExperienceFromFood(int value)
     {
