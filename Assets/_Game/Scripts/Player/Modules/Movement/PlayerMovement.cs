@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using _Game.Scripts.Player.Modules.Endurance;
+using UnityEngine;
 
 namespace _Game.Scripts.Player.Modules.Movement
 {
@@ -7,15 +8,17 @@ public class PlayerMovement: MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rigidbody;
     
-    private MovementModule _module;
+    private MovementModule _movement;
+    private EnduranceModule _endurance;
     
     private float _horizontalInput;
     private float _verticalInput;
     private bool _isSprintInput;
     
-    public void Construct(MovementModule module)
+    public void Construct(MovementModule movement, EnduranceModule endurance)
     {
-        _module = module;
+        _movement = movement;
+        _endurance = endurance;
     }
 
     private void Update()
@@ -40,17 +43,19 @@ public class PlayerMovement: MonoBehaviour
         var input = new Vector2(_horizontalInput, _verticalInput).normalized;
 
         var sprintMultiplier = _isSprintInput
-            ? _module.SprintMultiplier
+            ? _endurance.Endurance > 0f
+                ? _movement.SprintMultiplier
+                : 1f
             : 1f;
 
-        var maxSpeed = _module.MoveSpeed * sprintMultiplier;
+        var maxSpeed = _movement.MoveSpeed * sprintMultiplier;
         var targetVelocity = input * maxSpeed;
 
         var hasInput = input.sqrMagnitude > 0f;
 
         var time = hasInput
-            ? _module.Acceleration
-            : _module.Inertia;
+            ? _movement.Acceleration
+            : _movement.Inertia;
 
         var rate = maxSpeed / time;
 

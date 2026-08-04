@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Game.Scripts.Player.Modules.Attack;
+using _Game.Scripts.Player.Modules.Endurance;
 using _Game.Scripts.Player.Modules.Experience;
 using _Game.Scripts.Player.Modules.Health;
 using _Game.Scripts.Player.Modules.Mouth;
@@ -21,6 +22,7 @@ public class PlayerModel: IDisposable
     public EatModule EatModule { get; private set; }
     public AttackModule Attack { get; private set; }
     public ExperienceController Experience { get; }
+    public EnduranceModule Endurance { get; private set; }
 
     public PlayerModel(PlayerConfig config)
     {
@@ -38,12 +40,14 @@ public class PlayerModel: IDisposable
         Health = new(Stats);
         EatModule = new (Stats);
         Attack = new(Stats);
+        Endurance = new(Stats);
 
         _modules.Add(Vision);
         _modules.Add(Movement);
         _modules.Add(Health);
         _modules.Add(EatModule);
         _modules.Add(Attack);
+        _modules.Add(Endurance);
     }
 
     public void Dispose()

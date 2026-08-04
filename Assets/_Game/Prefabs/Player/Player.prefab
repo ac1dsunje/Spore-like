@@ -176,9 +176,7 @@ GameObject:
   - component: {fileID: 4515079076315579977}
   - component: {fileID: 5451021253237555291}
   - component: {fileID: 2108220050117646386}
-  - component: {fileID: 1354067261797318336}
   - component: {fileID: 6488647832735213282}
-  - component: {fileID: 6159143780847964758}
   - component: {fileID: 5941579127261112535}
   m_Layer: 0
   m_Name: Player
@@ -243,19 +241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6f8be6a5c94e08b0408b38c4016f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.PlayerController
---- !u!114 &1354067261797318336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254078283856608112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28d0016c3217408bb4f98ccd4b3f6036, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.PlayerMovement
-  _rigidbody: {fileID: 5451021253237555291}
 --- !u!114 &6488647832735213282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,18 +256,6 @@ MonoBehaviour:
   _evolutionsDatabase: {fileID: 11400000, guid: 89e0fac1fa9071a41bafa6ee877795b5, type: 2}
   _raritiesDatabase: {fileID: 11400000, guid: 844b6b4bf98611044bf03a16ce2009a0, type: 2}
   _minEvolutions: 3
---- !u!114 &6159143780847964758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254078283856608112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5bff76f551f46b2a71c67b4f6088033, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.Health.PlayerHealth
 --- !u!70 &5941579127261112535
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -413,6 +386,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8081464728478508327}
+  - component: {fileID: 5770846536393434146}
+  - component: {fileID: 4028549422210393822}
+  - component: {fileID: 7969867278788272747}
   m_Layer: 0
   m_Name: Modules
   m_TagString: Untagged
@@ -437,6 +413,43 @@ Transform:
   - {fileID: 4484527676552915651}
   m_Father: {fileID: 4515079076315579977}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5770846536393434146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8527591295361904753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28d0016c3217408bb4f98ccd4b3f6036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.PlayerMovement
+  _rigidbody: {fileID: 5451021253237555291}
+--- !u!114 &4028549422210393822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8527591295361904753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5bff76f551f46b2a71c67b4f6088033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.Health.PlayerHealth
+--- !u!114 &7969867278788272747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8527591295361904753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ccc8f16a156452f8b3c9ee9c26154f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.Endurance.PlayerEndurance
 --- !u!1001 &2756299357259062068
 PrefabInstance:
   m_ObjectHideFlags: 0

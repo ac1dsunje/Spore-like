@@ -45,11 +45,14 @@ public class HealthModule: StatModule, IHealth
 
     public void Heal(float amount)
     {
+        var health = Health;
         Health += amount;
         if (Health > MaxHealth)
         {
             Health = MaxHealth;
         }
+
+        if (Mathf.Approximately(health, Health)) return;
         OnHealthChanged?.Invoke(Health, MaxHealth);
     }
     
