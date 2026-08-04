@@ -25,9 +25,6 @@ public class ObjectsDiscovering: IEvolutionExperience
         OnExperienceGained?.Invoke(1);
     }
 
-    public void Dispose()
-    {
-        _playerModel.Vision.OnGameObjectDiscovered -= OnObjectDiscovered;
-    }
+    public void Dispose() => _playerModel.Vision.OnGameObjectDiscovered -= OnObjectDiscovered;
 }
 }

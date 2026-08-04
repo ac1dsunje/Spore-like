@@ -15,14 +15,8 @@ public class DamageReflecting: IEvolutionExperience
         _playerModel.Defense.OnDamageReflected += OnDamageReflected;
     }
     
-    private void OnDamageReflected(int damage)
-    {
-        OnExperienceGained?.Invoke(damage);
-    }
+    private void OnDamageReflected(int damage) => OnExperienceGained?.Invoke(damage);
 
-    public void Dispose()
-    {
-        _playerModel.Defense.OnDamageReflected -= OnDamageReflected;
-    }
+    public void Dispose() => _playerModel.Defense.OnDamageReflected -= OnDamageReflected;
 }
 }

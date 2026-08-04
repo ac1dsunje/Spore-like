@@ -16,14 +16,8 @@ public class DamageResisting: IEvolutionExperience
         _playerModel.Defense.OnDamageResisted += OnDamageResisted;
     }
     
-    private void OnDamageResisted(int damage)
-    {
-        OnExperienceGained?.Invoke(damage);
-    }
+    private void OnDamageResisted(int damage) => OnExperienceGained?.Invoke(damage);
 
-    public void Dispose()
-    {
-        _playerModel.Defense.OnDamageResisted -= OnDamageResisted;
-    }
+    public void Dispose() => _playerModel.Defense.OnDamageResisted -= OnDamageResisted;
 }
 }

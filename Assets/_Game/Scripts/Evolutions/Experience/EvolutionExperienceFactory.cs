@@ -1,7 +1,6 @@
 ﻿using System;
 using _Game.Scripts.Evolutions.Experience.Types;
 using _Game.Scripts.Player;
-using _Game.Scripts.Player.Modules.Stats;
 
 namespace _Game.Scripts.Evolutions.Experience
 {
