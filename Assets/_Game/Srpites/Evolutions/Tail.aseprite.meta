@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 55832ed50c1b16e428b739271c7f4a80
+guid: 347c41c4af0cb984aac865bd2f70a975
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -76,7 +76,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
@@ -91,7 +91,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639214569678755107
+  platformSettingsDirtyTick: 639214713891946610
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: TailAI
+  - name: Tail
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 4
       width: 16
       height: 16
-    spriteID: d41d1ffaca4fdc1479dadcd18d76a24a
+    spriteID: 53c2b59667e7cbd4c81e2c275db75283
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,17 +153,17 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 3877434238
+      value0: 405905984
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: TailAI
+    name: Tail
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: TailAI
+    - name: Tail
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -171,7 +171,7 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 16
-      spriteId: d41d1ffaca4fdc1479dadcd18d76a24a
+      spriteId: 53c2b59667e7cbd4c81e2c275db75283
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
