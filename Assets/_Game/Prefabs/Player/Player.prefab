@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 2108220050117646386}
   - component: {fileID: 6488647832735213282}
   - component: {fileID: 5941579127261112535}
+  - component: {fileID: 8826225895069937878}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -293,6 +294,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.05}
   m_Size: {x: 0.8, y: 0.41}
   m_Direction: 1
+--- !u!114 &8826225895069937878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254078283856608112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28d0016c3217408bb4f98ccd4b3f6036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.PlayerMovement
+  _rigidbody: {fileID: 5451021253237555291}
 --- !u!1 &8352832263387622762
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +400,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8081464728478508327}
-  - component: {fileID: 5770846536393434146}
   - component: {fileID: 4028549422210393822}
   - component: {fileID: 7969867278788272747}
   m_Layer: 0
@@ -413,19 +426,6 @@ Transform:
   - {fileID: 4484527676552915651}
   m_Father: {fileID: 4515079076315579977}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5770846536393434146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8527591295361904753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28d0016c3217408bb4f98ccd4b3f6036, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.PlayerMovement
-  _rigidbody: {fileID: 5451021253237555291}
 --- !u!114 &4028549422210393822
 MonoBehaviour:
   m_ObjectHideFlags: 0
