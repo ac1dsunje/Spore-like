@@ -1,6 +1,7 @@
 ﻿using _Game.Scripts.Evolutions;
 using _Game.Scripts.Evolutions.UI;
 using _Game.Scripts.Player;
+using _Game.Scripts.Player.Modules.Endurance;
 using _Game.Scripts.Player.Modules.Experience;
 using _Game.Scripts.Player.Modules.Health;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class OverlayScreen: ScreenManager
 {
     [SerializeField] private HealthBarUI _healthBarUI;
     [SerializeField] private ExperienceBarUI _experienceBarUI;
+    [SerializeField] private EnduranceBarUI _enduranceBarUI;
     
     [SerializeField] private GameObject _evolutionSlotPrefab;
     [SerializeField] private Transform  _evolutionsParent;
@@ -24,6 +26,7 @@ public class OverlayScreen: ScreenManager
         
         _healthBarUI.Construct(_player.Health);
         _experienceBarUI.Construct(_player.Experience);
+        _enduranceBarUI.Construct(_player.Endurance);
     }
 
     private void AddEvolution(Evolution evolution)

@@ -24,7 +24,17 @@ public class EnduranceModule: StatModule
             Endurance = MaxEndurance;
         }
         if (Mathf.Approximately(endurance, Endurance)) return;
-        OnEnduranceChanged?.Invoke(Endurance, Endurance);
+        OnEnduranceChanged?.Invoke(Endurance, MaxEndurance);
+    }
+
+    public void UseEndurance(float value)
+    {
+        var endurance = Endurance;
+        Endurance -= value;
+        if (Endurance <= 0) Endurance = 0;
+        
+        if (Mathf.Approximately(endurance, Endurance)) return;
+        OnEnduranceChanged?.Invoke(Endurance, MaxEndurance);
     }
 
     protected override void PlayerStatUpdated(StatType type, float value)
@@ -42,7 +52,13 @@ public class EnduranceModule: StatModule
     
     private void UpdateMaxEndurance(float value)
     {
+        var difference = value - MaxEndurance;
         MaxEndurance = value;
+        
+        MaxEndurance = value;
+    
+        Endurance = Mathf.Clamp(Endurance + difference, 0, MaxEndurance);
+        
         OnEnduranceChanged?.Invoke(Endurance, MaxEndurance);
     }
 

@@ -210,6 +210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.UI.OverlayScreen
   _healthBarUI: {fileID: 5077018607574975648}
   _experienceBarUI: {fileID: 6900553425465843076}
+  _enduranceBarUI: {fileID: 4709953534831199291}
   _evolutionSlotPrefab: {fileID: 5767200488071860503, guid: dfe01fd0d9189dd459f34109b0ed699c, type: 3}
   _evolutionsParent: {fileID: 1118648484318863303}
 --- !u!1 &7492984504372097921
@@ -409,6 +410,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eba9e9074b44c4449ba8b7b97e3dad39, type: 3}
+--- !u!114 &4709953534831199291 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1577315493997602819, guid: eba9e9074b44c4449ba8b7b97e3dad39, type: 3}
+  m_PrefabInstance: {fileID: 6106562084647463992}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84397495fcc94d7b9bf1460cc5505a45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.Endurance.EnduranceBarUI
 --- !u!224 &7597280017328905295 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4454104221756158071, guid: eba9e9074b44c4449ba8b7b97e3dad39, type: 3}
