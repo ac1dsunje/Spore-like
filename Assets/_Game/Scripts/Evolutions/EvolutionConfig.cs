@@ -23,6 +23,6 @@ public class EvolutionConfig: ScriptableObject
     [field: SerializeField] public EvolutionConfig[] Blocks { get; private set; }
     [Header("Experience")]
     [field: SerializeField] public int ExperienceForFirstLevel { get; private set; }
-    [field: SerializeField] public EvolutionExperienceType ExperienceType { get; private set; }
+    [field: SerializeField] public EvolutionExperienceType[] ExperienceTypes { get; private set; }
 }
 }

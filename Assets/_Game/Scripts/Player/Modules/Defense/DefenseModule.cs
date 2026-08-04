@@ -31,9 +31,9 @@ public class DefenseModule: StatModule
 
     public float GetDamageAfterResistance(float value)
     {
-        var dmg = value * (1 - DamageResistance);
-        if (dmg >= 1f) OnDamageResisted?.Invoke((int)dmg);
-        return dmg;
+        var resisted = value * DamageResistance;
+        if (resisted >= 1f) OnDamageResisted?.Invoke((int)resisted);
+        return value - resisted;
     }
     
     public void ReflectDamage(float damage, IDamageAble damager)

@@ -26,4 +26,4 @@ MonoBehaviour:
   <Blocks>k__BackingField:
   - {fileID: 11400000, guid: 7e7bc9745c1d2f94291da6ac2f032cdf, type: 2}
   <ExperienceForFirstLevel>k__BackingField: 20
-  <ExperienceType>k__BackingField: 0
+  <ExperienceTypes>k__BackingField: 00000000

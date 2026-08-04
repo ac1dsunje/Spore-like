@@ -4,25 +4,26 @@ using UnityEngine;
 
 namespace _Game.Scripts.Evolutions.Experience.Types
 {
-public class DamageReflecting: IEvolutionExperience
+public class DamageResisting: IEvolutionExperience
 {
     private readonly PlayerModel _playerModel;
 
     public event Action<int> OnExperienceGained;
-    public DamageReflecting(PlayerModel playerModel)
+    
+    public DamageResisting(PlayerModel playerModel)
     {
         _playerModel = playerModel;
-        _playerModel.Defense.OnDamageReflected += OnDamageReflected;
+        _playerModel.Defense.OnDamageResisted += OnDamageResisted;
     }
     
-    private void OnDamageReflected(int damage)
+    private void OnDamageResisted(int damage)
     {
         OnExperienceGained?.Invoke(damage);
     }
 
     public void Dispose()
     {
-        _playerModel.Defense.OnDamageReflected -= OnDamageReflected;
+        _playerModel.Defense.OnDamageResisted -= OnDamageResisted;
     }
 }
 }

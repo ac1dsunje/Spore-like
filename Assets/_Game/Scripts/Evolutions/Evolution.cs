@@ -24,7 +24,7 @@ public class Evolution: IDisposable
     
     //Level
     private readonly EvolutionExperienceFactory _expFactory = new();
-    private IEvolutionExperience _experienceManager;
+    private readonly List<IEvolutionExperience> _experienceManagers = new();
     private int _experiencePoints;
     private int _levelSet;
     private int _level;
@@ -51,9 +51,13 @@ public class Evolution: IDisposable
     {
         SetState(EvolutionState.IsActive);
 
-        _experienceManager = _expFactory.GetMethod(Config.ExperienceType, _player);
+        foreach (var type in Config.ExperienceTypes)
+        {
+            var experienceType = _expFactory.GetMethod(type, _player);
+            _experienceManagers.Add(experienceType);
+            experienceType.OnExperienceGained += UpdateExperience;
+        }
 
-        _experienceManager.OnExperienceGained += UpdateExperience;
     }
 
     public void Unlock() => SetState(EvolutionState.IsAble);
@@ -132,9 +136,12 @@ public class Evolution: IDisposable
 
     public void Dispose()
     {
-        if (_experienceManager == null) return;
-        _experienceManager.Dispose();
-        _experienceManager.OnExperienceGained -= UpdateExperience;
+        if (_experienceManagers == null) return;
+        foreach (var experienceManager in _experienceManagers)
+        {
+            experienceManager.Dispose();
+            experienceManager.OnExperienceGained -= UpdateExperience;
+        }
     }
 }
 }
