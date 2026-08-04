@@ -11,6 +11,7 @@ public class DefenseModule: StatModule
     private float _damageReflection;
     public event Action<int> OnDamageReflected;
     private float _damageResistance;
+    public event Action<int> OnDamageResisted;
 
     public DefenseModule(PlayerStats playerStats): base(playerStats) {}
 
@@ -27,8 +28,15 @@ public class DefenseModule: StatModule
                 break;
         }
     }
+
+    public float GetDamageAfterResistance(float value)
+    {
+        var dmg = value * (1 - DamageResistance);
+        if (dmg >= 1f) OnDamageResisted?.Invoke((int)dmg);
+        return dmg;
+    }
     
-    public void TakeDamage(float damage, IDamageAble damager)
+    public void ReflectDamage(float damage, IDamageAble damager)
     {
         var returnedDamage = damage * _damageReflection;
         if (returnedDamage >= 1f) OnDamageReflected?.Invoke((int)returnedDamage);
