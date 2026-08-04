@@ -11,6 +11,7 @@ public class PlayerMovement: MonoBehaviour
     
     private float _horizontalInput;
     private float _verticalInput;
+    private bool _isSprintInput;
     
     public void Construct(MovementModule module)
     {
@@ -26,6 +27,7 @@ public class PlayerMovement: MonoBehaviour
     {
         _horizontalInput = Input.GetAxisRaw("Horizontal");
         _verticalInput = Input.GetAxisRaw("Vertical");
+        _isSprintInput = Input.GetKey(KeyCode.LeftShift);
     }
 
     private void FixedUpdate()
@@ -35,7 +37,9 @@ public class PlayerMovement: MonoBehaviour
 
     private void Move()
     {
-        var targetVelocity = new Vector2(_horizontalInput, _verticalInput).normalized * _module.MoveSpeed;
+        var input = new Vector2(_horizontalInput, _verticalInput).normalized;
+        var sprintMultiplier = _isSprintInput ? _module.SprintMultiplier : 1;
+        var targetVelocity = input * (_module.MoveSpeed * sprintMultiplier);
 
         var time = (Mathf.Abs(_horizontalInput) > 0.1f || Mathf.Abs(_verticalInput) > 0.1f)
             ? _module.Acceleration

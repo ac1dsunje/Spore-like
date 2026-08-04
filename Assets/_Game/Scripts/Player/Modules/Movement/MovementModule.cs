@@ -13,6 +13,8 @@ public class MovementModule: StatModule
     public float MoveSpeed => _state == MovementState.Enabled? _moveSpeed : 0;
     public float Acceleration => _acceleration / 100f;
     public float Inertia => _inertia / 100f;
+
+    public float SprintMultiplier { get; private set; }
     
     private float _moveSpeed;
     private float _acceleration;
@@ -41,6 +43,10 @@ public class MovementModule: StatModule
             case StatType.Inertia:
                 UpdateInertia(value);
                 break;
+            
+            case StatType.SprintMultiplier:
+                UpdateSprintMultiplier(value);
+                break;
         }
     }
     
@@ -49,6 +55,8 @@ public class MovementModule: StatModule
     private void UpdateAcceleration(float newValue) => _acceleration = newValue;
 
     private void UpdateInertia(float newValue) => _inertia = newValue;
+    
+    private void  UpdateSprintMultiplier(float newValue)  => SprintMultiplier = newValue;
 
     private void SetState(MovementState newState) => _state = newState;
 }

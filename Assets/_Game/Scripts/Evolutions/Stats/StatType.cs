@@ -13,5 +13,8 @@ public enum StatType
     EatingStrength = 11,
     EatingPenetration = 12,
     EatingTime = 13,
+    MaxEndurance = 14,
+    EnduranceRecovery = 15,
+    SprintMultiplier = 16,
 }
 }
