@@ -13,10 +13,10 @@ public class PlayerController: MonoBehaviour, IDamageAble
 
     public void TakeDamage(float value, IDamageAble damager)
     {
-        var amount = value * (1 - _model.Attack.DamageResistance);
+        var amount = value * (1 - _model.Defense.DamageResistance);
         
         _model.Health.TakeDamage(amount);
-        _model.Attack.TakeDamage(amount, damager);
+        _model.Defense.TakeDamage(amount, damager);
     }
 
     private void OnDestroy()

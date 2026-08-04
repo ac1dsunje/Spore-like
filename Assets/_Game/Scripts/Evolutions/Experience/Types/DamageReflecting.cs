@@ -11,7 +11,7 @@ public class DamageReflecting: IEvolutionExperience
     public DamageReflecting(PlayerModel playerModel)
     {
         _playerModel = playerModel;
-        _playerModel.Attack.OnDamageReflected += OnDamageReflected;
+        _playerModel.Defense.OnDamageReflected += OnDamageReflected;
     }
     
     private void OnDamageReflected(int damage)
@@ -21,7 +21,7 @@ public class DamageReflecting: IEvolutionExperience
 
     public void Dispose()
     {
-        _playerModel.Attack.OnDamageReflected -= OnDamageReflected;
+        _playerModel.Defense.OnDamageReflected -= OnDamageReflected;
     }
 }
 }
