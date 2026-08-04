@@ -38,14 +38,21 @@ public class PlayerMovement: MonoBehaviour
     private void Move()
     {
         var input = new Vector2(_horizontalInput, _verticalInput).normalized;
-        var sprintMultiplier = _isSprintInput ? _module.SprintMultiplier : 1;
-        var targetVelocity = input * (_module.MoveSpeed * sprintMultiplier);
 
-        var time = (Mathf.Abs(_horizontalInput) > 0.1f || Mathf.Abs(_verticalInput) > 0.1f)
+        var sprintMultiplier = _isSprintInput
+            ? _module.SprintMultiplier
+            : 1f;
+
+        var maxSpeed = _module.MoveSpeed * sprintMultiplier;
+        var targetVelocity = input * maxSpeed;
+
+        var hasInput = input.sqrMagnitude > 0f;
+
+        var time = hasInput
             ? _module.Acceleration
             : _module.Inertia;
 
-        var rate = _module.MoveSpeed / time;
+        var rate = maxSpeed / time;
 
         _rigidbody.linearVelocity = Vector2.MoveTowards(
             _rigidbody.linearVelocity,
