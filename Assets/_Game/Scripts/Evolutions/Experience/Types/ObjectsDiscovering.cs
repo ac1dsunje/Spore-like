@@ -1,30 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using _Game.Scripts.Player;
 using UnityEngine;
 
 namespace _Game.Scripts.Evolutions.Experience.Types
 {
-public class ObjectsDiscovering: IEvolutionExperience
+public class ObjectsDiscovering: EvolutionExperienceService
 {
-    private readonly List<GameObject> _discoveredObjects = new();
-    
-    private readonly PlayerModel _playerModel;
+    private readonly HashSet<GameObject> _discoveredObjects = new();
 
-    public event Action<int> OnExperienceGained;
-    public ObjectsDiscovering(PlayerModel playerModel)
+    public ObjectsDiscovering(PlayerModel playerModel) : base(playerModel) => PlayerModel.Vision.OnGameObjectDiscovered += OnObjectDiscovered;
+
+    private void OnObjectDiscovered(GameObject gameObject)
     {
-        _playerModel = playerModel;
-        _playerModel.Vision.OnGameObjectDiscovered += OnObjectDiscovered;
-    }
-    
-    private void OnObjectDiscovered(GameObject go)
-    {
-        if (_discoveredObjects.Contains(go)) return;
-        _discoveredObjects.Add(go);
-        OnExperienceGained?.Invoke(1);
+        if (!_discoveredObjects.Add(gameObject)) return;
+
+        RaiseEvent(1);
     }
 
-    public void Dispose() => _playerModel.Vision.OnGameObjectDiscovered -= OnObjectDiscovered;
+    public override void Dispose() => PlayerModel.Vision.OnGameObjectDiscovered -= OnObjectDiscovered;
 }
 }

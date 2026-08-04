@@ -1,22 +1,13 @@
-﻿using System;
-using _Game.Scripts.Player;
-using UnityEngine;
+﻿using _Game.Scripts.Player;
 
 namespace _Game.Scripts.Evolutions.Experience.Types
 {
-public class DamageReflecting: IEvolutionExperience
+public class DamageReflecting: EvolutionExperienceService
 {
-    private readonly PlayerModel _playerModel;
+    public DamageReflecting(PlayerModel playerModel) : base(playerModel) => PlayerModel.Defense.OnDamageReflected += OnDamageReflected;
 
-    public event Action<int> OnExperienceGained;
-    public DamageReflecting(PlayerModel playerModel)
-    {
-        _playerModel = playerModel;
-        _playerModel.Defense.OnDamageReflected += OnDamageReflected;
-    }
-    
-    private void OnDamageReflected(int damage) => OnExperienceGained?.Invoke(damage);
+    private void OnDamageReflected(int damage) => RaiseEvent(damage);
 
-    public void Dispose() => _playerModel.Defense.OnDamageReflected -= OnDamageReflected;
+    public override void Dispose() => PlayerModel.Defense.OnDamageReflected -= OnDamageReflected;
 }
 }

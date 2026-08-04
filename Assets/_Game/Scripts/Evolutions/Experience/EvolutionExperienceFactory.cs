@@ -6,7 +6,7 @@ namespace _Game.Scripts.Evolutions.Experience
 {
 public class EvolutionExperienceFactory
 {
-    public IEvolutionExperience GetMethod(EvolutionExperienceType experienceType, PlayerModel playerModel)
+    public EvolutionExperienceService GetMethod(EvolutionExperienceType experienceType, PlayerModel playerModel)
     {
         return experienceType switch
         {

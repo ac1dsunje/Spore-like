@@ -1,22 +1,13 @@
-﻿using System;
-using _Game.Scripts.Player;
+﻿using _Game.Scripts.Player;
 
 namespace _Game.Scripts.Evolutions.Experience.Types
 {
-public class FoodEating: IEvolutionExperience
+public class FoodEating: EvolutionExperienceService
 {
-    private readonly PlayerModel _playerModel;
+    public FoodEating(PlayerModel playerModel) : base(playerModel) => PlayerModel.EatModule.OnFoodPointsAchieved += OnFoodEaten;
 
-    public event Action<int> OnExperienceGained;
-    
-    public FoodEating(PlayerModel playerModel)
-    {
-        _playerModel = playerModel;
-        _playerModel.EatModule.OnFoodPointsAchieved += OnFoodEaten;
-    }
-    
-    private void OnFoodEaten(int value) => OnExperienceGained?.Invoke(value);
+    private void OnFoodEaten(int value) => RaiseEvent(value);
 
-    public void Dispose() => _playerModel.EatModule.OnFoodPointsAchieved -= OnFoodEaten;
+    public override void Dispose() => PlayerModel.EatModule.OnFoodPointsAchieved -= OnFoodEaten;
 }
 }

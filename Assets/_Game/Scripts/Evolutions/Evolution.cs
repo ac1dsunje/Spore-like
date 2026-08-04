@@ -24,7 +24,7 @@ public class Evolution: IDisposable
     
     //Level
     private readonly EvolutionExperienceFactory _expFactory = new();
-    private readonly List<IEvolutionExperience> _experienceManagers = new();
+    private readonly List<EvolutionExperienceService> _experienceManagers = new();
     private int _experiencePoints;
     private int _levelSet;
     private int _level;
