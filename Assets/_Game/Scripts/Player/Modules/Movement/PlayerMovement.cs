@@ -13,7 +13,8 @@ public class PlayerMovement: MonoBehaviour
     
     private float _horizontalInput;
     private float _verticalInput;
-    public bool IsSprintInput { get; private set; }
+    private bool _sprintInput;
+    public bool IsSprinting { get; private set; }
     
     public void Construct(MovementModule movement, EnduranceModule endurance)
     {
@@ -30,7 +31,7 @@ public class PlayerMovement: MonoBehaviour
     {
         _horizontalInput = Input.GetAxisRaw("Horizontal");
         _verticalInput = Input.GetAxisRaw("Vertical");
-        IsSprintInput = Input.GetKey(KeyCode.LeftShift);
+        _sprintInput = Input.GetKey(KeyCode.LeftShift);
     }
 
     private void FixedUpdate()
@@ -42,7 +43,7 @@ public class PlayerMovement: MonoBehaviour
     {
         var input = new Vector2(_horizontalInput, _verticalInput).normalized;
 
-        var sprintMultiplier = IsSprintInput
+        var sprintMultiplier = _sprintInput
             ? _endurance.Endurance > 0f
                 ? _movement.SprintMultiplier
                 : 1f
@@ -52,6 +53,8 @@ public class PlayerMovement: MonoBehaviour
         var targetVelocity = input * maxSpeed;
 
         var hasInput = input.sqrMagnitude > 0f;
+        
+        IsSprinting = hasInput & _sprintInput;
 
         var time = hasInput
             ? _movement.Acceleration
