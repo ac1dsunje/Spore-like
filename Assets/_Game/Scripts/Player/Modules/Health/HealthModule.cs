@@ -13,7 +13,7 @@ public class HealthModule: StatModule, IHealth
     public float Regeneration { get; private set; }
     
     public event Action OnDeath;
-    public event Action OnDamageTaken;
+    public event Action<int> OnDamageTaken;
     public event Action<float, float> OnHealthChanged;
 
     public HealthModule(PlayerStats playerStats): base(playerStats) {}
@@ -35,7 +35,7 @@ public class HealthModule: StatModule, IHealth
     {
         Health -= amount;
         Health = Mathf.Max(0, Health);
-        OnDamageTaken?.Invoke();
+        OnDamageTaken?.Invoke((int)amount);
         OnHealthChanged?.Invoke(Health, MaxHealth);
         
         if (Health <= 0)

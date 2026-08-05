@@ -4,6 +4,14 @@ using _Game.Scripts.Player;
 
 namespace _Game.Scripts.Evolutions.Experience
 {
+public enum EvolutionExperienceType
+{
+    ObjectDiscover = 0,
+    FoodEating = 1,
+    DamageReflection = 2,
+    DamageResistance = 3,
+    DamageTaking = 4,
+}
 public class EvolutionExperienceFactory
 {
     public EvolutionExperienceService GetMethod(EvolutionExperienceType experienceType, PlayerModel playerModel)
@@ -14,6 +22,7 @@ public class EvolutionExperienceFactory
             EvolutionExperienceType.ObjectDiscover => new ObjectsDiscovering(playerModel),
             EvolutionExperienceType.FoodEating => new FoodEating(playerModel),
             EvolutionExperienceType.DamageResistance => new DamageResisting(playerModel),
+            EvolutionExperienceType.DamageTaking => new DamageTaking(playerModel),
             _ => throw new ArgumentOutOfRangeException(nameof(experienceType), experienceType, null)
         };
     }
