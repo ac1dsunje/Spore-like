@@ -7,34 +7,35 @@ namespace _Game.Scripts.Player.Modules.Endurance
 {
 public class EnduranceModule: StatModule
 {
-    public float MaxEndurance {get;  private set; }
-    public float Endurance { get; private set; }
+    private float _maxEndurance;
+    public bool HasEndurance => _endurance > 0;
     public float EnduranceRecovery { get; private set; }
     
+    private float _endurance;
     public event Action<float, float> OnEnduranceChanged;
 
     public EnduranceModule(PlayerStats playerStats): base(playerStats) {}
 
     public void AddEndurance(float value)
     {
-        var endurance = Endurance;
-        Endurance += value;
-        if (Endurance > MaxEndurance)
+        var endurance = _endurance;
+        _endurance += value;
+        if (_endurance > _maxEndurance)
         {
-            Endurance = MaxEndurance;
+            _endurance = _maxEndurance;
         }
-        if (Mathf.Approximately(endurance, Endurance)) return;
-        OnEnduranceChanged?.Invoke(Endurance, MaxEndurance);
+        if (Mathf.Approximately(endurance, _endurance)) return;
+        OnEnduranceChanged?.Invoke(_endurance, _maxEndurance);
     }
 
     public void UseEndurance(float value)
     {
-        var endurance = Endurance;
-        Endurance -= value;
-        if (Endurance <= 0) Endurance = 0;
+        var endurance = _endurance;
+        _endurance -= value;
+        if (_endurance <= 0) _endurance = 0;
         
-        if (Mathf.Approximately(endurance, Endurance)) return;
-        OnEnduranceChanged?.Invoke(Endurance, MaxEndurance);
+        if (Mathf.Approximately(endurance, _endurance)) return;
+        OnEnduranceChanged?.Invoke(_endurance, _maxEndurance);
     }
 
     protected override void PlayerStatUpdated(StatType type, float value)
@@ -52,14 +53,14 @@ public class EnduranceModule: StatModule
     
     private void UpdateMaxEndurance(float value)
     {
-        var difference = value - MaxEndurance;
-        MaxEndurance = value;
+        var difference = value - _maxEndurance;
+        _maxEndurance = value;
         
-        MaxEndurance = value;
+        _maxEndurance = value;
     
-        Endurance = Mathf.Clamp(Endurance + difference, 0, MaxEndurance);
+        _endurance = Mathf.Clamp(_endurance + difference, 0, _maxEndurance);
         
-        OnEnduranceChanged?.Invoke(Endurance, MaxEndurance);
+        OnEnduranceChanged?.Invoke(_endurance, _maxEndurance);
     }
 
     private void UpdateEnduranceRecovery(float value)

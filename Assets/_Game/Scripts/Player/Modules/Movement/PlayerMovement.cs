@@ -44,7 +44,7 @@ public class PlayerMovement: MonoBehaviour
         var input = new Vector2(_horizontalInput, _verticalInput).normalized;
 
         var sprintMultiplier = _sprintInput
-            ? _endurance.Endurance > 0f
+            ? _endurance.HasEndurance
                 ? _movement.SprintMultiplier
                 : 1f
             : 1f;
