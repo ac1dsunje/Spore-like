@@ -13,15 +13,15 @@ public class SprintAbility: AbilityController
         _movement = model.Movement;
     }
 
-    protected override void StartUsing()
+    protected override void Enable()
     {
-        base.StartUsing();
+        base.Enable();
         _movement.UseSprint = true;
     }
 
-    protected override void Stop()
+    protected override void Disable()
     {
-        base.Stop();
+        base.Disable();
         _movement.UseSprint = false;
     }
 }

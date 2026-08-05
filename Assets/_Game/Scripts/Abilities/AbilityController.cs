@@ -6,7 +6,6 @@ namespace _Game.Scripts.Abilities
 public abstract class AbilityController: MonoBehaviour
 {
     [SerializeField] private AbilityConfig _config;
-    [SerializeField] private bool _use;
 
     private bool _isActive;
 
@@ -19,29 +18,26 @@ public abstract class AbilityController: MonoBehaviour
     
     private void Update()
     {
-        var cost = _config.InUseCost * Time.deltaTime;
-        var isAble = _endurance.HasEnoughEndurance(cost);
-        
         if (Input.GetKeyDown(_config.Key) && _endurance.HasEnoughEndurance(_config.StartCost) && !_isActive)
         {
-            StartUsing();
+            Enable();
         }
 
-        if (Input.GetKeyUp(_config.Key))
+        if (Input.GetKeyUp(_config.Key) && _isActive)
         {
-            Stop();
+            Disable();
             return;
         }
 
         if (!_isActive) return;
 
-        if (isAble)
+        if (_endurance.HasEnoughEndurance(_config.InUseCost * Time.deltaTime))
             Do();
         else
-            Stop();
+            Disable();
     }
     
-    protected virtual void StartUsing()
+    protected virtual void Enable()
     {
         _isActive = true;
         _endurance.AddUser(this);
@@ -53,7 +49,7 @@ public abstract class AbilityController: MonoBehaviour
         _endurance.UseEndurance(_config.InUseCost * Time.deltaTime);
     }
 
-    protected virtual void Stop()
+    protected virtual void Disable()
     {
         _isActive = false;
         _endurance.RemoveUser(this);
