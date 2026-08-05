@@ -10,21 +10,26 @@ public enum MovementState
 }
 public class MovementModule: StatModule
 {
-    public float MoveSpeed => _state == MovementState.Enabled? UseSprint? _moveSpeed * SprintMultiplier : _moveSpeed : 0;
+    public float MoveSpeed => _state == MovementState.Enabled? UseSprint? _moveSpeed * _sprintMultiplier : _moveSpeed : 0;
     public float Acceleration => _acceleration / 100f;
     public float Inertia => _inertia / 100f;
-
-    public float SprintMultiplier { get; private set; }
-
+    public float DashPower { get; private set; }
+    
     public bool UseSprint;
+    public bool DashRequested { get; private set; }
     
     private float _moveSpeed;
     private float _acceleration;
     private float _inertia;
+    
+    private float _sprintMultiplier;
 
     private MovementState _state;
 
     public MovementModule(PlayerStats playerStats): base(playerStats) {}
+    
+    public void RequestDash() => DashRequested = true;
+    public void ResetDash() => DashRequested = false;
     
     public void Disable() => SetState(MovementState.Disabled);
 
@@ -49,6 +54,11 @@ public class MovementModule: StatModule
             case StatType.SprintMultiplier:
                 UpdateSprintMultiplier(value);
                 break;
+            
+            case StatType.DashPower:
+                UpdateDashPower(value);
+                break;
+                
         }
     }
     
@@ -58,7 +68,9 @@ public class MovementModule: StatModule
 
     private void UpdateInertia(float newValue) => _inertia = newValue;
     
-    private void  UpdateSprintMultiplier(float newValue)  => SprintMultiplier = newValue;
+    private void  UpdateSprintMultiplier(float newValue)  => _sprintMultiplier = newValue;
+    
+    private void UpdateDashPower(float newValue) => DashPower = newValue;
 
     private void SetState(MovementState newState) => _state = newState;
 }

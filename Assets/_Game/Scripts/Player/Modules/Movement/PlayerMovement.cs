@@ -38,6 +38,12 @@ public class PlayerMovement: MonoBehaviour
     {
         var input = new Vector2(_horizontalInput, _verticalInput).normalized;
 
+        if (_movement.DashRequested)
+        {
+            _rigidbody.AddForce(input * _movement.DashPower, ForceMode2D.Impulse);
+            _movement.ResetDash();
+        }
+        
         var maxSpeed = _movement.MoveSpeed;
         var targetVelocity = input * maxSpeed;
 

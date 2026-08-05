@@ -29,6 +29,7 @@ public class EntryPoint : MonoBehaviour
     
     [Header("Abilities")]
     [SerializeField] private SprintAbility _sprintAbility;
+    [SerializeField] private DashAbility _dashAbility;
     
     [Header("UI")]
     [SerializeField] private OverlayScreen _overlayScreen;
@@ -60,6 +61,7 @@ public class EntryPoint : MonoBehaviour
         _playerEndurance.Construct(_playerModel.Endurance);
         
         _sprintAbility.Construct(_playerModel);
+        _dashAbility.Construct(_playerModel);
         
         _player.Construct(_playerModel);
     }

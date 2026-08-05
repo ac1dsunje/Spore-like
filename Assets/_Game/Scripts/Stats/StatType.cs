@@ -16,6 +16,7 @@ public enum StatType
     MaxEndurance = 14,
     EnduranceRecovery = 15,
     SprintMultiplier = 16,
-    DamageResistance = 17
+    DamageResistance = 17,
+    DashPower = 18
 }
 }

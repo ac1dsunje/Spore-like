@@ -301,6 +301,7 @@ MonoBehaviour:
   _playerHealth: {fileID: 159619908}
   _playerEndurance: {fileID: 159619907}
   _sprintAbility: {fileID: 1168374145786107145}
+  _dashAbility: {fileID: 1168374145786107150}
   _overlayScreen: {fileID: 1380803056}
   _evolutionChooseScreen: {fileID: 1080735611}
   _evolutionsManager: {fileID: 1168374145786107151}
@@ -900,6 +901,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4515079076315579977, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
   m_PrefabInstance: {fileID: 1168374145786107142}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1168374145786107150 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1832505340818165639, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
+  m_PrefabInstance: {fileID: 1168374145786107142}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1da6bfee7cb4aad81b7ccf07ecbf086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Abilities.DashAbility
 --- !u!114 &1168374145786107151 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6488647832735213282, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}

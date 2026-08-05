@@ -46,6 +46,7 @@ public abstract class AbilityController: MonoBehaviour
 
     protected virtual void Do()
     {
+        if (!_config.HasActivePhase) return;
         _endurance.UseEndurance(_config.InUseCost * Time.deltaTime);
     }
 

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3024088472476448153}
   - component: {fileID: 1215999130759191312}
+  - component: {fileID: 1832505340818165639}
   m_Layer: 0
   m_Name: Abilities
   m_TagString: Untagged
@@ -45,7 +46,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Abilities.SprintAbility
   _config: {fileID: 11400000, guid: d1a5821f561251144bbc0cf79b86d02a, type: 2}
-  _use: 1
+--- !u!114 &1832505340818165639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4695771312645792268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1da6bfee7cb4aad81b7ccf07ecbf086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Abilities.DashAbility
+  _config: {fileID: 11400000, guid: be1b63a43cda10d4a8d67386e9596059, type: 2}
 --- !u!1 &5439879452342028256
 GameObject:
   m_ObjectHideFlags: 0
