@@ -12,6 +12,7 @@ public class EnduranceModule: StatModule
     public float EnduranceRecovery { get; private set; }
     
     private float _endurance;
+    public bool IsUsed; // ToDo : get the list of currently active abilities
     public event Action<float, float> OnEnduranceChanged;
 
     public EnduranceModule(PlayerStats playerStats): base(playerStats) {}

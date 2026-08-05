@@ -53,7 +53,7 @@ public class EntryPoint : MonoBehaviour
         _playerMovement.Construct(_playerModel.Movement, _playerModel.Endurance);
         _playerMouth.Construct(_playerModel.EatModule);
         _playerHealth.Construct(_playerModel.Health);
-        _playerEndurance.Construct(_playerModel.Endurance, _playerMovement);
+        _playerEndurance.Construct(_playerModel.Endurance);
         _player.Construct(_playerModel);
     }
 }

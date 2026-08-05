@@ -14,7 +14,6 @@ public class PlayerMovement: MonoBehaviour
     private float _horizontalInput;
     private float _verticalInput;
     private bool _sprintInput;
-    public bool IsSprinting { get; private set; }
     
     public void Construct(MovementModule movement, EnduranceModule endurance)
     {
@@ -54,7 +53,7 @@ public class PlayerMovement: MonoBehaviour
 
         var hasInput = input.sqrMagnitude > 0f;
         
-        IsSprinting = hasInput & _sprintInput;
+        _endurance.IsUsed = hasInput & _sprintInput;
 
         var time = hasInput
             ? _movement.Acceleration
