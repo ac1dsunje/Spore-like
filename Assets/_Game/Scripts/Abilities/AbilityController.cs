@@ -5,13 +5,14 @@ namespace _Game.Scripts.Abilities
 {
 public abstract class AbilityController: MonoBehaviour
 {
+    [SerializeField] protected AbilityConfig Config;
     [SerializeField] private bool _use;
     
-    protected EnduranceModule _endurance;
+    protected EnduranceModule Endurance;
     
-    public void Construct(EnduranceModule module)
+    protected void Construct(EnduranceModule module)
     {
-        _endurance = module;
+        Endurance = module;
     }
 }
 }

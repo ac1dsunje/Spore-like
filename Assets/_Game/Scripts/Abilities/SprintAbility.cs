@@ -18,12 +18,12 @@ public class SprintAbility: AbilityController
 
     private void Update()
     {
-        var cost = 1f * Time.deltaTime;
-        var isAble = _endurance.HasEnoughEndurance(cost);
+        var cost = Config.InUseCost * Time.deltaTime;
+        var isAble = Endurance.HasEnoughEndurance(cost);
         
-        if (Input.GetKeyDown(KeyCode.LeftShift) && isAble)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && Endurance.HasEnoughEndurance(Config.StartCost) && !_isActive)
         {
-            StartUsing();
+            StartUsing(Config.StartCost);
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
@@ -40,22 +40,23 @@ public class SprintAbility: AbilityController
             Stop();
     }
 
-    private void StartUsing()
+    private void StartUsing(float startCost)
     {
         _isActive = true;
-        _endurance.AddUser(this);
+        Endurance.AddUser(this);
+        _movement.UseSprint = true;
+        Endurance.UseEndurance(startCost);
     }
 
     private void Do(float cost)
     {
-        _endurance.UseEndurance(cost);
-        _movement.UseSprint = true;
+        Endurance.UseEndurance(cost);
     }
 
     private void Stop()
     {
         _isActive = false;
-        _endurance.RemoveUser(this);
+        Endurance.RemoveUser(this);
         _movement.UseSprint = false;
     }
 }

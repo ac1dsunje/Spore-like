@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca88a056c7eb4f898968f18dccb263cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Abilities.SprintAbility
+  Config: {fileID: 11400000, guid: d1a5821f561251144bbc0cf79b86d02a, type: 2}
   _use: 1
 --- !u!1 &5439879452342028256
 GameObject:
