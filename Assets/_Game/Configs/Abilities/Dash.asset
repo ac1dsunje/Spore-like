@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299fdedca7cc47638fb19678a78e3f72, type: 3}
   m_Name: Dash
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Abilities.AbilityConfig
+  <Sprite>k__BackingField: {fileID: -8048516085155090017, guid: 6612f2c623aa96b4f9be27c707d1f42d, type: 3}
   <Type>k__BackingField: 1
   <StartCost>k__BackingField: 2
   <HasActivePhase>k__BackingField: 0
