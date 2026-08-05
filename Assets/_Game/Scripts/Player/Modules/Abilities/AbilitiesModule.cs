@@ -6,7 +6,9 @@ namespace _Game.Scripts.Player.Modules.Abilities
 {
 public class AbilitiesModule: IDisposable
 {
-    private readonly List<Ability> _abilities = new();
+    public event Action<AbilityConfig> OnAbilityAdded;
+    
+    private readonly HashSet<Ability> _abilities = new();
     private AbilityFactory _factory;
 
     public void SetFactory(AbilityFactory factory)
@@ -19,7 +21,10 @@ public class AbilitiesModule: IDisposable
         if (configs == null || configs.Length == 0) return;
         foreach (var ability in configs)
         {
-            _abilities.Add(_factory.Get(ability));
+            if (_abilities.Add(_factory.Get(ability)))
+            {
+                OnAbilityAdded?.Invoke(ability);
+            }
         }
     }
 
