@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Game.Scripts.Evolutions;
-using _Game.Scripts.Evolutions.Stats;
+using _Game.Scripts.Stats;
 using UnityEngine;
 
 namespace _Game.Scripts.Player.Modules.Stats

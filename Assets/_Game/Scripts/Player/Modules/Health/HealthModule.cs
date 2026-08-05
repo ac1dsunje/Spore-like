@@ -1,7 +1,7 @@
 ﻿using System;
-using _Game.Scripts.Evolutions.Stats;
 using _Game.Scripts.Player.Modules.Attack;
 using _Game.Scripts.Player.Modules.Stats;
+using _Game.Scripts.Stats;
 using UnityEngine;
 
 namespace _Game.Scripts.Player.Modules.Health

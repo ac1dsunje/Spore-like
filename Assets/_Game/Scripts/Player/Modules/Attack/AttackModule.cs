@@ -1,5 +1,5 @@
-﻿using _Game.Scripts.Evolutions.Stats;
-using _Game.Scripts.Player.Modules.Stats;
+﻿using _Game.Scripts.Player.Modules.Stats;
+using _Game.Scripts.Stats;
 
 namespace _Game.Scripts.Player.Modules.Attack
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace _Game.Scripts.Evolutions.Stats
+namespace _Game.Scripts.Stats
 {
 [Serializable]
 public class Stat

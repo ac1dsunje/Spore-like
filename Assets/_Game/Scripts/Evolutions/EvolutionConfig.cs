@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using _Game.Scripts.Evolutions.Experience;
-using _Game.Scripts.Evolutions.Stats;
+using _Game.Scripts.Stats;
 using UnityEngine;
 
 namespace _Game.Scripts.Evolutions
