@@ -6,6 +6,7 @@ namespace _Game.Scripts.Abilities
 public abstract class AbilityController: MonoBehaviour
 {
     [SerializeField] private AbilityConfig _config;
+    [SerializeField] private bool _use;
 
     private bool _isActive;
 
@@ -17,7 +18,9 @@ public abstract class AbilityController: MonoBehaviour
     }
     
     private void Update()
-    {
+    { 
+        if (!_use) return;
+        
         if (Input.GetKeyDown(_config.Key) && _endurance.HasEnoughEndurance(_config.StartCost) && !_isActive)
         {
             Enable();

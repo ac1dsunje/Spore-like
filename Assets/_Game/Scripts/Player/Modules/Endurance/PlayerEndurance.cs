@@ -13,11 +13,7 @@ public class PlayerEndurance: MonoBehaviour
 
     private void Update()
     {
-        if (_module.IsUsed)
-        {
-            _module.UseEndurance(1f * Time.deltaTime);
-        }
-        else
+        if (!_module.IsUsed)
         {
             _module.AddEndurance(_module.EnduranceRecovery * Time.deltaTime);
         }
