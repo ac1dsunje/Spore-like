@@ -14,6 +14,7 @@ public class HealthModule: StatModule, IHealth
     
     public event Action OnDeath;
     public event Action<int> OnDamageTaken;
+    public event Action<int> OnHealed;
     public event Action<float, float> OnHealthChanged;
 
     public HealthModule(PlayerStats playerStats): base(playerStats) {}
@@ -54,6 +55,7 @@ public class HealthModule: StatModule, IHealth
         }
 
         if (Mathf.Approximately(health, Health)) return;
+        OnHealed?.Invoke((int) amount);
         OnHealthChanged?.Invoke(Health, MaxHealth);
     }
     
