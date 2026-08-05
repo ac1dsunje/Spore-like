@@ -8,6 +8,7 @@
     "Требует": "multitext",
     "Дебаффы": "multitext",
     "Даёт навык": "multitext",
-    "Класс": "multitext"
+    "Класс": "multitext",
+    "Статус": "number"
   }
 }

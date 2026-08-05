@@ -1,6 +1,21 @@
 {
   "presetFields": [
     {
+      "type": "Multi",
+      "tagName": "multi",
+      "icon": "bullet-list",
+      "tooltip": "Accepts multiple values from a list",
+      "colorClass": "multi",
+      "options": {
+        "sourceType": "ValuesFromDVQuery",
+        "valuesList": {},
+        "valuesFromDVQuery": "dv.pages('\"Характеристики\"')\n  .map(p => `[[${p.file.name}]]`)\n  .array()"
+      },
+      "name": "Дебаффы",
+      "id": "2uVOrk",
+      "path": ""
+    },
+    {
       "type": "Select",
       "tagName": "select",
       "icon": "right-triangle",
@@ -24,10 +39,96 @@
       "options": {
         "sourceType": "ValuesFromDVQuery",
         "valuesList": {},
+        "valuesFromDVQuery": "dv.pages('\"Навыки\"')\n  .map(p => `[[${p.file.name}]]`)\n  .array()"
+      },
+      "name": "Даёт навык",
+      "id": "7dSlaM",
+      "path": ""
+    },
+    {
+      "type": "Multi",
+      "tagName": "multi",
+      "icon": "bullet-list",
+      "tooltip": "Accepts multiple values from a list",
+      "colorClass": "multi",
+      "options": {
+        "sourceType": "ValuesFromDVQuery",
+        "valuesList": {},
+        "valuesFromDVQuery": "dv.pages('\"Характеристики\"')\n  .map(p => `[[${p.file.name}]]`)\n  .array()"
+      },
+      "name": "Баффы",
+      "id": "8QmuYe",
+      "path": ""
+    },
+    {
+      "type": "Multi",
+      "tagName": "multi",
+      "icon": "bullet-list",
+      "tooltip": "Accepts multiple values from a list",
+      "colorClass": "multi",
+      "options": {
+        "sourceType": "ValuesFromDVQuery",
+        "valuesList": {},
+        "valuesFromDVQuery": "dv.pages('\"Повышение опыта эволюции\"')\n  .map(p => `[[${p.file.name}]]`)\n  .array()"
+      },
+      "name": "Повышение редкости",
+      "id": "DFVSvX",
+      "path": ""
+    },
+    {
+      "type": "Boolean",
+      "tagName": "boolean",
+      "icon": "toggle-left",
+      "tooltip": "Accepts true or false",
+      "colorClass": "boolean",
+      "options": {},
+      "name": "Реализовано",
+      "id": "HkkOqu",
+      "path": ""
+    },
+    {
+      "type": "Multi",
+      "tagName": "multi",
+      "icon": "bullet-list",
+      "tooltip": "Accepts multiple values from a list",
+      "colorClass": "multi",
+      "options": {
+        "sourceType": "ValuesFromDVQuery",
+        "valuesList": {},
+        "valuesFromDVQuery": "dv.pages('\"Эволюции\"')\n  .map(p => `[[${p.file.name}]]`)\n  .array()"
+      },
+      "name": "Требует",
+      "id": "HleBrR",
+      "path": ""
+    },
+    {
+      "type": "Select",
+      "tagName": "select",
+      "icon": "right-triangle",
+      "tooltip": "Accepts a single value from a list",
+      "colorClass": "select",
+      "options": {
+        "sourceType": "ValuesFromDVQuery",
+        "valuesList": {},
         "valuesFromDVQuery": "dv.pages('\"Группы\"')\n  .map(p => `[[${p.file.name}]]`)\n  .array()"
       },
       "name": "Группа",
       "id": "PSklWQ",
+      "path": ""
+    },
+    {
+      "type": "Multi",
+      "tagName": "multi",
+      "icon": "bullet-list",
+      "tooltip": "Accepts multiple values from a list",
+      "colorClass": "multi",
+      "options": {
+        "sourceType": "ValuesFromDVQuery",
+        "valuesList": {},
+        "valuesFromDVQuery": "dv.pages('\"Эволюции\"')\n  .map(p => `[[${p.file.name}]]`)\n  .array()"
+      },
+      "name": "Блокирует",
+      "id": "Qvdg5y",
       "path": ""
     },
     {
@@ -61,17 +162,6 @@
       "path": ""
     },
     {
-      "type": "Boolean",
-      "tagName": "boolean",
-      "icon": "toggle-left",
-      "tooltip": "Accepts true or false",
-      "colorClass": "boolean",
-      "options": {},
-      "name": "Реализовано",
-      "id": "HkkOqu",
-      "path": ""
-    },
-    {
       "type": "Multi",
       "tagName": "multi",
       "icon": "bullet-list",
@@ -80,25 +170,10 @@
       "options": {
         "sourceType": "ValuesFromDVQuery",
         "valuesList": {},
-        "valuesFromDVQuery": "dv.pages('\"Характеристики\"')\n  .map(p => `[[${p.file.name}]]`)\n  .array()"
+        "valuesFromDVQuery": "dv.pages('\"Механики\"')\n  .map(p => `[[${p.file.name}]]`)\n  .array()"
       },
-      "name": "Дебаффы",
-      "id": "2uVOrk",
-      "path": ""
-    },
-    {
-      "type": "Multi",
-      "tagName": "multi",
-      "icon": "bullet-list",
-      "tooltip": "Accepts multiple values from a list",
-      "colorClass": "multi",
-      "options": {
-        "sourceType": "ValuesFromDVQuery",
-        "valuesList": {},
-        "valuesFromDVQuery": "dv.pages('\"Характеристики\"')\n  .map(p => `[[${p.file.name}]]`)\n  .array()"
-      },
-      "name": "Баффы",
-      "id": "8QmuYe",
+      "name": "Механики",
+      "id": "yEXuay",
       "path": ""
     }
   ],
@@ -108,7 +183,7 @@
   "classFilesPath": null,
   "isAutosuggestEnabled": true,
   "fileClassAlias": "fileClass",
-  "settingsVersion": "5.28",
+  "settingsVersion": "5.34",
   "firstDayOfWeek": 1,
   "enableLinks": true,
   "enableTabHeader": true,
