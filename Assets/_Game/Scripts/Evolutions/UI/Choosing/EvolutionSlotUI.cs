@@ -45,6 +45,11 @@ public class EvolutionSlotUI : MonoBehaviour
             text.AppendLine($"{stat.CurrentValue}");
         }
 
+        foreach (var ability in _evolution.Config.Abilities)
+        {
+            text.AppendLine($"Grant ability to {ability.Type.ToString()}");
+        }
+
         return text.ToString();
     }
 
