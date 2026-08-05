@@ -1,26 +1,32 @@
-﻿using _Game.Scripts.Player.Modules.Endurance;
+﻿using System;
+using _Game.Scripts.Player;
+using _Game.Scripts.Player.Modules.Endurance;
 using UnityEngine;
 
 namespace _Game.Scripts.Abilities
 {
-public abstract class AbilityController: MonoBehaviour
+public abstract class Ability: IDisposable
 {
-    [SerializeField] private AbilityConfig _config;
-    [SerializeField] private bool _use;
+    private readonly AbilityConfig _config;
 
-    private bool _isActive;
+    protected PlayerModel Model;
+    private readonly EnduranceModule _endurance;
 
-    private EnduranceModule _endurance;
+    private readonly Ticker _ticker;
     
-    protected void Construct(EnduranceModule module)
+    private bool _isActive;
+    
+    protected Ability(PlayerModel model, AbilityConfig config, Ticker ticker)
     {
-        _endurance = module;
+        _config = config;
+        Model = model;
+        _endurance = model.Endurance;
+        _ticker = ticker;
+        _ticker.OnTick += Update;
     }
     
-    private void Update()
+    private void Update(float deltaTime)
     { 
-        if (!_use) return;
-        
         if (Input.GetKeyDown(_config.Key) && _endurance.HasEnoughEndurance(_config.StartCost) && !_isActive)
         {
             Enable();
@@ -57,6 +63,11 @@ public abstract class AbilityController: MonoBehaviour
     {
         _isActive = false;
         _endurance.RemoveUser(this);
+    }
+
+    public void Dispose()
+    {
+        _ticker.OnTick -= Update;
     }
 }
 }

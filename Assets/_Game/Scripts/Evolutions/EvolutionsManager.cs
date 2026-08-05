@@ -46,6 +46,7 @@ public class EvolutionsManager: MonoBehaviour
     {
         evolution.Apply();
         _player.Stats.AddEvolution(evolution);
+        _player.Abilities.Add(evolution.Config.Abilities);
 
         UnlockEvolutions();
         BlockEvolutions(evolution);

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _Game.Scripts.Abilities;
 using _Game.Scripts.Evolutions.Experience;
 using _Game.Scripts.Stats;
 using UnityEngine;
@@ -8,20 +9,23 @@ namespace _Game.Scripts.Evolutions
 [CreateAssetMenu(fileName = "NewEvolutionConfig", menuName = "Configs/Game/Evolutions/Evolution")]
 public class EvolutionConfig: ScriptableObject
 {
-    [Header("Creature")]
+    // Creature
     [field: SerializeField] public CreatureType CreatureType { get; private set; }
-    [Header("Visual")]
+    // Buffs/Debuffs
     [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public string Description { get; private set; }
     [field: SerializeField] public Sprite Sprite { get; private set; }
-    [Header("Buffs/Debuffs")]
+    // Buffs/Debuffs
     [field: SerializeField] public List<Stat> Stats { get; private set; }
-    [Header("InitialState")]
+    // InitialState
     [field: SerializeField] public EvolutionState State { get; private set; }
-    [Header("References")]
+    // References
     [field: SerializeField] public EvolutionConfig[] Requires { get; private set; }
     [field: SerializeField] public EvolutionConfig[] Blocks { get; private set; }
-    [Header("Experience")]
+    // Ability
+    [field: SerializeField] public AbilityConfig[] Abilities { get; private set; }
+    
+    // Experience
     [field: SerializeField] public int ExperienceForFirstLevel { get; private set; }
     [field: SerializeField] public EvolutionExperienceType[] ExperienceTypes { get; private set; }
 }

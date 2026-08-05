@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Game.Scripts.Player.Modules.Abilities;
 using _Game.Scripts.Player.Modules.Attack;
 using _Game.Scripts.Player.Modules.Defense;
 using _Game.Scripts.Player.Modules.Endurance;
@@ -22,9 +23,11 @@ public class PlayerModel: IDisposable
     public HealthModule Health { get; private set; }
     public EatModule EatModule { get; private set; }
     public AttackModule Attack { get; private set; }
-    public ExperienceController Experience { get; }
     public EnduranceModule Endurance { get; private set; }
     public DefenseModule Defense { get; private set; }
+    
+    public AbilitiesModule Abilities { get; private set; }
+    public ExperienceController Experience { get; }
 
     public PlayerModel(PlayerConfig config)
     {
@@ -32,6 +35,7 @@ public class PlayerModel: IDisposable
         AddModules();
         Stats.Initialize(config.InitialConfig);
         Experience = new(config.ExperienceConfig, EatModule);
+        Abilities = new();
         _modules.Add(Experience);
     }
 
@@ -60,6 +64,8 @@ public class PlayerModel: IDisposable
         {
             module.Dispose();
         }
+        Experience.Dispose();
+        Abilities.Dispose();
     }
 }
 }

@@ -16,7 +16,7 @@ public class EnduranceModule: StatModule
 
     public bool IsUsed => _abilityControllers.Count > 0;
     
-    private readonly HashSet<AbilityController> _abilityControllers = new();
+    private readonly HashSet<Ability> _abilityControllers = new();
     public event Action<float, float> OnEnduranceChanged;
 
     public EnduranceModule(PlayerStats playerStats): base(playerStats) {}
@@ -26,14 +26,14 @@ public class EnduranceModule: StatModule
         return _endurance >= value;
     }
 
-    public void AddUser(AbilityController abilityController)
+    public void AddUser(Ability ability)
     {
-        _abilityControllers.Add(abilityController);
+        _abilityControllers.Add(ability);
     }
 
-    public void RemoveUser(AbilityController abilityController)
+    public void RemoveUser(Ability ability)
     {
-        _abilityControllers.Remove(abilityController);
+        _abilityControllers.Remove(ability);
     }
 
     public void AddEndurance(float value)

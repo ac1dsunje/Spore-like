@@ -29,5 +29,7 @@ MonoBehaviour:
   <State>k__BackingField: 1
   <Requires>k__BackingField: []
   <Blocks>k__BackingField: []
+  <Abilities>k__BackingField:
+  - {fileID: 11400000, guid: be1b63a43cda10d4a8d67386e9596059, type: 2}
   <ExperienceForFirstLevel>k__BackingField: 10
   <ExperienceTypes>k__BackingField: 01000000

@@ -15,6 +15,7 @@ namespace _Game.Scripts
 {
 public class EntryPoint : MonoBehaviour
 {
+    [SerializeField] private Ticker _ticker;
     [Header("World")]
     [SerializeField] private WorldGenerator _worldGenerator;
     
@@ -26,10 +27,6 @@ public class EntryPoint : MonoBehaviour
     [SerializeField] private PlayerMouth _playerMouth;
     [SerializeField] private PlayerHealth _playerHealth;
     [SerializeField] private PlayerEndurance _playerEndurance;
-    
-    [Header("Abilities")]
-    [SerializeField] private SprintAbility _sprintAbility;
-    [SerializeField] private DashAbility _dashAbility;
     
     [Header("UI")]
     [SerializeField] private OverlayScreen _overlayScreen;
@@ -59,9 +56,9 @@ public class EntryPoint : MonoBehaviour
         _playerMouth.Construct(_playerModel.EatModule);
         _playerHealth.Construct(_playerModel.Health);
         _playerEndurance.Construct(_playerModel.Endurance);
-        
-        _sprintAbility.Construct(_playerModel);
-        _dashAbility.Construct(_playerModel);
+
+        var abilityFactory = new AbilityFactory(_playerModel, _ticker);
+        _playerModel.Abilities.SetFactory(abilityFactory);
         
         _player.Construct(_playerModel);
     }

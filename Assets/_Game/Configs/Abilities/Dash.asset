@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299fdedca7cc47638fb19678a78e3f72, type: 3}
   m_Name: Dash
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Abilities.AbilityConfig
+  <Type>k__BackingField: 1
   <StartCost>k__BackingField: 2
+  <HasActivePhase>k__BackingField: 0
   <InUseCost>k__BackingField: 0
   <Key>k__BackingField: 32
