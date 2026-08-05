@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using _Game.Scripts.Abilities;
 using _Game.Scripts.Player.Modules.Stats;
 using _Game.Scripts.Stats;
 using UnityEngine;
@@ -8,14 +10,31 @@ namespace _Game.Scripts.Player.Modules.Endurance
 public class EnduranceModule: StatModule
 {
     private float _maxEndurance;
-    public bool HasEndurance => _endurance > 0;
     public float EnduranceRecovery { get; private set; }
     
     private float _endurance;
-    public bool IsUsed; // ToDo : get the list of currently active abilities
+
+    public bool IsUsed => _abilityControllers.Count > 0;
+    
+    private readonly HashSet<AbilityController> _abilityControllers = new();
     public event Action<float, float> OnEnduranceChanged;
 
     public EnduranceModule(PlayerStats playerStats): base(playerStats) {}
+
+    public bool HasEnoughEndurance(float value)
+    {
+        return _endurance >= value;
+    }
+
+    public void AddUser(AbilityController abilityController)
+    {
+        _abilityControllers.Add(abilityController);
+    }
+
+    public void RemoveUser(AbilityController abilityController)
+    {
+        _abilityControllers.Remove(abilityController);
+    }
 
     public void AddEndurance(float value)
     {

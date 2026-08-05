@@ -10,11 +10,13 @@ public enum MovementState
 }
 public class MovementModule: StatModule
 {
-    public float MoveSpeed => _state == MovementState.Enabled? _moveSpeed : 0;
+    public float MoveSpeed => _state == MovementState.Enabled? UseSprint? _moveSpeed * SprintMultiplier : _moveSpeed : 0;
     public float Acceleration => _acceleration / 100f;
     public float Inertia => _inertia / 100f;
 
     public float SprintMultiplier { get; private set; }
+
+    public bool UseSprint;
     
     private float _moveSpeed;
     private float _acceleration;

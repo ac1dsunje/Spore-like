@@ -9,16 +9,13 @@ public class PlayerMovement: MonoBehaviour
     [SerializeField] private Rigidbody2D _rigidbody;
     
     private MovementModule _movement;
-    private EnduranceModule _endurance;
     
     private float _horizontalInput;
     private float _verticalInput;
-    private bool _sprintInput;
     
-    public void Construct(MovementModule movement, EnduranceModule endurance)
+    public void Construct(MovementModule movement)
     {
         _movement = movement;
-        _endurance = endurance;
     }
 
     private void Update()
@@ -30,7 +27,6 @@ public class PlayerMovement: MonoBehaviour
     {
         _horizontalInput = Input.GetAxisRaw("Horizontal");
         _verticalInput = Input.GetAxisRaw("Vertical");
-        _sprintInput = Input.GetKey(KeyCode.LeftShift);
     }
 
     private void FixedUpdate()
@@ -42,18 +38,10 @@ public class PlayerMovement: MonoBehaviour
     {
         var input = new Vector2(_horizontalInput, _verticalInput).normalized;
 
-        var sprintMultiplier = _sprintInput
-            ? _endurance.HasEndurance
-                ? _movement.SprintMultiplier
-                : 1f
-            : 1f;
-
-        var maxSpeed = _movement.MoveSpeed * sprintMultiplier;
+        var maxSpeed = _movement.MoveSpeed;
         var targetVelocity = input * maxSpeed;
 
         var hasInput = input.sqrMagnitude > 0f;
-        
-        _endurance.IsUsed = hasInput & _sprintInput;
 
         var time = hasInput
             ? _movement.Acceleration

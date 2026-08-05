@@ -300,6 +300,7 @@ MonoBehaviour:
   _playerMouth: {fileID: 824896028}
   _playerHealth: {fileID: 159619908}
   _playerEndurance: {fileID: 159619907}
+  _sprintAbility: {fileID: 1168374145786107145}
   _overlayScreen: {fileID: 1380803056}
   _evolutionChooseScreen: {fileID: 1080735611}
   _evolutionsManager: {fileID: 1168374145786107151}
@@ -883,6 +884,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c760f8ec579e40c2baa7f7c1fd152345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.VisionModule.PlayerVision
+--- !u!114 &1168374145786107145 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1215999130759191312, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
+  m_PrefabInstance: {fileID: 1168374145786107142}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca88a056c7eb4f898968f18dccb263cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Abilities.SprintAbility
 --- !u!4 &1168374145786107147 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4515079076315579977, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
