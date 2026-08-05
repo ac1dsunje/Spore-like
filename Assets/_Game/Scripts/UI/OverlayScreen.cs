@@ -5,7 +5,6 @@ using _Game.Scripts.Player;
 using _Game.Scripts.Player.Modules.Endurance;
 using _Game.Scripts.Player.Modules.Experience;
 using _Game.Scripts.Player.Modules.Health;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _Game.Scripts.UI
