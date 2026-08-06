@@ -1,0 +1,45 @@
+﻿using System;
+using _Game.Scripts.GamePlay.Player.Modules.Stats;
+using _Game.Scripts.GamePlay.Stats;
+
+namespace _Game.Scripts.GamePlay.Player.Modules.Mouth
+{
+public class EatModule: StatModule
+{
+    public float EatingStrength { get; private set; }
+    public float EatingPenetration { get; private set; }
+    public float EatingTime => _eatingTime / 100f;
+
+    private float _eatingTime;
+    public event Action<int> OnFoodPointsAchieved;
+
+    public EatModule(PlayerStats playerStats): base(playerStats) {}
+
+    protected override void PlayerStatUpdated(StatType type, float value)
+    {
+        switch (type)
+        {
+            case StatType.EatingStrength:
+                UpdateEatingStrength(value);
+                break;
+            
+            case StatType.EatingPenetration:
+                UpdateEatingPenetration(value);
+                break;
+            
+            case StatType.EatingTime:
+                UpdateEatingTime(value);
+                break;
+        }
+    }
+
+    private void UpdateEatingStrength(float newValue) => EatingStrength = newValue;
+    private void UpdateEatingPenetration(float newValue) => EatingPenetration = newValue;
+    private void UpdateEatingTime(float newValue) => _eatingTime = newValue;
+
+    public void GetExperienceFromFood(int value)
+    {
+        OnFoodPointsAchieved?.Invoke(value);
+    }
+}
+}
