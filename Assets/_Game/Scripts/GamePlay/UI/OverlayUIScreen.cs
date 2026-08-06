@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.UI
 {
-public class OverlayScreen: ScreenManager
+public class OverlayUIScreen: UIScreen
 {
     [SerializeField] private HealthBarUI _healthBarUI;
     [SerializeField] private ExperienceBarUI _experienceBarUI;

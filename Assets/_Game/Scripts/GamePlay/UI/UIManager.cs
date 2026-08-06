@@ -7,18 +7,18 @@ namespace _Game.Scripts.GamePlay.UI
 public class UIManager: IDisposable
 {
     private readonly PlayerModel _player;
-    private readonly EvolutionChooseScreen _evolutionChooseScreen;
+    private readonly EvolutionChooseUIScreen _evolutionChooseUIScreen;
 
-    public UIManager(EvolutionChooseScreen evolutionChooseScreen, PlayerModel model)
+    public UIManager(EvolutionChooseUIScreen evolutionChooseUIScreen, PlayerModel model)
     {
-        _evolutionChooseScreen = evolutionChooseScreen;
+        _evolutionChooseUIScreen = evolutionChooseUIScreen;
         _player = model;
         _player.Experience.OnLevelChanged += OnLevelUpdated;
     }
 
     private void OnLevelUpdated(int level)
     {
-        _evolutionChooseScreen.Show();
+        _evolutionChooseUIScreen.Show();
     }
 
     public void Dispose()

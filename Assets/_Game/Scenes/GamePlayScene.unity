@@ -302,8 +302,8 @@ MonoBehaviour:
   _playerMouth: {fileID: 824896028}
   _playerHealth: {fileID: 159619908}
   _playerEndurance: {fileID: 159619907}
-  _overlayScreen: {fileID: 1380803056}
-  _evolutionChooseScreen: {fileID: 1080735611}
+  _overlayUIScreen: {fileID: 1380803056}
+  _evolutionChooseUIScreen: {fileID: 1080735611}
   _evolutionsManager: {fileID: 1168374145786107151}
 --- !u!114 &272676811
 MonoBehaviour:

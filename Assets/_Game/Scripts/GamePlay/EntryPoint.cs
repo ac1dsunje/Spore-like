@@ -29,8 +29,8 @@ public class EntryPoint : MonoBehaviour
     [SerializeField] private PlayerEndurance _playerEndurance;
     
     [Header("UI")]
-    [SerializeField] private OverlayScreen _overlayScreen;
-    [SerializeField] private EvolutionChooseScreen _evolutionChooseScreen;
+    [SerializeField] private OverlayUIScreen _overlayUIScreen;
+    [SerializeField] private EvolutionChooseUIScreen _evolutionChooseUIScreen;
 
     [Header("Evolutions")] 
     [SerializeField] private EvolutionsManager _evolutionsManager;
@@ -42,14 +42,14 @@ public class EntryPoint : MonoBehaviour
     {
         CreatePlayer();
         
-        _overlayScreen.Construct(_playerModel);
+        _overlayUIScreen.Construct(_playerModel);
         
         _worldGenerator.Construct(_player.transform);
         
         _evolutionsManager.Construct(_playerModel);
         
-        _evolutionChooseScreen.Construct(_evolutionsManager);
-        _uiManager = new(_evolutionChooseScreen, _playerModel);
+        _evolutionChooseUIScreen.Construct(_evolutionsManager);
+        _uiManager = new(_evolutionChooseUIScreen, _playerModel);
     }
 
     private void CreatePlayer()

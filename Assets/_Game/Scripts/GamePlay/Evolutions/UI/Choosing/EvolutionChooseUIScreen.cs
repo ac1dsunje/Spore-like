@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Evolutions.UI.Choosing
 {
-public class EvolutionChooseScreen : ScreenManager
+public class EvolutionChooseUIScreen : UIScreen
 {
     [SerializeField] private GameObject _slotPrefab;
     private EvolutionsManager _evolutionsManager;

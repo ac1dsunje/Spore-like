@@ -3,7 +3,7 @@
 namespace _Game.Scripts.Core.UI
 {
 [RequireComponent(typeof(CanvasGroup))]
-public abstract class ScreenManager: MonoBehaviour
+public abstract class UIScreen: MonoBehaviour
 {
     private CanvasGroup _screen;
 
