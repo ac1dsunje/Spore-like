@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.UI
+namespace _Game.Scripts.Core.UI
 {
 [RequireComponent(typeof(CanvasGroup))]
 public abstract class ScreenManager: MonoBehaviour
