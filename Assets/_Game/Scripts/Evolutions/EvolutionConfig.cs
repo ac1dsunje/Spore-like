@@ -11,7 +11,7 @@ public class EvolutionConfig: ScriptableObject
 {
     // Creature
     [field: SerializeField] public CreatureType CreatureType { get; private set; }
-    // Buffs/Debuffs
+    // Visual
     [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public string Description { get; private set; }
     [field: SerializeField] public Sprite Sprite { get; private set; }

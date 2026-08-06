@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Evolutions.EvolutionConfig
   <CreatureType>k__BackingField: 2
   <Name>k__BackingField: Compound Eyes
-  <Description>k__BackingField: Thousands of tiny lenses work together to reveal    
+  <Description>k__BackingField: Thousands of tiny lenses work together to reveal
     a wider world
   <Sprite>k__BackingField: {fileID: -7076529034579859471, guid: d6c9da9091c4c0b4ba595677bdd2e09c, type: 3}
   <Stats>k__BackingField:
@@ -25,5 +25,6 @@ MonoBehaviour:
   <Requires>k__BackingField: []
   <Blocks>k__BackingField:
   - {fileID: 11400000, guid: 7e7bc9745c1d2f94291da6ac2f032cdf, type: 2}
+  <Abilities>k__BackingField: []
   <ExperienceForFirstLevel>k__BackingField: 20
   <ExperienceTypes>k__BackingField: 00000000
