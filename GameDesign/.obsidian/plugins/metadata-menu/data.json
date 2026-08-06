@@ -147,21 +147,6 @@
       "path": ""
     },
     {
-      "type": "Select",
-      "tagName": "select",
-      "icon": "right-triangle",
-      "tooltip": "Accepts a single value from a list",
-      "colorClass": "select",
-      "options": {
-        "sourceType": "ValuesFromDVQuery",
-        "valuesList": {},
-        "valuesFromDVQuery": "dv.pages('\"Эволюции/Типы\"')\n  .map(p => `[[${p.file.name}]]`)\n  .array()"
-      },
-      "name": "Тип",
-      "id": "xO229W",
-      "path": ""
-    },
-    {
       "type": "Multi",
       "tagName": "multi",
       "icon": "bullet-list",
