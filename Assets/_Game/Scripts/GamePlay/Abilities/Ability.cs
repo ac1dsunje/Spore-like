@@ -9,7 +9,7 @@ public abstract class Ability: IDisposable
 {
     private readonly AbilityConfig _config;
 
-    protected PlayerModel Model;
+    protected readonly PlayerModel Model;
     private readonly EnduranceModule _endurance;
 
     private readonly Ticker _ticker;
