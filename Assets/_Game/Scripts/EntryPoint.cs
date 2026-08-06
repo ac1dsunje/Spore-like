@@ -36,6 +36,7 @@ public class EntryPoint : MonoBehaviour
     [SerializeField] private EvolutionsManager _evolutionsManager;
     
     private PlayerModel _playerModel;
+    private UIManager _uiManager;
 
     private void Awake()
     {
@@ -45,7 +46,10 @@ public class EntryPoint : MonoBehaviour
         
         _worldGenerator.Construct(_player.transform);
         
-        _evolutionsManager.Construct(_playerModel, _evolutionChooseScreen);
+        _evolutionsManager.Construct(_playerModel);
+        
+        _evolutionChooseScreen.Construct(_evolutionsManager);
+        _uiManager = new(_evolutionChooseScreen, _playerModel);
     }
 
     private void CreatePlayer()
@@ -61,6 +65,11 @@ public class EntryPoint : MonoBehaviour
         _playerModel.Abilities.SetFactory(abilityFactory);
         
         _player.Construct(_playerModel);
+    }
+
+    private void OnDestroy()
+    {
+        _uiManager.Dispose();
     }
 }
 }

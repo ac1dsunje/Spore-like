@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using _Game.Scripts.Evolutions.UI.Choosing;
 using _Game.Scripts.Player;
 using _Game.Scripts.Rarities;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _Game.Scripts.Evolutions
 {
@@ -13,17 +14,15 @@ public class EvolutionsManager: MonoBehaviour
     [SerializeField] private RaritiesDatabase _raritiesDatabase;
     [SerializeField] private int _minEvolutions = 3;
     private PlayerModel _player;
-    private EvolutionChooseScreen _screen;
     
     private readonly List<Evolution> _evolutions = new();
+
+    public event Action<List<Evolution>> OnSlotsFilled;
     
-    public void Construct(PlayerModel player, EvolutionChooseScreen screen)
+    public void Construct(PlayerModel player)
     {
         _player = player;
         _player.Experience.OnLevelChanged += OnLevelUpdated;
-        
-        _screen = screen;
-        _screen.OnEvolutionChosen += OnEvolutionChosen;
 
         foreach (var evolution in _evolutionsDatabase.GenerateEvolutions())
         {
@@ -38,11 +37,10 @@ public class EvolutionsManager: MonoBehaviour
         if (_evolutions.Count(evolution => evolution.State == EvolutionState.IsAble) <= 0) return;
         
         FillSlots();
-        _screen.Show();
         _player.Movement.Disable();
     }
 
-    private void OnEvolutionChosen(Evolution evolution)
+    public void ChooseEvolution(Evolution evolution)
     {
         evolution.Apply();
         _player.Stats.AddEvolution(evolution);
@@ -52,7 +50,6 @@ public class EvolutionsManager: MonoBehaviour
         BlockEvolutions(evolution);
         UpdateChances(evolution);
         
-        _screen.Hide();
         _player.Movement.Enable();
     }
 
@@ -117,7 +114,7 @@ public class EvolutionsManager: MonoBehaviour
             evolution.SetRarity(_raritiesDatabase.GetRandom());
         }
         
-        _screen.SetSlots(evolutions);
+        OnSlotsFilled?.Invoke(evolutions);
     }
 
     private List<Evolution> GetRandomEvolutions(int amount)
@@ -153,7 +150,6 @@ public class EvolutionsManager: MonoBehaviour
     private void OnDestroy()
     {
         _player.Experience.OnLevelChanged -= OnLevelUpdated;
-        _screen.OnEvolutionChosen -= OnEvolutionChosen;
 
         foreach (var evolution in _evolutions)
         {

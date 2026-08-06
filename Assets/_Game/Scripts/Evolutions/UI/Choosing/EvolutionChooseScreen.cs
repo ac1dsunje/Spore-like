@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using _Game.Scripts.UI;
 using UnityEngine;
 
@@ -8,10 +7,9 @@ namespace _Game.Scripts.Evolutions.UI.Choosing
 public class EvolutionChooseScreen : ScreenManager
 {
     [SerializeField] private GameObject _slotPrefab;
+    private EvolutionsManager _evolutionsManager;
     
     private readonly List<EvolutionSlotUI> _slots = new();
-    
-    public event Action<Evolution> OnEvolutionChosen;
 
     protected override void Awake()
     {
@@ -19,11 +17,17 @@ public class EvolutionChooseScreen : ScreenManager
         HideScreen();
     }
 
+    public void Construct(EvolutionsManager evolutionsManager)
+    {
+        _evolutionsManager = evolutionsManager;
+        _evolutionsManager.OnSlotsFilled += SetSlots;
+    }
+
     public void Show() => ShowScreen();
 
     public void Hide() => HideScreen();
 
-    public void SetSlots(List<Evolution> evolutions)
+    private void SetSlots(List<Evolution> evolutions)
     {
         ClearSlots();
         foreach (var evolution in evolutions)
@@ -37,8 +41,9 @@ public class EvolutionChooseScreen : ScreenManager
 
     private void EvolutionChosen(Evolution evolution)
     {
-        OnEvolutionChosen?.Invoke(evolution);
+        _evolutionsManager.ChooseEvolution(evolution);
         ClearSlots();
+        HideScreen();
     }
 
     private void ClearSlots()
@@ -51,6 +56,10 @@ public class EvolutionChooseScreen : ScreenManager
         _slots.Clear();
     }
     
-    private void OnDestroy() => ClearSlots();
+    private void OnDestroy()
+    {
+        ClearSlots();
+        _evolutionsManager.OnSlotsFilled -= SetSlots;
+    }
 }
 }
