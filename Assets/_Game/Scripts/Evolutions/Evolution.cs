@@ -33,7 +33,9 @@ public class Evolution: IDisposable
 
     public Evolution(EvolutionConfig config)
     {
-        SetConfig(config);
+        Config = config;
+        SetStats();
+        SetState(Config.State);
     }
 
     public void Initialize(PlayerModel playerModel, int chance)
@@ -42,23 +44,25 @@ public class Evolution: IDisposable
         Chance = chance;
     }
 
-    public void IncreaseChance(int amount)
-    {
-        Chance += amount;
-    }
+    public void IncreaseChance(int amount) => Chance += amount;
 
     public void Apply()
     {
-        SetState(EvolutionState.IsActive);
+        Activate();
+        SubscribeExperienceManagers();
+    }
 
+    private void SubscribeExperienceManagers()
+    {
         foreach (var type in Config.ExperienceTypes)
         {
             var experienceType = _expFactory.GetMethod(type, _player);
             _experienceManagers.Add(experienceType);
             experienceType.OnExperienceGained += UpdateExperience;
         }
-
     }
+    
+    private void Activate() => SetState(EvolutionState.IsActive);
 
     public void Unlock() => SetState(EvolutionState.IsAble);
 
@@ -77,15 +81,6 @@ public class Evolution: IDisposable
         
         OnRarityChanged?.Invoke();
         _player.Stats.UpdateEvolution(this);
-    }
-
-    private void SetConfig(EvolutionConfig config)
-    {
-        Config = config;
-
-        SetStats();
-        
-        SetState(Config.State);
     }
 
     private void UseRarity(RarityConfig rarity)
@@ -115,13 +110,14 @@ public class Evolution: IDisposable
 
     private void UpdateExperience(int amount)
     {
-        _experiencePoints += amount;
-        OnEvolutionExperienceChanged?.Invoke(_experiencePoints);
-        
-        if (_experiencePoints >= _levelSet)
+        while (true)
         {
+            _experiencePoints += amount;
+            OnEvolutionExperienceChanged?.Invoke(_experiencePoints);
+
+            if (_experiencePoints < _levelSet) return;
             UpdateLevel();
-            UpdateExperience(-_levelSet);
+            amount = -_levelSet;
         }
     }
 
