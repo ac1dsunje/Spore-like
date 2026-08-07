@@ -15,6 +15,8 @@ public class WorldGenerator: MonoBehaviour
 
     private int _seed;
 
+    private Vector3Int _lastPlayerPosition;
+
     private void Awake()
     {
         _seed = _config.GenerateRandomSeed ? Random.Range(0, 99999) : _config.Seed;
@@ -27,6 +29,7 @@ public class WorldGenerator: MonoBehaviour
         {
             tilemap.ClearAllTiles();
         }
+        Generate();
     }
 
     private Vector3Int _playerPos() => 
@@ -39,7 +42,16 @@ public class WorldGenerator: MonoBehaviour
     private void Update()
     {
         if (_player == null) return;
+
+        if (!HasPlayerMoved()) return;
         Generate();
+    }
+
+    private bool HasPlayerMoved()
+    {
+        if (_playerPos() == _lastPlayerPosition) return false;
+        _lastPlayerPosition = _playerPos();
+        return true;
     }
 
     private int GetDistance() => _renderDistance * _config.ChunkSize;
@@ -60,7 +72,7 @@ public class WorldGenerator: MonoBehaviour
         var biome = CheckBiome(position);
         if (_tilemaps[biome.Height].HasTile(position)) return;
         
-        _tilemaps[biome.Height].SetTile(position,CheckBiome(position).RandomTile);
+        _tilemaps[biome.Height].SetTile(position, biome.RandomTile);
         TryPlaceEnvironment(position, biome);
     }
 
