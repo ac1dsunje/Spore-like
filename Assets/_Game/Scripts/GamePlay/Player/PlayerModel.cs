@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Player.Modules.Abilities;
 using _Game.Scripts.GamePlay.Player.Modules.Attack;
 using _Game.Scripts.GamePlay.Player.Modules.Defense;
@@ -29,37 +28,35 @@ public class PlayerModel: IDisposable
     public DefenseModule Defense { get; private set; }
     
     public AbilitiesModule Abilities { get; private set; }
-    public ExperienceController Experience { get; }
+    public ExperienceController Experience { get; private set; }
     public EvolutionsModule Evolutions { get; private set; }
 
     public PlayerModel(PlayerConfig config)
     {
         Stats = new();
-        AddModules();
+        AddModules(config);
         Stats.Initialize(config.InitialConfig);
-        Experience = new(config.ExperienceConfig, EatModule);
-        Abilities = new();
-        Evolutions = new(this);
-        _modules.Add(Experience);
     }
 
-    private void AddModules()
+    private void AddModules(PlayerConfig config)
     {
-        Vision = new(Stats);
-        Movement = new(Stats);
-        Health = new(Stats);
-        EatModule = new (Stats);
-        Attack = new(Stats);
-        Endurance = new(Stats);
-        Defense = new(Stats);
-
-        _modules.Add(Vision);
-        _modules.Add(Movement);
-        _modules.Add(Health);
-        _modules.Add(EatModule);
-        _modules.Add(Attack);
-        _modules.Add(Endurance);
-        _modules.Add(Defense);
+        Vision = AddModule(new VisionModule(Stats));
+        Movement = AddModule(new MovementModule(Stats));
+        Health = AddModule(new HealthModule(Stats));
+        EatModule = AddModule(new EatModule(Stats));
+        Attack = AddModule(new AttackModule(Stats));
+        Endurance = AddModule(new EnduranceModule(Stats));
+        Defense = AddModule(new DefenseModule(Stats));
+        Experience = AddModule(new ExperienceController(config.ExperienceConfig, EatModule));
+        Abilities = AddModule(new AbilitiesModule());
+        Evolutions = AddModule(new EvolutionsModule(this));
+        
+    }
+    
+    private T AddModule<T>(T module) where T : IDisposable
+    {
+        _modules.Add(module);
+        return module;
     }
 
     public void Dispose()
@@ -68,9 +65,6 @@ public class PlayerModel: IDisposable
         {
             module.Dispose();
         }
-        Experience.Dispose();
-        Abilities.Dispose();
-        Evolutions.Dispose();
     }
 }
 }
