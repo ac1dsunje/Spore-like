@@ -963,18 +963,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2108220050117646386, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
-      propertyPath: _minEvolutions
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108220050117646386, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
-      propertyPath: _raritiesDatabase
-      value: 
-      objectReference: {fileID: 11400000, guid: 844b6b4bf98611044bf03a16ce2009a0, type: 2}
-    - target: {fileID: 2108220050117646386, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
-      propertyPath: _evolutionsDatabase
-      value: 
-      objectReference: {fileID: 11400000, guid: 89e0fac1fa9071a41bafa6ee877795b5, type: 2}
     - target: {fileID: 4515079076315579977, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
