@@ -7,17 +7,25 @@ namespace _Game.Scripts.GamePlay.UI
 public class UIManager: MonoBehaviour
 {
     private PlayerModel _player;
-    private EvolutionChooseUIScreen _evolutionChooseUIScreen;
-    private PauseUIScreen _pauseUIScreen;
+    
+    [SerializeField] private PauseUIScreen _pauseUIScreen;
+    [SerializeField] private EvolutionChooseUIScreen _evolutionChooseUIScreen;
+    
+    [SerializeField] private OverlayUIScreen _overlayUIScreen;
+    [SerializeField] private ActiveEvolutionsDisplay _activeEvolutionsDisplay;
+    [SerializeField] private ActiveAbilitiesDisplay  _activeAbilitiesDisplay;
 
-    public void Construct(EvolutionChooseUIScreen evolutionChooseUIScreen, PauseUIScreen pauseUIScreen, PlayerModel model)
+    public void Construct(PlayerModel model)
     {
-        _evolutionChooseUIScreen = evolutionChooseUIScreen;
-        _pauseUIScreen = pauseUIScreen;
         _player = model;
+        
         _player.Experience.OnLevelChanged += OnLevelUpdated;
-
         _pauseUIScreen.OnStateChanged += OnPauseScreenChanged;
+        
+        _overlayUIScreen.Construct(_player);
+        _activeEvolutionsDisplay.Construct(_player.Evolutions);
+        _evolutionChooseUIScreen.Construct(_player.Evolutions);
+        _activeAbilitiesDisplay.Construct(_player.Abilities);
     }
 
     private void Update()

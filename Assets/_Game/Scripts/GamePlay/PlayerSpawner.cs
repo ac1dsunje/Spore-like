@@ -10,7 +10,7 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] private Vector2[] _spawnPoints;
     public event Action<PlayerController> OnPlayerSpawned;
     
-    public PlayerController Spawn(Ticker ticker, int spawnIndex = 0)
+    public void Spawn(Ticker ticker, int spawnIndex = 0)
     {
         var spawnPoint = _spawnPoints[spawnIndex];
 
@@ -22,7 +22,6 @@ public class PlayerSpawner : MonoBehaviour
         player.Initialize(ticker);
 
         OnPlayerSpawned?.Invoke(player);
-        return player;
     }
 }
 }

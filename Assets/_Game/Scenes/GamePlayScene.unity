@@ -237,7 +237,6 @@ GameObject:
   - component: {fileID: 272676809}
   - component: {fileID: 272676810}
   - component: {fileID: 272676811}
-  - component: {fileID: 272676812}
   - component: {fileID: 272676813}
   m_Layer: 0
   m_Name: EntryPoint
@@ -277,12 +276,7 @@ MonoBehaviour:
   _worldGenerator: {fileID: 1623958188}
   _camera: {fileID: 62460934}
   _playerSpawner: {fileID: 272676813}
-  _uiManager: {fileID: 272676812}
-  _overlayUIScreen: {fileID: 1380803056}
-  _activeEvolutionsDisplay: {fileID: 2071786727}
-  _activeAbilitiesDisplay: {fileID: 504216404}
-  _pauseUIScreen: {fileID: 2140936594}
-  _evolutionChooseUIScreen: {fileID: 1080735611}
+  _uiManager: {fileID: 0}
 --- !u!114 &272676811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,18 +289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab22400322e64ad9acc03ee8a8b9d5c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Abilities.Ticker
---- !u!114 &272676812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 272676808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a468a6c2a3e44ea5851b40addfe930ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.UI.UIManager
 --- !u!114 &272676813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -699,6 +681,7 @@ GameObject:
   - component: {fileID: 965958609}
   - component: {fileID: 965958608}
   - component: {fileID: 965958607}
+  - component: {fileID: 965958611}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -793,6 +776,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &965958611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965958606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a468a6c2a3e44ea5851b40addfe930ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.UI.UIManager
+  _pauseUIScreen: {fileID: 2140936594}
+  _evolutionChooseUIScreen: {fileID: 1080735611}
+  _overlayUIScreen: {fileID: 1380803056}
+  _activeEvolutionsDisplay: {fileID: 2071786727}
+  _activeAbilitiesDisplay: {fileID: 504216404}
 --- !u!224 &1080735610 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4755174928454083572, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
