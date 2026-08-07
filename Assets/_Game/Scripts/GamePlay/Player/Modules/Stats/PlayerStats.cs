@@ -8,10 +8,6 @@ namespace _Game.Scripts.GamePlay.Player.Modules.Stats
 {
 public class PlayerStats
 {
-    //Evolutions
-    private readonly List<Evolution> _evolutions = new();
-    public event Action<Evolution> OnEvolutionAdded;
-
     //Stats
     private readonly Dictionary<StatType, float> _stats = new();
     private readonly Dictionary<StatType, float> _basicStats = new();
@@ -27,9 +23,6 @@ public class PlayerStats
 
     public void AddEvolution(Evolution evolution)
     {
-        _evolutions.Add(evolution);
-        OnEvolutionAdded?.Invoke(evolution);
-        
         AddEvolutionStats(evolution);
 
         foreach (var stat in evolution.Stats)

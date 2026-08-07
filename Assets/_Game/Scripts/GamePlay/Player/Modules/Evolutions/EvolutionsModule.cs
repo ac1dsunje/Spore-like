@@ -18,6 +18,7 @@ public class EvolutionsModule: IDisposable
     private readonly List<Evolution> _evolutions = new();
 
     public event Action<List<Evolution>> OnSlotsFilled;
+    public event Action<Evolution> OnEvolutionApplied;
 
     public EvolutionsModule(PlayerModel model)
     {
@@ -56,6 +57,8 @@ public class EvolutionsModule: IDisposable
         UnlockEvolutions();
         BlockEvolutions(evolution);
         UpdateChances(evolution);
+        
+        OnEvolutionApplied?.Invoke(evolution);
         
         _player.Movement.Enable();
     }

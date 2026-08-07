@@ -16,7 +16,7 @@ public class ActiveEvolutionsDisplay: MonoBehaviour
     public void Construct(PlayerModel player)
     {
         _player = player;
-        _player.Stats.OnEvolutionAdded += AddEvolution;
+        _player.Evolutions.OnEvolutionApplied += AddEvolution;
     }
 
     private void AddEvolution(Evolution evolution)
@@ -27,7 +27,7 @@ public class ActiveEvolutionsDisplay: MonoBehaviour
 
     private void OnDestroy()
     {
-        _player.Stats.OnEvolutionAdded -= AddEvolution;
+        _player.Evolutions.OnEvolutionApplied -= AddEvolution;
     }
 }
 }
