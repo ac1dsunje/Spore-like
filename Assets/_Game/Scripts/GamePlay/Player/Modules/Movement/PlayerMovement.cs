@@ -37,22 +37,15 @@ public class PlayerMovement: MonoBehaviour
     {
         var input = new Vector2(_horizontalInput, _verticalInput).normalized;
 
-        if (_movement.DashRequested)
-        {
-            _rigidbody.AddForce(input * _movement.DashPower, ForceMode2D.Impulse);
-            _movement.ResetDash();
-        }
+        TryDash(input);
         
-        var maxSpeed = _movement.MoveSpeed;
-        var targetVelocity = input * maxSpeed;
+        var targetVelocity = input * _movement.MoveSpeed;
 
-        var hasInput = input.sqrMagnitude > 0f;
+        var hasInput = input.sqrMagnitude > 0f && _movement.CanMove;
 
-        var time = hasInput
-            ? _movement.Acceleration
-            : _movement.Inertia;
+        var time = hasInput ? _movement.Acceleration : _movement.Inertia;
 
-        var rate = maxSpeed / time;
+        var rate = _movement.MoveSpeed / time;
 
         _rigidbody.linearVelocity = Vector2.MoveTowards(
             _rigidbody.linearVelocity,
@@ -60,6 +53,13 @@ public class PlayerMovement: MonoBehaviour
             rate * Time.fixedDeltaTime);
 
         Flip();
+    }
+
+    private void TryDash(Vector2 input)
+    {
+        if (!_movement.DashRequested) return;
+        _rigidbody.AddForce(input * _movement.DashPower, ForceMode2D.Impulse);
+        _movement.ResetDash();
     }
 
     private void Flip()

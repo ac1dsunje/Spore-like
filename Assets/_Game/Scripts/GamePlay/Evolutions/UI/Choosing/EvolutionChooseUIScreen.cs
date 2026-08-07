@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using _Game.Scripts.Core.UI;
-using _Game.Scripts.GamePlay.UI;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Evolutions.UI.Choosing
@@ -23,10 +22,6 @@ public class EvolutionChooseUIScreen : UIScreen
         _evolutionsManager = evolutionsManager;
         _evolutionsManager.OnSlotsFilled += SetSlots;
     }
-
-    public void Show() => ShowScreen();
-
-    public void Hide() => HideScreen();
 
     private void SetSlots(List<Evolution> evolutions)
     {

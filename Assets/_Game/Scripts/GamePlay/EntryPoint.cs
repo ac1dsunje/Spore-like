@@ -28,9 +28,11 @@ public class EntryPoint : MonoBehaviour
     [SerializeField] private PlayerMouth _playerMouth;
     [SerializeField] private PlayerHealth _playerHealth;
     [SerializeField] private PlayerEndurance _playerEndurance;
-    
+
     [Header("UI")]
+    [SerializeField] private UIManager _uiManager;
     [SerializeField] private OverlayUIScreen _overlayUIScreen;
+    [SerializeField] private PauseUIScreen _pauseUIScreen;
     [SerializeField] private EvolutionChooseUIScreen _evolutionChooseUIScreen;
     
     [Header("Evolutions")]
@@ -41,7 +43,6 @@ public class EntryPoint : MonoBehaviour
     private EvolutionsManager _evolutionsManager;
     
     private PlayerModel _playerModel;
-    private UIManager _uiManager;
 
     private void Awake()
     {
@@ -54,7 +55,7 @@ public class EntryPoint : MonoBehaviour
         _evolutionsManager = new(_playerModel, _evolutionsDatabase, _raritiesDatabase, _minEvolutions);
         
         _evolutionChooseUIScreen.Construct(_evolutionsManager);
-        _uiManager = new(_evolutionChooseUIScreen, _playerModel);
+        _uiManager.Construct(_evolutionChooseUIScreen, _pauseUIScreen, _playerModel);
     }
 
     private void CreatePlayer()
@@ -74,7 +75,6 @@ public class EntryPoint : MonoBehaviour
 
     private void OnDestroy()
     {
-        _uiManager.Dispose();
         _evolutionsManager.Dispose();
     }
 }
