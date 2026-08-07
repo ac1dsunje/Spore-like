@@ -2,11 +2,6 @@ using _Game.Scripts.GamePlay.Abilities;
 using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Evolutions.UI.Choosing;
 using _Game.Scripts.GamePlay.Player;
-using _Game.Scripts.GamePlay.Player.Modules.Endurance;
-using _Game.Scripts.GamePlay.Player.Modules.Health;
-using _Game.Scripts.GamePlay.Player.Modules.Mouth;
-using _Game.Scripts.GamePlay.Player.Modules.Movement;
-using _Game.Scripts.GamePlay.Player.Modules.Vision;
 using _Game.Scripts.GamePlay.Rarities;
 using _Game.Scripts.GamePlay.UI;
 using _Game.Scripts.GamePlay.World;
@@ -22,12 +17,6 @@ public class EntryPoint : MonoBehaviour
     
     [Header("Player")]
     [SerializeField] private PlayerController _player;
-    [SerializeField] private PlayerConfig _playerConfig;
-    [SerializeField] private PlayerVision _playerVision;
-    [SerializeField] private PlayerMovement _playerMovement;
-    [SerializeField] private PlayerMouth _playerMouth;
-    [SerializeField] private PlayerHealth _playerHealth;
-    [SerializeField] private PlayerEndurance _playerEndurance;
 
     [Header("UI")]
     [SerializeField] private UIManager _uiManager;
@@ -41,36 +30,19 @@ public class EntryPoint : MonoBehaviour
     [SerializeField] private int _minEvolutions;
 
     private EvolutionsManager _evolutionsManager;
-    
-    private PlayerModel _playerModel;
 
     private void Awake()
     {
-        CreatePlayer();
+        _player.Initialize(_ticker);
         
-        _overlayUIScreen.Construct(_playerModel);
+        _overlayUIScreen.Construct(_player.Model);
         
         _worldGenerator.Construct(_player.transform);
         
-        _evolutionsManager = new(_playerModel, _evolutionsDatabase, _raritiesDatabase, _minEvolutions);
+        _evolutionsManager = new(_player.Model, _evolutionsDatabase, _raritiesDatabase, _minEvolutions);
         
         _evolutionChooseUIScreen.Construct(_evolutionsManager);
-        _uiManager.Construct(_evolutionChooseUIScreen, _pauseUIScreen, _playerModel);
-    }
-
-    private void CreatePlayer()
-    {
-        _playerModel = new PlayerModel(_playerConfig);
-        _playerVision.Construct(_playerModel.Vision);
-        _playerMovement.Construct(_playerModel.Movement);
-        _playerMouth.Construct(_playerModel.EatModule);
-        _playerHealth.Construct(_playerModel.Health);
-        _playerEndurance.Construct(_playerModel.Endurance);
-
-        var abilityFactory = new AbilityFactory(_playerModel, _ticker);
-        _playerModel.Abilities.SetFactory(abilityFactory);
-        
-        _player.Construct(_playerModel);
+        _uiManager.Construct(_evolutionChooseUIScreen, _pauseUIScreen, _player.Model);
     }
 
     private void OnDestroy()

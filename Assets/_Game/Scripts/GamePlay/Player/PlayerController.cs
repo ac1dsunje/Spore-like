@@ -1,27 +1,50 @@
-﻿using UnityEngine;
+﻿using _Game.Scripts.GamePlay.Abilities;
+using _Game.Scripts.GamePlay.Player.Modules.Endurance;
+using _Game.Scripts.GamePlay.Player.Modules.Health;
+using _Game.Scripts.GamePlay.Player.Modules.Mouth;
+using _Game.Scripts.GamePlay.Player.Modules.Movement;
+using _Game.Scripts.GamePlay.Player.Modules.Vision;
+using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Player
 {
 public class PlayerController: MonoBehaviour, IDamageAble
 {
-    private PlayerModel _model;
+    [SerializeField] private PlayerVision _playerVision;
+    [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private PlayerMouth _playerMouth;
+    [SerializeField] private PlayerHealth _playerHealth;
+    [SerializeField] private PlayerEndurance _playerEndurance;
 
-    public void Construct(PlayerModel model)
+    [SerializeField] private PlayerConfig _playerConfig;
+    
+    public PlayerModel Model { get; private set; }
+
+    public void Initialize(Ticker ticker)
     {
-        _model = model;
+        Model = new(_playerConfig);
+        
+        var abilityFactory = new AbilityFactory(Model, ticker);
+        Model.Abilities.SetFactory(abilityFactory);
+        
+        _playerVision.Construct(Model.Vision);
+        _playerMovement.Construct(Model.Movement);
+        _playerMouth.Construct(Model.EatModule);
+        _playerHealth.Construct(Model.Health);
+        _playerEndurance.Construct(Model.Endurance);
     }
 
     public void TakeDamage(float value, IDamageAble damager)
     {
-        var amount = _model.Defense.GetDamageAfterResistance(value);
+        var amount = Model.Defense.GetDamageAfterResistance(value);
         
-        _model.Health.TakeDamage(amount);
-        _model.Defense.ReflectDamage(amount, damager);
+        Model.Health.TakeDamage(amount);
+        Model.Defense.ReflectDamage(amount, damager);
     }
 
     private void OnDestroy()
     {
-        _model.Dispose();
+        Model.Dispose();
     }
 }
 }

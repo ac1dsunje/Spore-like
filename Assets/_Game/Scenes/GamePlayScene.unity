@@ -226,28 +226,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &159619907 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7969867278788272747, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
-  m_PrefabInstance: {fileID: 1168374145786107142}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ccc8f16a156452f8b3c9ee9c26154f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.Endurance.PlayerEndurance
---- !u!114 &159619908 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4028549422210393822, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
-  m_PrefabInstance: {fileID: 1168374145786107142}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5bff76f551f46b2a71c67b4f6088033, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.Health.PlayerHealth
 --- !u!1 &272676808
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,12 +275,6 @@ MonoBehaviour:
   _ticker: {fileID: 272676811}
   _worldGenerator: {fileID: 1623958188}
   _player: {fileID: 1325505445}
-  _playerConfig: {fileID: 11400000, guid: ba7be4736a4236543ba175179ecef16d, type: 2}
-  _playerVision: {fileID: 1168374145786107144}
-  _playerMovement: {fileID: 1168374145786107143}
-  _playerMouth: {fileID: 824896028}
-  _playerHealth: {fileID: 159619908}
-  _playerEndurance: {fileID: 159619907}
   _uiManager: {fileID: 272676812}
   _overlayUIScreen: {fileID: 1380803056}
   _pauseUIScreen: {fileID: 2140936594}
@@ -334,8 +306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a468a6c2a3e44ea5851b40addfe930ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.UI.UIManager
-  _evolutionChooseUIScreen: {fileID: 1080735611}
-  _pauseUIScreen: {fileID: 2140936594}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,17 +555,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &824896028 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 187838623708506777, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
-  m_PrefabInstance: {fileID: 1168374145786107142}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9a425b2506647ad95e5d622425966e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.Mouth.PlayerMouth
 --- !u!1 &965958606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,18 +966,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2142134467789452239, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
-      propertyPath: m_NormalMapQuality
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2142134467789452239, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
-      propertyPath: m_LightVolumeEnabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3916511503846283004, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
-      propertyPath: m_AnimatePhysics
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4515079076315579977, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1068,28 +1015,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
---- !u!114 &1168374145786107143 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8826225895069937878, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
-  m_PrefabInstance: {fileID: 1168374145786107142}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28d0016c3217408bb4f98ccd4b3f6036, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.PlayerMovement
---- !u!114 &1168374145786107144 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1241412678200770851, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
-  m_PrefabInstance: {fileID: 1168374145786107142}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c760f8ec579e40c2baa7f7c1fd152345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.VisionModule.PlayerVision
 --- !u!4 &1168374145786107147 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4515079076315579977, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
@@ -1186,10 +1111,6 @@ PrefabInstance:
     - target: {fileID: 4755174928454083572, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7839408227657056900, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
-      propertyPath: _evolutionsManager
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
