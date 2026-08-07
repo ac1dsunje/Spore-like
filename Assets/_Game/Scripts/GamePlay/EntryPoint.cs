@@ -19,6 +19,8 @@ public class EntryPoint : MonoBehaviour
     [Header("UI")]
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private OverlayUIScreen _overlayUIScreen;
+    [SerializeField] private ActiveEvolutionsDisplay _activeEvolutionsDisplay;
+    [SerializeField] private ActiveAbilitiesDisplay  _activeAbilitiesDisplay;
     [SerializeField] private PauseUIScreen _pauseUIScreen;
     [SerializeField] private EvolutionChooseUIScreen _evolutionChooseUIScreen;
 
@@ -26,10 +28,12 @@ public class EntryPoint : MonoBehaviour
     {
         var player = _playerSpawner.Spawn(_ticker);
         
-        _overlayUIScreen.Construct(player.Model);
-        
         _worldGenerator.Construct(player.transform);
         _camera.Target.TrackingTarget = player.transform;
+        
+        _overlayUIScreen.Construct(player.Model);
+        _activeEvolutionsDisplay.Construct(player.Model);
+        _activeAbilitiesDisplay.Construct(player.Model);
         
         _evolutionChooseUIScreen.Construct(player.Model.Evolutions);
         _uiManager.Construct(_evolutionChooseUIScreen, _pauseUIScreen, player.Model);
