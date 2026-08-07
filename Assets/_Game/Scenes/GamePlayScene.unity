@@ -304,7 +304,9 @@ MonoBehaviour:
   _playerEndurance: {fileID: 159619907}
   _overlayUIScreen: {fileID: 1380803056}
   _evolutionChooseUIScreen: {fileID: 1080735611}
-  _evolutionsManager: {fileID: 1168374145786107151}
+  _evolutionsDatabase: {fileID: 11400000, guid: 89e0fac1fa9071a41bafa6ee877795b5, type: 2}
+  _raritiesDatabase: {fileID: 11400000, guid: 844b6b4bf98611044bf03a16ce2009a0, type: 2}
+  _minEvolutions: 3
 --- !u!114 &272676811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -870,7 +872,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6488647832735213282, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -902,17 +905,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4515079076315579977, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
   m_PrefabInstance: {fileID: 1168374145786107142}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1168374145786107151 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6488647832735213282, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
-  m_PrefabInstance: {fileID: 1168374145786107142}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b12fde8bac24b85b403b6577e6f449c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Evolutions.EvolutionsManager
 --- !u!1001 &4498920137526282035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1008,7 +1000,7 @@ PrefabInstance:
     - target: {fileID: 7839408227657056900, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
       propertyPath: _evolutionsManager
       value: 
-      objectReference: {fileID: 1168374145786107151}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

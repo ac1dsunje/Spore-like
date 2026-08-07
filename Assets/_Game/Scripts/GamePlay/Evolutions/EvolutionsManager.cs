@@ -8,19 +8,23 @@ using Random = UnityEngine.Random;
 
 namespace _Game.Scripts.GamePlay.Evolutions
 {
-public class EvolutionsManager: MonoBehaviour
+public class EvolutionsManager: IDisposable
 {
-    [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
-    [SerializeField] private RaritiesDatabase _raritiesDatabase;
-    [SerializeField] private int _minEvolutions = 3;
-    private PlayerModel _player;
+    private readonly EvolutionsDatabase _evolutionsDatabase;
+    private readonly RaritiesDatabase _raritiesDatabase;
+    private readonly int _minEvolutions;
+    private readonly PlayerModel _player;
     
     private readonly List<Evolution> _evolutions = new();
 
     public event Action<List<Evolution>> OnSlotsFilled;
     
-    public void Construct(PlayerModel player)
+    public EvolutionsManager(PlayerModel player, EvolutionsDatabase evolutionsDatabase, RaritiesDatabase raritiesDatabase, int minEvolutions)
     {
+        _evolutionsDatabase  = evolutionsDatabase;
+        _raritiesDatabase = raritiesDatabase;
+        _minEvolutions = minEvolutions;
+        
         _player = player;
         _player.Experience.OnLevelChanged += OnLevelUpdated;
 
@@ -147,7 +151,7 @@ public class EvolutionsManager: MonoBehaviour
         return evolutions;
     }
 
-    private void OnDestroy()
+    public void Dispose()
     {
         _player.Experience.OnLevelChanged -= OnLevelUpdated;
 

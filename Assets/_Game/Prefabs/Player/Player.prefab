@@ -228,7 +228,6 @@ GameObject:
   - component: {fileID: 4515079076315579977}
   - component: {fileID: 5451021253237555291}
   - component: {fileID: 2108220050117646386}
-  - component: {fileID: 6488647832735213282}
   - component: {fileID: 5941579127261112535}
   - component: {fileID: 8826225895069937878}
   m_Layer: 0
@@ -294,21 +293,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6f8be6a5c94e08b0408b38c4016f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.PlayerController
---- !u!114 &6488647832735213282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254078283856608112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b12fde8bac24b85b403b6577e6f449c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Evolutions.EvolutionsManager
-  _evolutionsDatabase: {fileID: 11400000, guid: 89e0fac1fa9071a41bafa6ee877795b5, type: 2}
-  _raritiesDatabase: {fileID: 11400000, guid: 844b6b4bf98611044bf03a16ce2009a0, type: 2}
-  _minEvolutions: 3
 --- !u!70 &5941579127261112535
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

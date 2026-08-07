@@ -7,6 +7,7 @@ using _Game.Scripts.GamePlay.Player.Modules.Health;
 using _Game.Scripts.GamePlay.Player.Modules.Mouth;
 using _Game.Scripts.GamePlay.Player.Modules.Movement;
 using _Game.Scripts.GamePlay.Player.Modules.Vision;
+using _Game.Scripts.GamePlay.Rarities;
 using _Game.Scripts.GamePlay.UI;
 using _Game.Scripts.GamePlay.World;
 using UnityEngine;
@@ -31,9 +32,13 @@ public class EntryPoint : MonoBehaviour
     [Header("UI")]
     [SerializeField] private OverlayUIScreen _overlayUIScreen;
     [SerializeField] private EvolutionChooseUIScreen _evolutionChooseUIScreen;
+    
+    [Header("Evolutions")]
+    [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
+    [SerializeField] private RaritiesDatabase _raritiesDatabase;
+    [SerializeField] private int _minEvolutions;
 
-    [Header("Evolutions")] 
-    [SerializeField] private EvolutionsManager _evolutionsManager;
+    private EvolutionsManager _evolutionsManager;
     
     private PlayerModel _playerModel;
     private UIManager _uiManager;
@@ -46,7 +51,7 @@ public class EntryPoint : MonoBehaviour
         
         _worldGenerator.Construct(_player.transform);
         
-        _evolutionsManager.Construct(_playerModel);
+        _evolutionsManager = new(_playerModel, _evolutionsDatabase, _raritiesDatabase, _minEvolutions);
         
         _evolutionChooseUIScreen.Construct(_evolutionsManager);
         _uiManager = new(_evolutionChooseUIScreen, _playerModel);
@@ -70,6 +75,7 @@ public class EntryPoint : MonoBehaviour
     private void OnDestroy()
     {
         _uiManager.Dispose();
+        _evolutionsManager.Dispose();
     }
 }
 }
