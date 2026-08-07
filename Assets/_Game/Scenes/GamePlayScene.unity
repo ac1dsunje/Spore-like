@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 272676810}
   - component: {fileID: 272676811}
   - component: {fileID: 272676812}
+  - component: {fileID: 272676813}
   m_Layer: 0
   m_Name: EntryPoint
   m_TagString: Untagged
@@ -275,7 +276,7 @@ MonoBehaviour:
   _ticker: {fileID: 272676811}
   _worldGenerator: {fileID: 1623958188}
   _camera: {fileID: 62460934}
-  _playerPrefab: {fileID: 2108220050117646386, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
+  _playerSpawner: {fileID: 272676813}
   _uiManager: {fileID: 272676812}
   _overlayUIScreen: {fileID: 1380803056}
   _pauseUIScreen: {fileID: 2140936594}
@@ -304,6 +305,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a468a6c2a3e44ea5851b40addfe930ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.UI.UIManager
+--- !u!114 &272676813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272676808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8dda9da75f4d03867ba43cd1b74a3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.PlayerSpawner
+  _playerPrefab: {fileID: 2108220050117646386, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
+  _spawnPoints:
+  - {x: 0, y: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

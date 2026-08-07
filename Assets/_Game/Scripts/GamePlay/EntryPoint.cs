@@ -1,6 +1,5 @@
 using _Game.Scripts.GamePlay.Abilities;
 using _Game.Scripts.GamePlay.Evolutions.UI.Choosing;
-using _Game.Scripts.GamePlay.Player;
 using _Game.Scripts.GamePlay.UI;
 using _Game.Scripts.GamePlay.World;
 using Unity.Cinemachine;
@@ -15,8 +14,8 @@ public class EntryPoint : MonoBehaviour
     [SerializeField] private WorldGenerator _worldGenerator;
     [Header("Camera")]
     [SerializeField] private CinemachineCamera _camera;
-    [Header("Player")]
-    [SerializeField] private PlayerController _playerPrefab;
+    [Header("Players")]
+    [SerializeField] private PlayerSpawner _playerSpawner;
 
     [Header("UI")]
     [SerializeField] private UIManager _uiManager;
@@ -26,8 +25,7 @@ public class EntryPoint : MonoBehaviour
 
     private void Awake()
     {
-        var player = Instantiate(_playerPrefab, transform.position, Quaternion.identity);
-        player.Initialize(_ticker);
+        var player = _playerSpawner.Spawn(_ticker);
         
         _overlayUIScreen.Construct(player.Model);
         
