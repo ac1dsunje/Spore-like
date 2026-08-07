@@ -5,12 +5,14 @@ namespace _Game.Scripts.Bootstrap
 {
 public class Bootstrap: MonoBehaviour
 {
-    [SerializeField] private SceneLoader _sceneLoader;
+    [SerializeField] private CoroutinePerformer _coroutinePerformer;
+    [SerializeField] [Scene] private string _mainMenuScene;
+    [SerializeField] [Scene] private string _gamePlayScene;
+    [SerializeField] [Scene] private string _loadingScene;
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-        _sceneLoader.LoadGamePlayScene();
+        _coroutinePerformer.StartCoroutine(SceneLoaderService.LoadAsync(_gamePlayScene, _loadingScene));
     }
 }
 }
