@@ -276,7 +276,7 @@ MonoBehaviour:
   _worldGenerator: {fileID: 1623958188}
   _camera: {fileID: 62460934}
   _playerSpawner: {fileID: 272676813}
-  _uiManager: {fileID: 0}
+  _uiManager: {fileID: 965958611}
 --- !u!114 &272676811
 MonoBehaviour:
   m_ObjectHideFlags: 0
