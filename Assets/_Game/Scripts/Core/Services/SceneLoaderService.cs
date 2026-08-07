@@ -12,12 +12,13 @@ public static class SceneLoaderService
     {
         LoadingScene = loadingScene;
         
-        var operation = SceneManager.LoadSceneAsync(LoadingScene, LoadSceneMode.Single);
+        var operation = SceneManager.LoadSceneAsync(LoadingScene, LoadSceneMode.Additive);
         yield return new WaitUntil(() => operation.isDone);
         
         var waitLoading = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         yield return new WaitUntil(() => waitLoading.isDone);
         SceneManager.UnloadSceneAsync(LoadingScene);
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
     }
     
 }

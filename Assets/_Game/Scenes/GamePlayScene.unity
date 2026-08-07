@@ -828,6 +828,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2142134467789452239, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
+      propertyPath: m_NormalMapQuality
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2142134467789452239, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
+      propertyPath: m_LightVolumeEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3916511503846283004, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
+      propertyPath: m_AnimatePhysics
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4515079076315579977, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
