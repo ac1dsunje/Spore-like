@@ -20,11 +20,11 @@ public class DefenseModule: StatModule
         BindStat(StatType.DamageResistance, UpdateDamageResistance);
     }
 
-    public float ApplyResistance(float value)
+    public float ApplyResistance(float damage)
     {
-        var resisted = value * DamageResistance;
+        var resisted = damage * DamageResistance;
         if (resisted >= 1f) OnDamageResisted?.Invoke((int)resisted);
-        return value - resisted;
+        return damage - resisted;
     }
     
     public void ReflectDamage(float damage, IDamageAble damager)
