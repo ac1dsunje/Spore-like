@@ -13,24 +13,11 @@ public class EatModule: StatModule
     private float _eatingTime;
     public event Action<int> OnFoodPointsAchieved;
 
-    public EatModule(PlayerStats playerStats): base(playerStats) {}
-
-    protected override void PlayerStatUpdated(StatType type, float value)
+    public EatModule(PlayerStats playerStats) : base(playerStats)
     {
-        switch (type)
-        {
-            case StatType.EatingStrength:
-                UpdateEatingStrength(value);
-                break;
-            
-            case StatType.EatingPenetration:
-                UpdateEatingPenetration(value);
-                break;
-            
-            case StatType.EatingTime:
-                UpdateEatingTime(value);
-                break;
-        }
+        BindStat(StatType.EatingStrength, UpdateEatingStrength);
+        BindStat(StatType.EatingPenetration, UpdateEatingPenetration);
+        BindStat(StatType.EatingTime, UpdateEatingTime);
     }
 
     private void UpdateEatingStrength(float newValue) => EatingStrength = newValue;

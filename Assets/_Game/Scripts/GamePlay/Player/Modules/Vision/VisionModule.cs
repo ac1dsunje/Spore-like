@@ -12,16 +12,9 @@ public class VisionModule: StatModule
     public event Action<float> OnVisionRadiusChanged;
     public event Action<GameObject> OnGameObjectDiscovered;
 
-    public VisionModule(PlayerStats playerStats): base(playerStats) {}
-
-    protected override void PlayerStatUpdated(StatType type, float value)
+    public VisionModule(PlayerStats playerStats) : base(playerStats)
     {
-        switch (type)
-        {
-            case StatType.VisionRadius:
-                UpdateRadius(value);
-                break;
-        }
+        BindStat(StatType.VisionRadius, UpdateRadius);
     }
     
     private void UpdateRadius(float newRadius)

@@ -19,22 +19,17 @@ public class EnduranceModule: StatModule
     private readonly HashSet<Ability> _abilityControllers = new();
     public event Action<float, float> OnEnduranceChanged;
 
-    public EnduranceModule(PlayerStats playerStats): base(playerStats) {}
-
-    public bool HasEnoughEndurance(float value)
+    public EnduranceModule(PlayerStats playerStats) : base(playerStats)
     {
-        return _endurance >= value;
+        BindStat(StatType.MaxEndurance, UpdateMaxEndurance);
+        BindStat(StatType.EnduranceRecovery, UpdateEnduranceRecovery);
     }
 
-    public void AddUser(Ability ability)
-    {
-        _abilityControllers.Add(ability);
-    }
+    public bool HasEnoughEndurance(float value) => _endurance >= value;
 
-    public void RemoveUser(Ability ability)
-    {
-        _abilityControllers.Remove(ability);
-    }
+    public void AddUser(Ability ability) => _abilityControllers.Add(ability);
+
+    public void RemoveUser(Ability ability) => _abilityControllers.Remove(ability);
 
     public void AddEndurance(float value)
     {
@@ -56,19 +51,6 @@ public class EnduranceModule: StatModule
         
         if (Mathf.Approximately(endurance, _endurance)) return;
         OnEnduranceChanged?.Invoke(_endurance, _maxEndurance);
-    }
-
-    protected override void PlayerStatUpdated(StatType type, float value)
-    {
-        switch (type)
-        {
-            case StatType.MaxEndurance:
-                UpdateMaxEndurance(value);
-                break;
-            case StatType.EnduranceRecovery:
-                UpdateEnduranceRecovery(value);
-                break;
-        }
     }
     
     private void UpdateMaxEndurance(float value)

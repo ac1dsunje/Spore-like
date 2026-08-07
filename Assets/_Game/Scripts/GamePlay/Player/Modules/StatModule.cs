@@ -1,24 +1,38 @@
 ﻿using System;
+using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Stats;
 
 namespace _Game.Scripts.GamePlay.Player.Modules
 {
-public abstract class StatModule: IDisposable
+public abstract class StatModule : IDisposable
 {
-    protected readonly PlayerStats PlayerStats;
+    private readonly PlayerStats _playerStats;
+
+    private readonly Dictionary<StatType, Action<float>> _statHandlers = new();
 
     protected StatModule(PlayerStats playerStats)
     {
-        PlayerStats = playerStats;
-        PlayerStats.OnStatUpdated += PlayerStatUpdated;
+        _playerStats = playerStats;
+        _playerStats.OnStatUpdated += PlayerStatUpdated;
     }
 
-    protected abstract void PlayerStatUpdated(StatType type, float value);
-    
+    protected void BindStat(StatType type, Action<float> handler)
+    {
+        _statHandlers[type] = handler;
+    }
+
+    private void PlayerStatUpdated(StatType type, float value)
+    {
+        if (_statHandlers.TryGetValue(type, out var handler))
+        {
+            handler(value);
+        }
+    }
+
     public virtual void Dispose()
     {
-        PlayerStats.OnStatUpdated -= PlayerStatUpdated;   
+        _playerStats.OnStatUpdated -= PlayerStatUpdated;
     }
 }
 }

@@ -7,16 +7,9 @@ public class AttackModule: StatModule
 {
     public float PhysicalDamage { get; private set; }
 
-    public AttackModule(PlayerStats playerStats): base(playerStats) {}
-
-    protected override void PlayerStatUpdated(StatType type, float value)
+    public AttackModule(PlayerStats playerStats) : base(playerStats)
     {
-        switch (type)
-        {
-            case StatType.PhysicalDamage:
-                UpdatePhysicalDamage(value);
-                break;
-        }
+        BindStat(StatType.PhysicalDamage, UpdatePhysicalDamage);
     }
 
     private void UpdatePhysicalDamage(float newValue) => PhysicalDamage = newValue;

@@ -13,20 +13,10 @@ public class DefenseModule: StatModule
     private float _damageResistance;
     public event Action<int> OnDamageResisted;
 
-    public DefenseModule(PlayerStats playerStats): base(playerStats) {}
-
-    protected override void PlayerStatUpdated(StatType type, float value)
+    public DefenseModule(PlayerStats playerStats) : base(playerStats)
     {
-        switch (type)
-        {
-            case StatType.DamageReflection:
-                UpdateDamageReflection(value);
-                break;
-            
-            case StatType.DamageResistance:
-                UpdateDamageResistance(value);
-                break;
-        }
+        BindStat(StatType.DamageReflection, UpdateDamageReflection);
+        BindStat(StatType.DamageResistance, UpdateDamageResistance);
     }
 
     public float GetDamageAfterResistance(float value)

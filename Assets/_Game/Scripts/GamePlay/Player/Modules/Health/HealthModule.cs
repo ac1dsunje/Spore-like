@@ -16,19 +16,10 @@ public class HealthModule: StatModule, IHealth
     public event Action<int> OnHealed;
     public event Action<float, float> OnHealthChanged;
 
-    public HealthModule(PlayerStats playerStats): base(playerStats) {}
-
-    protected override void PlayerStatUpdated(StatType type, float value)
+    public HealthModule(PlayerStats playerStats) : base(playerStats)
     {
-        switch (type)
-        {
-            case StatType.MaxHealth:
-                UpdateMaxHealth(value);
-                break;
-            case StatType.Regeneration:
-                UpdateRegeneration(value);
-                break;
-        }
+        BindStat(StatType.MaxHealth, UpdateMaxHealth);
+        BindStat(StatType.Regeneration, UpdateRegeneration);
     }
     
     public void TakeDamage(float amount)
