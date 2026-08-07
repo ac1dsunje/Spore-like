@@ -188,7 +188,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 1168374145786107147}
+    TrackingTarget: {fileID: 0}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -274,6 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.EntryPoint
   _ticker: {fileID: 272676811}
   _worldGenerator: {fileID: 1623958188}
+  _camera: {fileID: 62460934}
   _player: {fileID: 1325505445}
   _uiManager: {fileID: 272676812}
   _overlayUIScreen: {fileID: 1380803056}
@@ -1012,11 +1013,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
---- !u!4 &1168374145786107147 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4515079076315579977, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
-  m_PrefabInstance: {fileID: 1168374145786107142}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4498920137526282035
 PrefabInstance:
   m_ObjectHideFlags: 0
