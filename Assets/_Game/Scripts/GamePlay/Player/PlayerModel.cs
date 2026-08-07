@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.Player.Modules.Abilities;
 using _Game.Scripts.GamePlay.Player.Modules.Attack;
 using _Game.Scripts.GamePlay.Player.Modules.Defense;

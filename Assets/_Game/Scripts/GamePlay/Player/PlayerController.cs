@@ -1,5 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Abilities;
 using _Game.Scripts.GamePlay.Evolutions;
+using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.Player.Modules.Endurance;
 using _Game.Scripts.GamePlay.Player.Modules.Health;
 using _Game.Scripts.GamePlay.Player.Modules.Mouth;

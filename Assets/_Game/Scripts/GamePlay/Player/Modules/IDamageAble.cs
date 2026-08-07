@@ -1,4 +1,4 @@
-﻿namespace _Game.Scripts.GamePlay.Player
+﻿namespace _Game.Scripts.GamePlay.Player.Modules
 {
 public interface IDamageAble
 {

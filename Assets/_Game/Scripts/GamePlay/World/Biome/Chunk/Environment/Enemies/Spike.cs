@@ -1,4 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Player;
+using _Game.Scripts.GamePlay.Player.Modules;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.World.Biome.Chunk.Environment.Enemies
