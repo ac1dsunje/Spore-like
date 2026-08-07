@@ -1,5 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Abilities;
-using _Game.Scripts.GamePlay.Player;
+using _Game.Scripts.GamePlay.Player.Modules.Abilities;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.UI
@@ -7,26 +7,26 @@ namespace _Game.Scripts.GamePlay.UI
 public class ActiveAbilitiesDisplay: MonoBehaviour
 {
     [Header("Abilities")]
-    [SerializeField] private GameObject _abilitiesSlotPrefab;
-    [SerializeField] private Transform  _abilitiesParent;
+    [SerializeField] private GameObject _slotPrefab;
+    [SerializeField] private Transform  _container;
     
-    private PlayerModel _player;
+    private AbilitiesModule _player;
 
-    public void Construct(PlayerModel player)
+    public void Construct(AbilitiesModule player)
     {
         _player = player;
-        _player.Abilities.OnAbilityAdded += AddAbility;
+        _player.OnAbilityAdded += AddAbility;
     }
 
     private void AddAbility(AbilityConfig ability)
     {
-        var slot = Instantiate(_abilitiesSlotPrefab, _abilitiesParent).GetComponent<ActiveAbilitySlotUI>();
+        var slot = Instantiate(_slotPrefab, _container).GetComponent<ActiveAbilitySlotUI>();
         slot.Construct(ability);
     }
 
     private void OnDestroy()
     {
-        _player.Abilities.OnAbilityAdded -= AddAbility;
+        _player.OnAbilityAdded -= AddAbility;
     }
 }
 }

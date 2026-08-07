@@ -113,5 +113,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685d84f2d6d24264a8f795e88590d4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.UI.ActiveEvolutionsDisplay
-  _evolutionSlotPrefab: {fileID: 5767200488071860503, guid: dfe01fd0d9189dd459f34109b0ed699c, type: 3}
-  _evolutionsParent: {fileID: 6433324394711601613}
+  _slotPrefab: {fileID: 5767200488071860503, guid: dfe01fd0d9189dd459f34109b0ed699c, type: 3}
+  _container: {fileID: 6433324394711601613}

@@ -32,8 +32,8 @@ public class EntryPoint : MonoBehaviour
         _camera.Target.TrackingTarget = player.transform;
         
         _overlayUIScreen.Construct(player.Model);
-        _activeEvolutionsDisplay.Construct(player.Model);
-        _activeAbilitiesDisplay.Construct(player.Model);
+        _activeEvolutionsDisplay.Construct(player.Model.Evolutions);
+        _activeAbilitiesDisplay.Construct(player.Model.Abilities);
         
         _evolutionChooseUIScreen.Construct(player.Model.Evolutions);
         _uiManager.Construct(_evolutionChooseUIScreen, _pauseUIScreen, player.Model);

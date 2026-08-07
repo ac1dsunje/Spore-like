@@ -1,33 +1,32 @@
 ﻿using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Evolutions.UI;
-using _Game.Scripts.GamePlay.Player;
+using _Game.Scripts.GamePlay.Player.Modules.Evolutions;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.UI
 {
 public class ActiveEvolutionsDisplay: MonoBehaviour
 {
-    [Header("Evolutions")]
-    [SerializeField] private GameObject _evolutionSlotPrefab;
-    [SerializeField] private Transform  _evolutionsParent;
+    [SerializeField] private GameObject _slotPrefab;
+    [SerializeField] private Transform  _container;
     
-    private PlayerModel _player;
+    private EvolutionsModule _player;
 
-    public void Construct(PlayerModel player)
+    public void Construct(EvolutionsModule player)
     {
         _player = player;
-        _player.Evolutions.OnEvolutionApplied += AddEvolution;
+        _player.OnEvolutionApplied += AddEvolution;
     }
 
     private void AddEvolution(Evolution evolution)
     {
-        var slot = Instantiate(_evolutionSlotPrefab, _evolutionsParent).GetComponent<ActiveEvolutionSlotUI>();
+        var slot = Instantiate(_slotPrefab, _container).GetComponent<ActiveEvolutionSlotUI>();
         slot.Construct(evolution);
     }
 
     private void OnDestroy()
     {
-        _player.Evolutions.OnEvolutionApplied -= AddEvolution;
+        _player.OnEvolutionApplied -= AddEvolution;
     }
 }
 }

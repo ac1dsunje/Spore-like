@@ -113,5 +113,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68818945f7c74e34b115a0ef0bc918f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.UI.ActiveAbilitiesDisplay
-  _abilitiesSlotPrefab: {fileID: 5767200488071860503, guid: 2fee042864f6ec14cb7d793c6194459a, type: 3}
-  _abilitiesParent: {fileID: 1990611478612946180}
+  _slotPrefab: {fileID: 5767200488071860503, guid: 2fee042864f6ec14cb7d793c6194459a, type: 3}
+  _container: {fileID: 1990611478612946180}
