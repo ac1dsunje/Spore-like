@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.Abilities
+namespace _Game.Scripts.GamePlay
 {
 public class Ticker: MonoBehaviour
 {

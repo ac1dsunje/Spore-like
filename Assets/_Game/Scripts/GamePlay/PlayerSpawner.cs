@@ -1,4 +1,4 @@
-﻿using _Game.Scripts.GamePlay.Abilities;
+﻿using System;
 using _Game.Scripts.GamePlay.Player;
 using UnityEngine;
 
@@ -8,7 +8,8 @@ public class PlayerSpawner : MonoBehaviour
 {
     [SerializeField] private PlayerController _playerPrefab;
     [SerializeField] private Vector2[] _spawnPoints;
-
+    public event Action<PlayerController> OnPlayerSpawned;
+    
     public PlayerController Spawn(Ticker ticker, int spawnIndex = 0)
     {
         var spawnPoint = _spawnPoints[spawnIndex];
@@ -20,6 +21,7 @@ public class PlayerSpawner : MonoBehaviour
 
         player.Initialize(ticker);
 
+        OnPlayerSpawned?.Invoke(player);
         return player;
     }
 }
