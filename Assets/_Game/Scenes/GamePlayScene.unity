@@ -275,7 +275,7 @@ MonoBehaviour:
   _ticker: {fileID: 272676811}
   _worldGenerator: {fileID: 1623958188}
   _camera: {fileID: 62460934}
-  _player: {fileID: 8254078283856608112, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
+  _playerPrefab: {fileID: 2108220050117646386, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
   _uiManager: {fileID: 272676812}
   _overlayUIScreen: {fileID: 1380803056}
   _pauseUIScreen: {fileID: 2140936594}

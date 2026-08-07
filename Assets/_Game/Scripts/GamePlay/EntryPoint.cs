@@ -16,7 +16,7 @@ public class EntryPoint : MonoBehaviour
     [Header("Camera")]
     [SerializeField] private CinemachineCamera _camera;
     [Header("Player")]
-    [SerializeField] private GameObject _player;
+    [SerializeField] private PlayerController _playerPrefab;
 
     [Header("UI")]
     [SerializeField] private UIManager _uiManager;
@@ -26,7 +26,7 @@ public class EntryPoint : MonoBehaviour
 
     private void Awake()
     {
-        var player = Instantiate(_player, transform.position, Quaternion.identity).GetComponent<PlayerController>();
+        var player = Instantiate(_playerPrefab, transform.position, Quaternion.identity);
         player.Initialize(_ticker);
         
         _overlayUIScreen.Construct(player.Model);
