@@ -29,13 +29,22 @@ public class PlayerController: MonoBehaviour, IDamageAble
 
     public void Initialize(Ticker ticker)
     {
+        CreateModel(ticker);
+        InitializeActiveModules();
+    }
+
+    private void CreateModel(Ticker ticker)
+    {
         Model = new(_playerConfig);
         
         var abilityFactory = new AbilityFactory(Model, ticker);
         Model.Abilities.SetFactory(abilityFactory);
         
         Model.Evolutions.Initialize(_evolutionsDatabase, _raritiesDatabase, _minEvolutions);
-        
+    }
+
+    private void InitializeActiveModules()
+    {
         _playerVision.Construct(Model.Vision);
         _playerMovement.Construct(Model.Movement);
         _playerMouth.Construct(Model.EatModule);
