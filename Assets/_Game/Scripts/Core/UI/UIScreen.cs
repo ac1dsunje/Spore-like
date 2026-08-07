@@ -6,9 +6,9 @@ namespace _Game.Scripts.Core.UI
 [RequireComponent(typeof(CanvasGroup))]
 public abstract class UIScreen: MonoBehaviour
 {
-    public bool IsActive { get; private set; }
     public event Action<bool> OnStateChanged;
     
+    private bool _isActive;
     private CanvasGroup _screen;
 
     protected virtual void Awake()
@@ -18,7 +18,7 @@ public abstract class UIScreen: MonoBehaviour
 
     public virtual void ToggleScreen()
     {
-        if (IsActive)
+        if (_isActive)
         {
             HideScreen();
         }
@@ -33,8 +33,8 @@ public abstract class UIScreen: MonoBehaviour
         _screen.alpha = 1;
         _screen.blocksRaycasts = true;
         _screen.interactable = true;
-        IsActive = true;
-        OnStateChanged?.Invoke(IsActive);
+        _isActive = true;
+        OnStateChanged?.Invoke(_isActive);
     }
 
     public virtual void HideScreen()
@@ -42,8 +42,8 @@ public abstract class UIScreen: MonoBehaviour
         _screen.alpha = 0;
         _screen.blocksRaycasts = false;
         _screen.interactable = false;
-        IsActive = false;
-        OnStateChanged?.Invoke(IsActive);
+        _isActive = false;
+        OnStateChanged?.Invoke(_isActive);
     }
 }
 }
