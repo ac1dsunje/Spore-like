@@ -54,7 +54,7 @@ public class PlayerController: MonoBehaviour, IDamageAble
 
     public void TakeDamage(float value, IDamageAble damager)
     {
-        var amount = Model.Defense.GetDamageAfterResistance(value);
+        var amount = Model.Defense.ApplyResistance(value);
         
         Model.Health.TakeDamage(amount);
         Model.Defense.ReflectDamage(amount, damager);

@@ -8,6 +8,7 @@ public class DefenseModule: StatModule
 {
     public float DamageResistance => _damageResistance / 100f;
     
+    public float DamageReflection => _damageReflection / 100f;
     private float _damageReflection;
     public event Action<int> OnDamageReflected;
     private float _damageResistance;
@@ -19,7 +20,7 @@ public class DefenseModule: StatModule
         BindStat(StatType.DamageResistance, UpdateDamageResistance);
     }
 
-    public float GetDamageAfterResistance(float value)
+    public float ApplyResistance(float value)
     {
         var resisted = value * DamageResistance;
         if (resisted >= 1f) OnDamageResisted?.Invoke((int)resisted);
@@ -28,7 +29,7 @@ public class DefenseModule: StatModule
     
     public void ReflectDamage(float damage, IDamageAble damager)
     {
-        var returnedDamage = damage * _damageReflection;
+        var returnedDamage = damage * DamageReflection;
         if (returnedDamage >= 1f) OnDamageReflected?.Invoke((int)returnedDamage);
         damager.TakeDamage(returnedDamage, null);
     }
