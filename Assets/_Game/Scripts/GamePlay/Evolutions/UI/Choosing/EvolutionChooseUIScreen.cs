@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using _Game.Scripts.Core.UI;
+using _Game.Scripts.GamePlay.Player.Modules.Evolutions;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Evolutions.UI.Choosing
@@ -7,7 +8,7 @@ namespace _Game.Scripts.GamePlay.Evolutions.UI.Choosing
 public class EvolutionChooseUIScreen : UIScreen
 {
     [SerializeField] private GameObject _slotPrefab;
-    private EvolutionsManager _evolutionsManager;
+    private EvolutionsModule _evolutionsModule;
     
     private readonly List<EvolutionSlotUI> _slots = new();
 
@@ -17,10 +18,10 @@ public class EvolutionChooseUIScreen : UIScreen
         HideScreen();
     }
 
-    public void Construct(EvolutionsManager evolutionsManager)
+    public void Construct(EvolutionsModule evolutionsModule)
     {
-        _evolutionsManager = evolutionsManager;
-        _evolutionsManager.OnSlotsFilled += SetSlots;
+        _evolutionsModule = evolutionsModule;
+        _evolutionsModule.OnSlotsFilled += SetSlots;
     }
 
     private void SetSlots(List<Evolution> evolutions)
@@ -42,7 +43,7 @@ public class EvolutionChooseUIScreen : UIScreen
 
     private void EvolutionChosen(Evolution evolution)
     {
-        _evolutionsManager.ChooseEvolution(evolution);
+        _evolutionsModule.ChooseEvolution(evolution);
         ClearSlots();
         HideScreen();
     }
@@ -60,7 +61,7 @@ public class EvolutionChooseUIScreen : UIScreen
     private void OnDestroy()
     {
         ClearSlots();
-        _evolutionsManager.OnSlotsFilled -= SetSlots;
+        _evolutionsModule.OnSlotsFilled -= SetSlots;
     }
 }
 }

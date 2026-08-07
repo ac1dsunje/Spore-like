@@ -330,12 +330,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6f8be6a5c94e08b0408b38c4016f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.PlayerController
+  _playerConfig: {fileID: 11400000, guid: ba7be4736a4236543ba175179ecef16d, type: 2}
   _playerVision: {fileID: 1241412678200770851}
   _playerMovement: {fileID: 6455457412017345376}
   _playerMouth: {fileID: 187838623708506777}
   _playerHealth: {fileID: 4028549422210393822}
   _playerEndurance: {fileID: 7969867278788272747}
-  _playerConfig: {fileID: 11400000, guid: ba7be4736a4236543ba175179ecef16d, type: 2}
+  _evolutionsDatabase: {fileID: 11400000, guid: 89e0fac1fa9071a41bafa6ee877795b5, type: 2}
+  _raritiesDatabase: {fileID: 11400000, guid: 844b6b4bf98611044bf03a16ce2009a0, type: 2}
+  _minEvolutions: 3
 --- !u!114 &6455457412017345376
 MonoBehaviour:
   m_ObjectHideFlags: 0

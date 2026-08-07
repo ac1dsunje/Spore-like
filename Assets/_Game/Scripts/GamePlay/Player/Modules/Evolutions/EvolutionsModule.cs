@@ -1,32 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using _Game.Scripts.GamePlay.Player;
+using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Rarities;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace _Game.Scripts.GamePlay.Evolutions
+namespace _Game.Scripts.GamePlay.Player.Modules.Evolutions
 {
-public class EvolutionsManager: IDisposable
+public class EvolutionsModule: IDisposable
 {
-    private readonly EvolutionsDatabase _evolutionsDatabase;
-    private readonly RaritiesDatabase _raritiesDatabase;
-    private readonly int _minEvolutions;
+    private EvolutionsDatabase _evolutionsDatabase;
+    private RaritiesDatabase _raritiesDatabase;
+    private int _minEvolutions;
     private readonly PlayerModel _player;
     
     private readonly List<Evolution> _evolutions = new();
 
     public event Action<List<Evolution>> OnSlotsFilled;
+
+    public EvolutionsModule(PlayerModel model)
+    {
+        _player = model;
+        _player.Experience.OnLevelChanged += OnLevelUpdated;
+    }
     
-    public EvolutionsManager(PlayerModel player, EvolutionsDatabase evolutionsDatabase, RaritiesDatabase raritiesDatabase, int minEvolutions)
+    public void Initialize(EvolutionsDatabase evolutionsDatabase, RaritiesDatabase raritiesDatabase, int minEvolutions)
     {
         _evolutionsDatabase  = evolutionsDatabase;
         _raritiesDatabase = raritiesDatabase;
         _minEvolutions = minEvolutions;
-        
-        _player = player;
-        _player.Experience.OnLevelChanged += OnLevelUpdated;
 
         foreach (var evolution in _evolutionsDatabase.GenerateEvolutions())
         {

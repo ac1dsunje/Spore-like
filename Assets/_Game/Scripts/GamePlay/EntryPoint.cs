@@ -1,8 +1,6 @@
 using _Game.Scripts.GamePlay.Abilities;
-using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Evolutions.UI.Choosing;
 using _Game.Scripts.GamePlay.Player;
-using _Game.Scripts.GamePlay.Rarities;
 using _Game.Scripts.GamePlay.UI;
 using _Game.Scripts.GamePlay.World;
 using UnityEngine;
@@ -23,13 +21,6 @@ public class EntryPoint : MonoBehaviour
     [SerializeField] private OverlayUIScreen _overlayUIScreen;
     [SerializeField] private PauseUIScreen _pauseUIScreen;
     [SerializeField] private EvolutionChooseUIScreen _evolutionChooseUIScreen;
-    
-    [Header("Evolutions")]
-    [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
-    [SerializeField] private RaritiesDatabase _raritiesDatabase;
-    [SerializeField] private int _minEvolutions;
-
-    private EvolutionsManager _evolutionsManager;
 
     private void Awake()
     {
@@ -39,15 +30,8 @@ public class EntryPoint : MonoBehaviour
         
         _worldGenerator.Construct(_player.transform);
         
-        _evolutionsManager = new(_player.Model, _evolutionsDatabase, _raritiesDatabase, _minEvolutions);
-        
-        _evolutionChooseUIScreen.Construct(_evolutionsManager);
+        _evolutionChooseUIScreen.Construct(_player.Model.Evolutions);
         _uiManager.Construct(_evolutionChooseUIScreen, _pauseUIScreen, _player.Model);
-    }
-
-    private void OnDestroy()
-    {
-        _evolutionsManager.Dispose();
     }
 }
 }

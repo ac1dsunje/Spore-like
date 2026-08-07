@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Player.Modules.Abilities;
 using _Game.Scripts.GamePlay.Player.Modules.Attack;
 using _Game.Scripts.GamePlay.Player.Modules.Defense;
 using _Game.Scripts.GamePlay.Player.Modules.Endurance;
+using _Game.Scripts.GamePlay.Player.Modules.Evolutions;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
 using _Game.Scripts.GamePlay.Player.Modules.Health;
 using _Game.Scripts.GamePlay.Player.Modules.Mouth;
@@ -28,6 +30,7 @@ public class PlayerModel: IDisposable
     
     public AbilitiesModule Abilities { get; private set; }
     public ExperienceController Experience { get; }
+    public EvolutionsModule Evolutions { get; private set; }
 
     public PlayerModel(PlayerConfig config)
     {
@@ -36,6 +39,7 @@ public class PlayerModel: IDisposable
         Stats.Initialize(config.InitialConfig);
         Experience = new(config.ExperienceConfig, EatModule);
         Abilities = new();
+        Evolutions = new(this);
         _modules.Add(Experience);
     }
 
@@ -66,6 +70,7 @@ public class PlayerModel: IDisposable
         }
         Experience.Dispose();
         Abilities.Dispose();
+        Evolutions.Dispose();
     }
 }
 }
