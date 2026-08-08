@@ -1,8 +1,7 @@
 ﻿using System;
-using _Game.Scripts.GamePlay.Player;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay
+namespace _Game.Scripts.GamePlay.Player
 {
 public class PlayerSpawner : MonoBehaviour
 {
