@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c5e318468840168bc12909558c5b5a, type: 3}
   m_Name: CoralReef
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Biome.BiomeConfig
-  _tiles:
+  <Index>k__BackingField: 0
+  <Tiles>k__BackingField:
   - {fileID: 11400000, guid: ff4789d9b6bcd764abbaa44f7cd9a807, type: 2}
-  <Height>k__BackingField: 0
   <EnvironmentConfigs>k__BackingField:
   - {fileID: 11400000, guid: b839743a35fb12040b551a7b8a7a9c22, type: 2}
   - {fileID: 11400000, guid: 692e1b7dadc5dc24282764769d33ce03, type: 2}

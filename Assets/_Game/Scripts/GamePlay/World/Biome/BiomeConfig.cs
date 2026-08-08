@@ -8,12 +8,12 @@ namespace _Game.Scripts.GamePlay.World.Biome
 [CreateAssetMenu(fileName = "New Biome Config", menuName = "Configs/Game/World/Biomes/Biome")]
 public class BiomeConfig: ScriptableObject
 {
-    [field: SerializeField] private List<TileBase> _tiles;
-    [field: SerializeField] public int Height { get; private set; }
+    [field: SerializeField] public int Index { get; private set; }
+    [field: SerializeField] public List<TileBase> Tiles { get; private set; }
     [field: SerializeField] public List<EnvironmentConfig> EnvironmentConfigs { get; private set; }
     [field: SerializeField] public int ChanceEnvironment { get; private set; } = 20;
 
-    public TileBase RandomTile => _tiles[Random.Range(0, _tiles.Count)];
+    public TileBase RandomTile => Tiles[Random.Range(0, Tiles.Count)];
 
     public EnvironmentConfig GetRandomEnvironment()
     {

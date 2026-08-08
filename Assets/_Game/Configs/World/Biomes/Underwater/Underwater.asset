@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c5e318468840168bc12909558c5b5a, type: 3}
   m_Name: Underwater
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Biome.BiomeConfig
-  _tiles:
+  <Index>k__BackingField: 2
+  <Tiles>k__BackingField:
   - {fileID: 11400000, guid: 915c0b4c899d5f14586727b45df07acc, type: 2}
   - {fileID: 11400000, guid: ed25f9c73d3242949b384bc47bdc261e, type: 2}
   - {fileID: 11400000, guid: 54912dc94713faa489c8f20b70759dcf, type: 2}
-  <Height>k__BackingField: 0
   <EnvironmentConfigs>k__BackingField:
   - {fileID: 11400000, guid: c612701b96db6564c88bbf950a6f987a, type: 2}
   <ChanceEnvironment>k__BackingField: 3

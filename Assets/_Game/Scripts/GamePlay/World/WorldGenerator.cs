@@ -1,4 +1,5 @@
-﻿using _Game.Scripts.GamePlay.World.Biome;
+﻿using System.Collections.Generic;
+using _Game.Scripts.GamePlay.World.Biome;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
@@ -8,7 +9,9 @@ namespace _Game.Scripts.GamePlay.World
 public class WorldGenerator: MonoBehaviour
 {
     [SerializeField] private int _renderDistance = 1;
-    [SerializeField] private Tilemap[] _tilemaps;
+    [SerializeField] private Transform _grid;
+    [SerializeField] private Tilemap _prefab;
+    private readonly List<Tilemap> _tilemaps = new();
     
     private Transform _player;
     private WorldModel _model;
@@ -19,9 +22,10 @@ public class WorldGenerator: MonoBehaviour
     {
         _model = model;
         _player = player;
-        foreach (var tilemap in _tilemaps)
+        for (var i = 0; i < _model.BiomeCount; i++)
         {
-            tilemap.ClearAllTiles();
+            var map = Instantiate(_prefab, _grid);
+            _tilemaps.Add(map);
         }
         Generate();
     }
@@ -63,10 +67,10 @@ public class WorldGenerator: MonoBehaviour
 
     private void TryPlaceTile(Vector3Int position)
     {
-        var biome = _model.CheckBiome(position);
-        if (_tilemaps[biome.Height].HasTile(position)) return;
+        var biome = _model.GetBiome(position);
+        if (_tilemaps[biome.Index].HasTile(position)) return;
         
-        _tilemaps[biome.Height].SetTile(position, biome.RandomTile);
+        _tilemaps[biome.Index].SetTile(position, biome.RandomTile);
         TryPlaceEnvironment(position, biome);
     }
 
@@ -77,7 +81,7 @@ public class WorldGenerator: MonoBehaviour
         var environment = biome.GetRandomEnvironment();
         var prefab = environment.Prefabs[Random.Range(0, environment.Prefabs.Length)];
         var setPos = new Vector3(position.x + 0.5f, position.y + 0.5f, position.z);
-        Instantiate(prefab, setPos, Quaternion.identity, _tilemaps[biome.Height].transform);
+        Instantiate(prefab, setPos, Quaternion.identity, _tilemaps[biome.Index].transform);
     }
 }
 }
