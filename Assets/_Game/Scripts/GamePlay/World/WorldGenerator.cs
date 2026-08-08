@@ -9,21 +9,15 @@ public class WorldGenerator: MonoBehaviour
 {
     [SerializeField] private int _renderDistance = 1;
     [SerializeField] private Tilemap[] _tilemaps;
-    [SerializeField] private WorldGenerationConfig _config;
     
     private Transform _player;
-
-    private int _seed;
+    private WorldModel _model;
 
     private Vector3Int _lastPlayerPosition;
 
-    private void Awake()
+    public void Construct(Transform player, WorldModel model)
     {
-        _seed = _config.GenerateRandomSeed ? Random.Range(0, 99999) : _config.Seed;
-    }
-
-    public void Construct(Transform player)
-    {
+        _model = model;
         _player = player;
         foreach (var tilemap in _tilemaps)
         {
@@ -54,7 +48,7 @@ public class WorldGenerator: MonoBehaviour
         return true;
     }
 
-    private int GetDistance() => _renderDistance * _config.ChunkSize;
+    private int GetDistance() => _renderDistance * _model.ChunkSize;
 
     private void Generate()
     {
@@ -69,7 +63,7 @@ public class WorldGenerator: MonoBehaviour
 
     private void TryPlaceTile(Vector3Int position)
     {
-        var biome = CheckBiome(position);
+        var biome = _model.CheckBiome(position);
         if (_tilemaps[biome.Height].HasTile(position)) return;
         
         _tilemaps[biome.Height].SetTile(position, biome.RandomTile);
@@ -84,21 +78,6 @@ public class WorldGenerator: MonoBehaviour
         var prefab = environment.Prefabs[Random.Range(0, environment.Prefabs.Length)];
         var setPos = new Vector3(position.x + 0.5f, position.y + 0.5f, position.z);
         Instantiate(prefab, setPos, Quaternion.identity, _tilemaps[biome.Height].transform);
-    }
-
-    private BiomeConfig CheckBiome(Vector3Int position)
-    {
-        var x = (position.x + _seed * 1000f) * _config.Scale;
-        var y = (position.y + _seed * 1000f) * _config.Scale;
-    
-        var noiseValue = Mathf.PerlinNoise(x, y);
-    
-        var biomeCount = _config.BiomeConfigs.Count;
-        var biomeIndex = Mathf.FloorToInt(noiseValue * biomeCount);
-    
-        biomeIndex = Mathf.Clamp(biomeIndex, 0, biomeCount - 1);
-    
-        return _config.BiomeConfigs[biomeIndex];
     }
 }
 }

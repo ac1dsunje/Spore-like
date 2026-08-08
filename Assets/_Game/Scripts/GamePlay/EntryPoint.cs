@@ -13,7 +13,9 @@ public class EntryPoint : MonoBehaviour
     [SerializeField] private CinemachineCamera _camera;
     [SerializeField] private PlayerSpawner _playerSpawner;
     [SerializeField] private UIManager _uiManager;
-
+    
+    [SerializeField] private WorldGenerationConfig _config;
+    
     private void Awake()
     {
         _playerSpawner.OnPlayerSpawned += OnPlayerSpawned;
@@ -22,7 +24,8 @@ public class EntryPoint : MonoBehaviour
 
     private void OnPlayerSpawned(PlayerController player)
     {
-        _worldGenerator.Construct(player.transform);
+        WorldModel model = new(_config);
+        _worldGenerator.Construct(player.transform, model);
         
         _camera.Target.TrackingTarget = player.transform;
         
