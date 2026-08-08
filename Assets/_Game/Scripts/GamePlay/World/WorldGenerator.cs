@@ -6,6 +6,19 @@ using Random = UnityEngine.Random;
 
 namespace _Game.Scripts.GamePlay.World
 {
+
+public readonly struct RenderedTile
+{
+    public readonly int BiomeIndex;
+    public readonly TileBase Tile;
+
+    public RenderedTile(int biomeIndex, TileBase tile)
+    {
+        BiomeIndex = biomeIndex;
+        Tile = tile;
+    }
+}
+
 public class WorldGenerator: MonoBehaviour
 {
     [SerializeField] private int _renderDistance = 1;
@@ -17,6 +30,8 @@ public class WorldGenerator: MonoBehaviour
     private WorldModel _model;
 
     private Vector3Int _lastPlayerPosition;
+    
+    private readonly Dictionary<Vector3Int, RenderedTile> _renderedTiles = new();
 
     public void Construct(Transform player, WorldModel model)
     {
@@ -67,11 +82,20 @@ public class WorldGenerator: MonoBehaviour
 
     private void TryPlaceTile(Vector3Int position)
     {
+        if (_renderedTiles.TryGetValue(position, out var renderedTile))
+        {
+            _tilemaps[renderedTile.BiomeIndex].SetTile(position, renderedTile.Tile);
+            return;
+        }
+
         var biome = _model.GetBiome(position);
+        var tile = biome.RandomTile;
         var tilemap = _tilemaps[biome.Index];
-        if (tilemap.HasTile(position)) return;
-        
-        tilemap.SetTile(position, biome.RandomTile);
+
+        tilemap.SetTile(position, tile);
+
+        _renderedTiles.Add(position, new RenderedTile(biome.Index, tile));
+
         TryPlaceEnvironment(position, biome);
     }
 
