@@ -68,9 +68,10 @@ public class WorldGenerator: MonoBehaviour
     private void TryPlaceTile(Vector3Int position)
     {
         var biome = _model.GetBiome(position);
-        if (_tilemaps[biome.Index].HasTile(position)) return;
+        var tilemap = _tilemaps[biome.Index];
+        if (tilemap.HasTile(position)) return;
         
-        _tilemaps[biome.Index].SetTile(position, biome.RandomTile);
+        tilemap.SetTile(position, biome.RandomTile);
         TryPlaceEnvironment(position, biome);
     }
 
