@@ -71,13 +71,50 @@ public class WorldGenerator: MonoBehaviour
 
     private void Generate()
     {
-        for (var x = _playerPos().x - GetDistance(); x < _playerPos().x + GetDistance(); x++)
+        var playerPosition = _playerPos();
+        var distance = GetDistance();
+        var unloadDistance = distance + _model.ChunkSize;
+        
+        LoadTiles(playerPosition, distance);
+
+        UnloadTiles(playerPosition, distance, unloadDistance);
+    }
+
+    private void LoadTiles(Vector3Int playerPosition, int distance)
+    {
+        for (var x = playerPosition.x - distance; x <= playerPosition.x + distance; x++)
         {
-            for (var y = _playerPos().y - GetDistance(); y < _playerPos().y + GetDistance(); y++)
+            for (var y = playerPosition.y - distance; y <= playerPosition.y + distance; y++)
             {
                 TryPlaceTile(new Vector3Int(x, y, 0));
             }
         }
+    }
+
+    private void UnloadTiles(Vector3Int playerPosition, int distance, int unloadDistance)
+    {
+        for (var x = playerPosition.x - unloadDistance; x <= playerPosition.x + unloadDistance; x++)
+        {
+            for (var y = playerPosition.y - unloadDistance; y <= playerPosition.y + unloadDistance; y++)
+            {
+                var position = new Vector3Int(x, y, 0);
+
+                if (Mathf.Abs(x - playerPosition.x) <= distance && Mathf.Abs(y - playerPosition.y) <= distance)
+                {
+                    continue;
+                }
+
+                TryUnloadTile(position);
+            }
+        }
+    }
+
+    private void TryUnloadTile(Vector3Int position)
+    {
+        if (!_renderedTiles.TryGetValue(position, out var renderedTile))
+            return;
+
+        _tilemaps[renderedTile.BiomeIndex].SetTile(position, null);
     }
 
     private void TryPlaceTile(Vector3Int position)
