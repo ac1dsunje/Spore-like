@@ -6,19 +6,6 @@ using Random = UnityEngine.Random;
 
 namespace _Game.Scripts.GamePlay.World
 {
-
-public readonly struct RenderedTile
-{
-    public readonly int BiomeIndex;
-    public readonly TileBase Tile;
-
-    public RenderedTile(int biomeIndex, TileBase tile)
-    {
-        BiomeIndex = biomeIndex;
-        Tile = tile;
-    }
-}
-
 public class WorldGenerator: MonoBehaviour
 {
     [SerializeField] private int _renderDistance = 1;
