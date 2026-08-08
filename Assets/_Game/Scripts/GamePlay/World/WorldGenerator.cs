@@ -99,9 +99,7 @@ public class WorldGenerator: MonoBehaviour
 
         _tilemaps[biome.Index].SetTile(position, tile);
 
-        _renderedTiles.Add(
-            position,
-            new RenderedTile(biome.Index, tile));
+        _renderedTiles.Add(position, new RenderedTile(biome.Index, tile));
 
         TryPlaceEnvironment(position, biome);
     }
