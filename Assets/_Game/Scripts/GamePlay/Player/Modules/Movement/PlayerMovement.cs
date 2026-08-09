@@ -35,6 +35,7 @@ public class PlayerMovement: MonoBehaviour
         if (currentPos == _lastPosition) return;
         _lastPosition = currentPos;
         OnGridPositionChanged?.Invoke(this);
+        _movement.OvercomeDistance();
     }
 
     private void Update()

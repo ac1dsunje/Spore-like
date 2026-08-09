@@ -1,4 +1,5 @@
-﻿using _Game.Scripts.GamePlay.Player.Modules.Stats;
+﻿using System;
+using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Stats;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Movement
@@ -22,6 +23,8 @@ public class MovementModule : StatModule
     public float DashPower { get; private set; }
     public bool UseSprint { get; set; }
     public bool DashRequested { get; private set; }
+
+    public event Action<int> OnDistanceOvercome;
     
     private float _moveSpeed;
     private float _acceleration;
@@ -46,6 +49,8 @@ public class MovementModule : StatModule
     public void Disable() => SetState(MovementState.Disabled);
 
     public void Enable() => SetState(MovementState.Enabled);
+
+    public void OvercomeDistance() => OnDistanceOvercome?.Invoke(1);
 
     private void UpdateMoveSpeed(float value) => _moveSpeed = value;
 
