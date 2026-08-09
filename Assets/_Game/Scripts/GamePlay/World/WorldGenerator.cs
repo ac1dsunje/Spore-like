@@ -19,16 +19,20 @@ public class WorldGenerator: MonoBehaviour
     
     private readonly Dictionary<Vector3Int, RenderedTile> _renderedTiles = new();
 
-    public void Construct(PlayerMovement player, WorldModel model)
+    public void Construct(WorldModel model)
     {
         _model = model;
-        _player = player;
-        _player.OnGridPositionChanged += Generate;
         for (var i = 0; i < _model.BiomeCount; i++)
         {
             var map = Instantiate(_prefab, _grid);
             _tilemaps.Add(map);
         }
+    }
+
+    public void AddPlayer(PlayerMovement player)
+    {
+        _player = player;
+        _player.OnGridPositionChanged += Generate;
         Generate();
     }
 

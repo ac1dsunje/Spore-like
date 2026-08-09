@@ -18,14 +18,15 @@ public class EntryPoint : MonoBehaviour
     
     private void Awake()
     {
+        WorldModel model = new(_config);
+        _worldGenerator.Construct(model);
         _playerSpawner.OnPlayerSpawned += OnPlayerSpawned;
         _playerSpawner.Spawn(_ticker);
     }
 
     private void OnPlayerSpawned(PlayerController player)
     {
-        WorldModel model = new(_config);
-        _worldGenerator.Construct(player.Movement, model);
+        _worldGenerator.AddPlayer(player.Movement);
         
         _camera.Target.TrackingTarget = player.transform;
         
