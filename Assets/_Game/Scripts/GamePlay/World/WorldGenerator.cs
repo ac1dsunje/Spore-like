@@ -33,6 +33,11 @@ public class WorldGenerator: MonoBehaviour
     }
 
     private int GetDistance() => _renderDistance * _model.ChunkSize;
+    
+    private bool IsInRenderDistance(Vector3Int position, Vector3Int center, int distance)
+    {
+        return Mathf.Abs(position.x - center.x) <= distance && Mathf.Abs(position.y - center.y) <= distance;
+    }
 
     private void Generate()
     {
@@ -40,36 +45,16 @@ public class WorldGenerator: MonoBehaviour
         var distance = GetDistance();
         var unloadDistance = distance + _model.ChunkSize;
         
-        LoadTiles(playerPosition, distance);
-
-        UnloadTiles(playerPosition, distance, unloadDistance);
-    }
-
-    private void LoadTiles(Vector3Int playerPosition, int distance)
-    {
-        for (var x = playerPosition.x - distance; x <= playerPosition.x + distance; x++)
-        {
-            for (var y = playerPosition.y - distance; y <= playerPosition.y + distance; y++)
-            {
-                TryPlaceTile(new Vector3Int(x, y, 0));
-            }
-        }
-    }
-
-    private void UnloadTiles(Vector3Int playerPosition, int distance, int unloadDistance)
-    {
         for (var x = playerPosition.x - unloadDistance; x <= playerPosition.x + unloadDistance; x++)
         {
             for (var y = playerPosition.y - unloadDistance; y <= playerPosition.y + unloadDistance; y++)
             {
                 var position = new Vector3Int(x, y, 0);
 
-                if (Mathf.Abs(x - playerPosition.x) <= distance && Mathf.Abs(y - playerPosition.y) <= distance)
-                {
-                    continue;
-                }
-
-                TryUnloadTile(position);
+                if (IsInRenderDistance(position, playerPosition, distance))
+                    TryPlaceTile(position);
+                else
+                    TryUnloadTile(position);
             }
         }
     }
