@@ -8,6 +8,7 @@ using _Game.Scripts.GamePlay.Player.Modules.Movement;
 using _Game.Scripts.GamePlay.Player.Modules.Vision;
 using _Game.Scripts.GamePlay.Rarities;
 using UnityEngine;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player
 {
@@ -28,9 +29,11 @@ public class PlayerController: MonoBehaviour, IDamageAble
     
     public PlayerModel Model { get; private set; }
 
-    public void Initialize(Ticker ticker)
+    [Inject] private Ticker _ticker;
+
+    public void Initialize()
     {
-        CreateModel(ticker);
+        CreateModel(_ticker);
         InitializeActiveModules();
     }
 

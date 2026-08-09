@@ -5,6 +5,7 @@ using _Game.Scripts.GamePlay.Player.Modules.Movement;
 using _Game.Scripts.GamePlay.World.Biome;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using VContainer;
 using Random = UnityEngine.Random;
 
 namespace _Game.Scripts.GamePlay.World
@@ -17,19 +18,16 @@ public class WorldGenerator: MonoBehaviour
     
     private readonly List<PlayerController> _players = new();
     private WorldModel _model;
-    private PlayerSpawner _playerSpawner;
+    [Inject] private PlayerSpawner _playerSpawner;
     
     private readonly Dictionary<BiomeConfig, Tilemap> _tilemaps = new();
     private readonly Dictionary<Vector3Int, RenderedTile> _cachedTiles = new();
     private readonly Dictionary<Vector3Int, int> _tileUsage = new();
     private readonly Dictionary<PlayerMovement, HashSet<Vector3Int>> _playerTiles = new();
 
-    public void Construct(WorldModel model, PlayerSpawner playerSpawner)
+    public void Construct(WorldModel model)
     {
         _model = model;
-        _playerSpawner = playerSpawner;
-        _playerSpawner.OnPlayerSpawned += AddPlayer;
-        _playerSpawner.OnPlayerRemoved += RemovePlayer;
         foreach (var biome in _model.Config.BiomeConfigs)
         {
             var map = Instantiate(_prefab, _grid);
@@ -37,6 +35,8 @@ public class WorldGenerator: MonoBehaviour
 
             _tilemaps.Add(biome, map);
         }
+        _playerSpawner.OnPlayerSpawned += AddPlayer;
+        _playerSpawner.OnPlayerRemoved += RemovePlayer;
     }
 
     private void AddPlayer(PlayerController player)
