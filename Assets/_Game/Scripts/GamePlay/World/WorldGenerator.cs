@@ -80,10 +80,7 @@ public class WorldGenerator: MonoBehaviour
         {
             var tilemap = _tilemaps[renderedTile.Biome];
 
-            if (!tilemap.HasTile(position))
-            {
-                tilemap.SetTile(position, renderedTile.Tile);
-            }
+            PlaceTile(tilemap, position, renderedTile.Tile);
 
             return;
         }
@@ -91,11 +88,19 @@ public class WorldGenerator: MonoBehaviour
         var biome = _model.GetBiome(position);
         var tile = biome.RandomTile;
 
-        _tilemaps[biome].SetTile(position, tile);
+        PlaceTile(_tilemaps[biome], position, tile);
 
         _cachedTiles.Add(position, new RenderedTile(biome, tile));
 
         TryPlaceEnvironment(position, biome);
+    }
+
+    private void PlaceTile(Tilemap tilemap, Vector3Int position, TileBase tile)
+    {
+        if (!tilemap.HasTile(position))
+        {
+            tilemap.SetTile(position, tile);
+        }
     }
 
     private void TryPlaceEnvironment(Vector3Int position, BiomeConfig biome)
