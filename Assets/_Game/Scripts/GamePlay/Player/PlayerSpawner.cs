@@ -1,24 +1,33 @@
 ﻿using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _Game.Scripts.GamePlay.Player
 {
 public class PlayerSpawner : MonoBehaviour
 {
     [SerializeField] private PlayerController _playerPrefab;
-    [SerializeField] private Vector2[] _spawnPoints;
     public event Action<PlayerController> OnPlayerSpawned;
-    
-    public void Spawn(Ticker ticker, int spawnIndex = 0)
+    public event Action<PlayerController> OnPlayerRemoved;
+
+    private Ticker _ticker;
+
+    public void Construct(Ticker ticker)
     {
-        var spawnPoint = _spawnPoints[spawnIndex];
+        _ticker = ticker;
+    }
+    
+    [ContextMenu("Spawn")]
+    public void Spawn()
+    {
+        var spawnPoint = new Vector2(transform.position.x + Random.Range(-10, 11), transform.position.z + Random.Range(-10, 11));
 
         var player = Instantiate(
             _playerPrefab,
             spawnPoint,
             Quaternion.identity);
 
-        player.Initialize(ticker);
+        player.Initialize(_ticker);
 
         OnPlayerSpawned?.Invoke(player);
     }

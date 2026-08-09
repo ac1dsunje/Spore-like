@@ -15,23 +15,26 @@ public class EntryPoint : MonoBehaviour
     [SerializeField] private UIManager _uiManager;
     
     [SerializeField] private WorldGenerationConfig _config;
-    [SerializeField] private int _playersCount = 1;
+
+    [SerializeField] private bool _spawnPlayerAtStart = true;
     
     private void Awake()
     {
         WorldModel model = new(_config);
-        _worldGenerator.Construct(model);
+        _worldGenerator.Construct(model, _playerSpawner);
+        
+        _playerSpawner.Construct(_ticker);
+        
         _playerSpawner.OnPlayerSpawned += OnPlayerSpawned;
-        for (var i = 0; i < _playersCount; i++)
+
+        if (_spawnPlayerAtStart)
         {
-            _playerSpawner.Spawn(_ticker, i);
+            _playerSpawner.Spawn();
         }
     }
 
     private void OnPlayerSpawned(PlayerController player)
     {
-        _worldGenerator.AddPlayer(player);
-        
         _camera.Target.TrackingTarget = player.transform;
         
         _uiManager.Construct(player.Model);
