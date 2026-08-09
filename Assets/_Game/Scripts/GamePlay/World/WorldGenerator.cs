@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using _Game.Scripts.GamePlay.Player;
 using _Game.Scripts.GamePlay.Player.Modules.Movement;
 using _Game.Scripts.GamePlay.World.Biome;
 using UnityEngine;
@@ -13,11 +15,13 @@ public class WorldGenerator: MonoBehaviour
     [SerializeField] private Transform _grid;
     [SerializeField] private Tilemap _prefab;
     
-    private readonly List<PlayerMovement> _players = new();
+    private readonly List<PlayerController> _players = new();
     private WorldModel _model;
     
     private readonly Dictionary<BiomeConfig, Tilemap> _tilemaps = new();
     private readonly Dictionary<Vector3Int, RenderedTile> _cachedTiles = new();
+    private readonly Dictionary<Vector3Int, int> _tileUsage = new();
+    private readonly Dictionary<PlayerMovement, HashSet<Vector3Int>> _playerTiles = new();
 
     public void Construct(WorldModel model)
     {
@@ -32,45 +36,99 @@ public class WorldGenerator: MonoBehaviour
         }
     }
 
-    public void AddPlayer(PlayerMovement player)
+    public void AddPlayer(PlayerController player)
     {
         if (_players.Contains(player)) return;
+        
         _players.Add(player);
-        player.OnGridPositionChanged += Generate;
-        Generate(player);
+        _playerTiles.Add(player.Movement, new HashSet<Vector3Int>());
+        
+        player.Movement.OnGridPositionChanged += Generate;
+        Generate(player.Movement);
     }
 
-    public void RemovePlayer(PlayerMovement player)
+    public void RemovePlayer(PlayerController player)
     {
         if (!_players.Contains(player)) return;
+        
+        player.Movement.OnGridPositionChanged -= Generate;
+        
+        UnloadPlayerTiles(player.Movement);
+        
+        _playerTiles.Remove(player.Movement);
         _players.Remove(player);
-        player.OnGridPositionChanged -= Generate;
     }
 
     private int GetDistance() => _renderDistance * _model.Config.ChunkSize;
     
-    private bool IsInRenderDistance(Vector3Int position, Vector3Int center, int distance)
-    {
-        return Mathf.Abs(position.x - center.x) <= distance && Mathf.Abs(position.y - center.y) <= distance;
-    }
-
     private void Generate(PlayerMovement player)
     {
         var playerPosition = player.GetGridPosition();
         var distance = GetDistance();
-        var unloadDistance = distance + _model.Config.ChunkSize;
+        var currentTiles = _playerTiles[player];
         
-        for (var x = playerPosition.x - unloadDistance; x <= playerPosition.x + unloadDistance; x++)
-        {
-            for (var y = playerPosition.y - unloadDistance; y <= playerPosition.y + unloadDistance; y++)
-            {
-                var position = new Vector3Int(x, y, 0);
+        var newTiles = new HashSet<Vector3Int>();
 
-                if (IsInRenderDistance(position, playerPosition, distance))
-                    TryPlaceTile(position);
-                else
-                    TryUnloadTile(position);
+        for (var x = playerPosition.x - distance; x <= playerPosition.x + distance; x++)
+        {
+            for (var y = playerPosition.y - distance; y <= playerPosition.y + distance; y++)
+            {
+                newTiles.Add(new Vector3Int(x, y, 0));
             }
+        }
+
+        foreach (var position in currentTiles.Where(position => !newTiles.Contains(position)))
+        {
+            RemoveTileUsage(position);
+        }
+
+        foreach (var position in newTiles.Where(position => !currentTiles.Contains(position)))
+        {
+            AddTileUsage(position);
+        }
+
+        currentTiles.Clear();
+
+        foreach (var position in newTiles)
+        {
+            currentTiles.Add(position);
+        }
+    }
+
+    private void AddTileUsage(Vector3Int position)
+    {
+        if (_tileUsage.TryGetValue(position, out var usage))
+        {
+            _tileUsage[position] = usage + 1;
+            return;
+        }
+
+        _tileUsage.Add(position, 1);
+        TryPlaceTile(position);
+    }
+
+    private void RemoveTileUsage(Vector3Int position)
+    {
+        if (!_tileUsage.TryGetValue(position, out var usage))
+            return;
+
+        usage--;
+
+        if (usage > 0)
+        {
+            _tileUsage[position] = usage;
+            return;
+        }
+
+        _tileUsage.Remove(position);
+        TryUnloadTile(position);
+    }
+
+    private void UnloadPlayerTiles(PlayerMovement player)
+    {
+        foreach (var position in _playerTiles[player])
+        {
+            RemoveTileUsage(position);
         }
     }
 
@@ -89,7 +147,6 @@ public class WorldGenerator: MonoBehaviour
             var tilemap = _tilemaps[renderedTile.Biome];
 
             PlaceTile(tilemap, position, renderedTile.Tile);
-
             return;
         }
 
@@ -125,7 +182,7 @@ public class WorldGenerator: MonoBehaviour
     {
         foreach (var player in _players)
         {
-            player.OnGridPositionChanged -= Generate;
+            player.Movement.OnGridPositionChanged -= Generate;
         }
     }
 }
