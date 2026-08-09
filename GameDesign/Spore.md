@@ -1,5 +1,5 @@
 ---
-Статус: 32
+Статус: 35
 ---
 ```dataviewjs
 const currentFile = dv.current().file;
