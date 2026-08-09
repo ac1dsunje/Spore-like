@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 4454104221756158071}
   - component: {fileID: 3060402410953687105}
   - component: {fileID: 5994144659684222534}
-  - component: {fileID: 4262685544791667004}
+  - component: {fileID: 8809296994367138783}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4262685544791667004
+--- !u!114 &8809296994367138783
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -237,7 +237,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4885946919802144898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa70138c90884a97b8a5d0248c6770e1, type: 3}
+  m_Script: {fileID: 11500000, guid: d1a307f766df4cd191b6f661dd9bd688, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.Health.HealthBarUI
-  _bar: {fileID: 4382242598425639510}
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.UI.BarUI
+  Bar: {fileID: 4382242598425639510}
+  _maxValue: 1

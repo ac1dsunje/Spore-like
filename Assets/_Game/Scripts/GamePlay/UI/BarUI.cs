@@ -1,15 +1,25 @@
-﻿using UnityEngine;
+﻿using _Game.Scripts.GamePlay.Player.Modules;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace _Game.Scripts.GamePlay.UI
 {
-public abstract class BarUI: MonoBehaviour
+public class BarUI: MonoBehaviour
 {
-    [SerializeField] protected Image _bar;
-
-    protected virtual void UpdateBar(float min, float max)
+    [SerializeField] protected Image Bar;
+    [SerializeField] private bool _maxValue;
+    
+    private IResource _module;
+    
+    public void Construct(IResource module)
     {
-        _bar.fillAmount = min/max;
+        _module = module;
+        UpdateBar(_maxValue? 1: 0, 1);
+        _module.OnValueChanged += UpdateBar;
     }
+
+    private void UpdateBar(float min, float max) => Bar.fillAmount = min/max;
+
+    private void OnDestroy() => _module.OnValueChanged -= UpdateBar;
 }
 }

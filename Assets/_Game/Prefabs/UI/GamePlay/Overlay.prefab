@@ -207,9 +207,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 011b6d32c178426a8442348afc8b91e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.UI.OverlayScreen
-  _healthBarUI: {fileID: 5077018607574975648}
-  _experienceBarUI: {fileID: 6900553425465843076}
-  _enduranceBarUI: {fileID: 4709953534831199291}
+  _healthBarUI: {fileID: 512777710965792323}
+  _experienceBarUI: {fileID: 8030267016581381472}
+  _enduranceBarUI: {fileID: 2109069531916053624}
 --- !u!1001 &6106562084647463992
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -307,17 +307,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eba9e9074b44c4449ba8b7b97e3dad39, type: 3}
---- !u!114 &4709953534831199291 stripped
+--- !u!114 &2109069531916053624 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1577315493997602819, guid: eba9e9074b44c4449ba8b7b97e3dad39, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5330632809230057536, guid: eba9e9074b44c4449ba8b7b97e3dad39, type: 3}
   m_PrefabInstance: {fileID: 6106562084647463992}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84397495fcc94d7b9bf1460cc5505a45, type: 3}
+  m_Script: {fileID: 11500000, guid: d1a307f766df4cd191b6f661dd9bd688, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.Endurance.EnduranceBarUI
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.UI.BarUI
 --- !u!224 &7597280017328905295 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4454104221756158071, guid: eba9e9074b44c4449ba8b7b97e3dad39, type: 3}
@@ -420,22 +420,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95796b2d6fcadc9428219f815d474710, type: 3}
---- !u!114 &6900553425465843076 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 299623326402479662, guid: 95796b2d6fcadc9428219f815d474710, type: 3}
-  m_PrefabInstance: {fileID: 6623608766574828458}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c3ac4b1f97a417e917727cb463bc38c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.Experience.ExperienceBarUI
 --- !u!224 &7366729163258784733 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4454104221756158071, guid: 95796b2d6fcadc9428219f815d474710, type: 3}
   m_PrefabInstance: {fileID: 6623608766574828458}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8030267016581381472 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3790610704844023498, guid: 95796b2d6fcadc9428219f815d474710, type: 3}
+  m_PrefabInstance: {fileID: 6623608766574828458}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1a307f766df4cd191b6f661dd9bd688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.UI.BarUI
 --- !u!1001 &9033420876878575004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -533,19 +533,19 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67f9c80ddb81cab408906ef9b77826a0, type: 3}
---- !u!224 &4651374393646515691 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4454104221756158071, guid: 67f9c80ddb81cab408906ef9b77826a0, type: 3}
-  m_PrefabInstance: {fileID: 9033420876878575004}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5077018607574975648 stripped
+--- !u!114 &512777710965792323 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4262685544791667004, guid: 67f9c80ddb81cab408906ef9b77826a0, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8809296994367138783, guid: 67f9c80ddb81cab408906ef9b77826a0, type: 3}
   m_PrefabInstance: {fileID: 9033420876878575004}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa70138c90884a97b8a5d0248c6770e1, type: 3}
+  m_Script: {fileID: 11500000, guid: d1a307f766df4cd191b6f661dd9bd688, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.Health.HealthBarUI
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.UI.BarUI
+--- !u!224 &4651374393646515691 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4454104221756158071, guid: 67f9c80ddb81cab408906ef9b77826a0, type: 3}
+  m_PrefabInstance: {fileID: 9033420876878575004}
+  m_PrefabAsset: {fileID: 0}

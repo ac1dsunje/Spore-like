@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Health
 {
-public class HealthModule: StatModule, IHealth
+public class HealthModule: StatModule, IResource
 {
     public float MaxHealth {get;  private set; }
     public float Health { get; private set; }
@@ -14,7 +14,7 @@ public class HealthModule: StatModule, IHealth
     public event Action OnDeath;
     public event Action<int> OnDamageTaken;
     public event Action<int> OnHealed;
-    public event Action<float, float> OnHealthChanged;
+    public event Action<float, float> OnValueChanged;
 
     public HealthModule(PlayerStats playerStats) : base(playerStats)
     {
@@ -27,7 +27,7 @@ public class HealthModule: StatModule, IHealth
         Health -= amount;
         Health = Mathf.Max(0, Health);
         OnDamageTaken?.Invoke((int)amount);
-        OnHealthChanged?.Invoke(Health, MaxHealth);
+        OnValueChanged?.Invoke(Health, MaxHealth);
         
         if (Health <= 0)
         {
@@ -46,7 +46,7 @@ public class HealthModule: StatModule, IHealth
 
         if (Mathf.Approximately(health, Health)) return;
         OnHealed?.Invoke((int) amount);
-        OnHealthChanged?.Invoke(Health, MaxHealth);
+        OnValueChanged?.Invoke(Health, MaxHealth);
     }
     
     private void UpdateMaxHealth(float newMaxHealth)
@@ -56,7 +56,7 @@ public class HealthModule: StatModule, IHealth
     
         Health = Mathf.Clamp(Health + difference, 0, MaxHealth);
     
-        OnHealthChanged?.Invoke(Health, MaxHealth);
+        OnValueChanged?.Invoke(Health, MaxHealth);
     }
 
     private void UpdateRegeneration(float newRegeneration)

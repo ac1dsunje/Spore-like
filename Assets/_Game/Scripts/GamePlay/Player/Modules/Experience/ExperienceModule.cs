@@ -3,21 +3,21 @@ using _Game.Scripts.GamePlay.Player.Modules.Mouth;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Experience
 {
-public class ExperienceController: IDisposable
+public class ExperienceModule: IDisposable, IResource
 {
     public int LevelSet { get; private set; }
     public int Experience { get; private set; }
     private int _level;
     private int _levelScaler;
     
-    public event Action<int> OnExperienceChanged;
     public event Action<int> OnExperienceGained;
     public event Action<int> OnLevelChanged;
-    public event Action<int> OnLevelSetChanged;
+
+    public event Action<float, float> OnValueChanged;
     
     private EatModule _eatModule;
     
-    public ExperienceController(ExperienceConfig config, EatModule eatModule)
+    public ExperienceModule(ExperienceConfig config, EatModule eatModule)
     {
         LevelSet = config.LevelSet;
         _levelScaler = config.LevelScaler;
@@ -35,7 +35,7 @@ public class ExperienceController: IDisposable
     private void UpdateExperience(int amount)
     {
         Experience += amount;
-        OnExperienceChanged?.Invoke(Experience);
+        OnValueChanged?.Invoke(Experience, LevelSet);
         UpdateLevel();
     }
     
@@ -47,7 +47,7 @@ public class ExperienceController: IDisposable
             _level++;
             OnLevelChanged?.Invoke(_level);
             LevelSet += _levelScaler;
-            OnLevelSetChanged?.Invoke(LevelSet);
+            OnValueChanged?.Invoke(Experience, LevelSet);
             _levelScaler++;
         }
     }

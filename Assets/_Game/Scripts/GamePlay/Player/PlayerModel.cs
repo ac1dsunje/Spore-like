@@ -29,7 +29,7 @@ public class PlayerModel: IDisposable
     public DefenseModule Defense { get; private set; }
     
     public AbilitiesModule Abilities { get; private set; }
-    public ExperienceController Experience { get; private set; }
+    public ExperienceModule Experience { get; private set; }
     public EvolutionsModule Evolutions { get; private set; }
 
     public PlayerModel(PlayerConfig config)
@@ -48,7 +48,7 @@ public class PlayerModel: IDisposable
         Attack = AddModule(new AttackModule(Stats));
         Endurance = AddModule(new EnduranceModule(Stats));
         Defense = AddModule(new DefenseModule(Stats));
-        Experience = AddModule(new ExperienceController(config.ExperienceConfig, EatModule));
+        Experience = AddModule(new ExperienceModule(config.ExperienceConfig, EatModule));
         Abilities = AddModule(new AbilitiesModule());
         Evolutions = AddModule(new EvolutionsModule(this));
         

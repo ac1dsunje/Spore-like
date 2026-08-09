@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Endurance
 {
-public class EnduranceModule: StatModule
+public class EnduranceModule: StatModule, IResource
 {
     private float _maxEndurance;
     public float EnduranceRecovery { get; private set; }
@@ -17,7 +17,7 @@ public class EnduranceModule: StatModule
     public bool IsUsed => _abilityControllers.Count > 0;
     
     private readonly HashSet<Ability> _abilityControllers = new();
-    public event Action<float, float> OnEnduranceChanged;
+    public event Action<float, float> OnValueChanged;
 
     public EnduranceModule(PlayerStats playerStats) : base(playerStats)
     {
@@ -40,7 +40,7 @@ public class EnduranceModule: StatModule
             _endurance = _maxEndurance;
         }
         if (Mathf.Approximately(endurance, _endurance)) return;
-        OnEnduranceChanged?.Invoke(_endurance, _maxEndurance);
+        OnValueChanged?.Invoke(_endurance, _maxEndurance);
     }
 
     public void UseEndurance(float value)
@@ -50,7 +50,7 @@ public class EnduranceModule: StatModule
         if (_endurance <= 0) _endurance = 0;
         
         if (Mathf.Approximately(endurance, _endurance)) return;
-        OnEnduranceChanged?.Invoke(_endurance, _maxEndurance);
+        OnValueChanged?.Invoke(_endurance, _maxEndurance);
     }
     
     private void UpdateMaxEndurance(float value)
@@ -62,7 +62,7 @@ public class EnduranceModule: StatModule
     
         _endurance = Mathf.Clamp(_endurance + difference, 0, _maxEndurance);
         
-        OnEnduranceChanged?.Invoke(_endurance, _maxEndurance);
+        OnValueChanged?.Invoke(_endurance, _maxEndurance);
     }
 
     private void UpdateEnduranceRecovery(float value)
