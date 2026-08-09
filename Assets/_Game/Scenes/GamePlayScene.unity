@@ -901,7 +901,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.EntryPoint
   _camera: {fileID: 62460934}
-  _config: {fileID: 11400000, guid: 86a2a7edd3ffa1b4fbb90f25e00c0843, type: 2}
   _spawnPlayerAtStart: 1
 --- !u!114 &1986825666
 MonoBehaviour:
