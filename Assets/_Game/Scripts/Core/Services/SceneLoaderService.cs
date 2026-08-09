@@ -4,22 +4,59 @@ using UnityEngine.SceneManagement;
 
 namespace _Game.Scripts.Core.Services
 {
-public static class SceneLoaderService
+public class SceneLoaderService
 {
-    private static string LoadingScene;
+    private readonly string _mainMenuScene;
+    private readonly string _gameplayScene;
+    private readonly string _loadingScene;
 
-    public static IEnumerator LoadAsync(string sceneName, string loadingScene = "LoadingScene")
+    private string _currentScene;
+
+    public SceneLoaderService(
+        string mainMenuScene,
+        string gameplayScene,
+        string loadingScene)
     {
-        LoadingScene = loadingScene;
-        
-        var operation = SceneManager.LoadSceneAsync(LoadingScene, LoadSceneMode.Additive);
-        yield return new WaitUntil(() => operation.isDone);
-        
-        var waitLoading = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-        yield return new WaitUntil(() => waitLoading.isDone);
-        SceneManager.UnloadSceneAsync(LoadingScene);
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+        _mainMenuScene = mainMenuScene;
+        _gameplayScene = gameplayScene;
+        _loadingScene = loadingScene;
     }
-    
+
+    public IEnumerator LoadMainMenu()
+    {
+        yield return LoadScene(_mainMenuScene);
+    }
+
+    public IEnumerator LoadGameplay()
+    {
+        yield return LoadScene(_gameplayScene);
+    }
+
+    private IEnumerator LoadScene(string sceneName)
+    {
+        var loading = SceneManager.LoadSceneAsync(
+            _loadingScene,
+            LoadSceneMode.Additive);
+
+        yield return new WaitUntil(() => loading.isDone);
+
+
+        var scene = SceneManager.LoadSceneAsync(
+            sceneName,
+            LoadSceneMode.Additive);
+
+        yield return new WaitUntil(() => scene.isDone);
+
+
+        if (!string.IsNullOrEmpty(_currentScene))
+        {
+            SceneManager.UnloadSceneAsync(_currentScene);
+        }
+
+        _currentScene = sceneName;
+
+
+        SceneManager.UnloadSceneAsync(_loadingScene);
+    }
 }
 }

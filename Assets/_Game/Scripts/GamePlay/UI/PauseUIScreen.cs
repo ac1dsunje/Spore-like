@@ -2,6 +2,7 @@
 using _Game.Scripts.Core.UI;
 using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.UI
 {
@@ -9,7 +10,8 @@ public class PauseUIScreen: UIScreen
 {
     [SerializeField] private Button _resumeButton;
     [SerializeField] private Button _mainMenuButton;
-    [SerializeField] [Scene] private string _mainMenuScene;
+    
+    [Inject] private SceneLoaderService _sceneLoaderService;
 
     protected override void Awake()
     {
@@ -22,7 +24,7 @@ public class PauseUIScreen: UIScreen
 
     private void GoToMainMenu()
     {
-        StartCoroutine(SceneLoaderService.LoadAsync(_mainMenuScene));
+        StartCoroutine(_sceneLoaderService.LoadMainMenu());
     }
 
     private void Resume()

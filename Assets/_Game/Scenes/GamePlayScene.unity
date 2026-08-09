@@ -859,7 +859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.GameplayLifetimeScope
   parentReference:
-    TypeName: 
+    TypeName: _Game.Scripts.Bootstrap.BootstrapScope
   autoRun: 1
   autoInjectGameObjects: []
   _worldConfig: {fileID: 11400000, guid: 86a2a7edd3ffa1b4fbb90f25e00c0843, type: 2}

@@ -128,7 +128,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1599791290}
+  - component: {fileID: 1599791294}
   - component: {fileID: 1599791292}
+  - component: {fileID: 1599791293}
   m_Layer: 0
   m_Name: Boot
   m_TagString: Untagged
@@ -163,7 +165,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eab628dda9fb4c1bb9406cff4ab64ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Bootstrap.Bootstrap
+--- !u!114 &1599791293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599791289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab22400322e64ad9acc03ee8a8b9d5c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Core.Services.Ticker
+--- !u!114 &1599791294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599791289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b918acc24def4c958ee48a4ff06bd095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Bootstrap.BootstrapScope
+  parentReference:
+    TypeName: 
+  autoRun: 1
+  autoInjectGameObjects: []
   _mainMenuScene: Assets/_Game/Scenes/MainMenu.unity
+  _gameplayScene: Assets/_Game/Scenes/GamePlayScene.unity
   _loadingScene: Assets/_Game/Scenes/LoadingScene.unity
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -1,16 +1,16 @@
 ﻿using _Game.Scripts.Core.Services;
 using UnityEngine;
+using VContainer;
 
 namespace _Game.Scripts.Bootstrap
 {
 public class Bootstrap: MonoBehaviour
 {
-    [SerializeField] [Scene] private string _mainMenuScene;
-    [SerializeField] [Scene] private string _loadingScene;
+    [Inject] private SceneLoaderService _sceneLoaderService;
 
-    private void Awake()
+    private void Start()
     {
-        StartCoroutine(SceneLoaderService.LoadAsync(_mainMenuScene, _loadingScene));
+        StartCoroutine(_sceneLoaderService.LoadMainMenu());
     }
 }
 }

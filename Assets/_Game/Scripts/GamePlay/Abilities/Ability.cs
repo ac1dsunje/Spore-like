@@ -1,4 +1,5 @@
 ﻿using System;
+using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Player;
 using _Game.Scripts.GamePlay.Player.Modules.Endurance;
 using UnityEngine;

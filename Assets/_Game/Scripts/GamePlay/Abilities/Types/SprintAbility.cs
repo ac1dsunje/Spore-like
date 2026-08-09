@@ -1,4 +1,5 @@
-﻿using _Game.Scripts.GamePlay.Player;
+﻿using _Game.Scripts.Core.Services;
+using _Game.Scripts.GamePlay.Player;
 
 namespace _Game.Scripts.GamePlay.Abilities.Types
 {

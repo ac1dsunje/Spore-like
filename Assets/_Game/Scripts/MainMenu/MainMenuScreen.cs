@@ -2,13 +2,15 @@
 using _Game.Scripts.Core.UI;
 using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 namespace _Game.Scripts.MainMenu
 {
 public class MainMenuScreen: UIScreen
 {
-    [SerializeField] [Scene] private string _gamePlayScene;
     [SerializeField] private Button _playButton;
+
+    [Inject] private SceneLoaderService _sceneLoaderService;
 
     protected override void Awake()
     {
@@ -18,7 +20,7 @@ public class MainMenuScreen: UIScreen
 
     private void GoToGamePlay()
     {
-        StartCoroutine(SceneLoaderService.LoadAsync(_gamePlayScene));
+        StartCoroutine(_sceneLoaderService.LoadGameplay());
     }
 
     private void OnDestroy()

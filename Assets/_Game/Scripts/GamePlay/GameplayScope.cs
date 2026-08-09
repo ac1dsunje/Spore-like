@@ -7,21 +7,22 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay
 {
-public class GameplayLifetimeScope: LifetimeScope
+public class GameplayScope: LifetimeScope
 {
     [SerializeField] private WorldGenerationConfig _worldConfig;
 
     protected override void Configure(IContainerBuilder builder)
     {
-        builder.RegisterComponentInHierarchy<Ticker>();
         builder.RegisterComponentInHierarchy<PlayerSpawner>();
         builder.RegisterComponentInHierarchy<WorldGenerator>();
         builder.RegisterComponentInHierarchy<UIManager>();
         builder.RegisterComponentInHierarchy<EntryPoint>();
 
+        builder.RegisterComponentInHierarchy<PauseUIScreen>();
+
         builder.RegisterInstance(_worldConfig);
 
-        builder.Register<WorldModel>(Lifetime.Singleton);
+        builder.Register<WorldModel>(Lifetime.Scoped);
     }
 }
 }
