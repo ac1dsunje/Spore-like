@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Movement
 {
@@ -11,10 +12,29 @@ public class PlayerMovement: MonoBehaviour
     
     private float _horizontalInput;
     private float _verticalInput;
+
+    private Vector3Int _lastPosition;
+
+    public event Action OnGridPositionChanged;
     
     public void Construct(MovementModule movement)
     {
         _movement = movement;
+    }    
+    
+    public Vector3Int GetGridPosition() => 
+        new(
+            (int)transform.position.x, 
+            (int)transform.position.y, 
+            (int)transform.position.z
+        );
+    
+    private void CheckMoveByGrid()
+    {
+        var currentPos = GetGridPosition();
+        if (currentPos == _lastPosition) return;
+        _lastPosition = currentPos;
+        OnGridPositionChanged?.Invoke();
     }
 
     private void Update()
@@ -31,6 +51,7 @@ public class PlayerMovement: MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+        CheckMoveByGrid();
     }
 
     private void Move()

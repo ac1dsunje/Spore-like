@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _Game.Scripts.GamePlay.Player.Modules.Movement;
 using _Game.Scripts.GamePlay.World.Biome;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -13,17 +14,16 @@ public class WorldGenerator: MonoBehaviour
     [SerializeField] private Tilemap _prefab;
     private readonly List<Tilemap> _tilemaps = new();
     
-    private Transform _player;
+    private PlayerMovement _player;
     private WorldModel _model;
-
-    private Vector3Int _lastPlayerPosition;
     
     private readonly Dictionary<Vector3Int, RenderedTile> _renderedTiles = new();
 
-    public void Construct(Transform player, WorldModel model)
+    public void Construct(PlayerMovement player, WorldModel model)
     {
         _model = model;
         _player = player;
+        _player.OnGridPositionChanged += Generate;
         for (var i = 0; i < _model.BiomeCount; i++)
         {
             var map = Instantiate(_prefab, _grid);
@@ -32,33 +32,11 @@ public class WorldGenerator: MonoBehaviour
         Generate();
     }
 
-    private Vector3Int _playerPos() => 
-        new(
-            (int)_player.position.x, 
-            (int)_player.position.y, 
-            (int)_player.position.z
-        );
-
-    private void Update()
-    {
-        if (_player == null) return;
-
-        if (!HasPlayerMoved()) return;
-        Generate();
-    }
-
-    private bool HasPlayerMoved()
-    {
-        if (_playerPos() == _lastPlayerPosition) return false;
-        _lastPlayerPosition = _playerPos();
-        return true;
-    }
-
     private int GetDistance() => _renderDistance * _model.ChunkSize;
 
     private void Generate()
     {
-        var playerPosition = _playerPos();
+        var playerPosition = _player.GetGridPosition();
         var distance = GetDistance();
         var unloadDistance = distance + _model.ChunkSize;
         
@@ -136,6 +114,11 @@ public class WorldGenerator: MonoBehaviour
         var prefab = environment.Prefabs[Random.Range(0, environment.Prefabs.Length)];
         var setPos = new Vector3(position.x + 0.5f, position.y + 0.5f, position.z);
         Instantiate(prefab, setPos, Quaternion.identity, _tilemaps[biome.Index].transform);
+    }
+
+    private void OnDestroy()
+    {
+        _player.OnGridPositionChanged -= Generate;
     }
 }
 }
