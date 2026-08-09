@@ -20,7 +20,7 @@ public class PlayerSpawner : MonoBehaviour
     }
     
     [ContextMenu("Spawn")]
-    public void Spawn()
+    private void Spawn()
     {
         var spawnPoint = new Vector2(transform.position.x + Random.Range(-10, 11), transform.position.z + Random.Range(-10, 11));
 
