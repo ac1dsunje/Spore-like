@@ -19,7 +19,7 @@ public class WorldGenerator: MonoBehaviour
     private readonly List<PlayerController> _players = new();
     
     private WorldModel _model;
-    private PlayerSpawner _playerSpawner;
+    private PlayerRegistry _playerRegistry;
     
     private readonly Dictionary<BiomeConfig, Tilemap> _tilemaps = new();
     private readonly Dictionary<Vector3Int, RenderedTile> _cachedTiles = new();
@@ -27,10 +27,10 @@ public class WorldGenerator: MonoBehaviour
     private readonly Dictionary<PlayerMovement, HashSet<Vector3Int>> _playerTiles = new();
     
     [Inject]
-    private void Construct(WorldModel model, PlayerSpawner playerSpawner)
+    private void Construct(WorldModel model, PlayerRegistry playerRegistry)
     {
         _model = model;
-        _playerSpawner = playerSpawner;
+        _playerRegistry = playerRegistry;
         
         foreach (var biome in _model.Config.BiomeConfigs)
         {
@@ -39,8 +39,8 @@ public class WorldGenerator: MonoBehaviour
 
             _tilemaps.Add(biome, map);
         }
-        _playerSpawner.OnPlayerSpawned += AddPlayer;
-        _playerSpawner.OnPlayerRemoved += RemovePlayer;
+        _playerRegistry.OnPlayerAdded += AddPlayer;
+        _playerRegistry.OnPlayerRemoved += RemovePlayer;
     }
 
     private void AddPlayer(PlayerController player)
@@ -191,8 +191,8 @@ public class WorldGenerator: MonoBehaviour
         {
             player.Movement.OnGridPositionChanged -= Generate;
         }
-        _playerSpawner.OnPlayerSpawned -= AddPlayer;
-        _playerSpawner.OnPlayerRemoved -= RemovePlayer;
+        _playerRegistry.OnPlayerAdded -= AddPlayer;
+        _playerRegistry.OnPlayerRemoved -= RemovePlayer;
     }
 }
 }

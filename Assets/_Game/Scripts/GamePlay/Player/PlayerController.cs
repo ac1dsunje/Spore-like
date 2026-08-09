@@ -31,11 +31,13 @@ public class PlayerController: MonoBehaviour, IDamageAble
     public PlayerModel Model { get; private set; }
 
     [Inject] private Ticker _ticker;
+    [Inject] private PlayerRegistry _playerRegistry;
 
     public void Initialize()
     {
         CreateModel(_ticker);
         InitializeActiveModules();
+        _playerRegistry.NotifyPlayerAdded(this);
     }
 
     private void CreateModel(Ticker ticker)

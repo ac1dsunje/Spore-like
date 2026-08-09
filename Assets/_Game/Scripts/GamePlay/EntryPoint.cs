@@ -11,20 +11,12 @@ public class EntryPoint : MonoBehaviour
     [SerializeField] private CinemachineCamera _camera;
     [SerializeField] private bool _spawnPlayerAtStart = true;
     
-    [Inject] private PlayerSpawner _playerSpawner;
+    [Inject] private PlayerRegistry _playerRegistry;
     [Inject] private UIManager _uiManager;
     
     private void Awake()
     {
-        _playerSpawner.OnPlayerSpawned += OnPlayerSpawned;
-    }
-
-    private void Start()
-    {
-        if (_spawnPlayerAtStart)
-        {
-            _playerSpawner.Spawn();
-        }
+        _playerRegistry.OnPlayerAdded += OnPlayerSpawned;
     }
 
     private void OnPlayerSpawned(PlayerController player)
@@ -36,7 +28,7 @@ public class EntryPoint : MonoBehaviour
 
     private void OnDestroy()
     {
-        _playerSpawner.OnPlayerSpawned -= OnPlayerSpawned;
+        _playerRegistry.OnPlayerAdded -= OnPlayerSpawned;
     }
 }
 }

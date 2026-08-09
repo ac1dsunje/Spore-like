@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 using Random = UnityEngine.Random;
@@ -9,10 +8,16 @@ namespace _Game.Scripts.GamePlay.Player
 public class PlayerSpawner : MonoBehaviour
 {
     [SerializeField] private PlayerController _playerPrefab;
-    public event Action<PlayerController> OnPlayerSpawned;
-    public event Action<PlayerController> OnPlayerRemoved;
-    
+    [SerializeField] private bool _spawnOnStart = true;
     [Inject] private IObjectResolver _objectResolver;
+
+    private void Start()
+    {
+        if (_spawnOnStart)
+        {
+            Spawn();
+        }
+    }
     
     [ContextMenu("Spawn")]
     public void Spawn()
@@ -25,8 +30,6 @@ public class PlayerSpawner : MonoBehaviour
             Quaternion.identity);
 
         player.Initialize();
-
-        OnPlayerSpawned?.Invoke(player);
     }
 }
 }
