@@ -12,20 +12,23 @@ public class WorldGenerator: MonoBehaviour
     [SerializeField] private int _renderDistance = 1;
     [SerializeField] private Transform _grid;
     [SerializeField] private Tilemap _prefab;
-    private readonly List<Tilemap> _tilemaps = new();
     
     private PlayerMovement _player;
     private WorldModel _model;
     
-    private readonly Dictionary<Vector3Int, RenderedTile> _renderedTiles = new();
+    private readonly Dictionary<BiomeConfig, Tilemap> _tilemaps = new();
+    private readonly Dictionary<Vector3Int, RenderedTile> _cachedTiles = new();
 
     public void Construct(WorldModel model)
     {
         _model = model;
-        for (var i = 0; i < _model.BiomeCount; i++)
+
+        foreach (var biome in _model.Config.BiomeConfigs)
         {
             var map = Instantiate(_prefab, _grid);
-            _tilemaps.Add(map);
+            map.gameObject.name = biome.name;
+
+            _tilemaps.Add(biome, map);
         }
     }
 
@@ -36,7 +39,7 @@ public class WorldGenerator: MonoBehaviour
         Generate();
     }
 
-    private int GetDistance() => _renderDistance * _model.ChunkSize;
+    private int GetDistance() => _renderDistance * _model.Config.ChunkSize;
     
     private bool IsInRenderDistance(Vector3Int position, Vector3Int center, int distance)
     {
@@ -47,7 +50,7 @@ public class WorldGenerator: MonoBehaviour
     {
         var playerPosition = _player.GetGridPosition();
         var distance = GetDistance();
-        var unloadDistance = distance + _model.ChunkSize;
+        var unloadDistance = distance + _model.Config.ChunkSize;
         
         for (var x = playerPosition.x - unloadDistance; x <= playerPosition.x + unloadDistance; x++)
         {
@@ -65,17 +68,17 @@ public class WorldGenerator: MonoBehaviour
 
     private void TryUnloadTile(Vector3Int position)
     {
-        if (!_renderedTiles.TryGetValue(position, out var renderedTile))
+        if (!_cachedTiles.TryGetValue(position, out var renderedTile))
             return;
 
-        _tilemaps[renderedTile.BiomeIndex].SetTile(position, null);
+        _tilemaps[renderedTile.Biome].SetTile(position, null);
     }
 
     private void TryPlaceTile(Vector3Int position)
     {
-        if (_renderedTiles.TryGetValue(position, out var renderedTile))
+        if (_cachedTiles.TryGetValue(position, out var renderedTile))
         {
-            var tilemap = _tilemaps[renderedTile.BiomeIndex];
+            var tilemap = _tilemaps[renderedTile.Biome];
 
             if (!tilemap.HasTile(position))
             {
@@ -88,9 +91,9 @@ public class WorldGenerator: MonoBehaviour
         var biome = _model.GetBiome(position);
         var tile = biome.RandomTile;
 
-        _tilemaps[biome.Index].SetTile(position, tile);
+        _tilemaps[biome].SetTile(position, tile);
 
-        _renderedTiles.Add(position, new RenderedTile(biome.Index, tile));
+        _cachedTiles.Add(position, new RenderedTile(biome, tile));
 
         TryPlaceEnvironment(position, biome);
     }
@@ -102,7 +105,7 @@ public class WorldGenerator: MonoBehaviour
         var environment = biome.GetRandomEnvironment();
         var prefab = environment.Prefabs[Random.Range(0, environment.Prefabs.Length)];
         var setPos = new Vector3(position.x + 0.5f, position.y + 0.5f, position.z);
-        Instantiate(prefab, setPos, Quaternion.identity, _tilemaps[biome.Index].transform);
+        Instantiate(prefab, setPos, Quaternion.identity, _tilemaps[biome].transform);
     }
 
     private void OnDestroy()

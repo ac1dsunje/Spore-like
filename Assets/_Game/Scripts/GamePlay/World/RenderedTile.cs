@@ -1,15 +1,16 @@
-﻿using UnityEngine.Tilemaps;
+﻿using _Game.Scripts.GamePlay.World.Biome;
+using UnityEngine.Tilemaps;
 
 namespace _Game.Scripts.GamePlay.World
 {
 public readonly struct RenderedTile
 {
-    public readonly int BiomeIndex;
+    public readonly BiomeConfig Biome;
     public readonly TileBase Tile;
 
-    public RenderedTile(int biomeIndex, TileBase tile)
+    public RenderedTile(BiomeConfig biome, TileBase tile)
     {
-        BiomeIndex = biomeIndex;
+        Biome = biome;
         Tile = tile;
     }
 }

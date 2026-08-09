@@ -6,40 +6,37 @@ namespace _Game.Scripts.GamePlay.World
 {
 public class WorldModel
 {
-    public int ChunkSize => _config.ChunkSize;
-    public int BiomeCount => _config.BiomeConfigs.Count;
-    
-    private readonly WorldGenerationConfig _config;
+    public WorldGenerationConfig Config { get; private set; }
     private readonly float _seed;
 
     private readonly Dictionary<Vector3Int, int> _biomeIndices = new();
 
     public WorldModel(WorldGenerationConfig config)
     {
-        _config = config;
-        _seed = _config.GenerateRandomSeed ? Random.Range(0, 99999) : _config.Seed;
+        Config = config;
+        _seed = Config.GenerateRandomSeed ? Random.Range(0, 99999) : Config.Seed;
     }
 
     public BiomeConfig GetBiome(Vector3Int position)
     {
         if (_biomeIndices.TryGetValue(position, out var index))
         {
-            return _config.BiomeConfigs[index];
+            return Config.BiomeConfigs[index];
         }
         
-        var x = (position.x + _seed * 1000f) * _config.Scale;
-        var y = (position.y + _seed * 1000f) * _config.Scale;
+        var x = (position.x + _seed * 1000f) * Config.Scale;
+        var y = (position.y + _seed * 1000f) * Config.Scale;
     
         var noiseValue = Mathf.PerlinNoise(x, y);
     
-        var biomeCount = BiomeCount;
+        var biomeCount = Config.BiomeConfigs.Count;
         var biomeIndex = Mathf.FloorToInt(noiseValue * biomeCount);
     
         biomeIndex = Mathf.Clamp(biomeIndex, 0, biomeCount - 1);
         
         _biomeIndices.Add(position, biomeIndex);
     
-        return _config.BiomeConfigs[biomeIndex];
+        return Config.BiomeConfigs[biomeIndex];
     }
 }
 }

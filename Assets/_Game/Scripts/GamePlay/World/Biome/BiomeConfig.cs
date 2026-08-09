@@ -8,7 +8,6 @@ namespace _Game.Scripts.GamePlay.World.Biome
 [CreateAssetMenu(fileName = "New Biome Config", menuName = "Configs/Game/World/Biomes/Biome")]
 public class BiomeConfig: ScriptableObject
 {
-    [field: SerializeField] public int Index { get; private set; }
     [field: SerializeField] public List<TileBase> Tiles { get; private set; }
     [field: SerializeField] public List<EnvironmentConfig> EnvironmentConfigs { get; private set; }
     [field: SerializeField] public int ChanceEnvironment { get; private set; } = 20;
