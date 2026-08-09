@@ -20,5 +20,9 @@ public enum StatType
     DashPower = 18,
     ColdResistance = 19,
     HeatResistance = 20,
+    MinimalLethalTemperature = 21,
+    MinimalComfortableTemperature = 22,
+    MaximumComfortableTemperature = 23,
+    MaximumLethalTemperature = 24,
 }
 }
