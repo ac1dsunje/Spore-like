@@ -17,17 +17,21 @@ public class WorldGenerator: MonoBehaviour
     [SerializeField] private Tilemap _prefab;
     
     private readonly List<PlayerController> _players = new();
+    
     private WorldModel _model;
-    [Inject] private PlayerSpawner _playerSpawner;
+    private PlayerSpawner _playerSpawner;
     
     private readonly Dictionary<BiomeConfig, Tilemap> _tilemaps = new();
     private readonly Dictionary<Vector3Int, RenderedTile> _cachedTiles = new();
     private readonly Dictionary<Vector3Int, int> _tileUsage = new();
     private readonly Dictionary<PlayerMovement, HashSet<Vector3Int>> _playerTiles = new();
-
-    public void Construct(WorldModel model)
+    
+    [Inject]
+    private void Construct(WorldModel model, PlayerSpawner playerSpawner)
     {
         _model = model;
+        _playerSpawner = playerSpawner;
+        
         foreach (var biome in _model.Config.BiomeConfigs)
         {
             var map = Instantiate(_prefab, _grid);
