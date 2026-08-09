@@ -12,7 +12,8 @@ public enum EvolutionExperienceType
     DamageResistance = 3,
     DamageTaking = 4,
     Healing = 5,
-    DistanceOvercoming = 6
+    DistanceOvercoming = 6,
+    EnduranceRecovering = 7
 }
 public class EvolutionExperienceFactory
 {
@@ -27,6 +28,7 @@ public class EvolutionExperienceFactory
             EvolutionExperienceType.DamageTaking => new DamageTaking(playerModel),
             EvolutionExperienceType.Healing => new Healing(playerModel),
             EvolutionExperienceType.DistanceOvercoming => new DistanceOvercoming(playerModel),
+            EvolutionExperienceType.EnduranceRecovering => new EnduranceRecovering(playerModel),
             _ => throw new ArgumentOutOfRangeException(nameof(experienceType), experienceType, null)
         };
     }
