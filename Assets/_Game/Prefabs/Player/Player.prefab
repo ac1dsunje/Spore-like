@@ -331,11 +331,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.PlayerController
   _playerConfig: {fileID: 11400000, guid: ba7be4736a4236543ba175179ecef16d, type: 2}
-  _vision: {fileID: 1241412678200770851}
-  _movement: {fileID: 6455457412017345376}
-  _mouth: {fileID: 187838623708506777}
-  _health: {fileID: 4028549422210393822}
-  _endurance: {fileID: 7969867278788272747}
+  <Movement>k__BackingField: {fileID: 6455457412017345376}
+  <Health>k__BackingField: {fileID: 4028549422210393822}
+  <Vision>k__BackingField: {fileID: 1241412678200770851}
+  <Mouth>k__BackingField: {fileID: 187838623708506777}
+  <Endurance>k__BackingField: {fileID: 7969867278788272747}
   _evolutionsDatabase: {fileID: 11400000, guid: 89e0fac1fa9071a41bafa6ee877795b5, type: 2}
   _raritiesDatabase: {fileID: 11400000, guid: 844b6b4bf98611044bf03a16ce2009a0, type: 2}
   _minEvolutions: 3

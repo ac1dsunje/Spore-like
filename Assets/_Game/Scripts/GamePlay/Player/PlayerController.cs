@@ -16,11 +16,11 @@ public class PlayerController: MonoBehaviour, IDamageAble
     [Header("Config")]
     [SerializeField] private PlayerConfig _playerConfig;
     [Header("Modules")]
-    [SerializeField] private PlayerVision _vision;
-    [SerializeField] private PlayerMovement _movement;
-    [SerializeField] private PlayerMouth _mouth;
-    [SerializeField] private PlayerHealth _health;
-    [SerializeField] private PlayerEndurance _endurance;
+    [field: SerializeField] public PlayerMovement Movement { get; private set; }
+    [field: SerializeField] public PlayerHealth Health { get; private set; }
+    [field: SerializeField] public PlayerVision Vision { get; private set; }
+    [field: SerializeField] public PlayerMouth Mouth { get; private set; }
+    [field: SerializeField] public PlayerEndurance Endurance { get; private set; }
     [Header("Evolutions")]
     [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
     [SerializeField] private RaritiesDatabase _raritiesDatabase;
@@ -46,11 +46,11 @@ public class PlayerController: MonoBehaviour, IDamageAble
 
     private void InitializeActiveModules()
     {
-        _vision.Construct(Model.Vision);
-        _movement.Construct(Model.Movement);
-        _mouth.Construct(Model.EatModule);
-        _health.Construct(Model.Health);
-        _endurance.Construct(Model.Endurance);
+        Vision.Construct(Model.Vision);
+        Movement.Construct(Model.Movement);
+        Mouth.Construct(Model.EatModule);
+        Health.Construct(Model.Health);
+        Endurance.Construct(Model.Endurance);
     }
 
     public void TakeDamage(float value, IDamageAble damager)
