@@ -13,7 +13,7 @@ public class WorldGenerator: MonoBehaviour
     [SerializeField] private Transform _grid;
     [SerializeField] private Tilemap _prefab;
     
-    private PlayerMovement _player;
+    private readonly List<PlayerMovement> _players = new();
     private WorldModel _model;
     
     private readonly Dictionary<BiomeConfig, Tilemap> _tilemaps = new();
@@ -34,9 +34,17 @@ public class WorldGenerator: MonoBehaviour
 
     public void AddPlayer(PlayerMovement player)
     {
-        _player = player;
-        _player.OnGridPositionChanged += Generate;
-        Generate();
+        if (_players.Contains(player)) return;
+        _players.Add(player);
+        player.OnGridPositionChanged += Generate;
+        Generate(player);
+    }
+
+    public void RemovePlayer(PlayerMovement player)
+    {
+        if (!_players.Contains(player)) return;
+        _players.Remove(player);
+        player.OnGridPositionChanged -= Generate;
     }
 
     private int GetDistance() => _renderDistance * _model.Config.ChunkSize;
@@ -46,9 +54,9 @@ public class WorldGenerator: MonoBehaviour
         return Mathf.Abs(position.x - center.x) <= distance && Mathf.Abs(position.y - center.y) <= distance;
     }
 
-    private void Generate()
+    private void Generate(PlayerMovement player)
     {
-        var playerPosition = _player.GetGridPosition();
+        var playerPosition = player.GetGridPosition();
         var distance = GetDistance();
         var unloadDistance = distance + _model.Config.ChunkSize;
         
@@ -115,7 +123,10 @@ public class WorldGenerator: MonoBehaviour
 
     private void OnDestroy()
     {
-        _player.OnGridPositionChanged -= Generate;
+        foreach (var player in _players)
+        {
+            player.OnGridPositionChanged -= Generate;
+        }
     }
 }
 }

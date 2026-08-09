@@ -15,7 +15,7 @@ public class PlayerMovement: MonoBehaviour
 
     private Vector3Int _lastPosition;
 
-    public event Action OnGridPositionChanged;
+    public event Action<PlayerMovement> OnGridPositionChanged;
     
     public void Construct(MovementModule movement)
     {
@@ -34,7 +34,7 @@ public class PlayerMovement: MonoBehaviour
         var currentPos = GetGridPosition();
         if (currentPos == _lastPosition) return;
         _lastPosition = currentPos;
-        OnGridPositionChanged?.Invoke();
+        OnGridPositionChanged?.Invoke(this);
     }
 
     private void Update()
