@@ -11,6 +11,7 @@ using _Game.Scripts.GamePlay.Player.Modules.Health;
 using _Game.Scripts.GamePlay.Player.Modules.Mouth;
 using _Game.Scripts.GamePlay.Player.Modules.Movement;
 using _Game.Scripts.GamePlay.Player.Modules.Stats;
+using _Game.Scripts.GamePlay.Player.Modules.Temperature;
 using _Game.Scripts.GamePlay.Player.Modules.Vision;
 
 namespace _Game.Scripts.GamePlay.Player
@@ -27,6 +28,7 @@ public class PlayerModel: IDisposable
     public AttackModule Attack { get; private set; }
     public EnduranceModule Endurance { get; private set; }
     public DefenseModule Defense { get; private set; }
+    public TemperatureModule Temperature { get; private set; }
     
     public AbilitiesModule Abilities { get; private set; }
     public ExperienceModule Experience { get; private set; }
@@ -51,6 +53,7 @@ public class PlayerModel: IDisposable
         Experience = AddModule(new ExperienceModule(config.ExperienceConfig, EatModule));
         Abilities = AddModule(new AbilitiesModule());
         Evolutions = AddModule(new EvolutionsModule(this));
+        Temperature = AddModule(new TemperatureModule(Stats));
         
     }
     
