@@ -19,7 +19,7 @@ public class PlayerBiome: MonoBehaviour
         _model = model;
         
         _movement.OnGridPositionChanged += TryEnterBiome;
-        EnterBiome(worldModel.GetBiome(new Vector3Int((int)transform.position.x, (int)transform.position.y, 0)));
+        EnterBiome(worldModel.GetBiome(_movement.GridPosition));
     }
 
     private void TryEnterBiome(PlayerMovement player)
