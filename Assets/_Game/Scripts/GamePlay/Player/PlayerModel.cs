@@ -38,7 +38,7 @@ public class PlayerModel: IDisposable
     {
         Stats = new();
         AddModules(config);
-        Stats.Initialize(config.InitialConfig);
+        Stats.Initialize(config.InitialConfigs);
     }
 
     private void AddModules(PlayerConfig config)

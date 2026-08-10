@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c3f912d6e474dd783046a56684a3418, type: 3}
   m_Name: DefaultConfig
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.PlayerConfig
-  <InitialConfig>k__BackingField: {fileID: 11400000, guid: 480bfc51254c2764c9973f2d212f8e44, type: 2}
-  <BasicConfig>k__BackingField: {fileID: 11400000, guid: 26e558d837ccd72438ec46a46af5c5fe, type: 2}
+  <InitialConfigs>k__BackingField:
+  - {fileID: 11400000, guid: 066762ea200909f4193b9c597e43521e, type: 2}
+  - {fileID: 11400000, guid: 1a0c9a6e1477f9f478434b1fae092848, type: 2}
+  - {fileID: 11400000, guid: d4287a0a394af6d4fa0bf9754ef6bfdb, type: 2}
+  - {fileID: 11400000, guid: dfe3a80baa7042e4d9968af8517df445, type: 2}
+  - {fileID: 11400000, guid: a866ac9b510609f4a830db4bc1fd2170, type: 2}
+  - {fileID: 11400000, guid: bbdfd8b81883775408ddac93ca6eee6f, type: 2}
+  - {fileID: 11400000, guid: 480bfc51254c2764c9973f2d212f8e44, type: 2}
   <ExperienceConfig>k__BackingField: {fileID: 11400000, guid: 6ca48198dec476b4f9cde410c88c74c5, type: 2}

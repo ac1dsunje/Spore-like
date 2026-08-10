@@ -16,9 +16,12 @@ public class PlayerStats
     public event Action<StatType, float> OnStatUpdated;
 
 
-    public void Initialize(StatsConfig config)
+    public void Initialize(StatsConfig[] configs)
     {
-        AddInitialStats(config.Stats);
+        foreach (var config in configs)
+        {
+            AddInitialStats(config.Stats);
+        }
     }
 
     public void AddEvolution(Evolution evolution)
