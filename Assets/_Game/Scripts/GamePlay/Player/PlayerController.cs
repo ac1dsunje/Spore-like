@@ -2,6 +2,7 @@
 using _Game.Scripts.GamePlay.Abilities;
 using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Player.Modules;
+using _Game.Scripts.GamePlay.Player.Modules.Attack;
 using _Game.Scripts.GamePlay.Player.Modules.BiomeChecker;
 using _Game.Scripts.GamePlay.Player.Modules.Endurance;
 using _Game.Scripts.GamePlay.Player.Modules.Health;
@@ -27,6 +28,7 @@ public class PlayerController: MonoBehaviour, IDamageAble
     [field: SerializeField] public PlayerMouth Mouth { get; private set; }
     [field: SerializeField] public PlayerEndurance Endurance { get; private set; }
     [field: SerializeField] public PlayerBiome BiomeChecker { get; private set; }
+    [field: SerializeField] public PlayerAttack Attack { get; private set; }
     [Header("Evolutions")]
     [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
     [SerializeField] private RaritiesDatabase _raritiesDatabase;
@@ -63,6 +65,7 @@ public class PlayerController: MonoBehaviour, IDamageAble
         Health.Construct(Model.Health);
         Endurance.Construct(Model.Endurance);
         BiomeChecker.Construct(Movement, _worldModel, Model);
+        Attack.Construct(Model.Attack);
     }
 
     public void TakeDamage(float value, IDamageAble damager)
