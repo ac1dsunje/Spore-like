@@ -18,7 +18,7 @@ public class FoodItem: MonoBehaviour
         _renderer.sprite = _config.Sprite;
         if (_config.AnimatorController)
         {
-         _animator.runtimeAnimatorController = _config.AnimatorController;
+            _animator.runtimeAnimatorController = _config.AnimatorController;
         }
 
         _health = _config.MaxHealth;
