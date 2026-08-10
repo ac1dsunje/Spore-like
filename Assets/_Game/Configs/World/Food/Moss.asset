@@ -18,3 +18,4 @@ MonoBehaviour:
   <Color>k__BackingField: {r: 0.30980393, g: 0.44313726, b: 0, a: 1}
   <AnimatorController>k__BackingField: {fileID: -3872917126106024461, guid: 2eab8cfeccba25141b8563947c043bf2, type: 3}
   <Sprite>k__BackingField: {fileID: 8240483266174315917, guid: 2eab8cfeccba25141b8563947c043bf2, type: 3}
+  <ParticlesPrefab>k__BackingField: {fileID: 7897101249626353857, guid: d8e716c34125011438a86971c35e78c7, type: 3}

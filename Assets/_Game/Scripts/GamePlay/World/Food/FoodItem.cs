@@ -8,7 +8,6 @@ public class FoodItem: MonoBehaviour
     private FoodConfig _config;
     [SerializeField] private Animator _animator;
     [SerializeField] private SpriteRenderer _renderer;
-    [SerializeField] private GameObject _particlePrefab;
 
     private int _feedAmount;
     public event Action<int> OnDeath;
@@ -35,7 +34,7 @@ public class FoodItem: MonoBehaviour
         var dmg = penetration - _shield >= 0 ? damage : 0;
         if (dmg <= 0) return;
         _health -= dmg;
-        SpawnParticles(_particlePrefab, transform);
+        SpawnParticles(_config.ParticlesPrefab, transform);
         if (_health <= 0f) Die();
     }
 
