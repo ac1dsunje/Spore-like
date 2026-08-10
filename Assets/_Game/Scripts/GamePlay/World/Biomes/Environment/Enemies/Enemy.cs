@@ -30,7 +30,7 @@ public class Enemy: MonoBehaviour, IDamageAble
     {
         _health -= amount;
         _health = Mathf.Max(0f, _health);
-        damager.TakeDamage(_damage, null);
+        damager?.TakeDamage(_damage, null);
         if (_health <= 0f)
         {
             Destroy(gameObject);
