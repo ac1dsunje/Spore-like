@@ -32,7 +32,6 @@ public class PlayerBiome: MonoBehaviour
     private void EnterBiome(Biome biome)
     {
         _currentBiome = biome;
-        Debug.Log("Entering biome: " + biome.Name);
 
         ApplyTemperature(biome.Temperature);
     }
