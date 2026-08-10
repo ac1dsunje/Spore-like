@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace _Game.Scripts.GamePlay.World.Biome
+namespace _Game.Scripts.GamePlay.World.Biomes
 {
 [CreateAssetMenu(fileName = "New Biome Config", menuName = "Configs/Game/World/Biomes/Biome")]
 public class BiomeConfig: ScriptableObject

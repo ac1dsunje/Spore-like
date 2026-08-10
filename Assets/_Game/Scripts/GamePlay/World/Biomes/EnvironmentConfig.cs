@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.World.Biome
+namespace _Game.Scripts.GamePlay.World.Biomes
 {
 [CreateAssetMenu(fileName = "New Environment Config", menuName = "Configs/Game/World/Biomes/Environment")]
 public class EnvironmentConfig: ScriptableObject

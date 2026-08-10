@@ -2,7 +2,7 @@
 using System.Linq;
 using _Game.Scripts.GamePlay.Player;
 using _Game.Scripts.GamePlay.Player.Modules.Movement;
-using _Game.Scripts.GamePlay.World.Biome;
+using _Game.Scripts.GamePlay.World.Biomes;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using VContainer;
@@ -32,12 +32,15 @@ public class WorldGenerator: MonoBehaviour
         _model = model;
         _playerRegistry = playerRegistry;
         
-        foreach (var biome in _model.Config.BiomeConfigs)
+        foreach (var biomeConfig in _model.Config.BiomeConfigs)
         {
             var map = Instantiate(_prefab, _grid);
-            map.gameObject.name = biome.name;
+            map.gameObject.name = biomeConfig.name;
 
-            _tilemaps.Add(biome, map);
+            var biome = map.GetComponent<Biome>();
+            biome.Construct(biomeConfig);
+
+            _tilemaps.Add(biomeConfig, map);
         }
         _playerRegistry.OnPlayerAdded += AddPlayer;
         _playerRegistry.OnPlayerRemoved += RemovePlayer;

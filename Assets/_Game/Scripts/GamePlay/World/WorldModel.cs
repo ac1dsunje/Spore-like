@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using _Game.Scripts.GamePlay.World.Biome;
+using _Game.Scripts.GamePlay.World.Biomes;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.World

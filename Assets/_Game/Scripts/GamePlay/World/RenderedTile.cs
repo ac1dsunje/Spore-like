@@ -1,4 +1,4 @@
-﻿using _Game.Scripts.GamePlay.World.Biome;
+﻿using _Game.Scripts.GamePlay.World.Biomes;
 using UnityEngine.Tilemaps;
 
 namespace _Game.Scripts.GamePlay.World

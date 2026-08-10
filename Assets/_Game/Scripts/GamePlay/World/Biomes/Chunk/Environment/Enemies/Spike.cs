@@ -1,8 +1,7 @@
-﻿using _Game.Scripts.GamePlay.Player;
-using _Game.Scripts.GamePlay.Player.Modules;
+﻿using _Game.Scripts.GamePlay.Player.Modules;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.World.Biome.Chunk.Environment.Enemies
+namespace _Game.Scripts.GamePlay.World.Biomes.Chunk.Environment.Enemies
 {
 public class Spike: MonoBehaviour, IDamageAble
 {
