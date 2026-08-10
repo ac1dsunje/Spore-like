@@ -1,4 +1,5 @@
 ﻿using System;
+using _Game.Scripts.Core.Services;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Movement
@@ -16,6 +17,7 @@ public class PlayerMovement: MonoBehaviour
         );
     
     private MovementModule _movement;
+    private IInputService _inputService;
     
     private float _horizontalInput;
     private float _verticalInput;
@@ -24,9 +26,10 @@ public class PlayerMovement: MonoBehaviour
 
     public event Action<PlayerMovement> OnGridPositionChanged;
     
-    public void Construct(MovementModule movement)
+    public void Construct(MovementModule movement, IInputService inputService)
     {
         _movement = movement;
+        _inputService = inputService;
     }    
     
     private void CheckMoveByGrid()
@@ -45,8 +48,16 @@ public class PlayerMovement: MonoBehaviour
 
     private void ReadInput()
     {
-        _horizontalInput = Input.GetAxisRaw("Horizontal");
-        _verticalInput = Input.GetAxisRaw("Vertical");
+        _horizontalInput = 0f;
+        _verticalInput = 0f;
+
+        if (_inputService.IsKeyPressed(KeyCode.A)) _horizontalInput -= 1f;
+
+        if (_inputService.IsKeyPressed(KeyCode.D)) _horizontalInput += 1f;
+
+        if (_inputService.IsKeyPressed(KeyCode.S)) _verticalInput -= 1f;
+
+        if (_inputService.IsKeyPressed(KeyCode.W)) _verticalInput += 1f;
     }
 
     private void FixedUpdate()

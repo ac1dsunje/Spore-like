@@ -14,11 +14,13 @@ public abstract class Ability: IDisposable
     private readonly EnduranceModule _endurance;
 
     private readonly Ticker _ticker;
+    private readonly IInputService _input;
     
     private bool _isActive;
     
-    protected Ability(PlayerModel model, AbilityConfig config, Ticker ticker)
+    protected Ability(PlayerModel model, AbilityConfig config, Ticker ticker, IInputService inputService)
     {
+        _input = inputService;
         _config = config;
         Model = model;
         _endurance = model.Endurance;
@@ -27,13 +29,13 @@ public abstract class Ability: IDisposable
     }
     
     private void Update(float deltaTime)
-    { 
-        if (Input.GetKeyDown(_config.Key) && _endurance.HasEnoughEndurance(_config.StartCost) && !_isActive)
+    {
+        if (_input.WasKeyPressed(_config.Key) && _endurance.HasEnoughEndurance(_config.StartCost) && !_isActive)
         {
             Enable();
         }
 
-        if (Input.GetKeyUp(_config.Key) && _isActive)
+        if (_input.WasKeyReleased(_config.Key) && _isActive)
         {
             Disable();
             return;

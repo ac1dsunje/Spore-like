@@ -11,7 +11,6 @@ using _Game.Scripts.GamePlay.Player.Modules.Movement;
 using _Game.Scripts.GamePlay.Player.Modules.Vision;
 using _Game.Scripts.GamePlay.Rarities;
 using _Game.Scripts.GamePlay.World;
-using _Game.Scripts.GamePlay.World.Biomes;
 using UnityEngine;
 using VContainer;
 
@@ -39,6 +38,7 @@ public class PlayerController: MonoBehaviour, IDamageAble
     [Inject] private Ticker _ticker;
     [Inject] private PlayerRegistry _playerRegistry;
     [Inject] private WorldModel _worldModel;
+    [Inject] private IInputService _input;
 
     public void Initialize()
     {
@@ -51,7 +51,7 @@ public class PlayerController: MonoBehaviour, IDamageAble
     {
         Model = new(_playerConfig);
         
-        var abilityFactory = new AbilityFactory(Model, ticker);
+        var abilityFactory = new AbilityFactory(Model, ticker, _input);
         Model.Abilities.SetFactory(abilityFactory);
         
         Model.Evolutions.Initialize(_evolutionsDatabase, _raritiesDatabase, _minEvolutions);
@@ -60,12 +60,12 @@ public class PlayerController: MonoBehaviour, IDamageAble
     private void InitializeActiveModules()
     {
         Vision.Construct(Model.Vision);
-        Movement.Construct(Model.Movement);
+        Movement.Construct(Model.Movement, _input);
         Mouth.Construct(Model.MouthModule);
         Health.Construct(Model.Health);
         Endurance.Construct(Model.Endurance);
         BiomeChecker.Construct(Movement, _worldModel, Model);
-        Attack.Construct(Model.Attack);
+        Attack.Construct(Model.Attack, _input);
     }
 
     public void TakeDamage(float value, IDamageAble damager)

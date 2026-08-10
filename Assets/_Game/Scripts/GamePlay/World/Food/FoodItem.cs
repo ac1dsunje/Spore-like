@@ -48,7 +48,8 @@ public class FoodItem: MonoBehaviour
     private void Die()
     {
         OnDeath?.Invoke(_config.FeedAmount);
-        Destroy(gameObject);
+        Destroy(gameObject, 1f);
+        gameObject.SetActive(false);
     }
 }
 }

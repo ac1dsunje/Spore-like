@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using _Game.Scripts.Core.Services;
+using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Attack
 {
@@ -7,32 +8,20 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private AttackItem _attackObject;
     
     private AttackModule _module;
+    private IInputService _inputService;
 
-    public void Construct(AttackModule module)
+    public void Construct(AttackModule module, IInputService inputService)
     {
         _module = module;
+        _inputService = inputService;
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (_inputService.WasLeftMousePressed)
         {
             Attack();
         }
-    }
-
-    private void UpdateAttackPosition()
-    {
-        var mouseWorldPosition = Input.mousePosition;
-        mouseWorldPosition.z = transform.position.z;
-
-        Vector2 direction = (mouseWorldPosition - transform.position).normalized;
-
-        _attackObject.transform.localPosition = direction * _module.AttackRange;
-
-        var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-        _attackObject.transform.localRotation = Quaternion.Euler(0f, 0f, angle);
     }
 
     private void Attack()
@@ -40,7 +29,19 @@ public class PlayerAttack : MonoBehaviour
         _attackObject.gameObject.SetActive(true);
         UpdateAttackPosition();
         _attackObject.SetDamage(_module.PhysicalDamage);
-        Debug.Log($"Attack with {_module.PhysicalDamage} damage, range {_module.AttackRange}");
+    }
+
+    private void UpdateAttackPosition()
+    {
+        var mousePosition = _inputService.MousePosition;
+        Vector2 playerPosition = transform.position;
+        var direction = (mousePosition - playerPosition).normalized;
+
+        _attackObject.transform.localPosition = direction * _module.AttackRange;
+
+        var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        _attackObject.transform.localRotation = Quaternion.Euler(0f, 0f, angle);
     }
 }
 }
