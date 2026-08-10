@@ -902,7 +902,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.EntryPoint
   _camera: {fileID: 62460934}
-  _spawnPlayerAtStart: 1
 --- !u!114 &1986825666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1208,7 +1207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.WorldGenerator
   _renderDistance: 1
   _grid: {fileID: 1048624192882788312}
-  _prefab: {fileID: -3647080744906430720, guid: bda9f11c25e5c7346910a8b0a2ae72b7, type: 3}
+  _prefab: {fileID: 5136348108727737102, guid: bda9f11c25e5c7346910a8b0a2ae72b7, type: 3}
 --- !u!4 &1048624192882788312
 Transform:
   m_ObjectHideFlags: 0

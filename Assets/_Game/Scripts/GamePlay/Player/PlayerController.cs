@@ -8,13 +8,14 @@ using _Game.Scripts.GamePlay.Player.Modules.Mouth;
 using _Game.Scripts.GamePlay.Player.Modules.Movement;
 using _Game.Scripts.GamePlay.Player.Modules.Vision;
 using _Game.Scripts.GamePlay.Rarities;
+using _Game.Scripts.GamePlay.World;
 using _Game.Scripts.GamePlay.World.Biomes;
 using UnityEngine;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player
 {
-public class PlayerController: MonoBehaviour, IDamageAble, IBiomeAddicted
+public class PlayerController: MonoBehaviour, IDamageAble
 {
     [Header("Config")]
     [SerializeField] private PlayerConfig _playerConfig;
@@ -33,6 +34,7 @@ public class PlayerController: MonoBehaviour, IDamageAble, IBiomeAddicted
 
     [Inject] private Ticker _ticker;
     [Inject] private PlayerRegistry _playerRegistry;
+    [Inject] private WorldModel _worldModel;
 
     private Biome _currentBiome;
 
@@ -41,13 +43,22 @@ public class PlayerController: MonoBehaviour, IDamageAble, IBiomeAddicted
         CreateModel(_ticker);
         InitializeActiveModules();
         _playerRegistry.NotifyPlayerAdded(this);
+
+        Movement.OnGridPositionChanged += TryEnterBiome;
+        EnterBiome(_worldModel.GetBiome(new Vector3Int((int)transform.position.x, (int)transform.position.y, 0)));
     }
 
-    public void EnterBiome(Biome biome)
+    private void TryEnterBiome(PlayerMovement player, Vector3Int position)
     {
-        if (biome == _currentBiome) return;
+        var currentBiome = _worldModel.GetBiome(position);
+        if (currentBiome == _currentBiome) return;
+        EnterBiome(currentBiome);
+    }
+
+    private void EnterBiome(Biome biome)
+    {
         _currentBiome = biome;
-        Debug.Log("Entering biome: " + biome.name);
+        Debug.Log("Entering biome: " + biome.Name);
 
         ApplyTemperature(biome.Temperature);
     }
@@ -99,6 +110,7 @@ public class PlayerController: MonoBehaviour, IDamageAble, IBiomeAddicted
     private void OnDestroy()
     {
         Model.Dispose();
+        Movement.OnGridPositionChanged -= TryEnterBiome;
     }
 }
 }

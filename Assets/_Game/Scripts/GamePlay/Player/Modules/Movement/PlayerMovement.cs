@@ -15,14 +15,14 @@ public class PlayerMovement: MonoBehaviour
 
     private Vector3Int _lastPosition;
 
-    public event Action<PlayerMovement> OnGridPositionChanged;
+    public event Action<PlayerMovement, Vector3Int> OnGridPositionChanged;
     
     public void Construct(MovementModule movement)
     {
         _movement = movement;
     }    
     
-    public Vector3Int GetGridPosition() => 
+    private Vector3Int GetGridPosition() => 
         new(
             (int)transform.position.x, 
             (int)transform.position.y, 
@@ -34,7 +34,7 @@ public class PlayerMovement: MonoBehaviour
         var currentPos = GetGridPosition();
         if (currentPos == _lastPosition) return;
         _lastPosition = currentPos;
-        OnGridPositionChanged?.Invoke(this);
+        OnGridPositionChanged?.Invoke(this, currentPos);
         _movement.OvercomeDistance();
     }
 

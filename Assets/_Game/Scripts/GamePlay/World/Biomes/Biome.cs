@@ -1,27 +1,15 @@
-﻿using _Game.Scripts.GamePlay.Player.Modules;
-using UnityEngine;
-
-namespace _Game.Scripts.GamePlay.World.Biomes
+﻿namespace _Game.Scripts.GamePlay.World.Biomes
 {
-public class Biome: MonoBehaviour
+public class Biome
 {
-    public float Temperature => _config.Temperature;
+    public string Name => Config.name;
+    public float Temperature => Config.Temperature;
     
-    private BiomeConfig _config;
+    public BiomeConfig Config { get; private set; }
 
-    public void Construct(BiomeConfig biomeConfig)
+    public Biome(BiomeConfig biomeConfig)
     {
-        _config = biomeConfig;
-    }
-
-    
-    // ToDo : get biome by coordinates and not by colliders
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.TryGetComponent(out IBiomeAddicted creature))
-        {
-            creature.EnterBiome(this);
-        }
+        Config = biomeConfig;
     }
 }
 }

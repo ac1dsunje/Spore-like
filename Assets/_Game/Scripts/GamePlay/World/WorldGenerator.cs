@@ -14,14 +14,14 @@ public class WorldGenerator: MonoBehaviour
 {
     [SerializeField] private int _renderDistance = 1;
     [SerializeField] private Transform _grid;
-    [SerializeField] private Biome _prefab;
+    [SerializeField] private GameObject _prefab;
     
     private readonly List<PlayerController> _players = new();
     
     private WorldModel _model;
     private PlayerRegistry _playerRegistry;
     
-    private readonly Dictionary<BiomeConfig, Tilemap> _tilemaps = new();
+    private readonly Dictionary<Biome, Tilemap> _tilemaps = new();
     private readonly Dictionary<Vector3Int, RenderedTile> _cachedTiles = new();
     private readonly Dictionary<Vector3Int, int> _tileUsage = new();
     private readonly Dictionary<PlayerMovement, HashSet<Vector3Int>> _playerTiles = new();
@@ -32,14 +32,13 @@ public class WorldGenerator: MonoBehaviour
         _model = model;
         _playerRegistry = playerRegistry;
         
-        foreach (var biomeConfig in _model.Config.BiomeConfigs)
+        foreach (var biome in _model.GetBiomes())
         {
-            var biome = Instantiate(_prefab, _grid);
-            biome.gameObject.name = biomeConfig.name;
-            biome.Construct(biomeConfig);
+            var biomeObject = Instantiate(_prefab, _grid);
+            biomeObject.name = biome.Name;
 
-            var tilemap = biome.GetComponent<Tilemap>();
-            _tilemaps.Add(biomeConfig, tilemap);
+            var tilemap = biomeObject.GetComponent<Tilemap>();
+            _tilemaps.Add(biome, tilemap);
         }
         _playerRegistry.OnPlayerAdded += AddPlayer;
         _playerRegistry.OnPlayerRemoved += RemovePlayer;
@@ -53,7 +52,7 @@ public class WorldGenerator: MonoBehaviour
         _playerTiles.Add(player.Movement, new HashSet<Vector3Int>());
         
         player.Movement.OnGridPositionChanged += Generate;
-        Generate(player.Movement);
+        Generate(player.Movement, new Vector3Int((int)player.transform.position.x, (int)player.transform.position.y, 0));
     }
 
     private void RemovePlayer(PlayerController player)
@@ -68,11 +67,10 @@ public class WorldGenerator: MonoBehaviour
         _players.Remove(player);
     }
 
-    private int GetDistance() => _renderDistance * _model.Config.ChunkSize;
+    private int GetDistance() => _renderDistance * _model.ChunkSize;
     
-    private void Generate(PlayerMovement player)
+    private void Generate(PlayerMovement player, Vector3Int playerPosition)
     {
-        var playerPosition = player.GetGridPosition();
         var distance = GetDistance();
         var currentTiles = _playerTiles[player];
         
@@ -160,7 +158,7 @@ public class WorldGenerator: MonoBehaviour
         }
 
         var biome = _model.GetBiome(position);
-        var tile = biome.RandomTile;
+        var tile = biome.Config.RandomTile;
 
         PlaceTile(_tilemaps[biome], position, tile);
 
@@ -177,11 +175,11 @@ public class WorldGenerator: MonoBehaviour
         }
     }
 
-    private void TryPlaceEnvironment(Vector3Int position, BiomeConfig biome)
+    private void TryPlaceEnvironment(Vector3Int position, Biome biome)
     {
         var rand = Random.Range(0, 100);
-        if (rand >= biome.ChanceEnvironment) return;
-        var environment = biome.GetRandomEnvironment();
+        if (rand >= biome.Config.ChanceEnvironment) return;
+        var environment = biome.Config.GetRandomEnvironment();
         var prefab = environment.Prefabs[Random.Range(0, environment.Prefabs.Length)];
         var setPos = new Vector3(position.x + 0.5f, position.y + 0.5f, position.z);
         Instantiate(prefab, setPos, Quaternion.identity, _tilemaps[biome].transform);

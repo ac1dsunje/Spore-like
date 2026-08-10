@@ -5,10 +5,10 @@ namespace _Game.Scripts.GamePlay.World
 {
 public readonly struct RenderedTile
 {
-    public readonly BiomeConfig Biome;
+    public readonly Biome Biome;
     public readonly TileBase Tile;
 
-    public RenderedTile(BiomeConfig biome, TileBase tile)
+    public RenderedTile(Biome biome, TileBase tile)
     {
         Biome = biome;
         Tile = tile;
