@@ -4,10 +4,8 @@ namespace _Game.Scripts.GamePlay.Evolutions.Experience.Types
 {
 public class DamageTaking: EvolutionExperienceService
 {
-    public DamageTaking(PlayerModel playerModel) : base(playerModel) => PlayerModel.Health.OnDamageTaken += OnDamageTaken;
+    public DamageTaking(PlayerModel playerModel, float amount) : base(playerModel, amount) => PlayerModel.Health.OnDamageTaken += AddAmount;
 
-    private void OnDamageTaken(int damage) => RaiseEvent(damage);
-
-    public override void Dispose() => PlayerModel.Health.OnDamageTaken -= OnDamageTaken;
+    public override void Dispose() => PlayerModel.Health.OnDamageTaken -= AddAmount;
 }
 }

@@ -17,19 +17,19 @@ public enum EvolutionExperienceType
 }
 public class EvolutionExperienceFactory
 {
-    public EvolutionExperienceService GetMethod(EvolutionExperienceType experienceType, PlayerModel playerModel)
+    public EvolutionExperienceService GetMethod(EvolutionExperienceConfig config, PlayerModel playerModel)
     {
-        return experienceType switch
+        return config.Type switch
         {
-            EvolutionExperienceType.DamageReflection => new DamageReflecting(playerModel),
-            EvolutionExperienceType.ObjectDiscover => new ObjectsDiscovering(playerModel),
-            EvolutionExperienceType.FoodEating => new FoodEating(playerModel),
-            EvolutionExperienceType.DamageResistance => new DamageResisting(playerModel),
-            EvolutionExperienceType.DamageTaking => new DamageTaking(playerModel),
-            EvolutionExperienceType.Healing => new Healing(playerModel),
-            EvolutionExperienceType.DistanceOvercoming => new DistanceOvercoming(playerModel),
-            EvolutionExperienceType.EnduranceRecovering => new EnduranceRecovering(playerModel),
-            _ => throw new ArgumentOutOfRangeException(nameof(experienceType), experienceType, null)
+            EvolutionExperienceType.DamageReflection => new DamageReflecting(playerModel, config.Amount),
+            EvolutionExperienceType.ObjectDiscover => new ObjectsDiscovering(playerModel, config.Amount),
+            EvolutionExperienceType.FoodEating => new FoodEating(playerModel, config.Amount),
+            EvolutionExperienceType.DamageResistance => new DamageResisting(playerModel, config.Amount),
+            EvolutionExperienceType.DamageTaking => new DamageTaking(playerModel, config.Amount),
+            EvolutionExperienceType.Healing => new Healing(playerModel, config.Amount),
+            EvolutionExperienceType.DistanceOvercoming => new DistanceOvercoming(playerModel, config.Amount),
+            EvolutionExperienceType.EnduranceRecovering => new EnduranceRecovering(playerModel, config.Amount),
+            _ => throw new ArgumentOutOfRangeException(nameof(config), config, null)
         };
     }
 }

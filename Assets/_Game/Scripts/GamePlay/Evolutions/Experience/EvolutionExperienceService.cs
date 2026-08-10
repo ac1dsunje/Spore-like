@@ -8,13 +8,24 @@ public abstract class EvolutionExperienceService
     protected readonly PlayerModel PlayerModel;
 
     public event Action<int> OnExperienceGained;
+
+    private readonly float _maxAmount;
+    private float _currentAmount;
     
-    protected EvolutionExperienceService(PlayerModel playerModel)
+    protected EvolutionExperienceService(PlayerModel playerModel, float amount)
     {
         PlayerModel = playerModel;
+        _maxAmount = amount;
     }
-    
-    protected void RaiseEvent(int experiencePoints) => OnExperienceGained?.Invoke(experiencePoints);
+
+    protected void AddAmount(float amount)
+    {
+        _currentAmount += amount;
+        if (_currentAmount >= _maxAmount)
+        {
+            OnExperienceGained?.Invoke(1);
+        }
+    }
 
     public abstract void Dispose();
 }

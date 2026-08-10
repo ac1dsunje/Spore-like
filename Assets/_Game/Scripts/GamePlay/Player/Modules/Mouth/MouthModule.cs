@@ -11,7 +11,7 @@ public class MouthModule: StatModule
     public float EatingTime => _eatingTime / 100f;
 
     private float _eatingTime;
-    public event Action<int> OnFoodPointsAchieved;
+    public event Action<float> OnFoodPointsAchieved;
 
     public MouthModule(PlayerStats playerStats) : base(playerStats)
     {

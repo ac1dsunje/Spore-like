@@ -4,10 +4,8 @@ namespace _Game.Scripts.GamePlay.Evolutions.Experience.Types
 {
 public class DamageReflecting: EvolutionExperienceService
 {
-    public DamageReflecting(PlayerModel playerModel) : base(playerModel) => PlayerModel.Defense.OnDamageReflected += OnDamageReflected;
+    public DamageReflecting(PlayerModel playerModel, float amount) : base(playerModel, amount) => PlayerModel.Defense.OnDamageReflected += AddAmount;
 
-    private void OnDamageReflected(int damage) => RaiseEvent(damage);
-
-    public override void Dispose() => PlayerModel.Defense.OnDamageReflected -= OnDamageReflected;
+    public override void Dispose() => PlayerModel.Defense.OnDamageReflected -= AddAmount;
 }
 }

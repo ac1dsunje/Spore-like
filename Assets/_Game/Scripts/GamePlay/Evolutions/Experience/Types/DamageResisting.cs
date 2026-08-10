@@ -4,10 +4,8 @@ namespace _Game.Scripts.GamePlay.Evolutions.Experience.Types
 {
 public class DamageResisting: EvolutionExperienceService
 {
-    public DamageResisting(PlayerModel playerModel) : base(playerModel) => PlayerModel.Defense.OnDamageResisted += OnDamageResisted;
+    public DamageResisting(PlayerModel playerModel, float amount) : base(playerModel, amount) => PlayerModel.Defense.OnDamageResisted += AddAmount;
 
-    private void OnDamageResisted(int damage) => RaiseEvent(damage);
-
-    public override void Dispose() => PlayerModel.Defense.OnDamageResisted -= OnDamageResisted;
+    public override void Dispose() => PlayerModel.Defense.OnDamageResisted -= AddAmount;
 }
 }

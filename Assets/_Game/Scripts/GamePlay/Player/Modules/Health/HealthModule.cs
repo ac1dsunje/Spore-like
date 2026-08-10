@@ -12,8 +12,8 @@ public class HealthModule: StatModule, IResource
     public float Regeneration { get; private set; }
     
     public event Action OnDeath;
-    public event Action<int> OnDamageTaken;
-    public event Action<int> OnHealed;
+    public event Action<float> OnDamageTaken;
+    public event Action<float> OnHealed;
     public event Action<float, float> OnValueChanged;
 
     public HealthModule(PlayerStats playerStats) : base(playerStats)
@@ -26,7 +26,7 @@ public class HealthModule: StatModule, IResource
     {
         Health -= amount;
         Health = Mathf.Max(0, Health);
-        OnDamageTaken?.Invoke((int)amount);
+        OnDamageTaken?.Invoke(amount);
         OnValueChanged?.Invoke(Health, MaxHealth);
         
         if (Health <= 0)
@@ -45,7 +45,7 @@ public class HealthModule: StatModule, IResource
         }
 
         if (Mathf.Approximately(health, Health)) return;
-        OnHealed?.Invoke((int) amount);
+        OnHealed?.Invoke(amount);
         OnValueChanged?.Invoke(Health, MaxHealth);
     }
     

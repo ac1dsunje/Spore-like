@@ -4,10 +4,8 @@ namespace _Game.Scripts.GamePlay.Evolutions.Experience.Types
 {
 public class DistanceOvercoming: EvolutionExperienceService
 {
-    public DistanceOvercoming(PlayerModel playerModel) : base(playerModel) => PlayerModel.Movement.OnDistanceOvercome += OnDistanceOvercome;
+    public DistanceOvercoming(PlayerModel playerModel, float amount) : base(playerModel, amount) => PlayerModel.Movement.OnDistanceOvercome += AddAmount;
 
-    private void OnDistanceOvercome(int value) => RaiseEvent(value);
-
-    public override void Dispose() => PlayerModel.Movement.OnDistanceOvercome -= OnDistanceOvercome;
+    public override void Dispose() => PlayerModel.Movement.OnDistanceOvercome -= AddAmount;
 }
 }

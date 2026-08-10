@@ -24,7 +24,7 @@ public class MovementModule : StatModule
     public bool UseSprint { get; set; }
     public bool DashRequested { get; private set; }
 
-    public event Action<int> OnDistanceOvercome;
+    public event Action<float> OnDistanceOvercome;
     
     private float _moveSpeed;
     private float _acceleration;

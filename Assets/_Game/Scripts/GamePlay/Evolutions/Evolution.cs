@@ -54,9 +54,9 @@ public class Evolution: IDisposable
 
     private void SubscribeExperienceManagers()
     {
-        foreach (var type in Config.ExperienceTypes)
+        foreach (var config in Config.ExperienceTypes)
         {
-            var experienceType = _expFactory.GetMethod(type, _player);
+            var experienceType = _expFactory.GetMethod(config, _player);
             _experienceManagers.Add(experienceType);
             experienceType.OnExperienceGained += UpdateExperience;
         }

@@ -4,10 +4,8 @@ namespace _Game.Scripts.GamePlay.Evolutions.Experience.Types
 {
 public class Healing: EvolutionExperienceService
 {
-    public Healing(PlayerModel playerModel) : base(playerModel) => PlayerModel.Health.OnHealed += OnHealed;
+    public Healing(PlayerModel playerModel, float amount) : base(playerModel, amount) => PlayerModel.Health.OnHealed += AddAmount;
 
-    private void OnHealed(int damage) => RaiseEvent(damage);
-
-    public override void Dispose() => PlayerModel.Health.OnHealed -= OnHealed;
+    public override void Dispose() => PlayerModel.Health.OnHealed -= AddAmount;
 }
 }

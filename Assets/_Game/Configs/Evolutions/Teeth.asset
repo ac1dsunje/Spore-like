@@ -29,5 +29,8 @@ MonoBehaviour:
   <State>k__BackingField: 1
   <Requires>k__BackingField: []
   <Blocks>k__BackingField: []
+  <Abilities>k__BackingField: []
   <ExperienceForFirstLevel>k__BackingField: 10
-  <ExperienceTypes>k__BackingField: 01000000
+  <ExperienceTypes>k__BackingField:
+  - <Type>k__BackingField: 1
+    <Amount>k__BackingField: 1

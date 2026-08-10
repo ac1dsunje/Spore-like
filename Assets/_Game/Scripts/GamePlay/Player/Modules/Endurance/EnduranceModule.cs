@@ -18,7 +18,7 @@ public class EnduranceModule: StatModule, IResource
     
     private readonly HashSet<Ability> _abilityControllers = new();
     public event Action<float, float> OnValueChanged;
-    public event Action<int> OnEnduranceRecovered;
+    public event Action<float> OnEnduranceRecovered;
 
     public EnduranceModule(PlayerStats playerStats) : base(playerStats)
     {
@@ -42,7 +42,7 @@ public class EnduranceModule: StatModule, IResource
         }
         if (Mathf.Approximately(endurance, _endurance)) return;
         OnValueChanged?.Invoke(_endurance, _maxEndurance);
-        OnEnduranceRecovered?.Invoke(1);
+        OnEnduranceRecovered?.Invoke(value);
     }
 
     public void UseEndurance(float value)

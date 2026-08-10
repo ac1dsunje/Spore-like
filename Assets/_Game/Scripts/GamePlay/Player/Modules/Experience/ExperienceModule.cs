@@ -26,10 +26,10 @@ public class ExperienceModule: IDisposable, IResource
         _mouthModule.OnFoodPointsAchieved += AddExperience;
     }
 
-    private void AddExperience(int amount)
+    private void AddExperience(float amount)
     {
-        OnExperienceGained?.Invoke(amount);
-        UpdateExperience(amount);
+        OnExperienceGained?.Invoke((int)amount);
+        UpdateExperience((int)amount);
     }
 
     private void UpdateExperience(int amount)
