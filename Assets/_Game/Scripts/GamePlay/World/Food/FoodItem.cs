@@ -5,7 +5,10 @@ namespace _Game.Scripts.GamePlay.World.Food
 {
 public class FoodItem: MonoBehaviour
 {
-    [SerializeField] private FoodConfig _config;
+    private FoodConfig _config;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private SpriteRenderer _renderer;
+    [SerializeField] private GameObject _particlePrefab;
 
     private int _feedAmount;
     public event Action<int> OnDeath;
@@ -13,8 +16,15 @@ public class FoodItem: MonoBehaviour
     private float _health;
     private float _shield;
 
-    private void Awake()
+    public void Construct(FoodConfig config)
     {
+        _config = config;
+        _renderer.sprite = _config.Sprite;
+        if (_config.AnimatorController)
+        {
+         _animator.runtimeAnimatorController = _config.AnimatorController;
+        }
+
         _health = _config.MaxHealth;
         _shield = _config.Shield;
         _feedAmount = _config.FeedAmount;
@@ -25,13 +35,14 @@ public class FoodItem: MonoBehaviour
         var dmg = penetration - _shield >= 0 ? damage : 0;
         if (dmg <= 0) return;
         _health -= dmg;
-        SpawnParticles(_config.Particle, transform);
+        SpawnParticles(_particlePrefab, transform);
         if (_health <= 0f) Die();
     }
 
     private void SpawnParticles(GameObject particle, Transform parent)
     {
-        Instantiate(particle, parent.position, Quaternion.identity, parent);
+        var particles = Instantiate(particle, parent.position, Quaternion.identity, parent).GetComponent<ParticleSystem>();
+        particles.startColor = _config.Color;
     }
 
     private void Die()

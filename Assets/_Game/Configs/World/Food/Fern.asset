@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0030ccaa56b24bdfbe9c600651de2505, type: 3}
-  m_Name: Coral
+  m_Name: Fern
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Food.FoodConfig
-  <MaxHealth>k__BackingField: 10
-  <Shield>k__BackingField: 1.5
+  <MaxHealth>k__BackingField: 5
+  <Shield>k__BackingField: 0
   <FeedAmount>k__BackingField: 1
-  <Particle>k__BackingField: {fileID: 7897101249626353857, guid: 4199cdb81a213284abf5eba34f311d86, type: 3}
+  <Color>k__BackingField: {r: 0.30980393, g: 0.44313726, b: 0, a: 1}
+  <AnimatorController>k__BackingField: {fileID: -1783843613245162241, guid: eb56520efa74a9748bacad14d90b74ae, type: 3}
+  <Sprite>k__BackingField: {fileID: -2092127190153496815, guid: eb56520efa74a9748bacad14d90b74ae, type: 3}

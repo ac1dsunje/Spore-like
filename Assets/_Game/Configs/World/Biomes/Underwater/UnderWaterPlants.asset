@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83806caa17d9442d950970dd922c6565, type: 3}
   m_Name: UnderWaterPlants
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Biome.EnvironmentConfig
-  <Prefabs>k__BackingField:
-  - {fileID: 2242808679465882649, guid: 531ed792fe9f15541abc265b55d4d14c, type: 3}
-  - {fileID: 2242808679465882649, guid: 3abfb2ade61687241bc1ec0dea4169b8, type: 3}
-  - {fileID: 2242808679465882649, guid: fb18b5f42f61c0248906eabff0079a6b, type: 3}
-  - {fileID: 2242808679465882649, guid: 5726641cccb5b5a4597e29fbdf029b32, type: 3}
-  - {fileID: 2242808679465882649, guid: 938b644e46207614b97674424b242ec4, type: 3}
+  <FoodItems>k__BackingField:
+  - {fileID: 11400000, guid: 50f484e37a6981d40bebc653fb44bb00, type: 2}
+  - {fileID: 11400000, guid: 2b431e0e606960644b69d1ea913c2712, type: 2}
+  - {fileID: 11400000, guid: 0ee50afcce5a4264bacb827e4e47b871, type: 2}
+  - {fileID: 11400000, guid: 5918d4f95e650584f8040c93f287116e, type: 2}
   <Chance>k__BackingField: 50

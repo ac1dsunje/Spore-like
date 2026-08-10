@@ -3,6 +3,7 @@ using System.Linq;
 using _Game.Scripts.GamePlay.Player;
 using _Game.Scripts.GamePlay.Player.Modules.Movement;
 using _Game.Scripts.GamePlay.World.Biomes;
+using _Game.Scripts.GamePlay.World.Food;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using VContainer;
@@ -15,6 +16,7 @@ public class WorldGenerator: MonoBehaviour
     [SerializeField] private int _renderDistance = 1;
     [SerializeField] private Transform _grid;
     [SerializeField] private GameObject _prefab;
+    [SerializeField] private GameObject _foodPrefab;
     
     private readonly List<PlayerController> _players = new();
     
@@ -177,9 +179,10 @@ public class WorldGenerator: MonoBehaviour
         var rand = Random.Range(0, 100);
         if (rand >= biome.Config.ChanceEnvironment) return;
         var environment = biome.Config.GetRandomEnvironment();
-        var prefab = environment.Prefabs[Random.Range(0, environment.Prefabs.Length)];
+        var foodItem = environment.FoodItems[Random.Range(0, environment.FoodItems.Length)];
         var setPos = new Vector3(position.x + 0.5f, position.y + 0.5f, position.z);
-        Instantiate(prefab, setPos, Quaternion.identity, _tilemaps[biome].transform);
+        var item = Instantiate(_foodPrefab, setPos, Quaternion.identity, _tilemaps[biome].transform).GetComponent<FoodItem>();
+        item.Construct(foodItem);
     }
 
     private void OnDestroy()

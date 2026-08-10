@@ -15,4 +15,6 @@ MonoBehaviour:
   <MaxHealth>k__BackingField: 5
   <Shield>k__BackingField: 0
   <FeedAmount>k__BackingField: 1
-  <Particle>k__BackingField: {fileID: 7897101249626353857, guid: 9a42c651f8d58ae4b8020cb536d23eb7, type: 3}
+  <Color>k__BackingField: {r: 0.30980393, g: 0.44313726, b: 0, a: 1}
+  <AnimatorController>k__BackingField: {fileID: -3872917126106024461, guid: 2eab8cfeccba25141b8563947c043bf2, type: 3}
+  <Sprite>k__BackingField: {fileID: 8240483266174315917, guid: 2eab8cfeccba25141b8563947c043bf2, type: 3}

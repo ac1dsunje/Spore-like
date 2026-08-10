@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83806caa17d9442d950970dd922c6565, type: 3}
   m_Name: CoralReefPlants
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Biome.EnvironmentConfig
-  <Prefabs>k__BackingField:
-  - {fileID: 2242808679465882649, guid: a024b8fc5f8474244ae0cc89e88249f8, type: 3}
-  - {fileID: 2242808679465882649, guid: 5726641cccb5b5a4597e29fbdf029b32, type: 3}
+  <FoodItems>k__BackingField:
+  - {fileID: 11400000, guid: 56fea54bd5a3a5243a536ec8c1a37b7c, type: 2}
+  - {fileID: 11400000, guid: d287eab7270643e44b397184f726779a, type: 2}
   <Chance>k__BackingField: 50
