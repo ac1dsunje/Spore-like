@@ -42,7 +42,7 @@ public class PlayerController: MonoBehaviour, IDamageAble
     {
         CreateModel(_ticker);
         InitializeActiveModules();
-        _playerRegistry.NotifyPlayerAdded(this);
+        _playerRegistry.AddPlayer(this);
     }
 
     private void CreateModel(Ticker ticker)

@@ -46,8 +46,6 @@ public class WorldGenerator: MonoBehaviour
 
     private void AddPlayer(PlayerController player)
     {
-        if (_players.Contains(player)) return;
-        
         _players.Add(player);
         _playerTiles.Add(player.Movement, new HashSet<Vector3Int>());
         
@@ -57,8 +55,6 @@ public class WorldGenerator: MonoBehaviour
 
     private void RemovePlayer(PlayerController player)
     {
-        if (!_players.Contains(player)) return;
-        
         player.Movement.OnGridPositionChanged -= Generate;
         
         UnloadPlayerTiles(player.Movement);
