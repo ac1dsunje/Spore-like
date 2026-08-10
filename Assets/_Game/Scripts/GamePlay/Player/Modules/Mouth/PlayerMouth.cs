@@ -31,15 +31,14 @@ public class PlayerMouth: MonoBehaviour
         if (!other.TryGetComponent<FoodItem>(out var food)) return;
         if (_currentFood == food) _currentFood.OnDeath -= OnFoodDeath;
         _currentFood = null;
-        StopAllCoroutines();
     }
 
     private IEnumerator Eat(FoodItem food)
     {
-        while (true)
+        while (_currentFood)
         {
             yield return new WaitForSeconds(_module.EatingTime);
-            food.TakeHit(_module.EatingStrength, _module.EatingPenetration);
+            food?.TakeHit(_module.EatingStrength, _module.EatingPenetration);
         }
     }
 
