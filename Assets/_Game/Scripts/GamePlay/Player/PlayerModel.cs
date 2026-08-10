@@ -24,7 +24,7 @@ public class PlayerModel: IDisposable
     public VisionModule Vision { get; private set; }
     public MovementModule Movement { get; private set; }
     public HealthModule Health { get; private set; }
-    public EatModule EatModule { get; private set; }
+    public MouthModule MouthModule { get; private set; }
     public AttackModule Attack { get; private set; }
     public EnduranceModule Endurance { get; private set; }
     public DefenseModule Defense { get; private set; }
@@ -46,11 +46,11 @@ public class PlayerModel: IDisposable
         Vision = AddModule(new VisionModule(Stats));
         Movement = AddModule(new MovementModule(Stats));
         Health = AddModule(new HealthModule(Stats));
-        EatModule = AddModule(new EatModule(Stats));
+        MouthModule = AddModule(new MouthModule(Stats));
         Attack = AddModule(new AttackModule(Stats));
         Endurance = AddModule(new EnduranceModule(Stats));
         Defense = AddModule(new DefenseModule(Stats));
-        Experience = AddModule(new ExperienceModule(config.ExperienceConfig, EatModule));
+        Experience = AddModule(new ExperienceModule(config.ExperienceConfig, MouthModule));
         Abilities = AddModule(new AbilitiesModule());
         Evolutions = AddModule(new EvolutionsModule(this));
         Temperature = AddModule(new TemperatureModule(Stats));

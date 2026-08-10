@@ -15,15 +15,15 @@ public class ExperienceModule: IDisposable, IResource
 
     public event Action<float, float> OnValueChanged;
     
-    private EatModule _eatModule;
+    private MouthModule _mouthModule;
     
-    public ExperienceModule(ExperienceConfig config, EatModule eatModule)
+    public ExperienceModule(ExperienceConfig config, MouthModule mouthModule)
     {
         LevelSet = config.LevelSet;
         _levelScaler = config.LevelScaler;
         
-        _eatModule = eatModule;
-        _eatModule.OnFoodPointsAchieved += AddExperience;
+        _mouthModule = mouthModule;
+        _mouthModule.OnFoodPointsAchieved += AddExperience;
     }
 
     private void AddExperience(int amount)
@@ -54,7 +54,7 @@ public class ExperienceModule: IDisposable, IResource
 
     public void Dispose()
     {
-        _eatModule.OnFoodPointsAchieved -= AddExperience;
+        _mouthModule.OnFoodPointsAchieved -= AddExperience;
     }
 }
 }

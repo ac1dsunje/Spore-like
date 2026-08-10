@@ -6,10 +6,10 @@ namespace _Game.Scripts.GamePlay.Player.Modules.Mouth
 {
 public class PlayerMouth: MonoBehaviour
 {
-    private EatModule _module;
+    private MouthModule _module;
     private FoodItem _currentFood;
     
-    public void Construct(EatModule module)
+    public void Construct(MouthModule module)
     {
         _module = module;
     }

@@ -59,11 +59,8 @@ public class HealthModule: StatModule, IResource
         OnValueChanged?.Invoke(Health, MaxHealth);
     }
 
-    private void UpdateRegeneration(float newRegeneration)
-    {
-        Regeneration = newRegeneration;
-    }
-    
+    private void UpdateRegeneration(float value) => Regeneration = value;
+
     private void Die()
     {
         OnDeath?.Invoke();

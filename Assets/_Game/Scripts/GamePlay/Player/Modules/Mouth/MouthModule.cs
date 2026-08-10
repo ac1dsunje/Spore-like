@@ -4,7 +4,7 @@ using _Game.Scripts.GamePlay.Stats;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Mouth
 {
-public class EatModule: StatModule
+public class MouthModule: StatModule
 {
     public float EatingStrength { get; private set; }
     public float EatingPenetration { get; private set; }
@@ -13,16 +13,16 @@ public class EatModule: StatModule
     private float _eatingTime;
     public event Action<int> OnFoodPointsAchieved;
 
-    public EatModule(PlayerStats playerStats) : base(playerStats)
+    public MouthModule(PlayerStats playerStats) : base(playerStats)
     {
         BindStat(StatType.EatingStrength, UpdateEatingStrength);
         BindStat(StatType.EatingPenetration, UpdateEatingPenetration);
         BindStat(StatType.EatingTime, UpdateEatingTime);
     }
 
-    private void UpdateEatingStrength(float newValue) => EatingStrength = newValue;
-    private void UpdateEatingPenetration(float newValue) => EatingPenetration = newValue;
-    private void UpdateEatingTime(float newValue) => _eatingTime = newValue;
+    private void UpdateEatingStrength(float value) => EatingStrength = value;
+    private void UpdateEatingPenetration(float value) => EatingPenetration = value;
+    private void UpdateEatingTime(float value) => _eatingTime = value;
 
     public void GetExperienceFromFood(int value)
     {

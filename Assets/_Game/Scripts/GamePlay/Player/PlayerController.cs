@@ -54,7 +54,7 @@ public class PlayerController: MonoBehaviour, IDamageAble
     {
         Vision.Construct(Model.Vision);
         Movement.Construct(Model.Movement);
-        Mouth.Construct(Model.EatModule);
+        Mouth.Construct(Model.MouthModule);
         Health.Construct(Model.Health);
         Endurance.Construct(Model.Endurance);
     }

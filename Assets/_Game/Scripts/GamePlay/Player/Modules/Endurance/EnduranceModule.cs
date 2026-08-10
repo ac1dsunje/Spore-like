@@ -67,9 +67,6 @@ public class EnduranceModule: StatModule, IResource
         OnValueChanged?.Invoke(_endurance, _maxEndurance);
     }
 
-    private void UpdateEnduranceRecovery(float value)
-    {
-        EnduranceRecovery = value;
-    }
+    private void UpdateEnduranceRecovery(float value) => EnduranceRecovery = value;
 }
 }
