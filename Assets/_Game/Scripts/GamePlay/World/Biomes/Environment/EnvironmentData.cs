@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.World.Biomes.Chunk.Environment
+namespace _Game.Scripts.GamePlay.World.Biomes.Environment
 {
 [Serializable]
 public class EnvironmentData

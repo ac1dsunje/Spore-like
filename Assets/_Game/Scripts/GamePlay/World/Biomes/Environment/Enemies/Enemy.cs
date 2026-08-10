@@ -1,9 +1,9 @@
 ﻿using _Game.Scripts.GamePlay.Player.Modules;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.World.Biomes.Chunk.Environment.Enemies
+namespace _Game.Scripts.GamePlay.World.Biomes.Environment.Enemies
 {
-public class Spike: MonoBehaviour, IDamageAble
+public class Enemy: MonoBehaviour, IDamageAble
 {
     [SerializeField] private float _damage = 3f;
     [SerializeField] private float _maxHealth = 40f;
