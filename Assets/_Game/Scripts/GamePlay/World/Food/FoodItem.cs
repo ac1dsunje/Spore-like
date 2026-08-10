@@ -5,15 +5,12 @@ namespace _Game.Scripts.GamePlay.World.Food
 {
 public class FoodItem: MonoBehaviour
 {
-    private FoodConfig _config;
     [SerializeField] private Animator _animator;
     [SerializeField] private SpriteRenderer _renderer;
 
-    private int _feedAmount;
-    public event Action<int> OnDeath;
-    
+    private FoodConfig _config;
     private float _health;
-    private float _shield;
+    public event Action<int> OnDeath;
 
     public void Construct(FoodConfig config)
     {
@@ -25,13 +22,11 @@ public class FoodItem: MonoBehaviour
         }
 
         _health = _config.MaxHealth;
-        _shield = _config.Shield;
-        _feedAmount = _config.FeedAmount;
     }
 
     public void TakeHit(float damage, float penetration)
     {
-        var dmg = penetration - _shield >= 0 ? damage : 0;
+        var dmg = penetration - _config.Shield >= 0 ? damage : 0;
         if (dmg <= 0) return;
         _health -= dmg;
         SpawnParticles();
@@ -52,7 +47,7 @@ public class FoodItem: MonoBehaviour
 
     private void Die()
     {
-        OnDeath?.Invoke(_feedAmount);
+        OnDeath?.Invoke(_config.FeedAmount);
         Destroy(gameObject);
     }
 }
