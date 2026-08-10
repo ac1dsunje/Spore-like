@@ -34,14 +34,20 @@ public class FoodItem: MonoBehaviour
         var dmg = penetration - _shield >= 0 ? damage : 0;
         if (dmg <= 0) return;
         _health -= dmg;
-        SpawnParticles(_config.ParticlesPrefab, transform);
+        SpawnParticles();
         if (_health <= 0f) Die();
     }
 
-    private void SpawnParticles(GameObject particle, Transform parent)
+    private void SpawnParticles()
     {
-        var particles = Instantiate(particle, parent.position, Quaternion.identity, parent).GetComponent<ParticleSystem>();
-        particles.startColor = _config.Color;
+        var particles = Instantiate(
+            _config.ParticlesPrefab,
+            transform.position,
+            Quaternion.identity
+        );
+
+        var main = particles.main;
+        main.startColor = _config.Color;
     }
 
     private void Die()

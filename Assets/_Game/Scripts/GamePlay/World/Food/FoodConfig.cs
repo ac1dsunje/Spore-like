@@ -11,6 +11,6 @@ public class FoodConfig: ScriptableObject
     [field: SerializeField] public Color Color { get; private set; } = Color.green;
     [field: SerializeField] public RuntimeAnimatorController AnimatorController { get; private set; }
     [field: SerializeField] public Sprite Sprite { get; private set; }
-    [field: SerializeField] public GameObject ParticlesPrefab { get; private set; }
+    [field: SerializeField] public ParticleSystem ParticlesPrefab { get; private set; }
 }
 }
