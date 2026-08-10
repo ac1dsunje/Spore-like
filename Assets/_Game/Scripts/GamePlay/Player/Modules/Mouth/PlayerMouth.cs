@@ -29,7 +29,7 @@ public class PlayerMouth: MonoBehaviour
     private void TryReleaseFood(Collider2D other)
     {
         if (!other.TryGetComponent<FoodItem>(out var food)) return;
-        if (_currentFood) _currentFood.OnDeath -= OnFoodDeath;
+        if (_currentFood == food) _currentFood.OnDeath -= OnFoodDeath;
         _currentFood = null;
         StopAllCoroutines();
     }
