@@ -4,7 +4,7 @@ namespace _Game.Scripts.GamePlay.Player.Modules.Attack
 {
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] private GameObject _attackObject;
+    [SerializeField] private AttackItem _attackObject;
     
     private AttackModule _module;
 
@@ -15,8 +15,6 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        UpdateAttackPosition();
-
         if (Input.GetMouseButtonDown(0))
         {
             Attack();
@@ -39,6 +37,9 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack()
     {
+        _attackObject.gameObject.SetActive(true);
+        UpdateAttackPosition();
+        _attackObject.SetDamage(_module.PhysicalDamage);
         Debug.Log($"Attack with {_module.PhysicalDamage} damage, range {_module.AttackRange}");
     }
 }

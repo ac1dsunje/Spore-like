@@ -440,7 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51638f74984e4341be97ec284583c96e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Player.Modules.Attack.PlayerAttack
-  _attackObject: {fileID: 4735550738823017934}
+  _attackObject: {fileID: 6363633533278675784}
 --- !u!1001 &2756299357259062068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -519,6 +519,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slash
       objectReference: {fileID: 0}
+    - target: {fileID: 1101888749806095241, guid: 3146c2eaa0bb53241a8931255589c33b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5866753943106461575, guid: 3146c2eaa0bb53241a8931255589c33b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -569,8 +573,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5866753943106461575, guid: 3146c2eaa0bb53241a8931255589c33b, type: 3}
   m_PrefabInstance: {fileID: 5688820060367584839}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4735550738823017934 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1101888749806095241, guid: 3146c2eaa0bb53241a8931255589c33b, type: 3}
+--- !u!114 &6363633533278675784 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1631030185061358863, guid: 3146c2eaa0bb53241a8931255589c33b, type: 3}
   m_PrefabInstance: {fileID: 5688820060367584839}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ac457af23bf41cfadf1dcf9549090ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.AttackItem
