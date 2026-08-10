@@ -52,7 +52,7 @@ public class WorldGenerator: MonoBehaviour
         _playerTiles.Add(player.Movement, new HashSet<Vector3Int>());
         
         player.Movement.OnGridPositionChanged += Generate;
-        Generate(player.Movement, new Vector3Int((int)player.transform.position.x, (int)player.transform.position.y, 0));
+        Generate(player.Movement);
     }
 
     private void RemovePlayer(PlayerController player)
@@ -69,8 +69,9 @@ public class WorldGenerator: MonoBehaviour
 
     private int GetDistance() => _renderDistance * _model.ChunkSize;
     
-    private void Generate(PlayerMovement player, Vector3Int playerPosition)
+    private void Generate(PlayerMovement player)
     {
+        var playerPosition = player.GridPosition;
         var distance = GetDistance();
         var currentTiles = _playerTiles[player];
         

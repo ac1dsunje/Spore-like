@@ -2,6 +2,7 @@
 using _Game.Scripts.GamePlay.Abilities;
 using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Player.Modules;
+using _Game.Scripts.GamePlay.Player.Modules.BiomeChecker;
 using _Game.Scripts.GamePlay.Player.Modules.Endurance;
 using _Game.Scripts.GamePlay.Player.Modules.Health;
 using _Game.Scripts.GamePlay.Player.Modules.Mouth;
@@ -25,6 +26,7 @@ public class PlayerController: MonoBehaviour, IDamageAble
     [field: SerializeField] public PlayerVision Vision { get; private set; }
     [field: SerializeField] public PlayerMouth Mouth { get; private set; }
     [field: SerializeField] public PlayerEndurance Endurance { get; private set; }
+    [field: SerializeField] public PlayerBiome BiomeChecker { get; private set; }
     [Header("Evolutions")]
     [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
     [SerializeField] private RaritiesDatabase _raritiesDatabase;
@@ -36,48 +38,11 @@ public class PlayerController: MonoBehaviour, IDamageAble
     [Inject] private PlayerRegistry _playerRegistry;
     [Inject] private WorldModel _worldModel;
 
-    private Biome _currentBiome;
-
     public void Initialize()
     {
         CreateModel(_ticker);
         InitializeActiveModules();
         _playerRegistry.NotifyPlayerAdded(this);
-
-        Movement.OnGridPositionChanged += TryEnterBiome;
-        EnterBiome(_worldModel.GetBiome(new Vector3Int((int)transform.position.x, (int)transform.position.y, 0)));
-    }
-
-    private void TryEnterBiome(PlayerMovement player, Vector3Int position)
-    {
-        var currentBiome = _worldModel.GetBiome(position);
-        if (currentBiome == _currentBiome) return;
-        EnterBiome(currentBiome);
-    }
-
-    private void EnterBiome(Biome biome)
-    {
-        _currentBiome = biome;
-        Debug.Log("Entering biome: " + biome.Name);
-
-        ApplyTemperature(biome.Temperature);
-    }
-
-    private void ApplyTemperature(float temperature)
-    {
-        if (Model.Temperature.IsLethal(temperature))
-        {
-            Model.Health.TakeDamage(Model.Health.MaxHealth);
-            Debug.Log($"Temperature {temperature} is lethal");
-        }
-        else if (Model.Temperature.IsUncomfortable(temperature))
-        {
-            Debug.Log($"Temperature {temperature} is not comfortable");
-        }
-        else
-        {
-            Debug.Log($"Temperature {temperature} is comfortable");
-        }
     }
 
     private void CreateModel(Ticker ticker)
@@ -97,6 +62,7 @@ public class PlayerController: MonoBehaviour, IDamageAble
         Mouth.Construct(Model.MouthModule);
         Health.Construct(Model.Health);
         Endurance.Construct(Model.Endurance);
+        BiomeChecker.Construct(Movement, _worldModel, Model);
     }
 
     public void TakeDamage(float value, IDamageAble damager)
@@ -110,7 +76,6 @@ public class PlayerController: MonoBehaviour, IDamageAble
     private void OnDestroy()
     {
         Model.Dispose();
-        Movement.OnGridPositionChanged -= TryEnterBiome;
     }
 }
 }

@@ -8,6 +8,13 @@ public class PlayerMovement: MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rigidbody;
     
+    public Vector3Int GridPosition => 
+        new(
+            (int)transform.position.x, 
+            (int)transform.position.y, 
+            (int)transform.position.z
+        );
+    
     private MovementModule _movement;
     
     private float _horizontalInput;
@@ -15,26 +22,19 @@ public class PlayerMovement: MonoBehaviour
 
     private Vector3Int _lastPosition;
 
-    public event Action<PlayerMovement, Vector3Int> OnGridPositionChanged;
+    public event Action<PlayerMovement> OnGridPositionChanged;
     
     public void Construct(MovementModule movement)
     {
         _movement = movement;
     }    
     
-    private Vector3Int GetGridPosition() => 
-        new(
-            (int)transform.position.x, 
-            (int)transform.position.y, 
-            (int)transform.position.z
-        );
-    
     private void CheckMoveByGrid()
     {
-        var currentPos = GetGridPosition();
+        var currentPos = GridPosition;
         if (currentPos == _lastPosition) return;
         _lastPosition = currentPos;
-        OnGridPositionChanged?.Invoke(this, currentPos);
+        OnGridPositionChanged?.Invoke(this);
         _movement.OvercomeDistance();
     }
 

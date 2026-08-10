@@ -336,6 +336,7 @@ MonoBehaviour:
   <Vision>k__BackingField: {fileID: 1241412678200770851}
   <Mouth>k__BackingField: {fileID: 187838623708506777}
   <Endurance>k__BackingField: {fileID: 7969867278788272747}
+  <BiomeChecker>k__BackingField: {fileID: 3768259528291108333}
   _evolutionsDatabase: {fileID: 11400000, guid: 89e0fac1fa9071a41bafa6ee877795b5, type: 2}
   _raritiesDatabase: {fileID: 11400000, guid: 844b6b4bf98611044bf03a16ce2009a0, type: 2}
   _minEvolutions: 3
@@ -363,6 +364,7 @@ GameObject:
   - component: {fileID: 8081464728478508327}
   - component: {fileID: 4028549422210393822}
   - component: {fileID: 7969867278788272747}
+  - component: {fileID: 3768259528291108333}
   m_Layer: 0
   m_Name: Modules
   m_TagString: Untagged
@@ -411,6 +413,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ccc8f16a156452f8b3c9ee9c26154f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.Endurance.PlayerEndurance
+--- !u!114 &3768259528291108333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8527591295361904753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80b7808acc7b47ac8e5751e69c4de60a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Player.Modules.BiomeChecker.PlayerBiome
 --- !u!1001 &2756299357259062068
 PrefabInstance:
   m_ObjectHideFlags: 0
