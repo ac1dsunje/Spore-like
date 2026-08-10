@@ -8,12 +8,13 @@ using _Game.Scripts.GamePlay.Player.Modules.Mouth;
 using _Game.Scripts.GamePlay.Player.Modules.Movement;
 using _Game.Scripts.GamePlay.Player.Modules.Vision;
 using _Game.Scripts.GamePlay.Rarities;
+using _Game.Scripts.GamePlay.World.Biomes;
 using UnityEngine;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player
 {
-public class PlayerController: MonoBehaviour, IDamageAble
+public class PlayerController: MonoBehaviour, IDamageAble, IBiomeAddicted
 {
     [Header("Config")]
     [SerializeField] private PlayerConfig _playerConfig;
@@ -33,11 +34,39 @@ public class PlayerController: MonoBehaviour, IDamageAble
     [Inject] private Ticker _ticker;
     [Inject] private PlayerRegistry _playerRegistry;
 
+    private Biome _currentBiome;
+
     public void Initialize()
     {
         CreateModel(_ticker);
         InitializeActiveModules();
         _playerRegistry.NotifyPlayerAdded(this);
+    }
+
+    public void EnterBiome(Biome biome)
+    {
+        if (biome == _currentBiome) return;
+        _currentBiome = biome;
+        Debug.Log("Entering biome: " + biome.name);
+
+        ApplyTemperature(biome.Temperature);
+    }
+
+    private void ApplyTemperature(float temperature)
+    {
+        if (Model.Temperature.IsLethal(temperature))
+        {
+            Model.Health.TakeDamage(Model.Health.MaxHealth);
+            Debug.Log($"Temperature {temperature} is lethal");
+        }
+        else if (Model.Temperature.IsUncomfortable(temperature))
+        {
+            Debug.Log($"Temperature {temperature} is not comfortable");
+        }
+        else
+        {
+            Debug.Log($"Temperature {temperature} is comfortable");
+        }
     }
 
     private void CreateModel(Ticker ticker)

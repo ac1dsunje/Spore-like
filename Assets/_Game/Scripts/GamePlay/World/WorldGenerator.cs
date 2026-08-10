@@ -14,7 +14,7 @@ public class WorldGenerator: MonoBehaviour
 {
     [SerializeField] private int _renderDistance = 1;
     [SerializeField] private Transform _grid;
-    [SerializeField] private Tilemap _prefab;
+    [SerializeField] private Biome _prefab;
     
     private readonly List<PlayerController> _players = new();
     
@@ -34,13 +34,12 @@ public class WorldGenerator: MonoBehaviour
         
         foreach (var biomeConfig in _model.Config.BiomeConfigs)
         {
-            var map = Instantiate(_prefab, _grid);
-            map.gameObject.name = biomeConfig.name;
-
-            var biome = map.GetComponent<Biome>();
+            var biome = Instantiate(_prefab, _grid);
+            biome.gameObject.name = biomeConfig.name;
             biome.Construct(biomeConfig);
 
-            _tilemaps.Add(biomeConfig, map);
+            var tilemap = biome.GetComponent<Tilemap>();
+            _tilemaps.Add(biomeConfig, tilemap);
         }
         _playerRegistry.OnPlayerAdded += AddPlayer;
         _playerRegistry.OnPlayerRemoved += RemovePlayer;

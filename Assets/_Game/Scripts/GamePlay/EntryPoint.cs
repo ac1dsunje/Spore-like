@@ -9,7 +9,6 @@ namespace _Game.Scripts.GamePlay
 public class EntryPoint : MonoBehaviour
 {
     [SerializeField] private CinemachineCamera _camera;
-    [SerializeField] private bool _spawnPlayerAtStart = true;
     
     [Inject] private PlayerRegistry _playerRegistry;
     [Inject] private UIManager _uiManager;

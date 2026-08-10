@@ -5,6 +5,8 @@ namespace _Game.Scripts.GamePlay.World.Biomes
 {
 public class Biome: MonoBehaviour
 {
+    public float Temperature => _config.Temperature;
+    
     private BiomeConfig _config;
 
     public void Construct(BiomeConfig biomeConfig)
@@ -12,13 +14,13 @@ public class Biome: MonoBehaviour
         _config = biomeConfig;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    
+    // ToDo : get biome by coordinates and not by colliders
+    private void OnTriggerStay2D(Collider2D other)
     {
-        
-        //ToDo: add new interface for biome addicted 
-        if (other.TryGetComponent(out IDamageAble damageAble))
+        if (other.TryGetComponent(out IBiomeAddicted creature))
         {
-            Debug.Log($"{damageAble.GetType().Name} entered to {_config.name}");
+            creature.EnterBiome(this);
         }
     }
 }

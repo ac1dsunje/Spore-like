@@ -5,8 +5,13 @@ namespace _Game.Scripts.GamePlay.Player.Modules.Temperature
 {
 public class TemperatureModule: StatModule
 {
-    public bool IsLethal(float value) => value < GetMinimalLethal() || value > GetMaximumLethal();
-    public bool IsComfortable(float value) => value >= GetMinimalComfortable() || value <= GetMaximumComfortable();
+    public float MinimalLethal => _minimalLethal + _coldResistance;
+    public float MaximumLethal => _maximumLethal + _heatResistance;
+    public float MinimalComfortable => _minimalComfortable + _coldResistance;
+    public float MaximumComfortable => _maximumComfortable + _heatResistance;
+    
+    public bool IsLethal(float value) => value < MinimalLethal || value > MaximumLethal;
+    public bool IsUncomfortable(float value) => value < MinimalComfortable || value > MaximumComfortable;
 
     private float _minimalLethal;
     private float _maximumLethal;
@@ -18,9 +23,9 @@ public class TemperatureModule: StatModule
     public TemperatureModule(PlayerStats playerStats) : base(playerStats)
     {
         BindStat(StatType.MinimalLethalTemperature, UpdateMinimalLethal);
+        BindStat(StatType.MaximumLethalTemperature, UpdateMaximumLethal);
         BindStat(StatType.MinimalComfortableTemperature, UpdateMinimalComfortable);
         BindStat(StatType.MaximumComfortableTemperature, UpdateMaximumComfortable);
-        BindStat(StatType.MaximumLethalTemperature, UpdateMaximumLethal);
         BindStat(StatType.ColdResistance, UpdateColdResistance);
         BindStat(StatType.HeatResistance, UpdateHeatResistance);
     }
@@ -31,12 +36,6 @@ public class TemperatureModule: StatModule
     private void UpdateMaximumComfortable(float value) => _maximumComfortable = value;
     private void UpdateColdResistance(float value) => _coldResistance = value;
     private void UpdateHeatResistance(float value) => _heatResistance = value;
-    
-    
-    private float GetMinimalLethal() => _minimalLethal + _coldResistance;
-    private float GetMaximumLethal() => _maximumLethal + _heatResistance;
-    private float GetMinimalComfortable() => _minimalComfortable + _coldResistance;
-    private float GetMaximumComfortable() => _maximumComfortable + _heatResistance;
     
 }
 }
