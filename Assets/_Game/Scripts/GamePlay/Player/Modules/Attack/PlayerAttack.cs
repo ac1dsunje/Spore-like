@@ -1,5 +1,4 @@
-﻿using _Game.Scripts.Core.Services;
-using _Game.Scripts.GamePlay.Weapons;
+﻿using _Game.Scripts.GamePlay.Weapons;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Attack
