@@ -65,15 +65,16 @@ public class PlayerController: MonoBehaviour, IDamageAble
         Health.Construct(Model.Health);
         Endurance.Construct(Model.Endurance);
         BiomeChecker.Construct(Movement, _worldModel, Model);
-        Attack.Construct(Model.Attack, _input);
+        Attack.Construct(Model.Attack, _input, this);
     }
 
-    public void TakeDamage(float value, IDamageAble damager)
+    public void TakeDamage(HitInfo hit)
     {
-        var amount = Model.Defense.ApplyResistance(value);
-        
-        Model.Health.TakeDamage(amount);
-        Model.Defense.ReflectDamage(amount, damager);
+        var damage = Model.Defense.ApplyResistance(hit.Damage, hit.IgnoreResistance);
+        Model.Health.TakeDamage(damage);
+        var returnedDamage = Model.Defense.ReflectDamage(damage);
+        HitInfo returnedHit = new(returnedDamage, Model.Attack.IgnoreResistance, null);
+        hit.Owner?.TakeDamage(returnedHit);
     }
 
     private void OnDestroy()

@@ -440,7 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51638f74984e4341be97ec284583c96e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Player.Modules.Attack.PlayerAttack
-  _attackObject: {fileID: 6363633533278675784}
+  _meleeWeaponObject: {fileID: 6363633533278675784}
 --- !u!1001 &2756299357259062068
 PrefabInstance:
   m_ObjectHideFlags: 0

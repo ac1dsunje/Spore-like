@@ -9,10 +9,13 @@ public class DefenseModule: StatModule
     public float DamageResistance => _damageResistance / 100f;
     
     public float DamageReflection => _damageReflection / 100f;
+    
     private float _damageReflection;
     public event Action<float> OnDamageReflected;
     private float _damageResistance;
     public event Action<float> OnDamageResisted;
+
+    private HitInfo _returnedHit;
 
     public DefenseModule(PlayerStats playerStats) : base(playerStats)
     {
@@ -20,22 +23,23 @@ public class DefenseModule: StatModule
         BindStat(StatType.DamageResistance, UpdateDamageResistance);
     }
 
-    public float ApplyResistance(float damage)
+    public float ApplyResistance(float damage, float ignoreResistance)
     {
-        var resisted = damage * DamageResistance;
+        var resistedPercent = MathF.Max(0, DamageResistance - ignoreResistance);
+        var resisted = damage * resistedPercent;
         OnDamageResisted?.Invoke(resisted);
         return damage - resisted;
     }
     
-    public void ReflectDamage(float damage, IDamageAble damager)
+    public float ReflectDamage(float damage)
     {
         var returnedDamage = damage * DamageReflection;
         OnDamageReflected?.Invoke(returnedDamage);
-        damager.TakeDamage(returnedDamage, null);
+        return returnedDamage;
     }
 
-    private void UpdateDamageReflection(float newValue) => _damageReflection = newValue;
+    private void UpdateDamageReflection(float value) => _damageReflection = value;
     
-    private void UpdateDamageResistance(float newValue) => _damageResistance = newValue;
+    private void UpdateDamageResistance(float value) => _damageResistance = value;
 }
 }

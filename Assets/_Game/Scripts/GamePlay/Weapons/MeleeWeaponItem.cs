@@ -2,30 +2,30 @@
 using _Game.Scripts.GamePlay.Player.Modules;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay
+namespace _Game.Scripts.GamePlay.Weapons
 {
-public class AttackItem: MonoBehaviour
+public class MeleeWeaponItem: MonoBehaviour
 {
-    private float _damage;
+    private HitInfo _hit;
     
-    public void SetDamage(float damage)
+    public void SetHit(HitInfo hit)
     {
-        _damage = damage;
+        _hit = hit;
         StartCoroutine(Hit());
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent(out IDamageAble damageAble) && _damage > 0)
+        if (other.TryGetComponent(out IDamageAble damageAble))
         {
-            damageAble.TakeDamage(_damage, null);
+            damageAble.TakeDamage(_hit);
         }
     }
 
     private IEnumerator Hit()
     {
         yield return new WaitForSeconds(0.2f);
-        _damage = 0;
+        _hit.Damage = 0;
         gameObject.SetActive(false);
     }
 }
