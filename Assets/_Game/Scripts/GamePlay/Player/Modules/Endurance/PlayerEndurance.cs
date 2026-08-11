@@ -18,10 +18,5 @@ public class PlayerEndurance: MonoBehaviour
             _module.AddEndurance(_module.EnduranceRecovery * Time.deltaTime);
         }
     }
-
-    private void OnDestroy()
-    {
-        StopAllCoroutines();
-    }
 }
 }

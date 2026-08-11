@@ -10,7 +10,16 @@ public class PlayerHealth: MonoBehaviour
     public void Construct(HealthModule module)
     {
         _module = module;
-        StartCoroutine(Regenerate());
+        _module.OnDamageTaken += StopRegeneration;
+        StartRegeneration();
+    }
+
+    private void StartRegeneration() => StartCoroutine(Regenerate());
+
+    private void StopRegeneration(float damage)
+    {
+        StopAllCoroutines();
+        StartCoroutine(WaitBeforeRegeneration());
     }
 
     private IEnumerator Regenerate()
@@ -22,9 +31,16 @@ public class PlayerHealth: MonoBehaviour
         }
     }
 
+    private IEnumerator WaitBeforeRegeneration()
+    {
+        yield return new WaitForSeconds(1f);
+        StartRegeneration();
+    }
+
     private void OnDestroy()
     {
         StopAllCoroutines();
+        _module.OnDamageTaken -= StopRegeneration;
     }
 }
 }
