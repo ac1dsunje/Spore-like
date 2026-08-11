@@ -19,9 +19,9 @@ public class MovementController: MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    public void Push(Vector2 direction)
+    public void Push(Vector2 direction, float power)
     {
-        _rigidbody.AddForce(direction, ForceMode2D.Impulse);
+        _rigidbody.AddForce(direction * power, ForceMode2D.Impulse);
     }
     
     public void Move(Vector2 targetVelocity, float rate)

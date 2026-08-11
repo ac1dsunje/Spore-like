@@ -65,7 +65,7 @@ public class PlayerMovement: MonoBehaviour
     {
         if (_module.DashRequested)
         {
-            _controller.Push(input * _module.DashPower);
+            _controller.Push(input, _module.DashPower);
             _module.ResetDash();
         }
         
