@@ -15,10 +15,10 @@ public class FoodItem: MonoBehaviour
     public void Construct(FoodConfig config)
     {
         _config = config;
-        _renderer.sprite = _config.Sprite;
-        if (_config.AnimatorController)
+        _renderer.sprite = _config.AnimationConfig.Sprite;
+        if (_config.AnimationConfig.Controller)
         {
-            _animator.runtimeAnimatorController = _config.AnimatorController;
+            _animator.runtimeAnimatorController = _config.AnimationConfig.Controller;
         }
 
         _health = _config.MaxHealth;

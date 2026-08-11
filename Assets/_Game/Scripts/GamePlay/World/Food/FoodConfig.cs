@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using _Game.Scripts.GamePlay.Player.Modules.Animation;
+using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.World.Food
 {
@@ -9,8 +10,7 @@ public class FoodConfig: ScriptableObject
     [field: SerializeField] public float Shield { get; private set; }
     [field: SerializeField] public int FeedAmount { get; private set; } = 1;
     [field: SerializeField] public Color Color { get; private set; } = Color.green;
-    [field: SerializeField] public RuntimeAnimatorController AnimatorController { get; private set; }
-    [field: SerializeField] public Sprite Sprite { get; private set; }
+    [field: SerializeField] public AnimationConfig AnimationConfig { get; private set; }
     [field: SerializeField] public ParticleSystem ParticlesPrefab { get; private set; }
 }
 }

@@ -2,6 +2,7 @@
 using _Game.Scripts.GamePlay.Abilities;
 using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Player.Modules;
+using _Game.Scripts.GamePlay.Player.Modules.Animation;
 using _Game.Scripts.GamePlay.Player.Modules.Attack;
 using _Game.Scripts.GamePlay.Player.Modules.BiomeChecker;
 using _Game.Scripts.GamePlay.Player.Modules.Endurance;
@@ -28,6 +29,7 @@ public class PlayerController: MonoBehaviour, IDamageAble
     [field: SerializeField] public PlayerEndurance Endurance { get; private set; }
     [field: SerializeField] public PlayerBiome BiomeChecker { get; private set; }
     [field: SerializeField] public PlayerAttack Attack { get; private set; }
+    [field: SerializeField] public PlayerAnimation Animation { get; private set; }
     [Header("Evolutions")]
     [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
     [SerializeField] private RaritiesDatabase _raritiesDatabase;
@@ -66,6 +68,7 @@ public class PlayerController: MonoBehaviour, IDamageAble
         Endurance.Construct(Model.Endurance);
         BiomeChecker.Construct(Movement, _worldModel, Model);
         Attack.Construct(Model.Attack, _input, this);
+        Animation.SetConfig(_playerConfig.AnimationConfig);
     }
 
     public void TakeDamage(HitInfo hit)

@@ -1,4 +1,5 @@
-﻿using _Game.Scripts.GamePlay.Player.Modules.Experience;
+﻿using _Game.Scripts.GamePlay.Player.Modules.Animation;
+using _Game.Scripts.GamePlay.Player.Modules.Experience;
 using _Game.Scripts.GamePlay.Stats;
 using UnityEngine;
 
@@ -9,5 +10,6 @@ public class PlayerConfig: ScriptableObject
 {
     [field: SerializeField] public StatsConfig[] InitialConfigs { get; private set; }
     [field: SerializeField] public ExperienceConfig  ExperienceConfig { get; private set; }
+    [field: SerializeField] public AnimationConfig AnimationConfig { get; private set; }
 }
 }
