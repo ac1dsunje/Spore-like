@@ -25,6 +25,7 @@ public class PlayerMovement: MonoBehaviour
     {
         _module = movement;
         _inputService = inputService;
+        CheckMoveByGrid();
     }    
     
     private void CheckMoveByGrid()
@@ -39,6 +40,7 @@ public class PlayerMovement: MonoBehaviour
     private void Update()
     {
         ReadInput();
+        TryFlip();
     }
 
     private void ReadInput()
@@ -57,18 +59,14 @@ public class PlayerMovement: MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move(new Vector2(_horizontalInput, _verticalInput).normalized);
+        var input = new Vector2(_horizontalInput, _verticalInput).normalized;
+        Move(input);
+        TryDash(input);
         CheckMoveByGrid();
     }
 
     private void Move(Vector2 input)
     {
-        if (_module.DashRequested)
-        {
-            _controller.Push(input, _module.DashPower);
-            _module.ResetDash();
-        }
-        
         var targetVelocity = input * _module.MoveSpeed;
 
         var hasInput = input.sqrMagnitude > 0f && _module.CanMove;
@@ -79,6 +77,17 @@ public class PlayerMovement: MonoBehaviour
         
         _controller.Move(targetVelocity, rate * Time.fixedDeltaTime);
         
+    }
+
+    private void TryDash(Vector2 input)
+    {
+        if (!_module.DashRequested) return;
+        _controller.Push(input, _module.DashPower);
+        _module.ResetDash();
+    }
+
+    private void TryFlip()
+    {
         if (_horizontalInput != 0)
         {
             _controller.Flip(_horizontalInput > 0);
