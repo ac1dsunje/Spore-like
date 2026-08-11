@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.Player.Modules.Animation
+namespace _Game.Scripts.GamePlay.Animation
 {
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
-public class PlayerAnimation: MonoBehaviour
+public class ItemAnimation: MonoBehaviour
 {
     private SpriteRenderer _renderer;
     private Animator _animator;
@@ -18,7 +18,10 @@ public class PlayerAnimation: MonoBehaviour
     public void SetConfig(AnimationConfig config)
     {
         _renderer.sprite = config.Sprite;
-        _animator.runtimeAnimatorController = config.Controller;
+        if (config.Controller)
+        {
+            _animator.runtimeAnimatorController = config.Controller;
+        }
     }
 }
 }

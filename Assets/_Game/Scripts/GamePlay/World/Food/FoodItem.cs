@@ -1,12 +1,12 @@
 ﻿using System;
+using _Game.Scripts.GamePlay.Animation;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.World.Food
 {
 public class FoodItem: MonoBehaviour
 {
-    [SerializeField] private Animator _animator;
-    [SerializeField] private SpriteRenderer _renderer;
+    [SerializeField] private ItemAnimation _itemAnimation;
 
     private FoodConfig _config;
     private float _health;
@@ -15,11 +15,7 @@ public class FoodItem: MonoBehaviour
     public void Construct(FoodConfig config)
     {
         _config = config;
-        _renderer.sprite = _config.AnimationConfig.Sprite;
-        if (_config.AnimationConfig.Controller)
-        {
-            _animator.runtimeAnimatorController = _config.AnimationConfig.Controller;
-        }
+        _itemAnimation.SetConfig(config.AnimationConfig);
 
         _health = _config.MaxHealth;
     }

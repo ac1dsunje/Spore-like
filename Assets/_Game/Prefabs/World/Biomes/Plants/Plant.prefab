@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 1600029849925267869}
   - component: {fileID: 4191804910957168955}
   - component: {fileID: -9222977691739916474}
-  - component: {fileID: 1069767570429841202}
-  - component: {fileID: 3280270401003344383}
+  - component: {fileID: 2937785828137062865}
+  - component: {fileID: 7470831471839339720}
+  - component: {fileID: 4164723570816053725}
   m_Layer: 0
   m_Name: Plant
   m_TagString: Untagged
@@ -93,10 +94,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e52edad986f4b21b7a2d55b0a3e7c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Food.FoodController
-  _animator: {fileID: 3280270401003344383}
-  _renderer: {fileID: 1069767570429841202}
-  _particlePrefab: {fileID: 7897101249626353857, guid: d8e716c34125011438a86971c35e78c7, type: 3}
---- !u!212 &1069767570429841202
+  _itemAnimation: {fileID: 2937785828137062865}
+--- !u!114 &2937785828137062865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2242808679465882649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14b8924958274275adcaa0cd0e17f6bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Animation.ItemAnimation
+--- !u!212 &7470831471839339720
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
@@ -143,7 +154,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 4
   m_MaskInteraction: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -155,7 +166,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
---- !u!95 &3280270401003344383
+--- !u!95 &4164723570816053725
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0

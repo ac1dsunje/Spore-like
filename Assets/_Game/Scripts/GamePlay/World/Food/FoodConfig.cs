@@ -1,4 +1,4 @@
-﻿using _Game.Scripts.GamePlay.Player.Modules.Animation;
+﻿using _Game.Scripts.GamePlay.Animation;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.World.Food

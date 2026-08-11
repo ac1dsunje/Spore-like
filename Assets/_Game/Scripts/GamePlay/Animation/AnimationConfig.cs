@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.Player.Modules.Animation
+namespace _Game.Scripts.GamePlay.Animation
 {
 [CreateAssetMenu(fileName = "New Animation Config", menuName = "Configs/Game/Animation")]
 public class AnimationConfig: ScriptableObject
