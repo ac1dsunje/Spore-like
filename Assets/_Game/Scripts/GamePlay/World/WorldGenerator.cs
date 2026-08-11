@@ -27,6 +27,8 @@ public class WorldGenerator: MonoBehaviour
     private readonly Dictionary<PlayerMovement, HashSet<Vector3Int>> _playerTiles = new();
 
     public event Action<Vector3Int, Biome, Transform> OnTilePlaced;
+    public event Action<Vector3Int, Biome, Transform> OnNewTilePlaced;
+    public event Action<Vector3Int> OnTileRemoved;
     
     [Inject]
     private void Construct(WorldModel model, PlayerRegistry playerRegistry)
@@ -144,26 +146,29 @@ public class WorldGenerator: MonoBehaviour
             return;
 
         _tilemaps[renderedTile.Biome].SetTile(position, null);
+        OnTileRemoved?.Invoke(position);
     }
 
     private void TryPlaceTile(Vector3Int position)
     {
+        var biome = _model.GetBiome(position);
+        
         if (_cachedTiles.TryGetValue(position, out var renderedTile))
         {
             var tilemap = _tilemaps[renderedTile.Biome];
 
             PlaceTile(tilemap, position, renderedTile.Tile);
+
+            OnTilePlaced?.Invoke(position, biome, _tilemaps[biome].transform);
             return;
         }
-
-        var biome = _model.GetBiome(position);
         var tile = biome.Config.RandomTile;
 
         PlaceTile(_tilemaps[biome], position, tile);
 
-        _cachedTiles.Add(position, new RenderedTile(biome, tile));
+        OnNewTilePlaced?.Invoke(position, biome, _tilemaps[biome].transform);
 
-        OnTilePlaced?.Invoke(position, biome, _tilemaps[biome].transform);
+        _cachedTiles.Add(position, new RenderedTile(biome, tile));
     }
 
     private void PlaceTile(Tilemap tilemap, Vector3Int position, TileBase tile)
