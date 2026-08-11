@@ -1,5 +1,4 @@
 ﻿using System;
-using _Game.Scripts.Core.Services;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Movement
@@ -12,16 +11,13 @@ public class PlayerMovement: MonoBehaviour
     public Vector3Int GridPosition => _controller.GridPosition;
     
     private MovementModule _module;
-    private IInputService _inputService;
-    
-    private float _horizontalInput;
-    private float _verticalInput;
+    private PlayerInputService _inputService;
 
     private Vector3Int _lastPosition;
 
     public event Action<PlayerMovement> OnGridPositionChanged;
     
-    public void Construct(MovementModule movement, IInputService inputService)
+    public void Construct(MovementModule movement, PlayerInputService inputService)
     {
         _module = movement;
         _inputService = inputService;
@@ -39,27 +35,12 @@ public class PlayerMovement: MonoBehaviour
 
     private void Update()
     {
-        ReadInput();
         TryFlip();
-    }
-
-    private void ReadInput()
-    {
-        _horizontalInput = 0f;
-        _verticalInput = 0f;
-
-        if (_inputService.IsKeyPressed(KeyCode.A)) _horizontalInput -= 1f;
-
-        if (_inputService.IsKeyPressed(KeyCode.D)) _horizontalInput += 1f;
-
-        if (_inputService.IsKeyPressed(KeyCode.S)) _verticalInput -= 1f;
-
-        if (_inputService.IsKeyPressed(KeyCode.W)) _verticalInput += 1f;
     }
 
     private void FixedUpdate()
     {
-        var input = new Vector2(_horizontalInput, _verticalInput).normalized;
+        var input = _inputService.Movement.normalized;
         Move(input);
         TryDash(input);
         CheckMoveByGrid();
@@ -88,9 +69,9 @@ public class PlayerMovement: MonoBehaviour
 
     private void TryFlip()
     {
-        if (_horizontalInput != 0)
+        if (_inputService.Horizontal != 0)
         {
-            _controller.Flip(_horizontalInput > 0);
+            _controller.Flip(_inputService.Horizontal > 0);
         }
     }
 }

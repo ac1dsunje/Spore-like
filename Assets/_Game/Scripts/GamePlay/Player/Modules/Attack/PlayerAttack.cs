@@ -9,11 +9,11 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private MeleeWeaponItem _meleeWeaponObject;
     
     private AttackModule _module;
-    private IInputService _inputService;
+    private PlayerInputService _inputService;
 
     private IDamageAble _owner;
 
-    public void Construct(AttackModule module, IInputService inputService, IDamageAble owner)
+    public void Construct(AttackModule module, PlayerInputService inputService, IDamageAble owner)
     {
         _module = module;
         _inputService = inputService;
@@ -22,7 +22,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (_inputService.WasLeftMousePressed)
+        if (_inputService.AttackPressed)
         {
             Attack();
         }

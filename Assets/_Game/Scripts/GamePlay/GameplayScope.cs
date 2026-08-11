@@ -24,6 +24,7 @@ public class GameplayScope: LifetimeScope
 
         builder.Register<WorldModel>(Lifetime.Scoped);
         builder.Register<PlayerRegistry>(Lifetime.Scoped);
+        builder.Register<PlayerInputService>(Lifetime.Scoped);
     }
 }
 }

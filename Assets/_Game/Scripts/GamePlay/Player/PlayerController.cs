@@ -41,6 +41,7 @@ public class PlayerController: MonoBehaviour, IDamageAble
     [Inject] private PlayerRegistry _playerRegistry;
     [Inject] private WorldModel _worldModel;
     [Inject] private IInputService _input;
+    [Inject] private PlayerInputService _playerInput;
 
     public void Initialize()
     {
@@ -62,12 +63,12 @@ public class PlayerController: MonoBehaviour, IDamageAble
     private void InitializeActiveModules()
     {
         Vision.Construct(Model.Vision);
-        Movement.Construct(Model.Movement, _input);
+        Movement.Construct(Model.Movement, _playerInput);
         Mouth.Construct(Model.MouthModule);
         Health.Construct(Model.Health);
         Endurance.Construct(Model.Endurance);
         BiomeChecker.Construct(Movement, _worldModel, Model);
-        Attack.Construct(Model.Attack, _input, this);
+        Attack.Construct(Model.Attack, _playerInput, this);
         Animation.SetConfig(_playerConfig.AnimationConfig);
     }
 
