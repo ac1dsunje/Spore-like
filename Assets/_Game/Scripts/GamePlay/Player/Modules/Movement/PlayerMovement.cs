@@ -78,15 +78,10 @@ public class PlayerMovement: MonoBehaviour
         var rate = _module.MoveSpeed / time;
         
         _controller.Move(targetVelocity, rate * Time.fixedDeltaTime);
-
-        Flip();
-    }
-
-    private void Flip()
-    {
+        
         if (_horizontalInput != 0)
         {
-            transform.localScale = new Vector3(_horizontalInput < 0 ? -1 : 1, 1, 1);
+            _controller.Flip(_horizontalInput > 0);
         }
     }
 }

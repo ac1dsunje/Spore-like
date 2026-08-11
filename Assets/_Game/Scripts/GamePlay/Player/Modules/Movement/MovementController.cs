@@ -6,7 +6,11 @@ namespace _Game.Scripts.GamePlay.Player.Modules.Movement
 public class MovementController: MonoBehaviour
 {
     
-    public Vector3Int GridPosition => new ((int)_rigidbody.position.x, (int)_rigidbody.position.y, 0);
+    public Vector3Int GridPosition => new(
+        Mathf.RoundToInt(_rigidbody.position.x),
+        Mathf.RoundToInt(_rigidbody.position.y),
+        0
+    );
     
     private Rigidbody2D _rigidbody;
 
@@ -23,6 +27,11 @@ public class MovementController: MonoBehaviour
     public void Move(Vector2 targetVelocity, float rate)
     {
         _rigidbody.linearVelocity = Vector2.MoveTowards(_rigidbody.linearVelocity, targetVelocity, rate);
+    }
+    
+    public void Flip(bool facingRight)
+    {
+        _rigidbody.transform.localScale = new Vector3(!facingRight ? -1 : 1, 1, 1);
     }
 }
 }
