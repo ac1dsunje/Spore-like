@@ -29,6 +29,10 @@ MonoBehaviour:
       <Type>k__BackingField: 8
       <Value>k__BackingField: -10
     <UpdatesByRarity>k__BackingField: 1
+  - <Stat>k__BackingField:
+      <Type>k__BackingField: 18
+      <Value>k__BackingField: 4
+    <UpdatesByRarity>k__BackingField: 1
   <State>k__BackingField: 1
   <Requires>k__BackingField: []
   <Blocks>k__BackingField: []

@@ -7,16 +7,11 @@ namespace _Game.Scripts.GamePlay.Player.Modules.Movement
 
 public class PlayerMovement: MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D _rigidbody;
+    [SerializeField] private MovementController _controller;
+
+    public Vector3Int GridPosition => _controller.GridPosition;
     
-    public Vector3Int GridPosition => 
-        new(
-            (int)transform.position.x, 
-            (int)transform.position.y, 
-            (int)transform.position.z
-        );
-    
-    private MovementModule _movement;
+    private MovementModule _module;
     private IInputService _inputService;
     
     private float _horizontalInput;
@@ -28,7 +23,7 @@ public class PlayerMovement: MonoBehaviour
     
     public void Construct(MovementModule movement, IInputService inputService)
     {
-        _movement = movement;
+        _module = movement;
         _inputService = inputService;
     }    
     
@@ -38,7 +33,7 @@ public class PlayerMovement: MonoBehaviour
         if (currentPos == _lastPosition) return;
         _lastPosition = currentPos;
         OnGridPositionChanged?.Invoke(this);
-        _movement.OvercomeDistance();
+        _module.OvercomeDistance();
     }
 
     private void Update()
@@ -62,37 +57,29 @@ public class PlayerMovement: MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        Move(new Vector2(_horizontalInput, _verticalInput).normalized);
         CheckMoveByGrid();
     }
 
-    private void Move()
+    private void Move(Vector2 input)
     {
-        var input = new Vector2(_horizontalInput, _verticalInput).normalized;
-
-        TryDash(input);
+        if (_module.DashRequested)
+        {
+            _controller.Push(input * _module.DashPower);
+            _module.ResetDash();
+        }
         
-        var targetVelocity = input * _movement.MoveSpeed;
+        var targetVelocity = input * _module.MoveSpeed;
 
-        var hasInput = input.sqrMagnitude > 0f && _movement.CanMove;
+        var hasInput = input.sqrMagnitude > 0f && _module.CanMove;
 
-        var time = hasInput ? _movement.Acceleration : _movement.Inertia;
+        var time = hasInput ? _module.Acceleration : _module.Inertia;
 
-        var rate = _movement.MoveSpeed / time;
-
-        _rigidbody.linearVelocity = Vector2.MoveTowards(
-            _rigidbody.linearVelocity,
-            targetVelocity,
-            rate * Time.fixedDeltaTime);
+        var rate = _module.MoveSpeed / time;
+        
+        _controller.Move(targetVelocity, rate * Time.fixedDeltaTime);
 
         Flip();
-    }
-
-    private void TryDash(Vector2 input)
-    {
-        if (!_movement.DashRequested) return;
-        _rigidbody.AddForce(input * _movement.DashPower, ForceMode2D.Impulse);
-        _movement.ResetDash();
     }
 
     private void Flip()
