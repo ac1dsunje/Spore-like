@@ -21,6 +21,7 @@ public class PlayerMouth: MonoBehaviour
     private void TryCatchFood(Collider2D other)
     {
         if (!other.TryGetComponent<FoodItem>(out var food)) return;
+        StopAllCoroutines();
         _currentFood = food;
         _currentFood.OnDeath += OnFoodDeath;
         StartCoroutine(Eat(_currentFood));
@@ -29,7 +30,8 @@ public class PlayerMouth: MonoBehaviour
     private void TryReleaseFood(Collider2D other)
     {
         if (!other.TryGetComponent<FoodItem>(out var food)) return;
-        if (_currentFood == food) _currentFood.OnDeath -= OnFoodDeath;
+        StopAllCoroutines();
+        _currentFood.OnDeath -= OnFoodDeath;
         _currentFood = null;
     }
 
