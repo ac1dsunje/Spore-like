@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using _Game.Scripts.GamePlay.Player;
 using _Game.Scripts.GamePlay.Player.Modules.Movement;
-using _Game.Scripts.GamePlay.World.Biomes;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.World
@@ -13,45 +10,25 @@ namespace _Game.Scripts.GamePlay.World
 public class WorldGenerator: MonoBehaviour
 {
     [SerializeField] private int _renderDistance = 1;
-    [SerializeField] private Transform _grid;
-    [SerializeField] private GameObject _prefab;
     
     private readonly List<PlayerController> _players = new();
     
     private WorldModel _model;
     private PlayerRegistry _playerRegistry;
+    private WorldTileRenderer _tileRendererGenerator;
     
-    private readonly Dictionary<Biome, Tilemap> _tilemaps = new();
-    private readonly Dictionary<Vector3Int, RenderedTile> _cachedTiles = new();
     private readonly Dictionary<Vector3Int, int> _tileUsage = new();
     private readonly Dictionary<PlayerMovement, HashSet<Vector3Int>> _playerTiles = new();
-
-    public event Action<Vector3Int, Biome, Transform> OnTileCreated;
-    public event Action<Vector3Int> OnTileUnloaded;
-    public event Action<Vector3Int, Biome, Transform> OnTileLoaded;
     
     [Inject]
-    private void Construct(WorldModel model, PlayerRegistry playerRegistry)
+    private void Construct(WorldModel model, PlayerRegistry playerRegistry, WorldTileRenderer tileRendererGenerator)
     {
         _model = model;
         _playerRegistry = playerRegistry;
-        
-        CreateTileMaps();
+        _tileRendererGenerator = tileRendererGenerator;
         
         _playerRegistry.OnPlayerAdded += AddPlayer;
         _playerRegistry.OnPlayerRemoved += RemovePlayer;
-    }
-
-    private void CreateTileMaps()
-    {
-        foreach (var biome in _model.GetBiomes())
-        {
-            var biomeObject = Instantiate(_prefab, _grid);
-            biomeObject.name = biome.Name;
-
-            var tilemap = biomeObject.GetComponent<Tilemap>();
-            _tilemaps.Add(biome, tilemap);
-        }
     }
 
     private void AddPlayer(PlayerController player)
@@ -118,7 +95,7 @@ public class WorldGenerator: MonoBehaviour
         }
 
         _tileUsage.Add(position, 1);
-        TryPlaceTile(position);
+        _tileRendererGenerator.TryPlaceTile(position);
     }
 
     private void RemoveTileUsage(Vector3Int position)
@@ -135,7 +112,7 @@ public class WorldGenerator: MonoBehaviour
         }
 
         _tileUsage.Remove(position);
-        TryUnloadTile(position);
+        _tileRendererGenerator.TryUnloadTile(position);
     }
 
     private void UnloadPlayerTiles(PlayerMovement player)
@@ -143,52 +120,6 @@ public class WorldGenerator: MonoBehaviour
         foreach (var position in _playerTiles[player])
         {
             RemoveTileUsage(position);
-        }
-    }
-
-    private void TryUnloadTile(Vector3Int position)
-    {
-        if (!_cachedTiles.TryGetValue(position, out var renderedTile)) return;
-
-        _tilemaps[renderedTile.Biome].SetTile(position, null);
-        OnTileUnloaded?.Invoke(position);
-    }
-
-    private void TryPlaceTile(Vector3Int position)
-    {
-        var biome = _model.GetBiome(position);
-        
-        if (_cachedTiles.TryGetValue(position, out var renderedTile))
-        {
-            LoadTile(position, biome, renderedTile);
-            return;
-        }
-        CreateTile(position, biome);
-    }
-
-    private void LoadTile(Vector3Int position, Biome biome, RenderedTile renderedTile)
-    {
-        var tilemap = _tilemaps[renderedTile.Biome];
-        PlaceTile(tilemap, position, renderedTile.Tile);
-
-        OnTileLoaded?.Invoke(position, biome, _tilemaps[biome].transform);
-    }
-
-    private void CreateTile(Vector3Int position, Biome biome)
-    {
-        var tile = biome.Config.RandomTile;
-        PlaceTile(_tilemaps[biome], position, tile);
-
-        OnTileCreated?.Invoke(position, biome, _tilemaps[biome].transform);
-
-        _cachedTiles.Add(position, new RenderedTile(biome, tile));
-    }
-
-    private void PlaceTile(Tilemap tilemap, Vector3Int position, TileBase tile)
-    {
-        if (!tilemap.HasTile(position))
-        {
-            tilemap.SetTile(position, tile);
         }
     }
 

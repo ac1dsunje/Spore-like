@@ -1206,8 +1206,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.WorldGenerator
   _renderDistance: 1
-  _grid: {fileID: 1048624192882788312}
-  _prefab: {fileID: 5136348108727737102, guid: bda9f11c25e5c7346910a8b0a2ae72b7, type: 3}
 --- !u!4 &1048624192882788312
 Transform:
   m_ObjectHideFlags: 0
@@ -1376,6 +1374,7 @@ GameObject:
   - component: {fileID: 2500208836925561219}
   - component: {fileID: 960863365435957094}
   - component: {fileID: 6777336183478083771}
+  - component: {fileID: 6777336183478083772}
   m_Layer: 0
   m_Name: WorldGenerator
   m_TagString: Untagged
@@ -1396,6 +1395,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.World.EnvironmentSpawner
   _foodPrefab: {fileID: 2242808679465882649, guid: fb18b5f42f61c0248906eabff0079a6b, type: 3}
+--- !u!114 &6777336183478083772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6777336183478083770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a6633e6e33f41f7b07d8fcf029ff5da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.World.WorldTiles
+  _grid: {fileID: 1048624192882788312}
+  _prefab: {fileID: 5136348108727737102, guid: bda9f11c25e5c7346910a8b0a2ae72b7, type: 3}
 --- !u!1001 &8462081351352519223
 PrefabInstance:
   m_ObjectHideFlags: 0

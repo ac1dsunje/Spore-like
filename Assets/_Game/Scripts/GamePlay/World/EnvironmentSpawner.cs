@@ -24,18 +24,18 @@ public class EnvironmentSpawner: MonoBehaviour
 {
     [SerializeField] private GameObject _foodPrefab;
      
-    private WorldGenerator _generator;
+    private WorldTileRenderer _tileRenderer;
     
     private readonly Dictionary<Vector3Int, SpawnedFood> _spawnedFoods = new();
     private readonly Dictionary<Vector3Int, GameObject> _spawnedObjects = new();
     
     [Inject]
-    private void Construct(WorldGenerator generator)
+    private void Construct(WorldTileRenderer generator)
     {
-        _generator = generator;
-        _generator.OnTileCreated += TryCreateEnvironment;
-        _generator.OnTileLoaded += TryLoadEnvironment;
-        _generator.OnTileUnloaded += UnloadEnvironment;
+        _tileRenderer = generator;
+        _tileRenderer.OnTileCreated += TryCreateEnvironment;
+        _tileRenderer.OnTileLoaded += TryLoadEnvironment;
+        _tileRenderer.OnTileUnloaded += UnloadEnvironment;
     }
     
     private void TryLoadEnvironment(Vector3Int position, Biome biome, Transform parent)
@@ -78,9 +78,9 @@ public class EnvironmentSpawner: MonoBehaviour
 
     private void OnDestroy()
     {
-        _generator.OnTileLoaded -= TryLoadEnvironment;
-        _generator.OnTileCreated -= TryCreateEnvironment;
-        _generator.OnTileUnloaded -= UnloadEnvironment;
+        _tileRenderer.OnTileLoaded -= TryLoadEnvironment;
+        _tileRenderer.OnTileCreated -= TryCreateEnvironment;
+        _tileRenderer.OnTileUnloaded -= UnloadEnvironment;
     }
 }
 }
