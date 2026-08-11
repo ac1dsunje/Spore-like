@@ -49,6 +49,8 @@ public class EnvironmentSpawner: MonoBehaviour
         if (!CanPlaceObject(biome.Config.ChanceEnvironment)) return;
         
         var environment = biome.Config.GetRandomEnvironment();
+        if (!environment) return;
+        
         var config = environment.FoodItems[Random.Range(0, environment.FoodItems.Length)];
         
         _spawnedFoods[position] = new(parent, config);
@@ -63,11 +65,7 @@ public class EnvironmentSpawner: MonoBehaviour
         _spawnedObjects.Remove(position);
     }
     
-    private bool CanPlaceObject(float chance)
-    {
-        if (chance <= 0.1f) return false;
-        return Random.Range(0, 100) <= chance;
-    }
+    private bool CanPlaceObject(float chance) => Random.Range(0, 100) <= chance;
 
     private void SpawnPlant(Vector3Int setPos, Transform parent, FoodConfig config)
     {
