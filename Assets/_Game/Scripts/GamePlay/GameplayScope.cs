@@ -15,6 +15,7 @@ public class GameplayScope: LifetimeScope
     {
         builder.RegisterComponentInHierarchy<PlayerSpawner>();
         builder.RegisterComponentInHierarchy<WorldGenerator>();
+        builder.RegisterComponentInHierarchy<EnvironmentSpawner>();
         builder.RegisterComponentInHierarchy<UIManager>();
         builder.RegisterComponentInHierarchy<EntryPoint>();
 

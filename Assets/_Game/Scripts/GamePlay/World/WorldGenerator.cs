@@ -1,13 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using _Game.Scripts.GamePlay.Player;
 using _Game.Scripts.GamePlay.Player.Modules.Movement;
 using _Game.Scripts.GamePlay.World.Biomes;
-using _Game.Scripts.GamePlay.World.Food;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using VContainer;
-using Random = UnityEngine.Random;
 
 namespace _Game.Scripts.GamePlay.World
 {
@@ -16,7 +15,6 @@ public class WorldGenerator: MonoBehaviour
     [SerializeField] private int _renderDistance = 1;
     [SerializeField] private Transform _grid;
     [SerializeField] private GameObject _prefab;
-    [SerializeField] private GameObject _foodPrefab;
     
     private readonly List<PlayerController> _players = new();
     
@@ -27,6 +25,8 @@ public class WorldGenerator: MonoBehaviour
     private readonly Dictionary<Vector3Int, RenderedTile> _cachedTiles = new();
     private readonly Dictionary<Vector3Int, int> _tileUsage = new();
     private readonly Dictionary<PlayerMovement, HashSet<Vector3Int>> _playerTiles = new();
+
+    public event Action<Vector3Int, Biome, Transform> OnTilePlaced;
     
     [Inject]
     private void Construct(WorldModel model, PlayerRegistry playerRegistry)
@@ -163,7 +163,7 @@ public class WorldGenerator: MonoBehaviour
 
         _cachedTiles.Add(position, new RenderedTile(biome, tile));
 
-        TryPlaceEnvironment(position, biome);
+        OnTilePlaced?.Invoke(position, biome, _tilemaps[biome].transform);
     }
 
     private void PlaceTile(Tilemap tilemap, Vector3Int position, TileBase tile)
@@ -172,17 +172,6 @@ public class WorldGenerator: MonoBehaviour
         {
             tilemap.SetTile(position, tile);
         }
-    }
-
-    private void TryPlaceEnvironment(Vector3Int position, Biome biome)
-    {
-        var rand = Random.Range(0, 100);
-        if (rand >= biome.Config.ChanceEnvironment) return;
-        var environment = biome.Config.GetRandomEnvironment();
-        var foodItem = environment.FoodItems[Random.Range(0, environment.FoodItems.Length)];
-        var setPos = new Vector3(position.x + 0.5f, position.y + 0.5f, position.z);
-        var item = Instantiate(_foodPrefab, setPos, Quaternion.identity, _tilemaps[biome].transform).GetComponent<FoodItem>();
-        item.Construct(foodItem);
     }
 
     private void OnDestroy()
