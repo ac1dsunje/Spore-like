@@ -16,7 +16,7 @@ public class EvolutionConfig: ScriptableObject
     [field: SerializeField] public string Description { get; private set; }
     [field: SerializeField] public Sprite Sprite { get; private set; }
     // Buffs/Debuffs
-    [field: SerializeField] public List<Stat> Stats { get; private set; }
+    [field: SerializeField] public List<EvolutionStat> Stats { get; private set; }
     // InitialState
     [field: SerializeField] public EvolutionState State { get; private set; }
     // References

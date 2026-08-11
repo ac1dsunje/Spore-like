@@ -17,14 +17,9 @@ MonoBehaviour:
   <Description>k__BackingField: A painful surprise for anything that gets too close
   <Sprite>k__BackingField: {fileID: -7953839269348762367, guid: 6d941b6ae772f2f4ca5dcf0957d42010, type: 3}
   <Stats>k__BackingField:
-  - <Type>k__BackingField: 4
-    <Value>k__BackingField: 20
-    <UpdatesByRarity>k__BackingField: 1
-  - <Type>k__BackingField: 17
-    <Value>k__BackingField: 10
-    <UpdatesByRarity>k__BackingField: 1
-  - <Type>k__BackingField: 16
-    <Value>k__BackingField: 2
+  - <Stat>k__BackingField:
+      <Type>k__BackingField: 4
+      <Value>k__BackingField: 15
     <UpdatesByRarity>k__BackingField: 1
   <State>k__BackingField: 1
   <Requires>k__BackingField: []

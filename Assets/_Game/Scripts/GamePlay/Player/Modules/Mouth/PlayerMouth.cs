@@ -31,6 +31,7 @@ public class PlayerMouth: MonoBehaviour
     {
         if (!other.TryGetComponent<FoodItem>(out var food)) return;
         StopAllCoroutines();
+        if (_currentFood == null) return;
         _currentFood.OnDeath -= OnFoodDeath;
         _currentFood = null;
     }

@@ -17,14 +17,17 @@ MonoBehaviour:
   <Description>k__BackingField: You dont have to go to the dentist anymore
   <Sprite>k__BackingField: {fileID: 1548770688848624167, guid: 834e743eb36fca84e87393360e1a0044, type: 3}
   <Stats>k__BackingField:
-  - <Type>k__BackingField: 11
-    <Value>k__BackingField: 1
+  - <Stat>k__BackingField:
+      <Type>k__BackingField: 11
+      <Value>k__BackingField: 1
     <UpdatesByRarity>k__BackingField: 1
-  - <Type>k__BackingField: 13
-    <Value>k__BackingField: -10
+  - <Stat>k__BackingField:
+      <Type>k__BackingField: 13
+      <Value>k__BackingField: -10
     <UpdatesByRarity>k__BackingField: 1
-  - <Type>k__BackingField: 12
-    <Value>k__BackingField: 1
+  - <Stat>k__BackingField:
+      <Type>k__BackingField: 12
+      <Value>k__BackingField: 1
     <UpdatesByRarity>k__BackingField: 1
   <State>k__BackingField: 1
   <Requires>k__BackingField: []

@@ -13,7 +13,7 @@ public class Evolution: IDisposable
     public EvolutionConfig Config { get; private set; }
     public EvolutionState State { get; private set; }
     public string Name => _rarity ? $"{_rarity.Name} {Config.Name}" : $"{Config.Name}";
-    public List<Stat> Stats { get; private set; } = new();
+    public List<EvolutionStat> Stats { get; private set; } = new();
     public Sprite Frame => _rarity.Sprite;
     
     private RarityConfig _rarity;
@@ -103,7 +103,7 @@ public class Evolution: IDisposable
         Stats.Clear();
         foreach (var stat in Config.Stats)
         {
-            var newStat = new Stat(stat);
+            var newStat = new EvolutionStat(stat);
             Stats.Add(newStat);
         }
     }
