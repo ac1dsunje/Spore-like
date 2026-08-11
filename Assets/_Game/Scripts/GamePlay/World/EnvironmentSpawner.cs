@@ -33,18 +33,18 @@ public class EnvironmentSpawner: MonoBehaviour
     private void Construct(WorldGenerator generator)
     {
         _generator = generator;
-        _generator.OnNewTilePlaced += TryPlaceNewEnvironment;
-        _generator.OnTilePlaced += TryPlaceEnvironment;
-        _generator.OnTileRemoved += RemoveEnvironment;
+        _generator.OnTileCreated += TryCreateEnvironment;
+        _generator.OnTileLoaded += TryLoadEnvironment;
+        _generator.OnTileUnloaded += UnloadEnvironment;
     }
     
-    private void TryPlaceEnvironment(Vector3Int position, Biome biome, Transform parent)
+    private void TryLoadEnvironment(Vector3Int position, Biome biome, Transform parent)
     {
         if (!_spawnedFoods.TryGetValue(position, out var item)) return;
         SpawnPlant(position, item.Parent, item.Config);
     }
 
-    private void TryPlaceNewEnvironment(Vector3Int position, Biome biome, Transform parent)
+    private void TryCreateEnvironment(Vector3Int position, Biome biome, Transform parent)
     {
         if (!CanPlaceObject(biome.Config.ChanceEnvironment)) return;
         
@@ -57,7 +57,7 @@ public class EnvironmentSpawner: MonoBehaviour
         SpawnPlant(position, parent, config);
     }
 
-    private void RemoveEnvironment(Vector3Int position)
+    private void UnloadEnvironment(Vector3Int position)
     {
         if (!_spawnedObjects.TryGetValue(position, out var item)) return;
         Destroy(item.gameObject, 1f);
@@ -78,9 +78,9 @@ public class EnvironmentSpawner: MonoBehaviour
 
     private void OnDestroy()
     {
-        _generator.OnTilePlaced -= TryPlaceEnvironment;
-        _generator.OnNewTilePlaced -= TryPlaceNewEnvironment;
-        _generator.OnTileRemoved -= RemoveEnvironment;
+        _generator.OnTileLoaded -= TryLoadEnvironment;
+        _generator.OnTileCreated -= TryCreateEnvironment;
+        _generator.OnTileUnloaded -= UnloadEnvironment;
     }
 }
 }

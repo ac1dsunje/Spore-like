@@ -26,9 +26,9 @@ public class WorldGenerator: MonoBehaviour
     private readonly Dictionary<Vector3Int, int> _tileUsage = new();
     private readonly Dictionary<PlayerMovement, HashSet<Vector3Int>> _playerTiles = new();
 
-    public event Action<Vector3Int, Biome, Transform> OnTilePlaced;
-    public event Action<Vector3Int, Biome, Transform> OnNewTilePlaced;
-    public event Action<Vector3Int> OnTileRemoved;
+    public event Action<Vector3Int, Biome, Transform> OnTileCreated;
+    public event Action<Vector3Int> OnTileUnloaded;
+    public event Action<Vector3Int, Biome, Transform> OnTileLoaded;
     
     [Inject]
     private void Construct(WorldModel model, PlayerRegistry playerRegistry)
@@ -36,6 +36,14 @@ public class WorldGenerator: MonoBehaviour
         _model = model;
         _playerRegistry = playerRegistry;
         
+        CreateTileMaps();
+        
+        _playerRegistry.OnPlayerAdded += AddPlayer;
+        _playerRegistry.OnPlayerRemoved += RemovePlayer;
+    }
+
+    private void CreateTileMaps()
+    {
         foreach (var biome in _model.GetBiomes())
         {
             var biomeObject = Instantiate(_prefab, _grid);
@@ -44,8 +52,6 @@ public class WorldGenerator: MonoBehaviour
             var tilemap = biomeObject.GetComponent<Tilemap>();
             _tilemaps.Add(biome, tilemap);
         }
-        _playerRegistry.OnPlayerAdded += AddPlayer;
-        _playerRegistry.OnPlayerRemoved += RemovePlayer;
     }
 
     private void AddPlayer(PlayerController player)
@@ -142,11 +148,10 @@ public class WorldGenerator: MonoBehaviour
 
     private void TryUnloadTile(Vector3Int position)
     {
-        if (!_cachedTiles.TryGetValue(position, out var renderedTile))
-            return;
+        if (!_cachedTiles.TryGetValue(position, out var renderedTile)) return;
 
         _tilemaps[renderedTile.Biome].SetTile(position, null);
-        OnTileRemoved?.Invoke(position);
+        OnTileUnloaded?.Invoke(position);
     }
 
     private void TryPlaceTile(Vector3Int position)
@@ -155,18 +160,26 @@ public class WorldGenerator: MonoBehaviour
         
         if (_cachedTiles.TryGetValue(position, out var renderedTile))
         {
-            var tilemap = _tilemaps[renderedTile.Biome];
-
-            PlaceTile(tilemap, position, renderedTile.Tile);
-
-            OnTilePlaced?.Invoke(position, biome, _tilemaps[biome].transform);
+            LoadTile(position, biome, renderedTile);
             return;
         }
-        var tile = biome.Config.RandomTile;
+        CreateTile(position, biome);
+    }
 
+    private void LoadTile(Vector3Int position, Biome biome, RenderedTile renderedTile)
+    {
+        var tilemap = _tilemaps[renderedTile.Biome];
+        PlaceTile(tilemap, position, renderedTile.Tile);
+
+        OnTileLoaded?.Invoke(position, biome, _tilemaps[biome].transform);
+    }
+
+    private void CreateTile(Vector3Int position, Biome biome)
+    {
+        var tile = biome.Config.RandomTile;
         PlaceTile(_tilemaps[biome], position, tile);
 
-        OnNewTilePlaced?.Invoke(position, biome, _tilemaps[biome].transform);
+        OnTileCreated?.Invoke(position, biome, _tilemaps[biome].transform);
 
         _cachedTiles.Add(position, new RenderedTile(biome, tile));
     }
