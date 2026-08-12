@@ -459,13 +459,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6f8be6a5c94e08b0408b38c4016f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.PlayerController
-  <Movement>k__BackingField: {fileID: 6455457412017345376}
-  <Health>k__BackingField: {fileID: 4028549422210393822}
-  <Vision>k__BackingField: {fileID: 1241412678200770851}
-  <Mouth>k__BackingField: {fileID: 187838623708506777}
-  <Endurance>k__BackingField: {fileID: 7969867278788272747}
-  <BiomeChecker>k__BackingField: {fileID: 3768259528291108333}
-  <Attack>k__BackingField: {fileID: 8864560468158054137}
   <Animation>k__BackingField: {fileID: 324833802335793691}
   _evolutionsDatabase: {fileID: 11400000, guid: 89e0fac1fa9071a41bafa6ee877795b5, type: 2}
   _raritiesDatabase: {fileID: 11400000, guid: 844b6b4bf98611044bf03a16ce2009a0, type: 2}
@@ -512,6 +505,7 @@ MonoBehaviour:
   autoRun: 1
   autoInjectGameObjects: []
   _playerConfig: {fileID: 11400000, guid: ba7be4736a4236543ba175179ecef16d, type: 2}
+  _animationConfig: {fileID: 11400000, guid: 3e306153c1a50664eb303588691dfd53, type: 2}
 --- !u!1 &8527591295361904753
 GameObject:
   m_ObjectHideFlags: 0

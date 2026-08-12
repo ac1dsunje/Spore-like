@@ -1,11 +1,8 @@
-﻿using _Game.Scripts.Core.Services;
-using _Game.Scripts.GamePlay.Abilities;
+﻿using _Game.Scripts.GamePlay.Abilities;
 using _Game.Scripts.GamePlay.Animation;
 using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Player.Modules;
-using _Game.Scripts.GamePlay.Player.Modules.BiomeChecker;
 using _Game.Scripts.GamePlay.Rarities;
-using _Game.Scripts.GamePlay.World;
 using UnityEngine;
 using VContainer;
 
@@ -13,7 +10,6 @@ namespace _Game.Scripts.GamePlay.Player
 {
 public class PlayerController: MonoBehaviour, IDamageAble
 {
-    [Inject] private PlayerConfig _playerConfig;
     [Header("Modules")]
     [field: SerializeField] public ItemAnimation Animation { get; private set; }
     [Header("Evolutions")]
@@ -22,10 +18,9 @@ public class PlayerController: MonoBehaviour, IDamageAble
     [SerializeField] private int _minEvolutions;
     
     [Inject] public PlayerModel Model { get; private set; }
+    [Inject] private PlayerConfig _playerConfig;
+    [Inject] private AnimationConfig _animationConfig;
 
-    [Inject] private Ticker _ticker;
-    [Inject] private WorldModel _worldModel;
-    [Inject] private PlayerInputService _playerInput;
     [Inject] private AbilityFactory _abilityFactory;
 
     public void Initialize()
@@ -43,7 +38,7 @@ public class PlayerController: MonoBehaviour, IDamageAble
 
     private void InitializeActiveModules()
     {
-        Animation.SetConfig(_playerConfig.AnimationConfig);
+        Animation.SetConfig(_animationConfig);
     }
 
     public void TakeDamage(HitInfo hit)

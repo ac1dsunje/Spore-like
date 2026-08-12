@@ -10,6 +10,5 @@ public class PlayerConfig: ScriptableObject
 {
     [field: SerializeField] public StatsConfig[] InitialConfigs { get; private set; }
     [field: SerializeField] public ExperienceConfig  ExperienceConfig { get; private set; }
-    [field: SerializeField] public AnimationConfig AnimationConfig { get; private set; }
 }
 }

@@ -1,4 +1,5 @@
-﻿using _Game.Scripts.GamePlay.Player.Modules;
+﻿using _Game.Scripts.GamePlay.Animation;
+using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.Player.Modules.Attack;
 using _Game.Scripts.GamePlay.Player.Modules.BiomeChecker;
 using _Game.Scripts.GamePlay.Player.Modules.Defense;
@@ -18,9 +19,11 @@ namespace _Game.Scripts.GamePlay.Player
 public class PlayerScope: LifetimeScope
 {
     [SerializeField] private PlayerConfig _playerConfig;
+    [SerializeField] private AnimationConfig _animationConfig;
     protected override void Configure(IContainerBuilder builder)
     {
         builder.RegisterInstance(_playerConfig);
+        builder.RegisterInstance(_animationConfig);
         
         builder.RegisterComponentInHierarchy<PlayerController>();
         builder.Register<PlayerModel>(Lifetime.Scoped);
