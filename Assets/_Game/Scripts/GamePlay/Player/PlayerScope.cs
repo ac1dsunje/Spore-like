@@ -5,6 +5,7 @@ using _Game.Scripts.GamePlay.Player.Modules.Attack;
 using _Game.Scripts.GamePlay.Player.Modules.BiomeChecker;
 using _Game.Scripts.GamePlay.Player.Modules.Defense;
 using _Game.Scripts.GamePlay.Player.Modules.Endurance;
+using _Game.Scripts.GamePlay.Player.Modules.Evolutions;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
 using _Game.Scripts.GamePlay.Player.Modules.Health;
 using _Game.Scripts.GamePlay.Player.Modules.Mouth;
@@ -69,6 +70,9 @@ public class PlayerScope: LifetimeScope
         
         // Abilities
         builder.Register<AbilitiesModule>(Lifetime.Scoped);
+        
+        // Evolutions
+        builder.Register<EvolutionsModule>(Lifetime.Scoped);
     }
 }
 }

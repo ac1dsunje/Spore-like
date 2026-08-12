@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using _Game.Scripts.GamePlay.Player.Modules;
+﻿using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.Player.Modules.Abilities;
 using _Game.Scripts.GamePlay.Player.Modules.Attack;
 using _Game.Scripts.GamePlay.Player.Modules.Defense;
@@ -17,7 +15,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player
 {
-public class PlayerModel: IDisposable
+public class PlayerModel
 {
     public PlayerStats Stats { get; private set; }
     public VisionModule Vision { get; private set; }
@@ -29,15 +27,13 @@ public class PlayerModel: IDisposable
     public MovementModule Movement { get; private set; }
     public TemperatureModule Temperature { get; private set; }
     public ExperienceModule Experience { get; private set; }
-    
-    private readonly List<IDisposable> _modules = new();
     public AbilitiesModule Abilities { get; private set; }
     public EvolutionsModule Evolutions { get; private set; }
 
     [Inject]
     public PlayerModel(PlayerConfig config, PlayerStats stats, VisionModule vision, HealthModule health, 
         DefenseModule defense, EnduranceModule endurance, MouthModule mouth, AttackModule attack, MovementModule movement,
-        TemperatureModule temperature, ExperienceModule experience, AbilitiesModule abilities)
+        TemperatureModule temperature, ExperienceModule experience, AbilitiesModule abilities, EvolutionsModule evolutions)
     {
         Stats = stats;
         Vision = vision;
@@ -50,24 +46,9 @@ public class PlayerModel: IDisposable
         Temperature = temperature;
         Experience = experience;
         Abilities = abilities;
-        
-        Evolutions = AddModule(new EvolutionsModule(this));
+        Evolutions = evolutions;
         
         Stats.Initialize(config.InitialConfigs);
-    }
-    
-    private T AddModule<T>(T module) where T : IDisposable
-    {
-        _modules.Add(module);
-        return module;
-    }
-
-    public void Dispose()
-    {
-        foreach (var module in _modules)
-        {
-            module.Dispose();
-        }
     }
 }
 }

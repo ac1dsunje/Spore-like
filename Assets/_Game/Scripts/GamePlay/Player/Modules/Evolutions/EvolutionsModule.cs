@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using _Game.Scripts.GamePlay.Evolutions;
+using _Game.Scripts.GamePlay.Player.Modules.Abilities;
+using _Game.Scripts.GamePlay.Player.Modules.Experience;
+using _Game.Scripts.GamePlay.Player.Modules.Movement;
+using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Rarities;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -13,17 +17,30 @@ public class EvolutionsModule: IDisposable
     private EvolutionsDatabase _evolutionsDatabase;
     private RaritiesDatabase _raritiesDatabase;
     private int _minEvolutions;
-    private readonly PlayerModel _player;
+
+    private ExperienceModule _experience;
+    private MovementModule _movement;
+    private PlayerStats _stats;
+    private AbilitiesModule _abilities;
+    private PlayerModel _player;
     
     private readonly List<Evolution> _evolutions = new();
 
     public event Action<List<Evolution>> OnSlotsFilled;
     public event Action<Evolution> OnEvolutionApplied;
 
-    public EvolutionsModule(PlayerModel model)
+    public EvolutionsModule(ExperienceModule experience, MovementModule movement, PlayerStats stats, AbilitiesModule abilities)
+    {
+        _experience = experience;
+        _movement = movement;
+        _stats = stats;
+        _abilities = abilities;
+        _experience.OnLevelChanged += OnLevelUpdated;
+    }
+
+    public void SetModel(PlayerModel model)
     {
         _player = model;
-        _player.Experience.OnLevelChanged += OnLevelUpdated;
     }
     
     public void Initialize(EvolutionsDatabase evolutionsDatabase, RaritiesDatabase raritiesDatabase, int minEvolutions)
@@ -45,14 +62,14 @@ public class EvolutionsModule: IDisposable
         if (_evolutions.Count(evolution => evolution.State == EvolutionState.IsAble) <= 0) return;
         
         FillSlots();
-        _player.Movement.Disable();
+        _movement.Disable();
     }
 
     public void ChooseEvolution(Evolution evolution)
     {
         evolution.Apply();
-        _player.Stats.AddEvolution(evolution);
-        _player.Abilities.Add(evolution.Config.Abilities);
+        _stats.AddEvolution(evolution);
+        _abilities.Add(evolution.Config.Abilities);
 
         UnlockEvolutions();
         BlockEvolutions(evolution);
@@ -60,7 +77,7 @@ public class EvolutionsModule: IDisposable
         
         OnEvolutionApplied?.Invoke(evolution);
         
-        _player.Movement.Enable();
+        _movement.Enable();
     }
 
     private void OnEvolutionLevelUp(Evolution evolution, int level)
@@ -159,7 +176,7 @@ public class EvolutionsModule: IDisposable
 
     public void Dispose()
     {
-        _player.Experience.OnLevelChanged -= OnLevelUpdated;
+        _experience.OnLevelChanged -= OnLevelUpdated;
 
         foreach (var evolution in _evolutions)
         {

@@ -33,6 +33,7 @@ public class PlayerController: MonoBehaviour, IDamageAble
     {
         Model.Attack.SetOwner(this);
         Model.Abilities.SetModel(Model);
+        Model.Evolutions.SetModel(Model);
         Model.Evolutions.Initialize(_evolutionsDatabase, _raritiesDatabase, _minEvolutions);
     }
 
@@ -48,11 +49,6 @@ public class PlayerController: MonoBehaviour, IDamageAble
         var returnedDamage = Model.Defense.ReflectDamage(damage);
         HitInfo returnedHit = new(returnedDamage, Model.Attack.IgnoreResistance, null);
         hit.Owner?.TakeDamage(returnedHit);
-    }
-
-    private void OnDestroy()
-    {
-        Model.Dispose();
     }
 }
 }
