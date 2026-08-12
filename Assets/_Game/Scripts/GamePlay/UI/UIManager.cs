@@ -9,12 +9,12 @@ public class UIManager: MonoBehaviour
 {
     private PlayerModel _player;
     
-    [SerializeField] private PauseUIScreen _pauseUIScreen;
-    [SerializeField] private EvolutionChooseUIScreen _evolutionChooseUIScreen;
+    [Inject] private PauseUIScreen _pauseUIScreen;
+    [Inject] private EvolutionChooseUIScreen _evolutionChooseUIScreen;
     
-    [SerializeField] private OverlayUIScreen _overlayUIScreen;
-    [SerializeField] private ActiveEvolutionsDisplay _activeEvolutionsDisplay;
-    [SerializeField] private ActiveAbilitiesDisplay  _activeAbilitiesDisplay;
+    [Inject] private OverlayUIScreen _overlayUIScreen;
+    [Inject] private ActiveEvolutionsDisplay _activeEvolutionsDisplay;
+    [Inject] private ActiveAbilitiesDisplay  _activeAbilitiesDisplay;
 
     private PlayerRegistry _registry;
 
