@@ -18,7 +18,7 @@ public class WorldGenerator: MonoBehaviour
     private WorldTileRenderer _tileRendererGenerator;
     
     private readonly Dictionary<Vector3Int, int> _tileUsage = new();
-    private readonly Dictionary<PlayerMovement, HashSet<Vector3Int>> _playerTiles = new();
+    private readonly Dictionary<MovementModule, HashSet<Vector3Int>> _playerTiles = new();
     
     [Inject]
     private void Construct(WorldModel model, PlayerRegistry playerRegistry, WorldTileRenderer tileRendererGenerator)
@@ -34,25 +34,25 @@ public class WorldGenerator: MonoBehaviour
     private void AddPlayer(PlayerController player)
     {
         _players.Add(player);
-        _playerTiles.Add(player.Movement, new HashSet<Vector3Int>());
+        _playerTiles.Add(player.Model.Movement, new HashSet<Vector3Int>());
         
-        player.Movement.OnGridPositionChanged += Generate;
-        Generate(player.Movement);
+        player.Model.Movement.OnGridPositionChanged += Generate;
+        Generate(player.Model.Movement);
     }
 
     private void RemovePlayer(PlayerController player)
     {
-        player.Movement.OnGridPositionChanged -= Generate;
+        player.Model.Movement.OnGridPositionChanged -= Generate;
         
-        UnloadPlayerTiles(player.Movement);
+        UnloadPlayerTiles(player.Model.Movement);
         
-        _playerTiles.Remove(player.Movement);
+        _playerTiles.Remove(player.Model.Movement);
         _players.Remove(player);
     }
 
     private int GetDistance() => _renderDistance * _model.ChunkSize;
     
-    private void Generate(PlayerMovement player)
+    private void Generate(MovementModule player)
     {
         var playerPosition = player.GridPosition;
         var distance = GetDistance();
@@ -115,7 +115,7 @@ public class WorldGenerator: MonoBehaviour
         _tileRendererGenerator.TryUnloadTile(position);
     }
 
-    private void UnloadPlayerTiles(PlayerMovement player)
+    private void UnloadPlayerTiles(MovementModule player)
     {
         foreach (var position in _playerTiles[player])
         {
@@ -127,7 +127,7 @@ public class WorldGenerator: MonoBehaviour
     {
         foreach (var player in _players)
         {
-            player.Movement.OnGridPositionChanged -= Generate;
+            player.Model.Movement.OnGridPositionChanged -= Generate;
         }
         _playerRegistry.OnPlayerAdded -= AddPlayer;
         _playerRegistry.OnPlayerRemoved -= RemovePlayer;

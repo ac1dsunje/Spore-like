@@ -1,6 +1,7 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Stats;
+using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Movement
 {
@@ -20,7 +21,10 @@ public class MovementModule : StatModule
     public float DashPower { get; private set; }
     public bool DashRequested { get; private set; }
 
+    public Vector3Int GridPosition { get; private set; }
+
     public event Action<float> OnDistanceOvercome;
+    public event Action<MovementModule> OnGridPositionChanged;
     
     private float _moveSpeed;
     private float _acceleration;
@@ -50,7 +54,13 @@ public class MovementModule : StatModule
 
     public void Enable() => SetState(MovementState.Enabled);
 
-    public void OvercomeDistance() => OnDistanceOvercome?.Invoke(1);
+    public void UpdateGridPosition(Vector3Int position)
+    {
+        if (position == GridPosition) return;
+        GridPosition = position;
+        OnGridPositionChanged?.Invoke(this);
+        OnDistanceOvercome?.Invoke(1);
+    }
 
     private void UpdateMoveSpeed(float value) => _moveSpeed = value;
 

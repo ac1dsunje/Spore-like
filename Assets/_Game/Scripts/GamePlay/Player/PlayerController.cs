@@ -67,7 +67,7 @@ public class PlayerController: MonoBehaviour, IDamageAble
         Mouth.Construct(Model.MouthModule);
         Health.Construct(Model.Health);
         Endurance.Construct(Model.Endurance);
-        BiomeChecker.Construct(Movement, _worldModel, Model);
+        BiomeChecker.Construct(_worldModel, Model);
         Attack.Construct(Model.Attack, _playerInput, this);
         Animation.SetConfig(_playerConfig.AnimationConfig);
     }

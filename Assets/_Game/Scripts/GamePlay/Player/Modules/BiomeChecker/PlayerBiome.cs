@@ -1,4 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Player.Modules.Movement;
+using _Game.Scripts.GamePlay.Player.Modules.Temperature;
 using _Game.Scripts.GamePlay.World;
 using _Game.Scripts.GamePlay.World.Biomes;
 using UnityEngine;
@@ -8,21 +9,21 @@ namespace _Game.Scripts.GamePlay.Player.Modules.BiomeChecker
 public class PlayerBiome: MonoBehaviour
 {
     private Biome _currentBiome;
-    private PlayerMovement _movement;
     private WorldModel _worldModel;
-    private PlayerModel _model;
+    private TemperatureModule _temperature;
+    private MovementModule _movement;
     
-    public void Construct(PlayerMovement movement, WorldModel worldModel, PlayerModel model)
+    public void Construct(WorldModel worldModel, PlayerModel model)
     {
-        _movement = movement;
         _worldModel = worldModel;
-        _model = model;
+        _temperature = model.Temperature;
+        _movement = model.Movement;
         
         _movement.OnGridPositionChanged += TryEnterBiome;
-        EnterBiome(worldModel.GetBiome(_movement.GridPosition));
+        EnterBiome(worldModel.GetBiome(model.Movement.GridPosition));
     }
 
-    private void TryEnterBiome(PlayerMovement player)
+    private void TryEnterBiome(MovementModule player)
     {
         var currentBiome = _worldModel.GetBiome(player.GridPosition);
         if (currentBiome == _currentBiome) return;
@@ -38,11 +39,11 @@ public class PlayerBiome: MonoBehaviour
 
     private void ApplyTemperature(float temperature)
     {
-        if (_model.Temperature.IsLethal(temperature))
+        if (_temperature.IsLethal(temperature))
         {
             Debug.Log($"Temperature {temperature} is lethal");
         }
-        else if (_model.Temperature.IsUncomfortable(temperature))
+        else if (_temperature.IsUncomfortable(temperature))
         {
             Debug.Log($"Temperature {temperature} is not comfortable");
         }
