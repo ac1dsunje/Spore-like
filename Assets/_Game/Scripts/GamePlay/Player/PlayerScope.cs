@@ -28,44 +28,44 @@ public class PlayerScope: LifetimeScope
     {
         builder.RegisterInstance(_playerConfig);
         builder.RegisterInstance(_animationConfig);
+        builder.RegisterInstance(_experienceConfig);
         
-        builder.RegisterComponentInHierarchy<PlayerController>();
+        builder.RegisterComponent(GetComponent<PlayerController>());
         builder.Register<PlayerModel>(Lifetime.Scoped);
         builder.Register<PlayerStats>(Lifetime.Scoped);
         
         // Experience
         builder.Register<ExperienceModule>(Lifetime.Scoped);
-        builder.RegisterInstance(_experienceConfig);
         
         // Vision
-        builder.RegisterComponentInHierarchy<PlayerVision>();
+        builder.RegisterComponent(GetComponentInChildren<PlayerVision>());
         builder.Register<VisionModule>(Lifetime.Scoped);
         
         // Health
-        builder.RegisterComponentInHierarchy<PlayerHealth>();
+        builder.RegisterComponent(GetComponentInChildren<PlayerHealth>());
         builder.Register<HealthModule>(Lifetime.Scoped);
         
         // Defense 
         builder.Register<DefenseModule>(Lifetime.Scoped);
         
         // Endurance
-        builder.RegisterComponentInHierarchy<PlayerEndurance>();
+        builder.RegisterComponent(GetComponentInChildren<PlayerEndurance>());
         builder.Register<EnduranceModule>(Lifetime.Scoped);
         
         // Mouth
-        builder.RegisterComponentInHierarchy<PlayerMouth>();
+        builder.RegisterComponent(GetComponentInChildren<PlayerMouth>());
         builder.Register<MouthModule>(Lifetime.Scoped);
         
         // Attack
-        builder.RegisterComponentInHierarchy<PlayerAttack>();
+        builder.RegisterComponent(GetComponentInChildren<PlayerAttack>());
         builder.Register<AttackModule>(Lifetime.Scoped);
         
         // Movement
-        builder.RegisterComponentInHierarchy<PlayerMovement>();
+        builder.RegisterComponent(GetComponentInChildren<PlayerMovement>());
         builder.Register<MovementModule>(Lifetime.Scoped);
         
         // Biomes
-        builder.RegisterComponentInHierarchy<PlayerBiome>();
+        builder.RegisterComponent(GetComponentInChildren<PlayerBiome>());
         builder.Register<TemperatureModule>(Lifetime.Scoped);
         
         // Abilities
