@@ -14,9 +14,6 @@ public class GameplayScope: LifetimeScope
 {
     [Header("Config")]
     [SerializeField] private WorldGenerationConfig _worldConfig;
-    [Header("Cameras")]
-    [SerializeField] private Camera _camera;
-    [SerializeField] private CinemachineCamera _cineMachineCamera;
 
     protected override void Configure(IContainerBuilder builder)
     {
@@ -42,8 +39,8 @@ public class GameplayScope: LifetimeScope
         
         // Cameras
         builder.RegisterComponentInHierarchy<CameraController>();
-        builder.RegisterInstance(_camera);
-        builder.RegisterInstance(_cineMachineCamera);
+        builder.RegisterComponentInHierarchy<Camera>();
+        builder.RegisterComponentInHierarchy<CinemachineCamera>();
     }
 }
 }
