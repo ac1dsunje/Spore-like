@@ -1,4 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Player.Modules;
+using _Game.Scripts.GamePlay.Player.Modules.Defense;
 using _Game.Scripts.GamePlay.Player.Modules.Health;
 using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Player.Modules.Vision;
@@ -26,6 +27,9 @@ public class PlayerScope: LifetimeScope
         // Health
         builder.RegisterComponentInHierarchy<PlayerHealth>();
         builder.Register<HealthModule>(Lifetime.Scoped);
+        
+        // Defense 
+        builder.Register<DefenseModule>(Lifetime.Scoped);
     }
 }
 }
