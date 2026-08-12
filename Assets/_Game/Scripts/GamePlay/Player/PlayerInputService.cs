@@ -7,11 +7,13 @@ namespace _Game.Scripts.GamePlay.Player
 public class PlayerInputService
 {
     private readonly IInputService _input;
+    private readonly Camera _camera;
 
     [Inject]
-    public PlayerInputService(IInputService input)
+    public PlayerInputService(IInputService input, Camera camera)
     {
         _input = input;
+        _camera = camera;
     }
 
     public float Horizontal =>
@@ -26,6 +28,17 @@ public class PlayerInputService
 
     public bool AttackPressed => _input.WasLeftMousePressed;
 
-    public Vector2 MousePosition => _input.MousePosition;
+    public Vector2 MouseScreenPosition => _input.MousePosition;
+
+    public Vector2 MouseWorldPosition
+    {
+        get
+        {
+            Vector3 screenPoint = _input.MousePosition;
+            screenPoint.z = Mathf.Abs(_camera.transform.position.z);
+
+            return _camera.ScreenToWorldPoint(screenPoint);
+        }
+    }
 }
 }

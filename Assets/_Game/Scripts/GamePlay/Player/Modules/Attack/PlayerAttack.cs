@@ -36,14 +36,19 @@ public class PlayerAttack : MonoBehaviour
 
     private void UpdateAttackPosition()
     {
-        var mousePosition = _inputService.MousePosition;
-        Vector2 playerPosition = transform.position;
-        var direction = (mousePosition - playerPosition).normalized;
+        var mouseWorld = _inputService.MouseWorldPosition;
+        var playerPosition = (Vector2)transform.position;
 
-        _meleeWeaponObject.transform.localPosition = direction * _module.AttackRange;
+        var offset = mouseWorld - playerPosition;
+        var rawDistance = offset.magnitude;
+
+        var distance = Mathf.Clamp(rawDistance, 0.5f, _module.AttackRange);
+
+        var direction = rawDistance > Mathf.Epsilon ? offset.normalized : Vector2.right;
+
+        _meleeWeaponObject.transform.localPosition = direction * distance;
 
         var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
         _meleeWeaponObject.transform.localRotation = Quaternion.Euler(0f, 0f, angle);
     }
 }
