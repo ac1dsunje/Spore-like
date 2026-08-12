@@ -3,6 +3,7 @@ using _Game.Scripts.GamePlay.Evolutions.UI.Choosing;
 using _Game.Scripts.GamePlay.Player;
 using _Game.Scripts.GamePlay.UI;
 using _Game.Scripts.GamePlay.World;
+using Unity.Cinemachine;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -13,6 +14,9 @@ public class GameplayScope: LifetimeScope
 {
     [Header("Config")]
     [SerializeField] private WorldGenerationConfig _worldConfig;
+    [Header("Cameras")]
+    [SerializeField] private Camera _camera;
+    [SerializeField] private CinemachineCamera _cineMachineCamera;
 
     protected override void Configure(IContainerBuilder builder)
     {
@@ -35,7 +39,11 @@ public class GameplayScope: LifetimeScope
         builder.RegisterComponentInHierarchy<ActiveEvolutionsDisplay>();
         builder.RegisterComponentInHierarchy<ActiveAbilitiesDisplay>();
         builder.RegisterComponentInHierarchy<PauseUIScreen>();
+        
+        // Cameras
         builder.RegisterComponentInHierarchy<CameraController>();
+        builder.RegisterInstance(_camera);
+        builder.RegisterInstance(_cineMachineCamera);
     }
 }
 }

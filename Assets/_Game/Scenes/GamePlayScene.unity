@@ -328,17 +328,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1990611478612946180, guid: e25a0e3a90e028f489bd78a538690506, type: 3}
   m_PrefabInstance: {fileID: 504216402}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &504216404 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8666723378852333049, guid: e25a0e3a90e028f489bd78a538690506, type: 3}
-  m_PrefabInstance: {fileID: 504216402}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68818945f7c74e34b115a0ef0bc918f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.UI.ActiveAbilitiesDisplay
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,33 +688,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4755174928454083572, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
   m_PrefabInstance: {fileID: 4498920137526282035}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1080735611 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7839408227657056900, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
-  m_PrefabInstance: {fileID: 4498920137526282035}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cbbc8764e2843ffa604fb629f6ed5dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.UI.BuffChooseScreen
 --- !u!224 &1380803052 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5765242464822062076, guid: 189aacc1d15c4f44f8d9bc18abf6bd1a, type: 3}
   m_PrefabInstance: {fileID: 8462081351352519223}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1380803056 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2646258636516185627, guid: 189aacc1d15c4f44f8d9bc18abf6bd1a, type: 3}
-  m_PrefabInstance: {fileID: 8462081351352519223}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 011b6d32c178426a8442348afc8b91e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.UI.OverlayScreen
 --- !u!1 &1459025054
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,6 +830,8 @@ MonoBehaviour:
   autoRun: 1
   autoInjectGameObjects: []
   _worldConfig: {fileID: 11400000, guid: 86a2a7edd3ffa1b4fbb90f25e00c0843, type: 2}
+  _camera: {fileID: 519420031}
+  _cineMachineCamera: {fileID: 62460934}
 --- !u!114 &1986825663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -901,11 +870,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a468a6c2a3e44ea5851b40addfe930ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.UI.UIManager
-  _pauseUIScreen: {fileID: 2140936594}
-  _evolutionChooseUIScreen: {fileID: 1080735611}
-  _overlayUIScreen: {fileID: 1380803056}
-  _activeEvolutionsDisplay: {fileID: 2071786727}
-  _activeAbilitiesDisplay: {fileID: 504216404}
 --- !u!114 &1986825667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -918,8 +882,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ecc617aaa54d519673e9e44e8c35c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.CameraManager.CameraController
-  _camera: {fileID: 519420031}
-  _cineMachineCamera: {fileID: 62460934}
 --- !u!1001 &2071786725
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1022,17 +984,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6433324394711601613, guid: 6c370cd01362103429345300ff09ff78, type: 3}
   m_PrefabInstance: {fileID: 2071786725}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2071786727 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 53425739031908362, guid: 6c370cd01362103429345300ff09ff78, type: 3}
-  m_PrefabInstance: {fileID: 2071786725}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 685d84f2d6d24264a8f795e88590d4b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.UI.ActiveEvolutionsDisplay
 --- !u!1001 &2140936592
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1183,17 +1134,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5765242464822062076, guid: 9ef15d380bb88e6488827471399a06ad, type: 3}
   m_PrefabInstance: {fileID: 2140936592}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2140936594 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6918447578457462876, guid: 9ef15d380bb88e6488827471399a06ad, type: 3}
-  m_PrefabInstance: {fileID: 2140936592}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25da744d535c40d9b9ebaff770951573, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.UI.PauseUIScreen
 --- !u!114 &960863365435957094
 MonoBehaviour:
   m_ObjectHideFlags: 0
