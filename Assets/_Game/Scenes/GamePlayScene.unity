@@ -820,10 +820,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1986825661}
   - component: {fileID: 1986825662}
-  - component: {fileID: 1986825665}
   - component: {fileID: 1986825663}
   - component: {fileID: 1986825664}
   - component: {fileID: 1986825666}
+  - component: {fileID: 1986825667}
   m_Layer: 0
   m_Name: Scope
   m_TagString: Untagged
@@ -889,19 +889,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.PlayerSpawner
   _playerPrefab: {fileID: 2108220050117646386, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
   _spawnOnStart: 1
---- !u!114 &1986825665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1986825660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1da305ca004f0394087114e798ebb77b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.EntryPoint
-  _camera: {fileID: 62460934}
 --- !u!114 &1986825666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -919,6 +906,20 @@ MonoBehaviour:
   _overlayUIScreen: {fileID: 1380803056}
   _activeEvolutionsDisplay: {fileID: 2071786727}
   _activeAbilitiesDisplay: {fileID: 504216404}
+--- !u!114 &1986825667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986825660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3ecc617aaa54d519673e9e44e8c35c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.CameraManager.CameraController
+  _camera: {fileID: 519420031}
+  _cineMachineCamera: {fileID: 62460934}
 --- !u!1001 &2071786725
 PrefabInstance:
   m_ObjectHideFlags: 0

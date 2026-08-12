@@ -1,4 +1,5 @@
-﻿using _Game.Scripts.GamePlay.Player;
+﻿using _Game.Scripts.GamePlay.CameraManager;
+using _Game.Scripts.GamePlay.Player;
 using _Game.Scripts.GamePlay.UI;
 using _Game.Scripts.GamePlay.World;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace _Game.Scripts.GamePlay
 {
 public class GameplayScope: LifetimeScope
 {
+    [Header("Config")]
     [SerializeField] private WorldGenerationConfig _worldConfig;
 
     protected override void Configure(IContainerBuilder builder)
@@ -18,7 +20,7 @@ public class GameplayScope: LifetimeScope
         builder.RegisterComponentInHierarchy<WorldTileRenderer>();
         builder.RegisterComponentInHierarchy<EnvironmentSpawner>();
         builder.RegisterComponentInHierarchy<UIManager>();
-        builder.RegisterComponentInHierarchy<EntryPoint>();
+        builder.RegisterComponentInHierarchy<CameraController>();
 
         builder.RegisterComponentInHierarchy<PauseUIScreen>();
 

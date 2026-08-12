@@ -1,6 +1,7 @@
 ﻿using _Game.Scripts.GamePlay.Evolutions.UI.Choosing;
 using _Game.Scripts.GamePlay.Player;
 using UnityEngine;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.UI
 {
@@ -15,9 +16,18 @@ public class UIManager: MonoBehaviour
     [SerializeField] private ActiveEvolutionsDisplay _activeEvolutionsDisplay;
     [SerializeField] private ActiveAbilitiesDisplay  _activeAbilitiesDisplay;
 
-    public void Construct(PlayerModel model)
+    private PlayerRegistry _registry;
+
+    [Inject]
+    private void Construct(PlayerRegistry registry)
     {
-        _player = model;
+        _registry = registry;
+        _registry.OnPlayerAdded += AddPlayer;
+    }
+    
+    private void AddPlayer(PlayerController player)
+    {
+        _player = player.Model;
         
         _player.Experience.OnLevelChanged += OnLevelUpdated;
         _pauseUIScreen.OnStateChanged += OnPauseScreenChanged;
@@ -52,7 +62,7 @@ public class UIManager: MonoBehaviour
     public void OnDestroy()
     {
         _player.Experience.OnLevelChanged -= OnLevelUpdated;
-
+        _registry.OnPlayerAdded -= AddPlayer;
         _pauseUIScreen.OnStateChanged -= OnPauseScreenChanged;
     }
 }
