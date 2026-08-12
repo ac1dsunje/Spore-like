@@ -1,5 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Animation;
 using _Game.Scripts.GamePlay.Player.Modules;
+using _Game.Scripts.GamePlay.Player.Modules.Abilities;
 using _Game.Scripts.GamePlay.Player.Modules.Attack;
 using _Game.Scripts.GamePlay.Player.Modules.BiomeChecker;
 using _Game.Scripts.GamePlay.Player.Modules.Defense;
@@ -65,6 +66,9 @@ public class PlayerScope: LifetimeScope
         // Biomes
         builder.RegisterComponentInHierarchy<PlayerBiome>();
         builder.Register<TemperatureModule>(Lifetime.Scoped);
+        
+        // Abilities
+        builder.Register<AbilitiesModule>(Lifetime.Scoped);
     }
 }
 }

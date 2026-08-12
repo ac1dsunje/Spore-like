@@ -32,8 +32,7 @@ public class PlayerController: MonoBehaviour, IDamageAble
     private void CreateModel()
     {
         Model.Attack.SetOwner(this);
-        
-        Model.Abilities.Initialize(_abilityFactory, Model);
+        Model.Abilities.SetModel(Model);
         Model.Evolutions.Initialize(_evolutionsDatabase, _raritiesDatabase, _minEvolutions);
     }
 

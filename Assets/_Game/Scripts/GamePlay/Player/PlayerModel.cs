@@ -37,7 +37,7 @@ public class PlayerModel: IDisposable
     [Inject]
     public PlayerModel(PlayerConfig config, PlayerStats stats, VisionModule vision, HealthModule health, 
         DefenseModule defense, EnduranceModule endurance, MouthModule mouth, AttackModule attack, MovementModule movement,
-        TemperatureModule temperature, ExperienceModule experience)
+        TemperatureModule temperature, ExperienceModule experience, AbilitiesModule abilities)
     {
         Stats = stats;
         Vision = vision;
@@ -49,8 +49,8 @@ public class PlayerModel: IDisposable
         Movement = movement;
         Temperature = temperature;
         Experience = experience;
+        Abilities = abilities;
         
-        Abilities = AddModule(new AbilitiesModule());
         Evolutions = AddModule(new EvolutionsModule(this));
         
         Stats.Initialize(config.InitialConfigs);

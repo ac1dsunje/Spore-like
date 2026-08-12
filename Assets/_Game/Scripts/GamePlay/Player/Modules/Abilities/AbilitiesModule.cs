@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Abilities;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Abilities
 {
@@ -12,9 +13,14 @@ public class AbilitiesModule: IDisposable
     private AbilityFactory _factory;
     private PlayerModel _playerModel;
 
-    public void Initialize(AbilityFactory factory, PlayerModel playerModel)
+    [Inject]
+    public AbilitiesModule(AbilityFactory factory)
     {
         _factory = factory;
+    }
+    
+    public void SetModel(PlayerModel playerModel)
+    {
         _playerModel = playerModel;
     }
     
