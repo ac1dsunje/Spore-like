@@ -1,4 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Player.Modules;
+using _Game.Scripts.GamePlay.Player.Modules.Attack;
 using _Game.Scripts.GamePlay.Player.Modules.Defense;
 using _Game.Scripts.GamePlay.Player.Modules.Endurance;
 using _Game.Scripts.GamePlay.Player.Modules.Health;
@@ -40,6 +41,10 @@ public class PlayerScope: LifetimeScope
         // Mouth
         builder.RegisterComponentInHierarchy<PlayerMouth>();
         builder.Register<MouthModule>(Lifetime.Scoped);
+        
+        // Attack
+        builder.RegisterComponentInHierarchy<PlayerAttack>();
+        builder.Register<AttackModule>(Lifetime.Scoped);
     }
 }
 }

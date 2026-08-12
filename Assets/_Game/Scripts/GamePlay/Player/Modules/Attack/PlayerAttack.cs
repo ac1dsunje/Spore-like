@@ -1,5 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Weapons;
 using UnityEngine;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Attack
 {
@@ -10,13 +11,11 @@ public class PlayerAttack : MonoBehaviour
     private AttackModule _module;
     private PlayerInputService _inputService;
 
-    private IDamageAble _owner;
-
-    public void Construct(AttackModule module, PlayerInputService inputService, IDamageAble owner)
+    [Inject]
+    private void Construct(AttackModule module, PlayerInputService inputService)
     {
         _module = module;
         _inputService = inputService;
-        _owner = owner;
     }
 
     private void Update()
@@ -31,7 +30,7 @@ public class PlayerAttack : MonoBehaviour
     {
         _meleeWeaponObject.gameObject.SetActive(true);
         UpdateAttackPosition();
-        var hit = new HitInfo(_module.PhysicalDamage, _module.IgnoreResistance, _owner);
+        var hit = new HitInfo(_module.PhysicalDamage, _module.IgnoreResistance, _module.Owner);
         _meleeWeaponObject.SetHit(hit);
     }
 

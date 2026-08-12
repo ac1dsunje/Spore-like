@@ -3,13 +3,8 @@ using _Game.Scripts.GamePlay.Abilities;
 using _Game.Scripts.GamePlay.Animation;
 using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Player.Modules;
-using _Game.Scripts.GamePlay.Player.Modules.Attack;
 using _Game.Scripts.GamePlay.Player.Modules.BiomeChecker;
-using _Game.Scripts.GamePlay.Player.Modules.Endurance;
-using _Game.Scripts.GamePlay.Player.Modules.Health;
-using _Game.Scripts.GamePlay.Player.Modules.Mouth;
 using _Game.Scripts.GamePlay.Player.Modules.Movement;
-using _Game.Scripts.GamePlay.Player.Modules.Vision;
 using _Game.Scripts.GamePlay.Rarities;
 using _Game.Scripts.GamePlay.World;
 using UnityEngine;
@@ -23,7 +18,6 @@ public class PlayerController: MonoBehaviour, IDamageAble
     [Header("Modules")]
     [field: SerializeField] public PlayerMovement Movement { get; private set; }
     [field: SerializeField] public PlayerBiome BiomeChecker { get; private set; }
-    [field: SerializeField] public PlayerAttack Attack { get; private set; }
     [field: SerializeField] public ItemAnimation Animation { get; private set; }
     [Header("Evolutions")]
     [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
@@ -46,7 +40,7 @@ public class PlayerController: MonoBehaviour, IDamageAble
     private void CreateModel()
     {
         Model.Abilities.Initialize(_abilityFactory, Model);
-        
+        Model.Attack.SetOwner(this);
         Model.Evolutions.Initialize(_evolutionsDatabase, _raritiesDatabase, _minEvolutions);
     }
 
@@ -54,7 +48,6 @@ public class PlayerController: MonoBehaviour, IDamageAble
     {
         Movement.Construct(Model.Movement, _playerInput);
         BiomeChecker.Construct(_worldModel, Model);
-        Attack.Construct(Model.Attack, _playerInput, this);
         Animation.SetConfig(_playerConfig.AnimationConfig);
     }
 

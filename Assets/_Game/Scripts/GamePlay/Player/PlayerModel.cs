@@ -25,19 +25,18 @@ public class PlayerModel: IDisposable
     public DefenseModule Defense { get; private set; }
     public EnduranceModule Endurance { get; private set; }
     public MouthModule MouthModule { get; private set; }
+    public AttackModule Attack { get; private set; }
     
     private readonly List<IDisposable> _modules = new();
     public MovementModule Movement { get; private set; }
-    public AttackModule Attack { get; private set; }
     public TemperatureModule Temperature { get; private set; }
-    
     public AbilitiesModule Abilities { get; private set; }
     public ExperienceModule Experience { get; private set; }
     public EvolutionsModule Evolutions { get; private set; }
 
     [Inject]
     public PlayerModel(PlayerConfig config, PlayerStats stats, VisionModule vision, HealthModule health, 
-        DefenseModule defense, EnduranceModule endurance, MouthModule mouth)
+        DefenseModule defense, EnduranceModule endurance, MouthModule mouth, AttackModule attack)
     {
         Stats = stats;
         Vision = vision;
@@ -45,6 +44,7 @@ public class PlayerModel: IDisposable
         Defense = defense;
         Endurance = endurance;
         MouthModule = mouth;
+        Attack = attack;
         AddModules(config);
         Stats.Initialize(config.InitialConfigs);
     }
@@ -52,7 +52,6 @@ public class PlayerModel: IDisposable
     private void AddModules(PlayerConfig config)
     {
         Movement = AddModule(new MovementModule(Stats));
-        Attack = AddModule(new AttackModule(Stats));
         Experience = AddModule(new ExperienceModule(config.ExperienceConfig, MouthModule));
         Abilities = AddModule(new AbilitiesModule());
         Evolutions = AddModule(new EvolutionsModule(this));
