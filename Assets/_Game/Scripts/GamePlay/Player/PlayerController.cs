@@ -19,8 +19,7 @@ namespace _Game.Scripts.GamePlay.Player
 {
 public class PlayerController: MonoBehaviour, IDamageAble
 {
-    [Header("Config")]
-    [SerializeField] private PlayerConfig _playerConfig;
+    [Inject] private PlayerConfig _playerConfig;
     [Header("Modules")]
     [field: SerializeField] public PlayerMovement Movement { get; private set; }
     [field: SerializeField] public PlayerHealth Health { get; private set; }
@@ -35,7 +34,7 @@ public class PlayerController: MonoBehaviour, IDamageAble
     [SerializeField] private RaritiesDatabase _raritiesDatabase;
     [SerializeField] private int _minEvolutions;
     
-    public PlayerModel Model { get; private set; }
+    [Inject] public PlayerModel Model { get; private set; }
 
     [Inject] private Ticker _ticker;
     [Inject] private WorldModel _worldModel;
@@ -50,7 +49,6 @@ public class PlayerController: MonoBehaviour, IDamageAble
 
     private void CreateModel()
     {
-        Model = new(_playerConfig);
         Model.Abilities.Initialize(_abilityFactory, Model);
         
         Model.Evolutions.Initialize(_evolutionsDatabase, _raritiesDatabase, _minEvolutions);

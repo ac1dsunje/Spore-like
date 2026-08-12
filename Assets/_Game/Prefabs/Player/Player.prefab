@@ -459,7 +459,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6f8be6a5c94e08b0408b38c4016f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.PlayerController
-  _playerConfig: {fileID: 11400000, guid: ba7be4736a4236543ba175179ecef16d, type: 2}
   <Movement>k__BackingField: {fileID: 6455457412017345376}
   <Health>k__BackingField: {fileID: 4028549422210393822}
   <Vision>k__BackingField: {fileID: 1241412678200770851}
@@ -512,6 +511,7 @@ MonoBehaviour:
     TypeName: _Game.Scripts.GamePlay.GameplayScope
   autoRun: 1
   autoInjectGameObjects: []
+  _playerConfig: {fileID: 11400000, guid: ba7be4736a4236543ba175179ecef16d, type: 2}
 --- !u!1 &8527591295361904753
 GameObject:
   m_ObjectHideFlags: 0

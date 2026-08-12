@@ -13,6 +13,7 @@ using _Game.Scripts.GamePlay.Player.Modules.Movement;
 using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Player.Modules.Temperature;
 using _Game.Scripts.GamePlay.Player.Modules.Vision;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player
 {
@@ -34,9 +35,10 @@ public class PlayerModel: IDisposable
     public ExperienceModule Experience { get; private set; }
     public EvolutionsModule Evolutions { get; private set; }
 
-    public PlayerModel(PlayerConfig config)
+    [Inject]
+    public PlayerModel(PlayerConfig config, PlayerStats stats)
     {
-        Stats = new();
+        Stats = stats;
         AddModules(config);
         Stats.Initialize(config.InitialConfigs);
     }

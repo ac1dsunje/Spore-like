@@ -14,8 +14,7 @@ public class PlayerStats
     private readonly Dictionary<Evolution, Dictionary<StatType, float>> _evolutionStats = new();
 
     public event Action<StatType, float> OnStatUpdated;
-
-
+    
     public void Initialize(StatsConfig[] configs)
     {
         foreach (var config in configs)
