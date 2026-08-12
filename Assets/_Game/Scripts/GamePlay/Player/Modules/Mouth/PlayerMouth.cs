@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using _Game.Scripts.GamePlay.World.Food;
 using UnityEngine;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Mouth
 {
@@ -9,7 +10,8 @@ public class PlayerMouth: MonoBehaviour
     private MouthModule _module;
     private FoodItem _currentFood;
     
-    public void Construct(MouthModule module)
+    [Inject]
+    private void Construct(MouthModule module)
     {
         _module = module;
     }

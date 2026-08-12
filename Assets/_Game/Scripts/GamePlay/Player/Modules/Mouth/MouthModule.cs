@@ -1,6 +1,7 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Stats;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Mouth
 {
@@ -13,6 +14,7 @@ public class MouthModule: StatModule
     private float _eatingTime;
     public event Action<float> OnFoodPointsAchieved;
 
+    [Inject]
     public MouthModule(PlayerStats playerStats) : base(playerStats)
     {
         BindStat(StatType.EatingStrength, UpdateEatingStrength);
