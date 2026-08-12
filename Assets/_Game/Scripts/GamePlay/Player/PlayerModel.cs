@@ -36,16 +36,16 @@ public class PlayerModel: IDisposable
     public EvolutionsModule Evolutions { get; private set; }
 
     [Inject]
-    public PlayerModel(PlayerConfig config, PlayerStats stats)
+    public PlayerModel(PlayerConfig config, PlayerStats stats, VisionModule vision)
     {
         Stats = stats;
+        Vision = vision;
         AddModules(config);
         Stats.Initialize(config.InitialConfigs);
     }
 
     private void AddModules(PlayerConfig config)
     {
-        Vision = AddModule(new VisionModule(Stats));
         Movement = AddModule(new MovementModule(Stats));
         Health = AddModule(new HealthModule(Stats));
         MouthModule = AddModule(new MouthModule(Stats));

@@ -1,5 +1,7 @@
 ﻿using _Game.Scripts.GamePlay.Player.Modules;
+using _Game.Scripts.GamePlay.Player.Modules.Movement;
 using _Game.Scripts.GamePlay.Player.Modules.Stats;
+using _Game.Scripts.GamePlay.Player.Modules.Vision;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -16,6 +18,10 @@ public class PlayerScope: LifetimeScope
         builder.RegisterComponentInHierarchy<PlayerController>();
         builder.Register<PlayerModel>(Lifetime.Scoped);
         builder.Register<PlayerStats>(Lifetime.Scoped);
+        
+        // Vision
+        builder.RegisterComponentInHierarchy<PlayerVision>();
+        builder.Register<VisionModule>(Lifetime.Scoped);
     }
 }
 }

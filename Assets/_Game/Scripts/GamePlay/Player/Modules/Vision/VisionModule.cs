@@ -2,6 +2,7 @@
 using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Stats;
 using UnityEngine;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Vision
 {
@@ -12,6 +13,7 @@ public class VisionModule: StatModule
     public event Action<float> OnVisionRadiusChanged;
     public event Action<GameObject> OnGameObjectDiscovered;
 
+    [Inject]
     public VisionModule(PlayerStats playerStats) : base(playerStats)
     {
         BindStat(StatType.VisionRadius, UpdateRadius);

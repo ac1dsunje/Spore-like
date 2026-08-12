@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Vision
 {
@@ -10,7 +11,8 @@ public class PlayerVision: MonoBehaviour
         
     private VisionModule _module;
         
-    public void Construct(VisionModule module)
+    [Inject]
+    private void Construct(VisionModule module)
     {
         _module = module;
             
