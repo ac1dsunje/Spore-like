@@ -2,6 +2,7 @@
 using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Abilities.Types;
 using _Game.Scripts.GamePlay.Player;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Abilities
 {
@@ -13,23 +14,22 @@ public enum AbilityType
 
 public class AbilityFactory
 {
-    private readonly PlayerModel _model;
     private readonly Ticker _ticker;
     private readonly IInputService _input;
     
-    public AbilityFactory(PlayerModel model, Ticker ticker, IInputService inputService)
+    [Inject]
+    public AbilityFactory(Ticker ticker, IInputService inputService)
     {
-        _model = model;
         _ticker = ticker;
         _input = inputService;
     }
 
-    public Ability Get(AbilityConfig config)
+    public Ability Get(PlayerModel model, AbilityConfig config)
     {
         return config.Type switch
         {
-            AbilityType.Sprint => new SprintAbility(_model, config, _ticker, _input),
-            AbilityType.Dash => new DashAbility(_model, config, _ticker, _input),
+            AbilityType.Sprint => new SprintAbility(model, config, _ticker, _input),
+            AbilityType.Dash => new DashAbility(model, config, _ticker, _input),
             _ => throw new ArgumentOutOfRangeException(nameof(config.Type), config.Type, null)
         };
     }

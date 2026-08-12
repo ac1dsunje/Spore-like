@@ -38,24 +38,20 @@ public class PlayerController: MonoBehaviour, IDamageAble
     public PlayerModel Model { get; private set; }
 
     [Inject] private Ticker _ticker;
-    [Inject] private PlayerRegistry _playerRegistry;
     [Inject] private WorldModel _worldModel;
-    [Inject] private IInputService _input;
     [Inject] private PlayerInputService _playerInput;
+    [Inject] private AbilityFactory _abilityFactory;
 
     public void Initialize()
     {
-        CreateModel(_ticker);
+        CreateModel();
         InitializeActiveModules();
-        _playerRegistry.AddPlayer(this);
     }
 
-    private void CreateModel(Ticker ticker)
+    private void CreateModel()
     {
         Model = new(_playerConfig);
-        
-        var abilityFactory = new AbilityFactory(Model, ticker, _input);
-        Model.Abilities.SetFactory(abilityFactory);
+        Model.Abilities.Initialize(_abilityFactory, Model);
         
         Model.Evolutions.Initialize(_evolutionsDatabase, _raritiesDatabase, _minEvolutions);
     }

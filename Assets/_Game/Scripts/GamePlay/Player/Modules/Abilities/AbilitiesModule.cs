@@ -10,10 +10,12 @@ public class AbilitiesModule: IDisposable
     
     private readonly HashSet<Ability> _abilities = new();
     private AbilityFactory _factory;
+    private PlayerModel _playerModel;
 
-    public void SetFactory(AbilityFactory factory)
+    public void Initialize(AbilityFactory factory, PlayerModel playerModel)
     {
         _factory = factory;
+        _playerModel = playerModel;
     }
     
     public void Add(AbilityConfig[] configs)
@@ -21,7 +23,7 @@ public class AbilitiesModule: IDisposable
         if (configs == null || configs.Length == 0) return;
         foreach (var ability in configs)
         {
-            if (_abilities.Add(_factory.Get(ability)))
+            if (_abilities.Add(_factory.Get(_playerModel, ability)))
             {
                 OnAbilityAdded?.Invoke(ability);
             }

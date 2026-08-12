@@ -358,6 +358,7 @@ GameObject:
   - component: {fileID: 2108220050117646386}
   - component: {fileID: 6455457412017345376}
   - component: {fileID: 6766690008576938077}
+  - component: {fileID: 2822999142199602542}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -495,6 +496,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a62e08b1abd4011b5c9a67a3bedaa77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Player.Modules.Movement.MovementController
+--- !u!114 &2822999142199602542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254078283856608112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 711fd4b8cb0d492b95f19b8fa9c7e016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Player.PlayerScope
+  parentReference:
+    TypeName: _Game.Scripts.GamePlay.GameplayScope
+  autoRun: 1
+  autoInjectGameObjects: []
 --- !u!1 &8527591295361904753
 GameObject:
   m_ObjectHideFlags: 0
