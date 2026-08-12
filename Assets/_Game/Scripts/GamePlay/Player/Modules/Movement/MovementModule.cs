@@ -12,16 +12,12 @@ public enum MovementState
 
 public class MovementModule : StatModule
 {
-    public float MoveSpeed => UseSprint 
-        ? _moveSpeed * _sprintMultiplier 
-        : _moveSpeed;
-
+    public float MoveSpeed => _useSprint ? _moveSpeed * _sprintMultiplier : _moveSpeed;
     public bool CanMove => _state == MovementState.Enabled;
 
     public float Acceleration => _acceleration / 100f;
     public float Inertia => _inertia / 100f;
     public float DashPower { get; private set; }
-    public bool UseSprint { get; set; }
     public bool DashRequested { get; private set; }
 
     public event Action<float> OnDistanceOvercome;
@@ -30,6 +26,8 @@ public class MovementModule : StatModule
     private float _acceleration;
     private float _inertia;
     private float _sprintMultiplier;
+    
+    private bool _useSprint;
 
     private MovementState _state = MovementState.Enabled;
     
@@ -45,6 +43,8 @@ public class MovementModule : StatModule
     public void RequestDash() => DashRequested = true;
 
     public void ResetDash() => DashRequested = false;
+    public bool RequestSprint() => _useSprint = true;
+    public bool ResetSprint() => _useSprint = false;
 
     public void Disable() => SetState(MovementState.Disabled);
 
