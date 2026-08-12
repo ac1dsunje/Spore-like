@@ -1,5 +1,6 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Player.Modules.Mouth;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Experience
 {
@@ -17,6 +18,7 @@ public class ExperienceModule: IDisposable, IResource
     
     private MouthModule _mouthModule;
     
+    [Inject]
     public ExperienceModule(ExperienceConfig config, MouthModule mouthModule)
     {
         LevelSet = config.LevelSet;

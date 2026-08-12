@@ -9,6 +9,5 @@ namespace _Game.Scripts.GamePlay.Player.Modules
 public class PlayerConfig: ScriptableObject
 {
     [field: SerializeField] public StatsConfig[] InitialConfigs { get; private set; }
-    [field: SerializeField] public ExperienceConfig  ExperienceConfig { get; private set; }
 }
 }
