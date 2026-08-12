@@ -1,11 +1,13 @@
 ﻿using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.Player.Modules.Attack;
+using _Game.Scripts.GamePlay.Player.Modules.BiomeChecker;
 using _Game.Scripts.GamePlay.Player.Modules.Defense;
 using _Game.Scripts.GamePlay.Player.Modules.Endurance;
 using _Game.Scripts.GamePlay.Player.Modules.Health;
 using _Game.Scripts.GamePlay.Player.Modules.Mouth;
 using _Game.Scripts.GamePlay.Player.Modules.Movement;
 using _Game.Scripts.GamePlay.Player.Modules.Stats;
+using _Game.Scripts.GamePlay.Player.Modules.Temperature;
 using _Game.Scripts.GamePlay.Player.Modules.Vision;
 using UnityEngine;
 using VContainer;
@@ -50,6 +52,10 @@ public class PlayerScope: LifetimeScope
         // Movement
         builder.RegisterComponentInHierarchy<PlayerMovement>();
         builder.Register<MovementModule>(Lifetime.Scoped);
+        
+        // Biomes
+        builder.RegisterComponentInHierarchy<PlayerBiome>();
+        builder.Register<TemperatureModule>(Lifetime.Scoped);
     }
 }
 }

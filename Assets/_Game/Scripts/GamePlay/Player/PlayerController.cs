@@ -15,7 +15,6 @@ public class PlayerController: MonoBehaviour, IDamageAble
 {
     [Inject] private PlayerConfig _playerConfig;
     [Header("Modules")]
-    [field: SerializeField] public PlayerBiome BiomeChecker { get; private set; }
     [field: SerializeField] public ItemAnimation Animation { get; private set; }
     [Header("Evolutions")]
     [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
@@ -44,7 +43,6 @@ public class PlayerController: MonoBehaviour, IDamageAble
 
     private void InitializeActiveModules()
     {
-        BiomeChecker.Construct(_worldModel, Model);
         Animation.SetConfig(_playerConfig.AnimationConfig);
     }
 

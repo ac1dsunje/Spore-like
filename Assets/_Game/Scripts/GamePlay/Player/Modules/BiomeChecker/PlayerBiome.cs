@@ -3,24 +3,26 @@ using _Game.Scripts.GamePlay.Player.Modules.Temperature;
 using _Game.Scripts.GamePlay.World;
 using _Game.Scripts.GamePlay.World.Biomes;
 using UnityEngine;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.BiomeChecker
 {
 public class PlayerBiome: MonoBehaviour
 {
-    private Biome _currentBiome;
     private WorldModel _worldModel;
     private TemperatureModule _temperature;
     private MovementModule _movement;
     
-    public void Construct(WorldModel worldModel, PlayerModel model)
+    private Biome _currentBiome;
+    
+    [Inject]
+    private void Construct(WorldModel worldModel, TemperatureModule temperature, MovementModule movement)
     {
         _worldModel = worldModel;
-        _temperature = model.Temperature;
-        _movement = model.Movement;
-        
+        _temperature = temperature;
+        _movement = movement;
         _movement.OnGridPositionChanged += TryEnterBiome;
-        EnterBiome(worldModel.GetBiome(model.Movement.GridPosition));
+        EnterBiome(_worldModel.GetBiome(_movement.GridPosition));
     }
 
     private void TryEnterBiome(MovementModule player)
@@ -33,7 +35,6 @@ public class PlayerBiome: MonoBehaviour
     private void EnterBiome(Biome biome)
     {
         _currentBiome = biome;
-
         ApplyTemperature(biome.Temperature);
     }
 
