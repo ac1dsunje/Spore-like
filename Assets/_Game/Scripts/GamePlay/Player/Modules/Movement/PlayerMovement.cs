@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Movement
 {
@@ -9,8 +10,9 @@ public class PlayerMovement: MonoBehaviour
     private Vector3Int GridPosition => _controller.GridPosition;
     private MovementModule _module;
     private PlayerInputService _inputService;
-    
-    public void Construct(MovementModule movement, PlayerInputService inputService)
+
+    [Inject]
+    private void Construct(MovementModule movement, PlayerInputService inputService)
     {
         _module = movement;
         _inputService = inputService;

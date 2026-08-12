@@ -4,6 +4,7 @@ using _Game.Scripts.GamePlay.Player.Modules.Defense;
 using _Game.Scripts.GamePlay.Player.Modules.Endurance;
 using _Game.Scripts.GamePlay.Player.Modules.Health;
 using _Game.Scripts.GamePlay.Player.Modules.Mouth;
+using _Game.Scripts.GamePlay.Player.Modules.Movement;
 using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Player.Modules.Vision;
 using UnityEngine;
@@ -45,6 +46,10 @@ public class PlayerScope: LifetimeScope
         // Attack
         builder.RegisterComponentInHierarchy<PlayerAttack>();
         builder.Register<AttackModule>(Lifetime.Scoped);
+        
+        // Movement
+        builder.RegisterComponentInHierarchy<PlayerMovement>();
+        builder.Register<MovementModule>(Lifetime.Scoped);
     }
 }
 }

@@ -4,7 +4,6 @@ using _Game.Scripts.GamePlay.Animation;
 using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.Player.Modules.BiomeChecker;
-using _Game.Scripts.GamePlay.Player.Modules.Movement;
 using _Game.Scripts.GamePlay.Rarities;
 using _Game.Scripts.GamePlay.World;
 using UnityEngine;
@@ -16,7 +15,6 @@ public class PlayerController: MonoBehaviour, IDamageAble
 {
     [Inject] private PlayerConfig _playerConfig;
     [Header("Modules")]
-    [field: SerializeField] public PlayerMovement Movement { get; private set; }
     [field: SerializeField] public PlayerBiome BiomeChecker { get; private set; }
     [field: SerializeField] public ItemAnimation Animation { get; private set; }
     [Header("Evolutions")]
@@ -46,7 +44,6 @@ public class PlayerController: MonoBehaviour, IDamageAble
 
     private void InitializeActiveModules()
     {
-        Movement.Construct(Model.Movement, _playerInput);
         BiomeChecker.Construct(_worldModel, Model);
         Animation.SetConfig(_playerConfig.AnimationConfig);
     }

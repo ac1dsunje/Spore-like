@@ -2,6 +2,7 @@
 using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Stats;
 using UnityEngine;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Movement
 {
@@ -35,6 +36,7 @@ public class MovementModule : StatModule
 
     private MovementState _state = MovementState.Enabled;
     
+    [Inject]
     public MovementModule(PlayerStats playerStats) : base(playerStats)
     {
         BindStat(StatType.MoveSpeed, UpdateMoveSpeed);
