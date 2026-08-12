@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Endurance
 {
@@ -6,7 +7,8 @@ public class PlayerEndurance: MonoBehaviour
 {
     private EnduranceModule _module;
     
-    public void Construct(EnduranceModule module)
+    [Inject]
+    private void Construct(EnduranceModule module)
     {
         _module = module;
     }

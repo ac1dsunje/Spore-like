@@ -4,6 +4,7 @@ using _Game.Scripts.GamePlay.Abilities;
 using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Stats;
 using UnityEngine;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Endurance
 {
@@ -20,6 +21,7 @@ public class EnduranceModule: StatModule, IResource
     public event Action<float, float> OnValueChanged;
     public event Action<float> OnEnduranceRecovered;
 
+    [Inject]
     public EnduranceModule(PlayerStats playerStats) : base(playerStats)
     {
         BindStat(StatType.MaxEndurance, UpdateMaxEndurance);
