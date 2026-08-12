@@ -20,11 +20,11 @@ namespace _Game.Scripts.GamePlay.Player
 public class PlayerModel: IDisposable
 {
     public PlayerStats Stats { get; private set; }
+    public VisionModule Vision { get; private set; }
+    public HealthModule Health { get; private set; }
     
     private readonly List<IDisposable> _modules = new();
-    public VisionModule Vision { get; private set; }
     public MovementModule Movement { get; private set; }
-    public HealthModule Health { get; private set; }
     public MouthModule MouthModule { get; private set; }
     public AttackModule Attack { get; private set; }
     public EnduranceModule Endurance { get; private set; }
@@ -36,10 +36,11 @@ public class PlayerModel: IDisposable
     public EvolutionsModule Evolutions { get; private set; }
 
     [Inject]
-    public PlayerModel(PlayerConfig config, PlayerStats stats, VisionModule vision)
+    public PlayerModel(PlayerConfig config, PlayerStats stats, VisionModule vision, HealthModule health)
     {
         Stats = stats;
         Vision = vision;
+        Health = health;
         AddModules(config);
         Stats.Initialize(config.InitialConfigs);
     }
@@ -47,7 +48,6 @@ public class PlayerModel: IDisposable
     private void AddModules(PlayerConfig config)
     {
         Movement = AddModule(new MovementModule(Stats));
-        Health = AddModule(new HealthModule(Stats));
         MouthModule = AddModule(new MouthModule(Stats));
         Attack = AddModule(new AttackModule(Stats));
         Endurance = AddModule(new EnduranceModule(Stats));

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Health
 {
@@ -7,11 +8,11 @@ public class PlayerHealth: MonoBehaviour
 {
     private HealthModule _module;
     
+    [Inject]
     public void Construct(HealthModule module)
     {
         _module = module;
         _module.OnDamageTaken += StopRegeneration;
-        StartRegeneration();
     }
 
     private void StartRegeneration() => StartCoroutine(Regenerate());

@@ -22,7 +22,6 @@ public class PlayerController: MonoBehaviour, IDamageAble
     [Inject] private PlayerConfig _playerConfig;
     [Header("Modules")]
     [field: SerializeField] public PlayerMovement Movement { get; private set; }
-    [field: SerializeField] public PlayerHealth Health { get; private set; }
     [field: SerializeField] public PlayerMouth Mouth { get; private set; }
     [field: SerializeField] public PlayerEndurance Endurance { get; private set; }
     [field: SerializeField] public PlayerBiome BiomeChecker { get; private set; }
@@ -57,7 +56,6 @@ public class PlayerController: MonoBehaviour, IDamageAble
     {
         Movement.Construct(Model.Movement, _playerInput);
         Mouth.Construct(Model.MouthModule);
-        Health.Construct(Model.Health);
         Endurance.Construct(Model.Endurance);
         BiomeChecker.Construct(_worldModel, Model);
         Attack.Construct(Model.Attack, _playerInput, this);

@@ -1,5 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Player.Modules;
-using _Game.Scripts.GamePlay.Player.Modules.Movement;
+using _Game.Scripts.GamePlay.Player.Modules.Health;
 using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Player.Modules.Vision;
 using UnityEngine;
@@ -22,6 +22,10 @@ public class PlayerScope: LifetimeScope
         // Vision
         builder.RegisterComponentInHierarchy<PlayerVision>();
         builder.Register<VisionModule>(Lifetime.Scoped);
+        
+        // Health
+        builder.RegisterComponentInHierarchy<PlayerHealth>();
+        builder.Register<HealthModule>(Lifetime.Scoped);
     }
 }
 }
