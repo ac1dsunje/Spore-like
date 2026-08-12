@@ -1,6 +1,7 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Stats;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Defense
 {
@@ -17,6 +18,7 @@ public class DefenseModule: StatModule
 
     private HitInfo _returnedHit;
 
+    [Inject]
     public DefenseModule(PlayerStats playerStats) : base(playerStats)
     {
         BindStat(StatType.DamageReflection, UpdateDamageReflection);
