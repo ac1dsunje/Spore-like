@@ -20,7 +20,7 @@ public class GameplayScope: LifetimeScope
     {
         // Player
         builder.RegisterComponentInHierarchy<PlayerSpawner>();
-        builder.Register<PlayerRegistry>(Lifetime.Scoped);
+        builder.Register<PlayerRegistry>(Lifetime.Singleton);
         builder.Register<PlayerInputService>(Lifetime.Scoped);
         
         // World
@@ -28,7 +28,7 @@ public class GameplayScope: LifetimeScope
         builder.RegisterComponentInHierarchy<WorldTileRenderer>();
         builder.RegisterComponentInHierarchy<EnvironmentSpawner>();
         builder.RegisterInstance(_worldConfig);
-        builder.Register<WorldModel>(Lifetime.Scoped);
+        builder.Register<WorldModel>(Lifetime.Singleton);
         
         // UI
         builder.RegisterComponentInHierarchy<UIManager>();
