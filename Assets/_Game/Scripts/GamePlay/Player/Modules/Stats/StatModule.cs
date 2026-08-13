@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Stats;
 
-namespace _Game.Scripts.GamePlay.Player.Modules
+namespace _Game.Scripts.GamePlay.Player.Modules.Stats
 {
 public abstract class StatModule : IDisposable
 {

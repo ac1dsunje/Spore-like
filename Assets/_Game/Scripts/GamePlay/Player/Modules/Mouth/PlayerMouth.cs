@@ -5,7 +5,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Mouth
 {
-public class PlayerMouth: MonoBehaviour
+public class PlayerMouth: PlayerNetworkBehaviour
 {
     private MouthModule _module;
     private FoodItem _currentFood;

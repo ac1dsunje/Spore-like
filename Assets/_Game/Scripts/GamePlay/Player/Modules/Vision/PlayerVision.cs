@@ -4,7 +4,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Vision
 {
-public class PlayerVision: MonoBehaviour
+public class PlayerVision: PlayerNetworkBehaviour
 {
     [SerializeField] private Light2D _light;
     [SerializeField] private CircleCollider2D _visionCollider;
@@ -15,9 +15,16 @@ public class PlayerVision: MonoBehaviour
     private void Construct(VisionModule module)
     {
         _module = module;
-            
+    }
+
+    protected override void OnNetworkInitialized()
+    {
+        if (!IsLocal)
+        {
+            _visionCollider.enabled = false;
+            return;
+        }
         _module.OnVisionRadiusChanged += UpdateVisuals;
-            
         UpdateVisuals(_module.VisionRadius);
     }
 
@@ -29,12 +36,12 @@ public class PlayerVision: MonoBehaviour
         
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Ground")) return;
         _module.DiscoverGameObject(other.gameObject);
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
+        base.OnDestroy();
         if (_module != null)
         {
             _module.OnVisionRadiusChanged -= UpdateVisuals;

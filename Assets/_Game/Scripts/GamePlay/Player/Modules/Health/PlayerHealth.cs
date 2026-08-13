@@ -4,7 +4,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Health
 {
-public class PlayerHealth: MonoBehaviour
+public class PlayerHealth: PlayerNetworkBehaviour
 {
     private HealthModule _module;
     
@@ -38,8 +38,9 @@ public class PlayerHealth: MonoBehaviour
         StartRegeneration();
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
+        base.OnDestroy();
         StopAllCoroutines();
         _module.OnDamageTaken -= StopRegeneration;
     }

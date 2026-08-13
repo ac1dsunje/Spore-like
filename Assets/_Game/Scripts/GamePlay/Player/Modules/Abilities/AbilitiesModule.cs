@@ -10,7 +10,7 @@ public class AbilitiesModule: IDisposable
     public event Action<AbilityConfig> OnAbilityAdded;
     
     private readonly HashSet<Ability> _abilities = new();
-    private AbilityFactory _factory;
+    private readonly AbilityFactory _factory;
     private PlayerModel _playerModel;
 
     [Inject]

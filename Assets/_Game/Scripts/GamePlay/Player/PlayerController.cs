@@ -24,12 +24,12 @@ public class PlayerController: NetworkBehaviour, IDamageAble
 
     public override void OnNetworkSpawn()
     {
-        _authority.IsLocal = IsOwner;
         Initialize();
     }
 
     public void Initialize()
     {
+        _authority.SetNetworkType(IsOwner);
         Model.Initialize(this);
         Model.Evolutions.Initialize(_evolutionsDatabase, _raritiesDatabase, _minEvolutions);
         Animation.SetConfig(_animationConfig);

@@ -1,32 +1,37 @@
-﻿using _Game.Scripts.GamePlay.Weapons;
+﻿using _Game.Scripts.Core.Services;
+using _Game.Scripts.GamePlay.Weapons;
 using UnityEngine;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Attack
 {
-public class PlayerAttack : MonoBehaviour
+public class PlayerAttack : PlayerNetworkBehaviour
 {
     [SerializeField] private MeleeWeaponItem _meleeWeaponObject;
     
     private AttackModule _module;
     private PlayerInputService _inputService;
-    private PlayerAuthority _authority;
+    private Ticker _ticker;
 
     [Inject]
-    private void Construct(AttackModule module, PlayerInputService inputService, PlayerAuthority authority)
+    private void Construct(AttackModule module, PlayerInputService inputService, Ticker ticker)
     {
         _module = module;
         _inputService = inputService;
         _meleeWeaponObject.transform.SetParent(null);
-        _authority = authority;
+        _ticker = ticker;
     }
 
-    private void Update()
+    protected override void OnNetworkInitialized()
     {
-        if (_inputService.AttackPressed && _authority.IsLocal)
-        {
-            Attack();
-        }
+        if (!IsLocal) return;
+        _ticker.OnTick += CheckInput;
+    }
+
+    private void CheckInput(float timeDelta)
+    {
+        if (!_inputService.AttackPressed) return;
+        Attack();
     }
 
     private void Attack()

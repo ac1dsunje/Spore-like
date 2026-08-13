@@ -3,21 +3,19 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Movement
 {
-public class PlayerMovement: MonoBehaviour
+public class PlayerMovement: PlayerNetworkBehaviour
 {
     [SerializeField] private MovementController _controller;
 
     private Vector3Int GridPosition => _controller.GridPosition;
     private MovementModule _module;
     private PlayerInputService _inputService;
-    private PlayerAuthority _authority;
 
     [Inject]
-    private void Construct(MovementModule movement, PlayerInputService inputService, PlayerAuthority authority)
+    private void Construct(MovementModule movement, PlayerInputService inputService)
     {
         _module = movement;
         _inputService = inputService;
-        _authority = authority;
     }
 
     private void Update()
@@ -27,7 +25,7 @@ public class PlayerMovement: MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_authority.IsLocal)
+        if (IsLocal)
         {
             var input = _inputService.Movement.normalized;
             Move(input);
@@ -59,7 +57,7 @@ public class PlayerMovement: MonoBehaviour
 
     private void TryFlip()
     {
-        if (_inputService.Horizontal != 0 && _authority.IsLocal)
+        if (_inputService.Horizontal != 0 && IsLocal)
         {
             _controller.Flip(_inputService.Horizontal > 0);
         }

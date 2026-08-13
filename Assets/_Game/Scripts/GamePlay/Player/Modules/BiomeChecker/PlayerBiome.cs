@@ -7,7 +7,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.BiomeChecker
 {
-public class PlayerBiome: MonoBehaviour
+public class PlayerBiome: PlayerNetworkBehaviour
 {
     private WorldModel _worldModel;
     private TemperatureModule _temperature;
@@ -21,6 +21,11 @@ public class PlayerBiome: MonoBehaviour
         _worldModel = worldModel;
         _temperature = temperature;
         _movement = movement;
+    }
+
+    protected override void OnNetworkInitialized()
+    {
+        if (!IsLocal) return;
         _movement.OnGridPositionChanged += TryEnterBiome;
         EnterBiome(_worldModel.GetBiome(_movement.GridPosition));
     }
@@ -41,17 +46,11 @@ public class PlayerBiome: MonoBehaviour
     private void ApplyTemperature(float temperature)
     {
         if (_temperature.IsLethal(temperature))
-        {
             Debug.Log($"Temperature {temperature} is lethal");
-        }
         else if (_temperature.IsUncomfortable(temperature))
-        {
             Debug.Log($"Temperature {temperature} is not comfortable");
-        }
         else
-        {
             Debug.Log($"Temperature {temperature} is comfortable");
-        }
     }
 
     private void OnDestroy()
