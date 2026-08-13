@@ -21,7 +21,6 @@ public class GameplayScope: LifetimeScope
         // Player
         builder.RegisterComponentInHierarchy<PlayerSpawner>();
         builder.Register<PlayerRegistry>(Lifetime.Singleton);
-        builder.Register<PlayerInputService>(Lifetime.Scoped);
         
         // World
         builder.RegisterComponentInHierarchy<WorldGenerator>();

@@ -30,6 +30,8 @@ public class PlayerScope: LifetimeScope
         builder.RegisterInstance(_animationConfig);
         builder.RegisterInstance(_experienceConfig);
         
+        builder.Register<PlayerInputService>(Lifetime.Scoped);
+        
         builder.RegisterComponent(GetComponent<PlayerController>());
         builder.Register<PlayerModel>(Lifetime.Scoped);
         builder.Register<PlayerStats>(Lifetime.Scoped);
