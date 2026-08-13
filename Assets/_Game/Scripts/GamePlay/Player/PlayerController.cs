@@ -25,12 +25,18 @@ public class PlayerController: NetworkBehaviour, IDamageAble, IDisguiseAble
 
     public override void OnNetworkSpawn()
     {
+        _authority.SetNetworkType(IsOwner);
         Initialize();
     }
 
-    public void Initialize()
+    public void SetSinglePlayer()
     {
-        _authority.SetNetworkType(IsOwner);
+        _authority.SetNetworkType(true);
+        Initialize();
+    }
+
+    private void Initialize()
+    {
         Model.Initialize(this);
         Model.Evolutions.Initialize(_evolutionsDatabase, _raritiesDatabase, _minEvolutions);
         Animation.SetConfig(_animationConfig);
