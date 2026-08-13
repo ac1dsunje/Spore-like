@@ -6,6 +6,8 @@ namespace _Game.Scripts.GamePlay.Weapons
 {
 public class MeleeWeaponItem: MonoBehaviour
 {
+    [SerializeField] private float _hitTime = 0.1f;
+    
     private HitInfo _hit;
     
     public void SetHit(HitInfo hit)
@@ -24,7 +26,7 @@ public class MeleeWeaponItem: MonoBehaviour
 
     private IEnumerator Hit()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(_hitTime);
         gameObject.SetActive(false);
     }
 }

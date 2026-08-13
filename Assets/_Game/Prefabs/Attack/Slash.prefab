@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7012491475614299010}
   - component: {fileID: 1845222267811809367}
   - component: {fileID: 1631030185061358863}
+  - component: {fileID: 6959065788070740454}
   m_Layer: 0
   m_Name: Slash
   m_TagString: Untagged
@@ -130,8 +131,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.22222222, y: 0.5}
-    oldSize: {x: 0.28125, y: 0.5}
+    pivot: {x: 0.2857143, y: -1}
+    oldSize: {x: 0.21875, y: 0.125}
     newSize: {x: 0.09, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -164,3 +165,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac457af23bf41cfadf1dcf9549090ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.AttackItem
+  _hitTime: 0.1
+--- !u!95 &6959065788070740454
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101888749806095241}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: -4696559884705081445, guid: c46653d5fdf011b409394423678c6fd2, type: 3}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
