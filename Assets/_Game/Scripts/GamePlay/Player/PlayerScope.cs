@@ -4,12 +4,14 @@ using _Game.Scripts.GamePlay.Player.Modules.Abilities;
 using _Game.Scripts.GamePlay.Player.Modules.Attack;
 using _Game.Scripts.GamePlay.Player.Modules.BiomeChecker;
 using _Game.Scripts.GamePlay.Player.Modules.Defense;
+using _Game.Scripts.GamePlay.Player.Modules.Disguise;
 using _Game.Scripts.GamePlay.Player.Modules.Endurance;
 using _Game.Scripts.GamePlay.Player.Modules.Evolutions;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
 using _Game.Scripts.GamePlay.Player.Modules.Health;
 using _Game.Scripts.GamePlay.Player.Modules.Mouth;
 using _Game.Scripts.GamePlay.Player.Modules.Movement;
+using _Game.Scripts.GamePlay.Player.Modules.Sensorics;
 using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Player.Modules.Temperature;
 using _Game.Scripts.GamePlay.Player.Modules.Vision;
@@ -76,6 +78,12 @@ public class PlayerScope: LifetimeScope
         
         // Evolutions
         builder.Register<EvolutionsModule>(Lifetime.Scoped);
+        
+        // Disguise
+        builder.Register<DisguiseModule>(Lifetime.Scoped);
+        
+        // Sensorics
+        builder.Register<SensoricsModule>(Lifetime.Scoped);
     }
 }
 }

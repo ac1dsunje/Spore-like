@@ -19,9 +19,9 @@ public class VisionModule: StatModule
         BindStat(StatType.VisionRadius, UpdateRadius);
     }
     
-    private void UpdateRadius(float newRadius)
+    private void UpdateRadius(float value)
     {
-        VisionRadius = newRadius;
+        VisionRadius = value;
         OnVisionRadiusChanged?.Invoke(VisionRadius);
     }
 

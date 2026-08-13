@@ -25,6 +25,8 @@ public enum StatType
     MaximumComfortableTemperature = 23,
     MaximumLethalTemperature = 24,
     AttackRange = 25,
-    IgnoreDamageResistance = 26
+    IgnoreDamageResistance = 26,
+    Sensorics = 27,
+    Disguise = 28
 }
 }
