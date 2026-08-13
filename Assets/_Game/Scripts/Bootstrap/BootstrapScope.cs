@@ -1,4 +1,5 @@
 ﻿using _Game.Scripts.Core.Services;
+using Unity.Netcode;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -24,6 +25,8 @@ public class BootstrapScope: LifetimeScope
 
         builder.RegisterComponentInHierarchy<Ticker>();
         builder.RegisterComponentInHierarchy<Bootstrap>();
+
+        builder.RegisterComponentInHierarchy<NetworkManager>();
     }
 }
 }

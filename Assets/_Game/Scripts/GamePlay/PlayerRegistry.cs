@@ -7,6 +7,7 @@ namespace _Game.Scripts.GamePlay
 public class PlayerRegistry
 {
     public event Action<PlayerController> OnPlayerAdded;
+    public event Action<PlayerController> OnLocalPlayerAdded;
     public event Action<PlayerController> OnPlayerRemoved;
     
     private readonly HashSet<PlayerController> _players = new();
@@ -15,6 +16,11 @@ public class PlayerRegistry
     {
         if (!_players.Add(player)) return;
         OnPlayerAdded?.Invoke(player);
+
+        if (player.IsLocalPlayer)
+        {
+            OnLocalPlayerAdded?.Invoke(player);
+        }
     }
 
     public void RemovePlayer(PlayerController player)

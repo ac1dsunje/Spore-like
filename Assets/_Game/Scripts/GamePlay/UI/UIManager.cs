@@ -22,7 +22,7 @@ public class UIManager: MonoBehaviour
     private void Construct(PlayerRegistry registry)
     {
         _registry = registry;
-        _registry.OnPlayerAdded += AddPlayer;
+        _registry.OnLocalPlayerAdded += AddPlayer;
     }
     
     private void AddPlayer(PlayerController player)
@@ -62,7 +62,7 @@ public class UIManager: MonoBehaviour
     public void OnDestroy()
     {
         _player.Experience.OnLevelChanged -= OnLevelUpdated;
-        _registry.OnPlayerAdded -= AddPlayer;
+        _registry.OnLocalPlayerAdded -= AddPlayer;
         _pauseUIScreen.OnStateChanged -= OnPauseScreenChanged;
     }
 }

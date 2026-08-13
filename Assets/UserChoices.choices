@@ -27,7 +27,10 @@ MonoBehaviour:
     - QuestionId: NetcodeArchitecture
       Answers:
       - LockstepSimulation
+    - QuestionId: PlayerCount
+      Answers:
+      - 4
   Preset: 6
   SelectedSolutions:
-    SelectedHostingModel: 0
-    SelectedNetcodeSolution: 0
+    SelectedHostingModel: 1
+    SelectedNetcodeSolution: 3
