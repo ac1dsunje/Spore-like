@@ -20,5 +20,3 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a866ac9b510609f4a830db4bc1fd2170, type: 2}
   - {fileID: 11400000, guid: bbdfd8b81883775408ddac93ca6eee6f, type: 2}
   - {fileID: 11400000, guid: 480bfc51254c2764c9973f2d212f8e44, type: 2}
-  <ExperienceConfig>k__BackingField: {fileID: 11400000, guid: 6ca48198dec476b4f9cde410c88c74c5, type: 2}
-  <AnimationConfig>k__BackingField: {fileID: 11400000, guid: 3e306153c1a50664eb303588691dfd53, type: 2}

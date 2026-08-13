@@ -82,7 +82,7 @@ public class PlayerScope: LifetimeScope
         builder.Register<DisguiseModule>(Lifetime.Scoped);
         
         // Animation
-        builder.RegisterComponentInHierarchy<ItemAnimation>();
+        builder.RegisterComponent(GetComponentInChildren<ItemAnimation>());
     }
 }
 }

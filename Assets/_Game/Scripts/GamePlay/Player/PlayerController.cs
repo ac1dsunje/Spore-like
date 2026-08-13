@@ -21,6 +21,7 @@ public class PlayerController: NetworkBehaviour, IDamageAble, IDisguiseAble
     [Inject] private AnimationConfig _animationConfig;
     [Inject] private PlayerRegistry _playerRegistry;
     [Inject] private PlayerAuthority _authority;
+    [Inject] private ItemAnimation _animation;
 
     public override void OnNetworkSpawn()
     {
@@ -38,6 +39,9 @@ public class PlayerController: NetworkBehaviour, IDamageAble, IDisguiseAble
 
     public void TakeDamage(HitInfo hit) => Model.TakeDamage(hit);
 
-    public void SetVisible(float sensorics) => Model.SetVisible(sensorics);
+    public void SetVisible(float sensorics)
+    {
+        _animation.SetVisible(sensorics >= Model.Disguise.Disguise || _authority.IsLocal);
+    }
 }
 }

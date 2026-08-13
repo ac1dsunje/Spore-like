@@ -13,7 +13,6 @@ public class VisionModule: StatModule
 
     public event Action<float> OnVisionRadiusChanged;
     public event Action<GameObject> OnGameObjectDiscovered;
-    
 
     [Inject]
     public VisionModule(PlayerStats playerStats) : base(playerStats)

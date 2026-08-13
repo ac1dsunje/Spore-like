@@ -70,13 +70,5 @@ public class PlayerModel
         HitInfo returnedHit = new(returnedDamage, Attack.IgnoreResistance, null);
         hit.Owner?.TakeDamage(returnedHit);
     }
-
-    public void SetVisible(float sensorics)
-    {
-        if (sensorics >= Disguise.Disguise)
-        {
-            // ToDo: set sprite alpha to 1, else 0
-        }
-    }
 }
 }

@@ -22,9 +22,9 @@ public class PlayerVision: PlayerNetworkBehaviour
 
     protected override void OnNetworkInitialized()
     {
+        _visionCollider.enabled = IsLocal;
         if (!IsLocal)
         {
-            _visionCollider.enabled = false;
             return;
         }
         _module.OnVisionRadiusChanged += UpdateVisuals;
@@ -40,6 +40,10 @@ public class PlayerVision: PlayerNetworkBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         _module.DiscoverGameObject(other.gameObject);
+        if (other.TryGetComponent(out IDisguiseAble disguiseAble))
+        {
+            disguiseAble.SetVisible(_module.Sensorics);
+        }
     }
 
     protected override void OnDestroy()
