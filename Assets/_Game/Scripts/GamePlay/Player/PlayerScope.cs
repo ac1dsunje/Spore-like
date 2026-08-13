@@ -11,7 +11,6 @@ using _Game.Scripts.GamePlay.Player.Modules.Experience;
 using _Game.Scripts.GamePlay.Player.Modules.Health;
 using _Game.Scripts.GamePlay.Player.Modules.Mouth;
 using _Game.Scripts.GamePlay.Player.Modules.Movement;
-using _Game.Scripts.GamePlay.Player.Modules.Sensorics;
 using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Player.Modules.Temperature;
 using _Game.Scripts.GamePlay.Player.Modules.Vision;
@@ -81,9 +80,6 @@ public class PlayerScope: LifetimeScope
         
         // Disguise
         builder.Register<DisguiseModule>(Lifetime.Scoped);
-        
-        // Sensorics
-        builder.Register<SensoricsModule>(Lifetime.Scoped);
         
         // Animation
         builder.RegisterComponentInHierarchy<ItemAnimation>();
