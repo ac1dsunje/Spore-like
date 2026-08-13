@@ -8,7 +8,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player
 {
-public class PlayerController: NetworkBehaviour, IDamageAble
+public class PlayerController: NetworkBehaviour, IDamageAble, IDisguiseAble
 {
     [Header("Modules")]
     [field: SerializeField] public ItemAnimation Animation { get; private set; }
@@ -37,5 +37,7 @@ public class PlayerController: NetworkBehaviour, IDamageAble
     }
 
     public void TakeDamage(HitInfo hit) => Model.TakeDamage(hit);
+
+    public void SetVisible(float sensorics) => Model.SetVisible(sensorics);
 }
 }

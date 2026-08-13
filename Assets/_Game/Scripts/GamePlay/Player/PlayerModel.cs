@@ -1,8 +1,8 @@
-﻿using _Game.Scripts.GamePlay.Evolutions;
-using _Game.Scripts.GamePlay.Player.Modules;
+﻿using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.Player.Modules.Abilities;
 using _Game.Scripts.GamePlay.Player.Modules.Attack;
 using _Game.Scripts.GamePlay.Player.Modules.Defense;
+using _Game.Scripts.GamePlay.Player.Modules.Disguise;
 using _Game.Scripts.GamePlay.Player.Modules.Endurance;
 using _Game.Scripts.GamePlay.Player.Modules.Evolutions;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
@@ -12,7 +12,6 @@ using _Game.Scripts.GamePlay.Player.Modules.Movement;
 using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Player.Modules.Temperature;
 using _Game.Scripts.GamePlay.Player.Modules.Vision;
-using _Game.Scripts.GamePlay.Rarities;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player
@@ -31,11 +30,13 @@ public class PlayerModel
     public ExperienceModule Experience { get; private set; }
     public AbilitiesModule Abilities { get; private set; }
     public EvolutionsModule Evolutions { get; private set; }
+    public DisguiseModule Disguise { get; private set; }
 
     [Inject]
     public PlayerModel(PlayerConfig config, PlayerStats stats, VisionModule vision, HealthModule health, 
         DefenseModule defense, EnduranceModule endurance, MouthModule mouth, AttackModule attack, MovementModule movement,
-        TemperatureModule temperature, ExperienceModule experience, AbilitiesModule abilities, EvolutionsModule evolutions)
+        TemperatureModule temperature, ExperienceModule experience, AbilitiesModule abilities, EvolutionsModule evolutions,
+        DisguiseModule disguise)
     {
         Stats = stats;
         Vision = vision;
@@ -49,6 +50,7 @@ public class PlayerModel
         Experience = experience;
         Abilities = abilities;
         Evolutions = evolutions;
+        Disguise = disguise;
         
         Stats.Initialize(config.InitialConfigs);
     }
@@ -67,6 +69,14 @@ public class PlayerModel
         var returnedDamage = Defense.ReflectDamage(damage);
         HitInfo returnedHit = new(returnedDamage, Attack.IgnoreResistance, null);
         hit.Owner?.TakeDamage(returnedHit);
+    }
+
+    public void SetVisible(float sensorics)
+    {
+        if (sensorics >= Disguise.Disguise)
+        {
+            // ToDo: set sprite alpha to 1, else 0
+        }
     }
 }
 }

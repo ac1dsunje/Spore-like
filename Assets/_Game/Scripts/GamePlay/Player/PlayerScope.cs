@@ -84,6 +84,9 @@ public class PlayerScope: LifetimeScope
         
         // Sensorics
         builder.Register<SensoricsModule>(Lifetime.Scoped);
+        
+        // Animation
+        builder.RegisterComponentInHierarchy<ItemAnimation>();
     }
 }
 }
