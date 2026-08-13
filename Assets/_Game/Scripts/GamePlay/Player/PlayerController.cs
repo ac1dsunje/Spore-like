@@ -41,7 +41,7 @@ public class PlayerController: NetworkBehaviour, IDamageAble, IDisguiseAble
 
     public void SetVisible(float sensorics)
     {
-        _animation.SetVisible(sensorics >= Model.Disguise.Disguise || _authority.IsLocal);
+        _animation.SetVisible(sensorics >= Model.Disguise.Disguise);
     }
 }
 }
