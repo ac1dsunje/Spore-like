@@ -20,10 +20,11 @@ public class PlayerController: NetworkBehaviour, IDamageAble
     [Inject] public PlayerModel Model { get; private set; }
     [Inject] private AnimationConfig _animationConfig;
     [Inject] private PlayerRegistry _playerRegistry;
+    [Inject] private PlayerAuthority _authority;
 
     public override void OnNetworkSpawn()
     {
-        base.OnNetworkSpawn();
+        _authority.IsLocal = IsOwner;
         Initialize();
     }
 
