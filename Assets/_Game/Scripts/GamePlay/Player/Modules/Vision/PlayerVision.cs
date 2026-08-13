@@ -1,20 +1,23 @@
-﻿using UnityEngine;
-using UnityEngine.Rendering.Universal;
+﻿using Unity.Cinemachine;
+using UnityEngine;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Vision
 {
 public class PlayerVision: PlayerNetworkBehaviour
 {
-    [SerializeField] private Light2D _light;
-    [SerializeField] private CircleCollider2D _visionCollider;
+    [SerializeField] private BoxCollider2D _visionCollider;
         
     private VisionModule _module;
+    private CinemachineCamera _cineMachine;
+    private Camera _camera;
         
     [Inject]
-    private void Construct(VisionModule module)
+    private void Construct(VisionModule module, CinemachineCamera cineMachine, Camera cam)
     {
         _module = module;
+        _cineMachine = cineMachine;
+        _camera = cam;
     }
 
     protected override void OnNetworkInitialized()
@@ -30,8 +33,8 @@ public class PlayerVision: PlayerNetworkBehaviour
 
     private void UpdateVisuals(float radius)
     {
-        _light.pointLightOuterRadius = radius;
-        _visionCollider.radius = radius;
+        _visionCollider.size = new Vector2(radius * _camera.aspect, radius) * 2;
+        _cineMachine.Lens.OrthographicSize = radius;
     }
         
     private void OnTriggerEnter2D(Collider2D other)

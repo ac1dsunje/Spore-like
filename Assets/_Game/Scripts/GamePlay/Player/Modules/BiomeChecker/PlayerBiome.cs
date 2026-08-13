@@ -53,8 +53,9 @@ public class PlayerBiome: PlayerNetworkBehaviour
             Debug.Log($"Temperature {temperature} is comfortable");
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
+        base.OnDestroy();
         _movement.OnGridPositionChanged -= TryEnterBiome;
     }
 }
