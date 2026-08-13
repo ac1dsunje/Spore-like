@@ -12,10 +12,7 @@ public class SceneLoaderService
 
     private string _currentScene;
 
-    public SceneLoaderService(
-        string mainMenuScene,
-        string gameplayScene,
-        string loadingScene)
+    public SceneLoaderService(string mainMenuScene, string gameplayScene, string loadingScene)
     {
         _mainMenuScene = mainMenuScene;
         _gameplayScene = gameplayScene;
@@ -34,16 +31,12 @@ public class SceneLoaderService
 
     private IEnumerator LoadScene(string sceneName)
     {
-        var loading = SceneManager.LoadSceneAsync(
-            _loadingScene,
-            LoadSceneMode.Additive);
+        var loading = SceneManager.LoadSceneAsync(_loadingScene, LoadSceneMode.Additive);
 
         yield return new WaitUntil(() => loading.isDone);
 
 
-        var scene = SceneManager.LoadSceneAsync(
-            sceneName,
-            LoadSceneMode.Additive);
+        var scene = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
 
         yield return new WaitUntil(() => scene.isDone);
 
@@ -54,8 +47,7 @@ public class SceneLoaderService
         }
 
         _currentScene = sceneName;
-
-
+        
         SceneManager.UnloadSceneAsync(_loadingScene);
     }
 }
