@@ -16,6 +16,7 @@ public class PlayerAttack : MonoBehaviour
     {
         _module = module;
         _inputService = inputService;
+        _meleeWeaponObject.transform.SetParent(null);
     }
 
     private void Update()
@@ -46,10 +47,10 @@ public class PlayerAttack : MonoBehaviour
 
         var direction = rawDistance > Mathf.Epsilon ? offset.normalized : Vector2.right;
 
-        _meleeWeaponObject.transform.localPosition = direction * distance;
+        _meleeWeaponObject.transform.position = playerPosition + direction * distance;
 
         var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        _meleeWeaponObject.transform.localRotation = Quaternion.Euler(0f, 0f, angle);
+        _meleeWeaponObject.transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 }
 }

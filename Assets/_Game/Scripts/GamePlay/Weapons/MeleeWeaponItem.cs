@@ -25,7 +25,6 @@ public class MeleeWeaponItem: MonoBehaviour
     private IEnumerator Hit()
     {
         yield return new WaitForSeconds(0.1f);
-        _hit.Damage = 0;
         gameObject.SetActive(false);
     }
 }
