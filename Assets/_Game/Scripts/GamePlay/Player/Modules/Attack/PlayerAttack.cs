@@ -10,18 +10,20 @@ public class PlayerAttack : MonoBehaviour
     
     private AttackModule _module;
     private PlayerInputService _inputService;
+    private PlayerAuthority _authority;
 
     [Inject]
-    private void Construct(AttackModule module, PlayerInputService inputService)
+    private void Construct(AttackModule module, PlayerInputService inputService, PlayerAuthority authority)
     {
         _module = module;
         _inputService = inputService;
         _meleeWeaponObject.transform.SetParent(null);
+        _authority = authority;
     }
 
     private void Update()
     {
-        if (_inputService.AttackPressed)
+        if (_inputService.AttackPressed && _authority.IsLocal)
         {
             Attack();
         }
