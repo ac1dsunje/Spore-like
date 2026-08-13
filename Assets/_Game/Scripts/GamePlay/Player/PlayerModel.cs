@@ -1,4 +1,5 @@
-﻿using _Game.Scripts.GamePlay.Player.Modules;
+﻿using _Game.Scripts.GamePlay.Evolutions;
+using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.Player.Modules.Abilities;
 using _Game.Scripts.GamePlay.Player.Modules.Attack;
 using _Game.Scripts.GamePlay.Player.Modules.Defense;
@@ -11,6 +12,7 @@ using _Game.Scripts.GamePlay.Player.Modules.Movement;
 using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Player.Modules.Temperature;
 using _Game.Scripts.GamePlay.Player.Modules.Vision;
+using _Game.Scripts.GamePlay.Rarities;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player
@@ -49,6 +51,22 @@ public class PlayerModel
         Evolutions = evolutions;
         
         Stats.Initialize(config.InitialConfigs);
+    }
+    
+    public void Initialize(IDamageAble owner)
+    {
+        Attack.SetOwner(owner);
+        Abilities.SetModel(this);
+        Evolutions.SetModel(this);
+    }
+
+    public void TakeDamage(HitInfo hit)
+    {
+        var damage = Defense.ApplyResistance(hit.Damage, hit.IgnoreResistance);
+        Health.TakeDamage(damage);
+        var returnedDamage = Defense.ReflectDamage(damage);
+        HitInfo returnedHit = new(returnedDamage, Attack.IgnoreResistance, null);
+        hit.Owner?.TakeDamage(returnedHit);
     }
 }
 }
