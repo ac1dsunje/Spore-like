@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 907072873164215148}
   - component: {fileID: -4871289679674323519}
   m_Layer: 0
-  m_Name: Spike
+  m_Name: SeaUrchin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
