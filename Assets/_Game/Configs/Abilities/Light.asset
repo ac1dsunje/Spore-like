@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299fdedca7cc47638fb19678a78e3f72, type: 3}
+  m_Name: Light
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Abilities.AbilityConfig
+  <Sprite>k__BackingField: {fileID: 8050506204473352044, guid: 88c0a5958e4cce34e9fb50f2e94f0351, type: 3}
+  <Type>k__BackingField: 2
+  <StartCost>k__BackingField: 0.5
+  <HasActivePhase>k__BackingField: 1
+  <InUseCost>k__BackingField: 1
+  <Key>k__BackingField: 102

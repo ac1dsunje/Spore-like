@@ -1,5 +1,6 @@
 ﻿using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Vision
@@ -7,6 +8,7 @@ namespace _Game.Scripts.GamePlay.Player.Modules.Vision
 public class PlayerVision: PlayerNetworkBehaviour
 {
     [SerializeField] private BoxCollider2D _visionCollider;
+    [SerializeField] private Light2D _visionLight;
         
     private VisionModule _module;
     private CinemachineCamera _cineMachine;
@@ -23,18 +25,15 @@ public class PlayerVision: PlayerNetworkBehaviour
     protected override void OnNetworkInitialized()
     {
         _visionCollider.enabled = IsLocal;
-        if (!IsLocal)
-        {
-            return;
-        }
-        _module.OnVisionRadiusChanged += UpdateVisuals;
-        UpdateVisuals(_module.VisionRadius);
     }
 
-    private void UpdateVisuals(float radius)
+    private void Update()
     {
-        _visionCollider.size = new Vector2(radius * _camera.aspect, radius) * 2;
-        _cineMachine.Lens.OrthographicSize = radius;
+        if (!IsLocal) return;
+        _visionCollider.size = new Vector2(_module.VisionRadius * _camera.aspect, _module.VisionRadius) * 2;
+        _cineMachine.Lens.OrthographicSize = _module.VisionRadius;
+        
+        _visionLight.pointLightOuterRadius = _module.LightingRadius;
     }
         
     private void OnTriggerEnter2D(Collider2D other)
@@ -43,15 +42,6 @@ public class PlayerVision: PlayerNetworkBehaviour
         if (other.TryGetComponent(out IDisguiseAble disguiseAble))
         {
             disguiseAble.SetVisible(_module.Sensorics);
-        }
-    }
-
-    protected override void OnDestroy()
-    {
-        base.OnDestroy();
-        if (_module != null)
-        {
-            _module.OnVisionRadiusChanged -= UpdateVisuals;
         }
     }
 }

@@ -27,6 +27,7 @@ public enum StatType
     AttackRange = 25,
     IgnoreDamageResistance = 26,
     Sensorics = 27,
-    Disguise = 28
+    Disguise = 28,
+    LightingRadius = 29
 }
 }

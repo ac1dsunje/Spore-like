@@ -15,7 +15,7 @@ MonoBehaviour:
   <CreatureType>k__BackingField: 3
   <Name>k__BackingField: Mantle
   <Description>k__BackingField: 
-  <Sprite>k__BackingField: {fileID: 6455949753646763911, guid: 7112fe856133a764fa39bc0712678389, type: 3}
+  <Sprite>k__BackingField: {fileID: 8592853202622365051, guid: c3a31c0f494d72546935e5b2edf73bb8, type: 3}
   <Stats>k__BackingField:
   - <Stat>k__BackingField:
       <Type>k__BackingField: 10
