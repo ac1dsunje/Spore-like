@@ -15,7 +15,7 @@ MonoBehaviour:
   <CreatureType>k__BackingField: 0
   <Name>k__BackingField: Camera Eyes
   <Description>k__BackingField: Highly specialized eyes grant exceptional range and
-  <Sprite>k__BackingField: {fileID: -7076529034579859471, guid: d6c9da9091c4c0b4ba595677bdd2e09c, type: 3}
+  <Sprite>k__BackingField: {fileID: 9086340596071218220, guid: e665fecaf2300da4c8fcc6a7ab55dbb9, type: 3}
   <Stats>k__BackingField:
   - <Stat>k__BackingField:
       <Type>k__BackingField: 1

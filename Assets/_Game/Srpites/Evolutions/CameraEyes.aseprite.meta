@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6d941b6ae772f2f4ca5dcf0957d42010
+guid: e665fecaf2300da4c8fcc6a7ab55dbb9
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,7 +127,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Spines
+  - name: CameraEyes
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 9
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 4
       width: 32
       height: 32
-    spriteID: 9a08e4197f75fda4dbd74266104f830e
+    spriteID: 6181fc794bc736c46bf0455013e3a0dc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,17 +153,17 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 2519583490
+      value0: 1586648523
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Spines
+    name: CameraEyes
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Spines
+    - name: CameraEyes
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -171,7 +171,7 @@ ScriptedImporter:
         y: 0
         width: 32
         height: 32
-      spriteId: 9a08e4197f75fda4dbd74266104f830e
+      spriteId: 6181fc794bc736c46bf0455013e3a0dc
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
