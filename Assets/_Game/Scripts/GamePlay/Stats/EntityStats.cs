@@ -22,9 +22,11 @@ public class EntityStats
 
     public void AddSource(IStatSource source)
     {
-        AddSourceStats(source);
-
-        foreach (var stat in source.GetStats())
+        var sourceStats = source.GetStats();
+        
+        AddSourceStats(source, sourceStats);
+        
+        foreach (var stat in sourceStats)
         {
             RecalculateStat(stat.Type);
         }
@@ -62,14 +64,14 @@ public class EntityStats
         }
     }
 
-    private void AddSourceStats(IStatSource source)
+    private void AddSourceStats(IStatSource source, List<Stat> sourceStats)
     {
         if (_sourceStats.ContainsKey(source))
             return;
 
         var stats = new Dictionary<StatType, float>();
 
-        foreach (var stat in source.GetStats())
+        foreach (var stat in sourceStats)
         {
             stats.Add(stat.Type, stat.Value);
         }
