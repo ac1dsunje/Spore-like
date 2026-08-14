@@ -25,16 +25,10 @@ public class VisionModule: StatModule
         BindStat(StatType.LightingRadius, UpdateLightingRadius);
     }
 
-    public void RequestLight()
-    {
-        _useLight = true;
-    }
+    public void RequestLight() => _useLight = true;
 
-    public void ResetLight()
-    {
-        _useLight = false;
-    }
-    
+    public void ResetLight() => _useLight = false;
+
     private void UpdateVisionRadius(float value) => VisionRadius = value;
 
     private void UpdateLightingRadius(float value) => _lightingRadius = value;
