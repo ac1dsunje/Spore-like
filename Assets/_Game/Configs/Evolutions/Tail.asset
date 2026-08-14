@@ -38,7 +38,12 @@ MonoBehaviour:
   <Blocks>k__BackingField: []
   <Abilities>k__BackingField:
   - {fileID: 11400000, guid: be1b63a43cda10d4a8d67386e9596059, type: 2}
-  <ExperienceForFirstLevel>k__BackingField: 10
+  <LevelSet>k__BackingField: 0
   <ExperienceTypes>k__BackingField:
   - <Type>k__BackingField: 6
     <Amount>k__BackingField: 5
+  <ExperienceConfig>k__BackingField:
+    <LevelSet>k__BackingField: 20
+    <ExperienceTypes>k__BackingField:
+    - <Type>k__BackingField: 6
+      <Amount>k__BackingField: 5

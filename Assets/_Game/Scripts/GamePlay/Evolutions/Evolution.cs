@@ -59,7 +59,7 @@ public class Evolution: IDisposable, IStatSource
 
     private void SubscribeExperienceServices()
     {
-        foreach (var config in Config.ExperienceTypes)
+        foreach (var config in Config.ExperienceConfig.ExperienceTypes)
         {
             var experienceType = _expFactory.GetService(config, _player);
             _experienceServices.Add(experienceType);
@@ -100,7 +100,7 @@ public class Evolution: IDisposable, IStatSource
     private void SetInitialLevel(int value)
     {
         _level = value;
-        _levelSet = Config.ExperienceForFirstLevel + (int)(Config.ExperienceForFirstLevel / 2f * (Math.Pow(2, _level - 1) - 1));
+        _levelSet = Config.ExperienceConfig.LevelSet + (int)(Config.ExperienceConfig.LevelSet / 2f * (Math.Pow(2, _level - 1) - 1));
     }
 
     private void SetStats()
@@ -129,7 +129,7 @@ public class Evolution: IDisposable, IStatSource
     private void UpdateLevel()
     {
         _level++;
-        _levelSet += (int)(Config.ExperienceForFirstLevel / 2f * Math.Pow(2, _level - 2));
+        _levelSet += (int)(Config.ExperienceConfig.LevelSet / 2f * Math.Pow(2, _level - 2));
         OnLevelUp?.Invoke(this, _level);
     }
 

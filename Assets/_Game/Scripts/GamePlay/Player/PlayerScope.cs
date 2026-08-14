@@ -16,12 +16,12 @@ public class PlayerScope: LifetimeScope
 {
     [SerializeField] private PlayerConfig _playerConfig;
     [SerializeField] private AnimationConfig _animationConfig;
-    [SerializeField] private ExperienceConfig _experienceConfig;
+    [SerializeField] private PlayerExperienceConfig _playerExperienceConfig;
     protected override void Configure(IContainerBuilder builder)
     {
         builder.RegisterInstance(_playerConfig);
         builder.RegisterInstance(_animationConfig);
-        builder.RegisterInstance(_experienceConfig);
+        builder.RegisterInstance(_playerExperienceConfig);
         
         builder.Register<PlayerInputService>(Lifetime.Scoped);
         builder.Register<PlayerAuthority>(Lifetime.Scoped);

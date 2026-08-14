@@ -25,7 +25,6 @@ public class EvolutionConfig: ScriptableObject
     [field: SerializeField] public AbilityConfig[] Abilities { get; private set; }
     
     // Experience
-    [field: SerializeField] public int ExperienceForFirstLevel { get; private set; }
-    [field: SerializeField] public ExperienceServiceConfig[] ExperienceTypes { get; private set; }
+    [field: SerializeField] public ExperienceConfig ExperienceConfig { get; private set; }
 }
 }

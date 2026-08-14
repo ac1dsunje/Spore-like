@@ -546,7 +546,7 @@ MonoBehaviour:
   autoInjectGameObjects: []
   _playerConfig: {fileID: 11400000, guid: ba7be4736a4236543ba175179ecef16d, type: 2}
   _animationConfig: {fileID: 11400000, guid: 3e306153c1a50664eb303588691dfd53, type: 2}
-  _experienceConfig: {fileID: 11400000, guid: 6ca48198dec476b4f9cde410c88c74c5, type: 2}
+  _playerExperienceConfig: {fileID: 11400000, guid: 6ca48198dec476b4f9cde410c88c74c5, type: 2}
 --- !u!114 &6594191335402710561
 MonoBehaviour:
   m_ObjectHideFlags: 0

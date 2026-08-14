@@ -33,7 +33,12 @@ MonoBehaviour:
   <Requires>k__BackingField: []
   <Blocks>k__BackingField: []
   <Abilities>k__BackingField: []
-  <ExperienceForFirstLevel>k__BackingField: 10
+  <LevelSet>k__BackingField: 0
   <ExperienceTypes>k__BackingField:
   - <Type>k__BackingField: 1
     <Amount>k__BackingField: 1
+  <ExperienceConfig>k__BackingField:
+    <LevelSet>k__BackingField: 15
+    <ExperienceTypes>k__BackingField:
+    - <Type>k__BackingField: 1
+      <Amount>k__BackingField: 1
