@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using VContainer;
 
-namespace _Game.Scripts.GamePlay.Stats
+namespace _Game.Scripts.GamePlay
 {
 public abstract class StatModule : IDisposable
 {

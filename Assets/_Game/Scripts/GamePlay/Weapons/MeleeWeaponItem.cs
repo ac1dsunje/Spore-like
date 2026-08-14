@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Player.Modules;
 using UnityEngine;
 

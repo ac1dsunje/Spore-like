@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using _Game.Scripts.GamePlay.Module;
 using _Game.Scripts.GamePlay.Player;
 using _Game.Scripts.GamePlay.Player.Modules.Movement;
 using UnityEngine;

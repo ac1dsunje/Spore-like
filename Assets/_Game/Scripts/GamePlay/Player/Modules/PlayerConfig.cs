@@ -1,6 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Animation;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
-using _Game.Scripts.GamePlay.Stats;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Player.Modules

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Player;
 using _Game.Scripts.GamePlay.Player.Modules;
 

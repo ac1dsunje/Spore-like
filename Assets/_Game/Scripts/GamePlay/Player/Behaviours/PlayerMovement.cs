@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using _Game.Scripts.GamePlay.Module;
+using _Game.Scripts.GamePlay.Player.Modules.Movement;
+using UnityEngine;
 using VContainer;
 
-namespace _Game.Scripts.GamePlay.Player.Modules.Movement
+namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
 public class PlayerMovement: PlayerNetworkBehaviour
 {

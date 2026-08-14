@@ -1,17 +1,9 @@
-﻿using _Game.Scripts.GamePlay.Player.Modules;
+﻿using _Game.Scripts.GamePlay.Interfaces;
+using _Game.Scripts.GamePlay.Module;
+using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.Player.Modules.Abilities;
-using _Game.Scripts.GamePlay.Player.Modules.Attack;
-using _Game.Scripts.GamePlay.Player.Modules.Defense;
-using _Game.Scripts.GamePlay.Player.Modules.Disguise;
-using _Game.Scripts.GamePlay.Player.Modules.Endurance;
 using _Game.Scripts.GamePlay.Player.Modules.Evolutions;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
-using _Game.Scripts.GamePlay.Player.Modules.Health;
-using _Game.Scripts.GamePlay.Player.Modules.Mouth;
-using _Game.Scripts.GamePlay.Player.Modules.Movement;
-using _Game.Scripts.GamePlay.Player.Modules.Temperature;
-using _Game.Scripts.GamePlay.Player.Modules.Vision;
-using _Game.Scripts.GamePlay.Stats;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player

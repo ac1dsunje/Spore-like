@@ -1,5 +1,5 @@
 ﻿using System;
-using _Game.Scripts.GamePlay.Player.Modules.Mouth;
+using _Game.Scripts.GamePlay.Module;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Experience

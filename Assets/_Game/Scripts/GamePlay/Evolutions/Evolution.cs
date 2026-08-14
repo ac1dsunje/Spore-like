@@ -4,7 +4,6 @@ using System.Linq;
 using _Game.Scripts.GamePlay.Evolutions.Experience;
 using _Game.Scripts.GamePlay.Player;
 using _Game.Scripts.GamePlay.Rarities;
-using _Game.Scripts.GamePlay.Stats;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Evolutions

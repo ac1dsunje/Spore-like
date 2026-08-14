@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using _Game.Scripts.GamePlay.Evolutions;
+using _Game.Scripts.GamePlay.Module;
 using _Game.Scripts.GamePlay.Player.Modules.Abilities;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
 using _Game.Scripts.GamePlay.Player.Modules.Movement;
 using _Game.Scripts.GamePlay.Rarities;
-using _Game.Scripts.GamePlay.Stats;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

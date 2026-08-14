@@ -1,8 +1,9 @@
 ﻿using System.Collections;
+using _Game.Scripts.GamePlay.Module;
 using UnityEngine;
 using VContainer;
 
-namespace _Game.Scripts.GamePlay.Player.Modules.Health
+namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
 public class PlayerHealth: PlayerNetworkBehaviour
 {

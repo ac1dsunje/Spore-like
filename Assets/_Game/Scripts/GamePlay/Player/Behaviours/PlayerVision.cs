@@ -1,9 +1,10 @@
-﻿using Unity.Cinemachine;
+﻿using _Game.Scripts.GamePlay.Module;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using VContainer;
 
-namespace _Game.Scripts.GamePlay.Player.Modules.Vision
+namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
 public class PlayerVision: PlayerNetworkBehaviour
 {

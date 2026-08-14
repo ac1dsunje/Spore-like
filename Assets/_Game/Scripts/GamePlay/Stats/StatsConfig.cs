@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.Stats
+namespace _Game.Scripts.GamePlay
 {
 [CreateAssetMenu(fileName = "NewStatsConfig", menuName = "Configs/Game/Stats/Config")]
 public class StatsConfig: ScriptableObject

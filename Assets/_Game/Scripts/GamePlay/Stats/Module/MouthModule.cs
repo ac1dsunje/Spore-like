@@ -1,7 +1,6 @@
 ﻿using System;
-using _Game.Scripts.GamePlay.Stats;
 
-namespace _Game.Scripts.GamePlay.Player.Modules.Mouth
+namespace _Game.Scripts.GamePlay.Module
 {
 public class MouthModule: StatModule
 {

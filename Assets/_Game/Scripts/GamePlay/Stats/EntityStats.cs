@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.Stats
+namespace _Game.Scripts.GamePlay
 {
 public class EntityStats
 {

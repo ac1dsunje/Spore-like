@@ -1,4 +1,4 @@
-﻿namespace _Game.Scripts.GamePlay.Player.Modules
+﻿namespace _Game.Scripts.GamePlay.Interfaces
 {
 public interface IDisguiseAble
 {

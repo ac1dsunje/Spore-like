@@ -1,7 +1,7 @@
 ﻿using System;
-using _Game.Scripts.GamePlay.Stats;
+using _Game.Scripts.GamePlay.Interfaces;
 
-namespace _Game.Scripts.GamePlay.Player.Modules.Defense
+namespace _Game.Scripts.GamePlay.Module
 {
 public class DefenseModule: StatModule
 {

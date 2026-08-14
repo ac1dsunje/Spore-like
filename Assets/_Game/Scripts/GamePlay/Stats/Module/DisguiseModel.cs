@@ -1,6 +1,4 @@
-﻿using _Game.Scripts.GamePlay.Stats;
-
-namespace _Game.Scripts.GamePlay.Player.Modules.Disguise
+﻿namespace _Game.Scripts.GamePlay.Module
 {
 public class DisguiseModule: StatModule
 {

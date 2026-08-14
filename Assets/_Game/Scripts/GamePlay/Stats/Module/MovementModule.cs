@@ -1,8 +1,7 @@
 ﻿using System;
-using _Game.Scripts.GamePlay.Stats;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.Player.Modules.Movement
+namespace _Game.Scripts.GamePlay.Module
 {
 public enum MovementState
 {

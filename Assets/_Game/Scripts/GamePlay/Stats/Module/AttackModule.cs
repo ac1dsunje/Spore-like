@@ -1,6 +1,6 @@
-﻿using _Game.Scripts.GamePlay.Stats;
+﻿using _Game.Scripts.GamePlay.Interfaces;
 
-namespace _Game.Scripts.GamePlay.Player.Modules.Attack
+namespace _Game.Scripts.GamePlay.Module
 {
 public class AttackModule: StatModule
 {

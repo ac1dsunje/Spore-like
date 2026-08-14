@@ -1,4 +1,5 @@
-﻿using _Game.Scripts.GamePlay.Player.Modules;
+﻿using _Game.Scripts.GamePlay.Interfaces;
+using _Game.Scripts.GamePlay.Player.Modules;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.World.Biomes.Environment.Enemies

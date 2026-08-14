@@ -1,8 +1,8 @@
 ﻿using System;
-using _Game.Scripts.GamePlay.Stats;
+using _Game.Scripts.GamePlay.Player.Modules;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.Player.Modules.Health
+namespace _Game.Scripts.GamePlay.Module
 {
 public class HealthModule: StatModule, IResource
 {
