@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0030ccaa56b24bdfbe9c600651de2505, type: 3}
-  m_Name: SeaSponge
+  m_Name: SeaSpongeRed
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Food.FoodConfig
   <StatsConfig>k__BackingField: {fileID: 11400000, guid: 66994df2d11550c4487eb59ebb745b0c, type: 2}
   <Shield>k__BackingField: 1

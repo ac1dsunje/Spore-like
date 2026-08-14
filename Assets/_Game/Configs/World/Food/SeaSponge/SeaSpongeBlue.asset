@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0030ccaa56b24bdfbe9c600651de2505, type: 3}
+  m_Name: SeaSpongeBlue
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Food.FoodConfig
+  <StatsConfig>k__BackingField: {fileID: 11400000, guid: 66994df2d11550c4487eb59ebb745b0c, type: 2}
+  <Shield>k__BackingField: 1
+  <FeedAmount>k__BackingField: 1
+  <Color>k__BackingField: {r: 0.24056602, g: 0.5311453, b: 1, a: 1}
+  <AnimationConfig>k__BackingField: {fileID: 11400000, guid: 884d78ddd128ee84796c95ac5c536855, type: 2}
+  <ParticlesPrefab>k__BackingField: {fileID: 1057120428620177345, guid: d8e716c34125011438a86971c35e78c7, type: 3}
