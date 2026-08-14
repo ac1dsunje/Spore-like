@@ -1,8 +1,8 @@
 ﻿using _Game.Scripts.GamePlay.Player;
 
-namespace _Game.Scripts.GamePlay.Evolutions.Experience.Types
+namespace _Game.Scripts.GamePlay.Experience.Types
 {
-public class DamageResisting: EvolutionExperienceService
+public class DamageResisting: ExperienceService
 {
     public DamageResisting(PlayerModel playerModel, float amount) : base(playerModel, amount)
     {

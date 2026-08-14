@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Abilities;
 using _Game.Scripts.GamePlay.Evolutions.Experience;
+using _Game.Scripts.GamePlay.Experience;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Evolutions
@@ -26,6 +27,6 @@ public class EvolutionConfig: ScriptableObject
     
     // Experience
     [field: SerializeField] public int ExperienceForFirstLevel { get; private set; }
-    [field: SerializeField] public EvolutionExperienceConfig[] ExperienceTypes { get; private set; }
+    [field: SerializeField] public ExperienceServiceConfig[] ExperienceTypes { get; private set; }
 }
 }

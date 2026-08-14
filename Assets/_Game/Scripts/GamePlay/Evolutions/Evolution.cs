@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using _Game.Scripts.GamePlay.Evolutions.Experience;
+using _Game.Scripts.GamePlay.Experience;
 using _Game.Scripts.GamePlay.Player;
 using _Game.Scripts.GamePlay.Rarities;
 using UnityEngine;
@@ -23,8 +23,8 @@ public class Evolution: IDisposable, IStatSource
     public event Action OnRarityChanged;
     
     //Level
-    private readonly EvolutionExperienceFactory _expFactory = new();
-    private readonly List<EvolutionExperienceService> _experienceManagers = new();
+    private readonly ExperienceFactory _expFactory = new();
+    private readonly List<ExperienceService> _experienceManagers = new();
     private int _experiencePoints;
     private int _levelSet;
     private int _level;

@@ -1,9 +1,9 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Player;
 
-namespace _Game.Scripts.GamePlay.Evolutions.Experience
+namespace _Game.Scripts.GamePlay.Experience
 {
-public abstract class EvolutionExperienceService
+public abstract class ExperienceService
 {
     protected readonly PlayerModel PlayerModel;
 
@@ -12,7 +12,7 @@ public abstract class EvolutionExperienceService
     private readonly float _maxAmount;
     private float _currentAmount;
     
-    protected EvolutionExperienceService(PlayerModel playerModel, float amount)
+    protected ExperienceService(PlayerModel playerModel, float amount)
     {
         PlayerModel = playerModel;
         _maxAmount = amount;

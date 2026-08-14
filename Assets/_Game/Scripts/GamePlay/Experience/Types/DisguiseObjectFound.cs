@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Player;
-using _Game.Scripts.GamePlay.Player.Modules;
 
-namespace _Game.Scripts.GamePlay.Evolutions.Experience.Types
+namespace _Game.Scripts.GamePlay.Experience.Types
 {
-public class DisguiseObjectFound: EvolutionExperienceService
+public class DisguiseObjectFound: ExperienceService
 {
     private readonly HashSet<IDisguiseAble> _disguisedObjects = new();
 

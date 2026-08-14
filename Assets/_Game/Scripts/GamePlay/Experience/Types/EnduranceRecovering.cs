@@ -1,8 +1,8 @@
 ﻿using _Game.Scripts.GamePlay.Player;
 
-namespace _Game.Scripts.GamePlay.Evolutions.Experience.Types
+namespace _Game.Scripts.GamePlay.Experience.Types
 {
-public class EnduranceRecovering: EvolutionExperienceService
+public class EnduranceRecovering: ExperienceService
 {
     public EnduranceRecovering(PlayerModel playerModel, float amount) : base(playerModel, amount)
     {

@@ -1,8 +1,8 @@
 ﻿using _Game.Scripts.GamePlay.Player;
 
-namespace _Game.Scripts.GamePlay.Evolutions.Experience.Types
+namespace _Game.Scripts.GamePlay.Experience.Types
 {
-public class Healing: EvolutionExperienceService
+public class Healing: ExperienceService
 {
     public Healing(PlayerModel playerModel, float amount) : base(playerModel, amount)
     {

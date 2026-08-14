@@ -2,9 +2,9 @@
 using _Game.Scripts.GamePlay.Player;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.Evolutions.Experience.Types
+namespace _Game.Scripts.GamePlay.Experience.Types
 {
-public class ObjectsDiscovering: EvolutionExperienceService
+public class ObjectsDiscovering: ExperienceService
 {
     private readonly HashSet<GameObject> _discoveredObjects = new();
 
