@@ -21,7 +21,7 @@ public abstract class EvolutionExperienceService
     protected void AddAmount(float amount)
     {
         _currentAmount += amount;
-        if (!(_currentAmount >= _maxAmount)) return;
+        if (_currentAmount < _maxAmount) return;
         
         OnExperienceGained?.Invoke(1);
         _currentAmount -= _maxAmount;
