@@ -8,7 +8,10 @@ public class ObjectsDiscovering: EvolutionExperienceService
 {
     private readonly HashSet<GameObject> _discoveredObjects = new();
 
-    public ObjectsDiscovering(PlayerModel playerModel, float amount) : base(playerModel, amount) => PlayerModel.Vision.OnGameObjectDiscovered += OnObjectDiscovered;
+    public ObjectsDiscovering(PlayerModel playerModel, float amount) : base(playerModel, amount)
+    {
+        PlayerModel.Vision.OnGameObjectDiscovered += OnObjectDiscovered;
+    }
 
     private void OnObjectDiscovered(GameObject gameObject)
     {

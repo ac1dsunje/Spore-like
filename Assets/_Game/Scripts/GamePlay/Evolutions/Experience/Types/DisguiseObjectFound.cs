@@ -9,7 +9,10 @@ public class DisguiseObjectFound: EvolutionExperienceService
 {
     private readonly HashSet<IDisguiseAble> _disguisedObjects = new();
 
-    public DisguiseObjectFound(PlayerModel playerModel, float amount) : base(playerModel, amount) => PlayerModel.Vision.OnDisguiseAbleDiscovered += OnDisguiseObjectFound;
+    public DisguiseObjectFound(PlayerModel playerModel, float amount) : base(playerModel, amount)
+    {
+        PlayerModel.Vision.OnDisguiseAbleDiscovered += OnDisguiseObjectFound;
+    }
 
     private void OnDisguiseObjectFound(IDisguiseAble gameObject)
     {
