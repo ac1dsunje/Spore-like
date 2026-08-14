@@ -1,5 +1,6 @@
 ﻿using _Game.Scripts.Core.UI;
 using _Game.Scripts.GamePlay.Player;
+using _Game.Scripts.GamePlay.UI.Bar;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;

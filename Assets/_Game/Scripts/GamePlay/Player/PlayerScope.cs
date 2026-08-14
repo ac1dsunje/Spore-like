@@ -6,7 +6,6 @@ using _Game.Scripts.GamePlay.Player.Modules.Abilities;
 using _Game.Scripts.GamePlay.Player.Modules.BiomeChecker;
 using _Game.Scripts.GamePlay.Player.Modules.Evolutions;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
-using _Game.Scripts.GamePlay.Player.Modules.Movement;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;

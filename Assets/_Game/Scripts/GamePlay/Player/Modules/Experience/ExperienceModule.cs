@@ -1,5 +1,6 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Module;
+using _Game.Scripts.GamePlay.UI.Bar;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Experience

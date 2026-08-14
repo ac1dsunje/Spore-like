@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Abilities;
 using _Game.Scripts.GamePlay.Player.Modules;
+using _Game.Scripts.GamePlay.UI.Bar;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Module

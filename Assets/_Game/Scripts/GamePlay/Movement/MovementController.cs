@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.Player.Modules.Movement
+namespace _Game.Scripts.GamePlay.Movement
 {
 [RequireComponent(typeof(Rigidbody2D))]
 public class MovementController: MonoBehaviour

@@ -1,5 +1,4 @@
 ﻿using _Game.Scripts.GamePlay.Module;
-using _Game.Scripts.GamePlay.Player.Modules.Movement;
 using _Game.Scripts.GamePlay.World;
 using _Game.Scripts.GamePlay.World.Biomes;
 using UnityEngine;

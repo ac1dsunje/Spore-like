@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _Game.Scripts.GamePlay.UI
+namespace _Game.Scripts.GamePlay.UI.Bar
 {
 public class BarUI: MonoBehaviour
 {

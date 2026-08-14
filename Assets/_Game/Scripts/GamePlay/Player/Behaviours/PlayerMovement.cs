@@ -1,5 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Module;
-using _Game.Scripts.GamePlay.Player.Modules.Movement;
+using _Game.Scripts.GamePlay.Movement;
 using UnityEngine;
 using VContainer;
 
