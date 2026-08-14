@@ -1,14 +1,17 @@
-﻿using _Game.Scripts.GamePlay.Player;
+﻿using _Game.Scripts.GamePlay.Module;
 
 namespace _Game.Scripts.GamePlay.Experience.Types
 {
 public class DamageResisting: ExperienceService
 {
-    public DamageResisting(PlayerModel playerModel, float amount) : base(playerModel, amount)
+    private readonly DefenseModule _module;
+    
+    public DamageResisting(DefenseModule module, float amount) : base(amount)
     {
-        PlayerModel.Defense.OnDamageResisted += AddAmount;
+        _module = module;
+        _module.OnDamageResisted += AddAmount;
     }
 
-    public override void Dispose() => PlayerModel.Defense.OnDamageResisted -= AddAmount;
+    public override void Dispose() => _module.OnDamageResisted -= AddAmount;
 }
 }

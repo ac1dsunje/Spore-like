@@ -1,14 +1,17 @@
-﻿using _Game.Scripts.GamePlay.Player;
+﻿using _Game.Scripts.GamePlay.Module;
 
 namespace _Game.Scripts.GamePlay.Experience.Types
 {
 public class DistanceOvercoming: ExperienceService
 {
-    public DistanceOvercoming(PlayerModel playerModel, float amount) : base(playerModel, amount)
+    private readonly MovementModule _module;
+    
+    public DistanceOvercoming(MovementModule module, float amount) : base(amount)
     {
-        PlayerModel.Movement.OnDistanceOvercome += AddAmount;
+        _module = module;
+        _module.OnDistanceOvercome += AddAmount;
     }
 
-    public override void Dispose() => PlayerModel.Movement.OnDistanceOvercome -= AddAmount;
+    public override void Dispose() => _module.OnDistanceOvercome -= AddAmount;
 }
 }

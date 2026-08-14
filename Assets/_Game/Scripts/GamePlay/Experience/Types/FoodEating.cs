@@ -1,14 +1,17 @@
-﻿using _Game.Scripts.GamePlay.Player;
+﻿using _Game.Scripts.GamePlay.Module;
 
 namespace _Game.Scripts.GamePlay.Experience.Types
 {
 public class FoodEating: ExperienceService
 {
-    public FoodEating(PlayerModel playerModel, float amount) : base(playerModel, amount)
+    private readonly MouthModule _module;
+    
+    public FoodEating(MouthModule module, float amount) : base(amount)
     {
-        PlayerModel.MouthModule.OnFoodPointsAchieved += AddAmount;
+        _module = module;
+        _module.OnFoodPointsAchieved += AddAmount;
     }
 
-    public override void Dispose() => PlayerModel.MouthModule.OnFoodPointsAchieved -= AddAmount;
+    public override void Dispose() => _module.OnFoodPointsAchieved -= AddAmount;
 }
 }

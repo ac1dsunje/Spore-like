@@ -1,14 +1,17 @@
-﻿using _Game.Scripts.GamePlay.Player;
+﻿using _Game.Scripts.GamePlay.Module;
 
 namespace _Game.Scripts.GamePlay.Experience.Types
 {
 public class DamageTaking: ExperienceService
 {
-    public DamageTaking(PlayerModel playerModel, float amount) : base(playerModel, amount)
+    private readonly HealthModule _module;
+    
+    public DamageTaking(HealthModule module, float amount) : base(amount)
     {
-        PlayerModel.Health.OnDamageTaken += AddAmount;
+        _module = module;
+        _module.OnDamageTaken += AddAmount;
     }
 
-    public override void Dispose() => PlayerModel.Health.OnDamageTaken -= AddAmount;
+    public override void Dispose() => _module.OnDamageTaken -= AddAmount;
 }
 }

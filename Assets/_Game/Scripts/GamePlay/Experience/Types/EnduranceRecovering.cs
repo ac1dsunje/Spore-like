@@ -1,14 +1,17 @@
-﻿using _Game.Scripts.GamePlay.Player;
+﻿using _Game.Scripts.GamePlay.Module;
 
 namespace _Game.Scripts.GamePlay.Experience.Types
 {
 public class EnduranceRecovering: ExperienceService
 {
-    public EnduranceRecovering(PlayerModel playerModel, float amount) : base(playerModel, amount)
+    private readonly EnduranceModule _module;
+    
+    public EnduranceRecovering(EnduranceModule module, float amount) : base(amount)
     {
-        PlayerModel.Endurance.OnEnduranceRecovered += AddAmount;
+        _module = module;
+        _module.OnEnduranceRecovered += AddAmount;
     }
 
-    public override void Dispose() => PlayerModel.Endurance.OnEnduranceRecovered -= AddAmount;
+    public override void Dispose() => _module.OnEnduranceRecovered -= AddAmount;
 }
 }

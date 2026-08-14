@@ -1,16 +1,19 @@
 ﻿using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Interfaces;
-using _Game.Scripts.GamePlay.Player;
+using _Game.Scripts.GamePlay.Module;
 
 namespace _Game.Scripts.GamePlay.Experience.Types
 {
 public class DisguiseObjectFound: ExperienceService
 {
+    private readonly VisionModule _module;
+    
     private readonly HashSet<IDisguiseAble> _disguisedObjects = new();
 
-    public DisguiseObjectFound(PlayerModel playerModel, float amount) : base(playerModel, amount)
+    public DisguiseObjectFound(VisionModule module, float amount) : base(amount)
     {
-        PlayerModel.Vision.OnDisguiseAbleDiscovered += OnDisguiseObjectFound;
+        _module = module;
+        _module.OnDisguiseAbleDiscovered += OnDisguiseObjectFound;
     }
 
     private void OnDisguiseObjectFound(IDisguiseAble gameObject)
@@ -20,6 +23,6 @@ public class DisguiseObjectFound: ExperienceService
         AddAmount(1);
     }
 
-    public override void Dispose() => PlayerModel.Vision.OnDisguiseAbleDiscovered -= OnDisguiseObjectFound;
+    public override void Dispose() => _module.OnDisguiseAbleDiscovered -= OnDisguiseObjectFound;
 }
 }

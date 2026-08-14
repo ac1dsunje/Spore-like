@@ -1,16 +1,19 @@
 ﻿using System.Collections.Generic;
-using _Game.Scripts.GamePlay.Player;
+using _Game.Scripts.GamePlay.Module;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Experience.Types
 {
 public class ObjectsDiscovering: ExperienceService
 {
+    private readonly VisionModule _module;
+    
     private readonly HashSet<GameObject> _discoveredObjects = new();
 
-    public ObjectsDiscovering(PlayerModel playerModel, float amount) : base(playerModel, amount)
+    public ObjectsDiscovering(VisionModule module, float amount) : base(amount)
     {
-        PlayerModel.Vision.OnGameObjectDiscovered += OnObjectDiscovered;
+        _module = module;
+        _module.OnGameObjectDiscovered += OnObjectDiscovered;
     }
 
     private void OnObjectDiscovered(GameObject gameObject)
@@ -20,6 +23,6 @@ public class ObjectsDiscovering: ExperienceService
         AddAmount(1);
     }
 
-    public override void Dispose() => PlayerModel.Vision.OnGameObjectDiscovered -= OnObjectDiscovered;
+    public override void Dispose() => _module.OnGameObjectDiscovered -= OnObjectDiscovered;
 }
 }

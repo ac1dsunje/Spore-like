@@ -1,14 +1,17 @@
-﻿using _Game.Scripts.GamePlay.Player;
+﻿using _Game.Scripts.GamePlay.Module;
 
 namespace _Game.Scripts.GamePlay.Experience.Types
 {
 public class DamageReflecting: ExperienceService
 {
-    public DamageReflecting(PlayerModel playerModel, float amount) : base(playerModel, amount)
+    private readonly DefenseModule _module;
+    
+    public DamageReflecting(DefenseModule module, float amount) : base(amount)
     {
-        PlayerModel.Defense.OnDamageReflected += AddAmount;
+        _module = module;
+        _module.OnDamageReflected += AddAmount;
     }
 
-    public override void Dispose() => PlayerModel.Defense.OnDamageReflected -= AddAmount;
+    public override void Dispose() => _module.OnDamageReflected -= AddAmount;
 }
 }

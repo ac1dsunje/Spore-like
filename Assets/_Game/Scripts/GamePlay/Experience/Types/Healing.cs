@@ -1,14 +1,17 @@
-﻿using _Game.Scripts.GamePlay.Player;
+﻿using _Game.Scripts.GamePlay.Module;
 
 namespace _Game.Scripts.GamePlay.Experience.Types
 {
 public class Healing: ExperienceService
 {
-    public Healing(PlayerModel playerModel, float amount) : base(playerModel, amount)
+    private readonly HealthModule _module;
+    
+    public Healing(HealthModule module, float amount) : base(amount)
     {
-        PlayerModel.Health.OnHealed += AddAmount;
+        _module = module;
+        _module.OnHealed += AddAmount;
     }
 
-    public override void Dispose() => PlayerModel.Health.OnHealed -= AddAmount;
+    public override void Dispose() => _module.OnHealed -= AddAmount;
 }
 }

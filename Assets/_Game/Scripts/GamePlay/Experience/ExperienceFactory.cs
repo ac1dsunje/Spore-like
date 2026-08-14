@@ -22,15 +22,15 @@ public class ExperienceFactory
     {
         return config.Type switch
         {
-            ExperienceType.DamageReflection => new DamageReflecting(playerModel, config.Amount),
-            ExperienceType.ObjectDiscover => new ObjectsDiscovering(playerModel, config.Amount),
-            ExperienceType.FoodEating => new FoodEating(playerModel, config.Amount),
-            ExperienceType.DamageResistance => new DamageResisting(playerModel, config.Amount),
-            ExperienceType.DamageTaking => new DamageTaking(playerModel, config.Amount),
-            ExperienceType.Healing => new Healing(playerModel, config.Amount),
-            ExperienceType.DistanceOvercoming => new DistanceOvercoming(playerModel, config.Amount),
-            ExperienceType.EnduranceRecovering => new EnduranceRecovering(playerModel, config.Amount),
-            ExperienceType.DisguiseObjectFound => new DisguiseObjectFound(playerModel, config.Amount),
+            ExperienceType.DamageReflection => new DamageReflecting(playerModel.Defense, config.Amount),
+            ExperienceType.ObjectDiscover => new ObjectsDiscovering(playerModel.Vision, config.Amount),
+            ExperienceType.FoodEating => new FoodEating(playerModel.MouthModule, config.Amount),
+            ExperienceType.DamageResistance => new DamageResisting(playerModel.Defense, config.Amount),
+            ExperienceType.DamageTaking => new DamageTaking(playerModel.Health, config.Amount),
+            ExperienceType.Healing => new Healing(playerModel.Health, config.Amount),
+            ExperienceType.DistanceOvercoming => new DistanceOvercoming(playerModel.Movement, config.Amount),
+            ExperienceType.EnduranceRecovering => new EnduranceRecovering(playerModel.Endurance, config.Amount),
+            ExperienceType.DisguiseObjectFound => new DisguiseObjectFound(playerModel.Vision, config.Amount),
             _ => throw new ArgumentOutOfRangeException(nameof(config), config, null)
         };
     }
