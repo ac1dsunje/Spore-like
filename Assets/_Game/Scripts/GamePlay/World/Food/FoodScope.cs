@@ -1,4 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Animation;
+using _Game.Scripts.GamePlay.Module;
 using VContainer;
 using VContainer.Unity;
 
@@ -10,6 +11,9 @@ public class FoodScope: LifetimeScope
     {
         builder.RegisterComponent(GetComponentInChildren<FoodController>());
         builder.RegisterComponent(GetComponentInChildren<ItemAnimation>());
+
+        builder.Register<EntityStats>(Lifetime.Scoped);
+        builder.Register<HealthModule>(Lifetime.Scoped);
     }
 }
 }

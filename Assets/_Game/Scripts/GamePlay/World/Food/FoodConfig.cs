@@ -6,7 +6,7 @@ namespace _Game.Scripts.GamePlay.World.Food
 [CreateAssetMenu(fileName = "New Food Config", menuName = "Configs/Game/Food/Config")]
 public class FoodConfig: ScriptableObject
 {
-    [field: SerializeField] public float MaxHealth { get; private set; } = 10;
+    [field: SerializeField] public EntityStatsConfig StatsConfig { get; private set; }
     [field: SerializeField] public float Shield { get; private set; }
     [field: SerializeField] public int FeedAmount { get; private set; } = 1;
     [field: SerializeField] public Color Color { get; private set; } = Color.green;

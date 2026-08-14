@@ -1,5 +1,6 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Animation;
+using _Game.Scripts.GamePlay.Module;
 using UnityEngine;
 using VContainer;
 
@@ -8,9 +9,10 @@ namespace _Game.Scripts.GamePlay.World.Food
 public class FoodController: MonoBehaviour
 {
     [Inject] private ItemAnimation _itemAnimation;
+    [Inject] private HealthModule _health;
+    [Inject] private EntityStats _stats;
     
     private FoodConfig _config;
-    private float _health;
     public event Action<int> OnDeath;
 
     public void SetConfig(FoodConfig config)
@@ -18,19 +20,19 @@ public class FoodController: MonoBehaviour
         _config = config;
         _itemAnimation.SetConfig(config.AnimationConfig);
 
-        _health = _config.MaxHealth;
+        _health.OnDamageTaken += SpawnParticles;
+        _health.OnDeath += Die;
+        
+        _stats.Initialize(config.StatsConfig.InitialConfigs);
     }
 
     public void TakeHit(float damage, float penetration)
     {
         var dmg = penetration - _config.Shield >= 0 ? damage : 0;
-        if (dmg <= 0) return;
-        _health -= dmg;
-        SpawnParticles();
-        if (_health <= 0f) Die();
+        _health.TakeDamage(dmg);
     }
 
-    private void SpawnParticles()
+    private void SpawnParticles(float dmg)
     {
         var particles = Instantiate(
             _config.ParticlesPrefab,
@@ -46,6 +48,10 @@ public class FoodController: MonoBehaviour
     {
         OnDeath?.Invoke(_config.FeedAmount);
         Destroy(gameObject, 1f);
+        
+        _health.OnDamageTaken -= SpawnParticles;
+        _health.OnDeath -= Die;
+        
         gameObject.SetActive(false);
     }
 }
