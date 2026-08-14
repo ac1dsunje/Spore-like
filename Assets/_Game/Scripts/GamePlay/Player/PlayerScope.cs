@@ -1,7 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Animation;
 using _Game.Scripts.GamePlay.Module;
 using _Game.Scripts.GamePlay.Player.Behaviours;
-using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.Player.Modules.Abilities;
 using _Game.Scripts.GamePlay.Player.Modules.BiomeChecker;
 using _Game.Scripts.GamePlay.Player.Modules.Evolutions;
@@ -14,12 +13,12 @@ namespace _Game.Scripts.GamePlay.Player
 {
 public class PlayerScope: LifetimeScope
 {
-    [SerializeField] private PlayerConfig _playerConfig;
+    [SerializeField] private EntityStatsConfig _entityStatsConfig;
     [SerializeField] private AnimationConfig _animationConfig;
     [SerializeField] private PlayerExperienceConfig _playerExperienceConfig;
     protected override void Configure(IContainerBuilder builder)
     {
-        builder.RegisterInstance(_playerConfig);
+        builder.RegisterInstance(_entityStatsConfig);
         builder.RegisterInstance(_animationConfig);
         builder.RegisterInstance(_playerExperienceConfig);
         

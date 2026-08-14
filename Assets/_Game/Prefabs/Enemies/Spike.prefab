@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 993223613056865060}
   - component: {fileID: 7437015074573969314}
   - component: {fileID: 907072873164215148}
+  - component: {fileID: -4871289679674323519}
   m_Layer: 0
   m_Name: Spike
   m_TagString: Untagged
@@ -47,8 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcff48d5c74c49db9a4cce20da6b7cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Obstacles.Spike
-  _damage: 3
-  _maxHealth: 40
 --- !u!212 &993223613056865060
 SpriteRenderer:
   serializedVersion: 2
@@ -171,3 +170,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-4871289679674323519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2453553538165317395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c5279014db445d8a7c0565acdb8bf86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Enemies.EnemyScope
+  parentReference:
+    TypeName: 
+  autoRun: 1
+  autoInjectGameObjects: []
+  _entityStatsConfig: {fileID: 11400000, guid: 0a0aed94d3d607b4b90669d2fdcc4b7e, type: 2}

@@ -25,7 +25,7 @@ public class PlayerModel
     public DisguiseModule Disguise { get; private set; }
 
     [Inject]
-    public PlayerModel(PlayerConfig config, EntityStats stats, VisionModule vision, HealthModule health, 
+    public PlayerModel(EntityStatsConfig config, EntityStats stats, VisionModule vision, HealthModule health, 
         DefenseModule defense, EnduranceModule endurance, MouthModule mouth, AttackModule attack, MovementModule movement,
         TemperatureModule temperature, ExperienceModule experience, AbilitiesModule abilities, EvolutionsModule evolutions,
         DisguiseModule disguise)

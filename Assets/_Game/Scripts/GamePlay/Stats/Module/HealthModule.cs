@@ -1,5 +1,4 @@
 ﻿using System;
-using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.UI.Bar;
 using UnityEngine;
 
