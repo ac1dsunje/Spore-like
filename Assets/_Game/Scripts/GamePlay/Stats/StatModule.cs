@@ -7,15 +7,15 @@ namespace _Game.Scripts.GamePlay.Player.Modules.Stats
 {
 public abstract class StatModule : IDisposable
 {
-    private PlayerStats _playerStats;
+    private EntityStats _entityStats;
 
     private readonly Dictionary<StatType, Action<float>> _statHandlers = new();
 
     [Inject]
-    private void Construct(PlayerStats playerStats)
+    private void Construct(EntityStats entityStats)
     {
-        _playerStats = playerStats;
-        _playerStats.OnStatUpdated += PlayerStatUpdated;
+        _entityStats = entityStats;
+        _entityStats.OnStatUpdated += EntityStatUpdated;
 
         Configure();
     }
@@ -27,7 +27,7 @@ public abstract class StatModule : IDisposable
         _statHandlers[type] = handler;
     }
 
-    private void PlayerStatUpdated(StatType type, float value)
+    private void EntityStatUpdated(StatType type, float value)
     {
         if (_statHandlers.TryGetValue(type, out var handler))
         {
@@ -37,7 +37,7 @@ public abstract class StatModule : IDisposable
 
     public virtual void Dispose()
     {
-        _playerStats.OnStatUpdated -= PlayerStatUpdated;
+        _entityStats.OnStatUpdated -= EntityStatUpdated;
     }
 }
 }

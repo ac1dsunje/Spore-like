@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Stats;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Stats
 {
-public class PlayerStats
+public class EntityStats
 {
-    //Stats
     private readonly Dictionary<StatType, float> _stats = new();
     private readonly Dictionary<StatType, float> _basicStats = new();
-    private readonly Dictionary<Evolution, Dictionary<StatType, float>> _evolutionStats = new();
+    private readonly Dictionary<IStatSource, Dictionary<StatType, float>> _sourceStats = new();
 
     public event Action<StatType, float> OnStatUpdated;
     
@@ -23,29 +21,29 @@ public class PlayerStats
         }
     }
 
-    public void AddEvolution(Evolution evolution)
+    public void AddSource(IStatSource source)
     {
-        AddEvolutionStats(evolution);
+        AddSourceStats(source);
 
-        foreach (var stat in evolution.Stats)
+        foreach (var stat in source.GetStats())
         {
             RecalculateStat(stat.Type);
         }
     }
 
-    public void UpdateEvolution(Evolution evolution)
+    public void UpdateSource(IStatSource source)
     {
         var changedStats = new HashSet<StatType>();
 
-        foreach (var stat in evolution.Stats)
+        foreach (var stat in source.GetStats())
         {
-            if (!_evolutionStats[evolution].ContainsKey(stat.Type) ||
-                !Mathf.Approximately(_evolutionStats[evolution][stat.Type], stat.CurrentValue))
+            if (!_sourceStats[source].ContainsKey(stat.Type) ||
+                !Mathf.Approximately(_sourceStats[source][stat.Type], stat.Value))
             {
                 changedStats.Add(stat.Type);
             }
             
-            _evolutionStats[evolution][stat.Type] = stat.CurrentValue;
+            _sourceStats[source][stat.Type] = stat.Value;
         }
 
         foreach (var statType in changedStats)
@@ -65,28 +63,28 @@ public class PlayerStats
         }
     }
 
-    private void AddEvolutionStats(Evolution evolution)
+    private void AddSourceStats(IStatSource source)
     {
-        if (_evolutionStats.ContainsKey(evolution))
+        if (_sourceStats.ContainsKey(source))
             return;
 
         var stats = new Dictionary<StatType, float>();
 
-        foreach (var stat in evolution.Stats)
+        foreach (var stat in source.GetStats())
         {
-            stats.Add(stat.Type, stat.CurrentValue);
+            stats.Add(stat.Type, stat.Value);
         }
 
-        _evolutionStats.Add(evolution, stats);
+        _sourceStats.Add(source, stats);
     }
 
     private void RecalculateStat(StatType type)
     {
         var value = _basicStats.GetValueOrDefault(type, 0f);
 
-        foreach (var evolution in _evolutionStats)
+        foreach (var sourceStat in _sourceStats)
         {
-            if (evolution.Value.TryGetValue(type, out var statValue))
+            if (sourceStat.Value.TryGetValue(type, out var statValue))
             {
                 value += statValue;
             }

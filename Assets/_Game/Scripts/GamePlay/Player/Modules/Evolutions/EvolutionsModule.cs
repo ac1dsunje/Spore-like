@@ -20,7 +20,7 @@ public class EvolutionsModule: IDisposable
 
     private ExperienceModule _experience;
     private MovementModule _movement;
-    private PlayerStats _stats;
+    private EntityStats _stats;
     private AbilitiesModule _abilities;
     private PlayerModel _player;
     
@@ -29,7 +29,7 @@ public class EvolutionsModule: IDisposable
     public event Action<List<Evolution>> OnSlotsFilled;
     public event Action<Evolution> OnEvolutionApplied;
 
-    public EvolutionsModule(ExperienceModule experience, MovementModule movement, PlayerStats stats, AbilitiesModule abilities)
+    public EvolutionsModule(ExperienceModule experience, MovementModule movement, EntityStats stats, AbilitiesModule abilities)
     {
         _experience = experience;
         _movement = movement;
@@ -68,7 +68,7 @@ public class EvolutionsModule: IDisposable
     public void ChooseEvolution(Evolution evolution)
     {
         evolution.Apply();
-        _stats.AddEvolution(evolution);
+        _stats.AddSource(evolution);
         _abilities.Add(evolution.Config.Abilities);
 
         UnlockEvolutions();

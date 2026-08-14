@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using _Game.Scripts.GamePlay.Evolutions.Experience;
 using _Game.Scripts.GamePlay.Player;
 using _Game.Scripts.GamePlay.Rarities;
+using _Game.Scripts.GamePlay.Stats;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Evolutions
 {
-public class Evolution: IDisposable
+public class Evolution: IDisposable, IStatSource
 {
     public EvolutionConfig Config { get; private set; }
     public EvolutionState State { get; private set; }
@@ -41,6 +43,11 @@ public class Evolution: IDisposable
     {
         _player = playerModel;
         Chance = chance;
+    }
+
+    public List<Stat> GetStats()
+    {
+        return Stats.Select(stat => new Stat(stat.Type, stat.CurrentValue)).ToList();
     }
 
     public void IncreaseChance(int amount) => Chance += amount;
@@ -79,7 +86,7 @@ public class Evolution: IDisposable
         UseRarity(rarity);
         
         OnRarityChanged?.Invoke();
-        _player.Stats.UpdateEvolution(this);
+        _player.Stats.UpdateSource(this);
     }
 
     private void UseRarity(RarityConfig rarity)

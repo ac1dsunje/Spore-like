@@ -18,7 +18,7 @@ namespace _Game.Scripts.GamePlay.Player
 {
 public class PlayerModel
 {
-    public PlayerStats Stats { get; private set; }
+    public EntityStats Stats { get; private set; }
     public VisionModule Vision { get; private set; }
     public HealthModule Health { get; private set; }
     public DefenseModule Defense { get; private set; }
@@ -33,7 +33,7 @@ public class PlayerModel
     public DisguiseModule Disguise { get; private set; }
 
     [Inject]
-    public PlayerModel(PlayerConfig config, PlayerStats stats, VisionModule vision, HealthModule health, 
+    public PlayerModel(PlayerConfig config, EntityStats stats, VisionModule vision, HealthModule health, 
         DefenseModule defense, EnduranceModule endurance, MouthModule mouth, AttackModule attack, MovementModule movement,
         TemperatureModule temperature, ExperienceModule experience, AbilitiesModule abilities, EvolutionsModule evolutions,
         DisguiseModule disguise)
