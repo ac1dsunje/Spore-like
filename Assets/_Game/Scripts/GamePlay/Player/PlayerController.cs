@@ -1,7 +1,7 @@
 ﻿using _Game.Scripts.GamePlay.Animation;
 using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Interfaces;
-using _Game.Scripts.GamePlay.Player.Modules;
+using _Game.Scripts.GamePlay.Player.Modules.Experience;
 using _Game.Scripts.GamePlay.Rarities;
 using Unity.Netcode;
 using UnityEngine;
@@ -23,6 +23,7 @@ public class PlayerController: NetworkBehaviour, IDamageAble, IDisguiseAble
     [Inject] private PlayerRegistry _playerRegistry;
     [Inject] private PlayerAuthority _authority;
     [Inject] private ItemAnimation _animation;
+    [Inject] private ExperienceModule _experience;
 
     public override void OnNetworkSpawn()
     {
@@ -42,6 +43,7 @@ public class PlayerController: NetworkBehaviour, IDamageAble, IDisguiseAble
         Model.Evolutions.Initialize(_evolutionsDatabase, _raritiesDatabase, _minEvolutions);
         Animation.SetConfig(_animationConfig);
         _playerRegistry.AddPlayer(this);
+        _experience.Initialize(Model);
     }
 
     public void TakeDamage(HitInfo hit) => Model.TakeDamage(hit);

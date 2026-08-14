@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb781d4898fa43cba1d88c5d73b8dd8b, type: 3}
   m_Name: DefaultExperience
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Experience.ExperienceConfig
-  _levelSet: 3
-  _levelScaler: 1.5
+  <LevelSet>k__BackingField: 5
+  <LevelScaler>k__BackingField: 1
+  <ExperienceTypes>k__BackingField:
+  - <Type>k__BackingField: 1
+    <Amount>k__BackingField: 1

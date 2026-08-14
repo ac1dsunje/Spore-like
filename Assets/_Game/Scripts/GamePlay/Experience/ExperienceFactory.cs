@@ -18,20 +18,20 @@ public enum ExperienceType
 }
 public class ExperienceFactory
 {
-    public ExperienceService GetMethod(ExperienceServiceConfig serviceConfig, PlayerModel playerModel)
+    public ExperienceService GetService(ExperienceServiceConfig config, PlayerModel playerModel)
     {
-        return serviceConfig.Type switch
+        return config.Type switch
         {
-            ExperienceType.DamageReflection => new DamageReflecting(playerModel, serviceConfig.Amount),
-            ExperienceType.ObjectDiscover => new ObjectsDiscovering(playerModel, serviceConfig.Amount),
-            ExperienceType.FoodEating => new FoodEating(playerModel, serviceConfig.Amount),
-            ExperienceType.DamageResistance => new DamageResisting(playerModel, serviceConfig.Amount),
-            ExperienceType.DamageTaking => new DamageTaking(playerModel, serviceConfig.Amount),
-            ExperienceType.Healing => new Healing(playerModel, serviceConfig.Amount),
-            ExperienceType.DistanceOvercoming => new DistanceOvercoming(playerModel, serviceConfig.Amount),
-            ExperienceType.EnduranceRecovering => new EnduranceRecovering(playerModel, serviceConfig.Amount),
-            ExperienceType.DisguiseObjectFound => new DisguiseObjectFound(playerModel, serviceConfig.Amount),
-            _ => throw new ArgumentOutOfRangeException(nameof(serviceConfig), serviceConfig, null)
+            ExperienceType.DamageReflection => new DamageReflecting(playerModel, config.Amount),
+            ExperienceType.ObjectDiscover => new ObjectsDiscovering(playerModel, config.Amount),
+            ExperienceType.FoodEating => new FoodEating(playerModel, config.Amount),
+            ExperienceType.DamageResistance => new DamageResisting(playerModel, config.Amount),
+            ExperienceType.DamageTaking => new DamageTaking(playerModel, config.Amount),
+            ExperienceType.Healing => new Healing(playerModel, config.Amount),
+            ExperienceType.DistanceOvercoming => new DistanceOvercoming(playerModel, config.Amount),
+            ExperienceType.EnduranceRecovering => new EnduranceRecovering(playerModel, config.Amount),
+            ExperienceType.DisguiseObjectFound => new DisguiseObjectFound(playerModel, config.Amount),
+            _ => throw new ArgumentOutOfRangeException(nameof(config), config, null)
         };
     }
 }

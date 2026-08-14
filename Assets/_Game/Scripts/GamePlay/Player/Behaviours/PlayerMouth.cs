@@ -53,8 +53,9 @@ public class PlayerMouth: PlayerNetworkBehaviour
         _module.GetExperienceFromFood(foodAmount);
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
+        base.OnDestroy();
         StopAllCoroutines();
     }
 }

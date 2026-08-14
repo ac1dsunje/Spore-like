@@ -1,5 +1,4 @@
 ﻿using System;
-using _Game.Scripts.GamePlay.Evolutions.Experience;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Experience

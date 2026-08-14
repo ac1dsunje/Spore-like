@@ -21,10 +21,12 @@ public abstract class ExperienceService
     protected void AddAmount(float amount)
     {
         _currentAmount += amount;
-        if (_currentAmount < _maxAmount) return;
+        while (_currentAmount >= _maxAmount)
+        {
+            OnExperienceGained?.Invoke(1);
+            _currentAmount -= _maxAmount;
+        }
         
-        OnExperienceGained?.Invoke(1);
-        _currentAmount -= _maxAmount;
     }
 
     public abstract void Dispose();

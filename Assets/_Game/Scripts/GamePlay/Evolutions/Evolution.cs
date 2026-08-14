@@ -24,7 +24,7 @@ public class Evolution: IDisposable, IStatSource
     
     //Level
     private readonly ExperienceFactory _expFactory = new();
-    private readonly List<ExperienceService> _experienceManagers = new();
+    private readonly List<ExperienceService> _experienceServices = new();
     private int _experiencePoints;
     private int _levelSet;
     private int _level;
@@ -54,15 +54,15 @@ public class Evolution: IDisposable, IStatSource
     public void Apply()
     {
         Activate();
-        SubscribeExperienceManagers();
+        SubscribeExperienceServices();
     }
 
-    private void SubscribeExperienceManagers()
+    private void SubscribeExperienceServices()
     {
         foreach (var config in Config.ExperienceTypes)
         {
-            var experienceType = _expFactory.GetMethod(config, _player);
-            _experienceManagers.Add(experienceType);
+            var experienceType = _expFactory.GetService(config, _player);
+            _experienceServices.Add(experienceType);
             experienceType.OnExperienceGained += UpdateExperience;
         }
     }
@@ -137,11 +137,11 @@ public class Evolution: IDisposable, IStatSource
 
     public void Dispose()
     {
-        if (_experienceManagers == null) return;
-        foreach (var experienceManager in _experienceManagers)
+        if (_experienceServices == null) return;
+        foreach (var experienceService in _experienceServices)
         {
-            experienceManager.Dispose();
-            experienceManager.OnExperienceGained -= UpdateExperience;
+            experienceService.Dispose();
+            experienceService.OnExperienceGained -= UpdateExperience;
         }
     }
 }

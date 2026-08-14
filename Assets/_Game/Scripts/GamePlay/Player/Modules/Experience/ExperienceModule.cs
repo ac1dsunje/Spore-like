@@ -1,5 +1,6 @@
 ﻿using System;
-using _Game.Scripts.GamePlay.Module;
+using System.Collections.Generic;
+using _Game.Scripts.GamePlay.Experience;
 using _Game.Scripts.GamePlay.UI.Bar;
 using VContainer;
 
@@ -9,30 +10,40 @@ public class ExperienceModule: IDisposable, IResource
 {
     public int LevelSet { get; private set; }
     public int Experience { get; private set; }
+    
+    private readonly ExperienceFactory _expFactory = new();
+    private readonly List<ExperienceService> _experienceServices = new();
+    
     private int _level;
     private int _levelScaler;
     
-    public event Action<int> OnExperienceGained;
+    private ExperienceConfig _config;
+    
     public event Action<int> OnLevelChanged;
 
     public event Action<float, float> OnValueChanged;
     
-    private MouthModule _mouthModule;
-    
     [Inject]
-    public ExperienceModule(ExperienceConfig config, MouthModule mouthModule)
+    public ExperienceModule(ExperienceConfig config)
     {
         LevelSet = config.LevelSet;
         _levelScaler = config.LevelScaler;
-        
-        _mouthModule = mouthModule;
-        _mouthModule.OnFoodPointsAchieved += AddExperience;
+        _config = config;
     }
 
-    private void AddExperience(float amount)
+    public void Initialize(PlayerModel playerModel)
     {
-        OnExperienceGained?.Invoke((int)amount);
-        UpdateExperience((int)amount);
+        SubscribeExperienceServices(_config, playerModel);
+    }
+    
+    private void SubscribeExperienceServices(ExperienceConfig config, PlayerModel model)
+    {
+        foreach (var type in config.ExperienceTypes)
+        {
+            var experienceType = _expFactory.GetService(type, model);
+            _experienceServices.Add(experienceType);
+            experienceType.OnExperienceGained += UpdateExperience;
+        }
     }
 
     private void UpdateExperience(int amount)
@@ -57,7 +68,11 @@ public class ExperienceModule: IDisposable, IResource
 
     public void Dispose()
     {
-        _mouthModule.OnFoodPointsAchieved -= AddExperience;
+        foreach (var experienceService in _experienceServices)
+        {
+            experienceService.Dispose();
+            experienceService.OnExperienceGained -= UpdateExperience;
+        }
     }
 }
 }
