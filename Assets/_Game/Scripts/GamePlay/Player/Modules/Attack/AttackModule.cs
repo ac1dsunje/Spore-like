@@ -1,6 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Stats;
-using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Attack
 {
@@ -12,8 +11,7 @@ public class AttackModule: StatModule
 
     public IDamageAble Owner { get; private set; }
 
-    [Inject]
-    public AttackModule(PlayerStats playerStats) : base(playerStats)
+    protected override void Configure()
     {
         BindStat(StatType.PhysicalDamage, UpdatePhysicalDamage);
         BindStat(StatType.AttackRange, UpdateAttackRange);

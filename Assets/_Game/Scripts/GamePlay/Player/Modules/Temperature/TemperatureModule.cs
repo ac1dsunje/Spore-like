@@ -1,6 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Stats;
-using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Temperature
 {
@@ -21,8 +20,7 @@ public class TemperatureModule: StatModule
     private float _coldResistance;
     private float _heatResistance;
 
-    [Inject]
-    public TemperatureModule(PlayerStats playerStats) : base(playerStats)
+    protected override void Configure()
     {
         BindStat(StatType.MinimalLethalTemperature, UpdateMinimalLethal);
         BindStat(StatType.MaximumLethalTemperature, UpdateMaximumLethal);

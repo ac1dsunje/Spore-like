@@ -2,7 +2,6 @@
 using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Stats;
 using UnityEngine;
-using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Health
 {
@@ -17,8 +16,7 @@ public class HealthModule: StatModule, IResource
     public event Action<float> OnHealed;
     public event Action<float, float> OnValueChanged;
 
-    [Inject]
-    public HealthModule(PlayerStats playerStats) : base(playerStats)
+    protected override void Configure()
     {
         BindStat(StatType.MaxHealth, UpdateMaxHealth);
         BindStat(StatType.Regeneration, UpdateRegeneration);

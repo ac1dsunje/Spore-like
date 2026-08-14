@@ -1,6 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Stats;
-using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Disguise
 {
@@ -8,8 +7,7 @@ public class DisguiseModule: StatModule
 {
     public float Disguise { get; private set; }
 
-    [Inject]
-    public DisguiseModule(PlayerStats playerStats) : base(playerStats)
+    protected override void Configure()
     {
         BindStat(StatType.Disguise, UpdateDisguise);
     }

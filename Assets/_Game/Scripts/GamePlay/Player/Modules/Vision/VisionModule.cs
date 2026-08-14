@@ -2,7 +2,6 @@
 using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Stats;
 using UnityEngine;
-using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Vision
 {
@@ -19,8 +18,7 @@ public class VisionModule: StatModule
     public event Action<GameObject> OnGameObjectDiscovered;
     public event Action<IDisguiseAble> OnDisguiseAbleDiscovered;
 
-    [Inject]
-    public VisionModule(PlayerStats playerStats) : base(playerStats)
+    protected override void Configure()
     {
         BindStat(StatType.VisionRadius, UpdateVisionRadius);
         BindStat(StatType.Sensorics, UpdateSensorics);

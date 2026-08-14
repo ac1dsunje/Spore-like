@@ -1,20 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Stats;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Stats
 {
 public abstract class StatModule : IDisposable
 {
-    private readonly PlayerStats _playerStats;
+    private PlayerStats _playerStats;
 
     private readonly Dictionary<StatType, Action<float>> _statHandlers = new();
 
-    protected StatModule(PlayerStats playerStats)
+    [Inject]
+    private void Construct(PlayerStats playerStats)
     {
         _playerStats = playerStats;
         _playerStats.OnStatUpdated += PlayerStatUpdated;
+
+        Configure();
     }
+
+    protected abstract void Configure();
 
     protected void BindStat(StatType type, Action<float> handler)
     {
