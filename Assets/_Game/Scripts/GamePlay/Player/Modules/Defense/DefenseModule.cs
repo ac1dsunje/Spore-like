@@ -1,5 +1,4 @@
 ﻿using System;
-using _Game.Scripts.GamePlay.Player.Modules.Stats;
 using _Game.Scripts.GamePlay.Stats;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Defense
