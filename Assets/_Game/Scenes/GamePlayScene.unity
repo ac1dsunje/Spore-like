@@ -855,7 +855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.PlayerSpawner
   _playerPrefab: {fileID: 2108220050117646386, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
-  _spawnOnStart: 1
+  _spawnOnStart: 0
 --- !u!114 &1986825666
 MonoBehaviour:
   m_ObjectHideFlags: 0
