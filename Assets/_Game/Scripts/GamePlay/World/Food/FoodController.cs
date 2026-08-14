@@ -1,13 +1,14 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Animation;
 using UnityEngine;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.World.Food
 {
-public class FoodItem: MonoBehaviour
+public class FoodController: MonoBehaviour
 {
-    [SerializeField] private ItemAnimation _itemAnimation;
-
+    [Inject] private ItemAnimation _itemAnimation;
+    
     private FoodConfig _config;
     private float _health;
     public event Action<int> OnDeath;

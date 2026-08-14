@@ -71,7 +71,7 @@ public class EnvironmentSpawner: MonoBehaviour
     {
         var position = new Vector3(setPos.x + 0.5f, setPos.y + 0.5f, setPos.z);
         var go = Instantiate(_foodPrefab, position, Quaternion.identity, parent);
-        var item = go.GetComponent<FoodItem>();
+        var item = go.GetComponent<FoodController>();
         item.Construct(config);
         _spawnedObjects[setPos] = go;
     }

@@ -9,7 +9,7 @@ namespace _Game.Scripts.GamePlay.Player.Behaviours
 public class PlayerMouth: PlayerNetworkBehaviour
 {
     private MouthModule _module;
-    private FoodItem _currentFood;
+    private FoodController _currentFood;
     
     [Inject]
     private void Construct(MouthModule module)
@@ -23,7 +23,7 @@ public class PlayerMouth: PlayerNetworkBehaviour
 
     private void TryCatchFood(Collider2D other)
     {
-        if (!other.TryGetComponent<FoodItem>(out var food)) return;
+        if (!other.TryGetComponent<FoodController>(out var food)) return;
         StopAllCoroutines();
         _currentFood = food;
         _currentFood.OnDeath += OnFoodDeath;
@@ -32,14 +32,14 @@ public class PlayerMouth: PlayerNetworkBehaviour
 
     private void TryReleaseFood(Collider2D other)
     {
-        if (!other.TryGetComponent<FoodItem>(out var food)) return;
+        if (!other.TryGetComponent<FoodController>(out var food)) return;
         StopAllCoroutines();
         if (_currentFood == null) return;
         _currentFood.OnDeath -= OnFoodDeath;
         _currentFood = null;
     }
 
-    private IEnumerator Eat(FoodItem food)
+    private IEnumerator Eat(FoodController food)
     {
         while (_currentFood)
         {
