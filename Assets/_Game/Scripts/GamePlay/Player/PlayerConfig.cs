@@ -1,8 +1,6 @@
-﻿using _Game.Scripts.GamePlay.Animation;
-using _Game.Scripts.GamePlay.Player.Modules.Experience;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.Player.Modules
+namespace _Game.Scripts.GamePlay.Player
 {
 [CreateAssetMenu(fileName = "NewPlayerConfig", menuName = "Configs/Game/Player/Config")]
 public class PlayerConfig: ScriptableObject
