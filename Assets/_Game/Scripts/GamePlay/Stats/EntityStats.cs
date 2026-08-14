@@ -19,6 +19,17 @@ public class EntityStats
             AddInitialStats(config.Stats);
         }
     }
+    
+    public void AddInitialStats(List<Stat> stats)
+    {
+        foreach (var stat in stats)
+        {
+            _basicStats.Add(stat.Type, stat.Value);
+            _stats.Add(stat.Type, stat.Value);
+
+            UpdateStat(stat.Type);
+        }
+    }
 
     public void AddSource(IStatSource source)
     {
@@ -50,17 +61,6 @@ public class EntityStats
         foreach (var statType in changedStats)
         {
             RecalculateStat(statType);
-        }
-    }
-
-    private void AddInitialStats(List<Stat> stats)
-    {
-        foreach (var stat in stats)
-        {
-            _basicStats.Add(stat.Type, stat.Value);
-            _stats.Add(stat.Type, stat.Value);
-
-            UpdateStat(stat.Type);
         }
     }
 

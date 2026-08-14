@@ -1,8 +1,7 @@
 ﻿using _Game.Scripts.GamePlay.Interfaces;
-using _Game.Scripts.GamePlay.Player.Modules;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.World.Biomes.Environment.Enemies
+namespace _Game.Scripts.GamePlay.Enemies
 {
 public class Enemy: MonoBehaviour, IDamageAble
 {
