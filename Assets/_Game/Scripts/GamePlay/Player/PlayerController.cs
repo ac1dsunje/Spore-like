@@ -11,8 +11,6 @@ namespace _Game.Scripts.GamePlay.Player
 {
 public class PlayerController: NetworkBehaviour, IDamageAble, IDisguiseAble
 {
-    [Header("Modules")]
-    [field: SerializeField] public ItemAnimation Animation { get; private set; }
     [Header("Evolutions")]
     [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
     [SerializeField] private RaritiesDatabase _raritiesDatabase;
@@ -41,7 +39,7 @@ public class PlayerController: NetworkBehaviour, IDamageAble, IDisguiseAble
     {
         Model.Initialize(this);
         Model.Evolutions.Initialize(_evolutionsDatabase, _raritiesDatabase, _minEvolutions);
-        Animation.SetConfig(_animationConfig);
+        _animation.SetConfig(_animationConfig);
         _playerRegistry.AddPlayer(this);
         _experience.Initialize(Model);
     }
