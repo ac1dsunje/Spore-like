@@ -17,6 +17,7 @@ public class VisionModule: StatModule
     private bool _useLight;
 
     public event Action<GameObject> OnGameObjectDiscovered;
+    public event Action<IDisguiseAble> OnDisguiseAbleDiscovered;
 
     [Inject]
     public VisionModule(PlayerStats playerStats) : base(playerStats)
@@ -45,6 +46,13 @@ public class VisionModule: StatModule
     public void DiscoverGameObject(GameObject gameObject)
     {
         OnGameObjectDiscovered?.Invoke(gameObject);
+        if (gameObject.TryGetComponent(out IDisguiseAble disguiseAble))
+        {
+            if (disguiseAble.SetVisible(Sensorics))
+            {
+                OnDisguiseAbleDiscovered?.Invoke(disguiseAble);
+            }
+        }
     }
 }
 }

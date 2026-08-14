@@ -33,5 +33,5 @@ MonoBehaviour:
   <Abilities>k__BackingField: []
   <ExperienceForFirstLevel>k__BackingField: 20
   <ExperienceTypes>k__BackingField:
-  - <Type>k__BackingField: 0
+  - <Type>k__BackingField: 8
     <Amount>k__BackingField: 1

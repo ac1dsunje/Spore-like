@@ -39,10 +39,6 @@ public class PlayerVision: PlayerNetworkBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         _module.DiscoverGameObject(other.gameObject);
-        if (other.TryGetComponent(out IDisguiseAble disguiseAble))
-        {
-            disguiseAble.SetVisible(_module.Sensorics);
-        }
     }
 }
 }

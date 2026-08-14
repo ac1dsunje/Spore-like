@@ -45,9 +45,11 @@ public class PlayerController: NetworkBehaviour, IDamageAble, IDisguiseAble
 
     public void TakeDamage(HitInfo hit) => Model.TakeDamage(hit);
 
-    public void SetVisible(float sensorics)
+    public bool SetVisible(float sensorics)
     {
-        _animation.SetVisible(sensorics >= Model.Disguise.Disguise);
+        var show = sensorics >= Model.Disguise.Disguise;
+        _animation.SetVisible(show);
+        return show;
     }
 }
 }
