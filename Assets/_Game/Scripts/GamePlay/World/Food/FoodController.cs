@@ -13,7 +13,7 @@ public class FoodController: MonoBehaviour
     private float _health;
     public event Action<int> OnDeath;
 
-    public void Construct(FoodConfig config)
+    public void SetConfig(FoodConfig config)
     {
         _config = config;
         _itemAnimation.SetConfig(config.AnimationConfig);
