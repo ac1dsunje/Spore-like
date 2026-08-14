@@ -3,9 +3,9 @@ using _Game.Scripts.GamePlay.Module;
 using UnityEngine;
 using VContainer;
 
-namespace _Game.Scripts.GamePlay.Enemies
+namespace _Game.Scripts.GamePlay.Enemies.SeaUrchin
 {
-public class EnemyController: MonoBehaviour, IDamageAble
+public class SeaUrchinController: MonoBehaviour, IDamageAble
 {
     private HealthModule _healthModule;
     private DefenseModule _defenseModule;
@@ -14,8 +14,9 @@ public class EnemyController: MonoBehaviour, IDamageAble
 
     [Inject]
     private void Construct(EntityStats entityStats, EntityStatsConfig entityStatsConfig, DefenseModule defenseModule,
-        HealthModule healthModule, AttackModule attackModule)
+        HealthModule healthModule, AttackModule attackModule, SeaUrchinAttackBehaviour attackBehaviour)
     {
+        attackBehaviour.SetOwner(this);
         _entityStats = entityStats;
         _defenseModule = defenseModule;
         _healthModule = healthModule;
@@ -24,17 +25,6 @@ public class EnemyController: MonoBehaviour, IDamageAble
         _healthModule.OnDeath += Die;
         
         _entityStats.Initialize(entityStatsConfig.InitialConfigs);
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        TryAttack(other);
-    }
-
-    private void TryAttack(Collision2D other)
-    {
-        if (!other.collider.TryGetComponent(out IDamageAble damageAble)) return;
-        damageAble.TakeDamage(new HitInfo(_attackModule.PhysicalDamage, _attackModule.IgnoreResistance, this));
     }
 
     public void TakeDamage(HitInfo hit)

@@ -3,9 +3,9 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace _Game.Scripts.GamePlay.Enemies
+namespace _Game.Scripts.GamePlay.Enemies.SeaUrchin
 {
-public class EnemyScope: LifetimeScope
+public class SeaUrchinScope: LifetimeScope
 {
     [SerializeField] private EntityStatsConfig _entityStatsConfig;
 
@@ -13,7 +13,8 @@ public class EnemyScope: LifetimeScope
     {
         builder.RegisterInstance(_entityStatsConfig);
         
-        builder.RegisterComponent(GetComponent<EnemyController>());
+        builder.RegisterComponent(GetComponent<SeaUrchinController>());
+        builder.RegisterComponent(GetComponent<SeaUrchinAttackBehaviour>());
 
         builder.Register<DefenseModule>(Lifetime.Scoped);
         builder.Register<HealthModule>(Lifetime.Scoped);
