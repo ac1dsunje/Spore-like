@@ -10,6 +10,7 @@ public class FoodController: MonoBehaviour
 {
     [Inject] private ItemAnimation _itemAnimation;
     [Inject] private HealthModule _health;
+    [Inject] private DefenseModule _defense;
     [Inject] private EntityStats _stats;
     
     private FoodConfig _config;
@@ -28,7 +29,8 @@ public class FoodController: MonoBehaviour
 
     public void TakeHit(float damage, float penetration)
     {
-        var dmg = penetration - _config.Shield >= 0 ? damage : 0;
+        var dmg = penetration - _defense.DamageResistance >= 0 ? damage : 0;
+        if (dmg <= 0) return;
         _health.TakeDamage(dmg);
     }
 

@@ -7,7 +7,6 @@ namespace _Game.Scripts.GamePlay.World.Food
 public class FoodConfig: ScriptableObject
 {
     [field: SerializeField] public EntityStatsConfig StatsConfig { get; private set; }
-    [field: SerializeField] public float Shield { get; private set; }
     [field: SerializeField] public int FeedAmount { get; private set; } = 1;
     [field: SerializeField] public Color Color { get; private set; } = Color.green;
     [field: SerializeField] public AnimationConfig AnimationConfig { get; private set; }
