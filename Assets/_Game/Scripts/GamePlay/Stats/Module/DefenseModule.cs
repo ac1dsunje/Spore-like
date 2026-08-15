@@ -1,20 +1,15 @@
 ﻿using System;
-using _Game.Scripts.GamePlay.Interfaces;
 
 namespace _Game.Scripts.GamePlay.Module
 {
 public class DefenseModule: StatModule
 {
-    public float DamageResistance => _damageResistance / 100f;
+    public float DamageResistance { get; private set; }
     
-    public float DamageReflection => _damageReflection / 100f;
+    public float DamageReflection { get; private set; }
     
-    private float _damageReflection;
     public event Action<float> OnDamageReflected;
-    private float _damageResistance;
     public event Action<float> OnDamageResisted;
-
-    private HitInfo _returnedHit;
 
     protected override void Configure()
     {
@@ -37,8 +32,8 @@ public class DefenseModule: StatModule
         return returnedDamage;
     }
 
-    private void UpdateDamageReflection(float value) => _damageReflection = value;
+    private void UpdateDamageReflection(float value) => DamageReflection = value / 100f;
     
-    private void UpdateDamageResistance(float value) => _damageResistance = value;
+    private void UpdateDamageResistance(float value) => DamageResistance = value / 100f;
 }
 }
