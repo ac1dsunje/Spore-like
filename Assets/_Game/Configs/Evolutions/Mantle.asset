@@ -17,29 +17,20 @@ MonoBehaviour:
   <Description>k__BackingField: 
   <Sprite>k__BackingField: {fileID: 8592853202622365051, guid: c3a31c0f494d72546935e5b2edf73bb8, type: 3}
   <Stats>k__BackingField:
-  - <Stat>k__BackingField:
-      <Type>k__BackingField: 10
-      <Value>k__BackingField: 15
+  - <Type>k__BackingField: 10
+    <Value>k__BackingField: 15
     <UpdatesByRarity>k__BackingField: 1
-  - <Stat>k__BackingField:
-      <Type>k__BackingField: 15
-      <Value>k__BackingField: 0.1
+  - <Type>k__BackingField: 15
+    <Value>k__BackingField: 0.1
     <UpdatesByRarity>k__BackingField: 1
-  - <Stat>k__BackingField:
-      <Type>k__BackingField: 0
-      <Value>k__BackingField: -0.2
+  - <Type>k__BackingField: 0
+    <Value>k__BackingField: -0.2
     <UpdatesByRarity>k__BackingField: 0
   <State>k__BackingField: 1
   <Requires>k__BackingField: []
   <Blocks>k__BackingField:
   - {fileID: 11400000, guid: 83b7a97d6aafa7540a2de2cce0fcc342, type: 2}
   <Abilities>k__BackingField: []
-  <LevelSet>k__BackingField: 0
-  <ExperienceTypes>k__BackingField:
-  - <Type>k__BackingField: 5
-    <Amount>k__BackingField: 30
-  - <Type>k__BackingField: 7
-    <Amount>k__BackingField: 30
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 30
     <ExperienceTypes>k__BackingField:

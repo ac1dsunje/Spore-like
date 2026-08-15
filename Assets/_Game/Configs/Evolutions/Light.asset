@@ -17,19 +17,14 @@ MonoBehaviour:
   <Description>k__BackingField: Darkness isnt a problem anymore
   <Sprite>k__BackingField: {fileID: -1393341967285423710, guid: fb3b974108a017947abdce580d8f7f52, type: 3}
   <Stats>k__BackingField:
-  - <Stat>k__BackingField:
-      <Type>k__BackingField: 29
-      <Value>k__BackingField: 2
+  - <Type>k__BackingField: 29
+    <Value>k__BackingField: 2
     <UpdatesByRarity>k__BackingField: 1
   <State>k__BackingField: 1
   <Requires>k__BackingField: []
   <Blocks>k__BackingField: []
   <Abilities>k__BackingField:
   - {fileID: 11400000, guid: 34e8534baddc3054b99eb999055bfbbf, type: 2}
-  <LevelSet>k__BackingField: 0
-  <ExperienceTypes>k__BackingField:
-  - <Type>k__BackingField: 0
-    <Amount>k__BackingField: 1
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 20
     <ExperienceTypes>k__BackingField:
