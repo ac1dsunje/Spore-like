@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Abilities;
-using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.UI.Bar;
 using UnityEngine;
 
@@ -14,9 +13,9 @@ public class EnduranceModule: StatModule, IResource
     
     private float _endurance;
 
-    public bool IsUsed => _abilityControllers.Count > 0;
+    public bool IsUsed => _users.Count > 0;
     
-    private readonly HashSet<Ability> _abilityControllers = new();
+    private readonly HashSet<Ability> _users = new();
     public event Action<float, float> OnValueChanged;
     public event Action<float> OnEnduranceRecovered;
 
@@ -28,9 +27,9 @@ public class EnduranceModule: StatModule, IResource
 
     public bool HasEnoughEndurance(float value) => _endurance >= value;
 
-    public void AddUser(Ability ability) => _abilityControllers.Add(ability);
+    public void AddUser(Ability ability) => _users.Add(ability);
 
-    public void RemoveUser(Ability ability) => _abilityControllers.Remove(ability);
+    public void RemoveUser(Ability ability) => _users.Remove(ability);
 
     public void AddEndurance(float value)
     {
