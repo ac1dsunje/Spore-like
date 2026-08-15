@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83806caa17d9442d950970dd922c6565, type: 3}
+  m_Name: MossPlants
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Biome.EnvironmentConfig
+  <FoodItems>k__BackingField:
+  - {fileID: 11400000, guid: 2b431e0e606960644b69d1ea913c2712, type: 2}
+  <Chance>k__BackingField: 50

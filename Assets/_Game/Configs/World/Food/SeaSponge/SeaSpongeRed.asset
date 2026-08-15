@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0030ccaa56b24bdfbe9c600651de2505, type: 3}
   m_Name: SeaSpongeRed
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Food.FoodConfig
-  <StatsConfig>k__BackingField: {fileID: 11400000, guid: 66994df2d11550c4487eb59ebb745b0c, type: 2}
-  <Shield>k__BackingField: 1
+  <StatsConfig>k__BackingField: {fileID: 11400000, guid: de872cb43ff06744aacc2626bbb05cb5, type: 2}
   <FeedAmount>k__BackingField: 1
   <Color>k__BackingField: {r: 0.95686275, g: 0.74509805, b: 0.5411765, a: 1}
   <AnimationConfig>k__BackingField: {fileID: 11400000, guid: b24cad4307b545f479199a80dd505790, type: 2}

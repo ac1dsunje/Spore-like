@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0030ccaa56b24bdfbe9c600651de2505, type: 3}
   m_Name: BigSeaweed
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Food.FoodConfig
-  <StatsConfig>k__BackingField: {fileID: 11400000, guid: 8252c73f553db4746bbbb8c57a4756e3, type: 2}
-  <Shield>k__BackingField: 0
+  <StatsConfig>k__BackingField: {fileID: 11400000, guid: dc99d76b69666004c943023b0c08df8c, type: 2}
   <FeedAmount>k__BackingField: 4
   <Color>k__BackingField: {r: 0.1882353, g: 0.32156864, b: 0.18039216, a: 1}
   <AnimationConfig>k__BackingField: {fileID: 11400000, guid: 3a24ddb30a6dfd84bac92c85ce44d891, type: 2}

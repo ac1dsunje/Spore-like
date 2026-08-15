@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0030ccaa56b24bdfbe9c600651de2505, type: 3}
   m_Name: Moss
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Food.FoodConfig
-  <StatsConfig>k__BackingField: {fileID: 11400000, guid: 5578ff647fa96724b81e42d191ea7642, type: 2}
-  <Shield>k__BackingField: 0
+  <StatsConfig>k__BackingField: {fileID: 11400000, guid: 2bb5b84471d299c4385bb4f2eaa4aa7a, type: 2}
   <FeedAmount>k__BackingField: 1
   <Color>k__BackingField: {r: 0.30980393, g: 0.44313726, b: 0, a: 1}
   <AnimationConfig>k__BackingField: {fileID: 11400000, guid: 322d16aa655bc104aaf6331fdb9c5cf3, type: 2}

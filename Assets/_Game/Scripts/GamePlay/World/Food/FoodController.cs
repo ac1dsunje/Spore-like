@@ -24,7 +24,7 @@ public class FoodController: MonoBehaviour
         _health.OnDamageTaken += SpawnParticles;
         _health.OnDeath += Die;
         
-        _stats.Initialize(config.StatsConfig.InitialConfigs);
+        _stats.AddInitialStats(config.StatsConfig.Stats);
     }
 
     public void TakeHit(float damage, float penetration)
