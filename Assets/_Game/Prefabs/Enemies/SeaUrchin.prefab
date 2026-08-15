@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Enemies.EnemyScope
   parentReference:
-    TypeName: 
+    TypeName: _Game.Scripts.GamePlay.GameplayScope
   autoRun: 1
   autoInjectGameObjects: []
   _entityStatsConfig: {fileID: 11400000, guid: 0a0aed94d3d607b4b90669d2fdcc4b7e, type: 2}

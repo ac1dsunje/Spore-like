@@ -29,9 +29,9 @@ public class PlayerController: NetworkBehaviour, IDamageAble, IDisguiseAble
         Initialize();
     }
 
-    public void SetSinglePlayer()
+    public void SetPlayer()
     {
-        _authority.SetNetworkType(true);
+        _authority.SetNetworkType(_playerRegistry.LocalPlayer == null);
         Initialize();
     }
 

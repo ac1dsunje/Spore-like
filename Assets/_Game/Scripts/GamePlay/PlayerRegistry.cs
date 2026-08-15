@@ -12,7 +12,7 @@ public class PlayerRegistry
     
     private readonly HashSet<PlayerController> _players = new();
 
-    private PlayerController _localPlayer;
+    public PlayerController LocalPlayer {get; private set;}
 
     public void AddPlayer(PlayerController player)
     {
@@ -21,8 +21,8 @@ public class PlayerRegistry
 
         if (player.IsLocalPlayer)
         {
-            _localPlayer = player;
-            OnLocalPlayerAdded?.Invoke(_localPlayer);
+            LocalPlayer = player;
+            OnLocalPlayerAdded?.Invoke(LocalPlayer);
         }
     }
 
