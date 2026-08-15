@@ -1,4 +1,5 @@
-﻿using _Game.Scripts.GamePlay.Interfaces;
+﻿using _Game.Scripts.GamePlay.Animation;
+using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Module;
 using UnityEngine;
 using VContainer;
@@ -14,13 +15,16 @@ public class SeaUrchinController: MonoBehaviour, IDamageAble
 
     [Inject]
     private void Construct(EntityStats entityStats, EntityStatsConfig entityStatsConfig, DefenseModule defenseModule,
-        HealthModule healthModule, AttackModule attackModule, SeaUrchinAttackBehaviour attackBehaviour)
+        HealthModule healthModule, AttackModule attackModule, SeaUrchinAttackBehaviour attackBehaviour,
+        AnimationConfig animationConfig, ItemAnimation itemAnimation)
     {
         attackBehaviour.SetOwner(this);
         _entityStats = entityStats;
         _defenseModule = defenseModule;
         _healthModule = healthModule;
         _attackModule = attackModule;
+        
+        itemAnimation.SetConfig(animationConfig);
 
         _healthModule.OnDeath += Die;
         
