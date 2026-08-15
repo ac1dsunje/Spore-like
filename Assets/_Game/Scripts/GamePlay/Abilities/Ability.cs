@@ -1,12 +1,13 @@
 ﻿using System;
 using _Game.Scripts.Core.Services;
+using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Module;
 using _Game.Scripts.GamePlay.Player;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Abilities
 {
-public abstract class Ability: IDisposable
+public abstract class Ability: IDisposable, IEnduranceUser
 {
     private readonly AbilityConfig _config;
 
@@ -43,8 +44,8 @@ public abstract class Ability: IDisposable
 
         if (!_isActive) return;
 
-        if (_endurance.HasEnoughEndurance(_config.InUseCost * Time.deltaTime))
-            Do();
+        if (_endurance.HasEnoughEndurance(_config.InUseCost * deltaTime))
+            Do(deltaTime);
         else
             Disable();
     }
@@ -56,10 +57,10 @@ public abstract class Ability: IDisposable
         _endurance.UseEndurance(_config.StartCost);
     }
 
-    protected virtual void Do()
+    protected virtual void Do(float deltaTime)
     {
         if (!_config.HasActivePhase) return;
-        _endurance.UseEndurance(_config.InUseCost * Time.deltaTime);
+        _endurance.UseEndurance(_config.InUseCost * deltaTime);
     }
 
     protected virtual void Disable()
@@ -71,6 +72,7 @@ public abstract class Ability: IDisposable
     public void Dispose()
     {
         _ticker.OnTick -= Update;
+        if (_isActive) Disable();
     }
 }
 }
