@@ -29,9 +29,9 @@ public class FoodController: MonoBehaviour
 
     public void TakeHit(float damage, float penetration)
     {
-        var dmg = penetration - _defense.DamageResistance >= 0 ? damage : 0;
-        if (dmg <= 0) return;
-        _health.TakeDamage(dmg);
+        var appliedDamage = _defense.ApplyResistance(damage, penetration);
+        if (appliedDamage <= 0) return;
+        _health.TakeDamage(appliedDamage);
     }
 
     private void SpawnParticles(float dmg)
