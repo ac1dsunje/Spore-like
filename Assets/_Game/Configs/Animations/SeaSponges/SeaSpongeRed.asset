@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ec15ac615a142eb8ec6483a4ebb309e, type: 3}
-  m_Name: SeaSponge
+  m_Name: SeaSpongeRed
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Player.Modules.Animation.AnimationConfig
   <Sprite>k__BackingField: {fileID: -8942236417185357551, guid: 4d65fd748bfa53344b2d40217c068f0a, type: 3}
   <Controller>k__BackingField: {fileID: 0}
