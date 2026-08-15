@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Abilities;
 using VContainer;
 
-namespace _Game.Scripts.GamePlay.Player.Modules.Abilities
+namespace _Game.Scripts.GamePlay.Player.Modules
 {
 public class AbilitiesModule: IDisposable
 {

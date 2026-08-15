@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using _Game.Scripts.GamePlay.Module;
+using _Game.Scripts.GamePlay.Network;
 using _Game.Scripts.GamePlay.World.Food;
 using UnityEngine;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class PlayerMouth: PlayerNetworkBehaviour
+public class PlayerMouth: EntityNetworkBehaviour
 {
     private MouthModule _module;
     private FoodController _currentFood;

@@ -1,6 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Evolutions.UI;
-using _Game.Scripts.GamePlay.Player.Modules.Evolutions;
+using _Game.Scripts.GamePlay.Player.Modules;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.UI

@@ -1,7 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Module;
-using _Game.Scripts.GamePlay.Player.Modules.Abilities;
-using _Game.Scripts.GamePlay.Player.Modules.Evolutions;
+using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
 using VContainer;
 

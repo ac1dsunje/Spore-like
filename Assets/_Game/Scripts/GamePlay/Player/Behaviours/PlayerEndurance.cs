@@ -1,10 +1,11 @@
 ﻿using _Game.Scripts.GamePlay.Module;
+using _Game.Scripts.GamePlay.Network;
 using UnityEngine;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class PlayerEndurance: PlayerNetworkBehaviour
+public class PlayerEndurance: EntityNetworkBehaviour
 {
     private EnduranceModule _module;
     

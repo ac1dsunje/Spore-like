@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace _Game.Scripts.GamePlay.Player
+namespace _Game.Scripts.GamePlay.Network
 {
-public class PlayerAuthority
+public class EntityAuthority
 {
     public event Action<bool> OnAuthorityInitialized;
 

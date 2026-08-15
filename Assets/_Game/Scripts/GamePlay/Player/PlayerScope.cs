@@ -1,9 +1,8 @@
 ﻿using _Game.Scripts.GamePlay.Animation;
 using _Game.Scripts.GamePlay.Module;
+using _Game.Scripts.GamePlay.Network;
 using _Game.Scripts.GamePlay.Player.Behaviours;
-using _Game.Scripts.GamePlay.Player.Modules.Abilities;
-using _Game.Scripts.GamePlay.Player.Modules.BiomeChecker;
-using _Game.Scripts.GamePlay.Player.Modules.Evolutions;
+using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
 using UnityEngine;
 using VContainer;
@@ -23,7 +22,7 @@ public class PlayerScope: LifetimeScope
         builder.RegisterInstance(_playerExperienceConfig);
         
         builder.Register<PlayerInputService>(Lifetime.Scoped);
-        builder.Register<PlayerAuthority>(Lifetime.Scoped);
+        builder.Register<EntityAuthority>(Lifetime.Scoped);
         
         builder.RegisterComponent(GetComponent<PlayerController>());
         builder.Register<PlayerModel>(Lifetime.Scoped);

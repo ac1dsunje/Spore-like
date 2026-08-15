@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using VContainer;
 
-namespace _Game.Scripts.GamePlay.Player
+namespace _Game.Scripts.GamePlay.Network
 {
-public abstract class PlayerNetworkBehaviour : MonoBehaviour
+public abstract class EntityNetworkBehaviour : MonoBehaviour
 {
     protected bool IsLocal { get; private set; }
 
-    private PlayerAuthority _authority;
+    private EntityAuthority _authority;
 
     [Inject]
-    private void Construct(PlayerAuthority authority)
+    private void Construct(EntityAuthority authority)
     {
         _authority = authority;
 

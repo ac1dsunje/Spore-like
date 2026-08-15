@@ -1,11 +1,12 @@
 ﻿using _Game.Scripts.GamePlay.Module;
 using _Game.Scripts.GamePlay.Movement;
+using _Game.Scripts.GamePlay.Network;
 using UnityEngine;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class PlayerMovement: PlayerNetworkBehaviour
+public class PlayerMovement: EntityNetworkBehaviour
 {
     [SerializeField] private MovementController _controller;
 

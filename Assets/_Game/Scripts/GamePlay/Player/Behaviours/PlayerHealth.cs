@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using _Game.Scripts.GamePlay.Module;
+using _Game.Scripts.GamePlay.Network;
 using UnityEngine;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class PlayerHealth: PlayerNetworkBehaviour
+public class PlayerHealth: EntityNetworkBehaviour
 {
     private HealthModule _module;
     

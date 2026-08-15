@@ -1,6 +1,7 @@
 ﻿using _Game.Scripts.GamePlay.Animation;
 using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Interfaces;
+using _Game.Scripts.GamePlay.Network;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
 using _Game.Scripts.GamePlay.Rarities;
 using Unity.Netcode;
@@ -19,7 +20,7 @@ public class PlayerController: NetworkBehaviour, IDamageAble, IDisguiseAble
     [Inject] public PlayerModel Model { get; private set; }
     [Inject] private AnimationConfig _animationConfig;
     [Inject] private PlayerRegistry _playerRegistry;
-    [Inject] private PlayerAuthority _authority;
+    [Inject] private EntityAuthority _authority;
     [Inject] private ItemAnimation _animation;
     [Inject] private ExperienceModule _experience;
 

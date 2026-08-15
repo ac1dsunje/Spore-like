@@ -1,4 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Module;
+using _Game.Scripts.GamePlay.Network;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -6,7 +7,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class PlayerVision: PlayerNetworkBehaviour
+public class PlayerVision: EntityNetworkBehaviour
 {
     [SerializeField] private BoxCollider2D _visionCollider;
     [SerializeField] private Light2D _visionLight;
