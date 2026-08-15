@@ -16,7 +16,7 @@ public class FoodController: MonoBehaviour
     private FoodConfig _config;
     public event Action<int> OnDeath;
 
-    public void SetConfig(FoodConfig config)
+    public void Initialize(FoodConfig config)
     {
         _config = config;
         _itemAnimation.SetConfig(config.AnimationConfig);
