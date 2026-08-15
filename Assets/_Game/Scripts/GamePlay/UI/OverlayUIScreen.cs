@@ -17,12 +17,16 @@ public class OverlayUIScreen: UIScreen
     [SerializeField] private Button _host;
     [SerializeField] private Button _connect;
     
+    [SerializeField] private Button _player;
+    
     [Inject] private NetworkManager _networkManager;
+    [Inject] private PlayerSpawner _playerSpawner;
 
     private void Start()
     {
         _host.onClick.AddListener(() => _networkManager.StartHost());
         _connect.onClick.AddListener(() => _networkManager.StartClient());
+        _player.onClick.AddListener(_playerSpawner.Spawn);
     }
     
     public void Construct(PlayerModel player)
@@ -36,6 +40,7 @@ public class OverlayUIScreen: UIScreen
     {
         _host.onClick.RemoveAllListeners();
         _connect.onClick.RemoveAllListeners();
+        _player.onClick.RemoveAllListeners();
     }
 }
 }

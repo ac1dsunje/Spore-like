@@ -372,6 +372,7 @@ GameObject:
   - component: {fileID: 2822999142199602542}
   - component: {fileID: 6594191335402710561}
   - component: {fileID: 4162929999337224578}
+  - component: {fileID: 314090029752611159}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -499,7 +500,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.PlayerController
   ShowTopMostFoldoutHeaderGroup: 1
-  <Animation>k__BackingField: {fileID: 324833802335793691}
   _evolutionsDatabase: {fileID: 11400000, guid: 89e0fac1fa9071a41bafa6ee877795b5, type: 2}
   _raritiesDatabase: {fileID: 11400000, guid: 844b6b4bf98611044bf03a16ce2009a0, type: 2}
   _minEvolutions: 3
@@ -610,6 +610,18 @@ MonoBehaviour:
   UseRigidBodyForMotion: 1
   AutoUpdateKinematicState: 1
   AutoSetKinematicOnDespawn: 1
+--- !u!114 &314090029752611159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254078283856608112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5bff76f551f46b2a71c67b4f6088033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.Health.PlayerHealth
 --- !u!1 &8527591295361904753
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,7 +631,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8081464728478508327}
-  - component: {fileID: 4028549422210393822}
   - component: {fileID: 7969867278788272747}
   - component: {fileID: 3768259528291108333}
   - component: {fileID: 8864560468158054137}
@@ -648,18 +659,6 @@ Transform:
   - {fileID: 3246909187242662802}
   m_Father: {fileID: 4515079076315579977}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4028549422210393822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8527591295361904753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5bff76f551f46b2a71c67b4f6088033, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.Health.PlayerHealth
 --- !u!114 &7969867278788272747
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using _Game.Scripts.GamePlay.Interfaces;
-using _Game.Scripts.GamePlay.Player.Modules;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Weapons
@@ -21,6 +20,7 @@ public class MeleeWeaponItem: MonoBehaviour
     {
         if (other.TryGetComponent(out IDamageAble damageAble))
         {
+            if (damageAble == _hit.Owner) return;
             damageAble.TakeDamage(_hit);
         }
     }

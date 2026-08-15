@@ -14,6 +14,7 @@ public class PlayerHealth: PlayerNetworkBehaviour
     {
         _module = module;
         _module.OnDamageTaken += StopRegeneration;
+        _module.OnDeath += Die;
     }
 
     private void StartRegeneration() => StartCoroutine(Regenerate());
@@ -39,11 +40,17 @@ public class PlayerHealth: PlayerNetworkBehaviour
         StartRegeneration();
     }
 
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
+
     protected override void OnDestroy()
     {
         base.OnDestroy();
         StopAllCoroutines();
         _module.OnDamageTaken -= StopRegeneration;
+        _module.OnDeath -= Die;
     }
 }
 }
