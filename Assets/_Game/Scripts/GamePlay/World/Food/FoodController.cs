@@ -30,7 +30,6 @@ public class FoodController: MonoBehaviour
     public void TakeHit(float damage, float penetration)
     {
         var appliedDamage = _defense.ApplyResistance(damage, penetration);
-        if (appliedDamage <= 0) return;
         _health.TakeDamage(appliedDamage);
     }
 

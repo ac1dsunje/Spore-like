@@ -12,6 +12,7 @@ public class HealthModule: StatModule, IResource
     
     public event Action OnDeath;
     public event Action<float> OnDamageTaken;
+    public event Action OnHitTaken;
     public event Action<float> OnHealed;
     public event Action<float, float> OnValueChanged;
 
@@ -25,8 +26,12 @@ public class HealthModule: StatModule, IResource
     {
         Health -= amount;
         Health = Mathf.Max(0, Health);
-        OnDamageTaken?.Invoke(amount);
-        OnValueChanged?.Invoke(Health, MaxHealth);
+        OnHitTaken?.Invoke();
+        if (amount > 0)
+        {
+            OnDamageTaken?.Invoke(amount);
+            OnValueChanged?.Invoke(Health, MaxHealth);
+        }
         
         if (Health <= 0)
         {
