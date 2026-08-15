@@ -17,4 +17,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: eb0aa8b8704d84242ad577e91ab53830, type: 2}
   <EnvironmentConfigs>k__BackingField:
   - {fileID: 11400000, guid: dfdd43847c964bb4e955b4416d0927dd, type: 2}
-  <ChanceEnvironment>k__BackingField: 65
+  <ChanceEnvironment>k__BackingField: 30
