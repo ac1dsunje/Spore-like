@@ -42,7 +42,10 @@ public class PlayerHealth: PlayerNetworkBehaviour
 
     private void Die()
     {
-        Destroy(gameObject);
+        if (!IsLocal)
+        {
+            Destroy(gameObject);
+        }
     }
 
     protected override void OnDestroy()
