@@ -11,13 +11,13 @@ public class LightAbility: Ability
     protected override void Enable()
     {
         base.Enable();
-        Model.Vision.RequestLight();
+        Model.Vision.SetLight(true);
     }
 
     protected override void Disable()
     {
         base.Disable();
-        Model.Vision.ResetLight();
+        Model.Vision.SetLight(false);
     }
 }
 }

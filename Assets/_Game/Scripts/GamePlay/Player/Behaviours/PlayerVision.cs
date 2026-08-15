@@ -27,20 +27,36 @@ public class PlayerVision: EntityNetworkBehaviour
     protected override void OnNetworkInitialized()
     {
         _visionCollider.enabled = IsLocal;
+        if (IsLocal)
+        {
+            _module.OnVisionRadiusUpdated += UpdateVision;
+            _module.OnLightingUpdated += UpdateLighting;
+            
+            UpdateVision(_module.VisionRadius);
+        }
     }
 
-    private void Update()
+    private void UpdateLighting(float value, bool state)
     {
-        if (!IsLocal) return;
-        _visionCollider.size = new Vector2(_module.VisionRadius * _camera.aspect, _module.VisionRadius) * 2;
-        _cineMachine.Lens.OrthographicSize = _module.VisionRadius;
-        
-        _visionLight.pointLightOuterRadius = _module.LightingRadius;
+        _visionLight.pointLightOuterRadius = state? value : 0f;
+    }
+
+    private void UpdateVision(float value)
+    {
+        _visionCollider.size = new Vector2(value * _camera.aspect, value) * 2;
+        _cineMachine.Lens.OrthographicSize = value;
     }
         
     private void OnTriggerEnter2D(Collider2D other)
     {
         _module.DiscoverGameObject(other.gameObject);
+    }
+    
+    protected override void OnDestroy()
+    {
+        _module.OnLightingUpdated -= UpdateLighting;
+        _module.OnVisionRadiusUpdated -= UpdateVision;
+        base.OnDestroy();
     }
 }
 }
