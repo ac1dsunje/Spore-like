@@ -15,7 +15,11 @@ public class ItemAnimation: MonoBehaviour
         _animator = GetComponent<Animator>();
     }
     
-    public void SetVisible(bool visible) => _renderer.enabled = visible;
+    public void SetVisible(bool visible)
+    {
+        _renderer.enabled = visible;
+        _animator.enabled = visible;
+    }
 
     public void SetConfig(AnimationConfig config)
     {
