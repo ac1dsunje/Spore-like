@@ -13,16 +13,19 @@ public class PlayerBiome: EntityNetworkBehaviour
     private TemperatureModule _temperature;
     private MovementModule _movement;
     private BiomeModule _biome;
+    private EntityStats _entityStats;
     
     private Biome _currentBiome;
     
     [Inject]
-    private void Construct(WorldModel worldModel, TemperatureModule temperature, MovementModule movement, BiomeModule biome)
+    private void Construct(WorldModel worldModel, TemperatureModule temperature, MovementModule movement,
+        BiomeModule biome, EntityStats stats)
     {
         _worldModel = worldModel;
         _temperature = temperature;
         _movement = movement;
         _biome = biome;
+        _entityStats = stats;
     }
 
     protected override void OnNetworkInitialized()
@@ -41,6 +44,7 @@ public class PlayerBiome: EntityNetworkBehaviour
 
     private void EnterBiome(Biome biome)
     {
+        _entityStats.RemoveSource(_currentBiome);
         _currentBiome = biome;
         CheckPassability();
         ApplyTemperature(biome.Temperature);
@@ -50,11 +54,7 @@ public class PlayerBiome: EntityNetworkBehaviour
     {
         if (_currentBiome.PassAbility > _biome.PassAbility)
         {
-            Debug.Log("Get affected by biome");
-        }
-        else
-        {
-            Debug.Log("You can pass this biome");
+            _entityStats.AddSource(_currentBiome);
         }
     }
 

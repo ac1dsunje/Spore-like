@@ -63,6 +63,21 @@ public class EntityStats
             RecalculateStat(statType);
         }
     }
+    
+    public void RemoveSource(IStatSource source)
+    {
+        if (source == null) return;
+        if (!_sourceStats.TryGetValue(source, out var stats)) return;
+
+        var affectedStats = new List<StatType>(stats.Keys);
+
+        _sourceStats.Remove(source);
+
+        foreach (var statType in affectedStats)
+        {
+            RecalculateStat(statType);
+        }
+    }
 
     private void AddSourceStats(IStatSource source, List<Stat> sourceStats)
     {

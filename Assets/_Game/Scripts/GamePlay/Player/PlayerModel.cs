@@ -21,12 +21,13 @@ public class PlayerModel
     public AbilitiesModule Abilities { get; private set; }
     public EvolutionsModule Evolutions { get; private set; }
     public DisguiseModule Disguise { get; private set; }
+    public BiomeModule Biome { get; private set; }
 
     [Inject]
     public PlayerModel(EntityStatsConfig config, EntityStats stats, VisionModule vision, HealthModule health, 
         DefenseModule defense, EnduranceModule endurance, MouthModule mouth, AttackModule attack, MovementModule movement,
         TemperatureModule temperature, ExperienceModule experience, AbilitiesModule abilities, EvolutionsModule evolutions,
-        DisguiseModule disguise)
+        DisguiseModule disguise, BiomeModule biome)
     {
         Stats = stats;
         Vision = vision;
@@ -41,6 +42,7 @@ public class PlayerModel
         Abilities = abilities;
         Evolutions = evolutions;
         Disguise = disguise;
+        Biome = biome;
         
         Stats.Initialize(config.InitialConfigs);
     }
