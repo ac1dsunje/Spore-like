@@ -42,7 +42,20 @@ public class PlayerBiome: EntityNetworkBehaviour
     private void EnterBiome(Biome biome)
     {
         _currentBiome = biome;
+        CheckPassability();
         ApplyTemperature(biome.Temperature);
+    }
+
+    private void CheckPassability()
+    {
+        if (_currentBiome.PassAbility > _biome.PassAbility)
+        {
+            Debug.Log("Get affected by biome");
+        }
+        else
+        {
+            Debug.Log("You can pass this biome");
+        }
     }
 
     private void ApplyTemperature(float temperature)

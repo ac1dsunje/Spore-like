@@ -9,6 +9,7 @@ namespace _Game.Scripts.GamePlay.World.Biomes
 public class BiomeConfig: ScriptableObject
 {
     [field: SerializeField] public float Temperature { get; private set; }
+    [field: SerializeField] public float PassAbility { get; private set; }
     [field: SerializeField] public List<TileBase> Tiles { get; private set; }
     [field: SerializeField] public List<EnvironmentConfig> EnvironmentConfigs { get; private set; }
     [field: SerializeField] public int ChanceEnvironment { get; private set; } = 20;
