@@ -60,6 +60,7 @@ public class PlayerScope: LifetimeScope
         
         // Biomes
         builder.RegisterComponent(GetComponentInChildren<PlayerBiome>());
+        builder.Register<BiomeModule>(Lifetime.Scoped);
         builder.Register<TemperatureModule>(Lifetime.Scoped);
         
         // Abilities

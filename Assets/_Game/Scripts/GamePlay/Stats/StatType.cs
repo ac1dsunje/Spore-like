@@ -28,6 +28,9 @@ public enum StatType
     IgnoreDamageResistance = 26,
     Sensorics = 27,
     Disguise = 28,
-    LightingRadius = 29
+    LightingRadius = 29,
+    Passability = 30,
+    XRay = 31,
+    AttackSpeed = 32
 }
 }

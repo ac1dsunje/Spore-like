@@ -12,15 +12,17 @@ public class PlayerBiome: EntityNetworkBehaviour
     private WorldModel _worldModel;
     private TemperatureModule _temperature;
     private MovementModule _movement;
+    private BiomeModule _biome;
     
     private Biome _currentBiome;
     
     [Inject]
-    private void Construct(WorldModel worldModel, TemperatureModule temperature, MovementModule movement)
+    private void Construct(WorldModel worldModel, TemperatureModule temperature, MovementModule movement, BiomeModule biome)
     {
         _worldModel = worldModel;
         _temperature = temperature;
         _movement = movement;
+        _biome = biome;
     }
 
     protected override void OnNetworkInitialized()
