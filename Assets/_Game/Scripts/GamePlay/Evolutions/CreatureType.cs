@@ -2,9 +2,10 @@
 {
 public enum CreatureType
 {
-    None,
-    Vertebrate,
-    Arthropod,
-    Mollusk,
+    None = 0,
+    InVertebrate = 4,
+    Vertebrate = 1,
+    Arthropod = 2,
+    Mollusk = 3,
 }
 }

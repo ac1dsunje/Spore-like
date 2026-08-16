@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f724526a32e44aa591a5df78fb049629, type: 3}
+  m_Name: Jaws
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Evolutions.EvolutionConfig
+  <CreatureType>k__BackingField: 0
+  <Name>k__BackingField: Jaws
+  <Description>k__BackingField: 
+  <Sprite>k__BackingField: {fileID: -8094229177832475857, guid: af281703373a2da45b7d4ee57d16a7c1, type: 3}
+  <Stats>k__BackingField:
+  - <Type>k__BackingField: 6
+    <Value>k__BackingField: 2
+    <UpdatesByRarity>k__BackingField: 1
+  - <Type>k__BackingField: 13
+    <Value>k__BackingField: -10
+    <UpdatesByRarity>k__BackingField: 1
+  <State>k__BackingField: 0
+  <Requires>k__BackingField: []
+  <Blocks>k__BackingField:
+  - {fileID: 11400000, guid: 2ae2b08935eb4d54698f2e78c0f789b6, type: 2}
+  <Abilities>k__BackingField: []
+  <ExperienceConfig>k__BackingField:
+    <LevelSet>k__BackingField: 20
+    <ExperienceTypes>k__BackingField:
+    - <Type>k__BackingField: 9
+      <Amount>k__BackingField: 1

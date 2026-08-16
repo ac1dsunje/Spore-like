@@ -21,5 +21,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: eed36872c78baed449f38f75d37d4538, type: 2}
   - {fileID: 11400000, guid: 45e84da99f424f54ea707435992fff44, type: 2}
   - {fileID: 11400000, guid: 3ababb21bfef1ca41a12c70eefb7b726, type: 2}
+  - {fileID: 11400000, guid: 2ae2b08935eb4d54698f2e78c0f789b6, type: 2}
+  - {fileID: 11400000, guid: 0fb7db6c45b2c0c4493206471d616ff6, type: 2}
   <BasicChance>k__BackingField: 10
   <ChanceScaler>k__BackingField: 5
