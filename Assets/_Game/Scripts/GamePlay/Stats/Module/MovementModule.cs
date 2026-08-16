@@ -23,6 +23,7 @@ public class MovementModule : StatModule
 
     public event Action<float> OnDistanceOvercome;
     public event Action<MovementModule> OnGridPositionChanged;
+    public event Action OnSprint;
     
     private float _moveSpeed;
     private float _acceleration;
@@ -42,11 +43,16 @@ public class MovementModule : StatModule
         BindStat(StatType.DashPower, UpdateDashPower);
     }
     
-    public void RequestDash() => DashRequested = true;
+    public void SetDash(bool state)
+    {
+        DashRequested = state;
+    }
 
-    public void ResetDash() => DashRequested = false;
-    public bool RequestSprint() => _useSprint = true;
-    public bool ResetSprint() => _useSprint = false;
+    public void SetSprint(bool state)
+    {
+        _useSprint = state;
+        OnSprint?.Invoke();
+    }
 
     public void Disable() => SetState(MovementState.Disabled);
 

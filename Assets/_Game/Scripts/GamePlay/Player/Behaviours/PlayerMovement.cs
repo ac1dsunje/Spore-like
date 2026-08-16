@@ -55,7 +55,7 @@ public class PlayerMovement: EntityNetworkBehaviour
     {
         if (!_module.DashRequested) return;
         _controller.Push(input, _module.DashPower);
-        _module.ResetDash();
+        _module.SetDash(false);
     }
 
     private void TryFlip()

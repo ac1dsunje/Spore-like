@@ -11,13 +11,13 @@ public class SprintAbility: Ability
     protected override void Enable()
     {
         base.Enable();
-        Model.Movement.RequestSprint();
+        Model.Movement.SetSprint(true);
     }
 
     protected override void Disable()
     {
         base.Disable();
-        Model.Movement.ResetSprint();
+        Model.Movement.SetSprint(false);
     }
 }
 }

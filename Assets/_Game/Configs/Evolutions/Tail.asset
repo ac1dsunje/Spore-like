@@ -26,16 +26,16 @@ MonoBehaviour:
   - <Type>k__BackingField: 8
     <Value>k__BackingField: -10
     <UpdatesByRarity>k__BackingField: 1
-  - <Type>k__BackingField: 18
-    <Value>k__BackingField: 4
+  - <Type>k__BackingField: 16
+    <Value>k__BackingField: 2
     <UpdatesByRarity>k__BackingField: 1
   <State>k__BackingField: 1
   <Requires>k__BackingField: []
   <Blocks>k__BackingField: []
   <Abilities>k__BackingField:
-  - {fileID: 11400000, guid: be1b63a43cda10d4a8d67386e9596059, type: 2}
+  - {fileID: 11400000, guid: d1a5821f561251144bbc0cf79b86d02a, type: 2}
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 20
     <ExperienceTypes>k__BackingField:
-    - <Type>k__BackingField: 6
-      <Amount>k__BackingField: 5
+    - <Type>k__BackingField: 10
+      <Amount>k__BackingField: 2

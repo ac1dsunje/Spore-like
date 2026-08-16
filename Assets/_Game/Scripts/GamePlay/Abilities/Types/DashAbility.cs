@@ -11,7 +11,7 @@ public class DashAbility: Ability
     protected override void Enable()
     {
         base.Enable();
-        Model.Movement.RequestDash();
+        Model.Movement.SetDash(true);
     }
 }
 }
