@@ -15,7 +15,7 @@ MonoBehaviour:
   <Stats>k__BackingField:
   - <Type>k__BackingField: 25
     <Value>k__BackingField: 1
-    <UpdatesByRarity>k__BackingField: 0
   - <Type>k__BackingField: 6
     <Value>k__BackingField: 10
-    <UpdatesByRarity>k__BackingField: 0
+  - <Type>k__BackingField: 32
+    <Value>k__BackingField: 100

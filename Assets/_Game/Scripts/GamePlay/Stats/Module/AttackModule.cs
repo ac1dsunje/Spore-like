@@ -23,6 +23,6 @@ public class AttackModule: StatModule
     private void UpdatePhysicalDamage(float value) => PhysicalDamage = value;
     private void UpdateAttackRange(float value) => AttackRange = value;
     private void UpdateIgnoreResistance(float value) => IgnoreResistance = value;
-    private void UpdateAttackSpeed(float value) => AttackSpeed = value;
+    private void UpdateAttackSpeed(float value) => AttackSpeed = value / 100f;
 }
 }

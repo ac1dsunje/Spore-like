@@ -16,6 +16,9 @@ public class PlayerAttack : EntityNetworkBehaviour
     private PlayerInputService _inputService;
     private Ticker _ticker;
 
+    private float _attackCooldownTimer;
+    private bool _canAttack => _attackCooldownTimer <= 0f;
+
     [Inject]
     private void Construct(AttackModule module, PlayerInputService inputService, Ticker ticker)
     {
@@ -33,8 +36,16 @@ public class PlayerAttack : EntityNetworkBehaviour
 
     private void CheckInput(float timeDelta)
     {
+        if (_attackCooldownTimer > 0f)
+        {
+            _attackCooldownTimer -= timeDelta;
+        }
+
+        if (!_canAttack) return;
         if (!_inputService.AttackPressed) return;
+
         Attack();
+        _attackCooldownTimer = _module.AttackSpeed;
     }
 
     private void Attack()
