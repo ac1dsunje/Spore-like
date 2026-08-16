@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ec15ac615a142eb8ec6483a4ebb309e, type: 3}
-  m_Name: CoralRed
+  m_Name: CorallRed
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Player.Modules.Animation.AnimationConfig
   <Sprite>k__BackingField: {fileID: 2893469946120106599, guid: 1df7c3dd644211946bdec31376d30376, type: 3}
   <Controller>k__BackingField: {fileID: 0}
