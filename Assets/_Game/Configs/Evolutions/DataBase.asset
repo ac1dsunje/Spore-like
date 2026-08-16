@@ -20,5 +20,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f836074f7d6443b42a6ed6367a05a239, type: 2}
   - {fileID: 11400000, guid: eed36872c78baed449f38f75d37d4538, type: 2}
   - {fileID: 11400000, guid: 45e84da99f424f54ea707435992fff44, type: 2}
+  - {fileID: 11400000, guid: 3ababb21bfef1ca41a12c70eefb7b726, type: 2}
   <BasicChance>k__BackingField: 10
   <ChanceScaler>k__BackingField: 5
