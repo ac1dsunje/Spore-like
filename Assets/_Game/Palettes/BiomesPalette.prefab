@@ -1167,7 +1167,7 @@ GameObject:
   - component: {fileID: 2330340760057957241}
   - component: {fileID: 2195966733703717713}
   m_Layer: 0
-  m_Name: New Tile Palette
+  m_Name: BiomesPalette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
