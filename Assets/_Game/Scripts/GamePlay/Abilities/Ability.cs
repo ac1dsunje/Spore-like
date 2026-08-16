@@ -6,6 +6,11 @@ using _Game.Scripts.GamePlay.Player;
 
 namespace _Game.Scripts.GamePlay.Abilities
 {
+public enum AbilityActivationType
+{
+    Pressing,
+    Toggle,
+}
 public abstract class Ability: IDisposable, IEnduranceUser
 {
     private readonly AbilityConfig _config;
@@ -30,7 +35,34 @@ public abstract class Ability: IDisposable, IEnduranceUser
     
     private void Update(float deltaTime)
     {
-        if (_input.WasKeyPressed(_config.Key) && _endurance.HasEnoughEndurance(_config.StartCost) && !_isActive)
+        switch (_config.ActivationType)
+        {
+            case AbilityActivationType.Pressing:
+                UpdatePressing(deltaTime);
+                break;
+
+            case AbilityActivationType.Toggle:
+                UpdateToggle(deltaTime);
+                break;
+        }
+
+        if (!_isActive)
+            return;
+
+        if (_config.HasActivePhase)
+        {
+            if (_endurance.HasEnoughEndurance(_config.InUseCost * deltaTime))
+                Do(deltaTime);
+            else
+                Disable();
+        }
+    }
+
+    private void UpdatePressing(float deltaTime)
+    {
+        if (_input.WasKeyPressed(_config.Key) &&
+            !_isActive &&
+            _endurance.HasEnoughEndurance(_config.StartCost))
         {
             Enable();
         }
@@ -38,15 +70,18 @@ public abstract class Ability: IDisposable, IEnduranceUser
         if (_input.WasKeyReleased(_config.Key) && _isActive)
         {
             Disable();
-            return;
         }
+    }
 
-        if (!_isActive) return;
+    private void UpdateToggle(float deltaTime)
+    {
+        if (!_input.WasKeyPressed(_config.Key))
+            return;
 
-        if (_endurance.HasEnoughEndurance(_config.InUseCost * deltaTime))
-            Do(deltaTime);
-        else
+        if (_isActive)
             Disable();
+        else if (_endurance.HasEnoughEndurance(_config.StartCost))
+            Enable();
     }
     
     protected virtual void Enable()
