@@ -54,14 +54,14 @@ public class PlayerModel
         Evolutions.SetModel(this);
     }
 
-    public void TakeDamage(HitInfo hit)
+    public float TakeDamage(HitInfo hit)
     {
         var damage = Defense.ApplyResistance(hit.Damage, hit.IgnoreResistance);
         Health.TakeDamage(damage);
         var returnedDamage = Defense.ReflectDamage(damage);
         HitInfo returnedHit = new(returnedDamage, Attack.IgnoreResistance, null);
         hit.Owner?.TakeDamage(returnedHit);
-        hit.Owner?.SetDamageDealt(damage);
+        return damage;
     }
 }
 }

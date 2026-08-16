@@ -31,14 +31,14 @@ public class SeaUrchinController: MonoBehaviour, IDamageAble
         _entityStats.Initialize(entityStatsConfig.InitialConfigs);
     }
 
-    public void TakeDamage(HitInfo hit)
+    public float TakeDamage(HitInfo hit)
     {
         var damage = _defenseModule.ApplyResistance(hit.Damage, hit.IgnoreResistance);
         _healthModule.TakeDamage(damage);
         var returnedDamage = _defenseModule.ReflectDamage(damage);
         HitInfo returnedHit = new(returnedDamage, _attackModule.IgnoreResistance, null);
         hit.Owner?.TakeDamage(returnedHit);
-        hit.Owner?.SetDamageDealt(damage);
+        return damage;
     }
 
     public void SetDamageDealt(float damage) {}
