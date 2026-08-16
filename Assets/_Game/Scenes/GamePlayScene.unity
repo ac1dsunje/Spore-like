@@ -154,7 +154,7 @@ MonoBehaviour:
   Composition:
     ScreenPosition: {x: 0, y: 0}
     DeadZone:
-      Enabled: 1
+      Enabled: 0
       Size: {x: 0.1, y: 0.1}
     HardLimits:
       Enabled: 0
@@ -1361,6 +1361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd22c9a072f4c22836310fb57101810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.World.DayNightManager
+  _step: 60
 --- !u!1001 &8462081351352519223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1390,6 +1391,30 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 913703998113775725, guid: 189aacc1d15c4f44f8d9bc18abf6bd1a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145419216743806706, guid: 189aacc1d15c4f44f8d9bc18abf6bd1a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145419216743806706, guid: 189aacc1d15c4f44f8d9bc18abf6bd1a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145419216743806706, guid: 189aacc1d15c4f44f8d9bc18abf6bd1a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145419216743806706, guid: 189aacc1d15c4f44f8d9bc18abf6bd1a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145419216743806706, guid: 189aacc1d15c4f44f8d9bc18abf6bd1a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145419216743806706, guid: 189aacc1d15c4f44f8d9bc18abf6bd1a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
