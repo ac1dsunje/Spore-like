@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4d65fd748bfa53344b2d40217c068f0a
+guid: 92b3534d0451bf3449b9f3b9f3837972
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639212911356549927
+  platformSettingsDirtyTick: 639225162524271386
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 4
       width: 16
       height: 16
-    spriteID: ae5c0076cad93ac4aace741bef4bd6fb
+    spriteID: 46dc72ea6b243cc48927f2777235dc06
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -163,7 +163,7 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: SeaSponge
+    - name: RedSeaSponge
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -171,7 +171,7 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 16
-      spriteId: ae5c0076cad93ac4aace741bef4bd6fb
+      spriteId: 46dc72ea6b243cc48927f2777235dc06
     linkedCells: []
     tileCells: []
     tileSetIndex: 0

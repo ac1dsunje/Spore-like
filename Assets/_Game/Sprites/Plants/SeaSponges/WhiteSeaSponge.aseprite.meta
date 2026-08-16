@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fb85c15eef81b9d49a0f7d56243c0a34
+guid: c0069827b391186448867d76955f8298
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639223303504621823
+  platformSettingsDirtyTick: 639225161547763719
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: BlueSeaSponge
+  - name: WhiteSeaSponge
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.6666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 16
-      height: 16
-    spriteID: f924e5b6c9e9f3c44aa66bfacf9c2ac6
+      width: 8
+      height: 6
+    spriteID: d8e20a8d6fcc9e14fbbf1e9e411b56fc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 2357857557
+      value0: 4163541616
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: BlueSeaSponge
+    name: WhiteSeaSponge
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: BlueSeaSponge
+    - name: WhiteSeaSponge
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 16
-        height: 16
-      spriteId: f924e5b6c9e9f3c44aa66bfacf9c2ac6
+        width: 8
+        height: 8
+      spriteId: d8e20a8d6fcc9e14fbbf1e9e411b56fc
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -217,5 +217,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 16, y: 16}
-  previousTextureSize: {x: 32, y: 32}
+  canvasSize: {x: 8, y: 8}
+  previousTextureSize: {x: 16, y: 16}

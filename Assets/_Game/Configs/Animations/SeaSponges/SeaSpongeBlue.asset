@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec15ac615a142eb8ec6483a4ebb309e, type: 3}
   m_Name: SeaSpongeBlue
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Player.Modules.Animation.AnimationConfig
-  <Sprite>k__BackingField: {fileID: 4562717905068105641, guid: fb85c15eef81b9d49a0f7d56243c0a34, type: 3}
+  <Sprite>k__BackingField: {fileID: -8433660666573303495, guid: 44513053eb6510d47a5938ccc8d08aca, type: 3}
   <Controller>k__BackingField: {fileID: 0}
