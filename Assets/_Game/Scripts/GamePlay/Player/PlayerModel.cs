@@ -61,6 +61,7 @@ public class PlayerModel
         var returnedDamage = Defense.ReflectDamage(damage);
         HitInfo returnedHit = new(returnedDamage, Attack.IgnoreResistance, null);
         hit.Owner?.TakeDamage(returnedHit);
+        hit.Owner?.SetDamageDealt(damage);
     }
 }
 }

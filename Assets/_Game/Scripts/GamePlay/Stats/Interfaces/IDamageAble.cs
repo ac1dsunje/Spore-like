@@ -17,5 +17,6 @@ public struct HitInfo
 public interface IDamageAble
 {
     public void TakeDamage(HitInfo hit);
+    public void SetDamageDealt(float damage);
 }
 }

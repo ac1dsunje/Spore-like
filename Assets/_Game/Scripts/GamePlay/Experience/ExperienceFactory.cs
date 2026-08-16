@@ -15,6 +15,7 @@ public enum ExperienceType
     DistanceOvercoming = 6,
     EnduranceRecovering = 7,
     DisguiseObjectFound = 8,
+    DamageDealing = 9
 }
 public class ExperienceFactory
 {
@@ -31,6 +32,7 @@ public class ExperienceFactory
             ExperienceType.DistanceOvercoming => new DistanceOvercoming(playerModel.Movement, config.Amount),
             ExperienceType.EnduranceRecovering => new EnduranceRecovering(playerModel.Endurance, config.Amount),
             ExperienceType.DisguiseObjectFound => new DisguiseObjectFound(playerModel.Vision, config.Amount),
+            ExperienceType.DamageDealing => new DamageDealing(playerModel.Attack, config.Amount),
             _ => throw new ArgumentOutOfRangeException(nameof(config), config, null)
         };
     }

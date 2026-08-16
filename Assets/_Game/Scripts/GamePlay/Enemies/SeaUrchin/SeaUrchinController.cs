@@ -38,7 +38,10 @@ public class SeaUrchinController: MonoBehaviour, IDamageAble
         var returnedDamage = _defenseModule.ReflectDamage(damage);
         HitInfo returnedHit = new(returnedDamage, _attackModule.IgnoreResistance, null);
         hit.Owner?.TakeDamage(returnedHit);
+        hit.Owner?.SetDamageDealt(damage);
     }
+
+    public void SetDamageDealt(float damage) {}
 
     private void Die()
     {
