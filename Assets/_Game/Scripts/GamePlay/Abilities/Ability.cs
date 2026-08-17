@@ -2,7 +2,6 @@
 using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Module;
-using _Game.Scripts.GamePlay.Player;
 
 namespace _Game.Scripts.GamePlay.Abilities
 {
@@ -15,7 +14,6 @@ public abstract class Ability: IDisposable, IEnduranceUser
 {
     private readonly AbilityConfig _config;
 
-    protected readonly PlayerModel Model;
     private readonly EnduranceModule _endurance;
 
     private readonly Ticker _ticker;
@@ -23,12 +21,11 @@ public abstract class Ability: IDisposable, IEnduranceUser
     
     private bool _isActive;
     
-    protected Ability(PlayerModel model, AbilityConfig config, Ticker ticker, IInputService inputService)
+    protected Ability(EnduranceModule endurance, AbilityConfig config, Ticker ticker, IInputService inputService)
     {
         _input = inputService;
         _config = config;
-        Model = model;
-        _endurance = model.Endurance;
+        _endurance = endurance;
         _ticker = ticker;
         _ticker.OnTick += Update;
     }

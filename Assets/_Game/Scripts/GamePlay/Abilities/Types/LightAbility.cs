@@ -1,23 +1,28 @@
 ﻿using _Game.Scripts.Core.Services;
-using _Game.Scripts.GamePlay.Player;
+using _Game.Scripts.GamePlay.Module;
 
 namespace _Game.Scripts.GamePlay.Abilities.Types
 {
 public class LightAbility: Ability
 {
-    public LightAbility(PlayerModel model, AbilityConfig config, Ticker ticker, IInputService input)
-        : base(model, config, ticker, input) { }
+    private readonly VisionModule _vision;
+
+    public LightAbility(VisionModule vision, EnduranceModule endurance, AbilityConfig config, 
+        Ticker ticker, IInputService input) : base(endurance, config, ticker, input)
+    {
+        _vision = vision;
+    }
 
     protected override void Enable()
     {
         base.Enable();
-        Model.Vision.SetLight(true);
+        _vision.SetLight(true);
     }
 
     protected override void Disable()
     {
         base.Disable();
-        Model.Vision.SetLight(false);
+        _vision.SetLight(false);
     }
 }
 }

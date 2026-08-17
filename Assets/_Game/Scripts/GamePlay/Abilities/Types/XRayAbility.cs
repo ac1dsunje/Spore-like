@@ -3,26 +3,26 @@ using _Game.Scripts.GamePlay.Module;
 
 namespace _Game.Scripts.GamePlay.Abilities.Types
 {
-public class SprintAbility: Ability
+public class XRayAbility: Ability
 {
-    private readonly MovementModule _movement;
+    private readonly VisionModule _vision;
 
-    public SprintAbility(MovementModule movement, EnduranceModule endurance, AbilityConfig config, 
+    public XRayAbility(VisionModule vision, EnduranceModule endurance, AbilityConfig config, 
         Ticker ticker, IInputService input) : base(endurance, config, ticker, input)
     {
-        _movement = movement;
+        _vision = vision;
     }
 
     protected override void Enable()
     {
         base.Enable();
-        _movement.SetSprint(true);
+        _vision.SetXRay(true);
     }
 
     protected override void Disable()
     {
         base.Disable();
-        _movement.SetSprint(false);
+        _vision.SetXRay(false);
     }
 }
 }

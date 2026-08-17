@@ -1,17 +1,22 @@
 ﻿using _Game.Scripts.Core.Services;
-using _Game.Scripts.GamePlay.Player;
+using _Game.Scripts.GamePlay.Module;
 
 namespace _Game.Scripts.GamePlay.Abilities.Types
 {
 public class DashAbility: Ability
 {
-    public DashAbility(PlayerModel model, AbilityConfig config, Ticker ticker, IInputService input) 
-        : base(model, config, ticker, input) { }
+    private readonly MovementModule _movement;
+
+    public DashAbility(MovementModule movement, EnduranceModule endurance, AbilityConfig config, 
+        Ticker ticker, IInputService input) : base(endurance, config, ticker, input)
+    {
+        _movement = movement;
+    }
 
     protected override void Enable()
     {
         base.Enable();
-        Model.Movement.SetDash(true);
+        _movement.SetDash(true);
     }
 }
 }
