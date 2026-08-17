@@ -23,5 +23,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3ababb21bfef1ca41a12c70eefb7b726, type: 2}
   - {fileID: 11400000, guid: 2ae2b08935eb4d54698f2e78c0f789b6, type: 2}
   - {fileID: 11400000, guid: 0fb7db6c45b2c0c4493206471d616ff6, type: 2}
+  - {fileID: 11400000, guid: 40536e0bf67a4f2438b93918cefe86b6, type: 2}
+  - {fileID: 11400000, guid: 854f9e0add2d80b4db02a4c5cc7de3d4, type: 2}
+  - {fileID: 11400000, guid: e04bb15e2dd62b540a4c2f6e5608c4c1, type: 2}
+  - {fileID: 11400000, guid: d30b4af745017b14cab80bd82b3480c1, type: 2}
   <BasicChance>k__BackingField: 10
   <ChanceScaler>k__BackingField: 5
