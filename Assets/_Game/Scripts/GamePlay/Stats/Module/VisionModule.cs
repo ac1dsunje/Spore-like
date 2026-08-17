@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Interfaces;
 using UnityEngine;
 
@@ -19,6 +20,8 @@ public class VisionModule: StatModule
 
     private bool _useLight;
     private bool _useXRay;
+
+    private readonly HashSet<GameObject> _objectsInVision = new();
 
     protected override void Configure()
     {
@@ -52,14 +55,28 @@ public class VisionModule: StatModule
         OnLightingUpdated?.Invoke(_lightingRadius, _useLight);
     }
 
-    private void UpdateSensorics(float value) => _sensorics = value;
+    private void UpdateSensorics(float value)
+    {
+        _sensorics = value;
+        foreach (var gameObject in _objectsInVision)
+        {
+            TryDiscoverObject(gameObject);
+        }
+    }
+
     private void UpdateXRayRadius(float value)
     {
         _xRay = value;
         OnXRayUpdated?.Invoke(_xRay, _useXRay);
     }
 
-    public void DiscoverGameObject(GameObject gameObject)
+    public void EnterObject(GameObject gameObject)
+    {
+        if (!_objectsInVision.Add(gameObject)) return;
+        TryDiscoverObject(gameObject);
+    }
+
+    private void TryDiscoverObject(GameObject gameObject)
     {
         if (gameObject.TryGetComponent(out IDisguiseAble disguiseAble))
         {
@@ -71,6 +88,11 @@ public class VisionModule: StatModule
             return;
         }
         OnGameObjectDiscovered?.Invoke(gameObject);
+    }
+
+    public void ExitObject(GameObject gameObject)
+    {
+        _objectsInVision.Remove(gameObject);
     }
 }
 }

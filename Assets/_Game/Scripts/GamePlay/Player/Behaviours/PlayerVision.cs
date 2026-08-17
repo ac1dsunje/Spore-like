@@ -81,9 +81,14 @@ public class PlayerVision: EntityNetworkBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        _module.DiscoverGameObject(other.gameObject);
+        _module.EnterObject(other.gameObject);
     }
     
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        _module.ExitObject(other.gameObject);
+    }
+
     protected override void OnDestroy()
     {
         _module.OnLightingUpdated -= UpdateLighting;
