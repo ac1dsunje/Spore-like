@@ -38,11 +38,11 @@ public abstract class Ability: IDisposable, IEnduranceUser
         switch (_config.ActivationType)
         {
             case AbilityActivationType.Pressing:
-                UpdatePressing(deltaTime);
+                UpdatePressing();
                 break;
 
             case AbilityActivationType.Toggle:
-                UpdateToggle(deltaTime);
+                UpdateToggle();
                 break;
         }
 
@@ -58,7 +58,7 @@ public abstract class Ability: IDisposable, IEnduranceUser
         }
     }
 
-    private void UpdatePressing(float deltaTime)
+    private void UpdatePressing()
     {
         if (_input.WasKeyPressed(_config.Key) &&
             !_isActive &&
@@ -73,7 +73,7 @@ public abstract class Ability: IDisposable, IEnduranceUser
         }
     }
 
-    private void UpdateToggle(float deltaTime)
+    private void UpdateToggle()
     {
         if (!_input.WasKeyPressed(_config.Key))
             return;
