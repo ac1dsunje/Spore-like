@@ -14,6 +14,8 @@ public class ItemAnimation: MonoBehaviour
     private Animator _animator;
     private ShadowCaster2D _shadowCaster;
     private PolygonCollider2D _collider;
+    
+    private Sprite _currentSprite;
 
     private void Awake()
     {
@@ -31,6 +33,9 @@ public class ItemAnimation: MonoBehaviour
     private void SetColliderShape(Sprite sprite)
     {
         _collider.enabled = true;
+
+        if (_currentSprite == sprite) return;
+        _currentSprite = sprite;
 
         var shapeCount = sprite.GetPhysicsShapeCount();
         _collider.pathCount = shapeCount;
