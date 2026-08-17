@@ -1277,7 +1277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd22c9a072f4c22836310fb57101810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.World.DayNightManager
-  _step: 60
+  _step: 300
 --- !u!1001 &8462081351352519223
 PrefabInstance:
   m_ObjectHideFlags: 0
