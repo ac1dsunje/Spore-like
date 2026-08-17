@@ -10,7 +10,7 @@ namespace _Game.Scripts.GamePlay.Player.Behaviours
 public class PlayerMouth: EntityNetworkBehaviour
 {
     private MouthModule _module;
-    private FoodController _currentFood;
+    private IBiteable _currentFood;
     
     [Inject]
     private void Construct(MouthModule module)
@@ -24,28 +24,28 @@ public class PlayerMouth: EntityNetworkBehaviour
 
     private void TryCatchFood(Collider2D other)
     {
-        if (!other.TryGetComponent<FoodController>(out var food)) return;
+        if (!other.TryGetComponent<IBiteable>(out var food)) return;
         StopAllCoroutines();
         _currentFood = food;
-        _currentFood.OnDeath += OnFoodDeath;
+        _currentFood.OnEaten += OnFoodDeath;
         StartCoroutine(Eat(_currentFood));
     }
 
     private void TryReleaseFood(Collider2D other)
     {
-        if (!other.TryGetComponent<FoodController>(out var food)) return;
+        if (!other.TryGetComponent<IBiteable>(out var food)) return;
         StopAllCoroutines();
         if (_currentFood == null) return;
-        _currentFood.OnDeath -= OnFoodDeath;
+        _currentFood.OnEaten -= OnFoodDeath;
         _currentFood = null;
     }
 
-    private IEnumerator Eat(FoodController food)
+    private IEnumerator Eat(IBiteable food)
     {
-        while (_currentFood)
+        while (_currentFood != null)
         {
             yield return new WaitForSeconds(_module.EatingTime);
-            food?.TakeHit(_module.EatingStrength, _module.EatingPenetration);
+            food?.TakeByte(_module.EatingStrength, _module.EatingPenetration);
         }
     }
 
