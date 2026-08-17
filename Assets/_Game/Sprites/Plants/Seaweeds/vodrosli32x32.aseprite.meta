@@ -143,10 +143,55 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: 10.5, y: -12}
+      - {x: 10.5, y: -6}
+      - {x: 11.5, y: -5}
+      - {x: 11.5, y: -3}
+      - {x: 9.5, y: -3}
+      - {x: 7.5, y: -5}
+      - {x: 6.5, y: -4}
+      - {x: 6.5, y: -1}
+      - {x: 3.5, y: 2}
+      - {x: -0.5, y: 2}
+      - {x: 0.5, y: -2}
+      - {x: -0.5, y: -3}
+      - {x: -3.5, y: -3}
+      - {x: -7.5, y: 0}
+      - {x: -5.5, y: 2}
+      - {x: -5.5, y: 4}
+      - {x: -1.5, y: 8}
+      - {x: 3.5, y: 9}
+      - {x: 7.5, y: 12}
+      - {x: 8.5, y: 12}
+      - {x: 10.5, y: 14}
+      - {x: 10.5, y: 16}
+      - {x: 5.5, y: 16}
+      - {x: 4.5, y: 15}
+      - {x: 0.5, y: 15}
+      - {x: -2.5, y: 14}
+      - {x: -4.5, y: 13}
+      - {x: -9.5, y: 8}
+      - {x: -11.5, y: 4}
+      - {x: -11.5, y: 2}
+      - {x: -8.5, y: -2}
+      - {x: -8.5, y: -4}
+      - {x: -5.5, y: -7}
+      - {x: -5.5, y: -10}
+      - {x: -4.5, y: -11}
+      - {x: -5.5, y: -12}
+      - {x: -5.5, y: -14}
+      - {x: -3.5, y: -16}
+      - {x: 6.5, y: -16}
+    - outline:
+      - {x: -0.5, y: -11}
+      - {x: 2.5, y: -9}
+      - {x: 2.5, y: -10}
+      - {x: 0.5, y: -12}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 1
     uvTransform: {x: 1, y: 201}
   - name: Frame_1
     originalName: 
@@ -164,10 +209,50 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: 9.5, y: -12}
+      - {x: 9.5, y: -6}
+      - {x: 10.5, y: -5}
+      - {x: 10.5, y: -3}
+      - {x: 8.5, y: -3}
+      - {x: 6.5, y: -5}
+      - {x: 5.5, y: -4}
+      - {x: 5.5, y: -1}
+      - {x: 2.5, y: 2}
+      - {x: -1.5, y: 2}
+      - {x: -0.5, y: -2}
+      - {x: -3.5, y: -3}
+      - {x: -7.5, y: 0}
+      - {x: -5.5, y: 4}
+      - {x: -2.5, y: 7}
+      - {x: 3.5, y: 9}
+      - {x: 6.5, y: 12}
+      - {x: 6.5, y: 16}
+      - {x: 2.5, y: 16}
+      - {x: 0.5, y: 14}
+      - {x: -4.5, y: 12}
+      - {x: -8.5, y: 8}
+      - {x: -10.5, y: 4}
+      - {x: -10.5, y: 0}
+      - {x: -8.5, y: -2}
+      - {x: -8.5, y: -4}
+      - {x: -5.5, y: -7}
+      - {x: -6.5, y: -8}
+      - {x: -6.5, y: -10}
+      - {x: -5.5, y: -11}
+      - {x: -6.5, y: -12}
+      - {x: -6.5, y: -14}
+      - {x: -4.5, y: -16}
+      - {x: 5.5, y: -16}
+    - outline:
+      - {x: -1.5, y: -11}
+      - {x: 1.5, y: -9}
+      - {x: 1.5, y: -10}
+      - {x: -0.5, y: -12}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 1
     uvTransform: {x: 33, y: 202}
   - name: Frame_2
     originalName: 
@@ -185,10 +270,56 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: 9, y: -12}
+      - {x: 9, y: -6}
+      - {x: 10, y: -5}
+      - {x: 10, y: -3}
+      - {x: 8, y: -3}
+      - {x: 6, y: -5}
+      - {x: 5, y: -4}
+      - {x: 5, y: -1}
+      - {x: 2, y: 2}
+      - {x: -2, y: 2}
+      - {x: -1, y: -2}
+      - {x: -3, y: -3}
+      - {x: -7, y: 0}
+      - {x: -4, y: 2}
+      - {x: -4, y: 4}
+      - {x: -1, y: 7}
+      - {x: 4, y: 8}
+      - {x: 8, y: 11}
+      - {x: 9, y: 11}
+      - {x: 11, y: 13}
+      - {x: 11, y: 16}
+      - {x: 6, y: 16}
+      - {x: 5, y: 15}
+      - {x: 1, y: 15}
+      - {x: 0, y: 14}
+      - {x: -2, y: 14}
+      - {x: -4, y: 13}
+      - {x: -9, y: 8}
+      - {x: -11, y: 4}
+      - {x: -11, y: 2}
+      - {x: -8, y: -2}
+      - {x: -8, y: -4}
+      - {x: -6, y: -6}
+      - {x: -7, y: -8}
+      - {x: -7, y: -10}
+      - {x: -6, y: -11}
+      - {x: -7, y: -12}
+      - {x: -7, y: -14}
+      - {x: -5, y: -16}
+      - {x: 5, y: -16}
+    - outline:
+      - {x: -2, y: -12}
+      - {x: -2, y: -11}
+      - {x: 2, y: -9}
+      - {x: -1, y: -12}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 1
     uvTransform: {x: 33, y: 162}
   - name: Frame_3
     originalName: 
@@ -206,10 +337,54 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: 7.5, y: -12}
+      - {x: 7.5, y: -6}
+      - {x: 8.5, y: -5}
+      - {x: 8.5, y: -3}
+      - {x: 6.5, y: -3}
+      - {x: 4.5, y: -5}
+      - {x: 3.5, y: -4}
+      - {x: 3.5, y: -1}
+      - {x: 0.5, y: 2}
+      - {x: -3.5, y: 2}
+      - {x: -4.5, y: 4}
+      - {x: -0.5, y: 8}
+      - {x: 4.5, y: 9}
+      - {x: 8.5, y: 12}
+      - {x: 9.5, y: 12}
+      - {x: 11.5, y: 14}
+      - {x: 11.5, y: 16}
+      - {x: 5.5, y: 16}
+      - {x: 4.5, y: 15}
+      - {x: 0.5, y: 15}
+      - {x: -0.5, y: 14}
+      - {x: -2.5, y: 14}
+      - {x: -4.5, y: 13}
+      - {x: -9.5, y: 8}
+      - {x: -11.5, y: 4}
+      - {x: -11.5, y: 2}
+      - {x: -10.5, y: 1}
+      - {x: -10.5, y: -1}
+      - {x: -8.5, y: -2}
+      - {x: -8.5, y: -4}
+      - {x: -6.5, y: -6}
+      - {x: -8.5, y: -8}
+      - {x: -8.5, y: -10}
+      - {x: -7.5, y: -11}
+      - {x: -8.5, y: -12}
+      - {x: -8.5, y: -14}
+      - {x: -6.5, y: -16}
+      - {x: 3.5, y: -16}
+    - outline:
+      - {x: -3.5, y: -12}
+      - {x: 0.5, y: -8}
+      - {x: 0.5, y: -10}
+      - {x: -2.5, y: -13}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 1
     uvTransform: {x: 32, y: 4}
   - name: Frame_4
     originalName: 
@@ -227,10 +402,52 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: 6.5, y: -12}
+      - {x: 6.5, y: -6}
+      - {x: 7.5, y: -5}
+      - {x: 7.5, y: -3}
+      - {x: 5.5, y: -3}
+      - {x: 3.5, y: -5}
+      - {x: 2.5, y: -4}
+      - {x: 2.5, y: -1}
+      - {x: -0.5, y: 2}
+      - {x: -3.5, y: 2}
+      - {x: -4.5, y: 4}
+      - {x: -0.5, y: 8}
+      - {x: 4.5, y: 9}
+      - {x: 8.5, y: 12}
+      - {x: 9.5, y: 12}
+      - {x: 11.5, y: 14}
+      - {x: 11.5, y: 16}
+      - {x: 5.5, y: 16}
+      - {x: 4.5, y: 15}
+      - {x: 0.5, y: 15}
+      - {x: -0.5, y: 14}
+      - {x: -2.5, y: 14}
+      - {x: -4.5, y: 13}
+      - {x: -9.5, y: 8}
+      - {x: -11.5, y: 4}
+      - {x: -11.5, y: 2}
+      - {x: -10.5, y: 1}
+      - {x: -9.5, y: -4}
+      - {x: -7.5, y: -6}
+      - {x: -9.5, y: -8}
+      - {x: -9.5, y: -10}
+      - {x: -8.5, y: -11}
+      - {x: -9.5, y: -12}
+      - {x: -9.5, y: -14}
+      - {x: -7.5, y: -16}
+      - {x: 2.5, y: -16}
+    - outline:
+      - {x: -4.5, y: -12}
+      - {x: -0.5, y: -8}
+      - {x: -0.5, y: -10}
+      - {x: -3.5, y: -13}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 1
     uvTransform: {x: 31, y: 44}
   - name: Frame_5
     originalName: 
@@ -248,10 +465,48 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: 6, y: -10.5}
+      - {x: 6, y: -5.5}
+      - {x: 7, y: -4.5}
+      - {x: 7, y: -2.5}
+      - {x: 5, y: -2.5}
+      - {x: 3, y: -4.5}
+      - {x: 2, y: -3.5}
+      - {x: 2, y: -0.5}
+      - {x: -1, y: 2.5}
+      - {x: -4, y: 2.5}
+      - {x: -5, y: 4.5}
+      - {x: -1, y: 8.5}
+      - {x: 8, y: 10.5}
+      - {x: 12, y: 13.5}
+      - {x: 12, y: 15.5}
+      - {x: 0, y: 15.5}
+      - {x: -1, y: 14.5}
+      - {x: -5, y: 13.5}
+      - {x: -10, y: 8.5}
+      - {x: -12, y: 4.5}
+      - {x: -12, y: 2.5}
+      - {x: -11, y: 1.5}
+      - {x: -10, y: -3.5}
+      - {x: -8, y: -5.5}
+      - {x: -11, y: -7.5}
+      - {x: -11, y: -9.5}
+      - {x: -10, y: -10.5}
+      - {x: -11, y: -11.5}
+      - {x: -11, y: -13.5}
+      - {x: -9, y: -15.5}
+      - {x: 1, y: -15.5}
+    - outline:
+      - {x: -6, y: -11.5}
+      - {x: -5, y: -9.5}
+      - {x: -1, y: -7.5}
+      - {x: -1, y: -9.5}
+      - {x: -4, y: -12.5}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 1
     uvTransform: {x: -4, y: 162}
   - name: Frame_6
     originalName: 
@@ -269,10 +524,52 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: 7.5, y: -10.5}
+      - {x: 7.5, y: -5.5}
+      - {x: 8.5, y: -4.5}
+      - {x: 8.5, y: -2.5}
+      - {x: 6.5, y: -2.5}
+      - {x: 4.5, y: -4.5}
+      - {x: 3.5, y: -3.5}
+      - {x: 3.5, y: -0.5}
+      - {x: 0.5, y: 2.5}
+      - {x: -3.5, y: 2.5}
+      - {x: -4.5, y: 4.5}
+      - {x: -0.5, y: 8.5}
+      - {x: 7.5, y: 10.5}
+      - {x: 11.5, y: 13.5}
+      - {x: 11.5, y: 15.5}
+      - {x: 0.5, y: 15.5}
+      - {x: -0.5, y: 14.5}
+      - {x: -4.5, y: 13.5}
+      - {x: -9.5, y: 8.5}
+      - {x: -11.5, y: 4.5}
+      - {x: -11.5, y: 2.5}
+      - {x: -10.5, y: 1.5}
+      - {x: -9.5, y: -3.5}
+      - {x: -7.5, y: -5.5}
+      - {x: -9.5, y: -7.5}
+      - {x: -9.5, y: -9.5}
+      - {x: -8.5, y: -10.5}
+      - {x: -9.5, y: -11.5}
+      - {x: -9.5, y: -14.5}
+      - {x: -8.5, y: -15.5}
+      - {x: 2.5, y: -15.5}
+    - outline:
+      - {x: -5.5, y: -0.5}
+      - {x: -6.5, y: -0.5}
+      - {x: -4.5, y: 1.5}
+      - {x: -3.5, y: -1.5}
+    - outline:
+      - {x: -4.5, y: -11.5}
+      - {x: -0.5, y: -7.5}
+      - {x: -0.5, y: -9.5}
+      - {x: -3.5, y: -12.5}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 1
     uvTransform: {x: 30, y: 84}
   - name: Frame_7
     originalName: 
@@ -290,10 +587,47 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: 8.5, y: -10.5}
+      - {x: 8.5, y: -5.5}
+      - {x: 9.5, y: -4.5}
+      - {x: 9.5, y: -2.5}
+      - {x: 5.5, y: -2.5}
+      - {x: 5.5, y: 0.5}
+      - {x: 3.5, y: 2.5}
+      - {x: -0.5, y: 2.5}
+      - {x: -0.5, y: -1.5}
+      - {x: -2.5, y: -3.5}
+      - {x: -3.5, y: -2.5}
+      - {x: -5.5, y: -2.5}
+      - {x: -7.5, y: -0.5}
+      - {x: -4.5, y: 2.5}
+      - {x: -4.5, y: 4.5}
+      - {x: -2.5, y: 6.5}
+      - {x: -1.5, y: 6.5}
+      - {x: 0.5, y: 8.5}
+      - {x: 8.5, y: 10.5}
+      - {x: 12.5, y: 13.5}
+      - {x: 12.5, y: 15.5}
+      - {x: 0.5, y: 15.5}
+      - {x: -0.5, y: 14.5}
+      - {x: -4.5, y: 13.5}
+      - {x: -10.5, y: 8.5}
+      - {x: -12.5, y: 4.5}
+      - {x: -12.5, y: 2.5}
+      - {x: -11.5, y: 1.5}
+      - {x: -10.5, y: -3.5}
+      - {x: -7.5, y: -6.5}
+      - {x: -7.5, y: -9.5}
+      - {x: -6.5, y: -10.5}
+      - {x: -7.5, y: -11.5}
+      - {x: -7.5, y: -14.5}
+      - {x: -6.5, y: -15.5}
+      - {x: 3.5, y: -15.5}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 1
     uvTransform: {x: -2, y: 123}
   - name: Frame_8
     originalName: 
@@ -311,10 +645,49 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: 9, y: -10.5}
+      - {x: 9, y: -5.5}
+      - {x: 10, y: -4.5}
+      - {x: 10, y: -2.5}
+      - {x: 8, y: -2.5}
+      - {x: 6, y: -4.5}
+      - {x: 5, y: -3.5}
+      - {x: 5, y: -0.5}
+      - {x: 2, y: 2.5}
+      - {x: -2, y: 2.5}
+      - {x: -1, y: -1.5}
+      - {x: -2, y: -2.5}
+      - {x: -5, y: -2.5}
+      - {x: -6, y: 0.5}
+      - {x: -4, y: 2.5}
+      - {x: -4, y: 4.5}
+      - {x: 0, y: 8.5}
+      - {x: 3, y: 8.5}
+      - {x: 4, y: 9.5}
+      - {x: 9, y: 10.5}
+      - {x: 13, y: 13.5}
+      - {x: 13, y: 15.5}
+      - {x: 0, y: 15.5}
+      - {x: -1, y: 14.5}
+      - {x: -4, y: 14.5}
+      - {x: -6, y: 13.5}
+      - {x: -11, y: 8.5}
+      - {x: -13, y: 4.5}
+      - {x: -13, y: 2.5}
+      - {x: -10, y: -3.5}
+      - {x: -7, y: -6.5}
+      - {x: -8, y: -7.5}
+      - {x: -8, y: -9.5}
+      - {x: -7, y: -10.5}
+      - {x: -8, y: -11.5}
+      - {x: -8, y: -14.5}
+      - {x: -7, y: -15.5}
+      - {x: 4, y: -15.5}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 1
     uvTransform: {x: -1, y: 84}
   - name: Frame_9
     originalName: 
@@ -332,10 +705,57 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: 10.5, y: -10.5}
+      - {x: 10.5, y: -5.5}
+      - {x: 11.5, y: -4.5}
+      - {x: 11.5, y: -2.5}
+      - {x: 9.5, y: -2.5}
+      - {x: 5.5, y: -6.5}
+      - {x: 3.5, y: -5.5}
+      - {x: 5.5, y: -3.5}
+      - {x: 5.5, y: -0.5}
+      - {x: 2.5, y: 2.5}
+      - {x: -1.5, y: 2.5}
+      - {x: -0.5, y: -1.5}
+      - {x: -1.5, y: -2.5}
+      - {x: -4.5, y: -2.5}
+      - {x: -7.5, y: -0.5}
+      - {x: -7.5, y: 0.5}
+      - {x: -5.5, y: 2.5}
+      - {x: -5.5, y: 4.5}
+      - {x: -1.5, y: 8.5}
+      - {x: 1.5, y: 8.5}
+      - {x: 2.5, y: 9.5}
+      - {x: 7.5, y: 10.5}
+      - {x: 11.5, y: 13.5}
+      - {x: 11.5, y: 15.5}
+      - {x: 1.5, y: 15.5}
+      - {x: 0.5, y: 14.5}
+      - {x: -2.5, y: 14.5}
+      - {x: -4.5, y: 13.5}
+      - {x: -9.5, y: 8.5}
+      - {x: -11.5, y: 4.5}
+      - {x: -11.5, y: 2.5}
+      - {x: -9.5, y: -0.5}
+      - {x: -9.5, y: -3.5}
+      - {x: -6.5, y: -6.5}
+      - {x: -7.5, y: -7.5}
+      - {x: -7.5, y: -9.5}
+      - {x: -6.5, y: -10.5}
+      - {x: -7.5, y: -11.5}
+      - {x: -7.5, y: -13.5}
+      - {x: -5.5, y: -15.5}
+      - {x: 5.5, y: -15.5}
+    - outline:
+      - {x: -2.5, y: -10.5}
+      - {x: 0.5, y: -8.5}
+      - {x: 0.5, y: -9.5}
+      - {x: -1.5, y: -11.5}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 1
     uvTransform: {x: 33, y: 123}
   - name: Frame_10
     originalName: 
@@ -353,10 +773,58 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: 11, y: -11}
+      - {x: 11, y: -6}
+      - {x: 12, y: -5}
+      - {x: 12, y: -3}
+      - {x: 10, y: -3}
+      - {x: 6, y: -7}
+      - {x: 5, y: -6}
+      - {x: 6, y: -4}
+      - {x: 6, y: -1}
+      - {x: 3, y: 2}
+      - {x: -1, y: 2}
+      - {x: 0, y: -2}
+      - {x: -1, y: -3}
+      - {x: -5, y: -3}
+      - {x: -8, y: -1}
+      - {x: -6, y: 2}
+      - {x: -6, y: 4}
+      - {x: -2, y: 8}
+      - {x: 0, y: 9}
+      - {x: 3, y: 9}
+      - {x: 7, y: 11}
+      - {x: 9, y: 11}
+      - {x: 13, y: 14}
+      - {x: 13, y: 16}
+      - {x: 2, y: 16}
+      - {x: 1, y: 15}
+      - {x: -2, y: 15}
+      - {x: -3, y: 14}
+      - {x: -7, y: 13}
+      - {x: -11, y: 9}
+      - {x: -11, y: 7}
+      - {x: -13, y: 4}
+      - {x: -13, y: 2}
+      - {x: -10, y: -2}
+      - {x: -10, y: -3}
+      - {x: -6, y: -7}
+      - {x: -6, y: -10}
+      - {x: -5, y: -11}
+      - {x: -6, y: -12}
+      - {x: -6, y: -14}
+      - {x: -4, y: -16}
+      - {x: 6, y: -16}
+    - outline:
+      - {x: -1, y: -11}
+      - {x: 2, y: -9}
+      - {x: 2, y: -10}
+      - {x: 0, y: -12}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 1
     uvTransform: {x: 2, y: 4}
   - name: Frame_11
     originalName: 
@@ -374,10 +842,55 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: 12, y: -11}
+      - {x: 12, y: -6}
+      - {x: 13, y: -5}
+      - {x: 13, y: -3}
+      - {x: 11, y: -3}
+      - {x: 7, y: -7}
+      - {x: 5, y: -5}
+      - {x: 6, y: -4}
+      - {x: 6, y: -1}
+      - {x: 4, y: 1}
+      - {x: 2, y: 2}
+      - {x: -2, y: 2}
+      - {x: -2, y: 0}
+      - {x: 0, y: -2}
+      - {x: -1, y: -3}
+      - {x: -4, y: -3}
+      - {x: -7, y: -1}
+      - {x: -6, y: 1}
+      - {x: -6, y: 4}
+      - {x: -2, y: 8}
+      - {x: 0, y: 9}
+      - {x: 3, y: 9}
+      - {x: 7, y: 11}
+      - {x: 9, y: 11}
+      - {x: 13, y: 14}
+      - {x: 13, y: 16}
+      - {x: 2, y: 16}
+      - {x: 1, y: 15}
+      - {x: -2, y: 15}
+      - {x: -3, y: 14}
+      - {x: -7, y: 13}
+      - {x: -11, y: 9}
+      - {x: -11, y: 7}
+      - {x: -13, y: 4}
+      - {x: -13, y: 2}
+      - {x: -5, y: -7}
+      - {x: -5, y: -14}
+      - {x: -3, y: -16}
+      - {x: 7, y: -16}
+    - outline:
+      - {x: 0, y: -11}
+      - {x: 3, y: -9}
+      - {x: 3, y: -10}
+      - {x: 1, y: -12}
     indices: 
     edges: []
-    tessellationDetail: 0
+    tessellationDetail: 1
     uvTransform: {x: 3, y: 44}
   spriteSheetImportData: []
   tileSetImportData: []
