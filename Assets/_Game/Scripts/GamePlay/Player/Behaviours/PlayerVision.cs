@@ -1,5 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Module;
 using _Game.Scripts.GamePlay.Network;
+using _Game.Scripts.GamePlay.World;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -11,21 +12,24 @@ public class PlayerVision: EntityNetworkBehaviour
 {
     [SerializeField] private BoxCollider2D _visionCollider;
     [SerializeField] private Light2D _visionLight;
+    [SerializeField] private Light2D _lighting;
     [SerializeField] private float _visionChangeSpeed = 5f;
     
     private VisionModule _module;
     private CinemachineCamera _cineMachine;
     private Camera _camera;
+    private DayNightManager _dayNightManager;
     
     private float _targetVision;
     private float _currentVision;
 
     [Inject]
-    private void Construct(VisionModule module, CinemachineCamera cineMachine, Camera cam)
+    private void Construct(VisionModule module, CinemachineCamera cineMachine, Camera cam, DayNightManager dayNightManager)
     {
         _module = module;
         _cineMachine = cineMachine;
         _camera = cam;
+        _dayNightManager = dayNightManager;
     }
 
     protected override void OnNetworkInitialized()
@@ -47,6 +51,8 @@ public class PlayerVision: EntityNetworkBehaviour
     private void Update()
     {
         if (!IsLocal) return;
+        var lightValue = _dayNightManager.Value;
+        _visionLight.color = new Color(lightValue, lightValue, lightValue, 1f);
 
         if (Mathf.Approximately(_currentVision, _targetVision)) return;
 
@@ -57,7 +63,7 @@ public class PlayerVision: EntityNetworkBehaviour
 
     private void UpdateLighting(float value, bool state)
     {
-        _visionLight.pointLightOuterRadius = state ? value : 0f;
+        _lighting.pointLightOuterRadius = state ? value : 0f;
     }
 
     private void UpdateVision(float value)
@@ -70,6 +76,7 @@ public class PlayerVision: EntityNetworkBehaviour
         _visionCollider.size = new Vector2(value * _camera.aspect, value) * 2f;
 
         _cineMachine.Lens.OrthographicSize = value;
+        _visionLight.pointLightOuterRadius = value * 2f + 2f;
     }
     
     private void OnTriggerEnter2D(Collider2D other)

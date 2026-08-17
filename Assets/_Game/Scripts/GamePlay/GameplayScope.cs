@@ -48,9 +48,6 @@ public class GameplayScope: LifetimeScope
         
         // Abilities
         builder.Register<AbilityFactory>(Lifetime.Scoped);
-        
-        // Lighting
-        builder.RegisterComponentInHierarchy<Light2D>();
     }
 }
 }
