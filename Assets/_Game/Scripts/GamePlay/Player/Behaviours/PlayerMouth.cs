@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Module;
 using _Game.Scripts.GamePlay.Network;
 using _Game.Scripts.GamePlay.World.Food;
@@ -10,6 +11,8 @@ namespace _Game.Scripts.GamePlay.Player.Behaviours
 public class PlayerMouth: EntityNetworkBehaviour
 {
     private MouthModule _module;
+
+    private readonly HashSet<IBiteable> _foods = new();
     private IBiteable _currentFood;
     
     [Inject]
@@ -25,39 +28,83 @@ public class PlayerMouth: EntityNetworkBehaviour
     private void TryCatchFood(Collider2D other)
     {
         if (!other.TryGetComponent<IBiteable>(out var food)) return;
-        StopAllCoroutines();
-        _currentFood = food;
-        _currentFood.OnEaten += OnFoodDeath;
-        StartCoroutine(Eat(_currentFood));
+        if (!_foods.Add(food)) return;
+
+        food.OnEaten += OnFoodDeath;
+
+        if (_currentFood == null)
+        {
+            StartEatingNextFood();
+        }
     }
 
     private void TryReleaseFood(Collider2D other)
     {
         if (!other.TryGetComponent<IBiteable>(out var food)) return;
-        StopAllCoroutines();
-        if (_currentFood == null) return;
-        _currentFood.OnEaten -= OnFoodDeath;
-        _currentFood = null;
+        if (!_foods.Remove(food)) return;
+
+        food.OnEaten -= OnFoodDeath;
+
+        if (_currentFood == food)
+        {
+            _currentFood = null;
+            StopAllCoroutines();
+            StartEatingNextFood();
+        }
+    }
+
+    private void StartEatingNextFood()
+    {
+        if (_currentFood != null) return;
+
+        foreach (var food in _foods)
+        {
+            _currentFood = food;
+            StartCoroutine(Eat(food));
+            break;
+        }
     }
 
     private IEnumerator Eat(IBiteable food)
     {
-        while (_currentFood != null)
+        while (_currentFood == food && _foods.Contains(food))
         {
             yield return new WaitForSeconds(_module.EatingTime);
-            food?.TakeByte(_module.EatingStrength, _module.EatingPenetration);
+
+            if (_currentFood != food) yield break;
+
+            food.TakeByte(_module.EatingStrength, _module.EatingPenetration);
         }
     }
 
     private void OnFoodDeath(int foodAmount)
     {
         _module.GetExperienceFromFood(foodAmount);
+
+        if (foodAmount <= 0) return;
+
+        if (_currentFood is not null)
+        {
+            _currentFood.OnEaten -= OnFoodDeath;
+            _foods.Remove(_currentFood);
+            _currentFood = null;
+        }
+
+        StopAllCoroutines();
+        StartEatingNextFood();
     }
 
     protected override void OnDestroy()
     {
-        base.OnDestroy();
+        foreach (var food in _foods)
+        {
+            food.OnEaten -= OnFoodDeath;
+        }
+
+        _foods.Clear();
+
         StopAllCoroutines();
+        base.OnDestroy();
     }
 }
 }
