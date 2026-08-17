@@ -61,14 +61,16 @@ public class VisionModule: StatModule
 
     public void DiscoverGameObject(GameObject gameObject)
     {
-        OnGameObjectDiscovered?.Invoke(gameObject);
         if (gameObject.TryGetComponent(out IDisguiseAble disguiseAble))
         {
             if (disguiseAble.SetVisible(_sensorics))
             {
                 OnDisguiseAbleDiscovered?.Invoke(disguiseAble);
+                OnGameObjectDiscovered?.Invoke(gameObject);
             }
+            return;
         }
+        OnGameObjectDiscovered?.Invoke(gameObject);
     }
 }
 }
