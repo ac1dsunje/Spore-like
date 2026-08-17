@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Module
 {
@@ -10,6 +11,7 @@ public class DefenseModule: StatModule
     
     public event Action<float> OnDamageReflected;
     public event Action<float> OnDamageResisted;
+    public event Action OnDamageBlocked;
 
     protected override void Configure()
     {
@@ -22,6 +24,10 @@ public class DefenseModule: StatModule
         var resistedPercent = MathF.Max(0, DamageResistance - ignoreResistance);
         var resisted = damage * resistedPercent;
         OnDamageResisted?.Invoke(resisted);
+        if (Mathf.Approximately(damage, resisted))
+        {
+            OnDamageBlocked?.Invoke();
+        }
         return damage - resisted;
     }
     

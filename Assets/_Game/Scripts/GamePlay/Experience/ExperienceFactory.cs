@@ -16,7 +16,8 @@ public enum ExperienceType
     EnduranceRecovering = 7,
     DisguiseObjectFound = 8,
     DamageDealing = 9,
-    StartSprinting = 10
+    StartSprinting = 10,
+    DamageBlocking = 11
 }
 public class ExperienceFactory
 {
@@ -35,6 +36,7 @@ public class ExperienceFactory
             ExperienceType.DisguiseObjectFound => new DisguiseObjectFound(playerModel.Vision, config.Amount),
             ExperienceType.DamageDealing => new DamageDealing(playerModel.Attack, config.Amount),
             ExperienceType.StartSprinting => new StartSprinting(playerModel.Movement, config.Amount),
+            ExperienceType.DamageBlocking => new DamageBlocking(playerModel.Defense, config.Amount),
             _ => throw new ArgumentOutOfRangeException(nameof(config), config, null)
         };
     }
