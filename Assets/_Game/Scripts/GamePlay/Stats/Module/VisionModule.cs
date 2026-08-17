@@ -37,7 +37,7 @@ public class VisionModule: StatModule
     public void SetXRay(bool state)
     {
         _useXRay = state;
-        OnXRayUpdated?.Invoke(_lightingRadius, _useXRay);
+        OnXRayUpdated?.Invoke(_xRay, _useXRay);
     }
 
     private void UpdateVisionRadius(float value)
