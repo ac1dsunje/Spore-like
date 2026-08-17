@@ -34,6 +34,7 @@ public class PlayerScope: LifetimeScope
         // Vision
         builder.RegisterComponent(GetComponentInChildren<PlayerVision>());
         builder.Register<VisionModule>(Lifetime.Scoped);
+        builder.RegisterComponent(GetComponentInChildren<PlayerXRay>());
         
         // Health
         builder.RegisterComponent(GetComponentInChildren<PlayerHealth>());

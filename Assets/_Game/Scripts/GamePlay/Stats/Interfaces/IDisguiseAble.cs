@@ -2,6 +2,6 @@
 {
 public interface IDisguiseAble
 {
-    public bool SetVisible(float sensorics);
+    public bool SetVisible(float sensorics, bool xRay);
 }
 }

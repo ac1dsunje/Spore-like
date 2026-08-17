@@ -8,20 +8,24 @@ namespace _Game.Scripts.GamePlay.Module
 public class VisionModule: StatModule
 {
     public float VisionRadius { get; private set; }
+    public float XRayRadius { get; private set; }
+
     private float _sensorics;
     private float _lightingRadius;
-    private float _xRay;
-
-    public event Action<GameObject> OnGameObjectDiscovered;
-    public event Action<IDisguiseAble> OnDisguiseAbleDiscovered;
-    public event Action<float> OnVisionRadiusUpdated;
-    public event Action<float, bool> OnLightingUpdated;
-    public event Action<float, bool> OnXRayUpdated;
 
     private bool _useLight;
     private bool _useXRay;
 
     private readonly HashSet<GameObject> _objectsInVision = new();
+    private readonly HashSet<GameObject> _objectsInXRay = new();
+
+    public event Action<GameObject> OnGameObjectDiscovered;
+    public event Action<IDisguiseAble> OnDisguiseAbleDiscovered;
+    public event Action<IDisguiseAble> OnDiscoveredWithXRay;
+
+    public event Action<float> OnVisionRadiusUpdated;
+    public event Action<float, bool> OnLightingUpdated;
+    public event Action<float, bool> OnXRayUpdated;
 
     protected override void Configure()
     {
@@ -40,7 +44,12 @@ public class VisionModule: StatModule
     public void SetXRay(bool state)
     {
         _useXRay = state;
-        OnXRayUpdated?.Invoke(_xRay, _useXRay);
+
+        if (!state) _objectsInXRay.Clear();
+
+        OnXRayUpdated?.Invoke(XRayRadius, _useXRay);
+
+        RefreshVisibility();
     }
 
     private void UpdateVisionRadius(float value)
@@ -58,29 +67,55 @@ public class VisionModule: StatModule
     private void UpdateSensorics(float value)
     {
         _sensorics = value;
+
         foreach (var gameObject in _objectsInVision)
         {
-            TryDiscoverObject(gameObject);
+            TryDiscoverObjectWithSensorics(gameObject);
         }
     }
 
     private void UpdateXRayRadius(float value)
     {
-        _xRay = value;
-        OnXRayUpdated?.Invoke(_xRay, _useXRay);
+        XRayRadius = value;
+        OnXRayUpdated?.Invoke(XRayRadius, _useXRay);
     }
 
     public void EnterObject(GameObject gameObject)
     {
         if (!_objectsInVision.Add(gameObject)) return;
-        TryDiscoverObject(gameObject);
+
+        TryDiscoverObjectWithSensorics(gameObject);
     }
 
-    private void TryDiscoverObject(GameObject gameObject)
+    public void ExitObject(GameObject gameObject)
+    {
+        _objectsInVision.Remove(gameObject);
+    }
+
+    public void EnterXRay(GameObject gameObject)
+    {
+        if (!_useXRay) return;
+
+        if (!_objectsInXRay.Add(gameObject)) return;
+
+        TryDiscoverObjectWithXRay(gameObject);
+    }
+
+    public void ExitXRay(GameObject gameObject)
+    {
+        _objectsInXRay.Remove(gameObject);
+
+        if (_objectsInVision.Contains(gameObject))
+        {
+            TryDiscoverObjectWithSensorics(gameObject);
+        }
+    }
+
+    private void TryDiscoverObjectWithSensorics(GameObject gameObject)
     {
         if (gameObject.TryGetComponent(out IDisguiseAble disguiseAble))
         {
-            if (disguiseAble.SetVisible(_sensorics))
+            if (disguiseAble.SetVisible(_sensorics, false))
             {
                 OnDisguiseAbleDiscovered?.Invoke(disguiseAble);
                 OnGameObjectDiscovered?.Invoke(gameObject);
@@ -90,9 +125,33 @@ public class VisionModule: StatModule
         OnGameObjectDiscovered?.Invoke(gameObject);
     }
 
-    public void ExitObject(GameObject gameObject)
+    private void TryDiscoverObjectWithXRay(GameObject gameObject)
     {
-        _objectsInVision.Remove(gameObject);
+        if (gameObject.TryGetComponent(out IDisguiseAble disguiseAble))
+        {
+            if (disguiseAble.SetVisible(0f, true))
+            {
+                OnDisguiseAbleDiscovered?.Invoke(disguiseAble);
+                OnDiscoveredWithXRay?.Invoke(disguiseAble);
+            }
+        }
+
+        OnGameObjectDiscovered?.Invoke(gameObject);
+    }
+
+    private void RefreshVisibility()
+    {
+        foreach (var gameObject in _objectsInXRay)
+        {
+            if (!_useXRay) break;
+
+            TryDiscoverObjectWithXRay(gameObject);
+        }
+
+        foreach (var gameObject in _objectsInVision)
+        {
+            TryDiscoverObjectWithSensorics(gameObject);
+        }
     }
 }
 }
