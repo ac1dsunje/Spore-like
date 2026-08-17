@@ -31,6 +31,7 @@ public enum StatType
     LightingRadius = 29,
     Passability = 30,
     XRay = 31,
-    AttackSpeed = 32
+    AttackSpeed = 32,
+    DisguiseInRest = 33,
 }
 }
