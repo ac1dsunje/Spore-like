@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0030ccaa56b24bdfbe9c600651de2505, type: 3}
   m_Name: Fern
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Food.FoodConfig
-  <StatsConfig>k__BackingField: {fileID: 11400000, guid: 3db7cfd2b6ff7d14f978fe607cb8d347, type: 2}
+  <StatsConfig>k__BackingField: {fileID: 11400000, guid: 319ad8e5656d4a349b941401df8ba706, type: 2}
   <FeedAmount>k__BackingField: 1
   <Color>k__BackingField: {r: 0.30980393, g: 0.44313726, b: 0, a: 1}
   <AnimationConfig>k__BackingField: {fileID: 11400000, guid: 07f160d9da918eb468b99b69d1447c88, type: 2}
