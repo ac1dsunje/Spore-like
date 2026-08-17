@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Player.Modules.Animation.AnimationConfig
   <Sprite>k__BackingField: {fileID: 8763638489087072838, guid: 94e3e3bc75c7e424582d4d594ef60ee3, type: 3}
   <Controller>k__BackingField: {fileID: -2068353789614240017, guid: 94e3e3bc75c7e424582d4d594ef60ee3, type: 3}
+  <CastShadows>k__BackingField: 1
