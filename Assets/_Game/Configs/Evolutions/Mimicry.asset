@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f724526a32e44aa591a5df78fb049629, type: 3}
   m_Name: Mimicry
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Evolutions.EvolutionConfig
-  <CreatureType>k__BackingField: 0
+  <State>k__BackingField: 1
   <Name>k__BackingField: Mimicry
+  <CreatureType>k__BackingField: 0
   <Description>k__BackingField: 
-  <Sprite>k__BackingField: {fileID: 0}
   <Stats>k__BackingField:
   - <Type>k__BackingField: 19
     <Value>k__BackingField: 2
@@ -26,13 +26,13 @@ MonoBehaviour:
   - <Type>k__BackingField: 33
     <Value>k__BackingField: 2
     <UpdatesByRarity>k__BackingField: 1
-  <State>k__BackingField: 1
-  <Requires>k__BackingField: []
+  <Abilities>k__BackingField: []
+  <Requires>k__BackingField:
+  - {fileID: 11400000, guid: fe03de68ba09c44468251cd3f2504cba, type: 2}
   <Blocks>k__BackingField: []
-  <Abilities>k__BackingField:
-  - {fileID: 11400000, guid: 40907eff98c6a334785fcd5c42083c40, type: 2}
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 10
     <ExperienceTypes>k__BackingField:
     - <Type>k__BackingField: 16
       <Amount>k__BackingField: 1
+  <Sprite>k__BackingField: {fileID: 0}

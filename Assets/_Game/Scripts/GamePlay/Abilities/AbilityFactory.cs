@@ -12,10 +12,6 @@ public enum AbilityType
     Dash = 1,
     Light = 2,
     XRay = 3,
-    SlowEnemies = 4,
-    Catch = 5,
-    ColorChange = 6,
-    NoiseLabels = 7,
     
 }
 
@@ -39,11 +35,6 @@ public class AbilityFactory
             AbilityType.Dash => new DashAbility(model.Movement, model.Endurance, config, _ticker, _input),
             AbilityType.Light => new LightAbility(model.Vision, model.Endurance, config, _ticker, _input),
             AbilityType.XRay => new XRayAbility(model.Vision, model.Endurance, config, _ticker, _input),
-            
-            //AbilityType.SlowEnemies => 
-            //AbilityType.Catch => 
-            //AbilityType.ColorChange => 
-            //AbilityType.NoiseLabels => 
             
             _ => throw new ArgumentOutOfRangeException(nameof(config.Type), config.Type, null)
         };

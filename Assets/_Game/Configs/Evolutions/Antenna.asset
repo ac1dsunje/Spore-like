@@ -12,21 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f724526a32e44aa591a5df78fb049629, type: 3}
   m_Name: Antenna
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Evolutions.EvolutionConfig
-  <CreatureType>k__BackingField: 0
+  <State>k__BackingField: 1
   <Name>k__BackingField: Antenna
+  <CreatureType>k__BackingField: 0
   <Description>k__BackingField: 
-  <Sprite>k__BackingField: {fileID: 0}
   <Stats>k__BackingField:
   - <Type>k__BackingField: 27
     <Value>k__BackingField: 1
     <UpdatesByRarity>k__BackingField: 1
-  <State>k__BackingField: 1
-  <Requires>k__BackingField:
-  - {fileID: 11400000, guid: 31e00f2754290b74c95bde1413a4331a, type: 2}
-  <Blocks>k__BackingField: []
   <Abilities>k__BackingField: []
+  <Requires>k__BackingField: []
+  <Blocks>k__BackingField: []
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 15
     <ExperienceTypes>k__BackingField:
     - <Type>k__BackingField: 8
       <Amount>k__BackingField: 1
+  <Sprite>k__BackingField: {fileID: 0}
