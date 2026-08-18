@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: Sand
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Biome.BiomeConfig
   <Temperature>k__BackingField: 28
+  <PassAbility>k__BackingField: 0
+  <AffectedStats>k__BackingField: []
   <Tiles>k__BackingField:
-  - {fileID: 11400000, guid: 4f64627fa3324d44c94426114142bb1c, type: 2}
-  - {fileID: 11400000, guid: 52a5d9006ffbf0541a6027aec7b3143a, type: 2}
-  - {fileID: 11400000, guid: f8e352c0b4746e54ca6f665dfb0c9693, type: 2}
-  - {fileID: 11400000, guid: e9a4ec9881c774b4ebde688e26065859, type: 2}
-  - {fileID: 11400000, guid: de3893987b9af6349840ade6e268491c, type: 2}
-  - {fileID: 11400000, guid: b211fe7c1b5e8e84eb626ea4dc72738f, type: 2}
+  - {fileID: 11400000, guid: e096a4ecb626b3a48b5128cd150ec37c, type: 2}
+  - {fileID: 11400000, guid: b0b2327d65e37ad469cb3f9c6e3beddf, type: 2}
+  - {fileID: 11400000, guid: d19a69d5ece2de4408655f637c40fe4c, type: 2}
+  - {fileID: 11400000, guid: ddccca244cbacac4b961eae012746034, type: 2}
+  - {fileID: 11400000, guid: e4f1c8157a546384fb9f3e53d4ad69c4, type: 2}
+  - {fileID: 11400000, guid: 81281dddb583d034e987bdc85827e076, type: 2}
   <EnvironmentConfigs>k__BackingField: []
   <ChanceEnvironment>k__BackingField: 0
