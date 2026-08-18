@@ -1,4 +1,6 @@
-﻿namespace _Game.Scripts.GamePlay.Module
+﻿using System;
+
+namespace _Game.Scripts.GamePlay.Module
 {
 public class DisguiseModule: StatModule
 {
@@ -9,15 +11,32 @@ public class DisguiseModule: StatModule
 
     private bool _isMoving;
 
+    public event Action OnUnnoticed;
+    public event Action OnUnnoticedInRest;
+
     protected override void Configure()
     {
         BindStat(StatType.Disguise, UpdateDisguise);
         BindStat(StatType.DisguiseInRest, UpdateDisguiseInRest);
     }
 
-    public void SetMoving(bool value)
+    public void SetMoving(bool value) => _isMoving = value;
+
+    public bool TryNotice(float sensorics, bool xRay)
     {
-        _isMoving = value;
+        var notice = sensorics >= Disguise || xRay;
+
+        if (!notice)
+        {
+            if (!_isMoving)
+                OnUnnoticedInRest?.Invoke();
+            
+            OnUnnoticed?.Invoke();
+        }
+
+        
+        
+        return notice;
     }
 
     private void UpdateDisguise(float value) => _disguise = value;

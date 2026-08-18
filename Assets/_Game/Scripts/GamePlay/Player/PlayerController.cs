@@ -50,8 +50,11 @@ public class PlayerController: NetworkBehaviour, IDamageAble, IDisguiseAble
 
     public bool SetVisible(float sensorics, bool xRay)
     {
-        var show = sensorics >= Model.Disguise.Disguise || xRay;
-        _animation.SetVisible(show);
+        var show = Model.Disguise.TryNotice(sensorics, xRay);
+        if (!_authority.IsLocal)
+        {
+            _animation.SetVisible(show);
+        }
         return show;
     }
 }

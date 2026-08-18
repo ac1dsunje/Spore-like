@@ -34,25 +34,22 @@ public class PlayerVision: EntityNetworkBehaviour
 
     protected override void OnNetworkInitialized()
     {
-        _visionCollider.enabled = IsLocal;
+        _module.OnVisionRadiusUpdated += UpdateVision;
+        _module.OnLightingUpdated += UpdateLighting;
         
-        if (IsLocal)
-        {
-            _module.OnVisionRadiusUpdated += UpdateVision;
-            _module.OnLightingUpdated += UpdateLighting;
-            
-            _currentVision = _module.VisionRadius;
-            _targetVision = _module.VisionRadius;
-            
-            ApplyVision(_currentVision);
-        }
+        _currentVision = _module.VisionRadius;
+        _targetVision = _module.VisionRadius;
+        
+        ApplyVision(_currentVision);
     }
 
     private void Update()
     {
-        if (!IsLocal) return;
-        var lightValue = _dayNightManager.Value;
-        _visionLight.color = new Color(lightValue, lightValue, lightValue, 1f);
+        if (IsLocal)
+        {
+            var lightValue = _dayNightManager.Value;
+            _visionLight.color = new Color(lightValue, lightValue, lightValue, 1f);
+        }
 
         if (Mathf.Approximately(_currentVision, _targetVision)) return;
 
@@ -75,8 +72,9 @@ public class PlayerVision: EntityNetworkBehaviour
     {
         _visionCollider.size = new Vector2(value * _camera.aspect, value) * 2f;
 
+        if (!IsLocal) return;
         _cineMachine.Lens.OrthographicSize = value;
-        _visionLight.pointLightOuterRadius = value * 2f + 2f;
+        _visionLight.pointLightOuterRadius = value * _camera.aspect * 2f;
     }
     
     private void OnTriggerEnter2D(Collider2D other)
