@@ -6,7 +6,7 @@ namespace _Game.Scripts.GamePlay.Evolutions
 [Serializable]
 public class EvolutionStat: Stat
 {
-    [field: SerializeField] public bool UpdatesByRarity {get; private set;}
+    [field: SerializeField] public bool UpdatesByRarity { get; private set; }
     
     public float CurrentValue {get; private set;}
 

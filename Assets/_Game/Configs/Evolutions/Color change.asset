@@ -10,28 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f724526a32e44aa591a5df78fb049629, type: 3}
-  m_Name: Pseudopods
+  m_Name: Color change
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Evolutions.EvolutionConfig
-  <CreatureType>k__BackingField: 4
-  <Name>k__BackingField: Pseudopods
+  <CreatureType>k__BackingField: 0
+  <Name>k__BackingField: Color change
   <Description>k__BackingField: 
-  <Sprite>k__BackingField: {fileID: 5510187115015493406, guid: 933b13e7c3bd6a349be68a57392f2b1e, type: 3}
-  <Stats>k__BackingField:
-  - <Type>k__BackingField: 30
-    <Value>k__BackingField: 1
-    <UpdatesByRarity>k__BackingField: 1
-  - <Type>k__BackingField: 0
-    <Value>k__BackingField: -0.2
-    <UpdatesByRarity>k__BackingField: 1
+  <Sprite>k__BackingField: {fileID: 0}
+  <Stats>k__BackingField: []
   <State>k__BackingField: 1
   <Requires>k__BackingField: []
   <Blocks>k__BackingField:
-  - {fileID: 11400000, guid: 854f9e0add2d80b4db02a4c5cc7de3d4, type: 2}
-  - {fileID: 11400000, guid: d30b4af745017b14cab80bd82b3480c1, type: 2}
-  - {fileID: 11400000, guid: 67620521737fb8e4682ec15f90496253, type: 2}
-  <Abilities>k__BackingField: []
+  - {fileID: 11400000, guid: b299675e42663494c8fd273e80e1ddf6, type: 2}
+  <Abilities>k__BackingField:
+  - {fileID: 11400000, guid: 40907eff98c6a334785fcd5c42083c40, type: 2}
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 10
     <ExperienceTypes>k__BackingField:
-    - <Type>k__BackingField: 6
+    - <Type>k__BackingField: 15
       <Amount>k__BackingField: 1

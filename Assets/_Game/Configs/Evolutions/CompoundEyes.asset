@@ -24,15 +24,11 @@ MonoBehaviour:
   - <Type>k__BackingField: 27
     <Value>k__BackingField: 1
     <UpdatesByRarity>k__BackingField: 1
-  - <Type>k__BackingField: 31
-    <Value>k__BackingField: 1
-    <UpdatesByRarity>k__BackingField: 1
   <State>k__BackingField: 1
   <Requires>k__BackingField: []
   <Blocks>k__BackingField:
   - {fileID: 11400000, guid: 7e7bc9745c1d2f94291da6ac2f032cdf, type: 2}
-  <Abilities>k__BackingField:
-  - {fileID: 11400000, guid: 5ff5221ad8acf544aac45d66ffb8723c, type: 2}
+  <Abilities>k__BackingField: []
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 20
     <ExperienceTypes>k__BackingField:

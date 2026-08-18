@@ -17,17 +17,14 @@ MonoBehaviour:
   <Description>k__BackingField: You`ll be at the time
   <Sprite>k__BackingField: {fileID: 3516777435755692249, guid: 347c41c4af0cb984aac865bd2f70a975, type: 3}
   <Stats>k__BackingField:
-  - <Type>k__BackingField: 0
-    <Value>k__BackingField: 1
-    <UpdatesByRarity>k__BackingField: 1
   - <Type>k__BackingField: 3
-    <Value>k__BackingField: 10
-    <UpdatesByRarity>k__BackingField: 1
-  - <Type>k__BackingField: 8
     <Value>k__BackingField: -10
     <UpdatesByRarity>k__BackingField: 1
   - <Type>k__BackingField: 16
     <Value>k__BackingField: 2
+    <UpdatesByRarity>k__BackingField: 1
+  - <Type>k__BackingField: 8
+    <Value>k__BackingField: 10
     <UpdatesByRarity>k__BackingField: 1
   <State>k__BackingField: 1
   <Requires>k__BackingField: []
@@ -35,7 +32,7 @@ MonoBehaviour:
   <Abilities>k__BackingField:
   - {fileID: 11400000, guid: d1a5821f561251144bbc0cf79b86d02a, type: 2}
   <ExperienceConfig>k__BackingField:
-    <LevelSet>k__BackingField: 20
+    <LevelSet>k__BackingField: 10
     <ExperienceTypes>k__BackingField:
     - <Type>k__BackingField: 10
       <Amount>k__BackingField: 2

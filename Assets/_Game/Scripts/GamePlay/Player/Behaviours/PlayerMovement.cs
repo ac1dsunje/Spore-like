@@ -11,13 +11,15 @@ public class PlayerMovement: EntityNetworkBehaviour
     [SerializeField] private MovementController _controller;
 
     private Vector3Int GridPosition => _controller.GridPosition;
-    private MovementModule _module;
+    private MovementModule _movement;
+    private DisguiseModule _disguise;
     private PlayerInputService _inputService;
 
     [Inject]
-    private void Construct(MovementModule movement, PlayerInputService inputService)
+    private void Construct(MovementModule movement, DisguiseModule disguise, PlayerInputService inputService)
     {
-        _module = movement;
+        _movement = movement;
+        _disguise = disguise;
         _inputService = inputService;
     }
 
@@ -34,18 +36,20 @@ public class PlayerMovement: EntityNetworkBehaviour
             Move(input);
             TryDash(input);
         }
-        _module.UpdateGridPosition(GridPosition);
+        
+        _disguise.SetMoving(_controller.IsMoving);
+        _movement.UpdateGridPosition(GridPosition);
     }
 
     private void Move(Vector2 input)
     {
-        var targetVelocity = input * _module.MoveSpeed;
+        var targetVelocity = input * _movement.MoveSpeed;
 
-        var hasInput = input.sqrMagnitude > 0f && _module.CanMove;
+        var hasInput = input.sqrMagnitude > 0f && _movement.CanMove;
 
-        var time = hasInput ? _module.Acceleration : _module.Inertia;
+        var time = hasInput ? _movement.Acceleration : _movement.Inertia;
 
-        var rate = _module.MoveSpeed / time;
+        var rate = _movement.MoveSpeed / time;
         
         _controller.Move(targetVelocity, rate * Time.fixedDeltaTime);
         
@@ -53,9 +57,9 @@ public class PlayerMovement: EntityNetworkBehaviour
 
     private void TryDash(Vector2 input)
     {
-        if (!_module.DashRequested) return;
-        _controller.Push(input, _module.DashPower);
-        _module.SetDash(false);
+        if (!_movement.DashRequested) return;
+        _controller.Push(input, _movement.DashPower);
+        _movement.SetDash(false);
     }
 
     private void TryFlip()

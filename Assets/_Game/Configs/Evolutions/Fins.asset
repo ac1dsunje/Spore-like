@@ -12,22 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f724526a32e44aa591a5df78fb049629, type: 3}
   m_Name: Fins
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Evolutions.EvolutionConfig
-  <CreatureType>k__BackingField: 1
+  <State>k__BackingField: 1
   <Name>k__BackingField: Fins
+  <CreatureType>k__BackingField: 1
   <Description>k__BackingField: 
-  <Sprite>k__BackingField: {fileID: -6548568008615366512, guid: 815e45f4ac28bf3499210d6d6ad2bf2c, type: 3}
   <Stats>k__BackingField:
   - <Type>k__BackingField: 0
     <Value>k__BackingField: 0.5
     <UpdatesByRarity>k__BackingField: 1
-  <State>k__BackingField: 1
+  - <Type>k__BackingField: 18
+    <Value>k__BackingField: 3
+    <UpdatesByRarity>k__BackingField: 1
+  <Abilities>k__BackingField:
+  - {fileID: 11400000, guid: be1b63a43cda10d4a8d67386e9596059, type: 2}
   <Requires>k__BackingField: []
   <Blocks>k__BackingField:
   - {fileID: 11400000, guid: 854f9e0add2d80b4db02a4c5cc7de3d4, type: 2}
   - {fileID: 11400000, guid: e04bb15e2dd62b540a4c2f6e5608c4c1, type: 2}
-  <Abilities>k__BackingField: []
+  - {fileID: 11400000, guid: 67620521737fb8e4682ec15f90496253, type: 2}
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 20
     <ExperienceTypes>k__BackingField:
     - <Type>k__BackingField: 6
       <Amount>k__BackingField: 1
+  <Sprite>k__BackingField: {fileID: -6548568008615366512, guid: 815e45f4ac28bf3499210d6d6ad2bf2c, type: 3}

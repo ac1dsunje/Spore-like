@@ -18,7 +18,13 @@ public enum ExperienceType
     DamageDealing = 9,
     StartSprinting = 10,
     DamageBlocking = 11,
-    XRayDiscovering = 12
+    XRayDiscovering = 12,
+    SlowEnemiesDamageDealing = 13,
+    CaughtEnemiesDamageDealing = 14,
+    UnnoticedStaying = 15,
+    UnnoticedStayingInRest = 16,
+    NoiseTargetDiscovering = 17,
+    
 }
 public class ExperienceFactory
 {
@@ -39,6 +45,13 @@ public class ExperienceFactory
             ExperienceType.StartSprinting => new StartSprinting(playerModel.Movement, config.Amount),
             ExperienceType.DamageBlocking => new DamageBlocking(playerModel.Defense, config.Amount),
             ExperienceType.XRayDiscovering => new XRayDiscovering(playerModel.Vision, config.Amount),
+            
+            // ExperienceType.SlowEnemiesDamageDealing => 
+            // ExperienceType.CaughtEnemiesDamageDealing => 
+            // ExperienceType.UnnoticedStaying => 
+            // ExperienceType.UnnoticedStayingInRest => 
+            // ExperienceType.NoiseTargetDiscovering => 
+            
             _ => throw new ArgumentOutOfRangeException(nameof(config), config, null)
         };
     }

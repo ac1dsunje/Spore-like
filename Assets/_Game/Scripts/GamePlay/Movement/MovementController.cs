@@ -5,12 +5,13 @@ namespace _Game.Scripts.GamePlay.Movement
 [RequireComponent(typeof(Rigidbody2D))]
 public class MovementController: MonoBehaviour
 {
-    
     public Vector3Int GridPosition => new(
         Mathf.RoundToInt(_rigidbody.position.x),
         Mathf.RoundToInt(_rigidbody.position.y),
         0
     );
+    
+    public bool IsMoving => _rigidbody.linearVelocity != Vector2.zero;
     
     private Rigidbody2D _rigidbody;
 
