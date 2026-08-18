@@ -45,7 +45,7 @@ public class PlayerMovement: EntityNetworkBehaviour
     {
         var targetVelocity = input * _movement.MoveSpeed;
 
-        var hasInput = input.sqrMagnitude > 0f && _movement.CanMove;
+        var hasInput = input.sqrMagnitude > 0f;
 
         var time = hasInput ? _movement.Acceleration : _movement.Inertia;
 

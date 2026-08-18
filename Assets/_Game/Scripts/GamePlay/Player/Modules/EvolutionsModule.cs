@@ -16,10 +16,9 @@ public class EvolutionsModule: IDisposable
     private RaritiesDatabase _raritiesDatabase;
     private int _minEvolutions;
 
-    private ExperienceModule _experience;
-    private MovementModule _movement;
-    private EntityStats _stats;
-    private AbilitiesModule _abilities;
+    private readonly ExperienceModule _experience;
+    private readonly EntityStats _stats;
+    private readonly AbilitiesModule _abilities;
     private PlayerModel _player;
     
     private readonly List<Evolution> _evolutions = new();
@@ -27,10 +26,9 @@ public class EvolutionsModule: IDisposable
     public event Action<List<Evolution>> OnSlotsFilled;
     public event Action<Evolution> OnEvolutionApplied;
 
-    public EvolutionsModule(ExperienceModule experience, MovementModule movement, EntityStats stats, AbilitiesModule abilities)
+    public EvolutionsModule(ExperienceModule experience, EntityStats stats, AbilitiesModule abilities)
     {
         _experience = experience;
-        _movement = movement;
         _stats = stats;
         _abilities = abilities;
         _experience.OnLevelChanged += OnLevelUpdated;
@@ -60,7 +58,6 @@ public class EvolutionsModule: IDisposable
         if (_evolutions.Count(evolution => evolution.State == EvolutionState.IsAble) <= 0) return;
         
         FillSlots();
-        _movement.Disable();
     }
 
     public void ChooseEvolution(Evolution evolution)
@@ -74,8 +71,6 @@ public class EvolutionsModule: IDisposable
         UpdateChances(evolution);
         
         OnEvolutionApplied?.Invoke(evolution);
-        
-        _movement.Enable();
     }
 
     private void OnEvolutionLevelUp(Evolution evolution, int level)

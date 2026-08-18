@@ -30,7 +30,6 @@ public class UIManager: MonoBehaviour
         _player = player.Model;
         
         _player.Experience.OnLevelChanged += OnLevelUpdated;
-        _pauseUIScreen.OnStateChanged += OnPauseScreenChanged;
         
         _overlayUIScreen.Construct(_player);
         _activeEvolutionsDisplay.Construct(_player.Evolutions);
@@ -46,14 +45,6 @@ public class UIManager: MonoBehaviour
         }
     }
 
-    private void OnPauseScreenChanged(bool state)
-    {
-        if (state)
-            _player.Movement.Disable();
-        else
-            _player.Movement.Enable();
-    }
-
     private void OnLevelUpdated(int level)
     {
         _evolutionChooseUIScreen.ShowScreen();
@@ -63,7 +54,6 @@ public class UIManager: MonoBehaviour
     {
         _player.Experience.OnLevelChanged -= OnLevelUpdated;
         _registry.OnLocalPlayerAdded -= AddPlayer;
-        _pauseUIScreen.OnStateChanged -= OnPauseScreenChanged;
     }
 }
 }

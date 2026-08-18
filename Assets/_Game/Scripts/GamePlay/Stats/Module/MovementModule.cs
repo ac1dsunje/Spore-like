@@ -3,16 +3,10 @@ using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Module
 {
-public enum MovementState
-{
-    Enabled,
-    Disabled
-}
 
 public class MovementModule : StatModule
 {
     public float MoveSpeed => _useSprint ? _moveSpeed * _sprintMultiplier : _moveSpeed;
-    public bool CanMove => _state == MovementState.Enabled;
 
     public float Acceleration => _acceleration / 100f;
     public float Inertia => _inertia / 100f;
@@ -31,8 +25,6 @@ public class MovementModule : StatModule
     private float _sprintMultiplier;
     
     private bool _useSprint;
-
-    private MovementState _state = MovementState.Enabled;
     
     protected override void Configure()
     {
@@ -54,10 +46,6 @@ public class MovementModule : StatModule
         OnSprint?.Invoke();
     }
 
-    public void Disable() => SetState(MovementState.Disabled);
-
-    public void Enable() => SetState(MovementState.Enabled);
-
     public void UpdateGridPosition(Vector3Int position)
     {
         if (position == GridPosition) return;
@@ -75,7 +63,5 @@ public class MovementModule : StatModule
     private void UpdateSprintMultiplier(float value) => _sprintMultiplier = value;
 
     private void UpdateDashPower(float value) => DashPower = value;
-    
-    private void SetState(MovementState state) => _state = state;
 }
 }
