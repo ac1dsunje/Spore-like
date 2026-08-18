@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace _Game.Scripts.GamePlay
 {
@@ -8,8 +7,9 @@ public class EntityStats
 {
     private readonly Dictionary<StatType, float> _stats = new();
     private readonly Dictionary<StatType, float> _basicStats = new();
-    private readonly Dictionary<IStatSource, Dictionary<StatType, float>> _sourceStats = new();
 
+    private readonly Dictionary<IStatSource, List<SourceStat>> _sourceStats = new();
+    
     public event Action<StatType, float> OnStatUpdated;
     
     public void Initialize(StatsConfig[] configs)
@@ -24,8 +24,8 @@ public class EntityStats
     {
         foreach (var stat in stats)
         {
-            _basicStats.Add(stat.Type, stat.Value);
-            _stats.Add(stat.Type, stat.Value);
+            _basicStats[stat.Type] = stat.Value;
+            _stats[stat.Type] = stat.Value;
 
             UpdateStat(stat.Type);
         }
@@ -33,11 +33,13 @@ public class EntityStats
 
     public void AddSource(IStatSource source)
     {
-        var sourceStats = source.GetStats();
+        var stats = source.GetStats();
         
-        AddSourceStats(source, sourceStats);
+        if (_sourceStats.ContainsKey(source)) return;
         
-        foreach (var stat in sourceStats)
+        _sourceStats.Add(source, stats);
+        
+        foreach (var stat in stats)
         {
             RecalculateStat(stat.Type);
         }
@@ -45,22 +47,21 @@ public class EntityStats
 
     public void UpdateSource(IStatSource source)
     {
-        var changedStats = new HashSet<StatType>();
+        if (!_sourceStats.ContainsKey(source)) return;
+        
+        var changedTypes = new HashSet<StatType>();
 
         foreach (var stat in source.GetStats())
         {
-            if (!_sourceStats[source].ContainsKey(stat.Type) ||
-                !Mathf.Approximately(_sourceStats[source][stat.Type], stat.Value))
-            {
-                changedStats.Add(stat.Type);
-            }
-            
-            _sourceStats[source][stat.Type] = stat.Value;
+            changedTypes.Add(stat.Type);
         }
+        
+        _sourceStats[source] = source.GetStats();
 
-        foreach (var statType in changedStats)
+
+        foreach (var type in changedTypes)
         {
-            RecalculateStat(statType);
+            RecalculateStat(type);
         }
     }
     
@@ -69,48 +70,109 @@ public class EntityStats
         if (source == null) return;
         if (!_sourceStats.TryGetValue(source, out var stats)) return;
 
-        var affectedStats = new List<StatType>(stats.Keys);
+        var affectedStats = new HashSet<StatType>();
+
+        foreach (var stat in stats)
+        {
+            affectedStats.Add(stat.Type);
+        }
 
         _sourceStats.Remove(source);
-
-        foreach (var statType in affectedStats)
+        
+        foreach (var type in affectedStats)
         {
-            RecalculateStat(statType);
+            RecalculateStat(type);
         }
-    }
-
-    private void AddSourceStats(IStatSource source, List<Stat> sourceStats)
-    {
-        if (_sourceStats.ContainsKey(source))
-            return;
-
-        var stats = new Dictionary<StatType, float>();
-
-        foreach (var stat in sourceStats)
-        {
-            stats.Add(stat.Type, stat.Value);
-        }
-
-        _sourceStats.Add(source, stats);
     }
 
     private void RecalculateStat(StatType type)
     {
-        var value = _basicStats.GetValueOrDefault(type, 0f);
+        var baseValue = _basicStats.GetValueOrDefault(type);
 
-        foreach (var sourceStat in _sourceStats)
+        var stats = GetStats(type);
+        
+        var result = baseValue;
+
+        foreach (var stat in stats)
         {
-            if (sourceStat.Value.TryGetValue(type, out var statValue))
-            {
-                value += statValue;
-            }
+            if (stat.Operation != StatOperation.Add)
+                continue;
+
+
+            result += stat.CurrentValue;
         }
 
-        _stats[type] = value;
+        foreach (var stat in stats)
+        {
+            if (stat.Operation != StatOperation.Multiply ||
+                stat.Target != StatTarget.Base)
+                continue;
 
+
+            result += baseValue * stat.CurrentValue;
+        }
+
+        foreach (var stat in stats)
+        {
+            if (stat.Operation != StatOperation.Percent ||
+                stat.Target != StatTarget.Base)
+                continue;
+
+
+            result += baseValue * stat.CurrentValue / 100f;
+        }
+
+        foreach (var stat in stats)
+        {
+            if (stat.Operation != StatOperation.Multiply ||
+                stat.Target != StatTarget.Total)
+                continue;
+
+
+            result *= stat.CurrentValue;
+        }
+
+        foreach (var stat in stats)
+        {
+            if (stat.Operation != StatOperation.Percent ||
+                stat.Target != StatTarget.Total)
+                continue;
+
+
+            result *= 1f + stat.CurrentValue / 100f;
+        }
+
+        _stats[type] = result;
+        
         UpdateStat(type);
     }
 
-    private void UpdateStat(StatType type) => OnStatUpdated?.Invoke(type, _stats[type]);
+
+    private List<SourceStat> GetStats(StatType type)
+    {
+        var result = new List<SourceStat>();
+
+        foreach (var source in _sourceStats.Values)
+        {
+            foreach (var stat in source)
+            {
+                if (stat.Type == type)
+                {
+                    result.Add(stat);
+                }
+            }
+        }
+
+        return result;
+    }
+
+
+    private void UpdateStat(StatType type)
+    {
+        if (_stats.TryGetValue(type, out var value))
+        {
+            OnStatUpdated?.Invoke(type, value);
+        }
+    }
 }
 }

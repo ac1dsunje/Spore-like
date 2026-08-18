@@ -8,7 +8,7 @@ public class Biome: IStatSource
     public float Temperature => Config.Temperature;
     public float PassAbility => Config.PassAbility;
     
-    public List<Stat> GetStats() => Config.AffectedStats;
+    public List<SourceStat> GetStats() => Config.AffectedStats;
     
     public BiomeConfig Config { get; private set; }
 

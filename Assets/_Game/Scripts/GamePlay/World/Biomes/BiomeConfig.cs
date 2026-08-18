@@ -10,7 +10,7 @@ public class BiomeConfig: ScriptableObject
 {
     [field: SerializeField] public float Temperature { get; private set; }
     [field: SerializeField] public float PassAbility { get; private set; }
-    [field: SerializeField] public List<Stat> AffectedStats { get; private set; } = new();
+    [field: SerializeField] public List<SourceStat> AffectedStats { get; private set; } = new();
     [field: SerializeField] public List<TileBase> Tiles { get; private set; }
     [field: SerializeField] public List<EnvironmentConfig> EnvironmentConfigs { get; private set; }
     [field: SerializeField] public int ChanceEnvironment { get; private set; } = 20;

@@ -4,20 +4,23 @@ using UnityEngine;
 namespace _Game.Scripts.GamePlay.Evolutions
 {
 [Serializable]
-public class EvolutionStat: Stat
+public class EvolutionStat : SourceStat
 {
     [field: SerializeField] public bool UpdatesByRarity { get; private set; }
     
-    public float CurrentValue {get; private set;}
+    public float CurrentRarityValue { get; private set; }
 
-    public EvolutionStat(EvolutionStat config): base (config.Type, config.Value)
+    public override float CurrentValue => CurrentRarityValue;
+
+    public EvolutionStat(EvolutionStat config) : base(config.Type, config.Value, config.Operation, config.Target)
     {
         UpdatesByRarity = config.UpdatesByRarity;
+        CurrentRarityValue = Value;
     }
-
-    public void UseRarity(float scaler)
+    
+    public void UseRarity(float multiplier)
     {
-        CurrentValue = UpdatesByRarity ? Value * scaler : Value;
+        CurrentRarityValue = UpdatesByRarity ? Value * multiplier : Value;
     }
 }
 }

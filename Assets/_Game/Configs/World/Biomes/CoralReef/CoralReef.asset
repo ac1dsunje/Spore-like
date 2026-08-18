@@ -16,7 +16,9 @@ MonoBehaviour:
   <PassAbility>k__BackingField: 1
   <AffectedStats>k__BackingField:
   - <Type>k__BackingField: 0
-    <Value>k__BackingField: -1
+    <Value>k__BackingField: -20
+    <Operation>k__BackingField: 2
+    <Target>k__BackingField: 1
   <Tiles>k__BackingField:
   - {fileID: 11400000, guid: ff4789d9b6bcd764abbaa44f7cd9a807, type: 2}
   <EnvironmentConfigs>k__BackingField:
