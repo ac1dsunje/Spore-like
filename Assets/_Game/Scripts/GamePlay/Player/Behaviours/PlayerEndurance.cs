@@ -1,5 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Entity.Module;
-using _Game.Scripts.GamePlay.Network;
+using _Game.Scripts.GamePlay.Entity.Network;
 using UnityEngine;
 using VContainer;
 
@@ -17,7 +17,7 @@ public class PlayerEndurance: EntityNetworkBehaviour
 
     private void Update()
     {
-        if (!_module.IsUsed && IsLocal)
+        if (!_module.IsUsed)
         {
             _module.AddEndurance(_module.EnduranceRecovery * Time.deltaTime);
         }

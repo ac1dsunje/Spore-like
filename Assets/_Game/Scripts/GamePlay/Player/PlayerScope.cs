@@ -2,7 +2,7 @@
 using _Game.Scripts.GamePlay.Behaviours;
 using _Game.Scripts.GamePlay.Entity;
 using _Game.Scripts.GamePlay.Entity.Module;
-using _Game.Scripts.GamePlay.Network;
+using _Game.Scripts.GamePlay.Entity.Network;
 using _Game.Scripts.GamePlay.Player.Behaviours;
 using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;

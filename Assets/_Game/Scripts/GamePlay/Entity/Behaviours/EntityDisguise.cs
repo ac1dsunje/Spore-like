@@ -1,7 +1,7 @@
 ﻿using _Game.Scripts.GamePlay.Animation;
 using _Game.Scripts.GamePlay.Entity.Interfaces;
 using _Game.Scripts.GamePlay.Entity.Module;
-using _Game.Scripts.GamePlay.Network;
+using _Game.Scripts.GamePlay.Entity.Network;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Behaviours

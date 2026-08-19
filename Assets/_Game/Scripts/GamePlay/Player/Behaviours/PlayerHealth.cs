@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using _Game.Scripts.GamePlay.Entity.Module;
-using _Game.Scripts.GamePlay.Network;
+using _Game.Scripts.GamePlay.Entity.Network;
 using UnityEngine;
 using VContainer;
 

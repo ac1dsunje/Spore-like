@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace _Game.Scripts.GamePlay.Network
+namespace _Game.Scripts.GamePlay.Entity.Network
 {
 public class EntityAuthority
 {

@@ -1,6 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Entity.Module;
+using _Game.Scripts.GamePlay.Entity.Network;
 using _Game.Scripts.GamePlay.Movement;
-using _Game.Scripts.GamePlay.Network;
 using UnityEngine;
 using VContainer;
 

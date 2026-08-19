@@ -1,5 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Entity.Module;
-using _Game.Scripts.GamePlay.Network;
+using _Game.Scripts.GamePlay.Entity.Network;
 using _Game.Scripts.GamePlay.World;
 using Unity.Cinemachine;
 using UnityEngine;
