@@ -1,7 +1,7 @@
 ﻿using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Entity.Interfaces;
-using _Game.Scripts.GamePlay.Entity.Module;
-using _Game.Scripts.GamePlay.Entity.Network;
+using _Game.Scripts.GamePlay.Module;
+using _Game.Scripts.GamePlay.Player.Network;
 using _Game.Scripts.GamePlay.Weapons;
 using UnityEngine;
 using VContainer;

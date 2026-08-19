@@ -1,4 +1,4 @@
-﻿using _Game.Scripts.GamePlay.Entity.Module;
+﻿using _Game.Scripts.GamePlay.Module;
 
 namespace _Game.Scripts.GamePlay.Experience.Types
 {

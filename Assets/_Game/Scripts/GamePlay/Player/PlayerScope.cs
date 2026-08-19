@@ -1,11 +1,10 @@
 ﻿using _Game.Scripts.GamePlay.Animation;
 using _Game.Scripts.GamePlay.Entity;
-using _Game.Scripts.GamePlay.Entity.Behaviours;
-using _Game.Scripts.GamePlay.Entity.Module;
-using _Game.Scripts.GamePlay.Entity.Network;
+using _Game.Scripts.GamePlay.Module;
 using _Game.Scripts.GamePlay.Player.Behaviours;
 using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
+using _Game.Scripts.GamePlay.Player.Network;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -73,7 +72,7 @@ public class PlayerScope: LifetimeScope
         builder.Register<EvolutionsModule>(Lifetime.Scoped);
         
         // Disguise
-        builder.RegisterComponent(GetComponentInChildren<EntityDisguise>());
+        builder.RegisterComponent(GetComponentInChildren<PlayerDisguise>());
         builder.Register<DisguiseModule>(Lifetime.Scoped);
         
         // Animation

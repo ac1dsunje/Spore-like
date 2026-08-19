@@ -1,5 +1,5 @@
-﻿using _Game.Scripts.GamePlay.Entity.Module;
-using _Game.Scripts.GamePlay.Entity.Network;
+﻿using _Game.Scripts.GamePlay.Module;
+using _Game.Scripts.GamePlay.Player.Network;
 using UnityEngine;
 using VContainer;
 

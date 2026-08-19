@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace _Game.Scripts.GamePlay.Entity
+namespace _Game.Scripts.GamePlay
 {
 public class EntityStats
 {

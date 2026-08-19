@@ -1,5 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Entity.Interfaces;
-using _Game.Scripts.GamePlay.Entity.Module;
+using _Game.Scripts.GamePlay.Module;
 using UnityEngine;
 using VContainer;
 

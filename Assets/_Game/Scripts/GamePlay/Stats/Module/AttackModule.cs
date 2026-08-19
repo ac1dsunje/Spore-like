@@ -1,7 +1,7 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Entity.Interfaces;
 
-namespace _Game.Scripts.GamePlay.Entity.Module
+namespace _Game.Scripts.GamePlay.Module
 {
 public class AttackModule: StatModule
 {

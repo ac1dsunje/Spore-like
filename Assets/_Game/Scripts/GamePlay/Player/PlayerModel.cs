@@ -1,6 +1,5 @@
-﻿using _Game.Scripts.GamePlay.Entity;
-using _Game.Scripts.GamePlay.Entity.Interfaces;
-using _Game.Scripts.GamePlay.Entity.Module;
+﻿using _Game.Scripts.GamePlay.Entity.Interfaces;
+using _Game.Scripts.GamePlay.Module;
 using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
 using VContainer;

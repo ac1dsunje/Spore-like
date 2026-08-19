@@ -1,12 +1,12 @@
 ﻿using _Game.Scripts.GamePlay.Animation;
-using _Game.Scripts.GamePlay.Entity.Interfaces;
-using _Game.Scripts.GamePlay.Entity.Module;
-using _Game.Scripts.GamePlay.Entity.Network;
+using _Game.Scripts.GamePlay.Interfaces;
+using _Game.Scripts.GamePlay.Module;
+using _Game.Scripts.GamePlay.Player.Network;
 using VContainer;
 
-namespace _Game.Scripts.GamePlay.Entity.Behaviours
+namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class EntityDisguise : EntityNetworkBehaviour, IDisguisable
+public class PlayerDisguise : EntityNetworkBehaviour, IDisguisable
 {
     [Inject] private ItemAnimation _animation;
     [Inject] private DisguiseModule _disguise;

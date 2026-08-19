@@ -1,8 +1,8 @@
 ﻿using _Game.Scripts.GamePlay.Animation;
 using _Game.Scripts.GamePlay.Entity.Interfaces;
-using _Game.Scripts.GamePlay.Entity.Network;
 using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
+using _Game.Scripts.GamePlay.Player.Network;
 using _Game.Scripts.GamePlay.Rarities;
 using Unity.Netcode;
 using UnityEngine;

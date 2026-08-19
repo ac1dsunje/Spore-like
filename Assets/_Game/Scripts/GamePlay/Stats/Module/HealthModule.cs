@@ -2,7 +2,7 @@
 using _Game.Scripts.GamePlay.UI.Bar;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.Entity.Module
+namespace _Game.Scripts.GamePlay.Module
 {
 public class HealthModule: StatModule, IResource
 {

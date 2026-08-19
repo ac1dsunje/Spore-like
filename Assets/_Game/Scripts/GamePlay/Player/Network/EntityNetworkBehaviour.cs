@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using VContainer;
 
-namespace _Game.Scripts.GamePlay.Entity.Network
+namespace _Game.Scripts.GamePlay.Player.Network
 {
 public abstract class EntityNetworkBehaviour : MonoBehaviour
 {

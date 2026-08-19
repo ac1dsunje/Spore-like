@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using _Game.Scripts.GamePlay.Entity.Module;
+using _Game.Scripts.GamePlay.Module;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Experience.Types

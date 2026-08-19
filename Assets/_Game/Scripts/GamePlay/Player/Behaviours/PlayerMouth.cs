@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using _Game.Scripts.GamePlay.Entity.Module;
-using _Game.Scripts.GamePlay.Entity.Network;
+using _Game.Scripts.GamePlay.Module;
+using _Game.Scripts.GamePlay.Player.Network;
 using _Game.Scripts.GamePlay.World.Food;
 using UnityEngine;
 using VContainer;
