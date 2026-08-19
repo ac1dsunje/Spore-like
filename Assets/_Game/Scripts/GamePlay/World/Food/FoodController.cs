@@ -54,7 +54,7 @@ public class FoodController: MonoBehaviour, IBiteable
         _health.OnDamageTaken -= SpawnParticles;
         _health.OnDeath -= Die;
         
-        Destroy(gameObject, 1f);
+        Destroy(gameObject, 0.5f);
         
         gameObject.SetActive(false);
     }

@@ -65,9 +65,6 @@ public class HealthModule: StatModule, IResource
 
     private void UpdateRegeneration(float value) => Regeneration = value;
 
-    private void Die()
-    {
-        OnDeath?.Invoke();
-    }
+    private void Die() => OnDeath?.Invoke();
 }
 }
