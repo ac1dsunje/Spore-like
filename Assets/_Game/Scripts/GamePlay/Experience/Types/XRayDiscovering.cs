@@ -8,7 +8,7 @@ public class XRayDiscovering: ExperienceService
 {
     private readonly VisionModule _module;
     
-    private readonly HashSet<IDisguiseAble> _disguisedObjects = new();
+    private readonly HashSet<IDisguisable> _disguisedObjects = new();
 
     public XRayDiscovering(VisionModule module, float amount) : base(amount)
     {
@@ -16,7 +16,7 @@ public class XRayDiscovering: ExperienceService
         _module.OnDiscoveredWithXRay += OnObjectDiscoveredWithXRay;
     }
 
-    private void OnObjectDiscoveredWithXRay(IDisguiseAble gameObject)
+    private void OnObjectDiscoveredWithXRay(IDisguisable gameObject)
     {
         if (!_disguisedObjects.Add(gameObject)) return;
 

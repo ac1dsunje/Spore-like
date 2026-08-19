@@ -10,7 +10,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player
 {
-public class PlayerController: NetworkBehaviour, IDamageAble, IDisguiseAble
+public class PlayerController: NetworkBehaviour, IDamageAble, IDisguisable
 {
     [Header("Evolutions")]
     [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
@@ -48,7 +48,7 @@ public class PlayerController: NetworkBehaviour, IDamageAble, IDisguiseAble
     public float TakeDamage(HitInfo hit) => Model.TakeDamage(hit);
     public void SetDamageDealt(float damage) => Model.Attack.SetDamageDealt(damage);
 
-    public bool SetVisible(float sensorics, bool xRay)
+    public bool IsDetected(float sensorics, bool xRay)
     {
         var show = Model.Disguise.TryNotice(sensorics, xRay);
         if (!_authority.IsLocal)

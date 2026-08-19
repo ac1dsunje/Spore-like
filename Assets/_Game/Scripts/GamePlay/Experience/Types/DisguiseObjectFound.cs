@@ -8,7 +8,7 @@ public class DisguiseObjectFound: ExperienceService
 {
     private readonly VisionModule _module;
     
-    private readonly HashSet<IDisguiseAble> _disguisedObjects = new();
+    private readonly HashSet<IDisguisable> _disguisedObjects = new();
 
     public DisguiseObjectFound(VisionModule module, float amount) : base(amount)
     {
@@ -16,7 +16,7 @@ public class DisguiseObjectFound: ExperienceService
         _module.OnDisguiseAbleDiscovered += OnDisguiseObjectFound;
     }
 
-    private void OnDisguiseObjectFound(IDisguiseAble gameObject)
+    private void OnDisguiseObjectFound(IDisguisable gameObject)
     {
         if (!_disguisedObjects.Add(gameObject)) return;
 

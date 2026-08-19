@@ -20,8 +20,8 @@ public class VisionModule: StatModule
     private readonly HashSet<GameObject> _objectsInXRay = new();
 
     public event Action<GameObject> OnGameObjectDiscovered;
-    public event Action<IDisguiseAble> OnDisguiseAbleDiscovered;
-    public event Action<IDisguiseAble> OnDiscoveredWithXRay;
+    public event Action<IDisguisable> OnDisguiseAbleDiscovered;
+    public event Action<IDisguisable> OnDiscoveredWithXRay;
 
     public event Action<float> OnVisionRadiusUpdated;
     public event Action<float, bool> OnLightingUpdated;
@@ -113,9 +113,9 @@ public class VisionModule: StatModule
 
     private void TryDiscoverObjectWithSensorics(GameObject gameObject)
     {
-        if (gameObject.TryGetComponent(out IDisguiseAble disguiseAble))
+        if (gameObject.TryGetComponent(out IDisguisable disguiseAble))
         {
-            if (disguiseAble.SetVisible(_sensorics, false))
+            if (disguiseAble.IsDetected(_sensorics, false))
             {
                 OnDisguiseAbleDiscovered?.Invoke(disguiseAble);
                 OnGameObjectDiscovered?.Invoke(gameObject);
@@ -127,9 +127,9 @@ public class VisionModule: StatModule
 
     private void TryDiscoverObjectWithXRay(GameObject gameObject)
     {
-        if (gameObject.TryGetComponent(out IDisguiseAble disguiseAble))
+        if (gameObject.TryGetComponent(out IDisguisable disguiseAble))
         {
-            if (disguiseAble.SetVisible(0f, true))
+            if (disguiseAble.IsDetected(0f, true))
             {
                 OnDisguiseAbleDiscovered?.Invoke(disguiseAble);
                 OnDiscoveredWithXRay?.Invoke(disguiseAble);

@@ -34,14 +34,14 @@ public class PlayerXRay : EntityNetworkBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.TryGetComponent(out IDisguiseAble disguiseAble)) return;
+        if (!other.TryGetComponent(out IDisguisable disguiseAble)) return;
 
         _vision.EnterXRay(other.gameObject);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.TryGetComponent(out IDisguiseAble disguiseAble)) return;
+        if (!other.TryGetComponent(out IDisguisable disguiseAble)) return;
 
         _vision.ExitXRay(other.gameObject);
     }
