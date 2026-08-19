@@ -14,8 +14,14 @@ public class FoodController: MonoBehaviour, IBiteable
     [Inject] private EntityStats _stats;
     
     private FoodConfig _config;
+    private BoxCollider2D _collider;
 
     public event Action<int> OnEaten;
+
+    private void Awake()
+    {
+        _collider = GetComponent<BoxCollider2D>();
+    }
 
     public void Initialize(FoodConfig config)
     {
@@ -27,6 +33,7 @@ public class FoodController: MonoBehaviour, IBiteable
         _health.OnDeath += Die;
         
         _stats.AddInitialStats(config.StatsConfig.Stats);
+        _collider.isTrigger = !config.IsObstacle;
     }
 
     public void TakeBite(float damage, float penetration)
