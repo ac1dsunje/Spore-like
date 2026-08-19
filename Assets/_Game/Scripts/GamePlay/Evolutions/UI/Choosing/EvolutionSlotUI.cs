@@ -12,7 +12,6 @@ public class EvolutionSlotUI : MonoBehaviour
     [SerializeField] private Image _rarityFrameImage;
     [SerializeField] private Button _button;
     [SerializeField] private TextMeshProUGUI _name;
-    [SerializeField] private TextMeshProUGUI _description;
     [SerializeField] private TextMeshProUGUI _statsDescription;
 
     private Evolution _evolution;
@@ -30,7 +29,6 @@ public class EvolutionSlotUI : MonoBehaviour
         _evolutionImage.sprite = evolution.Config.Sprite;
         _rarityFrameImage.sprite = evolution.Frame;
         _name.text = $"{evolution.Name}";
-        _description.text = $"{evolution.Config.Description}";
         _statsDescription.text = GetStatsDescription();
     }
     
