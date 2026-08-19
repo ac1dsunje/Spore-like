@@ -19,12 +19,18 @@ MonoBehaviour:
   <Stats>k__BackingField:
   - <Type>k__BackingField: 19
     <Value>k__BackingField: 2
+    <Operation>k__BackingField: 0
+    <Target>k__BackingField: 0
     <UpdatesByRarity>k__BackingField: 1
   - <Type>k__BackingField: 20
     <Value>k__BackingField: 2
+    <Operation>k__BackingField: 0
+    <Target>k__BackingField: 0
     <UpdatesByRarity>k__BackingField: 1
   - <Type>k__BackingField: 33
     <Value>k__BackingField: 2
+    <Operation>k__BackingField: 0
+    <Target>k__BackingField: 0
     <UpdatesByRarity>k__BackingField: 1
   <Abilities>k__BackingField: []
   <Requires>k__BackingField:
@@ -35,4 +41,4 @@ MonoBehaviour:
     <ExperienceTypes>k__BackingField:
     - <Type>k__BackingField: 16
       <Amount>k__BackingField: 1
-  <Sprite>k__BackingField: {fileID: 0}
+  <Sprite>k__BackingField: {fileID: -3567747263565884176, guid: 4c84bdf40de8bce40ba268ae0fef1525, type: 3}

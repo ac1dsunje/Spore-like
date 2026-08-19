@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f724526a32e44aa591a5df78fb049629, type: 3}
   m_Name: Lobopodia
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Evolutions.EvolutionConfig
-  <CreatureType>k__BackingField: 0
-  <Name>k__BackingField: Lobopodia
-  <Description>k__BackingField: 
-  <Sprite>k__BackingField: {fileID: 0}
-  <Stats>k__BackingField: []
   <State>k__BackingField: 1
+  <Name>k__BackingField: Lobopodia
+  <CreatureType>k__BackingField: 0
+  <Description>k__BackingField: 
+  <Stats>k__BackingField: []
+  <Abilities>k__BackingField: []
   <Requires>k__BackingField: []
   <Blocks>k__BackingField: []
-  <Abilities>k__BackingField: []
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 10
     <ExperienceTypes>k__BackingField: []
+  <Sprite>k__BackingField: {fileID: 2234087769720632011, guid: f7029249139d81c4e81eb58383568bca, type: 3}

@@ -19,6 +19,8 @@ MonoBehaviour:
   <Stats>k__BackingField:
   - <Type>k__BackingField: 6
     <Value>k__BackingField: 1
+    <Operation>k__BackingField: 0
+    <Target>k__BackingField: 0
     <UpdatesByRarity>k__BackingField: 1
   <Abilities>k__BackingField: []
   <Requires>k__BackingField: []
@@ -28,4 +30,4 @@ MonoBehaviour:
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 15
     <ExperienceTypes>k__BackingField: []
-  <Sprite>k__BackingField: {fileID: 0}
+  <Sprite>k__BackingField: {fileID: -1646744814613512562, guid: 29b1efac17f564b44b2df4b5377bb80b, type: 3}
