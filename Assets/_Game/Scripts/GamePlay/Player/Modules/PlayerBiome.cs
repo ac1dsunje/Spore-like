@@ -1,4 +1,5 @@
-﻿using _Game.Scripts.GamePlay.Module;
+﻿using _Game.Scripts.GamePlay.Entity;
+using _Game.Scripts.GamePlay.Entity.Module;
 using _Game.Scripts.GamePlay.Network;
 using _Game.Scripts.GamePlay.World;
 using _Game.Scripts.GamePlay.World.Biomes;

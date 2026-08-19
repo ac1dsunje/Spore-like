@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using _Game.Scripts.GamePlay.Module;
+using _Game.Scripts.GamePlay.Entity.Module;
 using _Game.Scripts.GamePlay.Network;
 using UnityEngine;
 using VContainer;

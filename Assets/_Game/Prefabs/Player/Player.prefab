@@ -564,6 +564,7 @@ GameObject:
   - component: {fileID: 6594191335402710561}
   - component: {fileID: 4162929999337224578}
   - component: {fileID: 314090029752611159}
+  - component: {fileID: 8897777629644928246}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -816,6 +817,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5bff76f551f46b2a71c67b4f6088033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.Health.PlayerHealth
+--- !u!114 &8897777629644928246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254078283856608112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ff5acc7cb84b279b132e46373f22e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Player.Behaviours.EntityDisguise
 --- !u!1 &8266466559747868771
 GameObject:
   m_ObjectHideFlags: 0

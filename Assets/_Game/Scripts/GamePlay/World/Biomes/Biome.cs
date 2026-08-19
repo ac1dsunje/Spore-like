@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _Game.Scripts.GamePlay.Entity;
 
 namespace _Game.Scripts.GamePlay.World.Biomes
 {

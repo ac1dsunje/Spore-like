@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using _Game.Scripts.GamePlay.Entity;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 

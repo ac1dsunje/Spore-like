@@ -18,3 +18,5 @@ MonoBehaviour:
     <ExperienceTypes>k__BackingField:
     - <Type>k__BackingField: 1
       <Amount>k__BackingField: 1
+    - <Type>k__BackingField: 6
+      <Amount>k__BackingField: 1

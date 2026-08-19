@@ -1,4 +1,4 @@
-﻿using _Game.Scripts.GamePlay.Module;
+﻿using _Game.Scripts.GamePlay.Entity.Module;
 using _Game.Scripts.GamePlay.Movement;
 using _Game.Scripts.GamePlay.Network;
 using UnityEngine;

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Game.Scripts.GamePlay
+namespace _Game.Scripts.GamePlay.Entity
 {
 [CreateAssetMenu(fileName = "NewEntityStatsConfig", menuName = "Configs/Game/Stats/GeneralConfig")]
 public class EntityStatsConfig: ScriptableObject

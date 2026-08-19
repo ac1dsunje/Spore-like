@@ -1,6 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Animation;
+using _Game.Scripts.GamePlay.Entity.Interfaces;
 using _Game.Scripts.GamePlay.Evolutions;
-using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Network;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
 using _Game.Scripts.GamePlay.Rarities;
@@ -10,7 +10,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player
 {
-public class PlayerController: NetworkBehaviour, IDamageAble, IDisguisable
+public class PlayerController: NetworkBehaviour, IDamageAble
 {
     [Header("Evolutions")]
     [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
@@ -47,15 +47,5 @@ public class PlayerController: NetworkBehaviour, IDamageAble, IDisguisable
 
     public float TakeDamage(HitInfo hit) => Model.TakeDamage(hit);
     public void SetDamageDealt(float damage) => Model.Attack.SetDamageDealt(damage);
-
-    public bool IsDetected(float sensorics, bool xRay)
-    {
-        var show = Model.Disguise.TryNotice(sensorics, xRay);
-        if (!_authority.IsLocal)
-        {
-            _animation.SetVisible(show);
-        }
-        return show;
-    }
 }
 }

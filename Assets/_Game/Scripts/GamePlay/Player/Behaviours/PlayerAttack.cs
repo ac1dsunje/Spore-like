@@ -1,6 +1,6 @@
 ﻿using _Game.Scripts.Core.Services;
-using _Game.Scripts.GamePlay.Interfaces;
-using _Game.Scripts.GamePlay.Module;
+using _Game.Scripts.GamePlay.Entity.Interfaces;
+using _Game.Scripts.GamePlay.Entity.Module;
 using _Game.Scripts.GamePlay.Network;
 using _Game.Scripts.GamePlay.Weapons;
 using UnityEngine;

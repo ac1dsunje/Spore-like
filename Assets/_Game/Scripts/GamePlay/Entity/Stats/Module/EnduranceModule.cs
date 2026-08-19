@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using _Game.Scripts.GamePlay.Interfaces;
+using _Game.Scripts.GamePlay.Entity.Interfaces;
 using _Game.Scripts.GamePlay.UI.Bar;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.Module
+namespace _Game.Scripts.GamePlay.Entity.Module
 {
 public class EnduranceModule: StatModule, IResource
 {

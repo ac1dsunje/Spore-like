@@ -1,4 +1,4 @@
-﻿namespace _Game.Scripts.GamePlay
+﻿namespace _Game.Scripts.GamePlay.Entity
 {
 public enum StatType
 {

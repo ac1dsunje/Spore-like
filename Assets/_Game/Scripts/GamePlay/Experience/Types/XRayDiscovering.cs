@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using _Game.Scripts.GamePlay.Interfaces;
-using _Game.Scripts.GamePlay.Module;
+using _Game.Scripts.GamePlay.Entity.Interfaces;
+using _Game.Scripts.GamePlay.Entity.Module;
 
 namespace _Game.Scripts.GamePlay.Experience.Types
 {

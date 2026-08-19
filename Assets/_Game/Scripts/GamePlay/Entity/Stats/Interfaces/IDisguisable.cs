@@ -1,4 +1,4 @@
-﻿namespace _Game.Scripts.GamePlay.Interfaces
+﻿namespace _Game.Scripts.GamePlay.Entity.Interfaces
 {
 public interface IDisguisable
 {
