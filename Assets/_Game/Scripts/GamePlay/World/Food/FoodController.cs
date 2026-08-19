@@ -29,7 +29,7 @@ public class FoodController: MonoBehaviour, IBiteable
         _stats.AddInitialStats(config.StatsConfig.Stats);
     }
 
-    public void TakeByte(float damage, float penetration)
+    public void TakeBite(float damage, float penetration)
     {
         var appliedDamage = _defense.ApplyResistance(damage, penetration);
         _health.TakeDamage(appliedDamage);

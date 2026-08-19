@@ -73,7 +73,7 @@ public class PlayerMouth: EntityNetworkBehaviour
 
             if (_currentFood != food) yield break;
 
-            food.TakeByte(_module.EatingStrength, _module.EatingPenetration);
+            food.TakeBite(_module.EatingStrength, _module.EatingPenetration);
         }
     }
 
