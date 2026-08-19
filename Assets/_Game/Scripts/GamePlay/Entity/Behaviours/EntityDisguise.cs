@@ -4,7 +4,7 @@ using _Game.Scripts.GamePlay.Entity.Module;
 using _Game.Scripts.GamePlay.Entity.Network;
 using VContainer;
 
-namespace _Game.Scripts.GamePlay.Behaviours
+namespace _Game.Scripts.GamePlay.Entity.Behaviours
 {
 public class EntityDisguise : EntityNetworkBehaviour, IDisguisable
 {
