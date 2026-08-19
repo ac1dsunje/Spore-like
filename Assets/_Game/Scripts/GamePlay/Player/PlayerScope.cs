@@ -13,12 +13,12 @@ namespace _Game.Scripts.GamePlay.Player
 public class PlayerScope: LifetimeScope
 {
     [SerializeField] private EntityStatsConfig _entityStatsConfig;
-    [SerializeField] private AnimationConfig _animationConfig;
+    [SerializeField] private AnimationSettings _animationSettings;
     [SerializeField] private PlayerExperienceConfig _playerExperienceConfig;
     protected override void Configure(IContainerBuilder builder)
     {
         builder.RegisterInstance(_entityStatsConfig);
-        builder.RegisterInstance(_animationConfig);
+        builder.RegisterInstance(_animationSettings);
         builder.RegisterInstance(_playerExperienceConfig);
         
         builder.Register<PlayerInputService>(Lifetime.Scoped);

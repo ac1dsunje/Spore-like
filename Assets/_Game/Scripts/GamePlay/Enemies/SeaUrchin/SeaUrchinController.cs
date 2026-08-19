@@ -16,7 +16,7 @@ public class SeaUrchinController: MonoBehaviour, IDamageAble
     [Inject]
     private void Construct(EntityStats entityStats, EntityStatsConfig entityStatsConfig, DefenseModule defenseModule,
         HealthModule healthModule, AttackModule attackModule, SeaUrchinAttackBehaviour attackBehaviour,
-        AnimationConfig animationConfig, ItemAnimation itemAnimation)
+        AnimationSettings animationSettings, ItemAnimation itemAnimation)
     {
         attackBehaviour.SetOwner(this);
         _entityStats = entityStats;
@@ -24,7 +24,7 @@ public class SeaUrchinController: MonoBehaviour, IDamageAble
         _healthModule = healthModule;
         _attackModule = attackModule;
         
-        itemAnimation.SetConfig(animationConfig);
+        itemAnimation.SetConfig(animationSettings);
 
         _healthModule.OnDeath += Die;
         

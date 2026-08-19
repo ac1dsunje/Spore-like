@@ -9,12 +9,12 @@ namespace _Game.Scripts.GamePlay.Enemies.SeaUrchin
 public class SeaUrchinScope: LifetimeScope
 {
     [SerializeField] private EntityStatsConfig _entityStatsConfig;
-    [SerializeField] private AnimationConfig _animationConfig;
+    [SerializeField] private AnimationSettings _animationSettings;
 
     protected override void Configure(IContainerBuilder builder)
     {
         builder.RegisterInstance(_entityStatsConfig);
-        builder.RegisterInstance(_animationConfig);
+        builder.RegisterInstance(_animationSettings);
         
         builder.RegisterComponent(GetComponent<SeaUrchinController>());
         builder.RegisterComponent(GetComponent<SeaUrchinAttackBehaviour>());

@@ -18,7 +18,7 @@ public class PlayerController: NetworkBehaviour, IDamageAble, IDisguisable
     [SerializeField] private int _minEvolutions;
     
     [Inject] public PlayerModel Model { get; private set; }
-    [Inject] private AnimationConfig _animationConfig;
+    [Inject] private AnimationSettings _animationSettings;
     [Inject] private PlayerRegistry _playerRegistry;
     [Inject] private EntityAuthority _authority;
     [Inject] private ItemAnimation _animation;
@@ -40,7 +40,7 @@ public class PlayerController: NetworkBehaviour, IDamageAble, IDisguisable
     {
         Model.Initialize(this);
         Model.Evolutions.Initialize(_evolutionsDatabase, _raritiesDatabase, _minEvolutions);
-        _animation.SetConfig(_animationConfig);
+        _animation.SetConfig(_animationSettings);
         _playerRegistry.AddPlayer(this);
         _experience.Initialize(Model);
     }

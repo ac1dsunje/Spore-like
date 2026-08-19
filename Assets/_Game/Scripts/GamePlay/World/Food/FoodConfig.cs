@@ -8,8 +8,7 @@ public class FoodConfig: ScriptableObject
 {
     [field: SerializeField] public StatsConfig StatsConfig { get; private set; }
     [field: SerializeField] public int FeedAmount { get; private set; } = 1;
-    [field: SerializeField] public Color Color { get; private set; } = Color.green;
-    [field: SerializeField] public AnimationConfig AnimationConfig { get; private set; }
-    [field: SerializeField] public ParticleSystem ParticlesPrefab { get; private set; }
+    [field: SerializeField] public AnimationSettings AnimationSettings { get; private set; }
+    [field: SerializeField] public ParticlesConfig ParticlesConfig { get; private set; }
 }
 }

@@ -57,13 +57,13 @@ public class ItemAnimation: MonoBehaviour
         _animator.enabled = visible;
     }
 
-    public void SetConfig(AnimationConfig config)
+    public void SetConfig(AnimationSettings settings)
     {
-        _shadowCaster.enabled = config.CastShadows;
-        _renderer.sprite = config.Sprite;
-        if (config.Controller)
+        _shadowCaster.enabled = settings.CastShadows;
+        _renderer.sprite = settings.Sprite;
+        if (settings.Controller)
         {
-            _animator.runtimeAnimatorController = config.Controller;
+            _animator.runtimeAnimatorController = settings.Controller;
         }
     }
 }

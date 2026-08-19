@@ -21,7 +21,7 @@ public class FoodController: MonoBehaviour, IBiteable
     {
         _config = config;
 
-        _itemAnimation.SetConfig(config.AnimationConfig);
+        _itemAnimation.SetConfig(config.AnimationSettings);
 
         _health.OnDamageTaken += SpawnParticles;
         _health.OnDeath += Die;
@@ -38,13 +38,13 @@ public class FoodController: MonoBehaviour, IBiteable
     private void SpawnParticles(float dmg)
     {
         var particles = Instantiate(
-            _config.ParticlesPrefab,
+            _config.ParticlesConfig.Prefab,
             transform.position,
             Quaternion.identity
         );
 
         var main = particles.main;
-        main.startColor = _config.Color;
+        main.startColor = _config.ParticlesConfig.Color;
     }
 
     private void Die()
