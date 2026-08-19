@@ -38,13 +38,13 @@ public class FoodController: MonoBehaviour, IBiteable
     private void SpawnParticles(float dmg)
     {
         var particles = Instantiate(
-            _config.ParticlesConfig.Prefab,
+            _config.ParticlesSettings.Prefab,
             transform.position,
             Quaternion.identity
         );
 
         var main = particles.main;
-        main.startColor = _config.ParticlesConfig.Color;
+        main.startColor = _config.ParticlesSettings.Color;
     }
 
     private void Die()

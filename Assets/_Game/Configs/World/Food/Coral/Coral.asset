@@ -21,3 +21,6 @@ MonoBehaviour:
   <ParticlesConfig>k__BackingField:
     <Color>k__BackingField: {r: 0.92941177, g: 0.2509804, b: 0.22352941, a: 1}
     <Prefab>k__BackingField: {fileID: 1057120428620177345, guid: d8e716c34125011438a86971c35e78c7, type: 3}
+  <ParticlesSettings>k__BackingField:
+    <Color>k__BackingField: {r: 0.92941177, g: 0.2509804, b: 0.22352941, a: 1}
+    <Prefab>k__BackingField: {fileID: 1057120428620177345, guid: d8e716c34125011438a86971c35e78c7, type: 3}
