@@ -1,5 +1,4 @@
 ﻿using _Game.Scripts.GamePlay.Animation;
-using _Game.Scripts.GamePlay.Entity;
 using _Game.Scripts.GamePlay.Module;
 using VContainer;
 using VContainer.Unity;

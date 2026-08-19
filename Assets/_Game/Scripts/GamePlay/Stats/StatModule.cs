@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using _Game.Scripts.GamePlay.Entity;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay

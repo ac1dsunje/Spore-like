@@ -1,5 +1,4 @@
 ﻿using System;
-using _Game.Scripts.GamePlay.Entity;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Evolutions

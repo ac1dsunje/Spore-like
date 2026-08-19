@@ -10,17 +10,11 @@ namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
 public class PlayerMouth: EntityNetworkBehaviour
 {
-    private MouthModule _module;
+    [Inject] private MouthModule _module;
 
     private readonly HashSet<IBiteable> _foods = new();
     private IBiteable _currentFood;
     
-    [Inject]
-    private void Construct(MouthModule module)
-    {
-        _module = module;
-    }
-
     private void OnTriggerEnter2D(Collider2D other) => TryCatchFood(other);
 
     private void OnTriggerExit2D(Collider2D other) => TryReleaseFood(other);
