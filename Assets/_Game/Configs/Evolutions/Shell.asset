@@ -12,23 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f724526a32e44aa591a5df78fb049629, type: 3}
   m_Name: Shell
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Evolutions.EvolutionConfig
-  <CreatureType>k__BackingField: 3
+  <State>k__BackingField: 1
   <Name>k__BackingField: Shell
-  <Description>k__BackingField: Get home
-  <Sprite>k__BackingField: {fileID: -1908630435385463394, guid: 286925b4e0480144fa91ca59fb779718, type: 3}
+  <CreatureType>k__BackingField: 3
   <Stats>k__BackingField:
   - <Type>k__BackingField: 17
     <Value>k__BackingField: 1
+    <Operation>k__BackingField: 0
+    <Target>k__BackingField: 0
     <UpdatesByRarity>k__BackingField: 1
   - <Type>k__BackingField: 0
     <Value>k__BackingField: -0.5
-    <UpdatesByRarity>k__BackingField: 0
-  <State>k__BackingField: 1
+    <Operation>k__BackingField: 0
+    <Target>k__BackingField: 0
+    <UpdatesByRarity>k__BackingField: 1
+  <Abilities>k__BackingField: []
   <Requires>k__BackingField: []
   <Blocks>k__BackingField: []
-  <Abilities>k__BackingField: []
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 20
     <ExperienceTypes>k__BackingField:
     - <Type>k__BackingField: 4
       <Amount>k__BackingField: 1
+  <Sprite>k__BackingField: {fileID: -1908630435385463394, guid: 286925b4e0480144fa91ca59fb779718, type: 3}
