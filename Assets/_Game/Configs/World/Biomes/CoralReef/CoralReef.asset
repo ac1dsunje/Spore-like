@@ -19,8 +19,7 @@ MonoBehaviour:
     <Value>k__BackingField: -20
     <Operation>k__BackingField: 2
     <Target>k__BackingField: 1
-  <Tiles>k__BackingField:
-  - {fileID: 11400000, guid: 63c04eb3f6745cd449112020c69243ff, type: 2}
+  <Tile>k__BackingField: {fileID: 11400000, guid: 63c04eb3f6745cd449112020c69243ff, type: 2}
   <EnvironmentConfigs>k__BackingField:
   - {fileID: 11400000, guid: b839743a35fb12040b551a7b8a7a9c22, type: 2}
   <ChanceEnvironment>k__BackingField: 15

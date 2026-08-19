@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using _Game.Scripts.GamePlay.Entity;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -12,11 +11,9 @@ public class BiomeConfig: ScriptableObject
     [field: SerializeField] public float Temperature { get; private set; }
     [field: SerializeField] public float PassAbility { get; private set; }
     [field: SerializeField] public List<SourceStat> AffectedStats { get; private set; } = new();
-    [field: SerializeField] public List<TileBase> Tiles { get; private set; }
+    [field: SerializeField] public TileBase Tile { get; private set; }
     [field: SerializeField] public List<EnvironmentConfig> EnvironmentConfigs { get; private set; }
     [field: SerializeField] public int ChanceEnvironment { get; private set; } = 20;
-
-    public TileBase RandomTile => Tiles[Random.Range(0, Tiles.Count)];
 
     public EnvironmentConfig GetRandomEnvironment()
     {

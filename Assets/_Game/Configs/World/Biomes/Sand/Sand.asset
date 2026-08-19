@@ -15,12 +15,6 @@ MonoBehaviour:
   <Temperature>k__BackingField: 28
   <PassAbility>k__BackingField: 0
   <AffectedStats>k__BackingField: []
-  <Tiles>k__BackingField:
-  - {fileID: 11400000, guid: e096a4ecb626b3a48b5128cd150ec37c, type: 2}
-  - {fileID: 11400000, guid: b0b2327d65e37ad469cb3f9c6e3beddf, type: 2}
-  - {fileID: 11400000, guid: d19a69d5ece2de4408655f637c40fe4c, type: 2}
-  - {fileID: 11400000, guid: ddccca244cbacac4b961eae012746034, type: 2}
-  - {fileID: 11400000, guid: e4f1c8157a546384fb9f3e53d4ad69c4, type: 2}
-  - {fileID: 11400000, guid: 81281dddb583d034e987bdc85827e076, type: 2}
+  <Tile>k__BackingField: {fileID: 11400000, guid: e096a4ecb626b3a48b5128cd150ec37c, type: 2}
   <EnvironmentConfigs>k__BackingField: []
   <ChanceEnvironment>k__BackingField: 0

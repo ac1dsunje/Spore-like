@@ -63,7 +63,7 @@ public class WorldTileRenderer: MonoBehaviour
 
     private void CreateTile(Vector3Int position, Biome biome)
     {
-        var tile = biome.Config.RandomTile;
+        var tile = biome.Config.Tile;
         var tilemap = _tilemaps[biome];
         PlaceTile(tilemap, position, tile);
 
