@@ -1,4 +1,4 @@
-﻿namespace _Game.Scripts.GamePlay.Entity.Interfaces
+﻿namespace _Game.Scripts.GamePlay.Interfaces
 {
 public struct HitInfo
 {

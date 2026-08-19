@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using _Game.Scripts.GamePlay.Entity.Interfaces;
+using _Game.Scripts.GamePlay.Interfaces;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Weapons

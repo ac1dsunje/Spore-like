@@ -95,50 +95,36 @@ public class EntityStats
 
         foreach (var stat in stats)
         {
-            if (stat.Operation != StatOperation.Add)
-                continue;
-
+            if (stat.Operation != StatOperation.Add) continue;
 
             result += stat.CurrentValue;
         }
 
         foreach (var stat in stats)
         {
-            if (stat.Operation != StatOperation.Multiply ||
-                stat.Target != StatTarget.Base)
-                continue;
-
+            if (stat.Operation != StatOperation.Multiply || stat.Target != StatTarget.Base) continue;
 
             result += baseValue * stat.CurrentValue;
         }
 
         foreach (var stat in stats)
         {
-            if (stat.Operation != StatOperation.Percent ||
-                stat.Target != StatTarget.Base)
-                continue;
-
+            if (stat.Operation != StatOperation.Percent || stat.Target != StatTarget.Base) continue;
 
             result += baseValue * stat.CurrentValue / 100f;
         }
 
         foreach (var stat in stats)
         {
-            if (stat.Operation != StatOperation.Multiply ||
-                stat.Target != StatTarget.Total)
-                continue;
-
-
+            if (stat.Operation != StatOperation.Multiply || stat.Target != StatTarget.Total) continue;
+            
             result *= stat.CurrentValue;
         }
 
         foreach (var stat in stats)
         {
-            if (stat.Operation != StatOperation.Percent ||
-                stat.Target != StatTarget.Total)
-                continue;
-
-
+            if (stat.Operation != StatOperation.Percent || stat.Target != StatTarget.Total) continue;
+            
             result *= 1f + stat.CurrentValue / 100f;
         }
 

@@ -1,5 +1,5 @@
 ﻿using System;
-using _Game.Scripts.GamePlay.Entity.Interfaces;
+using _Game.Scripts.GamePlay.Interfaces;
 
 namespace _Game.Scripts.GamePlay.Module
 {
