@@ -41,6 +41,14 @@ public class ActiveEvolutionSlotUI: MonoBehaviour
         {
             description.AppendLine(StatFormatter.Format(stat));
         }
+
+        if (_evolution.Config.Abilities != null)
+        {
+            foreach (var ability in _evolution.Config.Abilities)
+            {
+                description.AppendLine($"Grants ability to {ability.Type}");
+            }
+        }
         
         OnEvolutionClicked?.Invoke(_evolution.Config.Sprite, _evolution.Name, description.ToString());
     }
