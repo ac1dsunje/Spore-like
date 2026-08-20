@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace _Game.Scripts.GamePlay.Evolutions.UI.Choosing
 {
-public class EvolutionSlotUI : MonoBehaviour
+public class ChoosingEvolutionSlotUI : MonoBehaviour
 {
     [SerializeField] private Image _evolutionImage;
     [SerializeField] private Image _rarityFrameImage;
@@ -29,27 +29,7 @@ public class EvolutionSlotUI : MonoBehaviour
         _evolutionImage.sprite = evolution.Config.Sprite;
         _rarityFrameImage.sprite = evolution.Frame;
         _name.text = $"{evolution.Name}";
-        _statsDescription.text = BuildStatsDescription();
-    }
-    
-    private string BuildStatsDescription()
-    {
-        var text = new StringBuilder();
-
-        foreach (var stat in _evolution.Stats)
-        {
-            text.AppendLine(StatFormatter.Format(stat));
-        }
-
-        if (_evolution.Config.Abilities != null)
-        {
-            foreach (var ability in _evolution.Config.Abilities)
-            {
-                text.AppendLine($"Grants ability to {ability.Type}");
-            }
-        }
-
-        return text.ToString();
+        _statsDescription.text = EvolutionFormatter.FormatDescription(evolution);
     }
 
     private void OnButtonClick()

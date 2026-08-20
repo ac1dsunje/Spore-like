@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,22 +34,7 @@ public class ActiveEvolutionSlotUI: MonoBehaviour
 
     private void OnMouseClick()
     {
-        var description = new StringBuilder();
-        
-        foreach (var stat in _evolution.Stats)
-        {
-            description.AppendLine(StatFormatter.Format(stat));
-        }
-
-        if (_evolution.Config.Abilities != null)
-        {
-            foreach (var ability in _evolution.Config.Abilities)
-            {
-                description.AppendLine($"Grants ability to {ability.Type}");
-            }
-        }
-        
-        OnEvolutionClicked?.Invoke(_evolution.Config.Sprite, _evolution.Name, description.ToString());
+        OnEvolutionClicked?.Invoke(_evolution.Config.Sprite, _evolution.Name, EvolutionFormatter.FormatDescription(_evolution));
     }
 
     private void UpdateSprite()

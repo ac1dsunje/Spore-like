@@ -10,7 +10,7 @@ public class EvolutionChooseUIScreen : UIScreen
     [SerializeField] private GameObject _slotPrefab;
     private EvolutionsModule _evolutionsModule;
     
-    private readonly List<EvolutionSlotUI> _slots = new();
+    private readonly List<ChoosingEvolutionSlotUI> _slots = new();
 
     protected override void Awake()
     {
@@ -35,7 +35,7 @@ public class EvolutionChooseUIScreen : UIScreen
 
     private void CreateSlot(Evolution evolution)
     {
-        var slot = Instantiate(_slotPrefab, transform).GetComponent<EvolutionSlotUI>();
+        var slot = Instantiate(_slotPrefab, transform).GetComponent<ChoosingEvolutionSlotUI>();
         slot.SetEvolution(evolution);
         _slots.Add(slot);
         slot.OnSlotClicked += EvolutionChosen;
