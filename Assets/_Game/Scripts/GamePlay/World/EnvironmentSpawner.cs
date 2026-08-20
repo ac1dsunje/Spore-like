@@ -65,6 +65,7 @@ public class EnvironmentSpawner: MonoBehaviour
         {
             _spawnedObjects.Remove(position);
             _spawnedFoods.Remove(position);
+            return;
         }
         
         Destroy(item.gameObject);
