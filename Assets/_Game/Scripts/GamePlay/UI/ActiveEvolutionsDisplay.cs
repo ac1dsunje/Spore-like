@@ -1,4 +1,6 @@
-﻿using _Game.Scripts.GamePlay.Evolutions;
+﻿using System;
+using System.Collections.Generic;
+using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Evolutions.UI;
 using _Game.Scripts.GamePlay.Player.Modules;
 using UnityEngine;
@@ -12,6 +14,9 @@ public class ActiveEvolutionsDisplay: MonoBehaviour
     
     private EvolutionsModule _player;
 
+    public event Action<string, string> OnEvolutionClicked;
+    private readonly List<ActiveEvolutionSlotUI> _evolutions = new();
+
     public void Construct(EvolutionsModule player)
     {
         _player = player;
@@ -22,11 +27,17 @@ public class ActiveEvolutionsDisplay: MonoBehaviour
     {
         var slot = Instantiate(_slotPrefab, _container).GetComponent<ActiveEvolutionSlotUI>();
         slot.Construct(evolution);
+        slot.OnEvolutionClicked += OnEvolutionClicked;
+        _evolutions.Add(slot);
     }
 
     private void OnDestroy()
     {
         _player.OnEvolutionApplied -= AddEvolution;
+        foreach (var slot in _evolutions)
+        {
+            slot.OnEvolutionClicked -= OnEvolutionClicked;
+        }
     }
 }
 }

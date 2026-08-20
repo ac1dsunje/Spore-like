@@ -21,6 +21,8 @@ public class OverlayUIScreen: UIScreen
     
     [Inject] private NetworkManager _networkManager;
     [Inject] private PlayerSpawner _playerSpawner;
+    
+    [Inject] private ActiveEvolutionsDisplay _activeEvolutionsDisplay;
 
     private void Start()
     {
@@ -34,6 +36,13 @@ public class OverlayUIScreen: UIScreen
         _healthBarUI.Construct(player.Health);
         _experienceBarUI.Construct(player.Experience);
         _enduranceBarUI.Construct(player.Endurance);
+
+        _activeEvolutionsDisplay.OnEvolutionClicked += SetDescriptionText;
+    }
+
+    private void SetDescriptionText(string itemName, string description)
+    {
+        Debug.Log($"{itemName} : {description}");
     }
 
     private void OnDestroy()
@@ -41,6 +50,8 @@ public class OverlayUIScreen: UIScreen
         _host.onClick.RemoveAllListeners();
         _connect.onClick.RemoveAllListeners();
         _player.onClick.RemoveAllListeners();
+        
+        _activeEvolutionsDisplay.OnEvolutionClicked -= SetDescriptionText;
     }
 }
 }
