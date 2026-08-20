@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -34,9 +35,14 @@ public class ActiveEvolutionSlotUI: MonoBehaviour
 
     private void OnMouseClick()
     {
-        var description = $"some description here";
+        var description = new StringBuilder();
         
-        OnEvolutionClicked?.Invoke(_evolution.Config.Sprite, _evolution.Name, description);
+        foreach (var stat in _evolution.Stats)
+        {
+            description.AppendLine(StatFormatter.Format(stat));
+        }
+        
+        OnEvolutionClicked?.Invoke(_evolution.Config.Sprite, _evolution.Name, description.ToString());
     }
 
     private void UpdateSprite()
