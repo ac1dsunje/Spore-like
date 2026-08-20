@@ -13,19 +13,24 @@ public class ActiveEvolutionSlotUI: MonoBehaviour
     public void Construct(Evolution evolution)
     {
         _evolution = evolution;
-        _evolution.OnRarityChanged += UpdateSlot;
-        UpdateSlot();
+        _evolution.OnRarityChanged += UpdateFrame;
+        UpdateSprite();
+        UpdateFrame();
     }
 
-    private void UpdateSlot()
+    private void UpdateSprite()
     {
         _image.sprite = _evolution.Config.Sprite;
+    }
+    
+    private void UpdateFrame()
+    {
         _frame.sprite = _evolution.Frame;
     }
 
     private void OnDestroy()
     {
-        _evolution.OnRarityChanged -= UpdateSlot;
+        _evolution.OnRarityChanged -= UpdateFrame;
     }
 }
 }
