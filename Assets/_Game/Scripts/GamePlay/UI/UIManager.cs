@@ -1,4 +1,6 @@
-﻿using _Game.Scripts.GamePlay.Evolutions.UI.Choosing;
+﻿using System.Collections.Generic;
+using _Game.Scripts.GamePlay.Evolutions;
+using _Game.Scripts.GamePlay.Evolutions.UI.Choosing;
 using _Game.Scripts.GamePlay.Player;
 using UnityEngine;
 using VContainer;
@@ -29,7 +31,7 @@ public class UIManager: MonoBehaviour
     {
         _player = player.Model;
         
-        _player.Experience.OnLevelChanged += OnLevelUpdated;
+        _player.Evolutions.OnSlotsFilled += OnSlotsFilled;
         
         _overlayUIScreen.Construct(_player);
         _activeEvolutionsDisplay.Construct(_player.Evolutions);
@@ -45,14 +47,14 @@ public class UIManager: MonoBehaviour
         }
     }
 
-    private void OnLevelUpdated(int level)
+    private void OnSlotsFilled(List<Evolution> evolutions)
     {
         _evolutionChooseUIScreen.ShowScreen();
     }
 
     public void OnDestroy()
     {
-        _player.Experience.OnLevelChanged -= OnLevelUpdated;
+        _player.Evolutions.OnSlotsFilled -= OnSlotsFilled;
         _registry.OnLocalPlayerAdded -= AddPlayer;
     }
 }
