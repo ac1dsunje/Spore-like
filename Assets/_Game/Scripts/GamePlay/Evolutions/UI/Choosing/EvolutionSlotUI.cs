@@ -29,16 +29,16 @@ public class EvolutionSlotUI : MonoBehaviour
         _evolutionImage.sprite = evolution.Config.Sprite;
         _rarityFrameImage.sprite = evolution.Frame;
         _name.text = $"{evolution.Name}";
-        _statsDescription.text = GetStatsDescription();
+        _statsDescription.text = BuildStatsDescription();
     }
     
-    private string GetStatsDescription()
+    private string BuildStatsDescription()
     {
         var text = new StringBuilder();
 
         foreach (var stat in _evolution.Stats)
         {
-            text.AppendLine(stat.GetDescription());
+            text.AppendLine(StatFormatter.Format(stat));
         }
 
         if (_evolution.Config.Abilities != null)

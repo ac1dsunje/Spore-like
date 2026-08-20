@@ -28,16 +28,5 @@ public class SourceStat : Stat
         Operation = operation;
         Target = target;
     }
-
-    public string GetDescription()
-    {
-        return Operation switch
-        {
-            StatOperation.Add => $"{Type}{(CurrentValue > 0 ? " +" : " ")}{CurrentValue}",
-            StatOperation.Multiply => $"{Type} *{CurrentValue}",
-            StatOperation.Percent => $"{Type} {CurrentValue}%",
-            _ => $"{Type} {CurrentValue}"
-        };
-    }
 }
 }
