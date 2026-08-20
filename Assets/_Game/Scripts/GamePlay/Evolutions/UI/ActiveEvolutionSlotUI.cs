@@ -1,25 +1,18 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace _Game.Scripts.GamePlay.Evolutions.UI
 {
-[RequireComponent(typeof(Button))]
-public class ActiveEvolutionSlotUI: MonoBehaviour
+public class ActiveEvolutionSlotUI: MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Image _image;
     [SerializeField] private Image _frame;
 
-    public event Action<Sprite, string, string> OnEvolutionClicked;
-    
-    private Button _button;
+    public event Action<Sprite, string, string> OnEvolutionHovered;
     
     private Evolution _evolution;
-
-    private void Awake()
-    {
-        _button = GetComponent<Button>();
-    }
     
     public void Construct(Evolution evolution)
     {
@@ -28,13 +21,19 @@ public class ActiveEvolutionSlotUI: MonoBehaviour
         
         UpdateSprite();
         UpdateFrame();
+    }
         
-        _button.onClick.AddListener(OnMouseClick);
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        OnEvolutionHovered?.Invoke(
+            _evolution.Config.Sprite,
+            _evolution.Name,
+            EvolutionFormatter.FormatDescription(_evolution)
+        );
     }
 
-    private void OnMouseClick()
+    public void OnPointerExit(PointerEventData eventData)
     {
-        OnEvolutionClicked?.Invoke(_evolution.Config.Sprite, _evolution.Name, EvolutionFormatter.FormatDescription(_evolution));
     }
 
     private void UpdateSprite()
@@ -49,8 +48,8 @@ public class ActiveEvolutionSlotUI: MonoBehaviour
 
     private void OnDestroy()
     {
-        _evolution.OnRarityChanged -= UpdateFrame;
-        _button.onClick.RemoveAllListeners();
+        if (_evolution != null)
+            _evolution.OnRarityChanged -= UpdateFrame;
     }
 }
 }

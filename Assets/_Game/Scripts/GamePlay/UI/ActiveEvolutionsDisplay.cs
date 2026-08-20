@@ -14,7 +14,7 @@ public class ActiveEvolutionsDisplay: MonoBehaviour
     
     private EvolutionsModule _player;
 
-    public event Action<Sprite, string, string> OnEvolutionClicked;
+    public event Action<Sprite, string, string> OnEvolutionHovered;
     private readonly List<ActiveEvolutionSlotUI> _evolutions = new();
 
     public void Construct(EvolutionsModule player)
@@ -27,7 +27,7 @@ public class ActiveEvolutionsDisplay: MonoBehaviour
     {
         var slot = Instantiate(_slotPrefab, _container).GetComponent<ActiveEvolutionSlotUI>();
         slot.Construct(evolution);
-        slot.OnEvolutionClicked += OnEvolutionClicked;
+        slot.OnEvolutionHovered += OnEvolutionHovered;
         _evolutions.Add(slot);
     }
 
@@ -36,7 +36,7 @@ public class ActiveEvolutionsDisplay: MonoBehaviour
         _player.OnEvolutionApplied -= AddEvolution;
         foreach (var slot in _evolutions)
         {
-            slot.OnEvolutionClicked -= OnEvolutionClicked;
+            slot.OnEvolutionHovered -= OnEvolutionHovered;
         }
     }
 }

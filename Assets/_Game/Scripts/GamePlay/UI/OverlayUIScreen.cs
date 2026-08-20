@@ -26,7 +26,7 @@ public class OverlayUIScreen: UIScreen
         _experienceBarUI.Construct(player.Experience);
         _enduranceBarUI.Construct(player.Endurance);
 
-        _activeEvolutionsDisplay.OnEvolutionClicked += SetDescriptionText;
+        _activeEvolutionsDisplay.OnEvolutionHovered += SetDescriptionText;
     }
 
     private void SetDescriptionText(Sprite image, string itemName, string description)
@@ -38,7 +38,7 @@ public class OverlayUIScreen: UIScreen
 
     private void OnDestroy()
     {
-        _activeEvolutionsDisplay.OnEvolutionClicked -= SetDescriptionText;
+        _activeEvolutionsDisplay.OnEvolutionHovered -= SetDescriptionText;
     }
 }
 }
