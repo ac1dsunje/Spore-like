@@ -60,8 +60,14 @@ public class EnvironmentSpawner: MonoBehaviour
     private void UnloadEnvironment(Vector3Int position)
     {
         if (!_spawnedObjects.TryGetValue(position, out var item)) return;
-        Destroy(item.gameObject, 1f);
-        item.gameObject.SetActive(false);
+        
+        if (!item)
+        {
+            _spawnedObjects.Remove(position);
+            _spawnedFoods.Remove(position);
+        }
+        
+        Destroy(item.gameObject);
         _spawnedObjects.Remove(position);
     }
     
