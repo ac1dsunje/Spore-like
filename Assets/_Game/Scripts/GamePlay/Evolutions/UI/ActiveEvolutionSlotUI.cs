@@ -3,12 +3,20 @@ using UnityEngine.UI;
 
 namespace _Game.Scripts.GamePlay.Evolutions.UI
 {
+[RequireComponent(typeof(Button))]
 public class ActiveEvolutionSlotUI: MonoBehaviour
 {
     [SerializeField] private Image _image;
     [SerializeField] private Image _frame;
 
+    private Button _button;
+    
     private Evolution _evolution;
+
+    private void Awake()
+    {
+        _button = GetComponent<Button>();
+    }
     
     public void Construct(Evolution evolution)
     {
@@ -16,6 +24,12 @@ public class ActiveEvolutionSlotUI: MonoBehaviour
         _evolution.OnRarityChanged += UpdateFrame;
         UpdateSprite();
         UpdateFrame();
+        _button.onClick.AddListener(OnMouseClick);
+    }
+
+    private void OnMouseClick()
+    {
+        Debug.Log($"Mouse clicked {_evolution.Name}");
     }
 
     private void UpdateSprite()
@@ -31,6 +45,7 @@ public class ActiveEvolutionSlotUI: MonoBehaviour
     private void OnDestroy()
     {
         _evolution.OnRarityChanged -= UpdateFrame;
+        _button.onClick.RemoveAllListeners();
     }
 }
 }
