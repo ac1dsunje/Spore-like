@@ -1,6 +1,7 @@
 ﻿using _Game.Scripts.Core.UI;
 using _Game.Scripts.GamePlay.Player;
 using _Game.Scripts.GamePlay.UI.Bar;
+using TMPro;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,8 +17,11 @@ public class OverlayUIScreen: UIScreen
 
     [SerializeField] private Button _host;
     [SerializeField] private Button _connect;
-    
     [SerializeField] private Button _player;
+
+    [SerializeField] private Image _descriptionImage;
+    [SerializeField] private TextMeshProUGUI _descriptionName;
+    [SerializeField] private TextMeshProUGUI _descriptionText;
     
     [Inject] private NetworkManager _networkManager;
     [Inject] private PlayerSpawner _playerSpawner;
@@ -42,7 +46,9 @@ public class OverlayUIScreen: UIScreen
 
     private void SetDescriptionText(Sprite image, string itemName, string description)
     {
-        Debug.Log($"{itemName} : {description}");
+        _descriptionImage.sprite = image;
+        _descriptionName.text = itemName;
+        _descriptionText.text = description;
     }
 
     private void OnDestroy()
