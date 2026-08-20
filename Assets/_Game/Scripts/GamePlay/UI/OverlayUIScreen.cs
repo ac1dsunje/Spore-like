@@ -40,7 +40,7 @@ public class OverlayUIScreen: UIScreen
         _activeEvolutionsDisplay.OnEvolutionClicked += SetDescriptionText;
     }
 
-    private void SetDescriptionText(string itemName, string description)
+    private void SetDescriptionText(Sprite image, string itemName, string description)
     {
         Debug.Log($"{itemName} : {description}");
     }

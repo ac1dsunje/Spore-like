@@ -14,7 +14,7 @@ public class ActiveEvolutionsDisplay: MonoBehaviour
     
     private EvolutionsModule _player;
 
-    public event Action<string, string> OnEvolutionClicked;
+    public event Action<Sprite, string, string> OnEvolutionClicked;
     private readonly List<ActiveEvolutionSlotUI> _evolutions = new();
 
     public void Construct(EvolutionsModule player)

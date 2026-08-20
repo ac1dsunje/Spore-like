@@ -10,7 +10,7 @@ public class ActiveEvolutionSlotUI: MonoBehaviour
     [SerializeField] private Image _image;
     [SerializeField] private Image _frame;
 
-    public event Action<string, string> OnEvolutionClicked;
+    public event Action<Sprite, string, string> OnEvolutionClicked;
     
     private Button _button;
     
@@ -36,7 +36,7 @@ public class ActiveEvolutionSlotUI: MonoBehaviour
     {
         var description = $"some description here";
         
-        OnEvolutionClicked?.Invoke(_evolution.Name, description);
+        OnEvolutionClicked?.Invoke(_evolution.Config.Sprite, _evolution.Name, description);
     }
 
     private void UpdateSprite()
