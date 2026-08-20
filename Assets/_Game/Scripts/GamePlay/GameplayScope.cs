@@ -6,7 +6,6 @@ using _Game.Scripts.GamePlay.UI;
 using _Game.Scripts.GamePlay.World;
 using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 using VContainer;
 using VContainer.Unity;
 
@@ -40,6 +39,7 @@ public class GameplayScope: LifetimeScope
         builder.RegisterComponentInHierarchy<ActiveEvolutionsDisplay>();
         builder.RegisterComponentInHierarchy<ActiveAbilitiesDisplay>();
         builder.RegisterComponentInHierarchy<PauseUIScreen>();
+        builder.RegisterComponentInHierarchy<AdminUI>();
         
         // Cameras
         builder.RegisterComponentInHierarchy<CameraController>();
