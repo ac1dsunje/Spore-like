@@ -15,13 +15,16 @@ MonoBehaviour:
   <State>k__BackingField: 1
   <Name>k__BackingField: Fins
   <CreatureType>k__BackingField: 1
-  <Description>k__BackingField: 
   <Stats>k__BackingField:
   - <Type>k__BackingField: 0
     <Value>k__BackingField: 0.5
+    <Operation>k__BackingField: 0
+    <Target>k__BackingField: 0
     <UpdatesByRarity>k__BackingField: 1
   - <Type>k__BackingField: 18
-    <Value>k__BackingField: 3
+    <Value>k__BackingField: 6
+    <Operation>k__BackingField: 0
+    <Target>k__BackingField: 0
     <UpdatesByRarity>k__BackingField: 1
   <Abilities>k__BackingField:
   - {fileID: 11400000, guid: be1b63a43cda10d4a8d67386e9596059, type: 2}

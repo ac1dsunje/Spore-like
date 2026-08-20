@@ -15,6 +15,8 @@ public class PlayerMovement: EntityNetworkBehaviour
     private DisguiseModule _disguise;
     private PlayerInputService _inputService;
 
+    private Vector2 _lastMovementDirection = Vector2.right;
+
     [Inject]
     private void Construct(MovementModule movement, DisguiseModule disguise, PlayerInputService inputService)
     {
@@ -33,12 +35,23 @@ public class PlayerMovement: EntityNetworkBehaviour
         if (IsLocal)
         {
             var input = _inputService.Movement.normalized;
+
+            UpdateLastMovementDirection(input);
+
             Move(input);
-            TryDash(input);
+            TryDash();
         }
         
         _disguise.SetMoving(_controller.IsMoving);
         _movement.UpdateGridPosition(GridPosition);
+    }
+
+    private void UpdateLastMovementDirection(Vector2 input)
+    {
+        if (input.sqrMagnitude > 0f)
+        {
+            _lastMovementDirection = input;
+        }
     }
 
     private void Move(Vector2 input)
@@ -52,13 +65,14 @@ public class PlayerMovement: EntityNetworkBehaviour
         var rate = _movement.MoveSpeed / time;
         
         _controller.Move(targetVelocity, rate * Time.fixedDeltaTime);
-        
     }
 
-    private void TryDash(Vector2 input)
+    private void TryDash()
     {
         if (!_movement.DashRequested) return;
-        _controller.Push(input, _movement.DashPower);
+
+        _controller.Push(_lastMovementDirection, _movement.DashPower);
+
         _movement.SetDash(false);
     }
 
