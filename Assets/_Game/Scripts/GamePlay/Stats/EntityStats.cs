@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay
 {
@@ -11,6 +12,8 @@ public class EntityStats
     private readonly Dictionary<IStatSource, List<SourceStat>> _sourceStats = new();
     
     public event Action<StatType, float> OnStatUpdated;
+    
+    [Inject] private StatTypeConfig _config;
     
     public void Initialize(StatsConfig[] configs)
     {
@@ -127,6 +130,8 @@ public class EntityStats
             
             result *= 1f + stat.CurrentValue / 100f;
         }
+
+        result = _config.Clamp(type, result);
 
         _stats[type] = result;
         

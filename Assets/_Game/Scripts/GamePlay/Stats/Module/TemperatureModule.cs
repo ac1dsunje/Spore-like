@@ -2,9 +2,9 @@
 {
 public class TemperatureModule: StatModule
 {
-    public float MinimalLethal => _minimalLethal + _coldResistance;
+    public float MinimalLethal => _minimalLethal - _coldResistance;
     public float MaximumLethal => _maximumLethal + _heatResistance;
-    public float MinimalComfortable => _minimalComfortable + _coldResistance;
+    public float MinimalComfortable => _minimalComfortable - _coldResistance;
     public float MaximumComfortable => _maximumComfortable + _heatResistance;
     
     public bool IsLethal(float value) => value < MinimalLethal || value > MaximumLethal;

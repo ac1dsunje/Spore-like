@@ -13,11 +13,15 @@ namespace _Game.Scripts.GamePlay
 {
 public class GameplayScope: LifetimeScope
 {
-    [Header("Config")]
+    [Header("Configs")]
     [SerializeField] private WorldGenerationConfig _worldConfig;
+    [SerializeField] private StatTypeConfig _statTypeConfig;
 
     protected override void Configure(IContainerBuilder builder)
     {
+        // Stats
+        builder.RegisterInstance(_statTypeConfig);
+        
         // Player
         builder.RegisterComponentInHierarchy<PlayerSpawner>();
         builder.Register<PlayerRegistry>(Lifetime.Singleton);
