@@ -10,6 +10,7 @@ public class StatTypeData
     [field: SerializeField] public StatType Type { get; private set; }
     [field: SerializeField, Range(-999999, 999999)] public float MinimalValue { get; private set; } = -999999;
     [field: SerializeField, Range(-999999, 999999)] public float MaximalValue { get; private set; } = 999999;
+    [field: SerializeField] public Sprite Sprite { get; private set; }
 
     public StatTypeData(StatType type)
     {

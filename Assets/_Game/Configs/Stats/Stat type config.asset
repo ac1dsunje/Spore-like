@@ -17,123 +17,154 @@ MonoBehaviour:
     <Type>k__BackingField: 0
     <MinimalValue>k__BackingField: 0.1
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: 6397451571940152004, guid: 04559ceb802611740b38eb04c6d0862b, type: 3}
   - <Name>k__BackingField: Vision radius
     <Type>k__BackingField: 1
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: -6825607238538538892, guid: 79b63026ffc209d4fae6977543c67e47, type: 3}
   - <Name>k__BackingField: Acceleration
     <Type>k__BackingField: 3
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: -8452392175120464465, guid: dd57e000b9f881243afea40eea943e59, type: 3}
   - <Name>k__BackingField: Damage reflection
     <Type>k__BackingField: 4
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: -7298023807665095455, guid: 4e3a14a8a34795746983ee79a94b2951, type: 3}
   - <Name>k__BackingField: Physical damage
     <Type>k__BackingField: 6
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: 4849156752713109327, guid: d35099c25b82a9c43a511f0d695ddc94, type: 3}
   - <Name>k__BackingField: Regeneration
     <Type>k__BackingField: 7
     <MinimalValue>k__BackingField: 0.1
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: -8610349705940589201, guid: 2d85130d9fa519041b0fc333b5d32117, type: 3}
   - <Name>k__BackingField: Inertia
     <Type>k__BackingField: 8
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: 5022329421918303471, guid: 4f1aec3bb32f8394e904fd64742665da, type: 3}
   - <Name>k__BackingField: Max health
     <Type>k__BackingField: 10
     <MinimalValue>k__BackingField: 1
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: -3358009253300397001, guid: 0cfd38107056bc4468d0c676297b5fa7, type: 3}
   - <Name>k__BackingField: Eating strength
     <Type>k__BackingField: 11
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: 1931466281187919874, guid: 30827ecc36cbb1440875c0b57558fa41, type: 3}
   - <Name>k__BackingField: Eating penetration
     <Type>k__BackingField: 12
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: -2915724513168318690, guid: a5e2aa37d5f3a434daa68a3d84a3416c, type: 3}
   - <Name>k__BackingField: Eating time
     <Type>k__BackingField: 13
     <MinimalValue>k__BackingField: 0.1
     <MaximalValue>k__BackingField: 3.4028235e+38
+    <Sprite>k__BackingField: {fileID: -3262147843550375414, guid: 5a5e4567c9c87ec4cb975635da0589e1, type: 3}
   - <Name>k__BackingField: Max endurance
     <Type>k__BackingField: 14
     <MinimalValue>k__BackingField: 1
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: -5280311605445207675, guid: 63c41d1730176c24e849950fbe05f2ff, type: 3}
   - <Name>k__BackingField: Endurance recovery
     <Type>k__BackingField: 15
     <MinimalValue>k__BackingField: 0.1
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: 6458660465154561987, guid: 482df75040bd98d4e8b4f8ef0eb68266, type: 3}
   - <Name>k__BackingField: Sprint multiplier
     <Type>k__BackingField: 16
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: -3260516150159068958, guid: f12db10a7060e4a49a329270d30239e2, type: 3}
   - <Name>k__BackingField: Damage resistance
     <Type>k__BackingField: 17
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: 4514843745603075268, guid: 954fe08d1bcd2184b845e5264d546e01, type: 3}
   - <Name>k__BackingField: Dash power
     <Type>k__BackingField: 18
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: -750698351967765193, guid: 17df8f309d95ef34b809fa57f1cd791d, type: 3}
   - <Name>k__BackingField: Cold resistance
     <Type>k__BackingField: 19
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: 6677599472990596812, guid: b9e08aeda2a3d734a953348433251e3f, type: 3}
   - <Name>k__BackingField: Heat resistence
     <Type>k__BackingField: 20
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: 937587125025686780, guid: 01637df969cac3e4fbfa7e09771d12f3, type: 3}
   - <Name>k__BackingField: Minimal lethal temperature
     <Type>k__BackingField: 21
     <MinimalValue>k__BackingField: -999999
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: -4200747675792156376, guid: a73189f89a1b7d444b972bae66774105, type: 3}
   - <Name>k__BackingField: Minimal comfortable temperature
     <Type>k__BackingField: 22
     <MinimalValue>k__BackingField: -999999
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: -7469348474323445789, guid: 9e585917064b8ba40b9b54e178a6394f, type: 3}
   - <Name>k__BackingField: Maximum comfortable temperature
     <Type>k__BackingField: 23
     <MinimalValue>k__BackingField: -999999
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: -8846822738713970327, guid: b4fed6d2f520a3e43837dd9ba5540ad1, type: 3}
   - <Name>k__BackingField: Maximum lethal temperature
     <Type>k__BackingField: 24
     <MinimalValue>k__BackingField: -999999
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: -1356360667628295894, guid: 13c458bde32d3cc4fb95bee859cb40cb, type: 3}
   - <Name>k__BackingField: Attack range
     <Type>k__BackingField: 25
     <MinimalValue>k__BackingField: 0.5
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: 8650530264662695493, guid: 08d0023782fd2ca4aa7e75fb587e52d0, type: 3}
   - <Name>k__BackingField: Ignore damage resistance
     <Type>k__BackingField: 26
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: -3238970365842299627, guid: 3ab39f6535927c8449de84575b4fe281, type: 3}
   - <Name>k__BackingField: Sensorics
     <Type>k__BackingField: 27
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: -7016426849261170592, guid: 94f17ec8d57ca444aa5aa2d0720af7f6, type: 3}
   - <Name>k__BackingField: Disguise
     <Type>k__BackingField: 28
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: 5362319572552861542, guid: 6152d1d911cc44146880e12c2c9cb277, type: 3}
   - <Name>k__BackingField: Lighting radius
     <Type>k__BackingField: 29
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: 3684872135520883216, guid: d6c720e3b288d6847a692a82e1d6cb70, type: 3}
   - <Name>k__BackingField: Passability
     <Type>k__BackingField: 30
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: 914818145782895980, guid: 76d9ba27b7b8e5644bb6b2f3d28bf7c1, type: 3}
   - <Name>k__BackingField: X-ray
     <Type>k__BackingField: 31
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: -7837708173860439451, guid: 45a7fa6bae1a52345ba7401b82c250ac, type: 3}
   - <Name>k__BackingField: Attack speed
     <Type>k__BackingField: 32
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: -7353090723414329906, guid: 7fa00da286c0c6742b74595bb81695ff, type: 3}
   - <Name>k__BackingField: Disguise in rest
     <Type>k__BackingField: 33
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: 3699892114589419668, guid: 94a0294b0316095469797e0a1cec4734, type: 3}
