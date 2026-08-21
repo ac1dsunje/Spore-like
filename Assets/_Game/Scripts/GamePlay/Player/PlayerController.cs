@@ -42,7 +42,10 @@ public class PlayerController: NetworkBehaviour, IDamageAble
         Model.Evolutions.Initialize(_evolutionsDatabase, _raritiesDatabase, _minEvolutions);
         _animation.SetConfig(_animationSettings);
         _playerRegistry.AddPlayer(this);
-        _experience.Initialize(Model);
+        if (_authority.IsLocal)
+        {
+            _experience.Initialize(Model);
+        }
     }
 
     public float TakeDamage(HitInfo hit) => Model.TakeDamage(hit);
