@@ -1,6 +1,5 @@
 ﻿using System.Text;
 using _Game.Scripts.GamePlay.Types;
-using UnityEngine;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Evolutions.UI
@@ -18,10 +17,7 @@ public class EvolutionFormatter
     private string FormatStats(SourceStat stat)
     {
         var statItem = _statsConfig.Get(stat.Type);
-        var statTypeName = statItem.Name;
-        var name = statTypeName != "" ? statTypeName : stat.Type.ToString();
-
-        name = $"{name} <sprite name=\"{statItem.Sprite.name}\">";
+        var name = $"{statItem.Name} <sprite name=\"{statItem.Sprite.name}\">";
         
         return stat.Operation switch
         {
