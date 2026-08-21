@@ -34,8 +34,12 @@ public class UIManager: MonoBehaviour
         _player = player.Model;
         
         _player.Evolutions.OnSlotsFilled += OnSlotsFilled;
-        _barsPanelUI.Construct(player.Model);
+        
+        _barsPanelUI.Construct(_player);
+        
         _activeEvolutionsDisplay.OnEvolutionHovered += _descriptionUI.SetDescription;
+        _activeEvolutionsDisplay.OnEvolutionUnhovered += _descriptionUI.Hide;
+        
         _activeEvolutionsDisplay.Construct(_player.Evolutions);
         _evolutionChooseUIScreen.Construct(_player.Evolutions);
         _activeAbilitiesDisplay.Construct(_player.Abilities);
@@ -56,8 +60,12 @@ public class UIManager: MonoBehaviour
 
     public void OnDestroy()
     {
-        _player.Evolutions.OnSlotsFilled -= OnSlotsFilled;
+        if (_player != null) 
+            _player.Evolutions.OnSlotsFilled -= OnSlotsFilled;
+        
         _activeEvolutionsDisplay.OnEvolutionHovered -= _descriptionUI.SetDescription;
+        _activeEvolutionsDisplay.OnEvolutionUnhovered -= _descriptionUI.Hide;
+        
         _registry.OnLocalPlayerAdded -= AddPlayer;
     }
 }

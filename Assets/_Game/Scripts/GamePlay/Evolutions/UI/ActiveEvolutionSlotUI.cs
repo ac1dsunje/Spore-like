@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 namespace _Game.Scripts.GamePlay.Evolutions.UI
 {
-public class ActiveEvolutionSlotUI: MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ActiveEvolutionSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Image _image;
     [SerializeField] private Image _frame;
 
     public event Action<Sprite, string, string> OnEvolutionHovered;
+    public event Action OnEvolutionUnhovered;
     
     private Evolution _evolution;
     
@@ -22,7 +23,7 @@ public class ActiveEvolutionSlotUI: MonoBehaviour, IPointerEnterHandler, IPointe
         UpdateSprite();
         UpdateFrame();
     }
-        
+    
     public void OnPointerEnter(PointerEventData eventData)
     {
         OnEvolutionHovered?.Invoke(
@@ -34,7 +35,7 @@ public class ActiveEvolutionSlotUI: MonoBehaviour, IPointerEnterHandler, IPointe
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        
+        OnEvolutionUnhovered?.Invoke();
     }
 
     private void UpdateSprite()

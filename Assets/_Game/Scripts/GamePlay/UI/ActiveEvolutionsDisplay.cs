@@ -10,11 +10,13 @@ namespace _Game.Scripts.GamePlay.UI
 public class ActiveEvolutionsDisplay: MonoBehaviour
 {
     [SerializeField] private GameObject _slotPrefab;
-    [SerializeField] private Transform  _container;
+    [SerializeField] private Transform _container;
     
     private EvolutionsModule _player;
 
     public event Action<Sprite, string, string> OnEvolutionHovered;
+    public event Action OnEvolutionUnhovered;
+
     private readonly List<ActiveEvolutionSlotUI> _slots = new();
 
     public void Construct(EvolutionsModule player)
@@ -25,18 +27,26 @@ public class ActiveEvolutionsDisplay: MonoBehaviour
 
     private void AddEvolution(Evolution evolution)
     {
-        var slot = Instantiate(_slotPrefab, _container).GetComponent<ActiveEvolutionSlotUI>();
+        var slot = Instantiate(_slotPrefab, _container)
+            .GetComponent<ActiveEvolutionSlotUI>();
+
         slot.Construct(evolution);
+
         slot.OnEvolutionHovered += OnEvolutionHovered;
+        slot.OnEvolutionUnhovered += OnEvolutionUnhovered;
+
         _slots.Add(slot);
     }
 
     private void OnDestroy()
     {
-        _player.OnEvolutionApplied -= AddEvolution;
+        if (_player != null)
+            _player.OnEvolutionApplied -= AddEvolution;
+
         foreach (var slot in _slots)
         {
             slot.OnEvolutionHovered -= OnEvolutionHovered;
+            slot.OnEvolutionUnhovered -= OnEvolutionUnhovered;
         }
     }
 }
