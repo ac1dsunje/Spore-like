@@ -1,5 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Abilities;
 using _Game.Scripts.GamePlay.CameraManager;
+using _Game.Scripts.GamePlay.Evolutions.UI;
 using _Game.Scripts.GamePlay.Evolutions.UI.Choosing;
 using _Game.Scripts.GamePlay.Player;
 using _Game.Scripts.GamePlay.UI;
@@ -37,6 +38,8 @@ public class GameplayScope: LifetimeScope
         builder.Register<WorldModel>(Lifetime.Singleton);
         
         // UI
+        builder.Register<EvolutionFormatter>(Lifetime.Singleton);
+        
         builder.RegisterComponentInHierarchy<UIManager>();
         builder.RegisterComponentInHierarchy<EvolutionChooseUIScreen>();
         builder.RegisterComponentInHierarchy<OverlayUIScreen>();

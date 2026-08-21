@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Evolutions.UI.Choosing
 {
@@ -23,13 +23,13 @@ public class ChoosingEvolutionSlotUI : MonoBehaviour
         _button.onClick.AddListener(OnButtonClick);
     }
 
-    public void SetEvolution(Evolution evolution)
+    public void SetEvolution(Evolution evolution, EvolutionFormatter formatter)
     {
         _evolution = evolution;
         _evolutionImage.sprite = evolution.Config.Sprite;
         _rarityFrameImage.sprite = evolution.Frame;
         _name.text = $"{evolution.Name}";
-        _statsDescription.text = EvolutionFormatter.FormatDescription(evolution);
+        _statsDescription.text = formatter.FormatDescription(evolution);
     }
 
     private void OnButtonClick()

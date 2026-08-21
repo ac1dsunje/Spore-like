@@ -1,21 +1,32 @@
 ﻿using System.Text;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Evolutions.UI
 {
-public static class EvolutionFormatter
+public class EvolutionFormatter
 {
-    private static string FormatStats(SourceStat stat)
+    private StatTypeConfig _statsConfig;
+
+    [Inject] 
+    private void Construct(StatTypeConfig statsConfig)
     {
+        _statsConfig = statsConfig;
+    }
+    
+    private string FormatStats(SourceStat stat)
+    {
+        var statTypeName = _statsConfig.GetName(stat.Type);
+        var name = statTypeName != "" ? statTypeName : stat.Type.ToString();
         return stat.Operation switch
         {
-            StatOperation.Add => $"{stat.Type}{(stat.CurrentValue > 0 ? " +" : " ")}{stat.CurrentValue}",
-            StatOperation.Multiply => $"{stat.Type} *{stat.CurrentValue}",
-            StatOperation.Percent => $"{stat.Type} {stat.CurrentValue}%",
-            _ => $"{stat.Type} {stat.CurrentValue}"
+            StatOperation.Add => $"{name} {(stat.CurrentValue > 0 ? "+" : "")}{stat.CurrentValue}",
+            StatOperation.Multiply => $"{name} *{stat.CurrentValue}",
+            StatOperation.Percent => $"{name} {stat.CurrentValue}%",
+            _ => $"{name} {stat.CurrentValue}"
         };
     }
 
-    public static string FormatDescription(Evolution evolution)
+    public string FormatDescription(Evolution evolution)
     {
         var text = new StringBuilder();
 

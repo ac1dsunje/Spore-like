@@ -2,6 +2,7 @@
 using _Game.Scripts.Core.UI;
 using _Game.Scripts.GamePlay.Player.Modules;
 using UnityEngine;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Evolutions.UI.Choosing
 {
@@ -9,6 +10,8 @@ public class EvolutionChooseUIScreen : UIScreen
 {
     [SerializeField] private GameObject _slotPrefab;
     private EvolutionsModule _evolutionsModule;
+    
+    [Inject] private EvolutionFormatter _formatter;
     
     private readonly List<ChoosingEvolutionSlotUI> _slots = new();
 
@@ -36,7 +39,7 @@ public class EvolutionChooseUIScreen : UIScreen
     private void CreateSlot(Evolution evolution)
     {
         var slot = Instantiate(_slotPrefab, transform).GetComponent<ChoosingEvolutionSlotUI>();
-        slot.SetEvolution(evolution);
+        slot.SetEvolution(evolution, _formatter);
         _slots.Add(slot);
         slot.OnSlotClicked += EvolutionChosen;
     }

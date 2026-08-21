@@ -4,6 +4,7 @@ using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Evolutions.UI;
 using _Game.Scripts.GamePlay.Player.Modules;
 using UnityEngine;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.UI
 {
@@ -13,6 +14,8 @@ public class ActiveEvolutionsDisplay: MonoBehaviour
     [SerializeField] private Transform _container;
     
     private EvolutionsModule _player;
+
+    [Inject] private EvolutionFormatter _formatter;
 
     public event Action<Sprite, string, string> OnEvolutionHovered;
     public event Action OnEvolutionUnhovered;
@@ -27,10 +30,9 @@ public class ActiveEvolutionsDisplay: MonoBehaviour
 
     private void AddEvolution(Evolution evolution)
     {
-        var slot = Instantiate(_slotPrefab, _container)
-            .GetComponent<ActiveEvolutionSlotUI>();
+        var slot = Instantiate(_slotPrefab, _container).GetComponent<ActiveEvolutionSlotUI>();
 
-        slot.Construct(evolution);
+        slot.Construct(evolution, _formatter);
 
         slot.OnEvolutionHovered += OnEvolutionHovered;
         slot.OnEvolutionUnhovered += OnEvolutionUnhovered;

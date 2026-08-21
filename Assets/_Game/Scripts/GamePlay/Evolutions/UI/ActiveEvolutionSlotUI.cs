@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Evolutions.UI
 {
@@ -10,15 +11,18 @@ public class ActiveEvolutionSlotUI : MonoBehaviour, IPointerEnterHandler, IPoint
     [SerializeField] private Image _image;
     [SerializeField] private Image _frame;
 
+    private EvolutionFormatter _formatter;
+    
     public event Action<Sprite, string, string> OnEvolutionHovered;
     public event Action OnEvolutionUnhovered;
     
     private Evolution _evolution;
     
-    public void Construct(Evolution evolution)
+    public void Construct(Evolution evolution, EvolutionFormatter formatter)
     {
         _evolution = evolution;
         _evolution.OnRarityChanged += UpdateFrame;
+        _formatter = formatter;
         
         UpdateSprite();
         UpdateFrame();
@@ -29,7 +33,7 @@ public class ActiveEvolutionSlotUI : MonoBehaviour, IPointerEnterHandler, IPoint
         OnEvolutionHovered?.Invoke(
             _evolution.Config.Sprite,
             _evolution.Name,
-            EvolutionFormatter.FormatDescription(_evolution)
+            _formatter.FormatDescription(_evolution)
         );
     }
 

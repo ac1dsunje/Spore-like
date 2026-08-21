@@ -72,9 +72,19 @@ public class StatTypeConfig : ScriptableObject
         }
     }
 
+    private StatTypeData Get(StatType type)
+    {
+        return Types.FirstOrDefault(data => data.Type == type);
+    }
+
+    public string GetName(StatType type)
+    {
+        return Get(type).Name;
+    }
+
     public float Clamp(StatType type, float value)
     {
-        var data = Types.FirstOrDefault(data => data.Type == type);
+        var data = Get(type);
 
         return data == null ? value : Mathf.Clamp(value, data.MinimalValue, data.MaximalValue);
     }
