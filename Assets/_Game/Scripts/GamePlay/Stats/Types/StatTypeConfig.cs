@@ -37,14 +37,9 @@ public class StatTypeConfig : ScriptableObject
         }
     }
 
-    private StatTypeData Get(StatType type)
+    public StatTypeData Get(StatType type)
     {
         return Types.FirstOrDefault(data => data.Type == type);
-    }
-
-    public string GetName(StatType type)
-    {
-        return Get(type).Name;
     }
 
     public float Clamp(StatType type, float value)
