@@ -35,7 +35,7 @@ public class EvolutionFormatter
         {
             foreach (var ability in evolution.Config.Abilities)
             {
-                text.AppendLine($"Grants ability to {ability.Type}");
+                text.AppendLine($"Grants ability to {ability.Type} <sprite name=\"{ability.Sprite.name}\">");
             }
         }
 
