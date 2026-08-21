@@ -17,42 +17,42 @@ MonoBehaviour:
     <Type>k__BackingField: 0
     <MinimalValue>k__BackingField: 0.1
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: -928084348047103389, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: 3151596413375263565, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Vision radius
     <Type>k__BackingField: 1
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: -8579854864461009595, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: -1723911901975921279, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Acceleration
     <Type>k__BackingField: 3
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: 1332608889348921567, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: -5059120313857727351, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Damage reflection
     <Type>k__BackingField: 4
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: -8675290313262145182, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: 404098752344879426, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Physical damage
     <Type>k__BackingField: 6
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: 5640206556642390436, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: 3450729527309045916, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Regeneration
     <Type>k__BackingField: 7
     <MinimalValue>k__BackingField: 0.1
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: 3151596413375263565, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: 1332608889348921567, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Inertia
     <Type>k__BackingField: 8
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: 3963570999338575670, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: 6823381410515976298, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Max health
     <Type>k__BackingField: 10
     <MinimalValue>k__BackingField: 1
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: -3070872761387025871, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: -5585093005982383435, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Eating strength
     <Type>k__BackingField: 11
     <MinimalValue>k__BackingField: 0
@@ -67,104 +67,104 @@ MonoBehaviour:
     <Type>k__BackingField: 13
     <MinimalValue>k__BackingField: 0.1
     <MaximalValue>k__BackingField: 3.4028235e+38
-    <Sprite>k__BackingField: {fileID: 8255133181707558101, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: -4306985623736051257, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Max endurance
     <Type>k__BackingField: 14
     <MinimalValue>k__BackingField: 1
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: 3450729527309045916, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: -3119864509475359603, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Endurance recovery
     <Type>k__BackingField: 15
     <MinimalValue>k__BackingField: 0.1
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: 5068354607194028309, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: -928084348047103389, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Sprint multiplier
     <Type>k__BackingField: 16
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: -8209599813910781262, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: 5640206556642390436, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Damage resistance
     <Type>k__BackingField: 17
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: -5058518523510292372, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: -8579854864461009595, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Dash power
     <Type>k__BackingField: 18
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: -8258838045983217948, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: -8209599813910781262, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Cold resistance
     <Type>k__BackingField: 19
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: 5729515897186470782, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: -8258838045983217948, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Heat resistence
     <Type>k__BackingField: 20
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: 349317312476878949, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: -8888888698581415781, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Minimal lethal temperature
     <Type>k__BackingField: 21
     <MinimalValue>k__BackingField: -999999
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: -3119864509475359603, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: 2931377120861960056, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Minimal comfortable temperature
     <Type>k__BackingField: 22
     <MinimalValue>k__BackingField: -999999
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: -7141000155709367950, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: -5058518523510292372, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Maximum comfortable temperature
     <Type>k__BackingField: 23
     <MinimalValue>k__BackingField: -999999
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: 4081985156238443797, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: 5729515897186470782, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Maximum lethal temperature
     <Type>k__BackingField: 24
     <MinimalValue>k__BackingField: -999999
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: 7036836840204063061, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: -8675290313262145182, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Attack range
     <Type>k__BackingField: 25
     <MinimalValue>k__BackingField: 0.5
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: -5585093005982383435, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: 4081985156238443797, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Ignore damage resistance
     <Type>k__BackingField: 26
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: -253912776101671596, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: 7036836840204063061, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Sensorics
     <Type>k__BackingField: 27
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: 6823381410515976298, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: 5068354607194028309, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Disguise
     <Type>k__BackingField: 28
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: 2931377120861960056, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: -253912776101671596, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Lighting radius
     <Type>k__BackingField: 29
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: -1723911901975921279, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: 3963570999338575670, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Passability
     <Type>k__BackingField: 30
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: -5059120313857727351, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: -7141000155709367950, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: X-ray
     <Type>k__BackingField: 31
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: 404098752344879426, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: 349317312476878949, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Attack speed
     <Type>k__BackingField: 32
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: -8888888698581415781, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: -3070872761387025871, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Disguise in rest
     <Type>k__BackingField: 33
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: -4306985623736051257, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: 8255133181707558101, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
