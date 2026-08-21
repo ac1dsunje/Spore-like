@@ -1,6 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Types;
 
-namespace _Game.Scripts.GamePlay.Module
+namespace _Game.Scripts.GamePlay.Modules
 {
 public class BiomeModule: StatModule
 {

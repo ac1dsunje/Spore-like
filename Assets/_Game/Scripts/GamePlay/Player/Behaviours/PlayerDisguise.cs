@@ -1,6 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Animation;
 using _Game.Scripts.GamePlay.Interfaces;
-using _Game.Scripts.GamePlay.Module;
+using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.Player.Network;
 using VContainer;
 

@@ -2,7 +2,7 @@
 using _Game.Scripts.GamePlay.Types;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.Module
+namespace _Game.Scripts.GamePlay.Modules
 {
 public class DefenseModule: StatModule
 {

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using _Game.Scripts.GamePlay.Module;
+using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.Player.Network;
 using _Game.Scripts.GamePlay.World.Food;
 using UnityEngine;
