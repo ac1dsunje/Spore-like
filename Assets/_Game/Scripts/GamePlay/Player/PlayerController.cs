@@ -1,6 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Animation;
 using _Game.Scripts.GamePlay.Evolutions;
-using _Game.Scripts.GamePlay.Player.Behaviours;
+using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
 using _Game.Scripts.GamePlay.Player.Network;
 using _Game.Scripts.GamePlay.Rarities;
@@ -23,7 +23,7 @@ public class PlayerController : NetworkBehaviour
     [Inject] private EntityAuthority _authority;
     [Inject] private ItemAnimation _animation;
     [Inject] private ExperienceModule _experience;
-    [Inject] private PlayerHealth _health;
+    [Inject] private IDamageAble _damageAble;
 
     public override void OnNetworkSpawn()
     {
@@ -39,7 +39,7 @@ public class PlayerController : NetworkBehaviour
 
     private void Initialize()
     {
-        Model.Initialize(_health);
+        Model.Initialize(_damageAble);
         Model.Evolutions.Initialize(_evolutionsDatabase, _raritiesDatabase, _minEvolutions);
         _animation.SetConfig(_animationSettings);
         _playerRegistry.AddPlayer(this);

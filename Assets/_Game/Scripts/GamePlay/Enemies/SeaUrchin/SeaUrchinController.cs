@@ -1,4 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Animation;
+using _Game.Scripts.GamePlay.Interfaces;
 using UnityEngine;
 using VContainer;
 
@@ -6,18 +7,15 @@ namespace _Game.Scripts.GamePlay.Enemies.SeaUrchin
 {
 public class SeaUrchinController: MonoBehaviour
 {
-    private EntityStats _entityStats;
-
     [Inject]
     private void Construct(EntityStats entityStats, EntityStatsConfig entityStatsConfig, SeaUrchinAttackBehaviour attackBehaviour,
-        AnimationSettings animationSettings, ItemAnimation itemAnimation, SeaUrchinHealth health)
+        AnimationSettings animationSettings, ItemAnimation itemAnimation, IDamageAble damageAble)
     {
-        attackBehaviour.SetOwner(health);
-        _entityStats = entityStats;
+        attackBehaviour.SetOwner(damageAble);
         
         itemAnimation.SetConfig(animationSettings);
         
-        _entityStats.Initialize(entityStatsConfig.InitialConfigs);
+        entityStats.Initialize(entityStatsConfig.InitialConfigs);
     }
 }
 }
