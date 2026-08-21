@@ -8,7 +8,7 @@ public class FoodConfig: ScriptableObject
 {
     [field: SerializeField] public StatsConfig StatsConfig { get; private set; }
     [field: SerializeField] public int FeedAmount { get; private set; } = 1;
-    [field: SerializeField] public bool IsObstacle { get; private set; } = false;
+    [field: SerializeField] public bool IsObstacle { get; private set; }
     [field: SerializeField] public AnimationSettings AnimationSettings { get; private set; }
     [field: SerializeField] public ParticlesSettings ParticlesSettings { get; private set; }
 }
