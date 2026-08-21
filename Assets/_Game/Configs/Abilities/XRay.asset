@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299fdedca7cc47638fb19678a78e3f72, type: 3}
   m_Name: XRay
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Abilities.AbilityConfig
-  <Sprite>k__BackingField: {fileID: 4878588209262014037, guid: 9e9cb973f20a4654da8a8d1dc93dfa12, type: 3}
+  <Sprite>k__BackingField: {fileID: 8872706491591926713, guid: 41902f2777748f84b854c8536bd05562, type: 3}
   <Type>k__BackingField: 3
   <StartCost>k__BackingField: 1
   <HasActivePhase>k__BackingField: 1
