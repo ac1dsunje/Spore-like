@@ -17,7 +17,9 @@ public class UIManager: MonoBehaviour
     [Inject] private OverlayUIScreen _overlayUIScreen;
     [Inject] private ActiveEvolutionsDisplay _activeEvolutionsDisplay;
     [Inject] private ActiveAbilitiesDisplay  _activeAbilitiesDisplay;
-
+    [Inject] private BarsPanelUI _barsPanelUI;
+    [Inject] private DescriptionUI _descriptionUI;
+    
     private PlayerRegistry _registry;
 
     [Inject]
@@ -32,8 +34,8 @@ public class UIManager: MonoBehaviour
         _player = player.Model;
         
         _player.Evolutions.OnSlotsFilled += OnSlotsFilled;
-        
-        _overlayUIScreen.Construct(_player);
+        _barsPanelUI.Construct(player.Model);
+        _activeEvolutionsDisplay.OnEvolutionHovered += _descriptionUI.SetDescription;
         _activeEvolutionsDisplay.Construct(_player.Evolutions);
         _evolutionChooseUIScreen.Construct(_player.Evolutions);
         _activeAbilitiesDisplay.Construct(_player.Abilities);
@@ -55,6 +57,7 @@ public class UIManager: MonoBehaviour
     public void OnDestroy()
     {
         _player.Evolutions.OnSlotsFilled -= OnSlotsFilled;
+        _activeEvolutionsDisplay.OnEvolutionHovered -= _descriptionUI.SetDescription;
         _registry.OnLocalPlayerAdded -= AddPlayer;
     }
 }

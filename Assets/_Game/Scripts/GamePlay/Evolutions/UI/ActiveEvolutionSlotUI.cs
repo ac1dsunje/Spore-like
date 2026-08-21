@@ -34,6 +34,7 @@ public class ActiveEvolutionSlotUI: MonoBehaviour, IPointerEnterHandler, IPointe
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        
     }
 
     private void UpdateSprite()

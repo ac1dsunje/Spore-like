@@ -40,6 +40,8 @@ public class GameplayScope: LifetimeScope
         builder.RegisterComponentInHierarchy<ActiveAbilitiesDisplay>();
         builder.RegisterComponentInHierarchy<PauseUIScreen>();
         builder.RegisterComponentInHierarchy<AdminUI>();
+        builder.RegisterComponentInHierarchy<BarsPanelUI>();
+        builder.RegisterComponentInHierarchy<DescriptionUI>();
         
         // Cameras
         builder.RegisterComponentInHierarchy<CameraController>();
