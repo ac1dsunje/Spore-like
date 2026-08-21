@@ -1,6 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Animation;
 using _Game.Scripts.GamePlay.Evolutions;
-using _Game.Scripts.GamePlay.Interfaces;
+using _Game.Scripts.GamePlay.Player.Behaviours;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
 using _Game.Scripts.GamePlay.Player.Network;
 using _Game.Scripts.GamePlay.Rarities;
@@ -10,7 +10,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player
 {
-public class PlayerController: NetworkBehaviour, IDamageAble
+public class PlayerController : NetworkBehaviour
 {
     [Header("Evolutions")]
     [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
@@ -23,6 +23,7 @@ public class PlayerController: NetworkBehaviour, IDamageAble
     [Inject] private EntityAuthority _authority;
     [Inject] private ItemAnimation _animation;
     [Inject] private ExperienceModule _experience;
+    [Inject] private PlayerHealth _health;
 
     public override void OnNetworkSpawn()
     {
@@ -38,7 +39,7 @@ public class PlayerController: NetworkBehaviour, IDamageAble
 
     private void Initialize()
     {
-        Model.Initialize(this);
+        Model.Initialize(_health);
         Model.Evolutions.Initialize(_evolutionsDatabase, _raritiesDatabase, _minEvolutions);
         _animation.SetConfig(_animationSettings);
         _playerRegistry.AddPlayer(this);
@@ -47,8 +48,5 @@ public class PlayerController: NetworkBehaviour, IDamageAble
             _experience.Initialize(Model);
         }
     }
-
-    public float TakeDamage(HitInfo hit) => Model.TakeDamage(hit);
-    public void SetDamageDealt(float damage) => Model.Attack.SetDamageDealt(damage);
 }
 }

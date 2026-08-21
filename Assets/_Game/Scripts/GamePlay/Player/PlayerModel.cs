@@ -1,7 +1,7 @@
-﻿using _Game.Scripts.GamePlay.Interfaces;
-using _Game.Scripts.GamePlay.Modules;
+﻿using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
+using _Game.Scripts.GamePlay.Interfaces;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player
@@ -52,16 +52,6 @@ public class PlayerModel
         Attack.SetOwner(owner);
         Abilities.SetModel(this);
         Evolutions.SetModel(this);
-    }
-
-    public float TakeDamage(HitInfo hit)
-    {
-        var damage = Defense.ApplyResistance(hit.Damage, hit.IgnoreResistance);
-        Health.TakeDamage(damage);
-        var returnedDamage = Defense.ReflectDamage(damage);
-        HitInfo returnedHit = new(returnedDamage, Attack.IgnoreResistance, null);
-        hit.Owner?.TakeDamage(returnedHit);
-        return damage;
     }
 }
 }
