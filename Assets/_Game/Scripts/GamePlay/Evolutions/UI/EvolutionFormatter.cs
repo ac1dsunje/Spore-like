@@ -6,13 +6,7 @@ namespace _Game.Scripts.GamePlay.Evolutions.UI
 {
 public class EvolutionFormatter
 {
-    private StatTypeConfig _statsConfig;
-
-    [Inject] 
-    private void Construct(StatTypeConfig statsConfig)
-    {
-        _statsConfig = statsConfig;
-    }
+    [Inject] private StatTypeConfig _statsConfig;
     
     private string FormatStats(SourceStat stat)
     {
