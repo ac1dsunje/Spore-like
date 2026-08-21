@@ -15,7 +15,6 @@ MonoBehaviour:
   <State>k__BackingField: 1
   <Name>k__BackingField: Color change
   <CreatureType>k__BackingField: 0
-  <Description>k__BackingField: 
   <Stats>k__BackingField: []
   <Abilities>k__BackingField: []
   <Requires>k__BackingField: []
@@ -26,4 +25,4 @@ MonoBehaviour:
     <ExperienceTypes>k__BackingField:
     - <Type>k__BackingField: 15
       <Amount>k__BackingField: 1
-  <Sprite>k__BackingField: {fileID: -2910420259896219454, guid: d80e7d9b4fe2d1b47bf3e42b427c7b35, type: 3}
+  <Sprite>k__BackingField: {fileID: -9158408440915174589, guid: ed4634d8d65c65c4495f380c594d59fd, type: 3}

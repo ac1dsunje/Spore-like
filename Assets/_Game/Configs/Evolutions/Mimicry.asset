@@ -15,7 +15,6 @@ MonoBehaviour:
   <State>k__BackingField: 1
   <Name>k__BackingField: Mimicry
   <CreatureType>k__BackingField: 0
-  <Description>k__BackingField: 
   <Stats>k__BackingField:
   - <Type>k__BackingField: 19
     <Value>k__BackingField: 2
@@ -41,4 +40,4 @@ MonoBehaviour:
     <ExperienceTypes>k__BackingField:
     - <Type>k__BackingField: 16
       <Amount>k__BackingField: 1
-  <Sprite>k__BackingField: {fileID: -3567747263565884176, guid: 4c84bdf40de8bce40ba268ae0fef1525, type: 3}
+  <Sprite>k__BackingField: {fileID: -8426686740697113471, guid: ed4634d8d65c65c4495f380c594d59fd, type: 3}

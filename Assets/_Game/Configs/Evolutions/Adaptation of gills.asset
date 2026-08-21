@@ -15,7 +15,6 @@ MonoBehaviour:
   <State>k__BackingField: 0
   <Name>k__BackingField: Adaptation of gills
   <CreatureType>k__BackingField: 1
-  <Description>k__BackingField: 
   <Stats>k__BackingField: []
   <Abilities>k__BackingField: []
   <Requires>k__BackingField:
@@ -24,4 +23,4 @@ MonoBehaviour:
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 10
     <ExperienceTypes>k__BackingField: []
-  <Sprite>k__BackingField: {fileID: 4654045819076885460, guid: 0cec00a2a99829c4986b5fc1db16d6f7, type: 3}
+  <Sprite>k__BackingField: {fileID: 2482059005279039378, guid: ed4634d8d65c65c4495f380c594d59fd, type: 3}

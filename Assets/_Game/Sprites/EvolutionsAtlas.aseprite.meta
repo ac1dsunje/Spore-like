@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b0cac7327783030449ba48e399bcb5bd
+guid: ed4634d8d65c65c4495f380c594d59fd
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639229436487046503
+  platformSettingsDirtyTick: 639229452634470767
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Atlas
+  - name: EvolutionsAtlas
     originalName: 
-    pivot: {x: 0.5, y: -7}
+    pivot: {x: 8.360655, y: -15}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 1024
-      height: 128
-    spriteID: cc99bed1c95c2c546b9665d40cda2d65
+      width: 61
+      height: 64
+    spriteID: c15e627579030ad408e02c0830f7e683
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -149,7 +149,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
   spriteSheetImportData:
-  - name: Atlas_0
+  - name: EvolutionsAtlas_0
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -158,10 +158,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 724
-      width: 64
+      y: 4
+      width: 61
       height: 64
-    spriteID: 5e8b47b62b136f74c9fac23c8f16c8c2
+    spriteID: 1f949fb428e8b584aa8cdb207de35bc9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -170,7 +170,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Atlas_1
+  - name: EvolutionsAtlas_1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -178,11 +178,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 84
-      y: 724
+      x: 83
+      y: 6
       width: 64
-      height: 64
-    spriteID: e3ef50947f7c6804b8c8b3d24e2ec32d
+      height: 60
+    spriteID: e8f02fbc6086efa4db9725fd58705566
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -191,7 +191,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Atlas_2
+  - name: EvolutionsAtlas_2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -199,11 +199,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 164
-      y: 724
+      x: 163
+      y: 4
       width: 64
       height: 64
-    spriteID: abbcca111043b3142968dbd3c10897ed
+    spriteID: c71cb38bbd05fe44d9f675f8cb9b4fba
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -212,7 +212,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Atlas_3
+  - name: EvolutionsAtlas_3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -220,11 +220,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 244
-      y: 724
+      x: 243
+      y: 4
       width: 64
       height: 64
-    spriteID: 22977feee0a696848b65445dc47689c5
+    spriteID: ab4aba5325be17743abef3774b510081
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -233,7 +233,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Atlas_4
+  - name: EvolutionsAtlas_4
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -241,11 +241,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 4
-      y: 644
-      width: 64
+      x: 5
+      y: 84
+      width: 61
       height: 64
-    spriteID: 05c8b134f6b0f3146b1cd655f0687cbf
+    spriteID: 40078f303ea7305499dc100b53451749
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -254,7 +254,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Atlas_5
+  - name: EvolutionsAtlas_5
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -262,368 +262,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 4
-      y: 564
-      width: 64
-      height: 64
-    spriteID: 6c4b770207d3a244a99d2c6651ccc050
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: Atlas_6
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 84
-      y: 564
-      width: 64
-      height: 64
-    spriteID: 64f4c79a1958b194099aac0a3a4d3e78
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: Atlas_7
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 484
-      width: 64
-      height: 64
-    spriteID: aa9517f413d5b844c966c1bdfb08dee3
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: Atlas_8
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 84
-      y: 484
-      width: 64
-      height: 64
-    spriteID: dddbdccc941a002459547af44b799bcc
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: Atlas_9
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 164
-      y: 484
-      width: 64
-      height: 64
-    spriteID: 53bbb12ed7230d14e9c890d757443146
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: Atlas_10
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 244
-      y: 484
-      width: 64
-      height: 64
-    spriteID: 2527b7c4504a2af4094738a8af63ef0c
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: Atlas_11
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 324
-      y: 484
-      width: 64
-      height: 64
-    spriteID: 172a305d7fe7f464da486960d45f382f
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: Atlas_12
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 404
-      width: 64
-      height: 64
-    spriteID: ccf1224d363348f438a0faa8a5628d8c
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: Atlas_13
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 84
-      y: 404
-      width: 64
-      height: 64
-    spriteID: e504426b97662fa4da000931cd1880a4
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: Atlas_14
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 324
-      width: 64
-      height: 64
-    spriteID: a159788ae0c127a46862c54e6f52fb6e
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: Atlas_15
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 84
-      y: 324
-      width: 64
-      height: 64
-    spriteID: 1511f025c889c644e9ebf9e81b4affe0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: Atlas_16
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 244
-      width: 64
-      height: 64
-    spriteID: ddd9582a9b5dc4b4ca4a9f1f2f804b5d
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: Atlas_17
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 84
-      y: 244
-      width: 64
-      height: 64
-    spriteID: 6e482c237b9d7cb4e8fe4c32cc08cd26
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: Atlas_18
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 164
-      width: 64
-      height: 64
-    spriteID: c5d69e538c726c64ea8ec58be5737ca5
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: Atlas_19
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 84
-      y: 164
-      width: 64
-      height: 64
-    spriteID: 4908154b9d246754e882fad80f075bc0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: Atlas_20
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 164
-      y: 164
-      width: 64
-      height: 64
-    spriteID: 9fe7658f376f41f4e9d8f5b42cea28da
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: Atlas_21
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 244
-      y: 164
-      width: 64
-      height: 64
-    spriteID: ef1384e5aab76d6418ada6f036f197d9
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: Atlas_22
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
+      x: 83
       y: 84
       width: 64
       height: 64
-    spriteID: b556ed218f49f04418aedd7bf4dc7c42
+    spriteID: cd65cfef42df0af48b88ac6098b05fd8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -632,7 +275,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Atlas_23
+  - name: EvolutionsAtlas_6
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -640,11 +283,53 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 84
+      x: 163
+      y: 89
+      width: 64
+      height: 59
+    spriteID: 098148cbd70fa0b4fa219f669bd61453
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: EvolutionsAtlas_7
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 245
+      y: 84
+      width: 62
+      height: 64
+    spriteID: 09196aeba4c4c2d419f867cd97be2f73
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: EvolutionsAtlas_8
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 323
       y: 84
       width: 64
       height: 64
-    spriteID: 536b6d820f65b8f44972b2b84ee9aaa2
+    spriteID: 3b2a8f121b875254b8fa47caae36fa28
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -653,7 +338,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Atlas_24
+  - name: EvolutionsAtlas_9
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -661,11 +346,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 164
+      x: 403
       y: 84
       width: 64
       height: 64
-    spriteID: 1f68ddc11bae8524aa4619b2f380a44c
+    spriteID: 095e57101f88646418beac3b4f3210e4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -674,7 +359,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Atlas_25
+  - name: EvolutionsAtlas_10
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -682,11 +367,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 4
-      y: 4
+      x: 483
+      y: 84
       width: 64
       height: 64
-    spriteID: 0fd86aa618dcb7f40943604ecead294d
+    spriteID: 44ed4ab66fde8e2439ad477b91d9500a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -695,7 +380,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Atlas_26
+  - name: EvolutionsAtlas_11
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -703,11 +388,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 84
-      y: 4
+      x: 563
+      y: 84
       width: 64
       height: 64
-    spriteID: d3ec230acc5d02d4dacd3a150da4ea42
+    spriteID: b26b28df5c18fa54fb3a47b8cef7babe
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -716,7 +401,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Atlas_27
+  - name: EvolutionsAtlas_12
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -724,11 +409,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 164
-      y: 4
-      width: 64
-      height: 64
-    spriteID: 6f0ea60cfe70ff4499ca86bb73d010a5
+      x: 643
+      y: 86
+      width: 62
+      height: 62
+    spriteID: de07e735711bd2846a408504b7187bea
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -737,7 +422,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Atlas_28
+  - name: EvolutionsAtlas_13
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -745,11 +430,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 244
-      y: 4
-      width: 64
+      x: 723
+      y: 84
+      width: 63
       height: 64
-    spriteID: 1d55331adda67654eba7f1a961c56136
+    spriteID: b6f2c389c8c2c7447a6026817389ad5d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -758,7 +443,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Atlas_29
+  - name: EvolutionsAtlas_14
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -766,11 +451,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 324
-      y: 4
+      x: 803
+      y: 84
       width: 64
       height: 64
-    spriteID: 7b2f64e343b59b144981cabdb7f49b23
+    spriteID: b3d853c5e9c22dd4b9f9ac729697c6e4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -779,7 +464,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Atlas_30
+  - name: EvolutionsAtlas_15
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -787,11 +472,179 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 404
+      x: 883
+      y: 84
+      width: 64
+      height: 64
+    spriteID: 5cec8366f45431b428093f23c8f9fc6d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: EvolutionsAtlas_16
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 963
+      y: 86
+      width: 64
+      height: 62
+    spriteID: 5c3a4fac8f88db149ab3970b3d8ac60a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: EvolutionsAtlas_17
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 325
+      y: 4
+      width: 60
+      height: 64
+    spriteID: a3bb2bbb6eea8894494369574559c17f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: EvolutionsAtlas_19
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 403
       y: 4
       width: 64
       height: 64
-    spriteID: df94ed3fcfae70d4385bc99f22a55d48
+    spriteID: da027757d40e4dd4eafc1d1f091b2612
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: EvolutionsAtlas_20
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 483
+      y: 4
+      width: 64
+      height: 64
+    spriteID: aaa095342ed413e4bb24c50c9e12edf9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: EvolutionsAtlas_21
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 563
+      y: 4
+      width: 64
+      height: 64
+    spriteID: b9a9d70736030aa4596d03472bd4bbaa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: EvolutionsAtlas_22
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 643
+      y: 4
+      width: 64
+      height: 64
+    spriteID: 9dd4563ee02aed04db17c5b01e34aeb6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: EvolutionsAtlas_23
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 723
+      y: 6
+      width: 64
+      height: 62
+    spriteID: 4069ea67bcffb0f44a25f84d73ca605e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: EvolutionsAtlas_24
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 803
+      y: 4
+      width: 64
+      height: 64
+    spriteID: 3843472fa53d8eb48a13720349467a1a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -804,25 +657,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 1742989131
+      value0: 3906705709
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Atlas
+    name: EvolutionsAtlas
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Atlas
+    - name: EvolutionsAtlas
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 240
-        width: 464
-        height: 784
-      spriteId: cc99bed1c95c2c546b9665d40cda2d65
+        x: 1
+        y: 880
+        width: 1023
+        height: 144
+      spriteId: c15e627579030ad408e02c0830f7e683
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -869,4 +722,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 1024, y: 1024}
-  previousTextureSize: {x: 512, y: 1024}
+  previousTextureSize: {x: 2048, y: 256}

@@ -15,7 +15,6 @@ MonoBehaviour:
   <State>k__BackingField: 1
   <Name>k__BackingField: Gills
   <CreatureType>k__BackingField: 0
-  <Description>k__BackingField: 
   <Stats>k__BackingField: []
   <Abilities>k__BackingField: []
   <Requires>k__BackingField: []
@@ -23,4 +22,4 @@ MonoBehaviour:
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 10
     <ExperienceTypes>k__BackingField: []
-  <Sprite>k__BackingField: {fileID: 6919262422256373681, guid: 7739676d053fd414492b1c6246cf47b7, type: 3}
+  <Sprite>k__BackingField: {fileID: 4183031231645148249, guid: ed4634d8d65c65c4495f380c594d59fd, type: 3}

@@ -15,7 +15,6 @@ MonoBehaviour:
   <State>k__BackingField: 1
   <Name>k__BackingField: Bioluminescence
   <CreatureType>k__BackingField: 0
-  <Description>k__BackingField: 
   <Stats>k__BackingField:
   - <Type>k__BackingField: 29
     <Value>k__BackingField: 3
@@ -42,4 +41,4 @@ MonoBehaviour:
     <ExperienceTypes>k__BackingField:
     - <Type>k__BackingField: 12
       <Amount>k__BackingField: 1
-  <Sprite>k__BackingField: {fileID: -9055590624722785700, guid: 85160726e36f3b04cb2b53df892dbfac, type: 3}
+  <Sprite>k__BackingField: {fileID: 5469359832060929875, guid: ed4634d8d65c65c4495f380c594d59fd, type: 3}

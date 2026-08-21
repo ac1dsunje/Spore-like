@@ -12,24 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f724526a32e44aa591a5df78fb049629, type: 3}
   m_Name: ExoSkeleton
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Evolutions.EvolutionConfig
-  <CreatureType>k__BackingField: 2
+  <State>k__BackingField: 1
   <Name>k__BackingField: ExoSkeleton
-  <Description>k__BackingField: 
-  <Sprite>k__BackingField: {fileID: 6109157550878384970, guid: 92fb5074667887f439e1b2c5c33d5db3, type: 3}
+  <CreatureType>k__BackingField: 2
   <Stats>k__BackingField:
   - <Type>k__BackingField: 17
     <Value>k__BackingField: 1
+    <Operation>k__BackingField: 0
+    <Target>k__BackingField: 0
     <UpdatesByRarity>k__BackingField: 1
   - <Type>k__BackingField: 4
     <Value>k__BackingField: 1
+    <Operation>k__BackingField: 0
+    <Target>k__BackingField: 0
     <UpdatesByRarity>k__BackingField: 1
   - <Type>k__BackingField: 13
     <Value>k__BackingField: 10
+    <Operation>k__BackingField: 0
+    <Target>k__BackingField: 0
     <UpdatesByRarity>k__BackingField: 1
-  <State>k__BackingField: 1
+  <Abilities>k__BackingField: []
   <Requires>k__BackingField: []
   <Blocks>k__BackingField: []
-  <Abilities>k__BackingField: []
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 20
     <ExperienceTypes>k__BackingField:
@@ -37,3 +41,4 @@ MonoBehaviour:
       <Amount>k__BackingField: 1
     - <Type>k__BackingField: 3
       <Amount>k__BackingField: 1
+  <Sprite>k__BackingField: {fileID: 6505980035802167749, guid: ed4634d8d65c65c4495f380c594d59fd, type: 3}

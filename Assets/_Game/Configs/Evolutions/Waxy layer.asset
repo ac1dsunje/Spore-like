@@ -15,7 +15,6 @@ MonoBehaviour:
   <State>k__BackingField: 1
   <Name>k__BackingField: Waxy layer
   <CreatureType>k__BackingField: 2
-  <Description>k__BackingField: 
   <Stats>k__BackingField: []
   <Abilities>k__BackingField: []
   <Requires>k__BackingField:
@@ -24,4 +23,4 @@ MonoBehaviour:
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 10
     <ExperienceTypes>k__BackingField: []
-  <Sprite>k__BackingField: {fileID: 1850264600392178419, guid: 9ed3b5e609d6649438be287b04239c6d, type: 3}
+  <Sprite>k__BackingField: {fileID: 5607639203709860948, guid: ed4634d8d65c65c4495f380c594d59fd, type: 3}
