@@ -11,6 +11,7 @@ public class FoodScope: LifetimeScope
     {
         builder.RegisterComponent(GetComponentInChildren<FoodController>());
         builder.RegisterComponent(GetComponentInChildren<ItemAnimation>());
+        builder.RegisterComponent(GetComponentInChildren<FoodHealth>());
 
         builder.Register<EntityStats>(Lifetime.Scoped);
         builder.Register<HealthModule>(Lifetime.Scoped);
