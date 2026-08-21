@@ -1,5 +1,6 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Interfaces;
+using _Game.Scripts.GamePlay.Types;
 
 namespace _Game.Scripts.GamePlay.Module
 {

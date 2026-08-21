@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Interfaces;
+using _Game.Scripts.GamePlay.Types;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Module

@@ -3,44 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay
+namespace _Game.Scripts.GamePlay.Types
 {
-public enum StatType
-{
-    Inertia = 8,
-    MoveSpeed = 0,
-    MaxHealth = 10,
-    DamageReflection = 4,
-    VisionRadius = 1,
-    Regeneration = 7,
-    Acceleration = 3,
-    PhysicalDamage = 6,
-    EatingStrength = 11,
-    EatingPenetration = 12,
-    EatingTime = 13,
-    MaxEndurance = 14,
-    EnduranceRecovery = 15,
-    SprintMultiplier = 16,
-    DamageResistance = 17,
-    DashPower = 18,
-    ColdResistance = 19,
-    HeatResistance = 20,
-    MinimalLethalTemperature = 21,
-    MinimalComfortableTemperature = 22,
-    MaximumComfortableTemperature = 23,
-    MaximumLethalTemperature = 24,
-    AttackRange = 25,
-    IgnoreDamageResistance = 26,
-    Sensorics = 27,
-    Disguise = 28,
-    LightingRadius = 29,
-    Passability = 30,
-    XRay = 31,
-    AttackSpeed = 32,
-    DisguiseInRest = 33,
-}
-
-[CreateAssetMenu(fileName = "Stat type config", menuName = "Configs/Game/Stat/Types")]
+[CreateAssetMenu(fileName = "Stat type config", menuName = "Configs/Game/Stats/Types")]
 public class StatTypeConfig : ScriptableObject
 {
     [field: SerializeField] public List<StatTypeData> Types { get; private set; } = new();

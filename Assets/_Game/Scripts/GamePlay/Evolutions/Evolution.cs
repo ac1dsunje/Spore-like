@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using _Game.Scripts.GamePlay.Experience;
+using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Player;
 using _Game.Scripts.GamePlay.Rarities;
 using UnityEngine;

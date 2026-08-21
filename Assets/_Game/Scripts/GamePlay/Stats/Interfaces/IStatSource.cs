@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace _Game.Scripts.GamePlay
+namespace _Game.Scripts.GamePlay.Interfaces
 {
 public interface IStatSource
 {

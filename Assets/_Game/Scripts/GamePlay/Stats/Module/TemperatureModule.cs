@@ -1,4 +1,6 @@
-﻿namespace _Game.Scripts.GamePlay.Module
+﻿using _Game.Scripts.GamePlay.Types;
+
+namespace _Game.Scripts.GamePlay.Module
 {
 public class TemperatureModule: StatModule
 {
