@@ -247,6 +247,7 @@ GameObject:
   - component: {fileID: 7437015074573969314}
   - component: {fileID: 907072873164215148}
   - component: {fileID: -4871289679674323519}
+  - component: {fileID: 7454339499277821137}
   m_Layer: 0
   m_Name: SeaUrchin
   m_TagString: Untagged
@@ -366,3 +367,15 @@ MonoBehaviour:
     <Sprite>k__BackingField: {fileID: 3147233298308361737, guid: e1e8f9e2112581f4c848d9ee20c89f4a, type: 3}
     <Controller>k__BackingField: {fileID: 0}
     <CastShadows>k__BackingField: 0
+--- !u!114 &7454339499277821137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2453553538165317395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f36d18d76a42d5a17e11ee13d20cdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Enemies.SeaUrchin.SeaUrchinHealth

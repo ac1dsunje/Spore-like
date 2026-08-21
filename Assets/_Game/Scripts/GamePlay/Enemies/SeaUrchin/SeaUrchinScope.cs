@@ -19,6 +19,7 @@ public class SeaUrchinScope: LifetimeScope
         builder.RegisterComponent(GetComponent<SeaUrchinController>());
         builder.RegisterComponent(GetComponent<SeaUrchinAttackBehaviour>());
         builder.RegisterComponent(GetComponent<ItemAnimation>());
+        builder.RegisterComponent(GetComponent<SeaUrchinHealth>());
 
         builder.Register<DefenseModule>(Lifetime.Scoped);
         builder.Register<HealthModule>(Lifetime.Scoped);
