@@ -46,9 +46,9 @@ public class EnvironmentSpawner: MonoBehaviour
 
     private void TryCreateEnvironment(Vector3Int position, Biome biome, Transform parent)
     {
-        if (!CanPlaceObject(biome.Config.ChanceEnvironment)) return;
+        if (!CanPlaceObject(biome.ChanceEnvironment)) return;
         
-        var environment = biome.Config.GetRandomEnvironment();
+        var environment = biome.GetRandomEnvironment();
         if (!environment) return;
         
         var config = environment.FoodItems[Random.Range(0, environment.FoodItems.Length)];

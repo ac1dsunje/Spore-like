@@ -1,21 +1,48 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using _Game.Scripts.GamePlay.Interfaces;
+using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace _Game.Scripts.GamePlay.World.Biomes
 {
 public class Biome: IStatSource
 {
-    public string Name => Config.name;
-    public float Temperature => Config.Temperature;
-    public float PassAbility => Config.PassAbility;
+    public string Name => _config.name;
+    public float Temperature => _config.Temperature;
+    public float PassAbility => _config.PassAbility;
+    public TileBase Tile => _config.Tile;
+    public float ChanceEnvironment => _config.ChanceEnvironment;
     
-    public List<SourceStat> GetStats() => Config.AffectedStats;
+    public List<SourceStat> GetStats() => _config.AffectedStats;
     
-    public BiomeConfig Config { get; private set; }
+    private readonly BiomeConfig _config;
 
     public Biome(BiomeConfig biomeConfig)
     {
-        Config = biomeConfig;
+        _config = biomeConfig;
+    }
+    
+    public EnvironmentConfig GetRandomEnvironment()
+    {
+        var environments = _config.EnvironmentConfigs;
+        
+        if (environments.Count == 0) return null;
+        
+        var totalChance = environments.Sum(config => config.Chance);
+
+        if (totalChance <= 0) return null;
+
+        var roll = Random.Range(0, totalChance);
+
+        foreach (var config in environments)
+        {
+            if (roll < config.Chance) return config;
+            
+            roll -= config.Chance;
+        }
+
+        return null;
     }
 }
 }
