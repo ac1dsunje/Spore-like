@@ -4,7 +4,6 @@ using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.Player.Behaviours;
 using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
-using _Game.Scripts.GamePlay.Player.Network;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -23,7 +22,6 @@ public class PlayerScope: LifetimeScope
         builder.RegisterInstance(_playerExperienceConfig);
         
         builder.Register<PlayerInputService>(Lifetime.Scoped);
-        builder.Register<EntityAuthority>(Lifetime.Scoped);
         
         builder.RegisterComponent(GetComponent<PlayerController>());
         builder.Register<PlayerModel>(Lifetime.Scoped);

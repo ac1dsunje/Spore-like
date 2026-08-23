@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Modules;
-using _Game.Scripts.GamePlay.Player.Network;
 using _Game.Scripts.GamePlay.World.Food;
 using UnityEngine;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class PlayerMouth: EntityNetworkBehaviour
+public class PlayerMouth: MonoBehaviour
 {
     [Inject] private MouthModule _module;
 
@@ -88,7 +87,7 @@ public class PlayerMouth: EntityNetworkBehaviour
         StartEatingNextFood();
     }
 
-    protected override void OnDestroy()
+    private void OnDestroy()
     {
         foreach (var food in _foods)
         {
@@ -98,7 +97,6 @@ public class PlayerMouth: EntityNetworkBehaviour
         _foods.Clear();
 
         StopAllCoroutines();
-        base.OnDestroy();
     }
 }
 }

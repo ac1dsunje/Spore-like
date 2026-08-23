@@ -1,12 +1,11 @@
 ﻿using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
-using _Game.Scripts.GamePlay.Player.Network;
 using UnityEngine;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class PlayerXRay : EntityNetworkBehaviour
+public class PlayerXRay : MonoBehaviour
 {
     private VisionModule _vision;
     private CircleCollider2D _collider;
@@ -16,12 +15,6 @@ public class PlayerXRay : EntityNetworkBehaviour
     {
         _collider = GetComponent<CircleCollider2D>();
         _vision = vision;
-    }
-
-    protected override void OnNetworkInitialized()
-    {
-        if (!IsLocal) return;
-
         _vision.OnXRayUpdated += UpdateXRay;
         UpdateXRay(_vision.XRayRadius, false);
     }
@@ -46,10 +39,9 @@ public class PlayerXRay : EntityNetworkBehaviour
         _vision.ExitXRay(other.gameObject);
     }
 
-    protected override void OnDestroy()
+    private void OnDestroy()
     {
         _vision.OnXRayUpdated -= UpdateXRay;
-        base.OnDestroy();
     }
 }
 }

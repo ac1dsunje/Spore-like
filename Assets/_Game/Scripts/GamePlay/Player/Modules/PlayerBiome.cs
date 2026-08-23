@@ -1,5 +1,4 @@
 ﻿using _Game.Scripts.GamePlay.Modules;
-using _Game.Scripts.GamePlay.Player.Network;
 using _Game.Scripts.GamePlay.World;
 using _Game.Scripts.GamePlay.World.Biomes;
 using UnityEngine;
@@ -7,7 +6,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Modules
 {
-public class PlayerBiome: EntityNetworkBehaviour
+public class PlayerBiome: MonoBehaviour
 {
     private WorldModel _worldModel;
     private TemperatureModule _temperature;
@@ -26,11 +25,7 @@ public class PlayerBiome: EntityNetworkBehaviour
         _movement = movement;
         _biome = biome;
         _entityStats = stats;
-    }
-
-    protected override void OnNetworkInitialized()
-    {
-        if (!IsLocal) return;
+        
         _movement.OnGridPositionChanged += TryEnterBiome;
         EnterBiome(_worldModel.GetBiome(_movement.GridPosition));
     }
@@ -68,9 +63,8 @@ public class PlayerBiome: EntityNetworkBehaviour
             Debug.Log($"Temperature {temperature} is comfortable");
     }
 
-    protected override void OnDestroy()
+    private void OnDestroy()
     {
-        base.OnDestroy();
         _movement.OnGridPositionChanged -= TryEnterBiome;
     }
 }

@@ -1,14 +1,13 @@
 ﻿using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
-using _Game.Scripts.GamePlay.Player.Network;
 using _Game.Scripts.GamePlay.Weapons;
 using UnityEngine;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class PlayerAttack : EntityNetworkBehaviour
+public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private MeleeWeaponItem _meleeWeaponObject;
     
@@ -26,11 +25,6 @@ public class PlayerAttack : EntityNetworkBehaviour
         _inputService = inputService;
         _meleeWeaponObject.transform.SetParent(null);
         _ticker = ticker;
-    }
-
-    protected override void OnNetworkInitialized()
-    {
-        if (!IsLocal) return;
         _ticker.OnTick += CheckInput;
     }
 

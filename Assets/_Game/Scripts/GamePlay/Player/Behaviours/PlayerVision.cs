@@ -1,5 +1,4 @@
 ﻿using _Game.Scripts.GamePlay.Modules;
-using _Game.Scripts.GamePlay.Player.Network;
 using _Game.Scripts.GamePlay.World;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -8,7 +7,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class PlayerVision: EntityNetworkBehaviour
+public class PlayerVision: MonoBehaviour
 {
     [SerializeField] private BoxCollider2D _visionCollider;
     [SerializeField] private Light2D _visionLight;
@@ -30,10 +29,7 @@ public class PlayerVision: EntityNetworkBehaviour
         _cineMachine = cineMachine;
         _camera = cam;
         _dayNightManager = dayNightManager;
-    }
-
-    protected override void OnNetworkInitialized()
-    {
+        
         _module.OnVisionRadiusUpdated += UpdateVision;
         _module.OnLightingUpdated += UpdateLighting;
         
@@ -45,11 +41,8 @@ public class PlayerVision: EntityNetworkBehaviour
 
     private void Update()
     {
-        if (IsLocal)
-        {
-            var lightValue = _dayNightManager.Value;
-            _visionLight.color = new Color(lightValue, lightValue, lightValue, 1f);
-        }
+        var lightValue = _dayNightManager.Value;
+        _visionLight.color = new Color(lightValue, lightValue, lightValue, 1f);
 
         if (Mathf.Approximately(_currentVision, _targetVision)) return;
 
@@ -72,7 +65,6 @@ public class PlayerVision: EntityNetworkBehaviour
     {
         _visionCollider.size = new Vector2(value * _camera.aspect, value) * 2f;
 
-        if (!IsLocal) return;
         _cineMachine.Lens.OrthographicSize = value;
         _visionLight.pointLightOuterRadius = value * _camera.aspect * 2f;
     }
@@ -87,11 +79,10 @@ public class PlayerVision: EntityNetworkBehaviour
         _module.ExitObject(other.gameObject);
     }
 
-    protected override void OnDestroy()
+    private void OnDestroy()
     {
         _module.OnLightingUpdated -= UpdateLighting;
         _module.OnVisionRadiusUpdated -= UpdateVision;
-        base.OnDestroy();
     }
 }
 }

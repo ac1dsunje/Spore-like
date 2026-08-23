@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
-using _Game.Scripts.GamePlay.Player.Network;
 using UnityEngine;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class PlayerHealth: EntityNetworkBehaviour, IDamageAble
+public class PlayerHealth: MonoBehaviour, IDamageAble
 {
     private HealthModule _health;
     private DefenseModule _defense;
@@ -61,15 +60,11 @@ public class PlayerHealth: EntityNetworkBehaviour, IDamageAble
 
     private void Die()
     {
-        if (!IsLocal)
-        {
-            Destroy(gameObject);
-        }
+        Debug.Log("Player is dead");
     }
 
-    protected override void OnDestroy()
+    private void OnDestroy()
     {
-        base.OnDestroy();
         StopAllCoroutines();
 
         if (_health == null) return;

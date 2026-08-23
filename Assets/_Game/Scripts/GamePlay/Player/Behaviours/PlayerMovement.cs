@@ -1,12 +1,11 @@
 ﻿using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.Movement;
-using _Game.Scripts.GamePlay.Player.Network;
 using UnityEngine;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class PlayerMovement: EntityNetworkBehaviour
+public class PlayerMovement: MonoBehaviour
 {
     [SerializeField] private MovementController _controller;
 
@@ -32,15 +31,12 @@ public class PlayerMovement: EntityNetworkBehaviour
 
     private void FixedUpdate()
     {
-        if (IsLocal)
-        {
-            var input = _inputService.Movement.normalized;
+        var input = _inputService.Movement.normalized;
 
-            UpdateLastMovementDirection(input);
+        UpdateLastMovementDirection(input);
 
-            Move(input);
-            TryDash();
-        }
+        Move(input);
+        TryDash();
         
         _disguise.SetMoving(_controller.IsMoving);
         _movement.UpdateGridPosition(GridPosition);
@@ -78,7 +74,7 @@ public class PlayerMovement: EntityNetworkBehaviour
 
     private void TryFlip()
     {
-        if (_inputService.Horizontal != 0 && IsLocal)
+        if (_inputService.Horizontal != 0)
         {
             _controller.Flip(_inputService.Horizontal > 0);
         }

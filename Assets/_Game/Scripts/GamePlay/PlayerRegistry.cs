@@ -19,7 +19,7 @@ public class PlayerRegistry
         if (!_players.Add(player)) return;
         OnPlayerAdded?.Invoke(player);
 
-        if (player.IsLocalPlayer || LocalPlayer == null)
+        if (LocalPlayer == null)
         {
             LocalPlayer = player;
             OnLocalPlayerAdded?.Invoke(LocalPlayer);
