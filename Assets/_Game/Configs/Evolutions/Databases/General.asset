@@ -13,20 +13,15 @@ MonoBehaviour:
   m_Name: General
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Evolutions.Rarities.EvolutionRaritiesDatabase
   <Evolutions>k__BackingField:
-  - {fileID: 11400000, guid: 89cd86899671f7043a1b619e48c9e4e1, type: 2}
   - {fileID: 11400000, guid: 164d469ed3055bd489de9063e8dd9254, type: 2}
   - {fileID: 11400000, guid: f2edac42fd00c09439efcb7b1641254b, type: 2}
   - {fileID: 11400000, guid: b299675e42663494c8fd273e80e1ddf6, type: 2}
   - {fileID: 11400000, guid: 7e7bc9745c1d2f94291da6ac2f032cdf, type: 2}
-  - {fileID: 11400000, guid: fe03de68ba09c44468251cd3f2504cba, type: 2}
   - {fileID: 11400000, guid: 83b7a97d6aafa7540a2de2cce0fcc342, type: 2}
-  - {fileID: 11400000, guid: e4fb504a28e100a48bd06d102889211c, type: 2}
   - {fileID: 11400000, guid: 40536e0bf67a4f2438b93918cefe86b6, type: 2}
   - {fileID: 11400000, guid: d30b4af745017b14cab80bd82b3480c1, type: 2}
-  - {fileID: 11400000, guid: 1a77718f11d35524d9814eb81ddfa8ed, type: 2}
   - {fileID: 11400000, guid: 0fb7db6c45b2c0c4493206471d616ff6, type: 2}
   - {fileID: 11400000, guid: 854f9e0add2d80b4db02a4c5cc7de3d4, type: 2}
-  - {fileID: 11400000, guid: 14fb18b8405b0dd4a8bccd8a28447826, type: 2}
   - {fileID: 11400000, guid: eed36872c78baed449f38f75d37d4538, type: 2}
   - {fileID: 11400000, guid: c6b44928a2c78aa4ba709ab2a270b947, type: 2}
   - {fileID: 11400000, guid: 2ae2b08935eb4d54698f2e78c0f789b6, type: 2}
@@ -35,7 +30,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3ababb21bfef1ca41a12c70eefb7b726, type: 2}
   - {fileID: 11400000, guid: 9cd68ea8476d23947ba52dc0c5a48815, type: 2}
   - {fileID: 11400000, guid: f836074f7d6443b42a6ed6367a05a239, type: 2}
-  - {fileID: 11400000, guid: 67620521737fb8e4682ec15f90496253, type: 2}
-  - {fileID: 11400000, guid: f97b201a589bc4447869c0526bf8dde2, type: 2}
   <BasicChance>k__BackingField: 10
   <ChanceScaler>k__BackingField: 5

@@ -22,12 +22,12 @@ MonoBehaviour:
     <Target>k__BackingField: 0
     <UpdatesByRarity>k__BackingField: 1
   <Abilities>k__BackingField: []
-  <Requires>k__BackingField:
-  - {fileID: 11400000, guid: e4fb504a28e100a48bd06d102889211c, type: 2}
+  <Requires>k__BackingField: []
   <Blocks>k__BackingField:
   - {fileID: 11400000, guid: 0fb7db6c45b2c0c4493206471d616ff6, type: 2}
-  - {fileID: 11400000, guid: 14fb18b8405b0dd4a8bccd8a28447826, type: 2}
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 20
-    <ExperienceTypes>k__BackingField: []
-  <Sprite>k__BackingField: {fileID: 6568324950207149898, guid: ed4634d8d65c65c4495f380c594d59fd, type: 3}
+    <ExperienceTypes>k__BackingField:
+    - <Type>k__BackingField: 9
+      <Amount>k__BackingField: 1
+  <Sprite>k__BackingField: {fileID: 2251135033928267272, guid: ed4634d8d65c65c4495f380c594d59fd, type: 3}

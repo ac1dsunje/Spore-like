@@ -30,10 +30,9 @@ MonoBehaviour:
   <Requires>k__BackingField: []
   <Blocks>k__BackingField:
   - {fileID: 11400000, guid: d30b4af745017b14cab80bd82b3480c1, type: 2}
-  - {fileID: 11400000, guid: 67620521737fb8e4682ec15f90496253, type: 2}
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 20
     <ExperienceTypes>k__BackingField:
     - <Type>k__BackingField: 6
       <Amount>k__BackingField: 1
-  <Sprite>k__BackingField: {fileID: -3619600836241014747, guid: ed4634d8d65c65c4495f380c594d59fd, type: 3}
+  <Sprite>k__BackingField: {fileID: -5465360493349337931, guid: ed4634d8d65c65c4495f380c594d59fd, type: 3}
