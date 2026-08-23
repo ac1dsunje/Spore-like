@@ -33,5 +33,7 @@ public enum StatType
     XRay = 31,
     AttackSpeed = 32,
     DisguiseInRest = 33,
+    OxygenBreathing = 34,
+    HydrogenBreathing = 35,
 }
 }

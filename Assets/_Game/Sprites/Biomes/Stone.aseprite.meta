@@ -36,7 +36,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 128
+    spritePixelsToUnits: 64
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639230271031562993
+  platformSettingsDirtyTick: 639231281872138728
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -159,8 +159,8 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 128
-      height: 128
+      width: 64
+      height: 64
     spriteID: 8b40c0608e32c864bbe39015410b2165
     spriteBone: []
     spriteOutline: []
@@ -190,8 +190,8 @@ ScriptedImporter:
       cellRect:
         x: 0
         y: 0
-        width: 128
-        height: 128
+        width: 64
+        height: 64
       spriteId: d1eed8730cd96e54cb29a536ee96f23b
     linkedCells: []
     tileCells: []
@@ -238,5 +238,5 @@ ScriptedImporter:
   generatePhysicsShape: 1
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 128, y: 128}
-  previousTextureSize: {x: 256, y: 256}
+  canvasSize: {x: 64, y: 64}
+  previousTextureSize: {x: 128, y: 128}
