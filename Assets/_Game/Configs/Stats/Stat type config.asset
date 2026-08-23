@@ -170,11 +170,11 @@ MonoBehaviour:
     <Sprite>k__BackingField: {fileID: 7208235669385025181, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: OxygenBreathing
     <Type>k__BackingField: 34
-    <MinimalValue>k__BackingField: 0
+    <MinimalValue>k__BackingField: 1
     <MaximalValue>k__BackingField: 999999
     <Sprite>k__BackingField: {fileID: 0}
   - <Name>k__BackingField: HydrogenBreathing
     <Type>k__BackingField: 35
-    <MinimalValue>k__BackingField: 0
+    <MinimalValue>k__BackingField: 1
     <MaximalValue>k__BackingField: 999999
     <Sprite>k__BackingField: {fileID: 0}
