@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Biome.BiomeConfig
   <Temperature>k__BackingField: 28
   <PassAbility>k__BackingField: 0
+  <OxygenBreathing>k__BackingField: 25
+  <HydrogenBreathing>k__BackingField: 5
   <AffectedStats>k__BackingField: []
   <Tile>k__BackingField: {fileID: 11400000, guid: e096a4ecb626b3a48b5128cd150ec37c, type: 2}
   <EnvironmentConfigs>k__BackingField: []

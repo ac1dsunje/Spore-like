@@ -13,6 +13,8 @@ public class Biome: IStatSource
     public float PassAbility => _config.PassAbility;
     public TileBase Tile => _config.Tile;
     public float ChanceEnvironment => _config.ChanceEnvironment;
+    public float OxygenBreathing => _config.OxygenBreathing;
+    public float HydrogenBreathing => _config.HydrogenBreathing;
     
     public List<SourceStat> GetStats() => _config.AffectedStats;
     
