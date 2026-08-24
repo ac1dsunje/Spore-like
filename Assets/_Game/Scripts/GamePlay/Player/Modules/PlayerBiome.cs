@@ -43,7 +43,6 @@ public class PlayerBiome: MonoBehaviour
 
     private void EnterBiome(Biome biome)
     {
-        _entityStats.RemoveSource(_currentBiome);
         _currentBiome = biome;
         CheckPassability();
         ApplyTemperature(biome.Temperature);
@@ -54,7 +53,7 @@ public class PlayerBiome: MonoBehaviour
     {
         if (_currentBiome.PassAbility > _biome.PassAbility)
         {
-            _entityStats.AddSource(_currentBiome);
+            Debug.Log("Apply bad passability debuff");
         }
     }
 
@@ -75,15 +74,15 @@ public class PlayerBiome: MonoBehaviour
         
         if (oxygenRequirement> 0 && oxygenRequirement <= oxygen)
         {
-            Debug.Log("Can breathe with oxygen");
+            Debug.Log("Unset suffocating debuff");
         }
         else if (hydrogenRequirement > 0  && hydrogenRequirement <= hydrogen)
         {
-            Debug.Log("Can breathe with hydrogen");
+            Debug.Log("Unset suffocating debuff");
         }
         else
         {
-            Debug.Log("Can`t breathe");
+            Debug.Log("Apply suffocating debuff");
         }
     }
 
