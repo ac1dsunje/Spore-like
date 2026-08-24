@@ -9,7 +9,10 @@ namespace _Game.Scripts.GamePlay.Player.Modules
 public class PlayerBiome: MonoBehaviour
 {
     private WorldModel _worldModel;
+    
     private TemperatureModule _temperature;
+    private BreathingModule _breathing;
+    
     private MovementModule _movement;
     private BiomeModule _biome;
     private EntityStats _entityStats;
@@ -18,10 +21,11 @@ public class PlayerBiome: MonoBehaviour
     
     [Inject]
     private void Construct(WorldModel worldModel, TemperatureModule temperature, MovementModule movement,
-        BiomeModule biome, EntityStats stats)
+        BiomeModule biome, EntityStats stats, BreathingModule breathing)
     {
         _worldModel = worldModel;
         _temperature = temperature;
+        _breathing = breathing;
         _movement = movement;
         _biome = biome;
         _entityStats = stats;
@@ -43,6 +47,7 @@ public class PlayerBiome: MonoBehaviour
         _currentBiome = biome;
         CheckPassability();
         ApplyTemperature(biome.Temperature);
+        CheckBreathing(biome.OxygenBreathing, biome.HydrogenBreathing);
     }
 
     private void CheckPassability()
@@ -56,11 +61,30 @@ public class PlayerBiome: MonoBehaviour
     private void ApplyTemperature(float temperature)
     {
         if (_temperature.IsLethal(temperature))
-            Debug.Log($"Temperature {temperature} is lethal");
+            Debug.Log($"Temperature is lethal");
         else if (_temperature.IsUncomfortable(temperature))
-            Debug.Log($"Temperature {temperature} is not comfortable");
+            Debug.Log($"Temperature is not comfortable");
         else
-            Debug.Log($"Temperature {temperature} is comfortable");
+            Debug.Log($"Temperature is comfortable");
+    }
+
+    private void CheckBreathing(float oxygen, float hydrogen)
+    {
+        var oxygenRequirement = _breathing.OxygenBreathing;
+        var hydrogenRequirement = _breathing.HydrogenBreathing;
+        
+        if (oxygenRequirement> 0 && oxygenRequirement <= oxygen)
+        {
+            Debug.Log("Can breathe with oxygen");
+        }
+        else if (hydrogenRequirement > 0  && hydrogenRequirement <= hydrogen)
+        {
+            Debug.Log("Can breathe with hydrogen");
+        }
+        else
+        {
+            Debug.Log("Can`t breathe");
+        }
     }
 
     private void OnDestroy()
