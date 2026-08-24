@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Buffs;
 using _Game.Scripts.GamePlay.Buffs.Types;
@@ -9,6 +10,9 @@ namespace _Game.Scripts.GamePlay.Player.Modules
 {
 public class BuffsModule
 {
+    public event Action<Buff> OnBuffActivated;
+    public event Action<Buff> OnBuffDeactivated;
+    
     private readonly List<Buff> _buffs = new();
     
     [Inject]
@@ -58,10 +62,12 @@ public class BuffsModule
         if (state)
         {
             currentBuff.Activate();
+            OnBuffActivated?.Invoke(currentBuff);
         }
         else
         {
             currentBuff.Deactivate();
+            OnBuffDeactivated?.Invoke(currentBuff);
         }
     }
 }
