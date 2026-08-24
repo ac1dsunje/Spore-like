@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Interfaces;
-using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Buffs
 {
@@ -37,14 +36,12 @@ public abstract class Buff: IStatSource
     {
         _isActive = true;
         _entityStats.AddSource(this);
-        Debug.Log($"{Type} is activated");
     }
 
     public void Deactivate()
     {
         _isActive = false;
         _entityStats.RemoveSource(this);
-        Debug.Log($"{Type} is deactivated");
     }
 }
 }

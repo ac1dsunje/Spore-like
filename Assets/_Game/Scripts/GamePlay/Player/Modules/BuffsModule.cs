@@ -17,14 +17,23 @@ public class BuffsModule
         
         foreach (var buff in database.Buffs)
         {
-            if (buff.Type == BuffType.Suffocating)
+            switch (buff.Type)
             {
-                var newBuff = new SuffocatingDebuff(entityStats, playerModel.Health, ticker, buff);
-                _buffs.Add(newBuff);
-            }
-            else
-            {
-                Debug.Log($"Buff with type {buff.Type} is not implemented");
+                case BuffType.Suffocating:
+                {
+                    _buffs.Add(new SuffocatingDebuff(entityStats, playerModel.Health, ticker, buff));
+                    break;
+                }
+                case BuffType.BadPassAbility:
+                {
+                    _buffs.Add(new BadPassAbility(entityStats, playerModel.Movement, ticker, buff));
+                    break;
+                }
+                case BuffType.Heat:
+                case BuffType.Cold:
+                default:
+                    Debug.Log($"Buff with type {buff.Type} is not implemented");
+                    break;
             }
         }
     }

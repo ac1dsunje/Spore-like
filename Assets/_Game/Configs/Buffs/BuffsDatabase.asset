@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Buffs.BuffsDatabase
   <Buffs>k__BackingField:
   - {fileID: 11400000, guid: c68abf02cb0ef1945bde04df53cac2de, type: 2}
+  - {fileID: 11400000, guid: c6f7a1507ba77424eaef26116a464c5d, type: 2}
