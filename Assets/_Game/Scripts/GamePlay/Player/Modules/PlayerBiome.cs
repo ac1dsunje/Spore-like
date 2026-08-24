@@ -1,4 +1,5 @@
-﻿using _Game.Scripts.GamePlay.Modules;
+﻿using _Game.Scripts.GamePlay.Buffs;
+using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.World;
 using _Game.Scripts.GamePlay.World.Biomes;
 using UnityEngine;
@@ -15,20 +16,21 @@ public class PlayerBiome: MonoBehaviour
     
     private MovementModule _movement;
     private BiomeModule _biome;
-    private EntityStats _entityStats;
+    
+    private BuffsModule _buffsModule;
     
     private Biome _currentBiome;
     
     [Inject]
     private void Construct(WorldModel worldModel, TemperatureModule temperature, MovementModule movement,
-        BiomeModule biome, EntityStats stats, BreathingModule breathing)
+        BiomeModule biome, BreathingModule breathing, BuffsModule buffsModule)
     {
         _worldModel = worldModel;
         _temperature = temperature;
         _breathing = breathing;
         _movement = movement;
         _biome = biome;
-        _entityStats = stats;
+        _buffsModule = buffsModule;
         
         _movement.OnGridPositionChanged += TryEnterBiome;
         EnterBiome(_worldModel.GetBiome(_movement.GridPosition));
@@ -53,7 +55,11 @@ public class PlayerBiome: MonoBehaviour
     {
         if (_currentBiome.PassAbility > _biome.PassAbility)
         {
-            Debug.Log("Apply bad passability debuff");
+            _buffsModule.Set(BuffType.BadPassAbility, true);
+        }
+        else
+        {
+            _buffsModule.Set(BuffType.BadPassAbility, false);
         }
     }
 
@@ -74,15 +80,15 @@ public class PlayerBiome: MonoBehaviour
         
         if (oxygenRequirement> 0 && oxygenRequirement <= oxygen)
         {
-            Debug.Log("Unset suffocating debuff");
+            _buffsModule.Set(BuffType.Suffocating, false);
         }
         else if (hydrogenRequirement > 0  && hydrogenRequirement <= hydrogen)
         {
-            Debug.Log("Unset suffocating debuff");
+            _buffsModule.Set(BuffType.Suffocating, false);
         }
         else
         {
-            Debug.Log("Apply suffocating debuff");
+            _buffsModule.Set(BuffType.Suffocating, true);
         }
     }
 
