@@ -17,6 +17,7 @@ public class UIManager: MonoBehaviour
     [Inject] private OverlayUIScreen _overlayUIScreen;
     [Inject] private ActiveEvolutionsDisplay _activeEvolutionsDisplay;
     [Inject] private ActiveAbilitiesDisplay  _activeAbilitiesDisplay;
+    [Inject] private ActiveBuffsDisplay _activeBuffsDisplay;
     [Inject] private BarsPanelUI _barsPanelUI;
     [Inject] private DescriptionUI _descriptionUI;
     
@@ -43,6 +44,7 @@ public class UIManager: MonoBehaviour
         _activeEvolutionsDisplay.Construct(_player.Evolutions);
         _evolutionChooseUIScreen.Construct(_player.Evolutions);
         _activeAbilitiesDisplay.Construct(_player.Abilities);
+        _activeBuffsDisplay.Construct(_player.Buffs);
     }
 
     private void Update()

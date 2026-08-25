@@ -46,6 +46,7 @@ public class GameplayScope: LifetimeScope
         builder.RegisterComponentInHierarchy<OverlayUIScreen>();
         builder.RegisterComponentInHierarchy<ActiveEvolutionsDisplay>();
         builder.RegisterComponentInHierarchy<ActiveAbilitiesDisplay>();
+        builder.RegisterComponentInHierarchy<ActiveBuffsDisplay>();
         builder.RegisterComponentInHierarchy<PauseUIScreen>();
         builder.RegisterComponentInHierarchy<BarsPanelUI>();
         builder.RegisterComponentInHierarchy<DescriptionUI>();

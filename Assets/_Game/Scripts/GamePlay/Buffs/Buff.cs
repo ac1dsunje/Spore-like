@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Interfaces;
+using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Buffs
 {
@@ -8,6 +9,7 @@ public abstract class Buff: IStatSource
 {
     public BuffType Type => _config.Type;
     public string Name => _config.Name;
+    public Sprite Sprite => _config.Sprite;
     
     public List<SourceStat> GetStats() => _config.Stats;
     

@@ -14,23 +14,26 @@ public class BuffsModule
     public event Action<Buff> OnBuffDeactivated;
     
     private readonly List<Buff> _buffs = new();
+
+    private PlayerModel _player;
     
-    [Inject]
-    private void Construct(BuffsDatabase database, EntityStats entityStats, PlayerModel playerModel, Ticker ticker)
+    [Inject] private BuffsDatabase _dataDatabase;
+    [Inject] private Ticker _ticker;
+    
+    public void Initialize()
     {
-        
-        foreach (var buff in database.Buffs)
+        foreach (var buff in _dataDatabase.Buffs)
         {
             switch (buff.Type)
             {
                 case BuffType.Suffocating:
                 {
-                    _buffs.Add(new SuffocatingDebuff(entityStats, playerModel.Health, ticker, buff));
+                    _buffs.Add(new SuffocatingDebuff(_player.Stats, _player.Health, _ticker, buff));
                     break;
                 }
                 case BuffType.BadPassAbility:
                 {
-                    _buffs.Add(new BadPassAbility(entityStats, playerModel.Movement, ticker, buff));
+                    _buffs.Add(new BadPassAbility(_player.Stats, _player.Movement, _ticker, buff));
                     break;
                 }
                 case BuffType.Heat:
@@ -40,6 +43,11 @@ public class BuffsModule
                     break;
             }
         }
+    }
+
+    public void SetModel(PlayerModel player)
+    {
+        _player = player;
     }
 
     public void Set(BuffType type, bool state)

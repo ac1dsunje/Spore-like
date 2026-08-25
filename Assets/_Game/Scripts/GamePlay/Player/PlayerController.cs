@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         Model.Initialize(_damageAble);
         Model.Evolutions.Initialize(_evolutionsDatabase, _raritiesDatabase, _minEvolutions);
+        Model.Buffs.Initialize();
         _animation.SetConfig(_animationSettings);
         _playerRegistry.AddPlayer(this);
         _experience.Initialize(Model);
