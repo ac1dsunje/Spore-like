@@ -102,27 +102,17 @@ MonoBehaviour:
     <Type>k__BackingField: 20
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: 6897397452054301260, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
-  - <Name>k__BackingField: Minimal lethal temperature
-    <Type>k__BackingField: 21
-    <MinimalValue>k__BackingField: -999999
-    <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: -3808490029524268551, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: -4825292542029568506, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Minimal comfortable temperature
     <Type>k__BackingField: 22
     <MinimalValue>k__BackingField: -999999
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: -7345716695485928888, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: -3808490029524268551, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Maximum comfortable temperature
     <Type>k__BackingField: 23
     <MinimalValue>k__BackingField: -999999
     <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: -2103038610719167931, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
-  - <Name>k__BackingField: Maximum lethal temperature
-    <Type>k__BackingField: 24
-    <MinimalValue>k__BackingField: -999999
-    <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: -4825292542029568506, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+    <Sprite>k__BackingField: {fileID: -7345716695485928888, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Attack range
     <Type>k__BackingField: 25
     <MinimalValue>k__BackingField: 0.5

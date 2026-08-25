@@ -758,48 +758,6 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: StatsAtlas_29
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 324
-      y: 4
-      width: 64
-      height: 64
-    spriteID: 525d6df9a53a39d48a8663e90423a4d8
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: StatsAtlas_30
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 404
-      y: 4
-      width: 64
-      height: 64
-    spriteID: 7f067c0caec61564092fd28e8d3d7836
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
   tileSetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -820,7 +778,7 @@ ScriptedImporter:
       cellRect:
         x: 0
         y: 240
-        width: 464
+        width: 384
         height: 784
       spriteId: cc99bed1c95c2c546b9665d40cda2d65
     linkedCells: []

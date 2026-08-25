@@ -15,7 +15,7 @@ public class PlayerBiome: MonoBehaviour
     private BreathingModule _breathing;
     
     private MovementModule _movement;
-    private BiomeModule _biome;
+    private BiomeModule _biomeModule;
     
     private BuffsModule _buffsModule;
     
@@ -29,7 +29,7 @@ public class PlayerBiome: MonoBehaviour
         _temperature = temperature;
         _breathing = breathing;
         _movement = movement;
-        _biome = biome;
+        _biomeModule = biome;
         _buffsModule = buffsModule;
         
         _movement.OnGridPositionChanged += TryEnterBiome;
@@ -53,24 +53,13 @@ public class PlayerBiome: MonoBehaviour
 
     private void CheckPassability()
     {
-        if (_currentBiome.PassAbility > _biome.PassAbility)
-        {
-            _buffsModule.Set(BuffType.BadPassAbility, true);
-        }
-        else
-        {
-            _buffsModule.Set(BuffType.BadPassAbility, false);
-        }
+        _buffsModule.Set(BuffType.BadPassAbility, _currentBiome.PassAbility > _biomeModule.PassAbility);
     }
 
     private void ApplyTemperature(float temperature)
     {
-        if (_temperature.IsLethal(temperature))
-            Debug.Log($"Temperature is lethal");
-        else if (_temperature.IsUncomfortable(temperature))
-            Debug.Log($"Temperature is not comfortable");
-        else
-            Debug.Log($"Temperature is comfortable");
+        _buffsModule.Set(BuffType.Cold, _currentBiome.Temperature < _temperature.MinimalComfortable);
+        _buffsModule.Set(BuffType.Heat, _currentBiome.Temperature > _temperature.MaximumComfortable);
     }
 
     private void CheckBreathing(float oxygen, float hydrogen)
