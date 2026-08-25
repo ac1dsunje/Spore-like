@@ -15,7 +15,7 @@ public class SuffocatingDebuff: Buff
 
     protected override void Do(float deltatTime)
     {
-        _healthModule.TakeDamage(deltatTime);
+        _healthModule.TakeDamage(deltatTime * 5f);
     }
 }
 }
