@@ -37,7 +37,15 @@ public class BuffsModule
                     break;
                 }
                 case BuffType.Heat:
+                {
+                    _buffs.Add(new HeatDebuff(_player.Stats, _player.Health, _ticker, buff));
+                    break;
+                }
                 case BuffType.Cold:
+                {
+                    _buffs.Add(new ColdDebuff(_player.Stats, _player.Health, _ticker, buff));
+                    break;
+                }
                 default:
                     Debug.Log($"Buff with type {buff.Type} is not implemented");
                     break;

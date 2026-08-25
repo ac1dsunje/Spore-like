@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea97b54848348e2b2f0391392526573, type: 3}
+  m_Name: Heat
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Buffs.BuffConfig
+  <Name>k__BackingField: Heat
+  <Type>k__BackingField: 2
+  <Stats>k__BackingField: []
+  <Sprite>k__BackingField: {fileID: -6534822445362693070, guid: 6e757b2f16213b74a9024f89071fac6a, type: 3}

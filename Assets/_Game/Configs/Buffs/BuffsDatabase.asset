@@ -15,3 +15,5 @@ MonoBehaviour:
   <Buffs>k__BackingField:
   - {fileID: 11400000, guid: c68abf02cb0ef1945bde04df53cac2de, type: 2}
   - {fileID: 11400000, guid: c6f7a1507ba77424eaef26116a464c5d, type: 2}
+  - {fileID: 11400000, guid: 7621697e396718945adbbcc3f2daa855, type: 2}
+  - {fileID: 11400000, guid: 2933cad319a9ad14c85de02fb6e2bfd5, type: 2}
