@@ -33,7 +33,7 @@ public class BuffsModule
                 }
                 case BuffType.BadPassAbility:
                 {
-                    _buffs.Add(new BadPassAbility(_player.Stats, _player.Movement, _ticker, buff));
+                    _buffs.Add(new BadPassAbility(_player.Stats, _ticker, buff));
                     break;
                 }
                 case BuffType.Heat:
