@@ -58,8 +58,8 @@ public class PlayerBiome: MonoBehaviour
 
     private void ApplyTemperature(float temperature)
     {
-        _buffsModule.Set(BuffType.Cold, _currentBiome.Temperature < _temperature.MinimalComfortable);
-        _buffsModule.Set(BuffType.Heat, _currentBiome.Temperature > _temperature.MaximumComfortable);
+        _buffsModule.Set(BuffType.Cold, temperature < _temperature.MinimalComfortable);
+        _buffsModule.Set(BuffType.Heat, temperature > _temperature.MaximumComfortable);
     }
 
     private void CheckBreathing(float oxygen, float hydrogen)
