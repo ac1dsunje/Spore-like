@@ -168,3 +168,13 @@ MonoBehaviour:
     <MinimalValue>k__BackingField: 1
     <MaximalValue>k__BackingField: 999999
     <Sprite>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Bounciness
+    <Type>k__BackingField: 36
+    <MinimalValue>k__BackingField: 0
+    <MaximalValue>k__BackingField: 1
+    <Sprite>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Friction
+    <Type>k__BackingField: 37
+    <MinimalValue>k__BackingField: 0
+    <MaximalValue>k__BackingField: 1
+    <Sprite>k__BackingField: {fileID: 0}

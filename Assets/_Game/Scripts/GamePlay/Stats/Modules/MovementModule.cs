@@ -12,6 +12,8 @@ public class MovementModule : StatModule
     public float Acceleration => _acceleration / 100f;
     public float Inertia => _inertia / 100f;
     public float DashPower { get; private set; }
+    public float Bounciness { get; private set; }
+    public float Friction { get; private set; }
     public bool DashRequested { get; private set; }
 
     public Vector3Int GridPosition { get; private set; }
@@ -34,6 +36,8 @@ public class MovementModule : StatModule
         BindStat(StatType.Inertia, UpdateInertia);
         BindStat(StatType.SprintMultiplier, UpdateSprintMultiplier);
         BindStat(StatType.DashPower, UpdateDashPower);
+        BindStat(StatType.Bounciness, UpdateMoveSpeed);
+        BindStat(StatType.Friction, UpdateFriction);
     }
     
     public void SetDash(bool state)
@@ -64,5 +68,7 @@ public class MovementModule : StatModule
     private void UpdateSprintMultiplier(float value) => _sprintMultiplier = value;
 
     private void UpdateDashPower(float value) => DashPower = value;
+    private void UpdateBounciness(float value) => Bounciness = value;
+    private void UpdateFriction(float value) => Friction = value;
 }
 }

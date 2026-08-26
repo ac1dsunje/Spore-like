@@ -10,8 +10,10 @@ public class MovementController: MonoBehaviour
         Mathf.RoundToInt(_rigidbody.position.y),
         0
     );
+    
+    private PhysicsMaterial2D _material2D;
 
-    public void SetMaterial(float friction, float bounciness, float linearDamping)
+    public void SetMaterial(float friction, float bounciness)
     {
         var material2D = new PhysicsMaterial2D
         {
@@ -19,13 +21,18 @@ public class MovementController: MonoBehaviour
             bounciness = bounciness
         };
 
-        if (_rigidbody == null)
+        if (!_rigidbody)
         {
             _rigidbody = GetComponent<Rigidbody2D>();
         }
 
-        _rigidbody.linearDamping = linearDamping;
-        _rigidbody.sharedMaterial = material2D;
+        if (_material2D != material2D)
+        {
+            _rigidbody.linearDamping = friction;
+            _rigidbody.sharedMaterial = material2D;
+        
+            _material2D = material2D;
+        }
     }
     
     public bool IsMoving => _rigidbody.linearVelocity != Vector2.zero;

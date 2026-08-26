@@ -33,5 +33,7 @@ public enum StatType
     DisguiseInRest = 33,
     OxygenBreathing = 34,
     HydrogenBreathing = 35,
+    Bounciness = 36,
+    Friction = 37,
 }
 }

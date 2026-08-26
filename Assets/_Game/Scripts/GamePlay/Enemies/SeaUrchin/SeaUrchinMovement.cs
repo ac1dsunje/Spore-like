@@ -9,15 +9,11 @@ public class SeaUrchinMovement: MonoBehaviour
 {
     [SerializeField] private MovementController _controller;
     
-    private MovementModule _movement;
+    [Inject] private MovementModule _movement;
 
-    [Inject]
-    private void Construct(MovementModule movement)
+    private void FixedUpdate()
     {
-        _movement = movement;
-        _controller.SetMaterial(0.4f, 1f, 0.4f);
+        _controller.SetMaterial(_movement.Friction, _movement.Bounciness);
     }
-    
-    
 }
 }
