@@ -10,6 +10,23 @@ public class MovementController: MonoBehaviour
         Mathf.RoundToInt(_rigidbody.position.y),
         0
     );
+
+    public void SetMaterial(float friction, float bounciness, float linearDamping)
+    {
+        var material2D = new PhysicsMaterial2D
+        {
+            friction = friction,
+            bounciness = bounciness
+        };
+
+        if (_rigidbody == null)
+        {
+            _rigidbody = GetComponent<Rigidbody2D>();
+        }
+
+        _rigidbody.linearDamping = linearDamping;
+        _rigidbody.sharedMaterial = material2D;
+    }
     
     public bool IsMoving => _rigidbody.linearVelocity != Vector2.zero;
     

@@ -167,12 +167,12 @@ MonoBehaviour:
       m_Center: {x: 0, y: 0, z: 0}
       m_Extent: {x: 0, y: 0, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: -1
+    m_TrimEdge: 0
     m_FlipX: 0
     m_FlipY: 0
     m_InitialTrim: 0
   m_CastingOption: 1
-  m_PreviousTrimEdge: -1
+  m_PreviousTrimEdge: 0
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
   m_PreviousShadowShape2DSource: {fileID: 6490172682667009412}
@@ -243,11 +243,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5827939611874900112}
-  - component: {fileID: 2137967969705614062}
   - component: {fileID: 7437015074573969314}
   - component: {fileID: 907072873164215148}
+  - component: {fileID: 2137967969705614062}
   - component: {fileID: -4871289679674323519}
   - component: {fileID: 7454339499277821137}
+  - component: {fileID: 7244278665804749995}
+  - component: {fileID: 1298046521571552132}
+  - component: {fileID: 5869371796053639311}
   m_Layer: 0
   m_Name: SeaUrchin
   m_TagString: Untagged
@@ -271,18 +274,6 @@ Transform:
   - {fileID: 1926611366670476748}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2137967969705614062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2453553538165317395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcff48d5c74c49db9a4cce20da6b7cf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Obstacles.Spike
 --- !u!58 &7437015074573969314
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -346,6 +337,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2137967969705614062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2453553538165317395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcff48d5c74c49db9a4cce20da6b7cf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Obstacles.Spike
 --- !u!114 &-4871289679674323519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,3 +382,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f36d18d76a42d5a17e11ee13d20cdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Enemies.SeaUrchin.SeaUrchinHealth
+--- !u!114 &7244278665804749995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2453553538165317395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e675869704d14b6f90ce8c14d82bcdab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Enemies.SeaUrchin.SeaUrchinMovement
+  _controller: {fileID: 1298046521571552132}
+--- !u!114 &1298046521571552132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2453553538165317395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a62e08b1abd4011b5c9a67a3bedaa77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Movement.MovementController
+--- !u!114 &5869371796053639311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2453553538165317395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ff38fccaf64667a2565a3026b4cf76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Enemies.SeaUrchin.SeaUrchinAttackBehaviour
