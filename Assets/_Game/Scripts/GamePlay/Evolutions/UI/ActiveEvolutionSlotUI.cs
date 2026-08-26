@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using VContainer;
 
 namespace _Game.Scripts.GamePlay.Evolutions.UI
 {
@@ -42,15 +41,9 @@ public class ActiveEvolutionSlotUI : MonoBehaviour, IPointerEnterHandler, IPoint
         OnEvolutionUnhovered?.Invoke();
     }
 
-    private void UpdateSprite()
-    {
-        _image.sprite = _evolution.Config.Sprite;
-    }
-    
-    private void UpdateFrame()
-    {
-        _frame.sprite = _evolution.Frame;
-    }
+    private void UpdateSprite() => _image.sprite = _evolution.Config.Sprite;
+
+    private void UpdateFrame() => _frame.sprite = _evolution.Frame;
 
     private void OnDestroy()
     {
