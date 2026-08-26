@@ -19,8 +19,6 @@ public class Evolution: IDisposable, IStatSource
     
     private RarityConfig _rarity;
     private PlayerModel _player;
-
-    public int Chance { get; private set; }
     public event Action OnRarityChanged;
     
     //Level
@@ -39,10 +37,9 @@ public class Evolution: IDisposable, IStatSource
         SetState(Config.State);
     }
 
-    public void Initialize(PlayerModel playerModel, int chance)
+    public void Initialize(PlayerModel playerModel)
     {
         _player = playerModel;
-        Chance = chance;
     }
 
     public List<SourceStat> GetStats()

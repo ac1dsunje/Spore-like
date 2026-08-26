@@ -8,7 +8,6 @@ namespace _Game.Scripts.GamePlay.Evolutions
 public class EvolutionsDatabase: ScriptableObject
 {
     [field: SerializeField] public EvolutionConfig[] Evolutions { get; private set; }
-    [field: SerializeField] public int BasicChance { get; private set; } = 10;
     
     public List<Evolution> GenerateEvolutions()
     {

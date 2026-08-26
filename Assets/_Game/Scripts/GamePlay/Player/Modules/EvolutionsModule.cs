@@ -47,7 +47,7 @@ public class EvolutionsModule: IDisposable
         foreach (var evolution in _evolutionsDatabase.GenerateEvolutions())
         {
             _evolutions.Add(evolution);
-            evolution.Initialize(_player, _evolutionsDatabase.BasicChance);
+            evolution.Initialize(_player);
             evolution.OnLevelUp += OnEvolutionLevelUp;
         }
     }
@@ -136,22 +136,9 @@ public class EvolutionsModule: IDisposable
     
         for (var i = 0; i < slotsToFill; i++)
         {
-            var totalWeight = availableEvolutions.Sum(evolution => evolution.Chance);
-
-            var randomValue = Random.Range(0, totalWeight);
-
-            var currentWeight = 0;
-            for (var j = 0; j < availableEvolutions.Count; j++)
-            {
-                currentWeight += availableEvolutions[j].Chance;
-
-                if (randomValue >= currentWeight) continue;
-                
-                evolutions.Add(availableEvolutions[j]);
-                
-                availableEvolutions.RemoveAt(j); 
-                break;
-            }
+            var index = Random.Range(0, availableEvolutions.Count);
+            evolutions.Add(availableEvolutions[index]);
+            availableEvolutions.RemoveAt(index); 
         }
 
         return evolutions;
