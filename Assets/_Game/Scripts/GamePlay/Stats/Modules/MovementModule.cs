@@ -36,7 +36,7 @@ public class MovementModule : StatModule
         BindStat(StatType.Inertia, UpdateInertia);
         BindStat(StatType.SprintMultiplier, UpdateSprintMultiplier);
         BindStat(StatType.DashPower, UpdateDashPower);
-        BindStat(StatType.Bounciness, UpdateMoveSpeed);
+        BindStat(StatType.Bounciness, UpdateBounciness);
         BindStat(StatType.Friction, UpdateFriction);
     }
     
