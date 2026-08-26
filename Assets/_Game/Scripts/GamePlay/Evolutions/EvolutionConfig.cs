@@ -10,7 +10,6 @@ public class EvolutionConfig: ScriptableObject
 {
     [field: SerializeField] public EvolutionState State { get; private set; }
     [field: SerializeField] public string Name { get; private set; }
-    [field: SerializeField] public CreatureType CreatureType { get; private set; }
     [field: SerializeField] public List<EvolutionStat> Stats { get; private set; }
     [field: SerializeField] public AbilityConfig[] Abilities { get; private set; }
     [field: SerializeField] public EvolutionConfig[] Requires { get; private set; }

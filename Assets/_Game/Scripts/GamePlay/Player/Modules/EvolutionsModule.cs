@@ -67,7 +67,6 @@ public class EvolutionsModule: IDisposable
 
         UnlockEvolutions();
         BlockEvolutions(evolution);
-        UpdateChances(evolution);
         
         OnEvolutionApplied?.Invoke(evolution);
     }
@@ -80,14 +79,6 @@ public class EvolutionsModule: IDisposable
             
             evolution.UpdateRarity(rarity);
             return;
-        }
-    }
-
-    private void UpdateChances(Evolution evolution)
-    {
-        foreach (var evo in _evolutions.Where(evo => evo.Config.CreatureType == evolution.Config.CreatureType))
-        {
-            evo.IncreaseChance(_evolutionsDatabase.ChanceScaler);
         }
     }
 

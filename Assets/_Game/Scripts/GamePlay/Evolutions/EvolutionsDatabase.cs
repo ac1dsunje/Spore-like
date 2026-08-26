@@ -9,7 +9,6 @@ public class EvolutionsDatabase: ScriptableObject
 {
     [field: SerializeField] public EvolutionConfig[] Evolutions { get; private set; }
     [field: SerializeField] public int BasicChance { get; private set; } = 10;
-    [field: SerializeField] public int ChanceScaler { get; private set; } = 5;
     
     public List<Evolution> GenerateEvolutions()
     {

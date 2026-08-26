@@ -50,8 +50,6 @@ public class Evolution: IDisposable, IStatSource
         return Stats.Select(stat => new SourceStat(stat.Type, stat.CurrentValue, stat.Operation, stat.Target)).ToList();
     }
 
-    public void IncreaseChance(int amount) => Chance += amount;
-
     public void Apply()
     {
         Activate();
