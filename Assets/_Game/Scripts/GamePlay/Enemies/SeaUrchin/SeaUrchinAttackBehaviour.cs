@@ -1,11 +1,12 @@
-﻿using _Game.Scripts.GamePlay.Interfaces;
+﻿using _Game.Scripts.GamePlay.Combat;
+using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Enemies.SeaUrchin
 {
-public class SeaUrchinAttackBehaviour : MonoBehaviour, IDamageSource
+public class SeaUrchinAttackBehaviour : MonoBehaviour, IDamageSource, IDamageSourceController
 {
     private AttackModule _module;
     private IDamageReceiver _receiver;
@@ -16,7 +17,7 @@ public class SeaUrchinAttackBehaviour : MonoBehaviour, IDamageSource
         _module = attackModule;
     }
 
-    public void SetReceiver(IDamageReceiver receiver) => _receiver = receiver;
+    public void SetDamageReceiver(IDamageReceiver damageReceiver) => _receiver = damageReceiver;
 
     private void OnCollisionEnter2D(Collision2D other)
     {

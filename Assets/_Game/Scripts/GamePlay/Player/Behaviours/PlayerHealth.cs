@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using _Game.Scripts.GamePlay.Combat;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
@@ -6,7 +7,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class PlayerHealth: MonoBehaviour, IDamageReceiver
+public class PlayerHealth: MonoBehaviour, IDamageReceiver, IDamageReceiverController
 {
     private HealthModule _health;
     private DefenseModule _defense;
@@ -22,7 +23,7 @@ public class PlayerHealth: MonoBehaviour, IDamageReceiver
         _health.OnDeath += Die;
     }
 
-    public void SetAttackSource(IDamageSource source) => _damageSource = source;
+    public void SetDamageSource(IDamageSource source) => _damageSource = source;
 
     public float TakeDamage(HitInfo hit)
     {

@@ -1,11 +1,12 @@
-﻿using _Game.Scripts.GamePlay.Interfaces;
+﻿using _Game.Scripts.GamePlay.Combat;
+using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Enemies.SeaUrchin
 {
-public class SeaUrchinHealth: MonoBehaviour, IDamageReceiver
+public class SeaUrchinHealth: MonoBehaviour, IDamageReceiver, IDamageReceiverController
 {
     private HealthModule _healthModule;
     private DefenseModule _defenseModule;
@@ -20,7 +21,7 @@ public class SeaUrchinHealth: MonoBehaviour, IDamageReceiver
         _healthModule.OnDeath += Die;
     }
 
-    public void SetAttackSource(IDamageSource source) => _damageSource = source;
+    public void SetDamageSource(IDamageSource source) => _damageSource = source;
 
     public float TakeDamage(HitInfo hit)
     {

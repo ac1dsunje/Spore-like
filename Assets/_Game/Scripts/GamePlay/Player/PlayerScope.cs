@@ -1,5 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Animation;
 using _Game.Scripts.GamePlay.Buffs;
+using _Game.Scripts.GamePlay.Combat;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.Player.Behaviours;
@@ -32,6 +33,7 @@ public class PlayerScope: LifetimeScope
         builder.RegisterComponent(GetComponent<PlayerController>());
         builder.Register<PlayerModel>(Lifetime.Scoped);
         builder.Register<EntityStats>(Lifetime.Scoped);
+        builder.Register<CombatService>(Lifetime.Scoped);
         
         // Experience
         builder.Register<ExperienceModule>(Lifetime.Scoped);
@@ -42,7 +44,10 @@ public class PlayerScope: LifetimeScope
         builder.RegisterComponent(GetComponentInChildren<PlayerXRay>());
         
         // Health
-        builder.RegisterComponent(GetComponentInChildren<PlayerHealth>()).AsSelf().As<IDamageReceiver>();
+        builder.RegisterComponent(GetComponentInChildren<PlayerHealth>())
+            .AsSelf()
+            .As<IDamageReceiver>()
+            .As<IDamageReceiverController>();
         builder.Register<HealthModule>(Lifetime.Scoped);
         
         // Defense 
@@ -57,7 +62,10 @@ public class PlayerScope: LifetimeScope
         builder.Register<MouthModule>(Lifetime.Scoped);
         
         // Attack
-        builder.RegisterComponent(GetComponentInChildren<PlayerAttack>()).AsSelf().As<IDamageSource>();
+        builder.RegisterComponent(GetComponentInChildren<PlayerAttack>())
+            .AsSelf()
+            .As<IDamageSource>()
+            .As<IDamageSourceController>();
         builder.Register<AttackModule>(Lifetime.Scoped);
         
         // Movement

@@ -1,4 +1,5 @@
 ﻿using _Game.Scripts.Core.Services;
+using _Game.Scripts.GamePlay.Combat;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.Weapons;
@@ -7,7 +8,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class PlayerAttack : MonoBehaviour, IDamageSource
+public class PlayerAttack : MonoBehaviour, IDamageSource, IDamageSourceController
 {
     [SerializeField] private MeleeWeaponItem _meleeWeaponObject;
     
@@ -29,7 +30,7 @@ public class PlayerAttack : MonoBehaviour, IDamageSource
         _ticker.OnTick += CheckInput;
     }
 
-    public void SetReceiver(IDamageReceiver receiver) => _receiver = receiver;
+    public void SetDamageReceiver(IDamageReceiver damageReceiver) => _receiver = damageReceiver;
 
     private void CheckInput(float timeDelta)
     {
