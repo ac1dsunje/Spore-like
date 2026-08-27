@@ -14,18 +14,20 @@ public class PlayerAttack : MonoBehaviour
     private AttackModule _module;
     private PlayerInputService _inputService;
     private Ticker _ticker;
+    private IDamageAble _owner;
 
     private float _attackCooldownTimer;
     private bool CanAttack => _attackCooldownTimer <= 0f;
 
     [Inject]
-    private void Construct(AttackModule module, PlayerInputService inputService, Ticker ticker)
+    private void Construct(AttackModule module, PlayerInputService inputService, Ticker ticker, IDamageAble owner)
     {
         _module = module;
         _inputService = inputService;
         _meleeWeaponObject.transform.SetParent(null);
         _ticker = ticker;
         _ticker.OnTick += CheckInput;
+        _owner = owner;
     }
 
     private void CheckInput(float timeDelta)
@@ -46,7 +48,7 @@ public class PlayerAttack : MonoBehaviour
     {
         _meleeWeaponObject.gameObject.SetActive(true);
         UpdateAttackPosition();
-        var hit = new HitInfo(_module.PhysicalDamage, _module.IgnoreResistance, _module.Owner);
+        var hit = new HitInfo(_module.PhysicalDamage, _module.IgnoreResistance, _owner);
         _meleeWeaponObject.SetHit(hit);
     }
 

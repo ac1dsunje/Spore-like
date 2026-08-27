@@ -1,5 +1,4 @@
 ﻿using System;
-using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Types;
 
 namespace _Game.Scripts.GamePlay.Modules
@@ -10,8 +9,6 @@ public class AttackModule: StatModule
     public float AttackRange { get; private set; }
     public float IgnoreResistance { get; private set; }
     public float AttackSpeed { get; private set; }
-
-    public IDamageAble Owner { get; private set; }
     public event Action<float> OnDamageDealt;
 
     protected override void Configure()
@@ -22,7 +19,6 @@ public class AttackModule: StatModule
         BindStat(StatType.AttackSpeed, UpdateAttackSpeed);
     }
 
-    public void SetOwner(IDamageAble owner) => Owner = owner;
     public void SetDamageDealt(float damage) => OnDamageDealt?.Invoke(damage);
     private void UpdatePhysicalDamage(float value) => PhysicalDamage = value;
     private void UpdateAttackRange(float value) => AttackRange = value;

@@ -1,7 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
-using _Game.Scripts.GamePlay.Interfaces;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player
@@ -51,9 +50,8 @@ public class PlayerModel
         Stats.Initialize(config.InitialConfigs);
     }
     
-    public void Initialize(IDamageAble owner)
+    public void Initialize()
     {
-        Attack.SetOwner(owner);
         Abilities.SetModel(this);
         Evolutions.SetModel(this);
         Buffs.SetModel(this);

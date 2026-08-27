@@ -1,6 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Animation;
 using _Game.Scripts.GamePlay.Evolutions;
-using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
 using _Game.Scripts.GamePlay.Rarities;
 using UnityEngine;
@@ -20,11 +19,10 @@ public class PlayerController : MonoBehaviour
     [Inject] private PlayerRegistry _playerRegistry;
     [Inject] private ItemAnimation _animation;
     [Inject] private ExperienceModule _experience;
-    [Inject] private IDamageAble _damageAble;
 
     public void Initialize()
     {
-        Model.Initialize(_damageAble);
+        Model.Initialize();
         Model.Evolutions.Initialize(_evolutionsDatabase, _raritiesDatabase, _minEvolutions);
         Model.Buffs.Initialize();
         _animation.SetConfig(_animationSettings);
