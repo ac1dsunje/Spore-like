@@ -33,7 +33,7 @@ public class PlayerScope: LifetimeScope
         builder.RegisterComponent(GetComponent<PlayerController>());
         builder.Register<PlayerModel>(Lifetime.Scoped);
         builder.Register<EntityStats>(Lifetime.Scoped);
-        builder.Register<CombatService>(Lifetime.Scoped);
+        builder.Register<CombatBinder>(Lifetime.Scoped);
         
         // Experience
         builder.Register<ExperienceModule>(Lifetime.Scoped);

@@ -3,10 +3,10 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Combat
 {
-public class CombatService
+public class CombatBinder
 {
     [Inject]
-    public CombatService(IDamageReceiver damageReceiver, IDamageSource damageSource,
+    public CombatBinder(IDamageReceiver damageReceiver, IDamageSource damageSource,
         IDamageReceiverController damageReceiverController, IDamageSourceController damageSourceController)
     {
         damageReceiverController.SetDamageSource(damageSource);
