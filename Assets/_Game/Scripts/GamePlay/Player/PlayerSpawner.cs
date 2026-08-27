@@ -20,7 +20,7 @@ public class PlayerSpawner : MonoBehaviour
         
         var player = Instantiate(_playerPrefab, spawnPos, Quaternion.identity, transform);
 
-        player.SetPlayer();
+        player.Initialize();
     }
 }
 }

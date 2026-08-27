@@ -11,12 +11,11 @@ public class SeaUrchinAttackBehaviour : MonoBehaviour
     private IDamageAble _owner;
 
     [Inject]
-    private void Construct(AttackModule attackModule)
+    private void Construct(AttackModule attackModule, IDamageAble damageAble)
     {
         _module = attackModule;
+        _owner = damageAble;
     }
-
-    public void SetOwner(IDamageAble damageable) => _owner = damageable;
 
     private void OnCollisionEnter2D(Collision2D other)
     {

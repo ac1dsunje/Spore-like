@@ -2,9 +2,9 @@
 {
 public struct HitInfo
 {
-    public float Damage;
-    public float IgnoreResistance;
-    public IDamageAble Owner;
+    public float Damage { get; private set; }
+    public float IgnoreResistance { get; private set; }
+    public IDamageAble Owner { get; private set; }
 
     public HitInfo(float damage, float ignoreResistance, IDamageAble owner)
     {

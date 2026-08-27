@@ -22,12 +22,7 @@ public class PlayerController : MonoBehaviour
     [Inject] private ExperienceModule _experience;
     [Inject] private IDamageAble _damageAble;
 
-    public void SetPlayer()
-    {
-        Initialize();
-    }
-
-    private void Initialize()
+    public void Initialize()
     {
         Model.Initialize(_damageAble);
         Model.Evolutions.Initialize(_evolutionsDatabase, _raritiesDatabase, _minEvolutions);

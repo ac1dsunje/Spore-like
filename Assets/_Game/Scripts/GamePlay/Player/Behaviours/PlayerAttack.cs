@@ -16,7 +16,7 @@ public class PlayerAttack : MonoBehaviour
     private Ticker _ticker;
 
     private float _attackCooldownTimer;
-    private bool _canAttack => _attackCooldownTimer <= 0f;
+    private bool CanAttack => _attackCooldownTimer <= 0f;
 
     [Inject]
     private void Construct(AttackModule module, PlayerInputService inputService, Ticker ticker)
@@ -35,7 +35,7 @@ public class PlayerAttack : MonoBehaviour
             _attackCooldownTimer -= timeDelta;
         }
 
-        if (!_canAttack) return;
+        if (!CanAttack) return;
         if (!_inputService.AttackPressed) return;
 
         Attack();
