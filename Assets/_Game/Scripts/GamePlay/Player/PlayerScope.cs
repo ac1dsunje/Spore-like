@@ -42,7 +42,7 @@ public class PlayerScope: LifetimeScope
         builder.RegisterComponent(GetComponentInChildren<PlayerXRay>());
         
         // Health
-        builder.RegisterComponent(GetComponentInChildren<PlayerHealth>()).AsSelf().As<IDamageAble>();
+        builder.RegisterComponent(GetComponentInChildren<PlayerHealth>()).AsSelf().As<IDamageReceiver>();
         builder.Register<HealthModule>(Lifetime.Scoped);
         
         // Defense 
@@ -57,7 +57,7 @@ public class PlayerScope: LifetimeScope
         builder.Register<MouthModule>(Lifetime.Scoped);
         
         // Attack
-        builder.RegisterComponent(GetComponentInChildren<PlayerAttack>());
+        builder.RegisterComponent(GetComponentInChildren<PlayerAttack>()).AsSelf().As<IDamageSource>();
         builder.Register<AttackModule>(Lifetime.Scoped);
         
         // Movement

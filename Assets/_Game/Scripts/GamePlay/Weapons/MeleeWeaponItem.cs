@@ -18,10 +18,10 @@ public class MeleeWeaponItem: MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent(out IDamageAble damageAble))
+        if (other.TryGetComponent(out IDamageReceiver damageReceiver))
         {
-            if (damageAble == _hit.Owner) return;
-            _hit.Owner.SetDamageDealt(damageAble.TakeDamage(_hit));
+            if (damageReceiver == _hit.Receiver) return;
+            _hit.Source.SetDamageDealt(damageReceiver.TakeDamage(_hit));
         }
     }
 

@@ -5,23 +5,29 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Enemies.SeaUrchin
 {
-public class SeaUrchinAttackBehaviour : MonoBehaviour
+public class SeaUrchinAttackBehaviour : MonoBehaviour, IDamageSource
 {
     private AttackModule _module;
-    private IDamageAble _owner;
+    private IDamageReceiver _receiver;
 
     [Inject]
-    private void Construct(AttackModule attackModule, IDamageAble damageAble)
+    private void Construct(AttackModule attackModule)
     {
         _module = attackModule;
-        _owner = damageAble;
     }
+
+    public void SetReceiver(IDamageReceiver receiver) => _receiver = receiver;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (!other.collider.TryGetComponent(out IDamageAble damageAble)) return;
+        if (!other.collider.TryGetComponent(out IDamageReceiver damageAble)) return;
 
-        damageAble.TakeDamage(new HitInfo(_module.PhysicalDamage, _module.IgnoreResistance, _owner));
+        damageAble.TakeDamage(new HitInfo(_module.PhysicalDamage, _module.IgnoreResistance, this, _receiver));
+    }
+
+    public void SetDamageDealt(float damage)
+    {
+        _module.SetDamageDealt(damage);
     }
 }
 }

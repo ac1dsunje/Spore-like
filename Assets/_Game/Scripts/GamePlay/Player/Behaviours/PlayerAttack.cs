@@ -7,28 +7,29 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class PlayerAttack : MonoBehaviour
+public class PlayerAttack : MonoBehaviour, IDamageSource
 {
     [SerializeField] private MeleeWeaponItem _meleeWeaponObject;
     
     private AttackModule _module;
     private PlayerInputService _inputService;
     private Ticker _ticker;
-    private IDamageAble _owner;
+    private IDamageReceiver _receiver;
 
     private float _attackCooldownTimer;
     private bool CanAttack => _attackCooldownTimer <= 0f;
 
     [Inject]
-    private void Construct(AttackModule module, PlayerInputService inputService, Ticker ticker, IDamageAble owner)
+    private void Construct(AttackModule module, PlayerInputService inputService, Ticker ticker)
     {
         _module = module;
         _inputService = inputService;
         _meleeWeaponObject.transform.SetParent(null);
         _ticker = ticker;
         _ticker.OnTick += CheckInput;
-        _owner = owner;
     }
+
+    public void SetReceiver(IDamageReceiver receiver) => _receiver = receiver;
 
     private void CheckInput(float timeDelta)
     {
@@ -48,9 +49,11 @@ public class PlayerAttack : MonoBehaviour
     {
         _meleeWeaponObject.gameObject.SetActive(true);
         UpdateAttackPosition();
-        var hit = new HitInfo(_module.PhysicalDamage, _module.IgnoreResistance, _owner);
+        var hit = new HitInfo(_module.PhysicalDamage, _module.IgnoreResistance, this, _receiver);
         _meleeWeaponObject.SetHit(hit);
     }
+    
+    public void SetDamageDealt(float damage) => _module.SetDamageDealt(damage);
 
     private void UpdateAttackPosition()
     {
