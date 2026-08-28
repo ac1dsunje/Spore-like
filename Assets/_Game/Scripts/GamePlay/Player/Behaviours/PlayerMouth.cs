@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using _Game.Scripts.GamePlay.Buffs;
 using _Game.Scripts.GamePlay.Modules;
+using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.World.Food;
 using UnityEngine;
 using VContainer;
@@ -9,10 +11,14 @@ namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
 public class PlayerMouth: MonoBehaviour
 {
-    [Inject] private MouthModule _module;
+    [Inject] private MouthModule _mouth;
+    [Inject] private StomachModule _stomach;
+    [Inject] private BuffsModule _buffs;
 
     private readonly HashSet<IBiteable> _foods = new();
     private IBiteable _currentFood;
+
+    private float _hungerTimer;
     
     private void OnTriggerEnter2D(Collider2D other) => TryCatchFood(other);
 
@@ -23,7 +29,7 @@ public class PlayerMouth: MonoBehaviour
         if (!other.TryGetComponent<IBiteable>(out var food)) return;
         if (!_foods.Add(food)) return;
 
-        food.OnEaten += OnFoodDeath;
+        food.OnEaten += OnFoodEaten;
 
         if (_currentFood == null)
         {
@@ -36,7 +42,7 @@ public class PlayerMouth: MonoBehaviour
         if (!other.TryGetComponent<IBiteable>(out var food)) return;
         if (!_foods.Remove(food)) return;
 
-        food.OnEaten -= OnFoodDeath;
+        food.OnEaten -= OnFoodEaten;
 
         if (_currentFood == food)
         {
@@ -62,23 +68,23 @@ public class PlayerMouth: MonoBehaviour
     {
         while (_currentFood == food && _foods.Contains(food))
         {
-            yield return new WaitForSeconds(_module.EatingTime);
+            yield return new WaitForSeconds(_mouth.EatingTime);
 
             if (_currentFood != food) yield break;
 
-            food.TakeBite(_module.EatingStrength, _module.EatingPenetration);
+            food.TakeBite(_mouth.EatingStrength, _mouth.EatingPenetration);
         }
     }
 
-    private void OnFoodDeath(int foodAmount)
+    private void OnFoodEaten(int foodAmount)
     {
-        _module.GetExperienceFromFood(foodAmount);
+        _stomach.GetExperienceFromFood(foodAmount);
 
         if (foodAmount <= 0) return;
 
         if (_currentFood is not null)
         {
-            _currentFood.OnEaten -= OnFoodDeath;
+            _currentFood.OnEaten -= OnFoodEaten;
             _foods.Remove(_currentFood);
             _currentFood = null;
         }
@@ -87,11 +93,27 @@ public class PlayerMouth: MonoBehaviour
         StartEatingNextFood();
     }
 
+    private void Update()
+    {
+        if (_stomach.Hunger > 0)
+        {
+            _hungerTimer -= Time.deltaTime;
+            if (_hungerTimer <= 0)
+            {
+                _stomach.LoseHunger(1);
+                _hungerTimer = 30;
+            }
+        }
+
+        _buffs.Set(BuffType.Starvation, _stomach.Hunger <= 0);
+        _buffs.Set(BuffType.Overeating, _stomach.Hunger > _stomach.MaxHunger);
+    }
+
     private void OnDestroy()
     {
         foreach (var food in _foods)
         {
-            food.OnEaten -= OnFoodDeath;
+            food.OnEaten -= OnFoodEaten;
         }
 
         _foods.Clear();

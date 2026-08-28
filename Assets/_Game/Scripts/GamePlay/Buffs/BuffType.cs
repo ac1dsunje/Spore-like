@@ -6,5 +6,7 @@ public enum BuffType
     BadPassAbility = 1,
     Heat = 2,
     Cold = 3,
+    Starvation = 4,
+    Overeating = 5
 }
 }

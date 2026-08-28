@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb38e7df0ead4d928c3e348bc7546c6d, type: 3}
+  m_Name: Health
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.UI.Bar.BarConfig
+  <MaxValue>k__BackingField: 1
+  <Color>k__BackingField: {r: 1, g: 0, b: 0, a: 1}
+  <Sprite>k__BackingField: {fileID: 1783413189535478005, guid: e423e70c9688d8947a4c431a20f55623, type: 3}

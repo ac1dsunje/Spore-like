@@ -4,9 +4,9 @@ namespace _Game.Scripts.GamePlay.Experience.Types
 {
 public class FoodEating: ExperienceService
 {
-    private readonly MouthModule _module;
+    private readonly StomachModule _module;
     
-    public FoodEating(MouthModule module, float amount) : base(amount)
+    public FoodEating(StomachModule module, float amount) : base(amount)
     {
         _module = module;
         _module.OnFoodPointsAchieved += AddAmount;

@@ -1,5 +1,4 @@
-﻿using System;
-using _Game.Scripts.GamePlay.Types;
+﻿using _Game.Scripts.GamePlay.Types;
 
 namespace _Game.Scripts.GamePlay.Modules
 {
@@ -8,8 +7,6 @@ public class MouthModule: StatModule
     public float EatingStrength { get; private set; }
     public float EatingPenetration { get; private set; }
     public float EatingTime { get; private set; }
-
-    public event Action<float> OnFoodPointsAchieved;
 
     protected override void Configure()
     {
@@ -21,10 +18,5 @@ public class MouthModule: StatModule
     private void UpdateEatingStrength(float value) => EatingStrength = value;
     private void UpdateEatingPenetration(float value) => EatingPenetration = value;
     private void UpdateEatingTime(float value) => EatingTime = value / 100f;
-
-    public void GetExperienceFromFood(int value)
-    {
-        OnFoodPointsAchieved?.Invoke(value);
-    }
 }
 }

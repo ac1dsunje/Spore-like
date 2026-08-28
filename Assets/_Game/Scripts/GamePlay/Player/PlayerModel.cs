@@ -13,6 +13,7 @@ public class PlayerModel
     public DefenseModule Defense { get; private set; }
     public EnduranceModule Endurance { get; private set; }
     public MouthModule MouthModule { get; private set; }
+    public StomachModule Stomach { get; private set; }
     public AttackModule Attack { get; private set; }
     public MovementModule Movement { get; private set; }
     public TemperatureModule Temperature { get; private set; }
@@ -28,7 +29,7 @@ public class PlayerModel
     public PlayerModel(EntityStatsConfig config, EntityStats stats, VisionModule vision, HealthModule health, 
         DefenseModule defense, EnduranceModule endurance, MouthModule mouth, AttackModule attack, MovementModule movement,
         TemperatureModule temperature, ExperienceModule experience, AbilitiesModule abilities, EvolutionsModule evolutions,
-        DisguiseModule disguise, BiomeModule biome, BreathingModule breathing, BuffsModule buffs)
+        DisguiseModule disguise, BiomeModule biome, BreathingModule breathing, BuffsModule buffs, StomachModule stomach)
     {
         Stats = stats;
         Vision = vision;
@@ -46,6 +47,7 @@ public class PlayerModel
         Biome = biome;
         Breathing = breathing;
         Buffs = buffs;
+        Stomach = stomach;
         
         Stats.Initialize(config.InitialConfigs);
     }

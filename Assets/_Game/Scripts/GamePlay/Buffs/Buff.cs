@@ -13,6 +13,8 @@ public abstract class Buff: IStatSource
     
     public List<SourceStat> GetStats() => _config.Stats;
     
+    public bool IsActive => _isActive;
+    
     private readonly BuffConfig _config;
     private readonly  Ticker _ticker;
     private readonly EntityStats _entityStats;

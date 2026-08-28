@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Buffs;
 using _Game.Scripts.GamePlay.Buffs.Types;
@@ -46,6 +47,12 @@ public class BuffsModule
                     _buffs.Add(new ColdDebuff(_player.Stats, _player.Health, _ticker, buff));
                     break;
                 }
+                case BuffType.Starvation:
+                    _buffs.Add(new StarvationDebuff(_player.Stats, _player.Health, _ticker, buff));
+                    break;
+                case BuffType.Overeating:
+                    _buffs.Add(new OvereatingDebuff(_player.Stats, _player.Health, _ticker, buff));
+                    break;
                 default:
                     Debug.Log($"Buff with type {buff.Type} is not implemented");
                     break;
@@ -60,14 +67,7 @@ public class BuffsModule
 
     public void Set(BuffType type, bool state)
     {
-        Buff currentBuff = null;
-        
-        foreach (var buff in _buffs)
-        {
-            if (buff.Type != type) continue;
-            currentBuff = buff;
-            break;
-        }
+        var currentBuff = _buffs.FirstOrDefault(buff => buff.Type == type);
 
         if (currentBuff == null)
         {
@@ -75,12 +75,12 @@ public class BuffsModule
             return;
         }
 
-        if (state)
+        if (state && !currentBuff.IsActive)
         {
             currentBuff.Activate();
             OnBuffActivated?.Invoke(currentBuff);
         }
-        else
+        else if (!state && currentBuff.IsActive)
         {
             currentBuff.Deactivate();
             OnBuffDeactivated?.Invoke(currentBuff);

@@ -35,5 +35,6 @@ public enum StatType
     HydrogenBreathing = 35,
     Bounciness = 36,
     Friction = 37,
+    MaxHunger = 38,
 }
 }

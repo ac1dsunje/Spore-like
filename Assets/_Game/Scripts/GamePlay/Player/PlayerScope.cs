@@ -61,6 +61,9 @@ public class PlayerScope: LifetimeScope
         builder.RegisterComponent(GetComponentInChildren<PlayerMouth>());
         builder.Register<MouthModule>(Lifetime.Scoped);
         
+        // Stomach
+        builder.Register<StomachModule>(Lifetime.Scoped);
+        
         // Attack
         builder.RegisterComponent(GetComponentInChildren<PlayerAttack>())
             .AsSelf()

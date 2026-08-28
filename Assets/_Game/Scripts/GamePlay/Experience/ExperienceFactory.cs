@@ -31,7 +31,7 @@ public class ExperienceFactory
         {
             ExperienceType.DamageReflection => new DamageReflecting(playerModel.Defense, config.Amount),
             ExperienceType.ObjectDiscover => new ObjectsDiscovering(playerModel.Vision, config.Amount),
-            ExperienceType.FoodEating => new FoodEating(playerModel.MouthModule, config.Amount),
+            ExperienceType.FoodEating => new FoodEating(playerModel.Stomach, config.Amount),
             ExperienceType.DamageResistance => new DamageResisting(playerModel.Defense, config.Amount),
             ExperienceType.DamageTaking => new DamageTaking(playerModel.Health, config.Amount),
             ExperienceType.Healing => new Healing(playerModel.Health, config.Amount),
