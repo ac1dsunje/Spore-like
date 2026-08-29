@@ -39,19 +39,21 @@ public class PlayerAttack : MonoBehaviour, IDamageSource, IDamageSourceControlle
             _attackCooldownTimer -= timeDelta;
         }
 
-        if (!CanAttack) return;
         if (!_inputService.AttackPressed) return;
 
         Attack();
-        _attackCooldownTimer = _module.AttackSpeed;
     }
 
     private void Attack()
     {
+        if (!CanAttack) return;
+        
         _meleeWeaponObject.gameObject.SetActive(true);
         UpdateAttackPosition();
         var hit = new HitInfo(_module.PhysicalDamage, _module.IgnoreResistance, this, _receiver);
         _meleeWeaponObject.SetHit(hit);
+        
+        _attackCooldownTimer = _module.AttackSpeed;
     }
     
     public void SetDamageDealt(float damage) => _module.SetDamageDealt(damage);
