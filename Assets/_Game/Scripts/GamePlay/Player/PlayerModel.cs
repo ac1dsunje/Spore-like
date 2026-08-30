@@ -1,5 +1,4 @@
-﻿using _Game.Scripts.GamePlay.Entities;
-using _Game.Scripts.GamePlay.Modules;
+﻿using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
 using VContainer;
@@ -22,7 +21,6 @@ public class PlayerModel
     public BiomeModule Biome { get; private set; }
     public BreathingModule Breathing { get; private set; }
     
-    public EntityBuffsModule Buffs { get; private set; }
     public EvolutionsModule Evolutions { get; private set; }
     public ExperienceModule Experience { get; private set; }
     public AbilitiesModule Abilities { get; private set; }
@@ -33,7 +31,7 @@ public class PlayerModel
     public PlayerModel(EntityStatsConfig config, EntityStats stats, VisionModule vision, HealthModule health, 
         DefenseModule defense, EnduranceModule endurance, MouthModule mouth, AttackModule attack, MovementModule movement,
         TemperatureModule temperature, ExperienceModule experience, AbilitiesModule abilities, EvolutionsModule evolutions,
-        DisguiseModule disguise, BiomeModule biome, BreathingModule breathing, EntityBuffsModule buffs, StomachModule stomach)
+        DisguiseModule disguise, BiomeModule biome, BreathingModule breathing, StomachModule stomach)
     {
         Stats = stats;
         Vision = vision;
@@ -50,7 +48,6 @@ public class PlayerModel
         Disguise = disguise;
         Biome = biome;
         Breathing = breathing;
-        Buffs = buffs;
         Stomach = stomach;
 
         _config = config;
@@ -61,7 +58,6 @@ public class PlayerModel
         Stats.Initialize(_config.InitialConfigs);
         Abilities.SetModel(this);
         Evolutions.SetModel(this);
-        Buffs.Initialize();
         Experience.Initialize(this);
     }
 }

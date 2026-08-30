@@ -2,6 +2,7 @@
 using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Evolutions.UI.Choosing;
 using _Game.Scripts.GamePlay.Player;
+using _Game.Scripts.GamePlay.Player.Modules;
 using UnityEngine;
 using VContainer;
 
@@ -9,7 +10,9 @@ namespace _Game.Scripts.GamePlay.UI
 {
 public class UIManager: MonoBehaviour
 {
-    private PlayerModel _player;
+    private EvolutionsModule _evolutionsModule;
+    private AbilitiesModule _abilitiesModule;
+    private PlayerRegistry _registry;
     
     [Inject] private PauseUIScreen _pauseUIScreen;
     [Inject] private EvolutionChooseUIScreen _evolutionChooseUIScreen;
@@ -20,8 +23,6 @@ public class UIManager: MonoBehaviour
     [Inject] private ActiveBuffsDisplay _activeBuffsDisplay;
     [Inject] private BarsPanelUI _barsPanelUI;
     [Inject] private DescriptionUI _descriptionUI;
-    
-    private PlayerRegistry _registry;
 
     [Inject]
     private void Construct(PlayerRegistry registry)
@@ -32,19 +33,20 @@ public class UIManager: MonoBehaviour
     
     private void AddPlayer(PlayerController player)
     {
-        _player = player.Model;
+        _evolutionsModule = player.Model.Evolutions;
+        _abilitiesModule = player.Model.Abilities;
         
-        _player.Evolutions.OnSlotsFilled += OnSlotsFilled;
+        _evolutionsModule.OnSlotsFilled += OnSlotsFilled;
         
-        _barsPanelUI.Construct(_player);
+        _barsPanelUI.Construct(player.Model);
         
         _activeEvolutionsDisplay.OnEvolutionHovered += _descriptionUI.SetDescription;
         _activeEvolutionsDisplay.OnEvolutionUnhovered += _descriptionUI.Hide;
         
-        _activeEvolutionsDisplay.Construct(_player.Evolutions);
-        _evolutionChooseUIScreen.Construct(_player.Evolutions);
-        _activeAbilitiesDisplay.Construct(_player.Abilities);
-        _activeBuffsDisplay.Construct(_player.Buffs);
+        _activeEvolutionsDisplay.Construct(_evolutionsModule);
+        _evolutionChooseUIScreen.Construct(_evolutionsModule);
+        _activeAbilitiesDisplay.Construct(_abilitiesModule);
+        _activeBuffsDisplay.Construct(player.Buffs);
     }
 
     private void Update()
@@ -62,8 +64,8 @@ public class UIManager: MonoBehaviour
 
     public void OnDestroy()
     {
-        if (_player != null) 
-            _player.Evolutions.OnSlotsFilled -= OnSlotsFilled;
+        if (_evolutionsModule != null) 
+            _evolutionsModule.OnSlotsFilled -= OnSlotsFilled;
         
         _activeEvolutionsDisplay.OnEvolutionHovered -= _descriptionUI.SetDescription;
         _activeEvolutionsDisplay.OnEvolutionUnhovered -= _descriptionUI.Hide;
