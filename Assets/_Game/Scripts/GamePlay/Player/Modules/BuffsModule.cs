@@ -4,6 +4,7 @@ using System.Linq;
 using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Buffs;
 using _Game.Scripts.GamePlay.Buffs.Types;
+using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 using VContainer;
 
@@ -16,13 +17,12 @@ public class BuffsModule
     
     private readonly List<Buff> _buffs = new();
 
-    private PlayerModel _player;
-
     [Inject] private EntityStats _stats;
+    [Inject] private HealthModule _health;
     [Inject] private BuffsDatabase _dataDatabase;
     [Inject] private Ticker _ticker;
     
-    private void Initialize()
+    public void Initialize()
     {
         foreach (var buff in _dataDatabase.Buffs)
         {
@@ -30,7 +30,7 @@ public class BuffsModule
             {
                 case BuffType.Suffocating:
                 {
-                    _buffs.Add(new SuffocatingDebuff(_stats, _player.Health, _ticker, buff));
+                    _buffs.Add(new SuffocatingDebuff(_stats, _health, _ticker, buff));
                     break;
                 }
                 case BuffType.BadPassAbility:
@@ -40,31 +40,25 @@ public class BuffsModule
                 }
                 case BuffType.Heat:
                 {
-                    _buffs.Add(new HeatDebuff(_stats, _player.Health, _ticker, buff));
+                    _buffs.Add(new HeatDebuff(_stats, _health, _ticker, buff));
                     break;
                 }
                 case BuffType.Cold:
                 {
-                    _buffs.Add(new ColdDebuff(_stats, _player.Health, _ticker, buff));
+                    _buffs.Add(new ColdDebuff(_stats, _health, _ticker, buff));
                     break;
                 }
                 case BuffType.Starvation:
-                    _buffs.Add(new StarvationDebuff(_stats, _player.Health, _ticker, buff));
+                    _buffs.Add(new StarvationDebuff(_stats, _health, _ticker, buff));
                     break;
                 case BuffType.Overeating:
-                    _buffs.Add(new OvereatingDebuff(_stats, _player.Health, _ticker, buff));
+                    _buffs.Add(new OvereatingDebuff(_stats, _health, _ticker, buff));
                     break;
                 default:
                     Debug.Log($"Buff with type {buff.Type} is not implemented");
                     break;
             }
         }
-    }
-
-    public void SetModel(PlayerModel player)
-    {
-        _player = player;
-        Initialize();
     }
 
     public void Set(BuffType type, bool state)

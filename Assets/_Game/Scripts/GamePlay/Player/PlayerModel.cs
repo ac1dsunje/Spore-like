@@ -60,7 +60,7 @@ public class PlayerModel
         Stats.Initialize(_config.InitialConfigs);
         Abilities.SetModel(this);
         Evolutions.SetModel(this);
-        Buffs.SetModel(this);
+        Buffs.Initialize();
         Experience.Initialize(this);
     }
 }
