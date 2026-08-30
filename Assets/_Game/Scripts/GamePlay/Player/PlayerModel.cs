@@ -17,13 +17,14 @@ public class PlayerModel
     public AttackModule Attack { get; private set; }
     public MovementModule Movement { get; private set; }
     public TemperatureModule Temperature { get; private set; }
-    public ExperienceModule Experience { get; private set; }
-    public AbilitiesModule Abilities { get; private set; }
-    public EvolutionsModule Evolutions { get; private set; }
     public DisguiseModule Disguise { get; private set; }
     public BiomeModule Biome { get; private set; }
     public BreathingModule Breathing { get; private set; }
+    
     public BuffsModule Buffs { get; private set; }
+    public EvolutionsModule Evolutions { get; private set; }
+    public ExperienceModule Experience { get; private set; }
+    public AbilitiesModule Abilities { get; private set; }
 
     [Inject]
     public PlayerModel(EntityStatsConfig config, EntityStats stats, VisionModule vision, HealthModule health, 
@@ -57,6 +58,7 @@ public class PlayerModel
         Abilities.SetModel(this);
         Evolutions.SetModel(this);
         Buffs.SetModel(this);
+        Experience.Initialize(this);
     }
 }
 }
