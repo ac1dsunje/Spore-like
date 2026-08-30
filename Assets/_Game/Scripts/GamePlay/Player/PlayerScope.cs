@@ -44,12 +44,18 @@ public class PlayerScope: LifetimeScope
         builder.Register<VisionModule>(Lifetime.Scoped);
         builder.RegisterComponent(GetComponentInChildren<PlayerXRay>());
         
-        // Health
+        // Combat
         builder.RegisterComponent(GetComponentInChildren<PlayerHealth>())
             .AsSelf()
             .As<IDamageReceiver>()
             .As<IDamageReceiverController>();
         builder.Register<HealthModule>(Lifetime.Scoped);
+        
+        builder.RegisterComponent(GetComponentInChildren<PlayerAttack>())
+            .AsSelf()
+            .As<IDamageSource>()
+            .As<IDamageSourceController>();
+        builder.Register<AttackModule>(Lifetime.Scoped);
         
         // Defense 
         builder.Register<DefenseModule>(Lifetime.Scoped);
@@ -58,19 +64,10 @@ public class PlayerScope: LifetimeScope
         builder.RegisterComponent(GetComponentInChildren<PlayerEndurance>());
         builder.Register<EnduranceModule>(Lifetime.Scoped);
         
-        // Mouth
+        // Eating
         builder.RegisterComponent(GetComponentInChildren<PlayerMouth>());
         builder.Register<MouthModule>(Lifetime.Scoped);
-        
-        // Stomach
         builder.Register<StomachModule>(Lifetime.Scoped);
-        
-        // Attack
-        builder.RegisterComponent(GetComponentInChildren<PlayerAttack>())
-            .AsSelf()
-            .As<IDamageSource>()
-            .As<IDamageSourceController>();
-        builder.Register<AttackModule>(Lifetime.Scoped);
         
         // Movement
         builder.RegisterEntryPoint<PlayerMovement>();
