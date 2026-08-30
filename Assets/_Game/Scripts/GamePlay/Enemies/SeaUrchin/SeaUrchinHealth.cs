@@ -1,4 +1,4 @@
-﻿using _Game.Scripts.GamePlay.Combat;
+﻿using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;

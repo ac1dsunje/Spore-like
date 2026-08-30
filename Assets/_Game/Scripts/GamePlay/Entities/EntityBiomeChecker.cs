@@ -1,13 +1,15 @@
-﻿using _Game.Scripts.GamePlay.Buffs;
+﻿using System;
+using _Game.Scripts.GamePlay.Buffs;
 using _Game.Scripts.GamePlay.Modules;
+using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.World;
 using _Game.Scripts.GamePlay.World.Biomes;
-using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
-namespace _Game.Scripts.GamePlay.Player.Modules
+namespace _Game.Scripts.GamePlay.Entities
 {
-public class PlayerBiome: MonoBehaviour
+public class EntityBiomeChecker: IInitializable, IDisposable
 {
     private WorldModel _worldModel;
     
@@ -33,12 +35,13 @@ public class PlayerBiome: MonoBehaviour
         _buffsModule = buffsModule;
         
         _movement.OnGridPositionChanged += TryEnterBiome;
-        EnterBiome(_worldModel.GetBiome(_movement.GridPosition));
     }
 
-    private void TryEnterBiome(MovementModule player)
+    public void Initialize() => EnterBiome(_worldModel.GetBiome(_movement.GridPosition));
+
+    private void TryEnterBiome(MovementModule entity)
     {
-        var currentBiome = _worldModel.GetBiome(player.GridPosition);
+        var currentBiome = _worldModel.GetBiome(entity.GridPosition);
         if (currentBiome == _currentBiome) return;
         EnterBiome(currentBiome);
     }
@@ -66,22 +69,14 @@ public class PlayerBiome: MonoBehaviour
     {
         var oxygenRequirement = _breathing.OxygenBreathing;
         var hydrogenRequirement = _breathing.HydrogenBreathing;
-        
-        if (oxygenRequirement> 0 && oxygenRequirement <= oxygen)
-        {
-            _buffsModule.Set(BuffType.Suffocating, false);
-        }
-        else if (hydrogenRequirement > 0  && hydrogenRequirement <= hydrogen)
-        {
-            _buffsModule.Set(BuffType.Suffocating, false);
-        }
-        else
-        {
-            _buffsModule.Set(BuffType.Suffocating, true);
-        }
+
+        var suffocate = oxygenRequirement > 0 && oxygenRequirement <= oxygen ||
+                        hydrogenRequirement > 0 && hydrogenRequirement <= hydrogen;
+
+        _buffsModule.Set(BuffType.Suffocating, !suffocate);
     }
 
-    private void OnDestroy()
+    public void Dispose()
     {
         _movement.OnGridPositionChanged -= TryEnterBiome;
     }

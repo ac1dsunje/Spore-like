@@ -1,7 +1,7 @@
 ﻿using _Game.Scripts.GamePlay.Interfaces;
 using VContainer;
 
-namespace _Game.Scripts.GamePlay.Combat
+namespace _Game.Scripts.GamePlay.Entities
 {
 public class CombatBinder
 {

@@ -817,7 +817,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8081464728478508327}
   - component: {fileID: 7969867278788272747}
-  - component: {fileID: 3768259528291108333}
   - component: {fileID: 8864560468158054137}
   m_Layer: 0
   m_Name: Modules
@@ -858,18 +857,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ccc8f16a156452f8b3c9ee9c26154f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.Modules.Endurance.PlayerEndurance
---- !u!114 &3768259528291108333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8527591295361904753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80b7808acc7b47ac8e5751e69c4de60a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Player.Modules.BiomeChecker.PlayerBiome
 --- !u!114 &8864560468158054137
 MonoBehaviour:
   m_ObjectHideFlags: 0
