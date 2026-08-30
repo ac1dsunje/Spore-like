@@ -1,13 +1,10 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace _Game.Scripts.Core.UI
 {
 [RequireComponent(typeof(CanvasGroup))]
 public abstract class UIScreen: MonoBehaviour
 {
-    public event Action<bool> OnStateChanged;
-    
     private bool _isActive;
     private CanvasGroup _screen;
 
@@ -34,7 +31,6 @@ public abstract class UIScreen: MonoBehaviour
         _screen.blocksRaycasts = true;
         _screen.interactable = true;
         _isActive = true;
-        OnStateChanged?.Invoke(_isActive);
     }
 
     public virtual void HideScreen()
@@ -43,7 +39,6 @@ public abstract class UIScreen: MonoBehaviour
         _screen.blocksRaycasts = false;
         _screen.interactable = false;
         _isActive = false;
-        OnStateChanged?.Invoke(_isActive);
     }
 }
 }
