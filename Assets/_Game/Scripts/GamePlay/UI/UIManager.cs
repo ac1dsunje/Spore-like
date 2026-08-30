@@ -27,7 +27,7 @@ public class UIManager: MonoBehaviour
     private void Construct(PlayerRegistry registry)
     {
         _registry = registry;
-        _registry.OnLocalPlayerAdded += AddPlayer;
+        _registry.OnPlayerInitialized += AddPlayer;
     }
     
     private void AddPlayer(PlayerController player)
@@ -68,7 +68,7 @@ public class UIManager: MonoBehaviour
         _activeEvolutionsDisplay.OnEvolutionHovered -= _descriptionUI.SetDescription;
         _activeEvolutionsDisplay.OnEvolutionUnhovered -= _descriptionUI.Hide;
         
-        _registry.OnLocalPlayerAdded -= AddPlayer;
+        _registry.OnPlayerInitialized -= AddPlayer;
     }
 }
 }

@@ -16,7 +16,7 @@ public class CameraController: MonoBehaviour
     private void Construct(PlayerRegistry playerRegistry)
     {
         _playerRegistry = playerRegistry;
-        _playerRegistry.OnLocalPlayerAdded += AddPlayer;
+        _playerRegistry.OnPlayerInitialized += AddPlayer;
     }
 
     private void AddPlayer(PlayerController player)
@@ -26,7 +26,7 @@ public class CameraController: MonoBehaviour
 
     private void OnDestroy()
     {
-        _playerRegistry.OnLocalPlayerAdded -= AddPlayer;
+        _playerRegistry.OnPlayerInitialized -= AddPlayer;
     }
 }
 }

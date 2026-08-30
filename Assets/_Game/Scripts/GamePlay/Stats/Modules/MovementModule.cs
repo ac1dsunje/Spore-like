@@ -19,7 +19,7 @@ public class MovementModule : StatModule
     public Vector3Int GridPosition { get; private set; }
 
     public event Action<float> OnDistanceOvercome;
-    public event Action<MovementModule> OnGridPositionChanged;
+    public event Action<Vector3Int> OnGridPositionChanged;
     public event Action OnSprint;
     
     private float _moveSpeed;
@@ -55,7 +55,7 @@ public class MovementModule : StatModule
     {
         if (position == GridPosition) return;
         GridPosition = position;
-        OnGridPositionChanged?.Invoke(this);
+        OnGridPositionChanged?.Invoke(GridPosition);
         OnDistanceOvercome?.Invoke(1);
     }
 

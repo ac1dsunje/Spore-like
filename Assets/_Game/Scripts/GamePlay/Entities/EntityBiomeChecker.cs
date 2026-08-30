@@ -4,6 +4,7 @@ using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.World;
 using _Game.Scripts.GamePlay.World.Biomes;
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
@@ -39,9 +40,9 @@ public class EntityBiomeChecker: IInitializable, IDisposable
 
     public void Initialize() => EnterBiome(_worldModel.GetBiome(_movement.GridPosition));
 
-    private void TryEnterBiome(MovementModule entity)
+    private void TryEnterBiome(Vector3Int position)
     {
-        var currentBiome = _worldModel.GetBiome(entity.GridPosition);
+        var currentBiome = _worldModel.GetBiome(position);
         if (currentBiome == _currentBiome) return;
         EnterBiome(currentBiome);
     }
