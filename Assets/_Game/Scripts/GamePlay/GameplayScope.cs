@@ -1,4 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Abilities;
+using _Game.Scripts.GamePlay.Buffs;
 using _Game.Scripts.GamePlay.CameraManager;
 using _Game.Scripts.GamePlay.Evolutions.UI;
 using _Game.Scripts.GamePlay.Evolutions.UI.Choosing;
@@ -17,6 +18,8 @@ public class GameplayScope: LifetimeScope
     [Header("Configs")]
     [SerializeField] private WorldGenerationConfig _worldConfig;
     [SerializeField] private StatTypeConfig _statTypeConfig;
+    
+    [SerializeField] private BuffsDatabase _buffsDatabase;
 
     protected override void Configure(IContainerBuilder builder)
     {
@@ -56,6 +59,9 @@ public class GameplayScope: LifetimeScope
         
         // Abilities
         builder.Register<AbilityFactory>(Lifetime.Scoped);
+        
+        // Buffs
+        builder.RegisterInstance(_buffsDatabase);
     }
 }
 }

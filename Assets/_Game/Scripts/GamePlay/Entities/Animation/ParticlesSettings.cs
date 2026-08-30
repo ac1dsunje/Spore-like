@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.Animation
+namespace _Game.Scripts.GamePlay.Entities.Animation
 {
 [Serializable]
 public class ParticlesSettings

@@ -20,13 +20,13 @@ public class EntityBiomeChecker: IInitializable, IDisposable
     private MovementModule _movement;
     private BiomeModule _biomeModule;
     
-    private BuffsModule _buffsModule;
+    private EntityBuffsModule _buffsModule;
     
     private Biome _currentBiome;
     
     [Inject]
     private void Construct(WorldModel worldModel, TemperatureModule temperature, MovementModule movement,
-        BiomeModule biome, BreathingModule breathing, BuffsModule buffsModule)
+        BiomeModule biome, BreathingModule breathing, EntityBuffsModule buffsModule)
     {
         _worldModel = worldModel;
         _temperature = temperature;

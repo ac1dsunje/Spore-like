@@ -1,6 +1,5 @@
-﻿using _Game.Scripts.GamePlay.Animation;
-using _Game.Scripts.GamePlay.Buffs;
-using _Game.Scripts.GamePlay.Entities;
+﻿using _Game.Scripts.GamePlay.Entities;
+using _Game.Scripts.GamePlay.Entities.Animation;
 using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
@@ -24,8 +23,6 @@ public class PlayerScope: LifetimeScope
     [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
     [SerializeField] private RaritiesDatabase _raritiesDatabase;
     
-    [SerializeField] private BuffsDatabase _buffsDatabase;
-    
     protected override void Configure(IContainerBuilder builder)
     {
         builder.RegisterInstance(_entityStatsConfig);
@@ -33,8 +30,6 @@ public class PlayerScope: LifetimeScope
         builder.RegisterInstance(_playerExperienceConfig);
         builder.RegisterInstance(_evolutionsDatabase);
         builder.RegisterInstance(_raritiesDatabase);
-        
-        builder.RegisterInstance(_buffsDatabase);
         
         builder.Register<PlayerInputService>(Lifetime.Scoped);
         
@@ -95,7 +90,7 @@ public class PlayerScope: LifetimeScope
         builder.Register<EvolutionsModule>(Lifetime.Scoped);
         
         // Buffs
-        builder.Register<BuffsModule>(Lifetime.Scoped);
+        builder.Register<EntityBuffsModule>(Lifetime.Scoped);
         
         // Disguise
         builder.RegisterComponent(GetComponentInChildren<PlayerDisguise>());

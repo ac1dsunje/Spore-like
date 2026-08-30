@@ -1124,6 +1124,7 @@ MonoBehaviour:
   autoInjectGameObjects: []
   _worldConfig: {fileID: 11400000, guid: 86a2a7edd3ffa1b4fbb90f25e00c0843, type: 2}
   _statTypeConfig: {fileID: 11400000, guid: f7f94f4c1f9bc26428f13410b5b0ab69, type: 2}
+  _buffsDatabase: {fileID: 11400000, guid: 6c8bbaa65dd7638448a0140a8cc9a837, type: 2}
 --- !u!114 &1986825663
 MonoBehaviour:
   m_ObjectHideFlags: 0

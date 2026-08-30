@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Buffs;
+using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Player.Modules;
 using UnityEngine;
 
@@ -10,11 +11,11 @@ public class ActiveBuffsDisplay: MonoBehaviour
     [SerializeField] private GameObject _slotPrefab;
     [SerializeField] private Transform  _container;
     
-    private BuffsModule _player;
+    private EntityBuffsModule _player;
 
     private readonly Dictionary<Buff, ActiveBuffSlotUI> _slots = new();
 
-    public void Construct(BuffsModule player)
+    public void Construct(EntityBuffsModule player)
     {
         _player = player;
         _player.OnBuffActivated += AddBuff;

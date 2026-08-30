@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Buffs;
+using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.World.Food;
@@ -13,7 +14,7 @@ public class PlayerMouth: MonoBehaviour
 {
     [Inject] private MouthModule _mouth;
     [Inject] private StomachModule _stomach;
-    [Inject] private BuffsModule _buffs;
+    [Inject] private EntityBuffsModule _buffs;
 
     private readonly HashSet<IBiteable> _foods = new();
     private IBiteable _currentFood;

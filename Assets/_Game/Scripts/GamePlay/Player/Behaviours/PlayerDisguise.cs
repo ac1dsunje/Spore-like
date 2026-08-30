@@ -1,4 +1,4 @@
-﻿using _Game.Scripts.GamePlay.Animation;
+﻿using _Game.Scripts.GamePlay.Entities.Animation;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;

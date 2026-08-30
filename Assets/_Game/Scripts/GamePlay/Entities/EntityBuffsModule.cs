@@ -7,10 +7,11 @@ using _Game.Scripts.GamePlay.Buffs.Types;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
-namespace _Game.Scripts.GamePlay.Player.Modules
+namespace _Game.Scripts.GamePlay.Entities
 {
-public class BuffsModule
+public class EntityBuffsModule
 {
     public event Action<Buff> OnBuffActivated;
     public event Action<Buff> OnBuffDeactivated;
