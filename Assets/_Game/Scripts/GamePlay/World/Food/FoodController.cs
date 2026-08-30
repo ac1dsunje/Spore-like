@@ -6,7 +6,7 @@ namespace _Game.Scripts.GamePlay.World.Food
 {
 public class FoodController: MonoBehaviour
 {
-    [Inject] private ItemAnimation _itemAnimation;
+    [Inject] private EntityAnimation _entityAnimation;
     [Inject] private EntityStats _stats;
     [Inject] private FoodHealth _health;
 
@@ -14,7 +14,7 @@ public class FoodController: MonoBehaviour
     {
         _health.SetConfig(config);
 
-        _itemAnimation.SetConfig(config.AnimationSettings);
+        _entityAnimation.SetConfig(config.AnimationSettings);
         
         _stats.AddInitialStats(config.StatsConfig.Stats);
     }

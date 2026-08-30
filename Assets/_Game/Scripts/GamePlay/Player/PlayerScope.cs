@@ -97,7 +97,7 @@ public class PlayerScope: LifetimeScope
         builder.Register<DisguiseModule>(Lifetime.Scoped);
         
         // Animation
-        builder.RegisterComponent(GetComponentInChildren<ItemAnimation>());
+        builder.RegisterComponent(GetComponentInChildren<EntityAnimation>());
     }
 }
 }

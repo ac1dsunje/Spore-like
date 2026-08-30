@@ -4,7 +4,7 @@ namespace _Game.Scripts.GamePlay.Entities.Animation
 {
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
-public class ItemAnimation: MonoBehaviour
+public class EntityAnimation: MonoBehaviour
 {
     private SpriteRenderer _renderer;
     private Animator _animator;

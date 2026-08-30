@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [Inject] public PlayerModel Model { get; private set; }
     [Inject] private AnimationSettings _animationSettings;
     [Inject] private PlayerRegistry _playerRegistry;
-    [Inject] private ItemAnimation _animation;
+    [Inject] private EntityAnimation _animation;
 
     public void Start()
     {

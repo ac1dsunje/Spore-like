@@ -8,7 +8,7 @@ namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
 public class PlayerDisguise : MonoBehaviour, IDisguisable
 {
-    [Inject] private ItemAnimation _animation;
+    [Inject] private EntityAnimation _animation;
     [Inject] private DisguiseModule _disguise;
 
     public bool IsDetected(float sensorics, bool xRay)

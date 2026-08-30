@@ -9,12 +9,12 @@ public class SeaUrchinController: IStartable
     [Inject] private EntityStats _entityStats;
     [Inject] private EntityStatsConfig _entityStatsConfig;
     [Inject] private AnimationSettings _animationSettings;
-    [Inject] private ItemAnimation _itemAnimation;
+    [Inject] private EntityAnimation _entityAnimation;
 
     public void Start()
     {
         _entityStats.Initialize(_entityStatsConfig.InitialConfigs);
-        _itemAnimation.SetConfig(_animationSettings);
+        _entityAnimation.SetConfig(_animationSettings);
     }
 }
 }

@@ -10,7 +10,7 @@ public class FoodScope: LifetimeScope
     protected override void Configure(IContainerBuilder builder)
     {
         builder.RegisterComponent(GetComponentInChildren<FoodController>());
-        builder.RegisterComponent(GetComponentInChildren<ItemAnimation>());
+        builder.RegisterComponent(GetComponentInChildren<EntityAnimation>());
         builder.RegisterComponent(GetComponentInChildren<FoodHealth>());
 
         builder.Register<EntityStats>(Lifetime.Scoped);
