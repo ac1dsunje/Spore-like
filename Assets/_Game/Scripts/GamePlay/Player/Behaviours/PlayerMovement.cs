@@ -2,12 +2,13 @@
 using _Game.Scripts.GamePlay.Movement;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class PlayerMovement: MonoBehaviour
+public class PlayerMovement: IFixedTickable, ITickable
 {
-    [SerializeField] private MovementController _controller;
+    private MovementController _controller;
 
     private Vector3Int GridPosition => _controller.GridPosition;
     private MovementModule _movement;
@@ -17,19 +18,20 @@ public class PlayerMovement: MonoBehaviour
     private Vector2 _lastMovementDirection = Vector2.right;
 
     [Inject]
-    private void Construct(MovementModule movement, DisguiseModule disguise, PlayerInputService inputService)
+    private void Construct(MovementModule movement, DisguiseModule disguise, PlayerInputService inputService, MovementController controller)
     {
         _movement = movement;
         _disguise = disguise;
         _inputService = inputService;
+        _controller = controller;
     }
 
-    private void Update()
+    public void Tick()
     {
         TryFlip();
     }
 
-    private void FixedUpdate()
+    public void FixedTick()
     {
         var input = _inputService.Movement.normalized;
 
@@ -40,6 +42,8 @@ public class PlayerMovement: MonoBehaviour
         
         _disguise.SetMoving(_controller.IsMoving);
         _movement.UpdateGridPosition(GridPosition);
+        
+        _controller.SetMaterial(_movement.Friction, _movement.Bounciness);
     }
 
     private void UpdateLastMovementDirection(Vector2 input)

@@ -3,6 +3,7 @@ using _Game.Scripts.GamePlay.Buffs;
 using _Game.Scripts.GamePlay.Combat;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
+using _Game.Scripts.GamePlay.Movement;
 using _Game.Scripts.GamePlay.Player.Behaviours;
 using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
@@ -72,7 +73,8 @@ public class PlayerScope: LifetimeScope
         builder.Register<AttackModule>(Lifetime.Scoped);
         
         // Movement
-        builder.RegisterComponent(GetComponentInChildren<PlayerMovement>());
+        builder.RegisterEntryPoint<PlayerMovement>();
+        builder.RegisterComponent(GetComponentInChildren<MovementController>());
         builder.Register<MovementModule>(Lifetime.Scoped);
         
         // Biomes
