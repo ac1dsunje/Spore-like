@@ -8,6 +8,5 @@ public class AnimationSettings
 {
     [field: SerializeField] public Sprite Sprite { get; private set; }
     [field: SerializeField] public RuntimeAnimatorController Controller { get; private set; }
-    [field: SerializeField] public bool CastShadows { get; private set; }
 }
 }
