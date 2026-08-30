@@ -17,7 +17,8 @@ public class BuffsModule
     private readonly List<Buff> _buffs = new();
 
     private PlayerModel _player;
-    
+
+    [Inject] private EntityStats _stats;
     [Inject] private BuffsDatabase _dataDatabase;
     [Inject] private Ticker _ticker;
     
@@ -29,29 +30,29 @@ public class BuffsModule
             {
                 case BuffType.Suffocating:
                 {
-                    _buffs.Add(new SuffocatingDebuff(_player.Stats, _player.Health, _ticker, buff));
+                    _buffs.Add(new SuffocatingDebuff(_stats, _player.Health, _ticker, buff));
                     break;
                 }
                 case BuffType.BadPassAbility:
                 {
-                    _buffs.Add(new BadPassAbility(_player.Stats, _ticker, buff));
+                    _buffs.Add(new BadPassAbility(_stats, _ticker, buff));
                     break;
                 }
                 case BuffType.Heat:
                 {
-                    _buffs.Add(new HeatDebuff(_player.Stats, _player.Health, _ticker, buff));
+                    _buffs.Add(new HeatDebuff(_stats, _player.Health, _ticker, buff));
                     break;
                 }
                 case BuffType.Cold:
                 {
-                    _buffs.Add(new ColdDebuff(_player.Stats, _player.Health, _ticker, buff));
+                    _buffs.Add(new ColdDebuff(_stats, _player.Health, _ticker, buff));
                     break;
                 }
                 case BuffType.Starvation:
-                    _buffs.Add(new StarvationDebuff(_player.Stats, _player.Health, _ticker, buff));
+                    _buffs.Add(new StarvationDebuff(_stats, _player.Health, _ticker, buff));
                     break;
                 case BuffType.Overeating:
-                    _buffs.Add(new OvereatingDebuff(_player.Stats, _player.Health, _ticker, buff));
+                    _buffs.Add(new OvereatingDebuff(_stats, _player.Health, _ticker, buff));
                     break;
                 default:
                     Debug.Log($"Buff with type {buff.Type} is not implemented");
