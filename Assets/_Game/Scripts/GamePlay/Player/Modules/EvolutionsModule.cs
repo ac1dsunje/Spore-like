@@ -5,14 +5,15 @@ using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
 using _Game.Scripts.GamePlay.Rarities;
 using UnityEngine;
+using VContainer;
 using Random = UnityEngine.Random;
 
 namespace _Game.Scripts.GamePlay.Player.Modules
 {
 public class EvolutionsModule: IDisposable
 {
-    private EvolutionsDatabase _evolutionsDatabase;
-    private RaritiesDatabase _raritiesDatabase;
+    [Inject] private EvolutionsDatabase _evolutionsDatabase;
+    [Inject] private RaritiesDatabase _raritiesDatabase;
     private int _minEvolutions;
 
     private readonly ExperienceModule _experience;
@@ -38,11 +39,9 @@ public class EvolutionsModule: IDisposable
         _player = model;
     }
     
-    public void Initialize(EvolutionsDatabase evolutionsDatabase, RaritiesDatabase raritiesDatabase, int minEvolutions)
+    public void Initialize()
     {
-        _evolutionsDatabase  = evolutionsDatabase;
-        _raritiesDatabase = raritiesDatabase;
-        _minEvolutions = minEvolutions;
+        _minEvolutions = 3; // temporarly! it should be deleted due to shop feature in the future
 
         foreach (var evolution in _evolutionsDatabase.GenerateEvolutions())
         {

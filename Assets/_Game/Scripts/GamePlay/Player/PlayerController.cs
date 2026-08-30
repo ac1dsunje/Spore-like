@@ -9,11 +9,6 @@ namespace _Game.Scripts.GamePlay.Player
 {
 public class PlayerController : MonoBehaviour
 {
-    [Header("Evolutions")]
-    [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
-    [SerializeField] private RaritiesDatabase _raritiesDatabase;
-    [SerializeField] private int _minEvolutions;
-    
     [Inject] public PlayerModel Model { get; private set; }
     [Inject] private AnimationSettings _animationSettings;
     [Inject] private PlayerRegistry _playerRegistry;
@@ -23,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public void Initialize()
     {
         Model.Initialize();
-        Model.Evolutions.Initialize(_evolutionsDatabase, _raritiesDatabase, _minEvolutions);
+        Model.Evolutions.Initialize();
         Model.Buffs.Initialize();
         _animation.SetConfig(_animationSettings);
         _playerRegistry.AddPlayer(this);

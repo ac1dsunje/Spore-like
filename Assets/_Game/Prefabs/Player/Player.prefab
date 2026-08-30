@@ -661,9 +661,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6f8be6a5c94e08b0408b38c4016f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.PlayerController
-  _evolutionsDatabase: {fileID: 11400000, guid: 89e0fac1fa9071a41bafa6ee877795b5, type: 2}
-  _raritiesDatabase: {fileID: 11400000, guid: 844b6b4bf98611044bf03a16ce2009a0, type: 2}
-  _minEvolutions: 3
 --- !u!114 &6766690008576938077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -698,6 +695,8 @@ MonoBehaviour:
     <Controller>k__BackingField: {fileID: 7898678084846905597, guid: 7e660a4087c8141408b939d08c80a53f, type: 3}
     <CastShadows>k__BackingField: 0
   _playerExperienceConfig: {fileID: 11400000, guid: 6ca48198dec476b4f9cde410c88c74c5, type: 2}
+  _evolutionsDatabase: {fileID: 11400000, guid: 89e0fac1fa9071a41bafa6ee877795b5, type: 2}
+  _raritiesDatabase: {fileID: 11400000, guid: 844b6b4bf98611044bf03a16ce2009a0, type: 2}
   _buffsDatabase: {fileID: 11400000, guid: 6c8bbaa65dd7638448a0140a8cc9a837, type: 2}
 --- !u!114 &314090029752611159
 MonoBehaviour:

@@ -1,12 +1,14 @@
 ﻿using _Game.Scripts.GamePlay.Animation;
 using _Game.Scripts.GamePlay.Buffs;
 using _Game.Scripts.GamePlay.Entities;
+using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.Movement;
 using _Game.Scripts.GamePlay.Player.Behaviours;
 using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
+using _Game.Scripts.GamePlay.Rarities;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -19,6 +21,9 @@ public class PlayerScope: LifetimeScope
     [SerializeField] private AnimationSettings _animationSettings;
     [SerializeField] private PlayerExperienceConfig _playerExperienceConfig;
     
+    [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
+    [SerializeField] private RaritiesDatabase _raritiesDatabase;
+    
     [SerializeField] private BuffsDatabase _buffsDatabase;
     
     protected override void Configure(IContainerBuilder builder)
@@ -26,6 +31,8 @@ public class PlayerScope: LifetimeScope
         builder.RegisterInstance(_entityStatsConfig);
         builder.RegisterInstance(_animationSettings);
         builder.RegisterInstance(_playerExperienceConfig);
+        builder.RegisterInstance(_evolutionsDatabase);
+        builder.RegisterInstance(_raritiesDatabase);
         
         builder.RegisterInstance(_buffsDatabase);
         
