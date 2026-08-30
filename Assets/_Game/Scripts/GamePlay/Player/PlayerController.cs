@@ -1,6 +1,7 @@
 ﻿using _Game.Scripts.GamePlay.Animation;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Player
 {
@@ -11,7 +12,7 @@ public class PlayerController : MonoBehaviour
     [Inject] private PlayerRegistry _playerRegistry;
     [Inject] private ItemAnimation _animation;
 
-    public void Initialize()
+    public void Start()
     {
         Model.Initialize();
         _animation.SetConfig(_animationSettings);

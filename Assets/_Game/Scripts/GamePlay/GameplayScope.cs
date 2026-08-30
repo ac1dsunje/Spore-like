@@ -2,7 +2,6 @@
 using _Game.Scripts.GamePlay.CameraManager;
 using _Game.Scripts.GamePlay.Evolutions.UI;
 using _Game.Scripts.GamePlay.Evolutions.UI.Choosing;
-using _Game.Scripts.GamePlay.Player;
 using _Game.Scripts.GamePlay.Types;
 using _Game.Scripts.GamePlay.UI;
 using _Game.Scripts.GamePlay.World;
@@ -25,7 +24,6 @@ public class GameplayScope: LifetimeScope
         builder.RegisterInstance(_statTypeConfig);
         
         // Player
-        builder.RegisterComponentInHierarchy<PlayerSpawner>();
         builder.Register<PlayerRegistry>(Lifetime.Singleton);
         
         // World
