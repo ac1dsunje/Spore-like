@@ -1,7 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Animation;
-using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
-using _Game.Scripts.GamePlay.Rarities;
 using UnityEngine;
 using VContainer;
 
@@ -18,8 +16,6 @@ public class PlayerController : MonoBehaviour
     public void Initialize()
     {
         Model.Initialize();
-        Model.Evolutions.Initialize();
-        Model.Buffs.Initialize();
         _animation.SetConfig(_animationSettings);
         _playerRegistry.AddPlayer(this);
         _experience.Initialize(Model);

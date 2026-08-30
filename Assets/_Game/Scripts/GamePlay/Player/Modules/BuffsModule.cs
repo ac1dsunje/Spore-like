@@ -21,7 +21,7 @@ public class BuffsModule
     [Inject] private BuffsDatabase _dataDatabase;
     [Inject] private Ticker _ticker;
     
-    public void Initialize()
+    private void Initialize()
     {
         foreach (var buff in _dataDatabase.Buffs)
         {
@@ -63,6 +63,7 @@ public class BuffsModule
     public void SetModel(PlayerModel player)
     {
         _player = player;
+        Initialize();
     }
 
     public void Set(BuffType type, bool state)

@@ -37,10 +37,7 @@ public class EvolutionsModule: IDisposable
     public void SetModel(PlayerModel model)
     {
         _player = model;
-    }
-    
-    public void Initialize()
-    {
+        
         _minEvolutions = 3; // temporarly! it should be deleted due to shop feature in the future
 
         foreach (var evolution in _evolutionsDatabase.GenerateEvolutions())
