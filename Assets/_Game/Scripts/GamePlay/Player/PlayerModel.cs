@@ -26,6 +26,8 @@ public class PlayerModel
     public ExperienceModule Experience { get; private set; }
     public AbilitiesModule Abilities { get; private set; }
 
+    private EntityStatsConfig _config;
+
     [Inject]
     public PlayerModel(EntityStatsConfig config, EntityStats stats, VisionModule vision, HealthModule health, 
         DefenseModule defense, EnduranceModule endurance, MouthModule mouth, AttackModule attack, MovementModule movement,
@@ -49,12 +51,13 @@ public class PlayerModel
         Breathing = breathing;
         Buffs = buffs;
         Stomach = stomach;
-        
-        Stats.Initialize(config.InitialConfigs);
+
+        _config = config;
     }
     
     public void Initialize()
     {
+        Stats.Initialize(_config.InitialConfigs);
         Abilities.SetModel(this);
         Evolutions.SetModel(this);
         Buffs.SetModel(this);

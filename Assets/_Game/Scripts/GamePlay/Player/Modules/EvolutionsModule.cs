@@ -43,8 +43,6 @@ public class EvolutionsModule: IDisposable
         foreach (var evolution in _evolutionsDatabase.GenerateEvolutions())
         {
             _evolutions.Add(evolution);
-            evolution.Initialize(_player);
-            evolution.OnLevelUp += OnEvolutionLevelUp;
         }
     }
     
@@ -57,7 +55,8 @@ public class EvolutionsModule: IDisposable
 
     public void ChooseEvolution(Evolution evolution)
     {
-        evolution.Apply();
+        evolution.OnLevelUp += OnEvolutionLevelUp;
+        evolution.Apply(_player);
         _stats.AddSource(evolution);
         _abilities.Add(evolution.Config.Abilities);
 

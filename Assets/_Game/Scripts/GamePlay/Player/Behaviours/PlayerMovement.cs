@@ -8,23 +8,13 @@ namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
 public class PlayerMovement: IFixedTickable, ITickable
 {
-    private MovementController _controller;
-
-    private Vector3Int GridPosition => _controller.GridPosition;
-    private MovementModule _movement;
-    private DisguiseModule _disguise;
-    private PlayerInputService _inputService;
+    [Inject] private MovementController _controller;
+    [Inject] private MovementModule _movement;
+    [Inject] private DisguiseModule _disguise;
+    [Inject] private PlayerInputService _inputService;
 
     private Vector2 _lastMovementDirection = Vector2.right;
-
-    [Inject]
-    private void Construct(MovementModule movement, DisguiseModule disguise, PlayerInputService inputService, MovementController controller)
-    {
-        _movement = movement;
-        _disguise = disguise;
-        _inputService = inputService;
-        _controller = controller;
-    }
+    private Vector3Int GridPosition => _controller.GridPosition;
 
     public void Tick()
     {

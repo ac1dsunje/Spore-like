@@ -37,18 +37,14 @@ public class Evolution: IDisposable, IStatSource
         SetState(Config.State);
     }
 
-    public void Initialize(PlayerModel playerModel)
-    {
-        _player = playerModel;
-    }
-
     public List<SourceStat> GetStats()
     {
         return Stats.Select(stat => new SourceStat(stat.Type, stat.CurrentValue, stat.Operation, stat.Target)).ToList();
     }
 
-    public void Apply()
+    public void Apply(PlayerModel playerModel)
     {
+        _player = playerModel;
         Activate();
         SubscribeExperienceServices();
     }
