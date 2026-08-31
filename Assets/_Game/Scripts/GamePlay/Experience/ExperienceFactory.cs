@@ -11,7 +11,7 @@ public class ExperienceFactory
         return config.Type switch
         {
             ExperienceType.DamageReflection => new DamageReflecting(playerModel.Defense, config.Amount),
-            ExperienceType.ObjectDiscover => new ObjectsDiscovering(playerModel.Vision, config.Amount),
+            ExperienceType.EntityDiscover => new EntitiesDiscovering(playerModel.Vision, config.Amount),
             ExperienceType.FoodEating => new FoodEating(playerModel.Stomach, config.Amount),
             ExperienceType.DamageResistance => new DamageResisting(playerModel.Defense, config.Amount),
             ExperienceType.DamageTaking => new DamageTaking(playerModel.Health, config.Amount),
