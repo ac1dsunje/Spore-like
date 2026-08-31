@@ -52,15 +52,9 @@ public class PlayerVision: MonoBehaviour
         ApplyVision(_currentVision);
     }
 
-    private void UpdateLighting(float value, bool state)
-    {
-        _lighting.pointLightOuterRadius = state ? value : 0f;
-    }
+    private void UpdateLighting(float value, bool state) => _lighting.pointLightOuterRadius = state ? value : 0f;
 
-    private void UpdateVision(float value)
-    {
-        _targetVision = value;
-    }
+    private void UpdateVision(float value) => _targetVision = value;
 
     private void ApplyVision(float value)
     {
