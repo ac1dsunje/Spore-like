@@ -8,8 +8,6 @@ public class EntityAnimation: MonoBehaviour
 {
     private SpriteRenderer _renderer;
     private Animator _animator;
-    
-    private Sprite _currentSprite;
 
     private void Awake()
     {
@@ -25,11 +23,12 @@ public class EntityAnimation: MonoBehaviour
 
     public void SetConfig(AnimationSettings settings)
     {
-        _renderer.sprite = settings.Sprite;
-        if (settings.Controller)
-        {
-            _animator.runtimeAnimatorController = settings.Controller;
-        }
+        SetSprite(settings.Sprite);
+        SetAnimator(settings.Controller);
     }
+
+    private void SetSprite(Sprite sprite) => _renderer.sprite = sprite;
+    
+    private void SetAnimator(RuntimeAnimatorController controller) => _animator.runtimeAnimatorController = controller;
 }
 }
