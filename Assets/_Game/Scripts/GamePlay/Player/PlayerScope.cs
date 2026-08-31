@@ -1,5 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Entities.Animation;
+using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
@@ -72,7 +73,7 @@ public class PlayerScope: LifetimeScope
         builder.Register<StomachModule>(Lifetime.Scoped);
         
         // Movement
-        builder.RegisterEntryPoint<PlayerMovement>(Lifetime.Scoped).AsSelf();
+        builder.RegisterEntryPoint<EntityBasicMovement>(Lifetime.Scoped).As<IMovementController>();
         builder.RegisterComponent(GetComponentInChildren<RigidbodyController>());
         builder.Register<MovementModule>(Lifetime.Scoped);
         

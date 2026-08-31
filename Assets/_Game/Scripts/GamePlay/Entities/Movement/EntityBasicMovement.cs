@@ -1,12 +1,11 @@
-﻿using _Game.Scripts.GamePlay.Entities;
-using _Game.Scripts.GamePlay.Modules;
+﻿using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace _Game.Scripts.GamePlay.Player.Behaviours
+namespace _Game.Scripts.GamePlay.Entities.Movement
 {
-public class PlayerMovement: IInitializable, IFixedTickable, ITickable
+public class EntityBasicMovement: IInitializable, IFixedTickable, ITickable, IMovementController
 {
     [Inject] private RigidbodyController _controller;
     [Inject] private MovementModule _movement;

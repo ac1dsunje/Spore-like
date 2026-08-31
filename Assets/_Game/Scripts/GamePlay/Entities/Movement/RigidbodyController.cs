@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.Entities
+namespace _Game.Scripts.GamePlay.Entities.Movement
 {
 [RequireComponent(typeof(Rigidbody2D))]
 public class RigidbodyController: MonoBehaviour

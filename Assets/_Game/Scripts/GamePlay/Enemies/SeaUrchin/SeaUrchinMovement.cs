@@ -1,4 +1,4 @@
-﻿using _Game.Scripts.GamePlay.Entities;
+﻿using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Modules;
 using VContainer;
 using VContainer.Unity;
