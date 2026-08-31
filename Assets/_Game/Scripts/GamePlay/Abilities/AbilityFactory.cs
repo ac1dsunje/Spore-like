@@ -11,8 +11,6 @@ public enum AbilityType
     Sprint = 0,
     Dash = 1,
     Light = 2,
-    XRay = 3,
-    
 }
 
 public class AbilityFactory
@@ -34,7 +32,6 @@ public class AbilityFactory
             AbilityType.Sprint => new SprintAbility(model.Movement, model.Endurance, config, _ticker, _input),
             AbilityType.Dash => new DashAbility(model.Movement, model.Endurance, config, _ticker, _input),
             AbilityType.Light => new LightAbility(model.Vision, model.Endurance, config, _ticker, _input),
-            AbilityType.XRay => new XRayAbility(model.Vision, model.Endurance, config, _ticker, _input),
             
             _ => throw new ArgumentOutOfRangeException(nameof(config.Type), config.Type, null)
         };

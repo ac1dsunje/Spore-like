@@ -1,4 +1,5 @@
-﻿using _Game.Scripts.GamePlay.Modules;
+﻿using _Game.Scripts.GamePlay.Interfaces;
+using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.World;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -71,12 +72,16 @@ public class PlayerVision: MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        _module.EnterObject(other.gameObject);
+        if (!other.TryGetComponent<IVisible>(out var visible)) return;
+
+        _module.EnterEntity(visible);
     }
     
     private void OnTriggerExit2D(Collider2D other)
     {
-        _module.ExitObject(other.gameObject);
+        if (!other.TryGetComponent<IVisible>(out var visible)) return;
+
+        _module.ExitObject(visible);
     }
 
     private void OnDestroy()

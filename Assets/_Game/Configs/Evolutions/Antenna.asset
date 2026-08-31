@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Evolutions.EvolutionConfig
   <State>k__BackingField: 1
   <Name>k__BackingField: Antenna
-  <CreatureType>k__BackingField: 0
   <Stats>k__BackingField:
   - <Type>k__BackingField: 27
     <Value>k__BackingField: 1
@@ -27,6 +26,6 @@ MonoBehaviour:
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 15
     <ExperienceTypes>k__BackingField:
-    - <Type>k__BackingField: 8
+    - <Type>k__BackingField: 0
       <Amount>k__BackingField: 1
   <Sprite>k__BackingField: {fileID: 2482059005279039378, guid: ed4634d8d65c65c4495f380c594d59fd, type: 3}

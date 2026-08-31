@@ -44,7 +44,6 @@ public class PlayerScope: LifetimeScope
         // Vision
         builder.RegisterComponent(GetComponentInChildren<PlayerVision>());
         builder.Register<VisionModule>(Lifetime.Scoped);
-        builder.RegisterComponent(GetComponentInChildren<PlayerXRay>());
         
         // Combat
         builder.RegisterComponent(GetComponentInChildren<PlayerHealth>())
@@ -93,7 +92,6 @@ public class PlayerScope: LifetimeScope
         builder.Register<EntityBuffsModule>(Lifetime.Scoped);
         
         // Disguise
-        builder.RegisterComponent(GetComponentInChildren<PlayerDisguise>());
         builder.Register<DisguiseModule>(Lifetime.Scoped);
         
         // Animation

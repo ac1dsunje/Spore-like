@@ -34,6 +34,7 @@ public class SeaUrchinScope: LifetimeScope
         builder.Register<HealthModule>(Lifetime.Scoped);
         builder.Register<AttackModule>(Lifetime.Scoped);
         builder.Register<MovementModule>(Lifetime.Scoped);
+        builder.Register<DisguiseModule>(Lifetime.Scoped);
         
         builder.Register<EntityStats>(Lifetime.Scoped);
     }

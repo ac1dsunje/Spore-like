@@ -23,9 +23,9 @@ public class DisguiseModule: StatModule
 
     public void SetMoving(bool value) => _isMoving = value;
 
-    public bool TryNotice(float sensorics, bool xRay)
+    public bool TryNotice(float sensorics)
     {
-        var notice = sensorics >= Disguise || xRay;
+        var notice = sensorics >= Disguise;
 
         if (!notice)
         {
@@ -34,8 +34,6 @@ public class DisguiseModule: StatModule
             
             OnUnnoticed?.Invoke();
         }
-
-        
         
         return notice;
     }

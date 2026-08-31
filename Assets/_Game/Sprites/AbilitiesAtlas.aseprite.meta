@@ -212,27 +212,6 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: AbilitiesAtlas_3
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 244
-      y: 5
-      width: 64
-      height: 63
-    spriteID: 6ff9e8a27cf97a240a1af5a48a53971d
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
   tileSetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -253,7 +232,7 @@ ScriptedImporter:
       cellRect:
         x: 0
         y: 960
-        width: 304
+        width: 224
         height: 64
       spriteId: 919065928a95ab94d940fde981bb4b81
     linkedCells: []
@@ -302,4 +281,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 1024, y: 1024}
-  previousTextureSize: {x: 512, y: 128}
+  previousTextureSize: {x: 256, y: 128}

@@ -14,15 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Evolutions.EvolutionConfig
   <State>k__BackingField: 1
   <Name>k__BackingField: Bioluminescence
-  <CreatureType>k__BackingField: 0
   <Stats>k__BackingField:
   - <Type>k__BackingField: 29
     <Value>k__BackingField: 3
-    <Operation>k__BackingField: 0
-    <Target>k__BackingField: 0
-    <UpdatesByRarity>k__BackingField: 1
-  - <Type>k__BackingField: 31
-    <Value>k__BackingField: 2
     <Operation>k__BackingField: 0
     <Target>k__BackingField: 0
     <UpdatesByRarity>k__BackingField: 1
@@ -32,12 +26,12 @@ MonoBehaviour:
     <Target>k__BackingField: 0
     <UpdatesByRarity>k__BackingField: 1
   <Abilities>k__BackingField:
-  - {fileID: 11400000, guid: 5ff5221ad8acf544aac45d66ffb8723c, type: 2}
+  - {fileID: 11400000, guid: 34e8534baddc3054b99eb999055bfbbf, type: 2}
   <Requires>k__BackingField: []
   <Blocks>k__BackingField: []
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 10
     <ExperienceTypes>k__BackingField:
-    - <Type>k__BackingField: 12
+    - <Type>k__BackingField: 0
       <Amount>k__BackingField: 1
   <Sprite>k__BackingField: {fileID: 6568324950207149898, guid: ed4634d8d65c65c4495f380c594d59fd, type: 3}

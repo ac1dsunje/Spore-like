@@ -16,6 +16,7 @@ public class FoodScope: LifetimeScope
         builder.Register<EntityStats>(Lifetime.Scoped);
         builder.Register<HealthModule>(Lifetime.Scoped);
         builder.Register<DefenseModule>(Lifetime.Scoped);
+        builder.Register<DisguiseModule>(Lifetime.Scoped);
     }
 }
 }

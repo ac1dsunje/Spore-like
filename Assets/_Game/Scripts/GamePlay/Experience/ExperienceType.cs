@@ -10,11 +10,9 @@ public enum ExperienceType
     Healing = 5,
     DistanceOvercoming = 6,
     EnduranceRecovering = 7,
-    DisguiseObjectFound = 8,
     DamageDealing = 9,
     StartSprinting = 10,
     DamageBlocking = 11,
-    XRayDiscovering = 12,
     UnnoticedStaying = 15,
     UnnoticedStayingInRest = 16,
 }

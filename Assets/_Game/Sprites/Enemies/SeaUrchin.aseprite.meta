@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639207635374656721
+  platformSettingsDirtyTick: 639237756818674690
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -143,7 +143,25 @@ ScriptedImporter:
     spriteBone: []
     spriteOutline: []
     vertices: []
-    spritePhysicsOutline: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: 11, y: -12}
+      - {x: 16, y: -3}
+      - {x: 16, y: -2}
+      - {x: 13, y: 12}
+      - {x: 12, y: 13}
+      - {x: 5, y: 15}
+      - {x: -6, y: 16}
+      - {x: -14, y: 12}
+      - {x: -16, y: -3}
+      - {x: -12, y: -12}
+      - {x: 0, y: -16}
+      - {x: 1, y: -16}
+    - outline:
+      - {x: 12, y: 13}
+      - {x: 12, y: 13}
+      - {x: 12, y: 13}
+      - {x: 12, y: 13}
     indices: 
     edges: []
     tessellationDetail: 0
@@ -214,7 +232,7 @@ ScriptedImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
-  generatePhysicsShape: 0
+  generatePhysicsShape: 1
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 32, y: 32}
