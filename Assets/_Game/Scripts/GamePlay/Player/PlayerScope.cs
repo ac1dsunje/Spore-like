@@ -63,7 +63,7 @@ public class PlayerScope: LifetimeScope
         builder.Register<DefenseModule>(Lifetime.Scoped);
         
         // Endurance
-        builder.RegisterComponent(GetComponentInChildren<PlayerEndurance>());
+        builder.RegisterEntryPoint<EntityEndurance>();
         builder.Register<EnduranceModule>(Lifetime.Scoped);
         
         // Eating

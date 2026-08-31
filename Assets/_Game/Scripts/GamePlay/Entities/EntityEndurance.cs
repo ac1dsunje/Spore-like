@@ -1,10 +1,11 @@
 ﻿using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
-namespace _Game.Scripts.GamePlay.Player.Behaviours
+namespace _Game.Scripts.GamePlay.Entities
 {
-public class PlayerEndurance: MonoBehaviour
+public class EntityEndurance: ITickable
 {
     private EnduranceModule _module;
     
@@ -14,7 +15,7 @@ public class PlayerEndurance: MonoBehaviour
         _module = module;
     }
 
-    private void Update()
+    public void Tick()
     {
         if (!_module.IsUsed)
         {
