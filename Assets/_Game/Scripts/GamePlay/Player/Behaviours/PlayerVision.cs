@@ -1,7 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
-using _Game.Scripts.GamePlay.World;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -11,14 +10,12 @@ namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
 public class PlayerVision: MonoBehaviour
 {
-    [SerializeField] private Light2D _visionLight;
     [SerializeField] private Light2D _lighting;
     [SerializeField] private float _visionChangeSpeed = 5f;
     
     private VisionModule _module;
     private CinemachineCamera _cineMachine;
     private Camera _camera;
-    private DayNightManager _dayNightManager;
     private EntityVisionHitbox _visionHitbox;
     
     private float _targetVision;
@@ -26,13 +23,12 @@ public class PlayerVision: MonoBehaviour
 
 
     [Inject]
-    private void Construct(VisionModule module, CinemachineCamera cineMachine, Camera cam, DayNightManager dayNightManager,
+    private void Construct(VisionModule module, CinemachineCamera cineMachine, Camera cam,
         EntityVisionHitbox visionHitbox)
     {
         _module = module;
         _cineMachine = cineMachine;
         _camera = cam;
-        _dayNightManager = dayNightManager;
         _visionHitbox = visionHitbox;
         
         _module.OnVisionRadiusUpdated += UpdateVision;
@@ -47,9 +43,6 @@ public class PlayerVision: MonoBehaviour
 
     private void Update()
     {
-        var lightValue = _dayNightManager.Value;
-        _visionLight.color = new Color(lightValue, lightValue, lightValue, 1f);
-
         if (Mathf.Approximately(_currentVision, _targetVision)) return;
 
         _currentVision = Mathf.MoveTowards(_currentVision, _targetVision, _visionChangeSpeed * Time.deltaTime);
@@ -68,7 +61,6 @@ public class PlayerVision: MonoBehaviour
         _visionHitbox?.SetSize(new Vector2(value * _camera.aspect, value) * 2f);
 
         _cineMachine.Lens.OrthographicSize = value;
-        _visionLight.pointLightOuterRadius = value * _camera.aspect * 2f;
     }
 
     private void OnDestroy()

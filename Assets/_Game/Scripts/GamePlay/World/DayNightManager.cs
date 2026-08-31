@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace _Game.Scripts.GamePlay.World
 {
 public class DayNightManager: MonoBehaviour
 {
     [SerializeField] private float _step = 60;
-    
-    public float Value { get; private set; }
+    [SerializeField] private Light2D _light;
+
+    private float _value;
 
     private bool _isCountingUp;
 
@@ -14,21 +16,23 @@ public class DayNightManager: MonoBehaviour
     {
         if (!_isCountingUp)
         {
-            Value -= Time.deltaTime / _step;
+            _value -= Time.deltaTime / _step;
         }
         else
         {
-            Value += Time.deltaTime / _step;
+            _value += Time.deltaTime / _step;
         }
 
-        if (Value >= 1f)
+        if (_value >= 1f)
         {
             _isCountingUp = false;
         }
-        else if (Value <= 0f)
+        else if (_value <= 0f)
         {
             _isCountingUp = true;
         }
+        
+        _light.color = new Color(_value, _value, _value, 1f);
     }
 }
 }
