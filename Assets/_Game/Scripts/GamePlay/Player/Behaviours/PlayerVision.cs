@@ -1,16 +1,16 @@
-﻿using _Game.Scripts.GamePlay.CameraManager;
+﻿using System;
+using _Game.Scripts.GamePlay.CameraManager;
 using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class PlayerVision : MonoBehaviour
+public class PlayerVision : ITickable, IDisposable
 {
-    [SerializeField] private float _visionChangeSpeed = 5f;
-    
     private VisionModule _module;
     private CameraController _camController;
     private EntityVisionHitbox _visionHitbox;
@@ -34,11 +34,11 @@ public class PlayerVision : MonoBehaviour
         ApplyVision(_currentVision);
     }
 
-    private void Update()
+    public void Tick()
     {
         if (Mathf.Approximately(_currentVision, _targetVision)) return;
 
-        _currentVision = Mathf.MoveTowards(_currentVision, _targetVision, _visionChangeSpeed * Time.deltaTime);
+        _currentVision = Mathf.MoveTowards(_currentVision, _targetVision, Time.deltaTime);
 
         ApplyVision(_currentVision);
     }
@@ -57,7 +57,7 @@ public class PlayerVision : MonoBehaviour
         _camController.SetSize(value);
     }
 
-    private void OnDestroy()
+    public void Dispose()
     {
         _module.OnVisionRadiusUpdated -= UpdateVision;
         _module.OnEntityDiscovered -= ShowEntity;

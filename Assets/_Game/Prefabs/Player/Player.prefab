@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1421485344981635687}
-  - component: {fileID: 1241412678200770851}
   - component: {fileID: 8492993795575088708}
   - component: {fileID: 5466484387295812948}
   m_Layer: 0
@@ -34,19 +33,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8081464728478508327}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1241412678200770851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5439879452342028256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c760f8ec579e40c2baa7f7c1fd152345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.VisionModule.PlayerVision
-  _visionChangeSpeed: 5
 --- !u!61 &8492993795575088708
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -446,7 +432,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fafde3d9342547a6b4eb90f6876ec8ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.EntityLighting
-  _lighting: {fileID: 2287631387679547392}
 --- !u!1 &8527591295361904753
 GameObject:
   m_ObjectHideFlags: 0

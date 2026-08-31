@@ -42,7 +42,7 @@ public class PlayerScope: LifetimeScope
         builder.Register<ExperienceModule>(Lifetime.Scoped);
         
         // Vision
-        builder.RegisterComponent(GetComponentInChildren<PlayerVision>());
+        builder.RegisterEntryPoint<PlayerVision>();
         builder.RegisterComponent(GetComponentInChildren<EntityVisionHitbox>());
         builder.Register<VisionModule>(Lifetime.Scoped);
         builder.RegisterComponent(GetComponentInChildren<EntityLighting>());
