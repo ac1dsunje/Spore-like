@@ -30,8 +30,6 @@ public class PlayerScope: LifetimeScope
         builder.RegisterInstance(_evolutionsDatabase);
         builder.RegisterInstance(_raritiesDatabase);
         
-        builder.Register<PlayerInputService>(Lifetime.Scoped);
-        
         builder.RegisterEntryPoint<PlayerController>();
         builder.Register<PlayerModel>(Lifetime.Scoped);
         builder.Register<EntityStats>(Lifetime.Scoped);

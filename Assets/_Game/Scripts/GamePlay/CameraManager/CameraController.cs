@@ -7,12 +7,12 @@ namespace _Game.Scripts.GamePlay.CameraManager
 {
 public class CameraController: MonoBehaviour
 {
-    [Inject] private Camera _camera;
+    [Inject] public Camera Camera { get; private set; }
     [Inject] private CinemachineCamera _cineMachineCamera;
     
     private PlayerRegistry _playerRegistry;
 
-    public float Aspect => _camera.aspect;
+    public float Aspect => Camera.aspect;
 
     [Inject]
     private void Construct(PlayerRegistry playerRegistry)

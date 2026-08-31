@@ -2,6 +2,7 @@
 using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
+using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Abilities
 {
@@ -17,13 +18,11 @@ public abstract class Ability: IDisposable, IEnduranceUser
     private readonly EnduranceModule _endurance;
 
     private readonly Ticker _ticker;
-    private readonly IInputService _input;
     
     private bool _isActive;
     
-    protected Ability(EnduranceModule endurance, AbilityConfig config, Ticker ticker, IInputService inputService)
+    protected Ability(EnduranceModule endurance, AbilityConfig config, Ticker ticker)
     {
-        _input = inputService;
         _config = config;
         _endurance = endurance;
         _ticker = ticker;
@@ -57,14 +56,14 @@ public abstract class Ability: IDisposable, IEnduranceUser
 
     private void UpdatePressing()
     {
-        if (_input.WasKeyPressed(_config.Key) &&
+        if (Input.GetKey(_config.Key) &&
             !_isActive &&
             _endurance.HasEnoughEndurance(_config.StartCost))
         {
             Enable();
         }
 
-        if (_input.WasKeyReleased(_config.Key) && _isActive)
+        if (Input.GetKeyUp(_config.Key) && _isActive)
         {
             Disable();
         }
@@ -72,7 +71,7 @@ public abstract class Ability: IDisposable, IEnduranceUser
 
     private void UpdateToggle()
     {
-        if (!_input.WasKeyPressed(_config.Key))
+        if (!Input.GetKey(_config.Key))
             return;
 
         if (_isActive)

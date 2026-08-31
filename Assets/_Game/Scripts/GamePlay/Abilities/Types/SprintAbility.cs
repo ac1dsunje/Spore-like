@@ -8,7 +8,7 @@ public class SprintAbility: Ability
     private readonly MovementModule _movement;
 
     public SprintAbility(MovementModule movement, EnduranceModule endurance, AbilityConfig config, 
-        Ticker ticker, IInputService input) : base(endurance, config, ticker, input)
+        Ticker ticker) : base(endurance, config, ticker)
     {
         _movement = movement;
     }

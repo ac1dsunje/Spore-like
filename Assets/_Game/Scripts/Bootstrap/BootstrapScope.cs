@@ -20,8 +20,6 @@ public class BootstrapScope: LifetimeScope
 
         builder.RegisterInstance(sceneLoader);
 
-        builder.Register<InputService>(Lifetime.Singleton).As<IInputService>();
-
         builder.RegisterComponentInHierarchy<Ticker>();
         builder.RegisterComponentInHierarchy<Bootstrap>();
     }

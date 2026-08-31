@@ -1,4 +1,5 @@
 ﻿using _Game.Scripts.Core.Services;
+using _Game.Scripts.GamePlay.CameraManager;
 using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
@@ -12,19 +13,21 @@ public class PlayerAttack : MonoBehaviour, IDamageSource, IDamageSourceControlle
 {
     [SerializeField] private MeleeWeaponItem _meleeWeaponObject;
     
-    private AttackModule _module;
-    private PlayerInputService _inputService;
+    private AttackModule _attack;
+    private MovementModule _movement;
     private Ticker _ticker;
     private IDamageReceiver _receiver;
+    private CameraController _camera;
 
     private float _attackCooldownTimer;
     private bool CanAttack => _attackCooldownTimer <= 0f;
 
     [Inject]
-    private void Construct(AttackModule module, PlayerInputService inputService, Ticker ticker)
+    private void Construct(AttackModule attack, MovementModule movement, Ticker ticker, CameraController cameraController)
     {
-        _module = module;
-        _inputService = inputService;
+        _attack = attack;
+        _movement = movement;
+        _camera = cameraController;
         _meleeWeaponObject.transform.SetParent(null);
         _ticker = ticker;
         _ticker.OnTick += CheckInput;
@@ -39,8 +42,7 @@ public class PlayerAttack : MonoBehaviour, IDamageSource, IDamageSourceControlle
             _attackCooldownTimer -= timeDelta;
         }
 
-        if (!_inputService.AttackPressed) return;
-
+        if (!Input.GetMouseButton(0)) return;
         Attack();
     }
 
@@ -50,23 +52,26 @@ public class PlayerAttack : MonoBehaviour, IDamageSource, IDamageSourceControlle
         
         _meleeWeaponObject.gameObject.SetActive(true);
         UpdateAttackPosition();
-        var hit = new HitInfo(_module.PhysicalDamage, _module.IgnoreResistance, this, _receiver);
+        var hit = new HitInfo(_attack.PhysicalDamage, _attack.IgnoreResistance, this, _receiver);
         _meleeWeaponObject.SetHit(hit);
         
-        _attackCooldownTimer = _module.AttackSpeed;
+        _attackCooldownTimer = _attack.AttackSpeed;
     }
     
-    public void SetDamageDealt(float damage) => _module.SetDamageDealt(damage);
+    public void SetDamageDealt(float damage) => _attack.SetDamageDealt(damage);
 
     private void UpdateAttackPosition()
     {
-        var mouseWorld = _inputService.MouseWorldPosition;
-        var playerPosition = (Vector2)transform.position;
+        var screenPoint = Input.mousePosition;
+        screenPoint.z = Mathf.Abs(_camera.transform.position.z);
+        
+        var mouseWorld = (Vector2)_camera.Camera.ScreenToWorldPoint(screenPoint);
+        var playerPosition = (Vector2)_movement.Transform.position;
 
         var offset = mouseWorld - playerPosition;
         var rawDistance = offset.magnitude;
 
-        var distance = Mathf.Clamp(rawDistance, 0.5f, _module.AttackRange);
+        var distance = Mathf.Clamp(rawDistance, 0.5f, _attack.AttackRange);
 
         var direction = rawDistance > Mathf.Epsilon ? offset.normalized : Vector2.right;
 

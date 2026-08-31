@@ -11,7 +11,10 @@ public class PlayerMovement: IInitializable, IFixedTickable, ITickable
     [Inject] private RigidbodyController _controller;
     [Inject] private MovementModule _movement;
     [Inject] private DisguiseModule _disguise;
-    [Inject] private PlayerInputService _inputService;
+    
+    public float Horizontal => (Input.GetKey(KeyCode.D) ? 1f : 0f) - (Input.GetKey(KeyCode.A) ? 1f : 0f);
+    public float Vertical => (Input.GetKey(KeyCode.W) ? 1f : 0f) - (Input.GetKey(KeyCode.S) ? 1f : 0f);
+    public Vector2 Movement => new(Horizontal, Vertical);
 
     private Vector2 _lastMovementDirection = Vector2.right;
     private Vector3Int GridPosition => _controller.GridPosition;
@@ -28,7 +31,7 @@ public class PlayerMovement: IInitializable, IFixedTickable, ITickable
 
     public void FixedTick()
     {
-        var input = _inputService.Movement.normalized;
+        var input = Movement.normalized;
 
         UpdateLastMovementDirection(input);
 
@@ -73,9 +76,9 @@ public class PlayerMovement: IInitializable, IFixedTickable, ITickable
 
     private void TryFlip()
     {
-        if (_inputService.Horizontal != 0)
+        if (Horizontal != 0)
         {
-            _controller.Flip(_inputService.Horizontal > 0);
+            _controller.Flip(Horizontal > 0);
         }
     }
 }

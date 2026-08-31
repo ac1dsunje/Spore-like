@@ -8,7 +8,7 @@ public class LightAbility: Ability
     private readonly VisionModule _vision;
 
     public LightAbility(VisionModule vision, EnduranceModule endurance, AbilityConfig config, 
-        Ticker ticker, IInputService input) : base(endurance, config, ticker, input)
+        Ticker ticker) : base(endurance, config, ticker)
     {
         _vision = vision;
     }

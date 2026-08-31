@@ -16,22 +16,20 @@ public enum AbilityType
 public class AbilityFactory
 {
     private readonly Ticker _ticker;
-    private readonly IInputService _input;
     
     [Inject]
-    public AbilityFactory(Ticker ticker, IInputService inputService)
+    public AbilityFactory(Ticker ticker)
     {
         _ticker = ticker;
-        _input = inputService;
     }
 
     public Ability Get(PlayerModel model, AbilityConfig config)
     {
         return config.Type switch
         {
-            AbilityType.Sprint => new SprintAbility(model.Movement, model.Endurance, config, _ticker, _input),
-            AbilityType.Dash => new DashAbility(model.Movement, model.Endurance, config, _ticker, _input),
-            AbilityType.Light => new LightAbility(model.Vision, model.Endurance, config, _ticker, _input),
+            AbilityType.Sprint => new SprintAbility(model.Movement, model.Endurance, config, _ticker),
+            AbilityType.Dash => new DashAbility(model.Movement, model.Endurance, config, _ticker),
+            AbilityType.Light => new LightAbility(model.Vision, model.Endurance, config, _ticker),
             
             _ => throw new ArgumentOutOfRangeException(nameof(config.Type), config.Type, null)
         };
