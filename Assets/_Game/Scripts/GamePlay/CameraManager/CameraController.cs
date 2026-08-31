@@ -12,11 +12,18 @@ public class CameraController: MonoBehaviour
     
     private PlayerRegistry _playerRegistry;
 
+    public float Aspect => _camera.aspect;
+
     [Inject]
     private void Construct(PlayerRegistry playerRegistry)
     {
         _playerRegistry = playerRegistry;
         _playerRegistry.OnPlayerInitialized += AddPlayer;
+    }
+
+    public void SetSize(float radius)
+    {
+        _cineMachineCamera.Lens.OrthographicSize = radius;
     }
 
     private void AddPlayer(PlayerController player)

@@ -1,35 +1,31 @@
-﻿using _Game.Scripts.GamePlay.Entities;
+﻿using _Game.Scripts.GamePlay.CameraManager;
+using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class PlayerVision: MonoBehaviour
+public class PlayerVision : MonoBehaviour
 {
     [SerializeField] private Light2D _lighting;
     [SerializeField] private float _visionChangeSpeed = 5f;
     
     private VisionModule _module;
-    private CinemachineCamera _cineMachine;
-    private Camera _camera;
+    private CameraController _camController;
     private EntityVisionHitbox _visionHitbox;
     
     private float _targetVision;
     private float _currentVision;
 
-
     [Inject]
-    private void Construct(VisionModule module, CinemachineCamera cineMachine, Camera cam,
-        EntityVisionHitbox visionHitbox)
+    private void Construct(VisionModule module, EntityVisionHitbox visionHitbox, CameraController camController)
     {
         _module = module;
-        _cineMachine = cineMachine;
-        _camera = cam;
         _visionHitbox = visionHitbox;
+        _camController = camController;
         
         _module.OnVisionRadiusUpdated += UpdateVision;
         _module.OnLightingUpdated += UpdateLighting;
@@ -50,7 +46,10 @@ public class PlayerVision: MonoBehaviour
         ApplyVision(_currentVision);
     }
 
-    private void ShowEntity(IVisible entity, bool state) => entity.SetVisible(state);
+    private void ShowEntity(IVisible entity, bool state)
+    {
+        entity.SetVisible(state);
+    }
 
     private void UpdateLighting(float value, bool state) => _lighting.pointLightOuterRadius = state ? value : 0f;
 
@@ -58,15 +57,16 @@ public class PlayerVision: MonoBehaviour
 
     private void ApplyVision(float value)
     {
-        _visionHitbox?.SetSize(new Vector2(value * _camera.aspect, value) * 2f);
+        _visionHitbox?.SetSize(new Vector2(_camController.Aspect, 1f) * (value * 2f));
 
-        _cineMachine.Lens.OrthographicSize = value;
+        _camController.SetSize(value);
     }
 
     private void OnDestroy()
     {
         _module.OnLightingUpdated -= UpdateLighting;
         _module.OnVisionRadiusUpdated -= UpdateVision;
+        _module.OnEntityDiscovered -= ShowEntity;
     }
 }
 }
