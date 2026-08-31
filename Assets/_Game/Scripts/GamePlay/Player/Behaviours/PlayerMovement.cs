@@ -6,7 +6,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class PlayerMovement: IFixedTickable, ITickable
+public class PlayerMovement: IInitializable, IFixedTickable, ITickable
 {
     [Inject] private MovementController _controller;
     [Inject] private MovementModule _movement;
@@ -15,6 +15,11 @@ public class PlayerMovement: IFixedTickable, ITickable
 
     private Vector2 _lastMovementDirection = Vector2.right;
     private Vector3Int GridPosition => _controller.GridPosition;
+
+    public void Initialize()
+    {
+        _movement.SetTransform(_controller.transform);
+    }
 
     public void Tick()
     {

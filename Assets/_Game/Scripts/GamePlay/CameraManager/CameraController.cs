@@ -28,7 +28,7 @@ public class CameraController: MonoBehaviour
 
     private void AddPlayer(PlayerController player)
     {
-        _cineMachineCamera.Target.TrackingTarget = player.transform;
+        _cineMachineCamera.Target.TrackingTarget = player.Model.Movement.Transform;
     }
 
     private void OnDestroy()

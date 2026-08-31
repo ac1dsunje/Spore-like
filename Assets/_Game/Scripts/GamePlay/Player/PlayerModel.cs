@@ -25,7 +25,7 @@ public class PlayerModel
     public ExperienceModule Experience { get; private set; }
     public AbilitiesModule Abilities { get; private set; }
 
-    private EntityStatsConfig _config;
+    private readonly EntityStatsConfig _config;
 
     [Inject]
     public PlayerModel(EntityStatsConfig config, EntityStats stats, VisionModule vision, HealthModule health, 

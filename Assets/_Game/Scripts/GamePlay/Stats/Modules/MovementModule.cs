@@ -17,6 +17,7 @@ public class MovementModule : StatModule
     public bool DashRequested { get; private set; }
 
     public Vector3Int GridPosition { get; private set; }
+    public Transform Transform { get; private set; }
 
     public event Action<float> OnDistanceOvercome;
     public event Action<Vector3Int> OnGridPositionChanged;
@@ -58,6 +59,8 @@ public class MovementModule : StatModule
         OnGridPositionChanged?.Invoke(GridPosition);
         OnDistanceOvercome?.Invoke(1);
     }
+
+    public void SetTransform(Transform transform) => Transform = transform;
 
     private void UpdateMoveSpeed(float value) => _moveSpeed = value;
 
