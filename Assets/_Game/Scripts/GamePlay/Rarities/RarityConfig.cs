@@ -2,7 +2,7 @@
 
 namespace _Game.Scripts.GamePlay.Rarities
 {
-[CreateAssetMenu(fileName = "NewRarity", menuName = "Configs/Game/Rarities/Rarity")]
+[CreateAssetMenu(fileName = "NewRarity", menuName = "Game/Rarities/Rarity")]
 public class RarityConfig: ScriptableObject
 {
     [field: SerializeField] public int Index { get; private set; }

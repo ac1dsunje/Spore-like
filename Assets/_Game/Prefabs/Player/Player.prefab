@@ -320,7 +320,15 @@ MonoBehaviour:
   _animationSettings:
     <Sprite>k__BackingField: {fileID: -9048744825557176607, guid: 7e660a4087c8141408b939d08c80a53f, type: 3}
     <Controller>k__BackingField: {fileID: 7898678084846905597, guid: 7e660a4087c8141408b939d08c80a53f, type: 3}
-  _playerExperienceConfig: {fileID: 11400000, guid: 6ca48198dec476b4f9cde410c88c74c5, type: 2}
+  _playerExperienceConfig:
+    <LevelScaler>k__BackingField: 1
+    <ExperienceConfig>k__BackingField:
+      <LevelSet>k__BackingField: 5
+      <ExperienceTypes>k__BackingField:
+      - <Type>k__BackingField: 1
+        <Amount>k__BackingField: 1
+      - <Type>k__BackingField: 6
+        <Amount>k__BackingField: 1
   _evolutionsDatabase: {fileID: 11400000, guid: 89e0fac1fa9071a41bafa6ee877795b5, type: 2}
   _raritiesDatabase: {fileID: 11400000, guid: 844b6b4bf98611044bf03a16ce2009a0, type: 2}
 --- !u!114 &314090029752611159

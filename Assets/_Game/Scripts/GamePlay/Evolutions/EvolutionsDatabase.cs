@@ -4,7 +4,7 @@ using UnityEngine;
 namespace _Game.Scripts.GamePlay.Evolutions
 {
 
-[CreateAssetMenu(fileName = "New evolution", menuName = "Configs/Game/Evolutions/Database")]
+[CreateAssetMenu(fileName = "New evolution", menuName = "Game/Evolutions/Database")]
 public class EvolutionsDatabase: ScriptableObject
 {
     [field: SerializeField] public EvolutionConfig[] Evolutions { get; private set; }

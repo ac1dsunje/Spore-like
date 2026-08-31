@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Types
 {
-[CreateAssetMenu(fileName = "Stat type config", menuName = "Configs/Game/Stats/Types")]
+[CreateAssetMenu(fileName = "Stat type config", menuName = "Game/Stats/Types")]
 public class StatTypeConfig : ScriptableObject
 {
     [field: SerializeField] public List<StatTypeData> Types { get; private set; } = new();

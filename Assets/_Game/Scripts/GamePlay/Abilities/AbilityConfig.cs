@@ -2,7 +2,7 @@
 
 namespace _Game.Scripts.GamePlay.Abilities
 {
-[CreateAssetMenu(fileName = "NewAbilityConfig", menuName = "Configs/Game/Ability")]
+[CreateAssetMenu(fileName = "NewAbilityConfig", menuName = "Game/Ability")]
 public class AbilityConfig: ScriptableObject
 {
     [field: SerializeField] public Sprite Sprite { get; private set; }

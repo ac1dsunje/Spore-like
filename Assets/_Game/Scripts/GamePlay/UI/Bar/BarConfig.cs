@@ -2,7 +2,7 @@
 
 namespace _Game.Scripts.GamePlay.UI.Bar
 {
-[CreateAssetMenu(fileName = "NewBarConfig", menuName = "Configs/Game/Bars/Bar")]
+[CreateAssetMenu(fileName = "NewBarConfig", menuName = "Game/Bars/Bar")]
 public class BarConfig: ScriptableObject
 {
     [field: SerializeField] public bool MaxValue { get; private set; }

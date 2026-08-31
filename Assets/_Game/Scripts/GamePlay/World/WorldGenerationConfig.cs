@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.World
 {
-[CreateAssetMenu(fileName = "New WorldGen Config", menuName = "Configs/Game/World/Generation")]
+[CreateAssetMenu(fileName = "New WorldGen Config", menuName = "Game/World/Generation")]
 public class WorldGenerationConfig: ScriptableObject
 {
     [field: SerializeField] public int ChunkSize {get; private set;} = 16;

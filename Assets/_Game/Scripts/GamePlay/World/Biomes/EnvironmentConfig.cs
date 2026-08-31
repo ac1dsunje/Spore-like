@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.World.Biomes
 {
-[CreateAssetMenu(fileName = "New Environment Config", menuName = "Configs/Game/World/Biomes/Environment")]
+[CreateAssetMenu(fileName = "New Environment Config", menuName = "Game/World/Biomes/Environment")]
 public class EnvironmentConfig: ScriptableObject
 {
     [field: SerializeField] public FoodConfig[] FoodItems { get; private set; }

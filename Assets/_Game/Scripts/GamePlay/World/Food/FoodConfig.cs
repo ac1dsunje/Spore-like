@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.World.Food
 {
-[CreateAssetMenu(fileName = "New Food Config", menuName = "Configs/Game/Food/Config")]
+[CreateAssetMenu(fileName = "New Food Config", menuName = "Game/Food/Config")]
 public class FoodConfig: ScriptableObject
 {
     [field: SerializeField] public StatsConfig StatsConfig { get; private set; }

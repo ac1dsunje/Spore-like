@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Buffs
 {
-[CreateAssetMenu(fileName = "NewBuffConfig", menuName = "Configs/Game/Buffs/Buff")]
+[CreateAssetMenu(fileName = "NewBuffConfig", menuName = "Game/Buffs/Buff")]
 public class BuffConfig: ScriptableObject
 {
     [field: SerializeField] public string Name { get; private set; }
