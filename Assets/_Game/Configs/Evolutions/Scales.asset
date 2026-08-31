@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Evolutions.EvolutionConfig
   <State>k__BackingField: 1
   <Name>k__BackingField: Scales
-  <CreatureType>k__BackingField: 1
   <Stats>k__BackingField:
   - <Type>k__BackingField: 17
     <Value>k__BackingField: 1
@@ -32,6 +31,6 @@ MonoBehaviour:
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 20
     <ExperienceTypes>k__BackingField:
-    - <Type>k__BackingField: 11
+    - <Type>k__BackingField: 3
       <Amount>k__BackingField: 1
   <Sprite>k__BackingField: {fileID: -8405564399165274478, guid: ed4634d8d65c65c4495f380c594d59fd, type: 3}

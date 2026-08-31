@@ -20,7 +20,6 @@ public class ExperienceFactory
             ExperienceType.EnduranceRecovering => new EnduranceRecovering(playerModel.Endurance, config.Amount),
             ExperienceType.DamageDealing => new DamageDealing(playerModel.Attack, config.Amount),
             ExperienceType.StartSprinting => new StartSprinting(playerModel.Movement, config.Amount),
-            ExperienceType.DamageBlocking => new DamageBlocking(playerModel.Defense, config.Amount),
             ExperienceType.UnnoticedStaying => new UnnoticedStaying(playerModel.Disguise, config.Amount),
             
             _ => throw new ArgumentOutOfRangeException(nameof(config), config, null)

@@ -12,7 +12,6 @@ public enum ExperienceType
     EnduranceRecovering = 7,
     DamageDealing = 9,
     StartSprinting = 10,
-    DamageBlocking = 11,
     UnnoticedStaying = 15,
 }
 }
