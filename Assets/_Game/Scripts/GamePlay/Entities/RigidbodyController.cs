@@ -1,17 +1,26 @@
 ﻿using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.Movement
+namespace _Game.Scripts.GamePlay.Entities
 {
 [RequireComponent(typeof(Rigidbody2D))]
-public class MovementController: MonoBehaviour
+public class RigidbodyController: MonoBehaviour
 {
+    private Rigidbody2D _rigidbody;
+    
+    private PhysicsMaterial2D _material2D;
+    
     public Vector3Int GridPosition => new(
         Mathf.RoundToInt(_rigidbody.position.x),
         Mathf.RoundToInt(_rigidbody.position.y),
         0
     );
     
-    private PhysicsMaterial2D _material2D;
+    public bool IsMoving => _rigidbody.linearVelocity != Vector2.zero;
+
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody2D>();
+    }
 
     public void SetMaterial(float friction, float bounciness)
     {
@@ -33,15 +42,6 @@ public class MovementController: MonoBehaviour
         
             _material2D = material2D;
         }
-    }
-    
-    public bool IsMoving => _rigidbody.linearVelocity != Vector2.zero;
-    
-    private Rigidbody2D _rigidbody;
-
-    private void Awake()
-    {
-        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
     public void Push(Vector2 direction, float power)

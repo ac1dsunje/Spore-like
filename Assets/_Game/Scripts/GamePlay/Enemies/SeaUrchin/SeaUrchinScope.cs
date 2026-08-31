@@ -2,7 +2,6 @@
 using _Game.Scripts.GamePlay.Entities.Animation;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
-using _Game.Scripts.GamePlay.Movement;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -25,7 +24,7 @@ public class SeaUrchinScope: LifetimeScope
         builder.RegisterComponent(GetComponent<SeaUrchinHealth>()).AsSelf().As<IDamageReceiver>().As<IDamageReceiverController>();
         builder.RegisterComponent(GetComponent<SeaUrchinAttackBehaviour>()).AsSelf().As<IDamageSource>().As<IDamageSourceController>();
         
-        builder.RegisterComponent(GetComponentInChildren<MovementController>());
+        builder.RegisterComponent(GetComponentInChildren<RigidbodyController>());
         
         builder.RegisterComponent(GetComponentInChildren<EntityAnimation>());
         builder.Register<CombatBinder>(Lifetime.Scoped);

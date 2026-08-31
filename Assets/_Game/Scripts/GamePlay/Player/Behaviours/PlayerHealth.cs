@@ -45,7 +45,7 @@ public class PlayerHealth: MonoBehaviour, IDamageReceiver, IDamageReceiverContro
 
     private IEnumerator Regenerate()
     {
-        while (true)
+        while (_health.Health < _health.MaxHealth)
         {
             yield return new WaitForSeconds(1f);
             _health.Heal(_health.Regeneration);

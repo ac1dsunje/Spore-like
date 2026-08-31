@@ -1,5 +1,5 @@
-﻿using _Game.Scripts.GamePlay.Modules;
-using _Game.Scripts.GamePlay.Movement;
+﻿using _Game.Scripts.GamePlay.Entities;
+using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -8,7 +8,7 @@ namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
 public class PlayerMovement: IInitializable, IFixedTickable, ITickable
 {
-    [Inject] private MovementController _controller;
+    [Inject] private RigidbodyController _controller;
     [Inject] private MovementModule _movement;
     [Inject] private DisguiseModule _disguise;
     [Inject] private PlayerInputService _inputService;
