@@ -30,10 +30,7 @@ public class RigidbodyController: MonoBehaviour
             bounciness = bounciness
         };
 
-        if (!_rigidbody)
-        {
-            _rigidbody = GetComponent<Rigidbody2D>();
-        }
+        _rigidbody ??= GetComponent<Rigidbody2D>();
 
         if (_material2D != material2D)
         {

@@ -1,6 +1,4 @@
-﻿using _Game.Scripts.Core.Services;
-using _Game.Scripts.GamePlay.CameraManager;
-using _Game.Scripts.GamePlay.Entities;
+﻿using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.Weapons;
@@ -15,43 +13,35 @@ public class PlayerAttack : MonoBehaviour, IDamageSource, IDamageSourceControlle
     
     private AttackModule _attack;
     private MovementModule _movement;
-    private Ticker _ticker;
     private IDamageReceiver _receiver;
-    private CameraController _camera;
 
     private float _attackCooldownTimer;
     private bool CanAttack => _attackCooldownTimer <= 0f;
 
     [Inject]
-    private void Construct(AttackModule attack, MovementModule movement, Ticker ticker, CameraController cameraController)
+    private void Construct(AttackModule attack, MovementModule movement)
     {
         _attack = attack;
         _movement = movement;
-        _camera = cameraController;
         _meleeWeaponObject.transform.SetParent(null);
-        _ticker = ticker;
-        _ticker.OnTick += CheckInput;
     }
 
     public void SetDamageReceiver(IDamageReceiver damageReceiver) => _receiver = damageReceiver;
 
-    private void CheckInput(float timeDelta)
+    private void Update()
     {
         if (_attackCooldownTimer > 0f)
         {
-            _attackCooldownTimer -= timeDelta;
+            _attackCooldownTimer -= Time.deltaTime;
         }
-
-        if (!Input.GetMouseButton(0)) return;
-        Attack();
     }
 
-    private void Attack()
+    public void RequestAttack(Vector2 mousePosition)
     {
         if (!CanAttack) return;
         
         _meleeWeaponObject.gameObject.SetActive(true);
-        UpdateAttackPosition();
+        UpdateAttackPosition(mousePosition);
         var hit = new HitInfo(_attack.PhysicalDamage, _attack.IgnoreResistance, this, _receiver);
         _meleeWeaponObject.SetHit(hit);
         
@@ -60,15 +50,11 @@ public class PlayerAttack : MonoBehaviour, IDamageSource, IDamageSourceControlle
     
     public void SetDamageDealt(float damage) => _attack.SetDamageDealt(damage);
 
-    private void UpdateAttackPosition()
+    private void UpdateAttackPosition(Vector2 mousePosition)
     {
-        var screenPoint = Input.mousePosition;
-        screenPoint.z = Mathf.Abs(_camera.transform.position.z);
-        
-        var mouseWorld = (Vector2)_camera.Camera.ScreenToWorldPoint(screenPoint);
         var playerPosition = (Vector2)_movement.Transform.position;
 
-        var offset = mouseWorld - playerPosition;
+        var offset = mousePosition - playerPosition;
         var rawDistance = offset.magnitude;
 
         var distance = Mathf.Clamp(rawDistance, 0.5f, _attack.AttackRange);

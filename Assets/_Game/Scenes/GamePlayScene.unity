@@ -1081,7 +1081,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1986825661}
   - component: {fileID: 1986825662}
-  - component: {fileID: 1986825663}
   - component: {fileID: 1986825666}
   - component: {fileID: 1986825667}
   m_Layer: 0
@@ -1125,18 +1124,6 @@ MonoBehaviour:
   _worldConfig: {fileID: 11400000, guid: 86a2a7edd3ffa1b4fbb90f25e00c0843, type: 2}
   _statTypeConfig: {fileID: 11400000, guid: f7f94f4c1f9bc26428f13410b5b0ab69, type: 2}
   _buffsDatabase: {fileID: 11400000, guid: 6c8bbaa65dd7638448a0140a8cc9a837, type: 2}
---- !u!114 &1986825663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1986825660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab22400322e64ad9acc03ee8a8b9d5c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Abilities.Ticker
 --- !u!114 &1986825666
 MonoBehaviour:
   m_ObjectHideFlags: 0

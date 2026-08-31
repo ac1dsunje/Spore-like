@@ -30,19 +30,21 @@ public class PlayerScope: LifetimeScope
         builder.RegisterInstance(_evolutionsDatabase);
         builder.RegisterInstance(_raritiesDatabase);
         
-        builder.RegisterEntryPoint<PlayerController>();
+        builder.RegisterEntryPoint<PlayerController>(Lifetime.Scoped);
         builder.Register<PlayerModel>(Lifetime.Scoped);
         builder.Register<EntityStats>(Lifetime.Scoped);
         builder.Register<CombatBinder>(Lifetime.Scoped);
+
+        builder.RegisterEntryPoint<PlayerInput>(Lifetime.Scoped);
         
         // Experience
         builder.Register<ExperienceModule>(Lifetime.Scoped);
         
         // Vision
-        builder.RegisterEntryPoint<PlayerVision>();
+        builder.RegisterEntryPoint<PlayerVision>(Lifetime.Scoped);
         builder.RegisterComponent(GetComponentInChildren<EntityVisionHitbox>());
-        builder.Register<VisionModule>(Lifetime.Scoped);
         builder.RegisterComponent(GetComponentInChildren<EntityLighting>());
+        builder.Register<VisionModule>(Lifetime.Scoped);
         
         // Combat
         builder.RegisterComponent(GetComponentInChildren<PlayerHealth>())
@@ -61,7 +63,7 @@ public class PlayerScope: LifetimeScope
         builder.Register<DefenseModule>(Lifetime.Scoped);
         
         // Endurance
-        builder.RegisterEntryPoint<EntityEndurance>();
+        builder.RegisterEntryPoint<EntityEndurance>(Lifetime.Scoped);
         builder.Register<EnduranceModule>(Lifetime.Scoped);
         
         // Eating
@@ -70,7 +72,7 @@ public class PlayerScope: LifetimeScope
         builder.Register<StomachModule>(Lifetime.Scoped);
         
         // Movement
-        builder.RegisterEntryPoint<PlayerMovement>();
+        builder.RegisterEntryPoint<PlayerMovement>(Lifetime.Scoped).AsSelf();
         builder.RegisterComponent(GetComponentInChildren<RigidbodyController>());
         builder.Register<MovementModule>(Lifetime.Scoped);
         
