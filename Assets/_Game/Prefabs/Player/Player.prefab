@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c760f8ec579e40c2baa7f7c1fd152345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Player.VisionModule.PlayerVision
-  _lighting: {fileID: 2287631387679547392}
   _visionChangeSpeed: 5
 --- !u!61 &8492993795575088708
 BoxCollider2D:
@@ -360,6 +359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 75556837252982781}
   - component: {fileID: 2287631387679547392}
+  - component: {fileID: 5546894141412307058}
   m_Layer: 0
   m_Name: Lighting
   m_TagString: Untagged
@@ -434,6 +434,19 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &5546894141412307058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8266466559747868771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fafde3d9342547a6b4eb90f6876ec8ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.EntityLighting
+  _lighting: {fileID: 2287631387679547392}
 --- !u!1 &8527591295361904753
 GameObject:
   m_ObjectHideFlags: 0

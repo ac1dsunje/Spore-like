@@ -3,14 +3,12 @@ using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
 public class PlayerVision : MonoBehaviour
 {
-    [SerializeField] private Light2D _lighting;
     [SerializeField] private float _visionChangeSpeed = 5f;
     
     private VisionModule _module;
@@ -28,7 +26,6 @@ public class PlayerVision : MonoBehaviour
         _camController = camController;
         
         _module.OnVisionRadiusUpdated += UpdateVision;
-        _module.OnLightingUpdated += UpdateLighting;
         _module.OnEntityDiscovered += ShowEntity;
         
         _currentVision = _module.VisionRadius;
@@ -51,8 +48,6 @@ public class PlayerVision : MonoBehaviour
         entity.SetVisible(state);
     }
 
-    private void UpdateLighting(float value, bool state) => _lighting.pointLightOuterRadius = state ? value : 0f;
-
     private void UpdateVision(float value) => _targetVision = value;
 
     private void ApplyVision(float value)
@@ -64,7 +59,6 @@ public class PlayerVision : MonoBehaviour
 
     private void OnDestroy()
     {
-        _module.OnLightingUpdated -= UpdateLighting;
         _module.OnVisionRadiusUpdated -= UpdateVision;
         _module.OnEntityDiscovered -= ShowEntity;
     }
