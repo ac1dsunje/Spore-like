@@ -19,7 +19,13 @@ public class PlayerMouth: MonoBehaviour
     private IBiteable _currentFood;
 
     private float _hungerTimer;
-    
+    private float _maxTime = 30f;
+
+    private void Awake()
+    {
+        _hungerTimer = _maxTime;
+    }
+
     private void OnTriggerEnter2D(Collider2D other) => TryCatchFood(other);
 
     private void OnTriggerExit2D(Collider2D other) => TryReleaseFood(other);
@@ -101,7 +107,7 @@ public class PlayerMouth: MonoBehaviour
             if (_hungerTimer <= 0)
             {
                 _stomach.LoseHunger(1);
-                _hungerTimer = 30;
+                _hungerTimer = _maxTime;
             }
         }
 
