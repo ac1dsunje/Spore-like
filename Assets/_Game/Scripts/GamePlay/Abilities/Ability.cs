@@ -71,7 +71,7 @@ public abstract class Ability: IDisposable, IEnduranceUser
 
     private void UpdateToggle()
     {
-        if (!Input.GetKey(_config.Key))
+        if (!Input.GetKeyDown(_config.Key))
             return;
 
         if (_isActive)
