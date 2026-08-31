@@ -43,6 +43,7 @@ public class PlayerScope: LifetimeScope
         
         // Vision
         builder.RegisterComponent(GetComponentInChildren<PlayerVision>());
+        builder.RegisterComponent(GetComponentInChildren<EntityVisionHitbox>());
         builder.Register<VisionModule>(Lifetime.Scoped);
         
         // Combat

@@ -54,16 +54,10 @@ public class EntityAnimation: MonoBehaviour, IVisible
     
     public bool IsDetected(float sensorics)
     {
-        var show = _disguise.TryNotice(sensorics);
-        
-        SetVisible(show);
-        
-        Debug.Log(show);
-
-        return show;
+        return _disguise.TryNotice(sensorics);
     }
     
-    private void SetVisible(bool visible)
+    public void SetVisible(bool visible)
     {
         _renderer.enabled = visible;
         _animator.enabled = visible;

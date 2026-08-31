@@ -16,7 +16,7 @@ public class VisionModule: StatModule
 
     private readonly HashSet<IVisible> _objectsInVision = new();
 
-    public event Action<IVisible> OnEntityDiscovered;
+    public event Action<IVisible, bool> OnEntityDiscovered;
 
     public event Action<float> OnVisionRadiusUpdated;
     public event Action<float, bool> OnLightingUpdated;
@@ -67,9 +67,7 @@ public class VisionModule: StatModule
 
     private void TryDiscoverEntity(IVisible visible)
     {
-        if (!visible.IsDetected(_sensorics)) return;
-
-        OnEntityDiscovered?.Invoke(visible);
+        OnEntityDiscovered?.Invoke(visible, visible.IsDetected(_sensorics));
     }
 }
 }

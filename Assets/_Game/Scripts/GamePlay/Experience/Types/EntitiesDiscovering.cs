@@ -16,8 +16,9 @@ public class EntitiesDiscovering: ExperienceService
         _module.OnEntityDiscovered += OnEntityDiscovered;
     }
 
-    private void OnEntityDiscovered(IVisible entity)
+    private void OnEntityDiscovered(IVisible entity, bool state)
     {
+        if (!state) return;
         if (!_discovered.Add(entity)) return;
 
         AddAmount(1);

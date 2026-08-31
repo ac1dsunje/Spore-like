@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1241412678200770851}
   - component: {fileID: 8492993795575088708}
   - component: {fileID: 2499460957621282121}
+  - component: {fileID: 5466484387295812948}
   m_Layer: 0
   m_Name: Vision
   m_TagString: Untagged
@@ -148,6 +149,18 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &5466484387295812948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5439879452342028256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0041ce9358db43aba6d780e75e071830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.EntityVisionHitbox
 --- !u!1 &7603171980187439321
 GameObject:
   m_ObjectHideFlags: 0

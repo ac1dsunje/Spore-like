@@ -1,4 +1,5 @@
-﻿using _Game.Scripts.GamePlay.Interfaces;
+﻿using _Game.Scripts.GamePlay.Entities;
+using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.World;
 using Unity.Cinemachine;
@@ -10,7 +11,6 @@ namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
 public class PlayerVision: MonoBehaviour
 {
-    [SerializeField] private BoxCollider2D _visionCollider;
     [SerializeField] private Light2D _visionLight;
     [SerializeField] private Light2D _lighting;
     [SerializeField] private float _visionChangeSpeed = 5f;
@@ -19,20 +19,25 @@ public class PlayerVision: MonoBehaviour
     private CinemachineCamera _cineMachine;
     private Camera _camera;
     private DayNightManager _dayNightManager;
+    private EntityVisionHitbox _visionHitbox;
     
     private float _targetVision;
     private float _currentVision;
 
+
     [Inject]
-    private void Construct(VisionModule module, CinemachineCamera cineMachine, Camera cam, DayNightManager dayNightManager)
+    private void Construct(VisionModule module, CinemachineCamera cineMachine, Camera cam, DayNightManager dayNightManager,
+        EntityVisionHitbox visionHitbox)
     {
         _module = module;
         _cineMachine = cineMachine;
         _camera = cam;
         _dayNightManager = dayNightManager;
+        _visionHitbox = visionHitbox;
         
         _module.OnVisionRadiusUpdated += UpdateVision;
         _module.OnLightingUpdated += UpdateLighting;
+        _module.OnEntityDiscovered += ShowEntity;
         
         _currentVision = _module.VisionRadius;
         _targetVision = _module.VisionRadius;
@@ -52,30 +57,18 @@ public class PlayerVision: MonoBehaviour
         ApplyVision(_currentVision);
     }
 
+    private void ShowEntity(IVisible entity, bool state) => entity.SetVisible(state);
+
     private void UpdateLighting(float value, bool state) => _lighting.pointLightOuterRadius = state ? value : 0f;
 
     private void UpdateVision(float value) => _targetVision = value;
 
     private void ApplyVision(float value)
     {
-        _visionCollider.size = new Vector2(value * _camera.aspect, value) * 2f;
+        _visionHitbox?.SetSize(new Vector2(value * _camera.aspect, value) * 2f);
 
         _cineMachine.Lens.OrthographicSize = value;
         _visionLight.pointLightOuterRadius = value * _camera.aspect * 2f;
-    }
-    
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (!other.TryGetComponent<IVisible>(out var visible)) return;
-
-        _module.EnterEntity(visible);
-    }
-    
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (!other.TryGetComponent<IVisible>(out var visible)) return;
-
-        _module.ExitObject(visible);
     }
 
     private void OnDestroy()
