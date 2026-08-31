@@ -1,4 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Entities;
+using _Game.Scripts.GamePlay.Entities.Attack;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.Weapons;
@@ -7,7 +8,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class PlayerAttack : MonoBehaviour, IDamageSource, IDamageSourceController
+public class PlayerAttack : MonoBehaviour, IDamageSource, IDamageSourceController, IAttackController
 {
     [SerializeField] private MeleeWeaponItem _meleeWeaponObject;
     

@@ -1,5 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Entities.Animation;
+using _Game.Scripts.GamePlay.Entities.Attack;
 using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Interfaces;
@@ -57,7 +58,8 @@ public class PlayerScope: LifetimeScope
         builder.RegisterComponent(GetComponentInChildren<PlayerAttack>())
             .AsSelf()
             .As<IDamageSource>()
-            .As<IDamageSourceController>();
+            .As<IDamageSourceController>()
+            .As<IAttackController>();
         builder.Register<AttackModule>(Lifetime.Scoped);
         
         // Defense 

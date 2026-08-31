@@ -1,6 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.CameraManager;
+using _Game.Scripts.GamePlay.Entities.Attack;
 using _Game.Scripts.GamePlay.Entities.Movement;
-using _Game.Scripts.GamePlay.Player.Behaviours;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -10,11 +10,11 @@ namespace _Game.Scripts.GamePlay.Player
 public class PlayerInput : ITickable
 {
     private IMovementController _movement;
-    private PlayerAttack _attack;
+    private IAttackController _attack;
     private CameraController _camera;
 
     [Inject]
-    private void Construct(IMovementController movement, PlayerAttack attack, CameraController cameraController)
+    private void Construct(IMovementController movement, IAttackController attack, CameraController cameraController)
     {
         _movement = movement;
         _attack = attack;
