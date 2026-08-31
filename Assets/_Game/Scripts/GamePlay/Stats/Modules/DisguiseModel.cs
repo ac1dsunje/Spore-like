@@ -13,7 +13,6 @@ public class DisguiseModule: StatModule
     private bool _isMoving;
 
     public event Action OnUnnoticed;
-    public event Action OnUnnoticedInRest;
 
     protected override void Configure()
     {
@@ -29,9 +28,6 @@ public class DisguiseModule: StatModule
 
         if (!notice)
         {
-            if (!_isMoving)
-                OnUnnoticedInRest?.Invoke();
-            
             OnUnnoticed?.Invoke();
         }
         

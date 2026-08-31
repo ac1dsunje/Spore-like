@@ -14,6 +14,5 @@ public enum ExperienceType
     StartSprinting = 10,
     DamageBlocking = 11,
     UnnoticedStaying = 15,
-    UnnoticedStayingInRest = 16,
 }
 }

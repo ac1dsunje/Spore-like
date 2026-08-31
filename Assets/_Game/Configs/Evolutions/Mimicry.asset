@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Evolutions.EvolutionConfig
   <State>k__BackingField: 1
   <Name>k__BackingField: Mimicry
-  <CreatureType>k__BackingField: 0
   <Stats>k__BackingField:
   - <Type>k__BackingField: 19
     <Value>k__BackingField: 2
@@ -37,6 +36,6 @@ MonoBehaviour:
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 10
     <ExperienceTypes>k__BackingField:
-    - <Type>k__BackingField: 16
+    - <Type>k__BackingField: 15
       <Amount>k__BackingField: 1
   <Sprite>k__BackingField: {fileID: -6299458084217374255, guid: ed4634d8d65c65c4495f380c594d59fd, type: 3}
