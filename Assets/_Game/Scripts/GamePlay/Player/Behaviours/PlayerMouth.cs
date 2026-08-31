@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Buffs;
 using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Modules;
-using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.World.Food;
 using UnityEngine;
 using VContainer;
