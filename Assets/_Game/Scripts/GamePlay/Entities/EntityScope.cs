@@ -50,6 +50,7 @@ public abstract class EntityScope: LifetimeScope
         // Behaviours
         builder.RegisterComponent(GetComponentInChildren<EntityAnimation>());
         builder.RegisterComponent(GetComponentInChildren<EntityVisionHitbox>());
+        builder.RegisterComponent(GetComponentInChildren<EntityLighting>());
         builder.RegisterEntryPoint<EntityEndurance>(Lifetime.Scoped);
     }
 }

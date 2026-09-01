@@ -38,7 +38,6 @@ public class PlayerScope: EntityScope
         builder.Register<ExperienceModule>(Lifetime.Scoped);
         
         builder.RegisterEntryPoint<PlayerVision>(Lifetime.Scoped);
-        builder.RegisterComponent(GetComponentInChildren<EntityLighting>());
         
         builder.RegisterComponent(GetComponentInChildren<PlayerHealth>())
             .AsSelf()
