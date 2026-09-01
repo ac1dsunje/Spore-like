@@ -305,12 +305,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Player.PlayerScope
   parentReference:
     TypeName: _Game.Scripts.GamePlay.GameplayScope
-  autoRun: 1
+  autoRun: 0
   autoInjectGameObjects: []
-  _entityStatsConfig: {fileID: 11400000, guid: ba7be4736a4236543ba175179ecef16d, type: 2}
-  _animationSettings:
-    <Sprite>k__BackingField: {fileID: -9048744825557176607, guid: 7e660a4087c8141408b939d08c80a53f, type: 3}
-    <Controller>k__BackingField: {fileID: 7898678084846905597, guid: 7e660a4087c8141408b939d08c80a53f, type: 3}
   _playerExperienceConfig:
     <LevelScaler>k__BackingField: 1
     <ExperienceConfig>k__BackingField:

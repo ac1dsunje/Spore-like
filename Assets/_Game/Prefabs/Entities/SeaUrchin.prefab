@@ -115,12 +115,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Enemies.EnemyScope
   parentReference:
     TypeName: _Game.Scripts.GamePlay.GameplayScope
-  autoRun: 1
+  autoRun: 0
   autoInjectGameObjects: []
-  _entityStatsConfig: {fileID: 11400000, guid: 0a0aed94d3d607b4b90669d2fdcc4b7e, type: 2}
-  _animationSettings:
-    <Sprite>k__BackingField: {fileID: 3147233298308361737, guid: e1e8f9e2112581f4c848d9ee20c89f4a, type: 3}
-    <Controller>k__BackingField: {fileID: 0}
 --- !u!114 &7454339499277821137
 MonoBehaviour:
   m_ObjectHideFlags: 0

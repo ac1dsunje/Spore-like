@@ -1,6 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Entities.Animation;
 using _Game.Scripts.GamePlay.Modules;
-using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
@@ -8,8 +7,8 @@ namespace _Game.Scripts.GamePlay.Entities
 {
 public abstract class EntityScope: LifetimeScope
 {
-    [SerializeField] private AnimationSettings _animationSettings;
-    [SerializeField] private EntityStatsConfig _entityStatsConfig;
+    private AnimationSettings _animationSettings;
+    private EntityStatsConfig _entityStatsConfig;
     
     public void SetAnimationSetting(AnimationSettings settings) => _animationSettings = settings;
     public void SetStatsSettings(EntityStatsConfig config) => _entityStatsConfig = config;
