@@ -1,6 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Entities.Attack;
-using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Interfaces;
@@ -29,7 +28,6 @@ public class PlayerScope: EntityScope
         builder.RegisterInstance(_raritiesDatabase);
         
         builder.RegisterComponent(GetComponentInChildren<RigidbodyController>());
-        builder.RegisterComponent(GetComponentInChildren<EntityVisionHitbox>());
         builder.RegisterEntryPoint<EntityBiomeChecker>(Lifetime.Scoped);
         
         builder.RegisterEntryPoint<PlayerController>(Lifetime.Scoped);

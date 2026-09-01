@@ -1,4 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Entities.Animation;
+using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Modules;
 using VContainer;
 using VContainer.Unity;
@@ -48,6 +49,7 @@ public abstract class EntityScope: LifetimeScope
         
         // Behaviours
         builder.RegisterComponent(GetComponentInChildren<EntityAnimation>());
+        builder.RegisterComponent(GetComponentInChildren<EntityVisionHitbox>());
         builder.RegisterEntryPoint<EntityEndurance>(Lifetime.Scoped);
     }
 }

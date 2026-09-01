@@ -8,7 +8,7 @@ namespace _Game.Scripts.GamePlay.Entities.Hitboxes
 [RequireComponent(typeof(BoxCollider2D))]
 public class EntityVisionHitbox: MonoBehaviour
 {
-    private BoxCollider2D _visionCollider;
+    [SerializeField] private BoxCollider2D _visionCollider;
     
     [Inject] private VisionModule _module;
 
@@ -19,14 +19,13 @@ public class EntityVisionHitbox: MonoBehaviour
     
     public void SetSize(Vector2 size)
     {
-        if (_visionCollider == null) _visionCollider = GetComponent<BoxCollider2D>();
         _visionCollider.size = size;
         CheckRadius();
     }
 
     private void CheckRadius()
     {
-        _visionCollider.enabled = _module.VisionRadius != 0;
+        _visionCollider.enabled = _module.VisionRadius > 0f;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
