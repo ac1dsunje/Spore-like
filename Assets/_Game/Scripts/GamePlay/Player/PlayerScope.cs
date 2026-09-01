@@ -4,7 +4,6 @@ using _Game.Scripts.GamePlay.Entities.Attack;
 using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Interfaces;
-using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.Player.Behaviours;
 using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.Player.Modules.Experience;
@@ -33,73 +32,40 @@ public class PlayerScope: EntityScope
         builder.RegisterInstance(_evolutionsDatabase);
         builder.RegisterInstance(_raritiesDatabase);
         
+        builder.RegisterComponent(GetComponentInChildren<RigidbodyController>());
+        builder.RegisterComponent(GetComponentInChildren<EntityVisionHitbox>());
+        builder.RegisterEntryPoint<EntityBiomeChecker>(Lifetime.Scoped);
+        
         builder.RegisterEntryPoint<PlayerController>(Lifetime.Scoped);
         builder.Register<PlayerModel>(Lifetime.Scoped);
         builder.Register<CombatBinder>(Lifetime.Scoped);
-
         builder.RegisterEntryPoint<PlayerInput>(Lifetime.Scoped);
         
-        // Experience
         builder.Register<ExperienceModule>(Lifetime.Scoped);
         
-        // Vision
         builder.RegisterEntryPoint<PlayerVision>(Lifetime.Scoped);
-        builder.RegisterComponent(GetComponentInChildren<EntityVisionHitbox>());
         builder.RegisterComponent(GetComponentInChildren<EntityLighting>());
-        builder.Register<VisionModule>(Lifetime.Scoped);
         
-        // Combat
         builder.RegisterComponent(GetComponentInChildren<PlayerHealth>())
             .AsSelf()
             .As<IDamageReceiver>()
             .As<IDamageReceiverController>();
-        builder.Register<HealthModule>(Lifetime.Scoped);
         
         builder.RegisterComponent(GetComponentInChildren<PlayerAttack>())
             .AsSelf()
             .As<IDamageSource>()
             .As<IDamageSourceController>()
             .As<IAttackController>();
-        builder.Register<AttackModule>(Lifetime.Scoped);
         
-        // Defense 
-        builder.Register<DefenseModule>(Lifetime.Scoped);
-        
-        // Endurance
-        builder.RegisterEntryPoint<EntityEndurance>(Lifetime.Scoped);
-        builder.Register<EnduranceModule>(Lifetime.Scoped);
-        
-        // Eating
         builder.RegisterComponent(GetComponentInChildren<PlayerMouth>());
-        builder.Register<MouthModule>(Lifetime.Scoped);
-        builder.Register<StomachModule>(Lifetime.Scoped);
         
-        // Movement
         builder.RegisterEntryPoint<EntityBasicMovement>(Lifetime.Scoped).As<IMovementController>();
-        builder.RegisterComponent(GetComponentInChildren<RigidbodyController>());
-        builder.Register<MovementModule>(Lifetime.Scoped);
         
-        // Biomes
-        builder.RegisterEntryPoint<EntityBiomeChecker>(Lifetime.Scoped);
-        builder.Register<BiomeModule>(Lifetime.Scoped);
-        
-        builder.Register<BreathingModule>(Lifetime.Scoped);
-        builder.Register<TemperatureModule>(Lifetime.Scoped);
-        
-        // Abilities
         builder.Register<AbilitiesModule>(Lifetime.Scoped);
         
-        // Evolutions
         builder.Register<EvolutionsModule>(Lifetime.Scoped);
         
-        // Buffs
         builder.Register<EntityBuffsModule>(Lifetime.Scoped);
-        
-        // Disguise
-        builder.Register<DisguiseModule>(Lifetime.Scoped);
-        
-        // Animation
-        builder.RegisterComponent(GetComponentInChildren<EntityAnimation>());
     }
 }
 }

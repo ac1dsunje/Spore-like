@@ -1,6 +1,4 @@
 ﻿using _Game.Scripts.GamePlay.Entities;
-using _Game.Scripts.GamePlay.Entities.Animation;
-using _Game.Scripts.GamePlay.Modules;
 using VContainer;
 using VContainer.Unity;
 
@@ -20,12 +18,7 @@ public class FoodScope: EntityScope
         builder.RegisterInstance(_config.EntityStatsConfig);
         
         builder.RegisterEntryPoint<FoodController>();
-        builder.RegisterComponent(GetComponentInChildren<EntityAnimation>());
         builder.RegisterComponent(GetComponentInChildren<FoodHealth>());
-
-        builder.Register<HealthModule>(Lifetime.Scoped);
-        builder.Register<DefenseModule>(Lifetime.Scoped);
-        builder.Register<DisguiseModule>(Lifetime.Scoped);
     }
 }
 }

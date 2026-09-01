@@ -2,7 +2,6 @@
 using _Game.Scripts.GamePlay.Entities.Animation;
 using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Interfaces;
-using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -19,6 +18,8 @@ public class SeaUrchinScope: EntityScope
         base.Configure(builder);
         builder.RegisterInstance(_entityStatsConfig);
         builder.RegisterInstance(_animationSettings);
+        
+        builder.RegisterComponent(GetComponentInChildren<RigidbodyController>());
 
         builder.RegisterEntryPoint<SeaUrchinAI>(Lifetime.Scoped);
 
@@ -28,16 +29,7 @@ public class SeaUrchinScope: EntityScope
         builder.RegisterComponent(GetComponent<SeaUrchinHealth>()).AsSelf().As<IDamageReceiver>().As<IDamageReceiverController>();
         builder.RegisterComponent(GetComponent<SeaUrchinAttackBehaviour>()).AsSelf().As<IDamageSource>().As<IDamageSourceController>();
         
-        builder.RegisterComponent(GetComponentInChildren<RigidbodyController>());
-        
-        builder.RegisterComponent(GetComponentInChildren<EntityAnimation>());
         builder.Register<CombatBinder>(Lifetime.Scoped);
-
-        builder.Register<DefenseModule>(Lifetime.Scoped);
-        builder.Register<HealthModule>(Lifetime.Scoped);
-        builder.Register<AttackModule>(Lifetime.Scoped);
-        builder.Register<MovementModule>(Lifetime.Scoped);
-        builder.Register<DisguiseModule>(Lifetime.Scoped);
     }
 }
 }
