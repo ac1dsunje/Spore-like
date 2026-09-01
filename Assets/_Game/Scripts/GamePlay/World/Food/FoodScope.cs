@@ -23,7 +23,6 @@ public class FoodScope: EntityScope
         builder.RegisterComponent(GetComponentInChildren<EntityAnimation>());
         builder.RegisterComponent(GetComponentInChildren<FoodHealth>());
 
-        builder.Register<EntityStats>(Lifetime.Scoped);
         builder.Register<HealthModule>(Lifetime.Scoped);
         builder.Register<DefenseModule>(Lifetime.Scoped);
         builder.Register<DisguiseModule>(Lifetime.Scoped);

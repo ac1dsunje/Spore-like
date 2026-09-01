@@ -38,8 +38,6 @@ public class SeaUrchinScope: EntityScope
         builder.Register<AttackModule>(Lifetime.Scoped);
         builder.Register<MovementModule>(Lifetime.Scoped);
         builder.Register<DisguiseModule>(Lifetime.Scoped);
-        
-        builder.Register<EntityStats>(Lifetime.Scoped);
     }
 }
 }
