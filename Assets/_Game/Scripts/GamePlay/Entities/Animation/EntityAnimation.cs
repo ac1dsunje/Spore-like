@@ -17,6 +17,7 @@ public class EntityAnimation: MonoBehaviour, IVisible
     
     private Sprite _currentSprite;
     
+    [Inject] private AnimationSettings _config;
     [Inject] private DisguiseModule _disguise;
 
     private void Awake()

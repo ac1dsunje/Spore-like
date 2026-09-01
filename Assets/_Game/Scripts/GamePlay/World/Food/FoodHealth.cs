@@ -15,16 +15,15 @@ public class FoodHealth: MonoBehaviour, IBiteable
     private DefenseModule _defense;
 
     [Inject]
-    private void Construct(HealthModule health, DefenseModule defense)
+    private void Construct(HealthModule health, DefenseModule defense, FoodConfig config)
     {
         _health = health;
         _defense = defense;
+        _config = config;
         
         _health.OnDamageTaken += SpawnParticles;
         _health.OnDeath += Die;
     }
-
-    public void SetConfig(FoodConfig config) => _config = config;
 
     public void TakeBite(float damage, float penetration)
     {

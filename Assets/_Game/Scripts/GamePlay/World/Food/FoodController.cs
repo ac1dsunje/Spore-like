@@ -1,22 +1,21 @@
 ﻿using _Game.Scripts.GamePlay.Entities.Animation;
-using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.World.Food
 {
-public class FoodController: MonoBehaviour
+public class FoodController: IStartable
 {
     [Inject] private EntityAnimation _entityAnimation;
+    [Inject] private AnimationSettings _animationSettings;
+    [Inject] private StatsConfig _statsConfig;
     [Inject] private EntityStats _stats;
-    [Inject] private FoodHealth _health;
 
-    public void Initialize(FoodConfig config)
+    public void Start()
     {
-        _health.SetConfig(config);
-
-        _entityAnimation.SetConfig(config.AnimationSettings);
+        _entityAnimation.SetConfig(_animationSettings);
         
-        _stats.AddInitialStats(config.StatsConfig.Stats);
+        _stats.AddInitialStats(_statsConfig.Stats);
     }
 }
 }

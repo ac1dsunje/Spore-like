@@ -7,9 +7,17 @@ namespace _Game.Scripts.GamePlay.World.Food
 {
 public class FoodScope: LifetimeScope
 {
+    private FoodConfig _config;
+    
+    public void SetConfig(FoodConfig config) => _config = config;
+
     protected override void Configure(IContainerBuilder builder)
     {
-        builder.RegisterComponent(GetComponentInChildren<FoodController>());
+        builder.RegisterInstance(_config).As<FoodConfig>();
+        builder.RegisterInstance(_config.AnimationSettings).As<AnimationSettings>();
+        builder.RegisterInstance(_config.StatsConfig).As<StatsConfig>();
+        
+        builder.RegisterEntryPoint<FoodController>();
         builder.RegisterComponent(GetComponentInChildren<EntityAnimation>());
         builder.RegisterComponent(GetComponentInChildren<FoodHealth>());
 
