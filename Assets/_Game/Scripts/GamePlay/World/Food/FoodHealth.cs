@@ -34,13 +34,13 @@ public class FoodHealth: MonoBehaviour, IBiteable
     private void SpawnParticles(float dmg)
     {
         var particles = Instantiate(
-            _config.ParticlesSettings.Prefab,
+            _config.AnimationSettings.ParticlesSettings.Prefab,
             transform.position,
             Quaternion.identity
         );
 
         var main = particles.main;
-        main.startColor = _config.ParticlesSettings.Color;
+        main.startColor = _config.AnimationSettings.ParticlesSettings.Color;
     }
 
     private void Die()

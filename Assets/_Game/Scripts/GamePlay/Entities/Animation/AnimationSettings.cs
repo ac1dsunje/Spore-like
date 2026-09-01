@@ -8,5 +8,6 @@ public class AnimationSettings
 {
     [field: SerializeField] public Sprite Sprite { get; private set; }
     [field: SerializeField] public RuntimeAnimatorController Controller { get; private set; }
+    [field: SerializeField] public ParticlesSettings ParticlesSettings { get; private set; }
 }
 }

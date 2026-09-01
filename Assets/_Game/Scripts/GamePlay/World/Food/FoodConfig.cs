@@ -9,6 +9,5 @@ public class FoodConfig: ScriptableObject
     [field: SerializeField] public EntityStatsConfig EntityStatsConfig { get; private set; }
     [field: SerializeField] public int FeedAmount { get; private set; } = 1;
     [field: SerializeField] public AnimationSettings AnimationSettings { get; private set; }
-    [field: SerializeField] public ParticlesSettings ParticlesSettings { get; private set; }
 }
 }
