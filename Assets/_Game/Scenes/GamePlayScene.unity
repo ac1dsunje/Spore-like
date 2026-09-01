@@ -670,9 +670,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1076035776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 452de169e77e43978e1a991458fd5cd7, type: 3}
+  m_Script: {fileID: 11500000, guid: 03bc887852c84b46a14793f7f8da36f7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Enemies.EnemiesSpawner
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.EntitySpawner
   _prefab: {fileID: -4871289679674323519, guid: bca1838abf7c0854ea5d10dbf45cf4c8, type: 3}
   _spawnPoint: {x: 2, y: 3}
   _entityStatsConfig: {fileID: 11400000, guid: 0a0aed94d3d607b4b90669d2fdcc4b7e, type: 2}
