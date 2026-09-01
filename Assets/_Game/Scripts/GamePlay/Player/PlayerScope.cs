@@ -15,7 +15,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Player
 {
-public class PlayerScope: LifetimeScope
+public class PlayerScope: EntityScope
 {
     [SerializeField] private EntityStatsConfig _entityStatsConfig;
     [SerializeField] private AnimationSettings _animationSettings;
@@ -26,6 +26,7 @@ public class PlayerScope: LifetimeScope
     
     protected override void Configure(IContainerBuilder builder)
     {
+        base.Configure(builder);
         builder.RegisterInstance(_entityStatsConfig);
         builder.RegisterInstance(_animationSettings);
         builder.RegisterInstance(_playerExperienceConfig);
@@ -34,7 +35,6 @@ public class PlayerScope: LifetimeScope
         
         builder.RegisterEntryPoint<PlayerController>(Lifetime.Scoped);
         builder.Register<PlayerModel>(Lifetime.Scoped);
-        builder.Register<EntityStats>(Lifetime.Scoped);
         builder.Register<CombatBinder>(Lifetime.Scoped);
 
         builder.RegisterEntryPoint<PlayerInput>(Lifetime.Scoped);

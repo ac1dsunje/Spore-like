@@ -1,11 +1,12 @@
-﻿using _Game.Scripts.GamePlay.Entities.Animation;
+﻿using _Game.Scripts.GamePlay.Entities;
+using _Game.Scripts.GamePlay.Entities.Animation;
 using _Game.Scripts.GamePlay.Modules;
 using VContainer;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.World.Food
 {
-public class FoodScope: LifetimeScope
+public class FoodScope: EntityScope
 {
     private FoodConfig _config;
     
@@ -13,6 +14,7 @@ public class FoodScope: LifetimeScope
 
     protected override void Configure(IContainerBuilder builder)
     {
+        base.Configure(builder);
         builder.RegisterInstance(_config);
         builder.RegisterInstance(_config.AnimationSettings);
         builder.RegisterInstance(_config.EntityStatsConfig);

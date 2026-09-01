@@ -9,13 +9,14 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Enemies.SeaUrchin
 {
-public class SeaUrchinScope: LifetimeScope
+public class SeaUrchinScope: EntityScope
 {
     [SerializeField] private EntityStatsConfig _entityStatsConfig;
     [SerializeField] private AnimationSettings _animationSettings;
 
     protected override void Configure(IContainerBuilder builder)
     {
+        base.Configure(builder);
         builder.RegisterInstance(_entityStatsConfig);
         builder.RegisterInstance(_animationSettings);
 
