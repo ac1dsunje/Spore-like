@@ -9,8 +9,9 @@ public class VisionModule: StatModule
 {
     public float VisionRadius { get; private set; }
 
+    public float LightingRadius { get; private set; }
+
     private float _sensorics;
-    private float _lightingRadius;
 
     private bool _useLight;
 
@@ -31,7 +32,7 @@ public class VisionModule: StatModule
     public void SetLight(bool state)
     {
         _useLight = state;
-        OnLightingUpdated?.Invoke(_lightingRadius, _useLight);
+        OnLightingUpdated?.Invoke(LightingRadius, _useLight);
     }
 
     private void UpdateVisionRadius(float value)
@@ -42,8 +43,8 @@ public class VisionModule: StatModule
 
     private void UpdateLightingRadius(float value)
     {
-        _lightingRadius = value;
-        OnLightingUpdated?.Invoke(_lightingRadius, _useLight);
+        LightingRadius = value;
+        OnLightingUpdated?.Invoke(LightingRadius, _useLight);
     }
 
     private void UpdateSensorics(float value)

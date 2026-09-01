@@ -21,11 +21,15 @@ public class EntityLighting: MonoBehaviour
     private void Construct(VisionModule module)
     {
         _module = module;
-        
+        _lighting.enabled = _module.LightingRadius > 0f;
         _module.OnLightingUpdated += UpdateLighting;
     }
 
-    private void UpdateLighting(float value, bool state) => _lighting.pointLightOuterRadius = state ? value : 0f;
+    private void UpdateLighting(float value, bool state)
+    {
+        _lighting.enabled = _module.LightingRadius > 0f;
+        _lighting.pointLightOuterRadius = state ? value : 0f;
+    }
 
     private void OnDestroy()
     {

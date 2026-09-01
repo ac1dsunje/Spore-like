@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639227782450882758
+  platformSettingsDirtyTick: 639238944788043686
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -164,8 +164,6 @@ ScriptedImporter:
       - {x: 8, y: -4}
       - {x: 8, y: -2}
       - {x: 7, y: -2}
-      - {x: 5, y: -3}
-      - {x: 5, y: 1}
       - {x: 7, y: 1}
       - {x: 8, y: 2}
       - {x: 8, y: 3}
@@ -186,23 +184,8 @@ ScriptedImporter:
       - {x: 3, y: 3}
       - {x: 2, y: 4}
       - {x: 1, y: 4}
-      - {x: 1, y: 1}
-      - {x: 3, y: 1}
-      - {x: 3, y: -3}
-      - {x: 2, y: -3}
-      - {x: 2, y: -5}
-      - {x: -1, y: -5}
-      - {x: 0, y: -3}
-      - {x: 0, y: 0}
-      - {x: -1, y: 0}
-      - {x: -3, y: -2}
-      - {x: -4, y: -1}
-      - {x: -2, y: 0}
-      - {x: -1, y: 1}
       - {x: -1, y: 3}
       - {x: -3, y: 3}
-      - {x: -5, y: 3}
-      - {x: -5, y: 4}
       - {x: -3, y: 4}
       - {x: -3, y: 6}
       - {x: -8, y: 7}
