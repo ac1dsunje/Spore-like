@@ -12,9 +12,9 @@ namespace _Game.Scripts.GamePlay.World
 public readonly struct SpawnedFood
 {
     public readonly Transform Parent;
-    public readonly FoodConfig Config;
+    public readonly EntityConfig Config;
         
-    public  SpawnedFood(Transform parent, FoodConfig config)
+    public  SpawnedFood(Transform parent, EntityConfig config)
     {
         Parent = parent;
         Config = config;
@@ -75,13 +75,11 @@ public class EnvironmentSpawner: MonoBehaviour
     
     private bool CanPlaceObject(float chance) => Random.Range(0, 100) <= chance;
 
-    private void SpawnPlant(Vector3Int setPos, Transform parent, FoodConfig config)
+    private void SpawnPlant(Vector3Int setPos, Transform parent, EntityConfig config)
     {
         var position = new Vector3(setPos.x + 0.5f, setPos.y + 0.5f, setPos.z);
         var plant = Instantiate(_prefab, position, Quaternion.identity, parent);
         plant.SetConfig(config);
-        plant.SetAnimationSetting(config.AnimationSettings);
-        plant.SetStatsSettings(config.EntityStatsConfig);
         plant.Build();
         _spawnedObjects[setPos] = plant;
     }

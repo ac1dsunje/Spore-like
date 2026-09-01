@@ -9,15 +9,21 @@ public abstract class EntityScope: LifetimeScope
 {
     private AnimationSettings _animationSettings;
     private EntityStatsConfig _entityStatsConfig;
-    
-    public void SetAnimationSetting(AnimationSettings settings) => _animationSettings = settings;
-    public void SetStatsSettings(EntityStatsConfig config) => _entityStatsConfig = config;
+    private EntityConfig _entityConfig;
+
+    public void SetConfig(EntityConfig entityConfig)
+    {
+        _entityConfig = entityConfig;
+        _animationSettings = entityConfig.AnimationSettings;
+        _entityStatsConfig = entityConfig.EntityStatsConfig;
+    }
     
     protected override void Configure(IContainerBuilder builder)
     {
         // Configs
         builder.RegisterInstance(_animationSettings);
         builder.RegisterInstance(_entityStatsConfig);
+        builder.RegisterInstance(_entityConfig);
         
         // Modules
         builder.Register<EntityStats>(Lifetime.Scoped);

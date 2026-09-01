@@ -272,10 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.EntitySpawner
   _prefab: {fileID: 2822999142199602542, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
   _spawnPoint: {x: 0, y: 0}
-  _entityStatsConfig: {fileID: 11400000, guid: ba7be4736a4236543ba175179ecef16d, type: 2}
-  _animationSettings:
-    <Sprite>k__BackingField: {fileID: -9048744825557176607, guid: 7e660a4087c8141408b939d08c80a53f, type: 3}
-    <Controller>k__BackingField: {fileID: 7898678084846905597, guid: 7e660a4087c8141408b939d08c80a53f, type: 3}
+  _entityConfig: {fileID: 11400000, guid: 1b84c799409aac94daa8e831b32fc12a, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,10 +672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.EntitySpawner
   _prefab: {fileID: -4871289679674323519, guid: bca1838abf7c0854ea5d10dbf45cf4c8, type: 3}
   _spawnPoint: {x: 2, y: 3}
-  _entityStatsConfig: {fileID: 11400000, guid: 0a0aed94d3d607b4b90669d2fdcc4b7e, type: 2}
-  _animationSettings:
-    <Sprite>k__BackingField: {fileID: 3147233298308361737, guid: e1e8f9e2112581f4c848d9ee20c89f4a, type: 3}
-    <Controller>k__BackingField: {fileID: 0}
+  _entityConfig: {fileID: 11400000, guid: 2f2e867e51897714a91a8feba992ece0, type: 2}
 --- !u!224 &1080735610 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4755174928454083572, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}

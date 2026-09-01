@@ -1,4 +1,5 @@
 ﻿using System;
+using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 using VContainer;
@@ -9,13 +10,13 @@ public class FoodHealth: MonoBehaviour, IBiteable
 {
     public event Action<int> OnEaten;
     
-    private FoodConfig _config;
+    private EntityConfig _config;
     
     private HealthModule _health;
     private DefenseModule _defense;
 
     [Inject]
-    private void Construct(HealthModule health, DefenseModule defense, FoodConfig config)
+    private void Construct(HealthModule health, DefenseModule defense, EntityConfig config)
     {
         _health = health;
         _defense = defense;
@@ -45,7 +46,7 @@ public class FoodHealth: MonoBehaviour, IBiteable
 
     private void Die()
     {
-        OnEaten?.Invoke(_config.FeedAmount);
+        OnEaten?.Invoke(_config.ExperienceAmount);
         
         Destroy(gameObject, 0.5f);
         
