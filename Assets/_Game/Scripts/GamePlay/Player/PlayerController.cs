@@ -13,9 +13,8 @@ public class PlayerController : IStartable
     public void Start()
     {
         Model.Initialize();
-        _playerRegistry.AddPlayer(this);
-        
         Buffs.Initialize();
+        _playerRegistry.AddPlayer(this);
     }
 }
 }

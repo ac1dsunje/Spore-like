@@ -25,7 +25,7 @@ public class EntityStats
         }
     }
     
-    public void AddInitialStats(List<Stat> stats)
+    private void AddInitialStats(List<Stat> stats)
     {
         foreach (var stat in stats)
         {

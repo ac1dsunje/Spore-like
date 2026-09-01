@@ -12,15 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0030ccaa56b24bdfbe9c600651de2505, type: 3}
   m_Name: Seaweed
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Food.FoodConfig
-  <StatsConfig>k__BackingField: {fileID: 11400000, guid: 3021d32a4922e224fb7e002e31dd6957, type: 2}
+  <EntityStatsConfig>k__BackingField: {fileID: 11400000, guid: 712aa946645c30842b68c28966aabdc5, type: 2}
   <FeedAmount>k__BackingField: 1
   <AnimationSettings>k__BackingField:
     <Sprite>k__BackingField: {fileID: 5988911217033729031, guid: 8e3447b9397ed424e8f50118639fc8b2, type: 3}
     <Controller>k__BackingField: {fileID: 3418233565448537539, guid: 8e3447b9397ed424e8f50118639fc8b2, type: 3}
-    <CastShadows>k__BackingField: 0
-  <ParticlesConfig>k__BackingField:
-    <Color>k__BackingField: {r: 0.5176471, g: 0.5921569, b: 0.30980393, a: 1}
-    <Prefab>k__BackingField: {fileID: 1057120428620177345, guid: d8e716c34125011438a86971c35e78c7, type: 3}
   <ParticlesSettings>k__BackingField:
     <Color>k__BackingField: {r: 0.5176471, g: 0.5921569, b: 0.30980393, a: 1}
     <Prefab>k__BackingField: {fileID: 1057120428620177345, guid: d8e716c34125011438a86971c35e78c7, type: 3}
