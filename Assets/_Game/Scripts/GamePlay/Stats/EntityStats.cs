@@ -16,10 +16,11 @@ public class EntityStats
     public event Action<StatType, float> OnStatUpdated;
     
     [Inject] private StatTypeConfig _config;
+    [Inject] private EntityStatsConfig _entityStatsConfig;
     
-    public void Initialize(StatsConfig[] configs)
+    public void Initialize()
     {
-        foreach (var config in configs)
+        foreach (var config in _entityStatsConfig.InitialConfigs)
         {
             AddInitialStats(config.Stats);
         }

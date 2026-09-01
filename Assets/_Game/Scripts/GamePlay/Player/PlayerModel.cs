@@ -25,10 +25,8 @@ public class PlayerModel
     public ExperienceModule Experience { get; private set; }
     public AbilitiesModule Abilities { get; private set; }
 
-    private readonly EntityStatsConfig _config;
-
     [Inject]
-    public PlayerModel(EntityStatsConfig config, EntityStats stats, VisionModule vision, HealthModule health, 
+    public PlayerModel(EntityStats stats, VisionModule vision, HealthModule health, 
         DefenseModule defense, EnduranceModule endurance, MouthModule mouth, AttackModule attack, MovementModule movement,
         TemperatureModule temperature, ExperienceModule experience, AbilitiesModule abilities, EvolutionsModule evolutions,
         DisguiseModule disguise, BiomeModule biome, BreathingModule breathing, StomachModule stomach)
@@ -49,13 +47,11 @@ public class PlayerModel
         Biome = biome;
         Breathing = breathing;
         Stomach = stomach;
-
-        _config = config;
     }
     
     public void Initialize()
     {
-        Stats.Initialize(_config.InitialConfigs);
+        Stats.Initialize();
         Abilities.SetModel(this);
         Evolutions.SetModel(this);
         Experience.Initialize(this);
