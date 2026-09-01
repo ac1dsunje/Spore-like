@@ -27,6 +27,12 @@ public class EntityAnimation: MonoBehaviour, IVisible
         _collider = GetComponent<PolygonCollider2D>();
     }
 
+    private void Start()
+    {
+        SetSprite(_config.Sprite);
+        SetAnimator(_config.Controller);
+    }
+
     private void LateUpdate()
     {
         SetColliderShape(_renderer.sprite);
@@ -62,12 +68,6 @@ public class EntityAnimation: MonoBehaviour, IVisible
     {
         _renderer.enabled = visible;
         _animator.enabled = visible;
-    }
-
-    public void SetConfig(AnimationSettings settings)
-    {
-        SetSprite(settings.Sprite);
-        SetAnimator(settings.Controller);
     }
 
     private void SetSprite(Sprite sprite) => _renderer.sprite = sprite;

@@ -1,5 +1,4 @@
-﻿using _Game.Scripts.GamePlay.Entities.Animation;
-using VContainer;
+﻿using VContainer;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Enemies.SeaUrchin
@@ -8,13 +7,10 @@ public class SeaUrchinController: IStartable
 {
     [Inject] private EntityStats _entityStats;
     [Inject] private EntityStatsConfig _entityStatsConfig;
-    [Inject] private AnimationSettings _animationSettings;
-    [Inject] private EntityAnimation _entityAnimation;
 
     public void Start()
     {
         _entityStats.Initialize(_entityStatsConfig.InitialConfigs);
-        _entityAnimation.SetConfig(_animationSettings);
     }
 }
 }
