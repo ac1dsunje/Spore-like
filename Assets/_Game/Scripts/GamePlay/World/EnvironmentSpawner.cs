@@ -23,7 +23,7 @@ public readonly struct SpawnedFood
 
 public class EnvironmentSpawner: MonoBehaviour
 {
-    [SerializeField] private EntityScope _prefab;
+    [SerializeField] private FoodScope _prefab;
      
     private WorldTileRenderer _tileRenderer;
     
@@ -78,13 +78,12 @@ public class EnvironmentSpawner: MonoBehaviour
     private void SpawnPlant(Vector3Int setPos, Transform parent, FoodConfig config)
     {
         var position = new Vector3(setPos.x + 0.5f, setPos.y + 0.5f, setPos.z);
-        var go = Instantiate(_prefab, position, Quaternion.identity, parent);
-        var item = go.GetComponent<FoodScope>();
-        item.SetConfig(config);
-        item.SetAnimationSetting(config.AnimationSettings);
-        item.SetStatsSettings(config.EntityStatsConfig);
-        item.Build();
-        _spawnedObjects[setPos] = go;
+        var plant = Instantiate(_prefab, position, Quaternion.identity, parent);
+        plant.SetConfig(config);
+        plant.SetAnimationSetting(config.AnimationSettings);
+        plant.SetStatsSettings(config.EntityStatsConfig);
+        plant.Build();
+        _spawnedObjects[setPos] = plant;
     }
 
     private void OnDestroy()
