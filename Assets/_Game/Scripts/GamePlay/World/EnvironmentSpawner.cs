@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.World.Biomes;
-using _Game.Scripts.GamePlay.World.Food;
 using UnityEngine;
 using VContainer;
 using Random = UnityEngine.Random;
@@ -23,17 +22,19 @@ public readonly struct SpawnedFood
 
 public class EnvironmentSpawner: MonoBehaviour
 {
-    [SerializeField] private FoodScope _prefab;
+    [SerializeField] private EntityScope _prefab;
      
     private WorldTileRenderer _tileRenderer;
+    private EntitySpawner _spawner;
     
     private readonly Dictionary<Vector3Int, SpawnedFood> _spawnedFoods = new();
     private readonly Dictionary<Vector3Int, EntityScope> _spawnedObjects = new();
     
     [Inject]
-    private void Construct(WorldTileRenderer generator)
+    private void Construct(WorldTileRenderer generator, EntitySpawner spawner)
     {
         _tileRenderer = generator;
+        _spawner = spawner;
         _tileRenderer.OnTileCreated += TryCreateEnvironment;
         _tileRenderer.OnTileLoaded += TryLoadEnvironment;
         _tileRenderer.OnTileUnloaded += UnloadEnvironment;
@@ -78,10 +79,8 @@ public class EnvironmentSpawner: MonoBehaviour
     private void SpawnPlant(Vector3Int setPos, Transform parent, EntityConfig config)
     {
         var position = new Vector3(setPos.x + 0.5f, setPos.y + 0.5f, setPos.z);
-        var plant = Instantiate(_prefab, position, Quaternion.identity, parent);
-        plant.SetConfig(config);
-        plant.Build();
-        _spawnedObjects[setPos] = plant;
+        
+        _spawnedObjects[setPos] = _spawner.Spawn(_prefab, position, parent, config);
     }
 
     private void OnDestroy()

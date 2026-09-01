@@ -1,6 +1,7 @@
 ﻿using _Game.Scripts.GamePlay.Abilities;
 using _Game.Scripts.GamePlay.Buffs;
 using _Game.Scripts.GamePlay.CameraManager;
+using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Evolutions.UI;
 using _Game.Scripts.GamePlay.Evolutions.UI.Choosing;
 using _Game.Scripts.GamePlay.Types;
@@ -33,6 +34,7 @@ public class GameplayScope: LifetimeScope
         builder.RegisterComponentInHierarchy<WorldGenerator>();
         builder.RegisterComponentInHierarchy<WorldTileRenderer>();
         builder.RegisterComponentInHierarchy<EnvironmentSpawner>();
+        builder.RegisterComponentInHierarchy<EntitySpawner>();
 
         builder.RegisterComponentInHierarchy<DayNightManager>();
         
