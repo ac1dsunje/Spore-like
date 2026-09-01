@@ -1121,7 +1121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b064516a984fecaf8cfe998a17c179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.World.EnvironmentSpawner
-  _foodPrefab: {fileID: 2242808679465882649, guid: fb18b5f42f61c0248906eabff0079a6b, type: 3}
+  _prefab: {fileID: 2836576136578488979, guid: fb18b5f42f61c0248906eabff0079a6b, type: 3}
 --- !u!114 &6777336183478083772
 MonoBehaviour:
   m_ObjectHideFlags: 0

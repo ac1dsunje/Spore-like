@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.World.Biomes;
 using _Game.Scripts.GamePlay.World.Food;
 using UnityEngine;
@@ -22,12 +23,12 @@ public readonly struct SpawnedFood
 
 public class EnvironmentSpawner: MonoBehaviour
 {
-    [SerializeField] private GameObject _foodPrefab;
+    [SerializeField] private EntityScope _prefab;
      
     private WorldTileRenderer _tileRenderer;
     
     private readonly Dictionary<Vector3Int, SpawnedFood> _spawnedFoods = new();
-    private readonly Dictionary<Vector3Int, GameObject> _spawnedObjects = new();
+    private readonly Dictionary<Vector3Int, EntityScope> _spawnedObjects = new();
     
     [Inject]
     private void Construct(WorldTileRenderer generator)
@@ -77,7 +78,7 @@ public class EnvironmentSpawner: MonoBehaviour
     private void SpawnPlant(Vector3Int setPos, Transform parent, FoodConfig config)
     {
         var position = new Vector3(setPos.x + 0.5f, setPos.y + 0.5f, setPos.z);
-        var go = Instantiate(_foodPrefab, position, Quaternion.identity, parent);
+        var go = Instantiate(_prefab, position, Quaternion.identity, parent);
         var item = go.GetComponent<FoodScope>();
         item.SetConfig(config);
         item.SetAnimationSetting(config.AnimationSettings);
