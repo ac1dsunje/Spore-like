@@ -1,5 +1,4 @@
 ﻿using _Game.Scripts.GamePlay.Entities;
-using _Game.Scripts.GamePlay.Entities.Animation;
 using _Game.Scripts.GamePlay.Entities.Attack;
 using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Evolutions;
@@ -16,8 +15,6 @@ namespace _Game.Scripts.GamePlay.Player
 {
 public class PlayerScope: EntityScope
 {
-    [SerializeField] private EntityStatsConfig _entityStatsConfig;
-    [SerializeField] private AnimationSettings _animationSettings;
     [SerializeField] private PlayerExperienceConfig _playerExperienceConfig;
     
     [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
@@ -26,8 +23,6 @@ public class PlayerScope: EntityScope
     protected override void Configure(IContainerBuilder builder)
     {
         base.Configure(builder);
-        builder.RegisterInstance(_entityStatsConfig);
-        builder.RegisterInstance(_animationSettings);
         builder.RegisterInstance(_playerExperienceConfig);
         builder.RegisterInstance(_evolutionsDatabase);
         builder.RegisterInstance(_raritiesDatabase);

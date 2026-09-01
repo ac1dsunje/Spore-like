@@ -14,8 +14,6 @@ public class FoodScope: EntityScope
     {
         base.Configure(builder);
         builder.RegisterInstance(_config);
-        builder.RegisterInstance(_config.AnimationSettings);
-        builder.RegisterInstance(_config.EntityStatsConfig);
         
         builder.RegisterEntryPoint<FoodController>();
         builder.RegisterComponent(GetComponentInChildren<FoodHealth>());

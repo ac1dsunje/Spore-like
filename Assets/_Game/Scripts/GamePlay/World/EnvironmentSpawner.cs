@@ -80,6 +80,8 @@ public class EnvironmentSpawner: MonoBehaviour
         var go = Instantiate(_foodPrefab, position, Quaternion.identity, parent);
         var item = go.GetComponent<FoodScope>();
         item.SetConfig(config);
+        item.SetAnimationSetting(config.AnimationSettings);
+        item.SetStatsSettings(config.EntityStatsConfig);
         item.Build();
         _spawnedObjects[setPos] = go;
     }
