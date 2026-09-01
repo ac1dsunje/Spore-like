@@ -1,6 +1,7 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.CameraManager;
 using _Game.Scripts.GamePlay.Entities;
+using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;

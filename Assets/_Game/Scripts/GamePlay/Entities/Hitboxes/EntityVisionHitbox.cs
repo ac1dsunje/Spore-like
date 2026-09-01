@@ -3,7 +3,7 @@ using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 using VContainer;
 
-namespace _Game.Scripts.GamePlay.Entities
+namespace _Game.Scripts.GamePlay.Entities.Hitboxes
 {
 [RequireComponent(typeof(BoxCollider2D))]
 public class EntityVisionHitbox: MonoBehaviour
