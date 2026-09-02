@@ -1,26 +1,23 @@
-﻿using _Game.Scripts.GamePlay.Entities;
+﻿using System;
+using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
-using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Enemies.SeaUrchin
 {
-public class SeaUrchinHealth: MonoBehaviour, IDamageReceiverController
+public class SeaUrchinHealth: IStartable, IDisposable, IDamageReceiverController
 {
-    private HealthModule _healthModule;
-    private DefenseModule _defenseModule;
+    [Inject] private HealthModule _healthModule;
+    [Inject] private DefenseModule _defenseModule;
+    [Inject] private BodyHitbox _hitbox;
+    [Inject] private EntitiesRegistry _entitiesRegistry;
     private IDamageSource _damageSource;
-    private BodyHitbox _hitbox;
 
-    [Inject]
-    private void Construct(DefenseModule defenseModule, HealthModule healthModule, BodyHitbox hitbox)
+    public void Start()
     {
-        _defenseModule = defenseModule;
-        _healthModule = healthModule;
-        _hitbox = hitbox;
-
         _healthModule.OnDeath += Die;
         _hitbox.OnHit += TakeDamage;
     }
@@ -37,15 +34,15 @@ public class SeaUrchinHealth: MonoBehaviour, IDamageReceiverController
         hit.Source?.SetDamageDealt(damage);
     }
 
-    private void Die()
+    private void Die(HealthModule health)
     {
-        Destroy(gameObject);
+        _entitiesRegistry.DestroyEntityByHealth(health);
     }
 
-    private void OnDestroy()
+    public void Dispose()
     {
         _healthModule.OnDeath -= Die;
-        _healthModule.OnDeath -= Die;
+        _hitbox.OnHit -= TakeDamage;
     }
 }
 }

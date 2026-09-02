@@ -15,7 +15,7 @@ public class SeaUrchinScope: EntityScope
         
         builder.RegisterEntryPoint<CombatBinder>(Lifetime.Scoped);
         
-        builder.RegisterComponent(GetComponent<SeaUrchinHealth>()).AsSelf().As<IDamageReceiverController>();
+        builder.RegisterEntryPoint<SeaUrchinHealth>().AsSelf().As<IDamageReceiverController>();
         builder.RegisterEntryPoint<SeaUrchinAttackBehaviour>().AsSelf().As<IDamageSource>().As<IDamageSourceController>();
     }
 }

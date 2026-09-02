@@ -25,7 +25,6 @@ public class PlayerHealth : IStartable, IDamageReceiverController, IDisposable
     public void Start()
     {
         _health.OnDamageTaken += StopRegeneration;
-        _health.OnDeath += Die;
         _hitbox.OnHit += TakeDamage;
     }
 
@@ -68,19 +67,12 @@ public class PlayerHealth : IStartable, IDamageReceiverController, IDisposable
         StartRegeneration();
     }
 
-    private void Die()
-    {
-        //_runner.Stop(RegenerationKey);
-        //_runner.Stop(WaitKey);
-    }
-
     public void Dispose()
     {
         _runner.Stop(RegenerationKey);
         _runner.Stop(WaitKey);
 
         _health.OnDamageTaken -= StopRegeneration;
-        _health.OnDeath -= Die;
         _hitbox.OnHit -= TakeDamage;
     }
 }

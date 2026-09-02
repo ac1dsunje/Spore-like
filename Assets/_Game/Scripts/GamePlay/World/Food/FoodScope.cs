@@ -9,7 +9,7 @@ public class FoodScope: EntityScope
     protected override void Configure(IContainerBuilder builder)
     {
         base.Configure(builder);
-        builder.RegisterComponent(GetComponentInChildren<FoodHealth>());
+        builder.RegisterEntryPoint<FoodHealth>();
     }
 }
 }

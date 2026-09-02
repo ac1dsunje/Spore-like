@@ -1,32 +1,24 @@
-﻿using _Game.Scripts.GamePlay.Entities;
+﻿using System;
+using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Modules;
-using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.World.Food
 {
-public class FoodHealth: MonoBehaviour
+public class FoodHealth: IStartable, IDisposable
 {
-    private EntityConfig _config;
-    
-    private HealthModule _health;
-    private DefenseModule _defense;
-    private MovementModule _movement;
-    private BodyHitbox _hitBox;
-    private ParticlesSpawner _particles;
+    [Inject] private EntityConfig _config;
+    [Inject] private HealthModule _health;
+    [Inject] private DefenseModule _defense;
+    [Inject] private MovementModule _movement;
+    [Inject] private BodyHitbox _hitBox;
+    [Inject] private ParticlesSpawner _particles;
+    [Inject] private EntitiesRegistry _entitiesRegistry;
 
-    [Inject]
-    private void Construct(HealthModule health, DefenseModule defense, MovementModule movement,
-        EntityConfig config, BodyHitbox hitbox, ParticlesSpawner particlesSpawner)
+    public void Start()
     {
-        _health = health;
-        _defense = defense;
-        _movement = movement;
-        _config = config;
-        _hitBox = hitbox;
-        _particles = particlesSpawner;
-        
         _health.OnDamageTaken += SpawnParticles;
         _health.OnDeath += Die;
         _hitBox.OnBite += TakeBite;
@@ -40,19 +32,20 @@ public class FoodHealth: MonoBehaviour
 
     private void SpawnParticles(float dmg)
     {
-        _particles.Spawn(_config.AnimationSettings.OnHitParticles, _movement.Transform.position, _config.AnimationSettings.Color);
+        _particles.Spawn(
+            _config.AnimationSettings.OnHitParticles, 
+            _movement.Transform.position, 
+            _config.AnimationSettings.Color
+            );
     }
 
-    private void Die()
+    private void Die(HealthModule health)
     {
         _hitBox.SetEaten(_config.ExperienceAmount);
-        
-        Destroy(gameObject, 0.5f);
-        
-        gameObject.SetActive(false);
+        _entitiesRegistry.DestroyEntityByHealth(health);
     }
     
-    private void OnDestroy()
+    public void Dispose()
     {
         _health.OnDamageTaken -= SpawnParticles;
         _health.OnDeath -= Die;

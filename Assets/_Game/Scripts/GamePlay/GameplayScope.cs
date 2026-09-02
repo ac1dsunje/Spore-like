@@ -36,9 +36,6 @@ public class GameplayScope: LifetimeScope
         builder.RegisterInstance(_worldConfig);
         builder.RegisterInstance(_buffsDatabase);
         
-        // Player
-        builder.Register<PlayerRegistry>(Lifetime.Singleton);
-        
         // World
         builder.RegisterComponentInHierarchy<WorldGenerator>();
         builder.RegisterComponentInHierarchy<WorldTileRenderer>();
@@ -72,6 +69,10 @@ public class GameplayScope: LifetimeScope
         
         // Particles
         builder.RegisterComponentInHierarchy<ParticlesSpawner>();
+        
+        // Entities
+        builder.RegisterComponentInHierarchy<EntitiesRegistry>();
+        builder.Register<PlayerRegistry>(Lifetime.Singleton);
     }
 }
 }

@@ -11,7 +11,7 @@ public class HealthModule: StatModule, IResource
     public float Health { get; private set; }
     public float Regeneration { get; private set; }
     
-    public event Action OnDeath;
+    public event Action<HealthModule> OnDeath;
     public event Action<float> OnDamageTaken;
     public event Action OnHitTaken;
     public event Action<float> OnHealed;
@@ -66,6 +66,6 @@ public class HealthModule: StatModule, IResource
 
     private void UpdateRegeneration(float value) => Regeneration = value;
 
-    private void Die() => OnDeath?.Invoke();
+    private void Die() => OnDeath?.Invoke(this);
 }
 }
