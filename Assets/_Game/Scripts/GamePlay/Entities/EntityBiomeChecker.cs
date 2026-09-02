@@ -1,7 +1,6 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Buffs;
 using _Game.Scripts.GamePlay.Modules;
-using _Game.Scripts.GamePlay.Player.Modules;
 using _Game.Scripts.GamePlay.World;
 using _Game.Scripts.GamePlay.World.Biomes;
 using UnityEngine;
