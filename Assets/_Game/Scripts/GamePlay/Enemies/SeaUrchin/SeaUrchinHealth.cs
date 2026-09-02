@@ -23,14 +23,14 @@ public class SeaUrchinHealth: MonoBehaviour, IDamageReceiver, IDamageReceiverCon
 
     public void SetDamageSource(IDamageSource source) => _damageSource = source;
 
-    public float TakeDamage(HitInfo hit)
+    public void TakeDamage(HitInfo hit)
     {
         var damage = _defenseModule.ApplyResistance(hit.Damage, hit.IgnoreResistance);
         _healthModule.TakeDamage(damage);
         var returnedDamage = _defenseModule.ReflectDamage(damage);
         HitInfo returnedHit = new(returnedDamage, 0, _damageSource, null);
         hit.Receiver?.TakeDamage(returnedHit);
-        return damage;
+        hit.Source?.SetDamageDealt(damage);
     }
 
     private void Die()

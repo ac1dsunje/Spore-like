@@ -23,6 +23,6 @@ public interface IDamageSource
 
 public interface IDamageReceiver
 {
-    public float TakeDamage(HitInfo hit);
+    public void TakeDamage(HitInfo hit);
 }
 }

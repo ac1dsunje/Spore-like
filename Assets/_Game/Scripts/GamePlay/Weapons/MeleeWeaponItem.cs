@@ -21,7 +21,7 @@ public class MeleeWeaponItem: MonoBehaviour
         if (other.TryGetComponent(out IDamageReceiver damageReceiver))
         {
             if (damageReceiver == _hit.Receiver) return;
-            _hit.Source.SetDamageDealt(damageReceiver.TakeDamage(_hit));
+            damageReceiver.TakeDamage(_hit);
         }
     }
 

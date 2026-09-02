@@ -25,14 +25,14 @@ public class PlayerHealth: MonoBehaviour, IDamageReceiver, IDamageReceiverContro
 
     public void SetDamageSource(IDamageSource source) => _damageSource = source;
 
-    public float TakeDamage(HitInfo hit)
+    public void TakeDamage(HitInfo hit)
     {
         var damage = _defense.ApplyResistance(hit.Damage, hit.IgnoreResistance);
         _health.TakeDamage(damage);
         var returnedDamage = _defense.ReflectDamage(damage);
         var returnedHit = new HitInfo(returnedDamage, 0, _damageSource, null);
         hit.Receiver?.TakeDamage(returnedHit);
-        return damage;
+        hit.Source?.SetDamageDealt(damage);
     }
 
     private void StartRegeneration() => StartCoroutine(Regenerate());
