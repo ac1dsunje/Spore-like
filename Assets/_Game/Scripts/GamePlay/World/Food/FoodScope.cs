@@ -10,7 +10,7 @@ public class FoodScope: EntityScope
     {
         base.Configure(builder);
         
-        builder.RegisterEntryPoint<FoodController>();
+        builder.RegisterEntryPoint<EntityController>(Lifetime.Scoped).AsSelf();
         builder.RegisterComponent(GetComponentInChildren<FoodHealth>());
     }
 }

@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Experience;
 using _Game.Scripts.GamePlay.UI.Bar;
-using VContainer;
-using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Experience
 {
-public class ExperienceModule: IStartable, IDisposable, IResource
+public class ExperienceModule: IDisposable, IResource
 {
-    public int LevelSet { get; private set; }
-    public int Experience { get; private set; }
+    private int _levelSet;
+    private int _experience;
     
     private readonly ExperienceFactory _expFactory = new();
     private readonly List<ExperienceService> _experienceServices = new();
@@ -19,18 +17,23 @@ public class ExperienceModule: IStartable, IDisposable, IResource
     private int _level;
     private int _levelScaler;
     
-    [Inject] private EntityExperienceConfig _config;
-    [Inject] private EntityModel _model;
+    private EntityExperienceConfig _config;
+    private EntityModel _model;
     
     public event Action<int> OnLevelChanged;
 
     public event Action<float, float> OnValueChanged;
-    
-    public void Start()
+
+    public void Initialize(EntityModel model, EntityExperienceConfig config)
     {
-        LevelSet = _config.ExperienceConfig.LevelSet;
+        _model = model;
+        _config = config;
+        
+        if (_config.ExperienceConfig == null) return;
+        
+        _levelSet = _config.ExperienceConfig.LevelSet;
         _levelScaler = _config.LevelScaler;
-        if (_config.ExperienceConfig.ExperienceTypes == null || _config.ExperienceConfig.ExperienceTypes.Length == 0) return;
+        if (_config.ExperienceConfig == null || _config.ExperienceConfig.ExperienceTypes.Count == 0) return;
         SubscribeExperienceServices(_config.ExperienceConfig, _model);
     }
     
@@ -46,20 +49,20 @@ public class ExperienceModule: IStartable, IDisposable, IResource
 
     private void UpdateExperience(int amount)
     {
-        Experience += amount;
-        OnValueChanged?.Invoke(Experience, LevelSet);
+        _experience += amount;
+        OnValueChanged?.Invoke(_experience, _levelSet);
         UpdateLevel();
     }
     
     private void UpdateLevel()
     {
-        while (Experience >= LevelSet)
+        while (_experience >= _levelSet)
         {
-            UpdateExperience(-LevelSet);
+            UpdateExperience(-_levelSet);
             _level++;
             OnLevelChanged?.Invoke(_level);
-            LevelSet += _levelScaler;
-            OnValueChanged?.Invoke(Experience, LevelSet);
+            _levelSet += _levelScaler;
+            OnValueChanged?.Invoke(_experience, _levelSet);
             _levelScaler++;
         }
     }
