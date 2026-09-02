@@ -1,27 +1,29 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class PlayerHealth: MonoBehaviour, IDamageReceiverController
+public class PlayerHealth : IStartable, IDamageReceiverController, IDisposable
 {
-    private HealthModule _health;
-    private DefenseModule _defense;
-    private IDamageSource _damageSource;
-    private BodyHitbox _hitbox;
-    
-    [Inject]
-    private void Construct(HealthModule health, DefenseModule defense, BodyHitbox hitbox)
-    {
-        _health = health;
-        _defense = defense;
-        _hitbox = hitbox;
+    private const string RegenerationKey = "Regeneration";
+    private const string WaitKey = "WaitBeforeRegeneration";
 
+    [Inject] private HealthModule _health;
+    [Inject] private DefenseModule _defense;
+    [Inject] private BodyHitbox _hitbox;
+    [Inject] private CoroutineRunner _runner;
+
+    private IDamageSource _damageSource;
+
+    public void Start()
+    {
         _health.OnDamageTaken += StopRegeneration;
         _health.OnDeath += Die;
         _hitbox.OnHit += TakeDamage;
@@ -39,12 +41,16 @@ public class PlayerHealth: MonoBehaviour, IDamageReceiverController
         hit.Source?.SetDamageDealt(damage);
     }
 
-    private void StartRegeneration() => StartCoroutine(Regenerate());
+    private void StartRegeneration()
+    {
+        _runner.Run(RegenerationKey, Regenerate());
+    }
 
     private void StopRegeneration(float damage)
     {
-        StopAllCoroutines();
-        StartCoroutine(WaitBeforeRegeneration());
+        _runner.Stop(RegenerationKey);
+        _runner.Stop(WaitKey);
+        _runner.Run(WaitKey, WaitBeforeRegeneration());
     }
 
     private IEnumerator Regenerate()
@@ -64,14 +70,14 @@ public class PlayerHealth: MonoBehaviour, IDamageReceiverController
 
     private void Die()
     {
-        
+        _runner.Stop(RegenerationKey);
+        _runner.Stop(WaitKey);
     }
 
-    private void OnDestroy()
+    public void Dispose()
     {
-        StopAllCoroutines();
-
-        if (_health == null) return;
+        _runner.Stop(RegenerationKey);
+        _runner.Stop(WaitKey);
 
         _health.OnDamageTaken -= StopRegeneration;
         _health.OnDeath -= Die;

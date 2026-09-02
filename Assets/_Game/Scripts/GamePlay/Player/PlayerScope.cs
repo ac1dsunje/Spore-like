@@ -20,7 +20,7 @@ public class PlayerScope: EntityScope
         
         builder.RegisterEntryPoint<PlayerVision>(Lifetime.Scoped);
         
-        builder.RegisterComponent(GetComponentInChildren<PlayerHealth>())
+        builder.RegisterEntryPoint<PlayerHealth>()
             .AsSelf()
             .As<IDamageReceiverController>();
         
@@ -32,7 +32,8 @@ public class PlayerScope: EntityScope
         
         builder.RegisterEntryPoint<PlayerMouth>();
         
-        builder.RegisterEntryPoint<EntityBasicMovement>(Lifetime.Scoped).As<IMovementController>();
+        builder.RegisterEntryPoint<EntityBasicMovement>(Lifetime.Scoped)
+            .As<IMovementController>();
     }
 }
 }
