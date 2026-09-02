@@ -4,6 +4,7 @@ using _Game.Scripts.GamePlay.CameraManager;
 using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Evolutions.UI;
 using _Game.Scripts.GamePlay.Evolutions.UI.Choosing;
+using _Game.Scripts.GamePlay.Experience;
 using _Game.Scripts.GamePlay.Types;
 using _Game.Scripts.GamePlay.UI;
 using _Game.Scripts.GamePlay.World;
@@ -64,6 +65,7 @@ public class GameplayScope: LifetimeScope
         
         // Buffs
         builder.RegisterInstance(_buffsDatabase);
+        builder.Register<ExperienceFactory>(Lifetime.Scoped);
     }
 }
 }

@@ -12,8 +12,7 @@ public class ExperienceModule: IStartable, IDisposable, IResource
 {
     private int _levelSet;
     private int _experience;
-    
-    private readonly ExperienceFactory _expFactory = new();
+
     private readonly List<ExperienceService> _experienceServices = new();
     
     private int _level;
@@ -21,6 +20,7 @@ public class ExperienceModule: IStartable, IDisposable, IResource
     
     [Inject] private EntityExperienceConfig _config;
     [Inject] private EntityModel _model;
+    [Inject] private ExperienceFactory _expFactory;
     
     public event Action<int> OnLevelChanged;
 
