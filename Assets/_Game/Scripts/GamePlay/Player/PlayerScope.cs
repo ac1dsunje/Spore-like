@@ -41,7 +41,6 @@ public class PlayerScope: EntityScope
         
         builder.RegisterComponent(GetComponentInChildren<PlayerHealth>())
             .AsSelf()
-            .As<IDamageReceiver>()
             .As<IDamageReceiverController>();
         
         builder.RegisterComponent(GetComponentInChildren<PlayerAttack>())

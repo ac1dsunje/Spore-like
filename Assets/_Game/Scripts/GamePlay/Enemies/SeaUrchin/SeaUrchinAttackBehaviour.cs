@@ -19,9 +19,9 @@ public class SeaUrchinAttackBehaviour : MonoBehaviour, IDamageSource, IDamageSou
 
     public void SetDamageReceiver(IDamageReceiver damageReceiver) => _receiver = damageReceiver;
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.collider.TryGetComponent(out IDamageReceiver damageAble)) return;
+        if (!other.TryGetComponent(out IDamageReceiver damageAble)) return;
 
         damageAble.TakeDamage(new HitInfo(_module.PhysicalDamage, _module.IgnoreResistance, this, _receiver));
     }

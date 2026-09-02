@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using _Game.Scripts.GamePlay.Entities;
+using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
@@ -7,20 +8,23 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class PlayerHealth: MonoBehaviour, IDamageReceiver, IDamageReceiverController
+public class PlayerHealth: MonoBehaviour, IDamageReceiverController
 {
     private HealthModule _health;
     private DefenseModule _defense;
     private IDamageSource _damageSource;
+    private EntityBodyHitbox _hitbox;
     
     [Inject]
-    private void Construct(HealthModule health, DefenseModule defense)
+    private void Construct(HealthModule health, DefenseModule defense, EntityBodyHitbox hitbox)
     {
         _health = health;
         _defense = defense;
+        _hitbox = hitbox;
 
         _health.OnDamageTaken += StopRegeneration;
         _health.OnDeath += Die;
+        _hitbox.OnHit += TakeDamage;
     }
 
     public void SetDamageSource(IDamageSource source) => _damageSource = source;
@@ -71,6 +75,7 @@ public class PlayerHealth: MonoBehaviour, IDamageReceiver, IDamageReceiverContro
 
         _health.OnDamageTaken -= StopRegeneration;
         _health.OnDeath -= Die;
+        _hitbox.OnHit -= TakeDamage;
     }
 }
 }
