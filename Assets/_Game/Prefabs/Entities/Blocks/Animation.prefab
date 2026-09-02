@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4161564002661261828}
   - component: {fileID: 9188294719611020423}
   - component: {fileID: 8054125862439170211}
+  - component: {fileID: 2439660774590495235}
   m_Layer: 0
   m_Name: Animation
   m_TagString: Untagged
@@ -180,3 +181,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14b8924958274275adcaa0cd0e17f6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.Animation.ItemAnimation
+--- !u!114 &2439660774590495235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547414444138874423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7de13c214f343acb023551582caf2dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.Hitboxes.EntityBodyHitbox
