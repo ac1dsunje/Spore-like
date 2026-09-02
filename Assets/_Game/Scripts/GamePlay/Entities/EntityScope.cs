@@ -1,9 +1,12 @@
-﻿using _Game.Scripts.GamePlay.Entities.Animation;
+﻿using _Game.Scripts.GamePlay.Enemies.SeaUrchin;
+using _Game.Scripts.GamePlay.Entities.Animation;
+using _Game.Scripts.GamePlay.Entities.Attack;
 using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
+using _Game.Scripts.GamePlay.Player;
 using _Game.Scripts.GamePlay.World.Food;
 using UnityEngine;
 using VContainer;
@@ -13,7 +16,7 @@ namespace _Game.Scripts.GamePlay.Entities
 {
 [RequireComponent(typeof(CoroutineRunner))]
 [RequireComponent(typeof(RigidbodyController))]
-public abstract class EntityScope: LifetimeScope
+public class EntityScope: LifetimeScope
 {
     private AnimationSettings _animationSettings;
     private StatsConfig _entityStatsConfig;
@@ -90,6 +93,42 @@ public abstract class EntityScope: LifetimeScope
         
         // Coroutines
         builder.RegisterComponent(GetComponentInChildren<CoroutineRunner>());
+
+        switch (_entityConfig.EntityType)
+        {
+            case EntityType.Food:
+                builder.RegisterEntryPoint<FoodHealth>();
+                break;
+            
+            case EntityType.Player:
+                builder.RegisterEntryPoint<PlayerInput>(Lifetime.Scoped);
+        
+                builder.RegisterEntryPoint<CombatBinder>(Lifetime.Scoped);
+        
+                builder.RegisterEntryPoint<PlayerHealth>()
+                    .AsSelf()
+                    .As<IDamageReceiverController>();
+        
+                builder.RegisterComponent(GetComponentInChildren<PlayerAttack>())
+                    .AsSelf()
+                    .As<IDamageSource>()
+                    .As<IDamageSourceController>()
+                    .As<IAttackController>();
+        
+                builder.RegisterEntryPoint<PlayerMouth>();
+        
+                builder.RegisterEntryPoint<PlayerVision>(Lifetime.Scoped);
+                break;
+            
+            case EntityType.SeaUrchin:
+                builder.RegisterEntryPoint<SeaUrchinAI>(Lifetime.Scoped);
+        
+                builder.RegisterEntryPoint<CombatBinder>(Lifetime.Scoped);
+        
+                builder.RegisterEntryPoint<SeaUrchinHealth>().AsSelf().As<IDamageReceiverController>();
+                builder.RegisterEntryPoint<SeaUrchinAttackBehaviour>().AsSelf().As<IDamageSource>().As<IDamageSourceController>();
+                break;
+        }
     }
 }
 }

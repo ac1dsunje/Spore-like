@@ -670,12 +670,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03bc887852c84b46a14793f7f8da36f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.EntitySpawner
-  _playerPrefab: {fileID: 2822999142199602542, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
+  _entityPrefab: {fileID: 7141615740822153795, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
   _playerConfig: {fileID: 11400000, guid: 1b84c799409aac94daa8e831b32fc12a, type: 2}
-  _enemyPrefab: {fileID: -4871289679674323519, guid: bca1838abf7c0854ea5d10dbf45cf4c8, type: 3}
   _enemySpawnPoint: {x: 2, y: 2}
   _enemyConfig: {fileID: 11400000, guid: 2f2e867e51897714a91a8feba992ece0, type: 2}
-  _plantPrefab: {fileID: 2836576136578488979, guid: fb18b5f42f61c0248906eabff0079a6b, type: 3}
 --- !u!114 &1986825669
 MonoBehaviour:
   m_ObjectHideFlags: 0

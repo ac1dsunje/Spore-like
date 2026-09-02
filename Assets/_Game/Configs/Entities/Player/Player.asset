@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0030ccaa56b24bdfbe9c600651de2505, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.EntityConfig
+  <EntityType>k__BackingField: 1
   <EntityStatsConfig>k__BackingField: {fileID: 11400000, guid: 480bfc51254c2764c9973f2d212f8e44, type: 2}
   <ExperienceAmount>k__BackingField: 1
   <ExperienceConfig>k__BackingField:
@@ -27,5 +28,5 @@ MonoBehaviour:
     <Sprite>k__BackingField: {fileID: -9048744825557176607, guid: 7e660a4087c8141408b939d08c80a53f, type: 3}
     <Controller>k__BackingField: {fileID: 7898678084846905597, guid: 7e660a4087c8141408b939d08c80a53f, type: 3}
     <Color>k__BackingField: {r: 0.8027768, g: 0.8301887, b: 0.8027768, a: 1}
-    <Prefab>k__BackingField: {fileID: 0}
+    <OnHitParticles>k__BackingField: {fileID: 0}
     <IsObstacle>k__BackingField: 1
