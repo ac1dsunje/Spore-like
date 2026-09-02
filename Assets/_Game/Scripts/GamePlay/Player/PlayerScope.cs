@@ -50,8 +50,6 @@ public class PlayerScope: EntityScope
         builder.Register<AbilitiesModule>(Lifetime.Scoped);
         
         builder.Register<EvolutionsModule>(Lifetime.Scoped);
-        
-        builder.Register<EntityBuffsModule>(Lifetime.Scoped);
     }
 }
 }

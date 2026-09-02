@@ -11,7 +11,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
-public class EntityBuffsModule
+public class EntityBuffsModule: IStartable
 {
     public event Action<Buff> OnBuffActivated;
     public event Action<Buff> OnBuffDeactivated;
@@ -23,7 +23,7 @@ public class EntityBuffsModule
     [Inject] private BuffsDatabase _dataDatabase;
     [Inject] private Ticker _ticker;
     
-    public void Initialize()
+    public void Start()
     {
         foreach (var buff in _dataDatabase.Buffs)
         {

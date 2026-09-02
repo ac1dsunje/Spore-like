@@ -62,6 +62,7 @@ public abstract class EntityScope: LifetimeScope
         
         // Important
         builder.RegisterEntryPoint<ExperienceModule>(Lifetime.Scoped).AsSelf();
+        builder.RegisterEntryPoint<EntityBuffsModule>(Lifetime.Scoped).AsSelf();
     }
 }
 }

@@ -8,6 +8,7 @@ public class EntityController: IStartable
 {
     [Inject] public EntityModel Model { get; private set; }
     [Inject] public ExperienceModule Experience { get; private set; }
+    [Inject] public EntityBuffsModule Buffs { get; private set; }
 
     public virtual void Start()
     {
