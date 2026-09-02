@@ -9,7 +9,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
-public class BiomeChecker: IInitializable, IDisposable
+public class BiomeChecker: IStartable, IDisposable
 {
     private WorldModel _worldModel;
     
@@ -37,7 +37,7 @@ public class BiomeChecker: IInitializable, IDisposable
         _movement.OnGridPositionChanged += TryEnterBiome;
     }
 
-    public void Initialize() => EnterBiome(_worldModel.GetBiome(_movement.GridPosition));
+    public void Start() => EnterBiome(_worldModel.GetBiome(_movement.GridPosition));
 
     private void TryEnterBiome(Vector3Int position)
     {
