@@ -642,6 +642,8 @@ MonoBehaviour:
   autoInjectGameObjects: []
   _worldConfig: {fileID: 11400000, guid: 86a2a7edd3ffa1b4fbb90f25e00c0843, type: 2}
   _statTypeConfig: {fileID: 11400000, guid: f7f94f4c1f9bc26428f13410b5b0ab69, type: 2}
+  _evolutionsDatabase: {fileID: 11400000, guid: 89e0fac1fa9071a41bafa6ee877795b5, type: 2}
+  _raritiesDatabase: {fileID: 11400000, guid: 844b6b4bf98611044bf03a16ce2009a0, type: 2}
   _buffsDatabase: {fileID: 11400000, guid: 6c8bbaa65dd7638448a0140a8cc9a837, type: 2}
 --- !u!114 &1986825666
 MonoBehaviour:
@@ -680,7 +682,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.EntitySpawner
   _playerPrefab: {fileID: 2822999142199602542, guid: 5d9585424ec2d114a94924f903c59c65, type: 3}
-  _playerSpawnPoint: {x: 0, y: 0}
   _playerConfig: {fileID: 11400000, guid: 1b84c799409aac94daa8e831b32fc12a, type: 2}
   _enemyPrefab: {fileID: -4871289679674323519, guid: bca1838abf7c0854ea5d10dbf45cf4c8, type: 3}
   _enemySpawnPoint: {x: 2, y: 2}

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Experience;
 using _Game.Scripts.GamePlay.UI.Bar;
 using VContainer;
 using VContainer.Unity;
 
-namespace _Game.Scripts.GamePlay.Player.Modules.Experience
+namespace _Game.Scripts.GamePlay.Entities.Experience
 {
 public class ExperienceModule: IStartable, IDisposable, IResource
 {

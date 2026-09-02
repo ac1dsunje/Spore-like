@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Evolutions.UI;
-using _Game.Scripts.GamePlay.Player.Modules;
 using UnityEngine;
 using VContainer;
 

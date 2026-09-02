@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using _Game.Scripts.Core.UI;
-using _Game.Scripts.GamePlay.Player.Modules;
+using _Game.Scripts.GamePlay.Entities;
 using UnityEngine;
 using VContainer;
 

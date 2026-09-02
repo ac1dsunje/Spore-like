@@ -2,9 +2,11 @@
 using _Game.Scripts.GamePlay.Buffs;
 using _Game.Scripts.GamePlay.CameraManager;
 using _Game.Scripts.GamePlay.Entities;
+using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Evolutions.UI;
 using _Game.Scripts.GamePlay.Evolutions.UI.Choosing;
 using _Game.Scripts.GamePlay.Experience;
+using _Game.Scripts.GamePlay.Rarities;
 using _Game.Scripts.GamePlay.Types;
 using _Game.Scripts.GamePlay.UI;
 using _Game.Scripts.GamePlay.World;
@@ -20,13 +22,19 @@ public class GameplayScope: LifetimeScope
     [Header("Configs")]
     [SerializeField] private WorldGenerationConfig _worldConfig;
     [SerializeField] private StatTypeConfig _statTypeConfig;
+    [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
+    [SerializeField] private RaritiesDatabase _raritiesDatabase;
     
     [SerializeField] private BuffsDatabase _buffsDatabase;
 
     protected override void Configure(IContainerBuilder builder)
     {
-        // Stats
+        // Configs
         builder.RegisterInstance(_statTypeConfig);
+        builder.RegisterInstance(_evolutionsDatabase);
+        builder.RegisterInstance(_raritiesDatabase);
+        builder.RegisterInstance(_worldConfig);
+        builder.RegisterInstance(_buffsDatabase);
         
         // Player
         builder.Register<PlayerRegistry>(Lifetime.Singleton);
@@ -38,8 +46,6 @@ public class GameplayScope: LifetimeScope
         builder.RegisterComponentInHierarchy<EntitySpawner>();
 
         builder.RegisterComponentInHierarchy<DayNightManager>();
-        
-        builder.RegisterInstance(_worldConfig);
         builder.Register<WorldModel>(Lifetime.Singleton);
         
         // UI
@@ -64,7 +70,6 @@ public class GameplayScope: LifetimeScope
         builder.Register<AbilityFactory>(Lifetime.Scoped);
         
         // Buffs
-        builder.RegisterInstance(_buffsDatabase);
         builder.Register<ExperienceFactory>(Lifetime.Scoped);
     }
 }

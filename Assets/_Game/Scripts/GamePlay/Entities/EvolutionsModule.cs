@@ -1,46 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using _Game.Scripts.GamePlay.Entities;
+using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Evolutions;
-using _Game.Scripts.GamePlay.Player.Modules.Experience;
 using _Game.Scripts.GamePlay.Rarities;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 using Random = UnityEngine.Random;
 
-namespace _Game.Scripts.GamePlay.Player.Modules
+namespace _Game.Scripts.GamePlay.Entities
 {
-public class EvolutionsModule: IDisposable
+public class EvolutionsModule: IStartable, IDisposable
 {
     [Inject] private EvolutionsDatabase _evolutionsDatabase;
     [Inject] private RaritiesDatabase _raritiesDatabase;
+    [Inject] private EntityModel _entity;
+    [Inject] private ExperienceModule _experience;
+    [Inject] private EntityStats _stats;
+    [Inject] private AbilitiesModule _abilities;
     private int _minEvolutions;
-
-    private readonly ExperienceModule _experience;
-    private readonly EntityStats _stats;
-    private readonly AbilitiesModule _abilities;
-    private EntityModel _entity;
+    
     
     private readonly List<Evolution> _evolutions = new();
 
     public event Action<List<Evolution>> OnSlotsFilled;
     public event Action<Evolution> OnEvolutionApplied;
 
-    public EvolutionsModule(ExperienceModule experience, EntityStats stats, AbilitiesModule abilities)
+    public void Start()
     {
-        _experience = experience;
-        _stats = stats;
-        _abilities = abilities;
-        _experience.OnLevelChanged += OnLevelUpdated;
-    }
-
-    public void SetModel(EntityModel model)
-    {
-        _entity = model;
-        
         _minEvolutions = 3; // temporarly! it should be deleted due to shop feature in the future
-
+        _experience.OnLevelChanged += OnLevelUpdated;
         foreach (var evolution in _evolutionsDatabase.GenerateEvolutions())
         {
             _evolutions.Add(evolution);

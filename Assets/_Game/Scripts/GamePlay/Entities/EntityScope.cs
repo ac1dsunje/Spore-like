@@ -1,9 +1,8 @@
 ﻿using _Game.Scripts.GamePlay.Entities.Animation;
+using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
-using _Game.Scripts.GamePlay.Player.Modules;
-using _Game.Scripts.GamePlay.Player.Modules.Experience;
 using VContainer;
 using VContainer.Unity;
 
@@ -66,6 +65,7 @@ public abstract class EntityScope: LifetimeScope
         builder.RegisterEntryPoint<EntityBuffsModule>(Lifetime.Scoped).AsSelf();
         builder.RegisterEntryPoint<EntityBiomeChecker>(Lifetime.Scoped);
         builder.RegisterEntryPoint<AbilitiesModule>(Lifetime.Scoped).AsSelf();
+        builder.RegisterEntryPoint<EvolutionsModule>(Lifetime.Scoped).AsSelf();
     }
 }
 }

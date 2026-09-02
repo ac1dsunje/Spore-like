@@ -1,5 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Entities.Animation;
-using _Game.Scripts.GamePlay.Player.Modules.Experience;
+using _Game.Scripts.GamePlay.Entities.Experience;   
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Entities

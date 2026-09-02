@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Buffs;
 using _Game.Scripts.GamePlay.Entities;
-using _Game.Scripts.GamePlay.Player.Modules;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.UI

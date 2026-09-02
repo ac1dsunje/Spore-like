@@ -1,5 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Abilities;
-using _Game.Scripts.GamePlay.Player.Modules;
+using _Game.Scripts.GamePlay.Entities;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.UI
