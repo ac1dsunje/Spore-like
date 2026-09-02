@@ -62,7 +62,7 @@ public class GameplayScope: LifetimeScope
         builder.RegisterComponentInHierarchy<DescriptionUI>();
         
         // Cameras
-        builder.RegisterComponentInHierarchy<CameraController>();
+        builder.RegisterEntryPoint<CameraController>().AsSelf();
         builder.RegisterComponentInHierarchy<Camera>();
         builder.RegisterComponentInHierarchy<CinemachineCamera>();
         

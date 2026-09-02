@@ -1,23 +1,22 @@
-﻿using _Game.Scripts.GamePlay.Entities;
+﻿using System;
+using _Game.Scripts.GamePlay.Entities;
 using Unity.Cinemachine;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.CameraManager
 {
-public class CameraController: MonoBehaviour
+public class CameraController: IInitializable, IDisposable
 {
     [Inject] public Camera Camera { get; private set; }
     [Inject] private CinemachineCamera _cineMachineCamera;
-    
-    private PlayerRegistry _playerRegistry;
+    [Inject] private PlayerRegistry _playerRegistry;
 
     public float Aspect => Camera.aspect;
 
-    [Inject]
-    private void Construct(PlayerRegistry playerRegistry)
+    public void Initialize()
     {
-        _playerRegistry = playerRegistry;
         _playerRegistry.OnPlayerInitialized += AddPlayer;
     }
 
@@ -31,7 +30,7 @@ public class CameraController: MonoBehaviour
         _cineMachineCamera.Target.TrackingTarget = player.Model.Movement.Transform;
     }
 
-    private void OnDestroy()
+    public void Dispose()
     {
         _playerRegistry.OnPlayerInitialized -= AddPlayer;
     }
