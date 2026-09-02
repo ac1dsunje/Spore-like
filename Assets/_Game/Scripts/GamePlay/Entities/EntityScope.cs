@@ -33,7 +33,7 @@ public abstract class EntityScope: LifetimeScope
         
         // Modules
         builder.Register<EntityModel>(Lifetime.Scoped);
-        builder.Register<EntityStats>(Lifetime.Scoped);
+        builder.RegisterEntryPoint<EntityStats>(Lifetime.Scoped).AsSelf();
         
         builder.Register<VisionModule>(Lifetime.Scoped);
         builder.Register<DisguiseModule>(Lifetime.Scoped);

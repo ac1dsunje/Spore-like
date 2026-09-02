@@ -1,7 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Entities.Attack;
 using _Game.Scripts.GamePlay.Entities.Movement;
-using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Player.Behaviours;
 using VContainer;

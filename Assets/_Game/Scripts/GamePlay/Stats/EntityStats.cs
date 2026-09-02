@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Types;
 using VContainer;
+using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay
 {
-public class EntityStats
+public class EntityStats: IStartable
 {
     private readonly Dictionary<StatType, float> _stats = new();
     private readonly Dictionary<StatType, float> _basicStats = new();
@@ -18,7 +19,7 @@ public class EntityStats
     [Inject] private StatTypeConfig _config;
     [Inject] private EntityStatsConfig _entityStatsConfig;
     
-    public void Initialize()
+    public void Start()
     {
         foreach (var config in _entityStatsConfig.InitialConfigs)
         {

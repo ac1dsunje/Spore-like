@@ -14,7 +14,7 @@ public class EntityController: IStartable
 
     public virtual void Start()
     {
-        Model.Stats.Initialize();
+        
     }
 }
 }
