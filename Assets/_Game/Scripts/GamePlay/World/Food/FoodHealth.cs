@@ -1,32 +1,33 @@
-﻿using System;
-using _Game.Scripts.GamePlay.Entities;
+﻿using _Game.Scripts.GamePlay.Entities;
+using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.World.Food
 {
-public class FoodHealth: MonoBehaviour, IBiteable
+public class FoodHealth: MonoBehaviour
 {
-    public event Action<int> OnEaten;
-    
     private EntityConfig _config;
     
     private HealthModule _health;
     private DefenseModule _defense;
+    private EntityBodyHitbox _hitBox;
 
     [Inject]
-    private void Construct(HealthModule health, DefenseModule defense, EntityConfig config)
+    private void Construct(HealthModule health, DefenseModule defense, EntityConfig config, EntityBodyHitbox hitbox)
     {
         _health = health;
         _defense = defense;
         _config = config;
+        _hitBox = hitbox;
         
         _health.OnDamageTaken += SpawnParticles;
         _health.OnDeath += Die;
+        _hitBox.OnBite += TakeBite;
     }
 
-    public void TakeBite(float damage, float penetration)
+    private void TakeBite(float damage, float penetration)
     {
         var appliedDamage = _defense.ApplyResistance(damage, penetration);
         _health.TakeDamage(appliedDamage);
@@ -46,7 +47,7 @@ public class FoodHealth: MonoBehaviour, IBiteable
 
     private void Die()
     {
-        OnEaten?.Invoke(_config.ExperienceAmount);
+        _hitBox.SetEaten(_config.ExperienceAmount);
         
         Destroy(gameObject, 0.5f);
         
