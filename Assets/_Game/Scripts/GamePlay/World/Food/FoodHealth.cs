@@ -36,7 +36,7 @@ public class FoodHealth: MonoBehaviour
     private void SpawnParticles(float dmg)
     {
         var particles = Instantiate(
-            _config.AnimationSettings.Prefab,
+            _config.AnimationSettings.OnHitParticles,
             transform.position,
             Quaternion.identity
         );
