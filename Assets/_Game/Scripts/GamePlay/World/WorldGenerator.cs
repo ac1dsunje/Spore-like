@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Modules;
-using _Game.Scripts.GamePlay.Player;
 using UnityEngine;
 using VContainer;
 
@@ -27,7 +27,7 @@ public class WorldGenerator: MonoBehaviour
         _playerRegistry.OnPlayerInitialized += InitializePlayer;
     }
 
-    private void InitializePlayer(PlayerController player)
+    private void InitializePlayer(EntityController player)
     {
         _player = player.Model.Movement;
         _player.OnGridPositionChanged += Generate;

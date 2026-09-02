@@ -1,4 +1,4 @@
-﻿using _Game.Scripts.GamePlay.Player;
+﻿using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.UI.Bar;
 using UnityEngine;
 
@@ -11,7 +11,7 @@ public class BarsPanelUI : MonoBehaviour
     [SerializeField] private BarUI _enduranceBarUI;
     [SerializeField] private BarUI _hungerBarUI;
 
-    public void Construct(PlayerController player)
+    public void Construct(EntityController player)
     {
         _healthBarUI.Construct(player.Model.Health);
         _experienceBarUI.Construct(player.Experience);

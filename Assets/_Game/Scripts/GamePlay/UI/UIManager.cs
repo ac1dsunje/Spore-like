@@ -2,7 +2,6 @@
 using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Evolutions.UI.Choosing;
-using _Game.Scripts.GamePlay.Player;
 using UnityEngine;
 using VContainer;
 
@@ -31,7 +30,7 @@ public class UIManager: MonoBehaviour
         _registry.OnPlayerInitialized += AddPlayer;
     }
     
-    private void AddPlayer(PlayerController player)
+    private void AddPlayer(EntityController player)
     {
         _evolutionsModule = player.Evolutions;
         _abilitiesModule = player.Abilities;

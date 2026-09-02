@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using VContainer;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
@@ -13,13 +14,19 @@ public class EntitySpawner: MonoBehaviour
     
     [SerializeField] private EntityScope _plantPrefab;
     
+    [Inject] private PlayerRegistry _playerRegistry;
+    
     private void Awake()
     {
         SpawnPlayer();
         SpawnEnemy();
     }
 
-    private void SpawnPlayer() => Spawn(_playerPrefab, transform.position, transform, _playerConfig);
+    private void SpawnPlayer()
+    {
+        var player = Spawn(_playerPrefab, transform.position, transform, _playerConfig);
+        _playerRegistry.AddPlayer(player.GetEntityController());
+    }
 
     [ContextMenu("Spawn Enemy")]
     private void SpawnEnemy() => Spawn(_enemyPrefab, _enemySpawnPoint, transform, _enemyConfig);

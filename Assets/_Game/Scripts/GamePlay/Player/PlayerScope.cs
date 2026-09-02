@@ -10,14 +10,11 @@ namespace _Game.Scripts.GamePlay.Player
 {
 public class PlayerScope: EntityScope
 {
-    
     protected override void Configure(IContainerBuilder builder)
     {
         base.Configure(builder);
         
         builder.RegisterComponent(GetComponentInChildren<RigidbodyController>());
-        
-        builder.RegisterEntryPoint<PlayerController>(Lifetime.Scoped).AsSelf();
         builder.RegisterEntryPoint<CombatBinder>(Lifetime.Scoped);
         builder.RegisterEntryPoint<PlayerInput>(Lifetime.Scoped);
         

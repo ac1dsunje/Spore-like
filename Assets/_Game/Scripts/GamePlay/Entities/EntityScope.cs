@@ -22,7 +22,9 @@ public abstract class EntityScope: LifetimeScope
         _entityStatsConfig = entityConfig.EntityStatsConfig;
         _entityExperienceConfig = entityConfig.ExperienceConfig;
     }
-    
+
+    public EntityController GetEntityController() => Container.Resolve<EntityController>();
+
     protected override void Configure(IContainerBuilder builder)
     {
         // Configs
@@ -54,6 +56,7 @@ public abstract class EntityScope: LifetimeScope
         builder.Register<TemperatureModule>(Lifetime.Scoped);
         
         // Behaviours
+        builder.RegisterEntryPoint<EntityController>(Lifetime.Scoped).AsSelf();
         builder.RegisterComponent(GetComponentInChildren<EntityAnimation>());
         builder.RegisterComponent(GetComponentInChildren<EntityVisionHitbox>());
         builder.RegisterComponent(GetComponentInChildren<EntityBodyHitbox>()).AsSelf().As<IDamageReceiver>();

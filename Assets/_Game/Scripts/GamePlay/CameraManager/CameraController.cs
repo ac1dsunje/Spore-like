@@ -1,4 +1,4 @@
-﻿using _Game.Scripts.GamePlay.Player;
+﻿using _Game.Scripts.GamePlay.Entities;
 using Unity.Cinemachine;
 using UnityEngine;
 using VContainer;
@@ -26,7 +26,7 @@ public class CameraController: MonoBehaviour
         _cineMachineCamera.Lens.OrthographicSize = radius;
     }
 
-    private void AddPlayer(PlayerController player)
+    private void AddPlayer(EntityController player)
     {
         _cineMachineCamera.Target.TrackingTarget = player.Model.Movement.Transform;
     }

@@ -1,13 +1,13 @@
 ﻿using System;
-using _Game.Scripts.GamePlay.Player;
+using _Game.Scripts.GamePlay.Entities;
 
 namespace _Game.Scripts.GamePlay
 {
 public class PlayerRegistry
 {
-    public event Action<PlayerController> OnPlayerInitialized;
+    public event Action<EntityController> OnPlayerInitialized;
 
-    public void AddPlayer(PlayerController player)
+    public void AddPlayer(EntityController player)
     {
         OnPlayerInitialized?.Invoke(player);
     }
