@@ -26,3 +26,4 @@ MonoBehaviour:
     <Controller>k__BackingField: {fileID: 0}
     <Color>k__BackingField: {r: 0, g: 1, b: 0, a: 1}
     <Prefab>k__BackingField: {fileID: 0}
+    <IsObstacle>k__BackingField: 1

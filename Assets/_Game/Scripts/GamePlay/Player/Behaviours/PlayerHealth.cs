@@ -70,8 +70,8 @@ public class PlayerHealth : IStartable, IDamageReceiverController, IDisposable
 
     private void Die()
     {
-        _runner.Stop(RegenerationKey);
-        _runner.Stop(WaitKey);
+        //_runner.Stop(RegenerationKey);
+        //_runner.Stop(WaitKey);
     }
 
     public void Dispose()

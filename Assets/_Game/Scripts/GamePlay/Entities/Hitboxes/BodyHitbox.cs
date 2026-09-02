@@ -15,7 +15,14 @@ public class BodyHitbox : MonoBehaviour, IDamageReceiver, IBiteable
     public event Action<IBiteable> OnBiteAbleEntered;
     public event Action<IBiteable> OnBiteAbleExited;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other) => TryGetEntity(other);
+
+    private void OnTriggerExit2D(Collider2D other) => TryReleaseEntity(other);
+
+    private void OnCollisionEnter2D(Collision2D other) => TryGetEntity(other.collider);
+    private void OnCollisionExit2D(Collision2D other) => TryReleaseEntity(other.collider);
+
+    private void TryGetEntity(Collider2D other)
     {
         if (other.TryGetComponent(out IDamageReceiver receiver))
         {
@@ -27,8 +34,8 @@ public class BodyHitbox : MonoBehaviour, IDamageReceiver, IBiteable
             OnBiteAbleEntered?.Invoke(biteable);
         }
     }
-    
-    private void OnTriggerExit2D(Collider2D other)
+
+    private void TryReleaseEntity(Collider2D other)
     {
         if (other.TryGetComponent(out IBiteable biteable))
         {

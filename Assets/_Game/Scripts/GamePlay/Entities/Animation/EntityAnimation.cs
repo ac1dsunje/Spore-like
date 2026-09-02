@@ -29,6 +29,8 @@ public class EntityAnimation: MonoBehaviour, IVisible
 
     private void Start()
     {
+        _collider.isTrigger = !_config.IsObstacle;
+        
         SetSprite(_config.Sprite);
         SetAnimator(_config.Controller);
     }
