@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Buffs;
 using _Game.Scripts.GamePlay.Entities;
@@ -7,15 +8,17 @@ using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.World.Food;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Player.Behaviours
 {
-public class PlayerMouth: MonoBehaviour
+public class PlayerMouth: IStartable, ITickable, IDisposable
 {
     [Inject] private MouthModule _mouth;
     [Inject] private StomachModule _stomach;
     [Inject] private BuffsModule _buffs;
     [Inject] private BodyHitbox _hitbox;
+    [Inject] private CoroutineRunner _coroutineRunner;
 
     private readonly HashSet<IBiteable> _foods = new();
     private IBiteable _currentFood;
@@ -23,13 +26,11 @@ public class PlayerMouth: MonoBehaviour
     private float _hungerTimer;
     private float _maxTime = 30f;
 
-    private void Awake()
+    private const string CoroutineKey = "Eating";
+
+    public void Start()
     {
         _hungerTimer = _maxTime;
-    }
-
-    private void Start()
-    {
         _hitbox.OnBiteAbleEntered += TryCatchFood;
         _hitbox.OnBiteAbleExited += TryReleaseFood;
     }
@@ -55,7 +56,7 @@ public class PlayerMouth: MonoBehaviour
         if (_currentFood == food)
         {
             _currentFood = null;
-            StopAllCoroutines();
+            _coroutineRunner.Stop(CoroutineKey);
             StartEatingNextFood();
         }
     }
@@ -67,7 +68,7 @@ public class PlayerMouth: MonoBehaviour
         foreach (var food in _foods)
         {
             _currentFood = food;
-            StartCoroutine(Eat(food));
+            _coroutineRunner.Run(CoroutineKey, Eat(food));
             break;
         }
     }
@@ -97,11 +98,11 @@ public class PlayerMouth: MonoBehaviour
             _currentFood = null;
         }
 
-        StopAllCoroutines();
+        _coroutineRunner.Stop(CoroutineKey);
         StartEatingNextFood();
     }
 
-    private void Update()
+    public void Tick()
     {
         if (_stomach.Hunger > 0)
         {
@@ -117,7 +118,7 @@ public class PlayerMouth: MonoBehaviour
         _buffs.Set(BuffType.Overeating, _stomach.Hunger > _stomach.MaxHunger);
     }
 
-    private void OnDestroy()
+    public void Dispose()
     {
         foreach (var food in _foods)
         {
@@ -125,8 +126,10 @@ public class PlayerMouth: MonoBehaviour
         }
 
         _foods.Clear();
-
-        StopAllCoroutines();
+        _coroutineRunner.Stop(CoroutineKey);
+        
+        _hitbox.OnBiteAbleEntered -= TryCatchFood;
+        _hitbox.OnBiteAbleExited -= TryReleaseFood;
     }
 }
 }

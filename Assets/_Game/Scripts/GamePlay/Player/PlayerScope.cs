@@ -30,7 +30,7 @@ public class PlayerScope: EntityScope
             .As<IDamageSourceController>()
             .As<IAttackController>();
         
-        builder.RegisterComponent(GetComponentInChildren<PlayerMouth>());
+        builder.RegisterEntryPoint<PlayerMouth>();
         
         builder.RegisterEntryPoint<EntityBasicMovement>(Lifetime.Scoped).As<IMovementController>();
     }

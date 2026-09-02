@@ -4,11 +4,13 @@ using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.World.Food;
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
+[RequireComponent(typeof(CoroutineRunner))]
 public abstract class EntityScope: LifetimeScope
 {
     private AnimationSettings _animationSettings;
@@ -70,6 +72,9 @@ public abstract class EntityScope: LifetimeScope
         builder.RegisterEntryPoint<BiomeChecker>(Lifetime.Scoped);
         builder.RegisterEntryPoint<AbilitiesModule>(Lifetime.Scoped).AsSelf();
         builder.RegisterEntryPoint<EvolutionsModule>(Lifetime.Scoped).AsSelf();
+        
+        // Coroutines
+        builder.RegisterComponent(GetComponentInChildren<CoroutineRunner>());
     }
 }
 }
