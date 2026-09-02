@@ -70,10 +70,13 @@ public class BiomeChecker: IStartable, IDisposable
         var oxygenRequirement = _breathing.OxygenBreathing;
         var hydrogenRequirement = _breathing.HydrogenBreathing;
 
-        var suffocate = oxygenRequirement > 0 && oxygenRequirement <= oxygen ||
-                        hydrogenRequirement > 0 && hydrogenRequirement <= hydrogen;
+        var hasOxygen = oxygenRequirement > 0f && oxygen >= oxygenRequirement;
+        var hasHydrogen = hydrogenRequirement > 0f && hydrogen >= hydrogenRequirement;
 
-        _buffsModule.Set(BuffType.Suffocating, !suffocate);
+        var needsToBreathe = oxygenRequirement > 0f || hydrogenRequirement > 0f;
+        var suffocate = needsToBreathe && !hasOxygen && !hasHydrogen;
+
+        _buffsModule.Set(BuffType.Suffocating, suffocate);
     }
 
     public void Dispose()

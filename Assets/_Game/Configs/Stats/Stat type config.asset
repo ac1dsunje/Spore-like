@@ -143,11 +143,6 @@ MonoBehaviour:
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
     <Sprite>k__BackingField: {fileID: -2071320532499117942, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
-  - <Name>k__BackingField: X-ray
-    <Type>k__BackingField: 31
-    <MinimalValue>k__BackingField: 0
-    <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: -1858451597740253649, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Attack speed
     <Type>k__BackingField: 32
     <MinimalValue>k__BackingField: 0
@@ -177,4 +172,9 @@ MonoBehaviour:
     <Type>k__BackingField: 37
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 1
+    <Sprite>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: MaxHunger
+    <Type>k__BackingField: 38
+    <MinimalValue>k__BackingField: -999999
+    <MaximalValue>k__BackingField: 999999
     <Sprite>k__BackingField: {fileID: 0}
