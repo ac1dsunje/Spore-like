@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.StatsConfig
   <Stats>k__BackingField:
   - <Type>k__BackingField: 4
-    <Value>k__BackingField: 2
+    <Value>k__BackingField: 100
   - <Type>k__BackingField: 6
     <Value>k__BackingField: 4
   - <Type>k__BackingField: 10
-    <Value>k__BackingField: 40
+    <Value>k__BackingField: 1000
   - <Type>k__BackingField: 36
     <Value>k__BackingField: 1
   - <Type>k__BackingField: 37

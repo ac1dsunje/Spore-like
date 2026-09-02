@@ -23,7 +23,6 @@ public class PlayerController : IStartable
         Model.Stats.Initialize();
         Abilities.SetModel(Model);
         Evolutions.SetModel(Model);
-        Experience.Initialize();
     }
 }
 }

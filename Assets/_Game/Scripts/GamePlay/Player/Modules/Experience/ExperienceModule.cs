@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Experience;
 using _Game.Scripts.GamePlay.UI.Bar;
 using VContainer;
+using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Experience
 {
-public class ExperienceModule: IDisposable, IResource
+public class ExperienceModule: IStartable, IDisposable, IResource
 {
     public int LevelSet { get; private set; }
     public int Experience { get; private set; }
@@ -17,24 +19,18 @@ public class ExperienceModule: IDisposable, IResource
     private int _level;
     private int _levelScaler;
     
-    private PlayerExperienceConfig _config;
-    private EntityModel _model;
+    [Inject] private EntityExperienceConfig _config;
+    [Inject] private EntityModel _model;
     
     public event Action<int> OnLevelChanged;
 
     public event Action<float, float> OnValueChanged;
     
-    [Inject]
-    public ExperienceModule(PlayerExperienceConfig config, EntityModel model)
+    public void Start()
     {
-        LevelSet = config.ExperienceConfig.LevelSet;
-        _levelScaler = config.LevelScaler;
-        _config = config;
-        _model = model;
-    }
-
-    public void Initialize()
-    {
+        LevelSet = _config.ExperienceConfig.LevelSet;
+        _levelScaler = _config.LevelScaler;
+        if (_config.ExperienceConfig.ExperienceTypes == null || _config.ExperienceConfig.ExperienceTypes.Length == 0) return;
         SubscribeExperienceServices(_config.ExperienceConfig, _model);
     }
     

@@ -5,7 +5,6 @@ using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Player.Behaviours;
 using _Game.Scripts.GamePlay.Player.Modules;
-using _Game.Scripts.GamePlay.Player.Modules.Experience;
 using _Game.Scripts.GamePlay.Rarities;
 using UnityEngine;
 using VContainer;
@@ -15,7 +14,6 @@ namespace _Game.Scripts.GamePlay.Player
 {
 public class PlayerScope: EntityScope
 {
-    [SerializeField] private PlayerExperienceConfig _playerExperienceConfig;
     
     [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
     [SerializeField] private RaritiesDatabase _raritiesDatabase;
@@ -23,7 +21,6 @@ public class PlayerScope: EntityScope
     protected override void Configure(IContainerBuilder builder)
     {
         base.Configure(builder);
-        builder.RegisterInstance(_playerExperienceConfig);
         builder.RegisterInstance(_evolutionsDatabase);
         builder.RegisterInstance(_raritiesDatabase);
         
@@ -33,8 +30,6 @@ public class PlayerScope: EntityScope
         builder.RegisterEntryPoint<PlayerController>(Lifetime.Scoped);
         builder.RegisterEntryPoint<CombatBinder>(Lifetime.Scoped);
         builder.RegisterEntryPoint<PlayerInput>(Lifetime.Scoped);
-        
-        builder.Register<ExperienceModule>(Lifetime.Scoped);
         
         builder.RegisterEntryPoint<PlayerVision>(Lifetime.Scoped);
         

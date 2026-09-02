@@ -1,6 +1,6 @@
 ﻿using System;
+using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Experience.Types;
-using _Game.Scripts.GamePlay.Player;
 
 namespace _Game.Scripts.GamePlay.Experience
 {

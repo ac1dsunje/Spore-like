@@ -1,7 +1,7 @@
 ﻿using _Game.Scripts.GamePlay.Modules;
 using VContainer;
 
-namespace _Game.Scripts.GamePlay.Player
+namespace _Game.Scripts.GamePlay.Entities
 {
 public class EntityModel
 {

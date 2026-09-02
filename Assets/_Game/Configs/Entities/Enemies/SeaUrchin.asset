@@ -14,9 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.EntityConfig
   <EntityStatsConfig>k__BackingField: {fileID: 11400000, guid: 0a0aed94d3d607b4b90669d2fdcc4b7e, type: 2}
   <ExperienceAmount>k__BackingField: 1
+  <ExperienceConfig>k__BackingField:
+    <LevelScaler>k__BackingField: 1
+    <ExperienceConfig>k__BackingField:
+      <LevelSet>k__BackingField: 10
+      <ExperienceTypes>k__BackingField:
+      - <Type>k__BackingField: 2
+        <Amount>k__BackingField: 1
   <AnimationSettings>k__BackingField:
     <Sprite>k__BackingField: {fileID: 3147233298308361737, guid: e1e8f9e2112581f4c848d9ee20c89f4a, type: 3}
     <Controller>k__BackingField: {fileID: 0}
-    <ParticlesSettings>k__BackingField:
-      <Color>k__BackingField: {r: 0, g: 1, b: 0, a: 1}
-      <Prefab>k__BackingField: {fileID: 0}
+    <Color>k__BackingField: {r: 0, g: 1, b: 0, a: 1}
+    <Prefab>k__BackingField: {fileID: 0}
