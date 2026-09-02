@@ -3,6 +3,7 @@ using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
+using _Game.Scripts.GamePlay.World.Food;
 using VContainer;
 using VContainer.Unity;
 
@@ -59,7 +60,7 @@ public abstract class EntityScope: LifetimeScope
         builder.RegisterEntryPoint<EntityController>(Lifetime.Scoped).AsSelf();
         builder.RegisterComponent(GetComponentInChildren<EntityAnimation>());
         builder.RegisterComponent(GetComponentInChildren<VisionHitbox>());
-        builder.RegisterComponent(GetComponentInChildren<BodyHitbox>()).AsSelf().As<IDamageReceiver>();
+        builder.RegisterComponent(GetComponentInChildren<BodyHitbox>()).AsSelf().As<IDamageReceiver>().As<IBiteable>();
         builder.RegisterComponent(GetComponentInChildren<EntityLighting>());
         builder.RegisterEntryPoint<EntityEndurance>(Lifetime.Scoped);
         
