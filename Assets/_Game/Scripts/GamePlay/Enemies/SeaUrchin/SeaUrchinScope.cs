@@ -1,5 +1,4 @@
 ﻿using _Game.Scripts.GamePlay.Entities;
-using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Interfaces;
 using VContainer;
 using VContainer.Unity;
@@ -11,10 +10,6 @@ public class SeaUrchinScope: EntityScope
     protected override void Configure(IContainerBuilder builder)
     {
         base.Configure(builder);
-        
-        builder.RegisterComponent(GetComponentInChildren<RigidbodyController>());
-        builder.RegisterEntryPoint<EntityBasicMovement>()
-            .As<IMovementController>();
 
         builder.RegisterEntryPoint<SeaUrchinAI>(Lifetime.Scoped);
         

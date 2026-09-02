@@ -1,6 +1,7 @@
 ﻿using _Game.Scripts.GamePlay.Entities.Animation;
 using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
+using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.World.Food;
@@ -11,6 +12,7 @@ using VContainer.Unity;
 namespace _Game.Scripts.GamePlay.Entities
 {
 [RequireComponent(typeof(CoroutineRunner))]
+[RequireComponent(typeof(RigidbodyController))]
 public abstract class EntityScope: LifetimeScope
 {
     private AnimationSettings _animationSettings;
@@ -38,7 +40,8 @@ public abstract class EntityScope: LifetimeScope
         
         // Modules
         builder.Register<EntityModel>(Lifetime.Scoped);
-        builder.RegisterEntryPoint<EntityStats>(Lifetime.Scoped).AsSelf();
+        builder.RegisterEntryPoint<EntityStats>(Lifetime.Scoped)
+            .AsSelf();
         
         builder.Register<VisionModule>(Lifetime.Scoped);
         builder.Register<DisguiseModule>(Lifetime.Scoped);
@@ -59,19 +62,31 @@ public abstract class EntityScope: LifetimeScope
         builder.Register<TemperatureModule>(Lifetime.Scoped);
         
         // Behaviours
-        builder.RegisterEntryPoint<EntityController>(Lifetime.Scoped).AsSelf();
+        builder.RegisterEntryPoint<EntityController>(Lifetime.Scoped)
+            .AsSelf();
         builder.RegisterComponent(GetComponentInChildren<EntityAnimation>());
         builder.RegisterComponent(GetComponentInChildren<VisionHitbox>());
-        builder.RegisterComponent(GetComponentInChildren<BodyHitbox>()).AsSelf().As<IDamageReceiver>().As<IBiteable>();
+        builder.RegisterComponent(GetComponentInChildren<BodyHitbox>())
+            .AsSelf()
+            .As<IDamageReceiver>()
+            .As<IBiteable>();
         builder.RegisterComponent(GetComponentInChildren<EntityLighting>());
         builder.RegisterEntryPoint<EntityEndurance>(Lifetime.Scoped);
         
+        builder.RegisterComponent(GetComponentInChildren<RigidbodyController>());
+        builder.RegisterEntryPoint<EntityBasicMovement>(Lifetime.Scoped)
+            .As<IMovementController>();
+        
         // Important
-        builder.RegisterEntryPoint<ExperienceModule>(Lifetime.Scoped).AsSelf();
-        builder.RegisterEntryPoint<BuffsModule>(Lifetime.Scoped).AsSelf();
+        builder.RegisterEntryPoint<ExperienceModule>(Lifetime.Scoped)
+            .AsSelf();
+        builder.RegisterEntryPoint<BuffsModule>(Lifetime.Scoped)
+            .AsSelf();
         builder.RegisterEntryPoint<BiomeChecker>(Lifetime.Scoped);
-        builder.RegisterEntryPoint<AbilitiesModule>(Lifetime.Scoped).AsSelf();
-        builder.RegisterEntryPoint<EvolutionsModule>(Lifetime.Scoped).AsSelf();
+        builder.RegisterEntryPoint<AbilitiesModule>(Lifetime.Scoped)
+            .AsSelf();
+        builder.RegisterEntryPoint<EvolutionsModule>(Lifetime.Scoped)
+            .AsSelf();
         
         // Coroutines
         builder.RegisterComponent(GetComponentInChildren<CoroutineRunner>());

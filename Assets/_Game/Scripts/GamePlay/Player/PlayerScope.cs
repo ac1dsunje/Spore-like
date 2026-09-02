@@ -1,6 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Entities.Attack;
-using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Player.Behaviours;
 using VContainer;
@@ -13,10 +12,6 @@ public class PlayerScope: EntityScope
     protected override void Configure(IContainerBuilder builder)
     {
         base.Configure(builder);
-        
-        builder.RegisterComponent(GetComponentInChildren<RigidbodyController>());
-        builder.RegisterEntryPoint<EntityBasicMovement>(Lifetime.Scoped)
-            .As<IMovementController>();
         
         builder.RegisterEntryPoint<PlayerInput>(Lifetime.Scoped);
         
