@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: -4871289679674323519}
   - component: {fileID: 7454339499277821137}
   - component: {fileID: 1298046521571552132}
-  - component: {fileID: 5869371796053639311}
   m_Layer: 0
   m_Name: SeaUrchin
   m_TagString: Untagged
@@ -143,18 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a62e08b1abd4011b5c9a67a3bedaa77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Movement.MovementController
---- !u!114 &5869371796053639311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2453553538165317395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74ff38fccaf64667a2565a3026b4cf76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Enemies.SeaUrchin.SeaUrchinAttackBehaviour
 --- !u!1001 &325702473190433160
 PrefabInstance:
   m_ObjectHideFlags: 0

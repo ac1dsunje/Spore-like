@@ -1,29 +1,28 @@
 ﻿using _Game.Scripts.GamePlay.Entities;
+using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
-using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Enemies.SeaUrchin
 {
-public class SeaUrchinAttackBehaviour : MonoBehaviour, IDamageSource, IDamageSourceController
+public class SeaUrchinAttackBehaviour : IStartable, IDamageSource, IDamageSourceController
 {
-    private AttackModule _module;
+    [Inject] private AttackModule _module;
+    [Inject] private BodyHitbox _hitbox;
     private IDamageReceiver _receiver;
-
-    [Inject]
-    private void Construct(AttackModule attackModule)
-    {
-        _module = attackModule;
-    }
 
     public void SetDamageReceiver(IDamageReceiver damageReceiver) => _receiver = damageReceiver;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void Start()
     {
-        if (!other.TryGetComponent(out IDamageReceiver damageAble)) return;
+        _hitbox.OnDamageReceiver += DoDamage;
+    }
 
-        damageAble.TakeDamage(new HitInfo(_module.PhysicalDamage, _module.IgnoreResistance, this, _receiver));
+    private void DoDamage(IDamageReceiver damageReceiver)
+    {
+        damageReceiver.TakeDamage(new HitInfo(_module.PhysicalDamage, _module.IgnoreResistance, this, _receiver));
     }
 
     public void SetDamageDealt(float damage)

@@ -10,6 +10,22 @@ public class BodyHitbox : MonoBehaviour, IDamageReceiver, IBiteable
     public event Action<HitInfo> OnHit;
     public event Action<float, float> OnBite;
     public event Action<int> OnEaten;
+    
+    public event Action<IDamageReceiver> OnDamageReceiver;
+    public event Action<IBiteable> OnBiteAble;
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.TryGetComponent(out IDamageReceiver receiver))
+        {
+            OnDamageReceiver?.Invoke(receiver);
+        }
+
+        if (other.TryGetComponent(out IBiteable biteable))
+        {
+            OnBiteAble?.Invoke(biteable);
+        }
+    }
 
     public void TakeDamage(HitInfo hit)
     {
