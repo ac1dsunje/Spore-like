@@ -15,10 +15,12 @@ public class PlayerScope: EntityScope
         base.Configure(builder);
         
         builder.RegisterComponent(GetComponentInChildren<RigidbodyController>());
-        builder.RegisterEntryPoint<CombatBinder>(Lifetime.Scoped);
+        builder.RegisterEntryPoint<EntityBasicMovement>(Lifetime.Scoped)
+            .As<IMovementController>();
+        
         builder.RegisterEntryPoint<PlayerInput>(Lifetime.Scoped);
         
-        builder.RegisterEntryPoint<PlayerVision>(Lifetime.Scoped);
+        builder.RegisterEntryPoint<CombatBinder>(Lifetime.Scoped);
         
         builder.RegisterEntryPoint<PlayerHealth>()
             .AsSelf()
@@ -32,8 +34,7 @@ public class PlayerScope: EntityScope
         
         builder.RegisterEntryPoint<PlayerMouth>();
         
-        builder.RegisterEntryPoint<EntityBasicMovement>(Lifetime.Scoped)
-            .As<IMovementController>();
+        builder.RegisterEntryPoint<PlayerVision>(Lifetime.Scoped);
     }
 }
 }
