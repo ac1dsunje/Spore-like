@@ -43,26 +43,25 @@ public class EntityScope: LifetimeScope
         
         // Modules
         builder.Register<EntityModel>(Lifetime.Scoped);
-        builder.RegisterEntryPoint<EntityStats>(Lifetime.Scoped)
-            .AsSelf();
+        builder.RegisterEntryPoint<EntityStats>(Lifetime.Scoped).AsSelf();
         
-        builder.Register<VisionModule>(Lifetime.Scoped);
-        builder.Register<DisguiseModule>(Lifetime.Scoped);
+        builder.RegisterEntryPoint<VisionModule>(Lifetime.Scoped).AsSelf();
+        builder.RegisterEntryPoint<DisguiseModule>(Lifetime.Scoped).AsSelf();
         
-        builder.Register<HealthModule>(Lifetime.Scoped);
-        builder.Register<AttackModule>(Lifetime.Scoped);
-        builder.Register<DefenseModule>(Lifetime.Scoped);
+        builder.RegisterEntryPoint<HealthModule>(Lifetime.Scoped).AsSelf();
+        builder.RegisterEntryPoint<AttackModule>(Lifetime.Scoped).AsSelf();
+        builder.RegisterEntryPoint<DefenseModule>(Lifetime.Scoped).AsSelf();
         
-        builder.Register<EnduranceModule>(Lifetime.Scoped);
+        builder.RegisterEntryPoint<EnduranceModule>(Lifetime.Scoped).AsSelf();
         
-        builder.Register<MouthModule>(Lifetime.Scoped);
-        builder.Register<StomachModule>(Lifetime.Scoped);
+        builder.RegisterEntryPoint<MouthModule>(Lifetime.Scoped).AsSelf();
+        builder.RegisterEntryPoint<StomachModule>(Lifetime.Scoped).AsSelf();
         
-        builder.Register<MovementModule>(Lifetime.Scoped);
+        builder.RegisterEntryPoint<MovementModule>(Lifetime.Scoped).AsSelf();
         
-        builder.Register<BiomeModule>(Lifetime.Scoped);
-        builder.Register<BreathingModule>(Lifetime.Scoped);
-        builder.Register<TemperatureModule>(Lifetime.Scoped);
+        builder.RegisterEntryPoint<BiomeModule>(Lifetime.Scoped).AsSelf();
+        builder.RegisterEntryPoint<BreathingModule>(Lifetime.Scoped).AsSelf();
+        builder.RegisterEntryPoint<TemperatureModule>(Lifetime.Scoped).AsSelf();
         
         // Behaviours
         builder.RegisterEntryPoint<EntityController>(Lifetime.Scoped)
