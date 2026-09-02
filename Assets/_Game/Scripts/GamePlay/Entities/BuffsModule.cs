@@ -68,7 +68,6 @@ public class BuffsModule: IStartable
 
         if (currentBuff == null)
         {
-            Debug.Log($"buff with type {type} not found in database");
             return;
         }
 
