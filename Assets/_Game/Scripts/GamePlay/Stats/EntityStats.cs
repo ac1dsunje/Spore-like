@@ -17,14 +17,11 @@ public class EntityStats: IStartable
     public event Action<StatType, float> OnStatUpdated;
     
     [Inject] private StatTypeConfig _config;
-    [Inject] private EntityStatsConfig _entityStatsConfig;
+    [Inject] private StatsConfig _entityStatsConfig;
     
     public void Start()
     {
-        foreach (var config in _entityStatsConfig.InitialConfigs)
-        {
-            AddInitialStats(config.Stats);
-        }
+        AddInitialStats(_entityStatsConfig.Stats);
     }
     
     private void AddInitialStats(List<Stat> stats)

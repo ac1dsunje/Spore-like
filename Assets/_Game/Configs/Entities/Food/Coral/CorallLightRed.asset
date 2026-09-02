@@ -12,13 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0030ccaa56b24bdfbe9c600651de2505, type: 3}
   m_Name: CorallLightRed
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Food.FoodConfig
-  <EntityStatsConfig>k__BackingField: {fileID: 11400000, guid: a888a92ffd3d4b04a9053d0874b75736, type: 2}
+  <EntityStatsConfig>k__BackingField: {fileID: 11400000, guid: c7bd36ac0aa1bee4cb40beb322f8d1b7, type: 2}
   <ExperienceAmount>k__BackingField: 1
+  <ExperienceConfig>k__BackingField:
+    <LevelScaler>k__BackingField: 1
+    <ExperienceConfig>k__BackingField:
+      <LevelSet>k__BackingField: 10
+      <ExperienceTypes>k__BackingField: []
   <AnimationSettings>k__BackingField:
     <Sprite>k__BackingField: {fileID: -7941097812427772325, guid: 3f83ef94bd5e0fd42beb7ca3b9e8ceb6, type: 3}
     <Controller>k__BackingField: {fileID: 0}
     <Color>k__BackingField: {r: 0.92941177, g: 0.22352941, b: 0.60784316, a: 1}
     <Prefab>k__BackingField: {fileID: 1057120428620177345, guid: d8e716c34125011438a86971c35e78c7, type: 3}
-    <ParticlesSettings>k__BackingField:
-      <Color>k__BackingField: {r: 0.92941177, g: 0.22352938, b: 0.6095797, a: 1}
-      <Prefab>k__BackingField: {fileID: 1057120428620177345, guid: d8e716c34125011438a86971c35e78c7, type: 3}
+    <IsObstacle>k__BackingField: 0

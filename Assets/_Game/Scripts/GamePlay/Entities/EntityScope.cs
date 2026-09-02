@@ -16,7 +16,7 @@ namespace _Game.Scripts.GamePlay.Entities
 public abstract class EntityScope: LifetimeScope
 {
     private AnimationSettings _animationSettings;
-    private EntityStatsConfig _entityStatsConfig;
+    private StatsConfig _entityStatsConfig;
     private EntityConfig _entityConfig;
     private EntityExperienceConfig _entityExperienceConfig;
 

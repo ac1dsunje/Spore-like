@@ -10,35 +10,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58a1f041e9924082bb4bf78eb5429b10, type: 3}
-  m_Name: MossStats
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.StatsConfig
+  m_Name: InitialStats
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Evolutions.Stats.StatsConfig
   <Stats>k__BackingField:
   - <Type>k__BackingField: 0
-    <Value>k__BackingField: 0
+    <Value>k__BackingField: 2
   - <Type>k__BackingField: 1
-    <Value>k__BackingField: 0
+    <Value>k__BackingField: 3
   - <Type>k__BackingField: 3
-    <Value>k__BackingField: 0
+    <Value>k__BackingField: 50
   - <Type>k__BackingField: 4
     <Value>k__BackingField: 0
   - <Type>k__BackingField: 6
-    <Value>k__BackingField: 0
+    <Value>k__BackingField: 10
   - <Type>k__BackingField: 7
-    <Value>k__BackingField: 0
+    <Value>k__BackingField: 1
   - <Type>k__BackingField: 8
-    <Value>k__BackingField: 0
+    <Value>k__BackingField: 50
   - <Type>k__BackingField: 10
-    <Value>k__BackingField: 5
+    <Value>k__BackingField: 100
   - <Type>k__BackingField: 11
-    <Value>k__BackingField: 0
+    <Value>k__BackingField: 1
   - <Type>k__BackingField: 12
     <Value>k__BackingField: 0
   - <Type>k__BackingField: 13
-    <Value>k__BackingField: 0
+    <Value>k__BackingField: 100
   - <Type>k__BackingField: 14
-    <Value>k__BackingField: 0
+    <Value>k__BackingField: 5
   - <Type>k__BackingField: 15
-    <Value>k__BackingField: 0
+    <Value>k__BackingField: 1
   - <Type>k__BackingField: 16
     <Value>k__BackingField: 0
   - <Type>k__BackingField: 17
@@ -52,9 +52,9 @@ MonoBehaviour:
   - <Type>k__BackingField: 22
     <Value>k__BackingField: 10
   - <Type>k__BackingField: 23
-    <Value>k__BackingField: 40
+    <Value>k__BackingField: 30
   - <Type>k__BackingField: 25
-    <Value>k__BackingField: 0
+    <Value>k__BackingField: 1
   - <Type>k__BackingField: 26
     <Value>k__BackingField: 0
   - <Type>k__BackingField: 27
@@ -66,16 +66,16 @@ MonoBehaviour:
   - <Type>k__BackingField: 30
     <Value>k__BackingField: 0
   - <Type>k__BackingField: 32
-    <Value>k__BackingField: 0
+    <Value>k__BackingField: 100
   - <Type>k__BackingField: 33
     <Value>k__BackingField: 0
   - <Type>k__BackingField: 34
     <Value>k__BackingField: 0
   - <Type>k__BackingField: 35
-    <Value>k__BackingField: 10
+    <Value>k__BackingField: 15
   - <Type>k__BackingField: 36
     <Value>k__BackingField: 0
   - <Type>k__BackingField: 37
     <Value>k__BackingField: 0
   - <Type>k__BackingField: 38
-    <Value>k__BackingField: 0
+    <Value>k__BackingField: 10

@@ -73,6 +73,7 @@ public class BuffsModule: IStartable
 
         if (state && !currentBuff.IsActive)
         {
+            Debug.Log($"{type} applied");
             currentBuff.Activate();
             OnBuffActivated?.Invoke(currentBuff);
         }

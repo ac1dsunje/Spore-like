@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0030ccaa56b24bdfbe9c600651de2505, type: 3}
   m_Name: SeaUrchin
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.EntityConfig
-  <EntityStatsConfig>k__BackingField: {fileID: 11400000, guid: 0a0aed94d3d607b4b90669d2fdcc4b7e, type: 2}
+  <EntityStatsConfig>k__BackingField: {fileID: 11400000, guid: e69bf7fb22b6fc3448d073f856b03521, type: 2}
   <ExperienceAmount>k__BackingField: 1
   <ExperienceConfig>k__BackingField:
     <LevelScaler>k__BackingField: 1
