@@ -11,19 +11,8 @@ public class AbilitiesModule: IDisposable
     public event Action<AbilityConfig> OnAbilityAdded;
     
     private readonly HashSet<Ability> _abilities = new();
-    private readonly AbilityFactory _factory;
-    private EntityModel _entityModel;
-
-    [Inject]
-    public AbilitiesModule(AbilityFactory factory)
-    {
-        _factory = factory;
-    }
-    
-    public void SetModel(EntityModel entityModel)
-    {
-        _entityModel = entityModel;
-    }
+    [Inject] private AbilityFactory _factory;
+    [Inject] private EntityModel _entityModel;
     
     public void Add(AbilityConfig[] configs)
     {

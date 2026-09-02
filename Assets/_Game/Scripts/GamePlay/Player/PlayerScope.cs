@@ -46,8 +46,6 @@ public class PlayerScope: EntityScope
         
         builder.RegisterEntryPoint<EntityBasicMovement>(Lifetime.Scoped).As<IMovementController>();
         
-        builder.Register<AbilitiesModule>(Lifetime.Scoped);
-        
         builder.Register<EvolutionsModule>(Lifetime.Scoped);
     }
 }

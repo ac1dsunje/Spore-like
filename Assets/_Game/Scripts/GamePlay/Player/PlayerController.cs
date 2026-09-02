@@ -6,7 +6,6 @@ namespace _Game.Scripts.GamePlay.Player
 {
 public class PlayerController : EntityController
 {
-    [Inject] public AbilitiesModule Abilities { get; private set; }
     [Inject] public EvolutionsModule Evolutions { get; private set; }
     [Inject] private PlayerRegistry _playerRegistry;
     
@@ -14,7 +13,6 @@ public class PlayerController : EntityController
     public override void Start()
     {
         base.Start();
-        Abilities.SetModel(Model);
         Evolutions.SetModel(Model);
         _playerRegistry.AddPlayer(this);
     }
