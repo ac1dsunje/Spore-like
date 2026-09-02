@@ -9,7 +9,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
-public class EntityBiomeChecker: IInitializable, IDisposable
+public class BiomeChecker: IInitializable, IDisposable
 {
     private WorldModel _worldModel;
     
@@ -19,13 +19,13 @@ public class EntityBiomeChecker: IInitializable, IDisposable
     private MovementModule _movement;
     private BiomeModule _biomeModule;
     
-    private EntityBuffsModule _buffsModule;
+    private BuffsModule _buffsModule;
     
     private Biome _currentBiome;
     
     [Inject]
     private void Construct(WorldModel worldModel, TemperatureModule temperature, MovementModule movement,
-        BiomeModule biome, BreathingModule breathing, EntityBuffsModule buffsModule)
+        BiomeModule biome, BreathingModule breathing, BuffsModule buffsModule)
     {
         _worldModel = worldModel;
         _temperature = temperature;

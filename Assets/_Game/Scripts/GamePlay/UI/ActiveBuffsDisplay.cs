@@ -10,11 +10,11 @@ public class ActiveBuffsDisplay: MonoBehaviour
     [SerializeField] private GameObject _slotPrefab;
     [SerializeField] private Transform  _container;
     
-    private EntityBuffsModule _player;
+    private BuffsModule _player;
 
     private readonly Dictionary<Buff, ActiveBuffSlotUI> _slots = new();
 
-    public void Construct(EntityBuffsModule player)
+    public void Construct(BuffsModule player)
     {
         _player = player;
         _player.OnBuffActivated += AddBuff;

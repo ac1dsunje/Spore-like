@@ -13,10 +13,10 @@ public class PlayerHealth: MonoBehaviour, IDamageReceiverController
     private HealthModule _health;
     private DefenseModule _defense;
     private IDamageSource _damageSource;
-    private EntityBodyHitbox _hitbox;
+    private BodyHitbox _hitbox;
     
     [Inject]
-    private void Construct(HealthModule health, DefenseModule defense, EntityBodyHitbox hitbox)
+    private void Construct(HealthModule health, DefenseModule defense, BodyHitbox hitbox)
     {
         _health = health;
         _defense = defense;

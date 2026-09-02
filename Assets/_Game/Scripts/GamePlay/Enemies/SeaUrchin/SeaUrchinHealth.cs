@@ -12,10 +12,10 @@ public class SeaUrchinHealth: MonoBehaviour, IDamageReceiverController
     private HealthModule _healthModule;
     private DefenseModule _defenseModule;
     private IDamageSource _damageSource;
-    private EntityBodyHitbox _hitbox;
+    private BodyHitbox _hitbox;
 
     [Inject]
-    private void Construct(DefenseModule defenseModule, HealthModule healthModule, EntityBodyHitbox hitbox)
+    private void Construct(DefenseModule defenseModule, HealthModule healthModule, BodyHitbox hitbox)
     {
         _defenseModule = defenseModule;
         _healthModule = healthModule;

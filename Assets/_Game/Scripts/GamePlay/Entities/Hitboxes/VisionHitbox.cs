@@ -6,7 +6,7 @@ using VContainer;
 namespace _Game.Scripts.GamePlay.Entities.Hitboxes
 {
 [RequireComponent(typeof(BoxCollider2D))]
-public class EntityVisionHitbox: MonoBehaviour
+public class VisionHitbox: MonoBehaviour
 {
     [SerializeField] private BoxCollider2D _visionCollider;
     

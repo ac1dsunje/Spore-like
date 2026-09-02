@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Entities.Hitboxes
 {
-public class EntityBodyHitbox : MonoBehaviour, IDamageReceiver, IBiteable
+public class BodyHitbox : MonoBehaviour, IDamageReceiver, IBiteable
 {
     public event Action<HitInfo> OnHit;
     public event Action<float, float> OnBite;

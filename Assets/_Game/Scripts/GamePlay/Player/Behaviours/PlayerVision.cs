@@ -13,13 +13,13 @@ public class PlayerVision : ITickable, IDisposable
 {
     private VisionModule _module;
     private CameraController _camController;
-    private EntityVisionHitbox _visionHitbox;
+    private VisionHitbox _visionHitbox;
     
     private float _targetVision;
     private float _currentVision;
 
     [Inject]
-    private void Construct(VisionModule module, EntityVisionHitbox visionHitbox, CameraController camController)
+    private void Construct(VisionModule module, VisionHitbox visionHitbox, CameraController camController)
     {
         _module = module;
         _visionHitbox = visionHitbox;

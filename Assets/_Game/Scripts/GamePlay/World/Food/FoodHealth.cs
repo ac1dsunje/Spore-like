@@ -12,10 +12,10 @@ public class FoodHealth: MonoBehaviour
     
     private HealthModule _health;
     private DefenseModule _defense;
-    private EntityBodyHitbox _hitBox;
+    private BodyHitbox _hitBox;
 
     [Inject]
-    private void Construct(HealthModule health, DefenseModule defense, EntityConfig config, EntityBodyHitbox hitbox)
+    private void Construct(HealthModule health, DefenseModule defense, EntityConfig config, BodyHitbox hitbox)
     {
         _health = health;
         _defense = defense;

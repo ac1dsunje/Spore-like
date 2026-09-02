@@ -58,15 +58,15 @@ public abstract class EntityScope: LifetimeScope
         // Behaviours
         builder.RegisterEntryPoint<EntityController>(Lifetime.Scoped).AsSelf();
         builder.RegisterComponent(GetComponentInChildren<EntityAnimation>());
-        builder.RegisterComponent(GetComponentInChildren<EntityVisionHitbox>());
-        builder.RegisterComponent(GetComponentInChildren<EntityBodyHitbox>()).AsSelf().As<IDamageReceiver>();
+        builder.RegisterComponent(GetComponentInChildren<VisionHitbox>());
+        builder.RegisterComponent(GetComponentInChildren<BodyHitbox>()).AsSelf().As<IDamageReceiver>();
         builder.RegisterComponent(GetComponentInChildren<EntityLighting>());
         builder.RegisterEntryPoint<EntityEndurance>(Lifetime.Scoped);
         
         // Important
         builder.RegisterEntryPoint<ExperienceModule>(Lifetime.Scoped).AsSelf();
-        builder.RegisterEntryPoint<EntityBuffsModule>(Lifetime.Scoped).AsSelf();
-        builder.RegisterEntryPoint<EntityBiomeChecker>(Lifetime.Scoped);
+        builder.RegisterEntryPoint<BuffsModule>(Lifetime.Scoped).AsSelf();
+        builder.RegisterEntryPoint<BiomeChecker>(Lifetime.Scoped);
         builder.RegisterEntryPoint<AbilitiesModule>(Lifetime.Scoped).AsSelf();
         builder.RegisterEntryPoint<EvolutionsModule>(Lifetime.Scoped).AsSelf();
     }

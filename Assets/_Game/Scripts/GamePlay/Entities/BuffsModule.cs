@@ -11,7 +11,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
-public class EntityBuffsModule: IStartable
+public class BuffsModule: IStartable
 {
     public event Action<Buff> OnBuffActivated;
     public event Action<Buff> OnBuffDeactivated;

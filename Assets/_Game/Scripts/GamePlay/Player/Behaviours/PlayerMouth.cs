@@ -13,7 +13,7 @@ public class PlayerMouth: MonoBehaviour
 {
     [Inject] private MouthModule _mouth;
     [Inject] private StomachModule _stomach;
-    [Inject] private EntityBuffsModule _buffs;
+    [Inject] private BuffsModule _buffs;
 
     private readonly HashSet<IBiteable> _foods = new();
     private IBiteable _currentFood;
