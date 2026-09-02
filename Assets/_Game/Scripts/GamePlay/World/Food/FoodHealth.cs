@@ -13,14 +13,16 @@ public class FoodHealth: MonoBehaviour
     private HealthModule _health;
     private DefenseModule _defense;
     private BodyHitbox _hitBox;
+    private ParticlesSpawner _particles;
 
     [Inject]
-    private void Construct(HealthModule health, DefenseModule defense, EntityConfig config, BodyHitbox hitbox)
+    private void Construct(HealthModule health, DefenseModule defense, EntityConfig config, BodyHitbox hitbox, ParticlesSpawner particlesSpawner)
     {
         _health = health;
         _defense = defense;
         _config = config;
         _hitBox = hitbox;
+        _particles = particlesSpawner;
         
         _health.OnDamageTaken += SpawnParticles;
         _health.OnDeath += Die;
@@ -35,14 +37,7 @@ public class FoodHealth: MonoBehaviour
 
     private void SpawnParticles(float dmg)
     {
-        var particles = Instantiate(
-            _config.AnimationSettings.OnHitParticles,
-            transform.position,
-            Quaternion.identity
-        );
-
-        var main = particles.main;
-        main.startColor = _config.AnimationSettings.Color;
+        _particles.Spawn(_config.AnimationSettings.OnHitParticles, transform.position, _config.AnimationSettings.Color);
     }
 
     private void Die()

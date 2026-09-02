@@ -601,6 +601,7 @@ GameObject:
   - component: {fileID: 1986825662}
   - component: {fileID: 1986825666}
   - component: {fileID: 1986825668}
+  - component: {fileID: 1986825669}
   m_Layer: 0
   m_Name: Scope
   m_TagString: Untagged
@@ -674,6 +675,18 @@ MonoBehaviour:
   _enemySpawnPoint: {x: 2, y: 2}
   _enemyConfig: {fileID: 11400000, guid: 2f2e867e51897714a91a8feba992ece0, type: 2}
   _plantPrefab: {fileID: 2836576136578488979, guid: fb18b5f42f61c0248906eabff0079a6b, type: 3}
+--- !u!114 &1986825669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986825660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1ebc9ac55b9474c96061b8b9f2fea16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.ParticlesSpawner
 --- !u!1001 &2140936592
 PrefabInstance:
   m_ObjectHideFlags: 0

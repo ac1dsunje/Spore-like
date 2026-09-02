@@ -6,7 +6,7 @@ using _Game.Scripts.GamePlay.Weapons;
 using UnityEngine;
 using VContainer;
 
-namespace _Game.Scripts.GamePlay.Player.Behaviours
+namespace _Game.Scripts.GamePlay.Player
 {
 public class PlayerAttack : MonoBehaviour, IDamageSource, IDamageSourceController, IAttackController
 {

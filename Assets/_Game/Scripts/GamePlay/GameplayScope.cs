@@ -66,11 +66,12 @@ public class GameplayScope: LifetimeScope
         builder.RegisterComponentInHierarchy<Camera>();
         builder.RegisterComponentInHierarchy<CinemachineCamera>();
         
-        // Abilities
+        // Factories
         builder.Register<AbilityFactory>(Lifetime.Scoped);
-        
-        // Buffs
         builder.Register<ExperienceFactory>(Lifetime.Scoped);
+        
+        // Particles
+        builder.RegisterComponentInHierarchy<ParticlesSpawner>();
     }
 }
 }
