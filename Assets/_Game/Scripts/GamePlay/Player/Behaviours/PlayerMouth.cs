@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Buffs;
 using _Game.Scripts.GamePlay.Entities;
+using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.World.Food;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class PlayerMouth: MonoBehaviour
     [Inject] private MouthModule _mouth;
     [Inject] private StomachModule _stomach;
     [Inject] private BuffsModule _buffs;
+    [Inject] private BodyHitbox _hitbox;
 
     private readonly HashSet<IBiteable> _foods = new();
     private IBiteable _currentFood;
@@ -26,13 +28,14 @@ public class PlayerMouth: MonoBehaviour
         _hungerTimer = _maxTime;
     }
 
-    private void OnTriggerEnter2D(Collider2D other) => TryCatchFood(other);
-
-    private void OnTriggerExit2D(Collider2D other) => TryReleaseFood(other);
-
-    private void TryCatchFood(Collider2D other)
+    private void Start()
     {
-        if (!other.TryGetComponent<IBiteable>(out var food)) return;
+        _hitbox.OnBiteAbleEntered += TryCatchFood;
+        _hitbox.OnBiteAbleExited += TryReleaseFood;
+    }
+
+    private void TryCatchFood(IBiteable food)
+    {
         if (!_foods.Add(food)) return;
 
         food.OnEaten += OnFoodEaten;
@@ -43,9 +46,8 @@ public class PlayerMouth: MonoBehaviour
         }
     }
 
-    private void TryReleaseFood(Collider2D other)
+    private void TryReleaseFood(IBiteable food)
     {
-        if (!other.TryGetComponent<IBiteable>(out var food)) return;
         if (!_foods.Remove(food)) return;
 
         food.OnEaten -= OnFoodEaten;
