@@ -33,12 +33,12 @@ public class UIManager: MonoBehaviour
     
     private void AddPlayer(PlayerController player)
     {
-        _evolutionsModule = player.Model.Evolutions;
-        _abilitiesModule = player.Model.Abilities;
+        _evolutionsModule = player.Evolutions;
+        _abilitiesModule = player.Abilities;
         
         _evolutionsModule.OnSlotsFilled += OnSlotsFilled;
         
-        _barsPanelUI.Construct(player.Model);
+        _barsPanelUI.Construct(player);
         
         _activeEvolutionsDisplay.OnEvolutionHovered += _descriptionUI.SetDescription;
         _activeEvolutionsDisplay.OnEvolutionUnhovered += _descriptionUI.Hide;

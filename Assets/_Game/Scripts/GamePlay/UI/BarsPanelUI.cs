@@ -11,12 +11,12 @@ public class BarsPanelUI : MonoBehaviour
     [SerializeField] private BarUI _enduranceBarUI;
     [SerializeField] private BarUI _hungerBarUI;
 
-    public void Construct(PlayerModel player)
+    public void Construct(PlayerController player)
     {
-        _healthBarUI.Construct(player.Health);
+        _healthBarUI.Construct(player.Model.Health);
         _experienceBarUI.Construct(player.Experience);
-        _enduranceBarUI.Construct(player.Endurance);
-        _hungerBarUI.Construct(player.Stomach);
+        _enduranceBarUI.Construct(player.Model.Endurance);
+        _hungerBarUI.Construct(player.Model.Stomach);
     }
 }
 }

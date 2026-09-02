@@ -37,7 +37,6 @@ public class PlayerHealth: MonoBehaviour, IDamageReceiverController
         var returnedHit = new HitInfo(returnedDamage, 0, _damageSource, null);
         hit.Receiver?.TakeDamage(returnedHit);
         hit.Source?.SetDamageDealt(damage);
-        Debug.Log($"took damage by {hit.Source}, initial: {hit.Damage}, got: {damage}, returned: {returnedDamage} to {hit.Receiver}");
     }
 
     private void StartRegeneration() => StartCoroutine(Regenerate());
@@ -65,7 +64,7 @@ public class PlayerHealth: MonoBehaviour, IDamageReceiverController
 
     private void Die()
     {
-        Debug.Log("Player is dead");
+        
     }
 
     private void OnDestroy()

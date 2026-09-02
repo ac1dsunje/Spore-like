@@ -1,6 +1,4 @@
-﻿using System;
-using _Game.Scripts.GamePlay.Interfaces;
-using UnityEngine;
+﻿using _Game.Scripts.GamePlay.Interfaces;
 using VContainer;
 using VContainer.Unity;
 
@@ -16,7 +14,6 @@ public class CombatBinder: IStartable
     {
         _damageReceiverController.SetDamageSource(_damageSource);
         _damageSourceController.SetDamageReceiver(_damageReceiver);
-        Debug.Log($"combat inited for {_damageSource}");
     }
 }
 
