@@ -31,7 +31,6 @@ public class PlayerScope: EntityScope
         builder.RegisterEntryPoint<EntityBiomeChecker>(Lifetime.Scoped);
         
         builder.RegisterEntryPoint<PlayerController>(Lifetime.Scoped);
-        builder.Register<PlayerModel>(Lifetime.Scoped);
         builder.RegisterEntryPoint<CombatBinder>(Lifetime.Scoped);
         builder.RegisterEntryPoint<PlayerInput>(Lifetime.Scoped);
         

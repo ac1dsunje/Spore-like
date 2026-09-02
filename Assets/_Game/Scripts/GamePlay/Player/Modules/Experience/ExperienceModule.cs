@@ -18,25 +18,27 @@ public class ExperienceModule: IDisposable, IResource
     private int _levelScaler;
     
     private PlayerExperienceConfig _config;
+    private EntityModel _model;
     
     public event Action<int> OnLevelChanged;
 
     public event Action<float, float> OnValueChanged;
     
     [Inject]
-    public ExperienceModule(PlayerExperienceConfig config)
+    public ExperienceModule(PlayerExperienceConfig config, EntityModel model)
     {
         LevelSet = config.ExperienceConfig.LevelSet;
         _levelScaler = config.LevelScaler;
         _config = config;
+        _model = model;
     }
 
-    public void Initialize(PlayerModel playerModel)
+    public void Initialize()
     {
-        SubscribeExperienceServices(_config.ExperienceConfig, playerModel);
+        SubscribeExperienceServices(_config.ExperienceConfig, _model);
     }
     
-    private void SubscribeExperienceServices(ExperienceConfig config, PlayerModel model)
+    private void SubscribeExperienceServices(ExperienceConfig config, EntityModel model)
     {
         foreach (var type in config.ExperienceTypes)
         {

@@ -19,7 +19,7 @@ public class EvolutionsModule: IDisposable
     private readonly ExperienceModule _experience;
     private readonly EntityStats _stats;
     private readonly AbilitiesModule _abilities;
-    private PlayerModel _player;
+    private EntityModel _entity;
     
     private readonly List<Evolution> _evolutions = new();
 
@@ -34,9 +34,9 @@ public class EvolutionsModule: IDisposable
         _experience.OnLevelChanged += OnLevelUpdated;
     }
 
-    public void SetModel(PlayerModel model)
+    public void SetModel(EntityModel model)
     {
-        _player = model;
+        _entity = model;
         
         _minEvolutions = 3; // temporarly! it should be deleted due to shop feature in the future
 
@@ -56,7 +56,7 @@ public class EvolutionsModule: IDisposable
     public void ChooseEvolution(Evolution evolution)
     {
         evolution.OnLevelUp += OnEvolutionLevelUp;
-        evolution.Apply(_player);
+        evolution.Apply(_entity);
         _stats.AddSource(evolution);
         _abilities.Add(evolution.Config.Abilities);
 

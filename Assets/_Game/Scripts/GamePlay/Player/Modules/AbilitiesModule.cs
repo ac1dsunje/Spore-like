@@ -11,7 +11,7 @@ public class AbilitiesModule: IDisposable
     
     private readonly HashSet<Ability> _abilities = new();
     private readonly AbilityFactory _factory;
-    private PlayerModel _playerModel;
+    private EntityModel _entityModel;
 
     [Inject]
     public AbilitiesModule(AbilityFactory factory)
@@ -19,9 +19,9 @@ public class AbilitiesModule: IDisposable
         _factory = factory;
     }
     
-    public void SetModel(PlayerModel playerModel)
+    public void SetModel(EntityModel entityModel)
     {
-        _playerModel = playerModel;
+        _entityModel = entityModel;
     }
     
     public void Add(AbilityConfig[] configs)
@@ -29,7 +29,7 @@ public class AbilitiesModule: IDisposable
         if (configs == null || configs.Length == 0) return;
         foreach (var ability in configs)
         {
-            if (_abilities.Add(_factory.Get(_playerModel, ability)))
+            if (_abilities.Add(_factory.Get(_entityModel, ability)))
             {
                 OnAbilityAdded?.Invoke(ability);
             }

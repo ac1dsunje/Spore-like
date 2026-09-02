@@ -3,7 +3,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player
 {
-public class PlayerModel
+public class EntityModel
 {
     [Inject] public EntityStats Stats { get; private set; }
     [Inject] public VisionModule Vision { get; private set; }

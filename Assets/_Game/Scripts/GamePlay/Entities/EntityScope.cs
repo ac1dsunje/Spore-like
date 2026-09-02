@@ -2,6 +2,7 @@
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
+using _Game.Scripts.GamePlay.Player;
 using VContainer;
 using VContainer.Unity;
 
@@ -28,6 +29,7 @@ public abstract class EntityScope: LifetimeScope
         builder.RegisterInstance(_entityConfig);
         
         // Modules
+        builder.Register<EntityModel>(Lifetime.Scoped);
         builder.Register<EntityStats>(Lifetime.Scoped);
         
         builder.Register<VisionModule>(Lifetime.Scoped);

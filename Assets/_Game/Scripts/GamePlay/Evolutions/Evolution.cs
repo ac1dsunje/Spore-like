@@ -18,7 +18,7 @@ public class Evolution: IDisposable, IStatSource
     public Sprite Frame => _rarity.Sprite;
     
     private RarityConfig _rarity;
-    private PlayerModel _player;
+    private EntityModel _entity;
     public event Action OnRarityChanged;
     
     //Level
@@ -42,9 +42,9 @@ public class Evolution: IDisposable, IStatSource
         return Stats.Select(stat => new SourceStat(stat.Type, stat.CurrentValue, stat.Operation, stat.Target)).ToList();
     }
 
-    public void Apply(PlayerModel playerModel)
+    public void Apply(EntityModel entityModel)
     {
-        _player = playerModel;
+        _entity = entityModel;
         Activate();
         SubscribeExperienceServices();
     }
@@ -53,7 +53,7 @@ public class Evolution: IDisposable, IStatSource
     {
         foreach (var config in Config.ExperienceConfig.ExperienceTypes)
         {
-            var experienceType = _expFactory.GetService(config, _player);
+            var experienceType = _expFactory.GetService(config, _entity);
             _experienceServices.Add(experienceType);
             experienceType.OnExperienceGained += UpdateExperience;
         }
@@ -77,7 +77,7 @@ public class Evolution: IDisposable, IStatSource
         UseRarity(rarity);
         
         OnRarityChanged?.Invoke();
-        _player.Stats.UpdateSource(this);
+        _entity.Stats.UpdateSource(this);
     }
 
     private void UseRarity(RarityConfig rarity)

@@ -23,7 +23,7 @@ public class AbilityFactory
         _ticker = ticker;
     }
 
-    public Ability Get(PlayerModel model, AbilityConfig config)
+    public Ability Get(EntityModel model, AbilityConfig config)
     {
         return config.Type switch
         {
