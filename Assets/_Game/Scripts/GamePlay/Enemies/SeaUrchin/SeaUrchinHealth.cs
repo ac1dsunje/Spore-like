@@ -27,7 +27,7 @@ public class SeaUrchinHealth: MonoBehaviour, IDamageReceiverController
 
     public void SetDamageSource(IDamageSource source) => _damageSource = source;
 
-    public void TakeDamage(HitInfo hit)
+    private void TakeDamage(HitInfo hit)
     {
         var damage = _defenseModule.ApplyResistance(hit.Damage, hit.IgnoreResistance);
         _healthModule.TakeDamage(damage);
@@ -35,6 +35,7 @@ public class SeaUrchinHealth: MonoBehaviour, IDamageReceiverController
         HitInfo returnedHit = new(returnedDamage, 0, _damageSource, null);
         hit.Receiver?.TakeDamage(returnedHit);
         hit.Source?.SetDamageDealt(damage);
+        Debug.Log($"{_healthModule.Health}");
     }
 
     private void Die()
@@ -44,6 +45,7 @@ public class SeaUrchinHealth: MonoBehaviour, IDamageReceiverController
 
     private void OnDestroy()
     {
+        _healthModule.OnDeath -= Die;
         _healthModule.OnDeath -= Die;
     }
 }

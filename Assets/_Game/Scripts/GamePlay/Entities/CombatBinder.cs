@@ -1,16 +1,22 @@
-﻿using _Game.Scripts.GamePlay.Interfaces;
+﻿using System;
+using _Game.Scripts.GamePlay.Interfaces;
+using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
-public class CombatBinder
+public class CombatBinder: IStartable
 {
-    [Inject]
-    public CombatBinder(IDamageReceiver damageReceiver, IDamageSource damageSource,
-        IDamageReceiverController damageReceiverController, IDamageSourceController damageSourceController)
+    [Inject] private IDamageReceiver _damageReceiver;
+    [Inject] private IDamageSource _damageSource;
+    [Inject] private IDamageReceiverController _damageReceiverController;
+    [Inject] private IDamageSourceController _damageSourceController;
+    public void Start()
     {
-        damageReceiverController.SetDamageSource(damageSource);
-        damageSourceController.SetDamageReceiver(damageReceiver);
+        _damageReceiverController.SetDamageSource(_damageSource);
+        _damageSourceController.SetDamageReceiver(_damageReceiver);
+        Debug.Log($"combat inited for {_damageSource}");
     }
 }
 

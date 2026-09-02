@@ -32,7 +32,7 @@ public class PlayerScope: EntityScope
         
         builder.RegisterEntryPoint<PlayerController>(Lifetime.Scoped);
         builder.Register<PlayerModel>(Lifetime.Scoped);
-        builder.Register<CombatBinder>(Lifetime.Scoped);
+        builder.RegisterEntryPoint<CombatBinder>(Lifetime.Scoped);
         builder.RegisterEntryPoint<PlayerInput>(Lifetime.Scoped);
         
         builder.Register<ExperienceModule>(Lifetime.Scoped);

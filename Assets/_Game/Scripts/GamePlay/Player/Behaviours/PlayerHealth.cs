@@ -29,7 +29,7 @@ public class PlayerHealth: MonoBehaviour, IDamageReceiverController
 
     public void SetDamageSource(IDamageSource source) => _damageSource = source;
 
-    public void TakeDamage(HitInfo hit)
+    private void TakeDamage(HitInfo hit)
     {
         var damage = _defense.ApplyResistance(hit.Damage, hit.IgnoreResistance);
         _health.TakeDamage(damage);
@@ -37,6 +37,7 @@ public class PlayerHealth: MonoBehaviour, IDamageReceiverController
         var returnedHit = new HitInfo(returnedDamage, 0, _damageSource, null);
         hit.Receiver?.TakeDamage(returnedHit);
         hit.Source?.SetDamageDealt(damage);
+        Debug.Log($"took damage by {hit.Source}, initial: {hit.Damage}, got: {damage}, returned: {returnedDamage} to {hit.Receiver}");
     }
 
     private void StartRegeneration() => StartCoroutine(Regenerate());
