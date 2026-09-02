@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Experience;
 using _Game.Scripts.GamePlay.UI.Bar;
+using VContainer;
+using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Player.Modules.Experience
 {
-public class ExperienceModule: IDisposable, IResource
+public class ExperienceModule: IStartable, IDisposable, IResource
 {
     private int _levelSet;
     private int _experience;
@@ -17,18 +19,15 @@ public class ExperienceModule: IDisposable, IResource
     private int _level;
     private int _levelScaler;
     
-    private EntityExperienceConfig _config;
-    private EntityModel _model;
+    [Inject] private EntityExperienceConfig _config;
+    [Inject] private EntityModel _model;
     
     public event Action<int> OnLevelChanged;
 
     public event Action<float, float> OnValueChanged;
 
-    public void Initialize(EntityModel model, EntityExperienceConfig config)
+    public void Start()
     {
-        _model = model;
-        _config = config;
-        
         if (_config.ExperienceConfig == null) return;
         
         _levelSet = _config.ExperienceConfig.LevelSet;

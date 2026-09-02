@@ -8,12 +8,10 @@ public class EntityController: IStartable
 {
     [Inject] public EntityModel Model { get; private set; }
     [Inject] public ExperienceModule Experience { get; private set; }
-    [Inject] private EntityExperienceConfig _config;
 
     public virtual void Start()
     {
         Model.Stats.Initialize();
-        Experience.Initialize(Model, _config);
     }
 }
 }
