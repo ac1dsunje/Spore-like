@@ -94,7 +94,12 @@ public class EntityScope: LifetimeScope
         // Coroutines
         builder.RegisterComponent(GetComponentInChildren<CoroutineRunner>());
 
-        switch (_entityConfig.EntityType)
+        ChooseBehaviour(_entityConfig.EntityType, builder);
+    }
+
+    private void ChooseBehaviour(EntityType entityType, IContainerBuilder builder)
+    {
+        switch (entityType)
         {
             case EntityType.Food:
                 builder.RegisterEntryPoint<FoodHealth>();
@@ -102,29 +107,22 @@ public class EntityScope: LifetimeScope
             
             case EntityType.Player:
                 builder.RegisterEntryPoint<PlayerInput>(Lifetime.Scoped);
-        
                 builder.RegisterEntryPoint<CombatBinder>(Lifetime.Scoped);
-        
                 builder.RegisterEntryPoint<PlayerHealth>()
                     .AsSelf()
                     .As<IDamageReceiverController>();
-        
                 builder.RegisterComponent(GetComponentInChildren<PlayerAttack>())
                     .AsSelf()
                     .As<IDamageSource>()
                     .As<IDamageSourceController>()
                     .As<IAttackController>();
-        
                 builder.RegisterEntryPoint<PlayerMouth>();
-        
                 builder.RegisterEntryPoint<PlayerVision>(Lifetime.Scoped);
                 break;
             
             case EntityType.SeaUrchin:
                 builder.RegisterEntryPoint<SeaUrchinAI>(Lifetime.Scoped);
-        
                 builder.RegisterEntryPoint<CombatBinder>(Lifetime.Scoped);
-        
                 builder.RegisterEntryPoint<SeaUrchinHealth>().AsSelf().As<IDamageReceiverController>();
                 builder.RegisterEntryPoint<SeaUrchinAttackBehaviour>().AsSelf().As<IDamageSource>().As<IDamageSourceController>();
                 break;
