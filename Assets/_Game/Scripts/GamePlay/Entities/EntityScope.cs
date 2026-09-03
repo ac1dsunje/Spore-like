@@ -122,8 +122,13 @@ public class EntityScope: LifetimeScope
             case EntityType.SeaUrchin:
                 builder.RegisterEntryPoint<SeaUrchinAI>(Lifetime.Scoped);
                 builder.RegisterEntryPoint<CombatBinder>(Lifetime.Scoped);
-                builder.RegisterEntryPoint<SeaUrchinHealth>().AsSelf().As<IDamageReceiverController>();
-                builder.RegisterEntryPoint<SeaUrchinAttackBehaviour>().AsSelf().As<IDamageSource>().As<IDamageSourceController>();
+                builder.RegisterEntryPoint<SeaUrchinHealth>()
+                    .AsSelf()
+                    .As<IDamageReceiverController>();
+                builder.RegisterEntryPoint<OnHitAttackBehaviour>()
+                    .AsSelf()
+                    .As<IDamageSource>()
+                    .As<IDamageSourceController>();
                 break;
         }
     }

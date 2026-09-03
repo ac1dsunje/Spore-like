@@ -1,13 +1,12 @@
-﻿using _Game.Scripts.GamePlay.Entities;
-using _Game.Scripts.GamePlay.Entities.Hitboxes;
+﻿using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using VContainer;
 using VContainer.Unity;
 
-namespace _Game.Scripts.GamePlay.Enemies.SeaUrchin
+namespace _Game.Scripts.GamePlay.Entities.Attack
 {
-public class SeaUrchinAttackBehaviour : IStartable, IDamageSource, IDamageSourceController
+public class OnHitAttackBehaviour : IStartable, IDamageSource, IDamageSourceController
 {
     [Inject] private AttackModule _module;
     [Inject] private BodyHitbox _hitbox;
