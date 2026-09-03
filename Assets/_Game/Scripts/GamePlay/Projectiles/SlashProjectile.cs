@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using _Game.Scripts.GamePlay.Interfaces;
-using _Game.Scripts.GamePlay.Weapons;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Projectiles
@@ -13,15 +12,6 @@ public class SlashProjectile: Projectile
     {
         base.SetHit(hit);
         StartCoroutine(Hit());
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.TryGetComponent(out IDamageReceiver damageReceiver))
-        {
-            if (damageReceiver == HitInfo.Receiver) return;
-            damageReceiver.TakeDamage(HitInfo);
-        }
     }
 
     private IEnumerator Hit()

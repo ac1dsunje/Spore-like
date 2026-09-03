@@ -1,5 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Interfaces;
-using _Game.Scripts.GamePlay.Weapons;
+using _Game.Scripts.GamePlay.Projectiles;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Entities.Attack
