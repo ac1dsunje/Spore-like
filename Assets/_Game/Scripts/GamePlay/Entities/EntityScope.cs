@@ -109,10 +109,8 @@ public class EntityScope: LifetimeScope
             case EntityType.Player:
                 builder.RegisterEntryPoint<PlayerAI>(Lifetime.Scoped);
                 builder.RegisterEntryPoint<PlayerHealth>()
-                    .AsSelf()
                     .As<IHealthController>();
                 builder.RegisterComponent(GetComponentInChildren<PlayerAttack>())
-                    .AsSelf()
                     .As<IDamageSource>()
                     .As<IAttackController>();
                 builder.RegisterEntryPoint<PlayerVision>(Lifetime.Scoped);
@@ -121,10 +119,8 @@ public class EntityScope: LifetimeScope
             case EntityType.SeaUrchin:
                 builder.RegisterEntryPoint<SeaUrchinAI>(Lifetime.Scoped);
                 builder.RegisterEntryPoint<SeaUrchinHealth>()
-                    .AsSelf()
                     .As<IHealthController>();
                 builder.RegisterEntryPoint<EntityBasicAttackBehaviour>()
-                    .AsSelf()
                     .As<IDamageSource>()
                     .As<IAttackController>();
                 break;
