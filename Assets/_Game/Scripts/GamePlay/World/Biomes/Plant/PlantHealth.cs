@@ -12,12 +12,9 @@ namespace _Game.Scripts.GamePlay.World.Biomes.Plant
 {
 public class PlantHealth: IStartable, IDisposable, IHealthController
 {
-    [Inject] private AnimationSettings _config;
     [Inject] private HealthModule _health;
     [Inject] private DefenseModule _defense;
-    [Inject] private MovementModule _movement;
     [Inject] private ExperienceModule _experience;
-    [Inject] private ParticlesSpawner _particles;
     [Inject] private EntitiesRegistry _entitiesRegistry;
 
     public void Start()
@@ -30,16 +27,6 @@ public class PlantHealth: IStartable, IDisposable, IHealthController
         var damage = _defense.ApplyResistance(hit.Damage, hit.IgnoreResistance);
         _health.TakeDamage(damage);
         hit.Source?.SetDamageDealt(damage);
-        SpawnParticles();
-    }
-
-    private void SpawnParticles()
-    {
-        _particles.Spawn(
-            _config.OnHitParticles, 
-            _movement.Transform.position, 
-            _config.Color
-            );
     }
 
     private void Die(HealthModule health)

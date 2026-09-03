@@ -6,6 +6,7 @@ public class ParticlesSpawner: MonoBehaviour
 {
     public void Spawn(ParticleSystem prefab, Vector3 position, Color color)
     {
+        if (prefab == null) return;
         var particles = Instantiate(prefab, position, Quaternion.identity, transform);
 
         var main = particles.main;

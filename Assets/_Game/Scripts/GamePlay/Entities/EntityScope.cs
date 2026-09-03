@@ -89,6 +89,8 @@ public class EntityScope: LifetimeScope
             .AsSelf();
         builder.RegisterEntryPoint<EvolutionsModule>(Lifetime.Scoped)
             .AsSelf();
+        builder.RegisterEntryPoint<ParticlesModule>(Lifetime.Scoped)
+            .AsSelf();
         
         // Coroutines
         builder.RegisterComponent(GetComponentInChildren<CoroutineRunner>());
