@@ -1,4 +1,5 @@
-﻿using _Game.Scripts.GamePlay.Entities.Animation;
+﻿using _Game.Scripts.Core.Services;
+using _Game.Scripts.GamePlay.Entities.Animation;
 using _Game.Scripts.GamePlay.Entities.Attack;
 using _Game.Scripts.GamePlay.Entities.Configuration;
 using _Game.Scripts.GamePlay.Entities.Experience;

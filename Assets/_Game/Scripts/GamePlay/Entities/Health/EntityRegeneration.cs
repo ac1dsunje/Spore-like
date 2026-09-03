@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 using VContainer;

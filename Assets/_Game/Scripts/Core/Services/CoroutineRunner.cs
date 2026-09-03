@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay
+namespace _Game.Scripts.Core.Services
 {
 public class CoroutineRunner : MonoBehaviour
 {
