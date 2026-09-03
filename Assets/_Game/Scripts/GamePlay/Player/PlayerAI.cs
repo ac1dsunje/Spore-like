@@ -1,5 +1,4 @@
 ﻿using System;
-using _Game.Scripts.GamePlay.CameraManager;
 using _Game.Scripts.GamePlay.Entities.Attack;
 using _Game.Scripts.GamePlay.Entities.Health;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;

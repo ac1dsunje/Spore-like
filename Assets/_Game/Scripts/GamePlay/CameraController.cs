@@ -5,7 +5,7 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace _Game.Scripts.GamePlay.CameraManager
+namespace _Game.Scripts.GamePlay
 {
 public class CameraController: IInitializable, IDisposable
 {
