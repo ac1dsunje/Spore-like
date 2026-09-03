@@ -1,19 +1,14 @@
-﻿using _Game.Scripts.GamePlay.Enemies.SeaUrchin;
-using _Game.Scripts.GamePlay.Entities.Animation;
+﻿using _Game.Scripts.GamePlay.Entities.Animation;
 using _Game.Scripts.GamePlay.Entities.Attack;
 using _Game.Scripts.GamePlay.Entities.Configuration;
 using _Game.Scripts.GamePlay.Entities.Experience;
-using _Game.Scripts.GamePlay.Entities.Health;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
-using _Game.Scripts.GamePlay.Player;
-using _Game.Scripts.GamePlay.World.Biomes.Plant;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
-using EntityRegeneration = _Game.Scripts.GamePlay.Entities.Configuration.EntityRegeneration;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
@@ -21,6 +16,8 @@ namespace _Game.Scripts.GamePlay.Entities
 [RequireComponent(typeof(RigidbodyController))]
 public class EntityScope: LifetimeScope
 {
+    private readonly EntityBuilder _entityBuilder = new();
+    
     private AnimationSettings _animationSettings;
     private StatsConfig _entityStatsConfig;
     private EntityConfig _entityConfig;
@@ -98,66 +95,7 @@ public class EntityScope: LifetimeScope
         // Coroutines
         builder.RegisterComponent(GetComponentInChildren<CoroutineRunner>());
 
-        ChooseBehaviour(_entityConfig.Data, builder);
-    }
-
-    private void ChooseBehaviour(EntityData config, IContainerBuilder builder)
-    {
-        switch (config.AIType)
-        {
-            case EntityAI.Food:
-                builder.RegisterEntryPoint<PlantAI>(Lifetime.Scoped);
-                break;
-            
-            case EntityAI.Player:
-                builder.RegisterEntryPoint<PlayerAI>(Lifetime.Scoped);
-                builder.RegisterEntryPoint<PlayerVision>(Lifetime.Scoped);
-                break;
-            
-            case EntityAI.SeaUrchin:
-                builder.RegisterEntryPoint<SeaUrchinAI>(Lifetime.Scoped);
-                break;
-        }
-
-        switch (config.HealthType)
-        {
-            case EntityHealth.Basic:
-                builder.RegisterEntryPoint<EntityBasicHealth>().As<IHealthController>();
-                break;
-            
-            case EntityHealth.Reflective:
-                builder.RegisterEntryPoint<EntityReflectiveHealth>().As<IHealthController>();
-                break;
-        }
-
-        switch (config.RegenerationType)
-        {
-            case EntityRegeneration.Disabled:
-                break;
-            
-            case EntityRegeneration.Enabled:
-                builder.RegisterEntryPoint<EntityRegeneration>(Lifetime.Scoped);
-                break;
-        }
-
-        switch (config.AttackType)
-        {
-            case EntityAttack.Basic:
-                builder.RegisterEntryPoint<EntityBasicAttackBehaviour>().As<IDamageSource>().As<IAttackController>();
-                break;
-            case EntityAttack.Player:
-                builder.RegisterEntryPoint<PlayerAttack>().As<IDamageSource>().As<IAttackController>();
-                break;
-        }
-
-        switch (config.DeathType)
-        {
-            case EntityDeath.Basic:
-                builder.RegisterEntryPoint<EntityDeathModule>();
-                break;
-            case EntityDeath.Player:
-                break;
-        }
+        _entityBuilder.ChooseBehaviour(_entityConfig.Data, builder);
     }
 }
 }
