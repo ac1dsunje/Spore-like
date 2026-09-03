@@ -18,8 +18,6 @@ public class EntityBuilder
         
         SetHealth(config.HealthType, builder);
         
-        SetRegeneration(config.RegenerationType, builder);
-        
         SetAttack(config.AttackType, builder);
         
         SetDeath(config.DeathType, builder);
@@ -54,19 +52,6 @@ public class EntityBuilder
             
             case EntityHealth.Reflective:
                 builder.RegisterEntryPoint<EntityReflectiveHealth>().As<IHealthController>();
-                break;
-        }
-    }
-
-    private void SetRegeneration(EntityRegeneration config, IContainerBuilder builder)
-    {
-        switch (config)
-        {
-            case EntityRegeneration.Disabled:
-                break;
-            
-            case EntityRegeneration.Enabled:
-                builder.RegisterEntryPoint<EntityRegeneration>(Lifetime.Scoped);
                 break;
         }
     }

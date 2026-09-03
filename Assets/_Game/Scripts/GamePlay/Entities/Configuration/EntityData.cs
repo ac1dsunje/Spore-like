@@ -16,12 +16,6 @@ public enum EntityHealth
     Reflective = 1,
 }
 
-public enum EntityRegeneration
-{
-    Disabled = 0,
-    Enabled = 1
-}
-
 public enum EntityAttack
 {
     Basic = 0,
@@ -39,7 +33,6 @@ public class EntityData
 {
     [field: SerializeField] public EntityAI AIType { get; private set; }
     [field: SerializeField] public EntityHealth HealthType { get; private set; }
-    [field: SerializeField] public EntityRegeneration RegenerationType { get; private set; }
     [field: SerializeField] public EntityAttack AttackType { get; private set; }
     [field: SerializeField] public EntityDeath DeathType { get; private set; }
 }

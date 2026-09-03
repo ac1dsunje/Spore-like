@@ -2,6 +2,7 @@
 using _Game.Scripts.GamePlay.Entities.Attack;
 using _Game.Scripts.GamePlay.Entities.Configuration;
 using _Game.Scripts.GamePlay.Entities.Experience;
+using _Game.Scripts.GamePlay.Entities.Health;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Interfaces;
@@ -94,6 +95,7 @@ public class EntityScope: LifetimeScope
         
         // Coroutines
         builder.RegisterComponent(GetComponentInChildren<CoroutineRunner>());
+        builder.RegisterEntryPoint<EntityRegeneration>(Lifetime.Scoped);
 
         _entityBuilder.ChooseBehaviour(_entityConfig.Data, builder);
     }

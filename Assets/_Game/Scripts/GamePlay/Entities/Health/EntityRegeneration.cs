@@ -22,6 +22,7 @@ public class EntityRegeneration: IStartable, IDisposable
 
     private void StartRegeneration()
     {
+        if (_health.Regeneration <= 0f) return;
         _runner.Run(RegenerationKey, Regenerate());
     }
 
