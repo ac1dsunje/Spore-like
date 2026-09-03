@@ -125,10 +125,11 @@ public class EntityScope: LifetimeScope
                 builder.RegisterEntryPoint<SeaUrchinHealth>()
                     .AsSelf()
                     .As<IDamageReceiverController>();
-                builder.RegisterEntryPoint<OnHitAttackBehaviour>()
+                builder.RegisterEntryPoint<EntityBasicAttackBehaviour>()
                     .AsSelf()
                     .As<IDamageSource>()
-                    .As<IDamageSourceController>();
+                    .As<IDamageSourceController>()
+                    .As<IAttackController>();
                 break;
         }
     }

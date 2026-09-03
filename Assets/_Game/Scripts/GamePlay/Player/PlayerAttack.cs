@@ -37,7 +37,7 @@ public class PlayerAttack : MonoBehaviour, IDamageSource, IDamageSourceControlle
         }
     }
 
-    public void RequestAttack(Vector2 mousePosition)
+    public void RequestAttack(IDamageReceiver damageReceiver, Vector2 mousePosition)
     {
         if (!CanAttack) return;
         

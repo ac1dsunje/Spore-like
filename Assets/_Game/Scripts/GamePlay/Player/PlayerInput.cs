@@ -38,7 +38,7 @@ public class PlayerInput : ITickable
     {
         if (!Input.GetMouseButton(0)) return;
 
-        _attack.RequestAttack(GetMouseWorldPosition());
+        _attack.RequestAttack(null, GetMouseWorldPosition());
     }
 
     private Vector2 GetMouseWorldPosition()
