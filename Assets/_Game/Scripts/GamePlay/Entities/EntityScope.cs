@@ -93,6 +93,7 @@ public class EntityScope: LifetimeScope
             .AsSelf();
         builder.RegisterEntryPoint<ParticlesModule>(Lifetime.Scoped)
             .AsSelf();
+        builder.RegisterComponent(GetComponentInChildren<EntityWeaponHolder>());
         
         // Coroutines
         builder.RegisterComponent(GetComponentInChildren<CoroutineRunner>());
@@ -145,7 +146,7 @@ public class EntityScope: LifetimeScope
                 builder.RegisterEntryPoint<EntityBasicAttackBehaviour>().As<IDamageSource>().As<IAttackController>();
                 break;
             case EntityAttack.Player:
-                builder.RegisterComponent(GetComponentInChildren<PlayerAttack>()).As<IDamageSource>().As<IAttackController>();
+                builder.RegisterEntryPoint<PlayerAttack>().As<IDamageSource>().As<IAttackController>();
                 break;
         }
 

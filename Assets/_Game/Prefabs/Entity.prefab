@@ -296,9 +296,9 @@ GameObject:
   - component: {fileID: 4515079076315579977}
   - component: {fileID: 1894985776445635346}
   - component: {fileID: 6766690008576938077}
-  - component: {fileID: 2437682772760813782}
   - component: {fileID: 5752819248030171916}
   - component: {fileID: 7141615740822153795}
+  - component: {fileID: 5817664088192976576}
   m_Layer: 0
   m_Name: Entity
   m_TagString: Untagged
@@ -364,19 +364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a62e08b1abd4011b5c9a67a3bedaa77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Player.Modules.Movement.MovementController
---- !u!114 &2437682772760813782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254078283856608112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51638f74984e4341be97ec284583c96e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Player.Modules.Attack.PlayerAttack
-  _meleeWeaponObject: {fileID: 6363633533278675784}
 --- !u!114 &5752819248030171916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,6 +392,19 @@ MonoBehaviour:
     TypeName: _Game.Scripts.GamePlay.GameplayScope
   autoRun: 0
   autoInjectGameObjects: []
+--- !u!114 &5817664088192976576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254078283856608112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d2b12dad6764d9bac737e510e796024, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.Attack.EntityWeaponHolder
+  _meleeWeaponObject: {fileID: 6363633533278675784}
 --- !u!1 &8266466559747868771
 GameObject:
   m_ObjectHideFlags: 0
