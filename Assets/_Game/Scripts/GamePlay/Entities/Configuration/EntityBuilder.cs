@@ -13,7 +13,20 @@ public class EntityBuilder
 {
     public void ChooseBehaviour(EntityData config, IContainerBuilder builder)
     {
-        switch (config.AIType)
+        SetAI(config.AIType, builder);
+        
+        SetHealth(config.HealthType, builder);
+        
+        SetRegeneration(config.RegenerationType, builder);
+        
+        SetAttack(config.AttackType, builder);
+        
+        SetDeath(config.DeathType, builder);
+    }
+
+    private void SetAI(EntityAI config, IContainerBuilder builder)
+    {
+        switch (config)
         {
             case EntityAI.Food:
                 builder.RegisterEntryPoint<PlantAI>(Lifetime.Scoped);
@@ -28,8 +41,11 @@ public class EntityBuilder
                 builder.RegisterEntryPoint<SeaUrchinAI>(Lifetime.Scoped);
                 break;
         }
+    }
 
-        switch (config.HealthType)
+    protected void SetHealth(EntityHealth config, IContainerBuilder builder)
+    {
+        switch (config)
         {
             case EntityHealth.Basic:
                 builder.RegisterEntryPoint<EntityBasicHealth>().As<IHealthController>();
@@ -39,8 +55,11 @@ public class EntityBuilder
                 builder.RegisterEntryPoint<EntityReflectiveHealth>().As<IHealthController>();
                 break;
         }
+    }
 
-        switch (config.RegenerationType)
+    private void SetRegeneration(EntityRegeneration config, IContainerBuilder builder)
+    {
+        switch (config)
         {
             case EntityRegeneration.Disabled:
                 break;
@@ -49,8 +68,11 @@ public class EntityBuilder
                 builder.RegisterEntryPoint<EntityRegeneration>(Lifetime.Scoped);
                 break;
         }
+    }
 
-        switch (config.AttackType)
+    private void SetAttack(EntityAttack config, IContainerBuilder builder)
+    {
+        switch (config)
         {
             case EntityAttack.Basic:
                 builder.RegisterEntryPoint<EntityBasicAttackBehaviour>().As<IDamageSource>().As<IAttackController>();
@@ -59,8 +81,11 @@ public class EntityBuilder
                 builder.RegisterEntryPoint<PlayerAttack>().As<IDamageSource>().As<IAttackController>();
                 break;
         }
+    }
 
-        switch (config.DeathType)
+    private void SetDeath(EntityDeath config, IContainerBuilder builder)
+    {
+        switch (config)
         {
             case EntityDeath.Basic:
                 builder.RegisterEntryPoint<EntityDeathModule>();
