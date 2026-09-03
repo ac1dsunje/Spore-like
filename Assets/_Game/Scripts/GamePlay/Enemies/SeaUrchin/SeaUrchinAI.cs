@@ -1,5 +1,6 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Entities.Attack;
+using _Game.Scripts.GamePlay.Entities.Health;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Interfaces;
@@ -15,7 +16,8 @@ public class SeaUrchinAI : IStartable, ITickable, IDisposable
 {
     [Inject] private IMovementController _movement;
     [Inject] private IAttackController _attacker;
-    [Inject] private BodyHitbox _hitbox;
+    [Inject] private IHealthController _healthController;
+    [Inject] private BodyHitbox _hitBox;
 
     private float _directionChangeTimer;
 
@@ -24,7 +26,13 @@ public class SeaUrchinAI : IStartable, ITickable, IDisposable
 
     public void Start()
     {
-        _hitbox.OnDamageReceiver += DoDamage;
+        _hitBox.OnDamageReceiver += DoDamage;
+        _hitBox.OnHit += TakeDamage;
+    }
+
+    private void TakeDamage(HitInfo hit)
+    {
+        _healthController.TakeDamage(hit);
     }
 
     private void DoDamage(IDamageReceiver damageReceiver)
@@ -55,7 +63,8 @@ public class SeaUrchinAI : IStartable, ITickable, IDisposable
 
     public void Dispose()
     {
-        _hitbox.OnDamageReceiver -= DoDamage;
+        _hitBox.OnDamageReceiver -= DoDamage;
+        _hitBox.OnHit -= TakeDamage;
     }
 }
 }

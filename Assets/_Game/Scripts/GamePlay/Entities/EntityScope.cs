@@ -2,12 +2,13 @@
 using _Game.Scripts.GamePlay.Entities.Animation;
 using _Game.Scripts.GamePlay.Entities.Attack;
 using _Game.Scripts.GamePlay.Entities.Experience;
+using _Game.Scripts.GamePlay.Entities.Health;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Entities.Movement;
-using _Game.Scripts.GamePlay.Entities.Plant;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.Player;
+using _Game.Scripts.GamePlay.World.Biomes.Plant;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -100,13 +101,16 @@ public class EntityScope: LifetimeScope
         switch (entityType)
         {
             case EntityType.Food:
-                builder.RegisterEntryPoint<PlantHealth>();
+                builder.RegisterEntryPoint<PlantAI>(Lifetime.Scoped);
+                builder.RegisterEntryPoint<PlantHealth>()
+                    .As<IHealthController>();
                 break;
             
             case EntityType.Player:
-                builder.RegisterEntryPoint<PlayerInput>(Lifetime.Scoped);
+                builder.RegisterEntryPoint<PlayerAI>(Lifetime.Scoped);
                 builder.RegisterEntryPoint<PlayerHealth>()
-                    .AsSelf();
+                    .AsSelf()
+                    .As<IHealthController>();
                 builder.RegisterComponent(GetComponentInChildren<PlayerAttack>())
                     .AsSelf()
                     .As<IDamageSource>()
@@ -117,7 +121,8 @@ public class EntityScope: LifetimeScope
             case EntityType.SeaUrchin:
                 builder.RegisterEntryPoint<SeaUrchinAI>(Lifetime.Scoped);
                 builder.RegisterEntryPoint<SeaUrchinHealth>()
-                    .AsSelf();
+                    .AsSelf()
+                    .As<IHealthController>();
                 builder.RegisterEntryPoint<EntityBasicAttackBehaviour>()
                     .AsSelf()
                     .As<IDamageSource>()

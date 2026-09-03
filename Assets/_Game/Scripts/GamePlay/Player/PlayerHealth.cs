@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
-using _Game.Scripts.GamePlay.Entities;
-using _Game.Scripts.GamePlay.Entities.Hitboxes;
+using _Game.Scripts.GamePlay.Entities.Health;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
@@ -10,24 +9,22 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Player
 {
-public class PlayerHealth : IStartable, IDisposable
+public class PlayerHealth : IStartable, IDisposable, IHealthController
 {
     private const string RegenerationKey = "Regeneration";
     private const string WaitKey = "WaitBeforeRegeneration";
 
     [Inject] private HealthModule _health;
     [Inject] private DefenseModule _defense;
-    [Inject] private BodyHitbox _hitbox;
     [Inject] private CoroutineRunner _runner;
     [Inject] private IDamageSource _damageSource;
 
     public void Start()
     {
         _health.OnDamageTaken += StopRegeneration;
-        _hitbox.OnHit += TakeDamage;
     }
 
-    private void TakeDamage(HitInfo hit)
+    public void TakeDamage(HitInfo hit)
     {
         var damage = _defense.ApplyResistance(hit.Damage, hit.IgnoreResistance);
         _health.TakeDamage(damage);
@@ -70,7 +67,6 @@ public class PlayerHealth : IStartable, IDisposable
         _runner.Stop(WaitKey);
 
         _health.OnDamageTaken -= StopRegeneration;
-        _hitbox.OnHit -= TakeDamage;
     }
 }
 }

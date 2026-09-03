@@ -1,24 +1,32 @@
-﻿using _Game.Scripts.GamePlay.CameraManager;
+﻿using System;
+using _Game.Scripts.GamePlay.CameraManager;
 using _Game.Scripts.GamePlay.Entities.Attack;
+using _Game.Scripts.GamePlay.Entities.Health;
+using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Entities.Movement;
+using _Game.Scripts.GamePlay.Interfaces;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Player
 {
-public class PlayerInput : ITickable
+public class PlayerAI : IStartable, ITickable, IDisposable
 {
-    private IMovementController _movement;
-    private IAttackController _attack;
-    private CameraController _camera;
+    [Inject] private IMovementController _movement;
+    [Inject] private IAttackController _attack;
+    [Inject] private IHealthController _health;
+    [Inject] private BodyHitbox _hitBox;
+    [Inject] private CameraController _camera;
 
-    [Inject]
-    private void Construct(IMovementController movement, IAttackController attack, CameraController cameraController)
+    public void Start()
     {
-        _movement = movement;
-        _attack = attack;
-        _camera = cameraController;
+        _hitBox.OnHit += TakeDamage;
+    }
+
+    private void TakeDamage(HitInfo hit)
+    {
+        _health.TakeDamage(hit);
     }
 
     public void Tick()
@@ -44,6 +52,11 @@ public class PlayerInput : ITickable
     private Vector2 GetMouseWorldPosition()
     {
         return _camera.Camera.ScreenToWorldPoint(Input.mousePosition);
+    }
+
+    public void Dispose()
+    {
+        _hitBox.OnHit -= TakeDamage;
     }
 }
 }
