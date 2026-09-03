@@ -10,23 +10,23 @@ namespace _Game.Scripts.GamePlay.Enemies.SeaUrchin
 {
 public class SeaUrchinHealth: IStartable, IDisposable
 {
-    [Inject] private HealthModule _healthModule;
-    [Inject] private DefenseModule _defenseModule;
-    [Inject] private BodyHitbox _hitbox;
+    [Inject] private HealthModule _health;
+    [Inject] private DefenseModule _defense;
+    [Inject] private BodyHitbox _hitBox;
     [Inject] private EntitiesRegistry _entitiesRegistry;
     [Inject] private IDamageSource _damageSource;
 
     public void Start()
     {
-        _healthModule.OnDeath += Die;
-        _hitbox.OnHit += TakeDamage;
+        _health.OnDeath += Die;
+        _hitBox.OnHit += TakeDamage;
     }
 
     private void TakeDamage(HitInfo hit)
     {
-        var damage = _defenseModule.ApplyResistance(hit.Damage, hit.IgnoreResistance);
-        _healthModule.TakeDamage(damage);
-        var returnedDamage = _defenseModule.ReflectDamage(damage);
+        var damage = _defense.ApplyResistance(hit.Damage, hit.IgnoreResistance);
+        _health.TakeDamage(damage);
+        var returnedDamage = _defense.ReflectDamage(damage);
         HitInfo returnedHit = new(returnedDamage, 0, _damageSource, null);
         hit.Receiver?.TakeDamage(returnedHit);
         hit.Source?.SetDamageDealt(damage);
@@ -39,8 +39,8 @@ public class SeaUrchinHealth: IStartable, IDisposable
 
     public void Dispose()
     {
-        _healthModule.OnDeath -= Die;
-        _hitbox.OnHit -= TakeDamage;
+        _health.OnDeath -= Die;
+        _hitBox.OnHit -= TakeDamage;
     }
 }
 }

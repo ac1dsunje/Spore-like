@@ -4,10 +4,10 @@ using _Game.Scripts.GamePlay.Entities.Attack;
 using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Entities.Movement;
+using _Game.Scripts.GamePlay.Entities.Plant;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.Player;
-using _Game.Scripts.GamePlay.World.Food;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -70,8 +70,7 @@ public class EntityScope: LifetimeScope
         builder.RegisterComponent(GetComponentInChildren<VisionHitbox>());
         builder.RegisterComponent(GetComponentInChildren<BodyHitbox>())
             .AsSelf()
-            .As<IDamageReceiver>()
-            .As<IBiteable>();
+            .As<IDamageReceiver>();
         builder.RegisterComponent(GetComponentInChildren<EntityLighting>());
         builder.RegisterEntryPoint<EntityEndurance>(Lifetime.Scoped);
         
@@ -101,7 +100,7 @@ public class EntityScope: LifetimeScope
         switch (entityType)
         {
             case EntityType.Food:
-                builder.RegisterEntryPoint<FoodHealth>();
+                builder.RegisterEntryPoint<PlantHealth>();
                 break;
             
             case EntityType.Player:
@@ -112,7 +111,6 @@ public class EntityScope: LifetimeScope
                     .AsSelf()
                     .As<IDamageSource>()
                     .As<IAttackController>();
-                builder.RegisterEntryPoint<PlayerMouth>();
                 builder.RegisterEntryPoint<PlayerVision>(Lifetime.Scoped);
                 break;
             

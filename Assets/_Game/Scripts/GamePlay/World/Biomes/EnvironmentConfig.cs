@@ -1,5 +1,4 @@
 ﻿using _Game.Scripts.GamePlay.Entities;
-using _Game.Scripts.GamePlay.World.Food;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.World.Biomes

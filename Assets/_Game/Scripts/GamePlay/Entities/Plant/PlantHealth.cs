@@ -1,14 +1,14 @@
 ﻿using System;
-using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
+using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using VContainer;
 using VContainer.Unity;
 
-namespace _Game.Scripts.GamePlay.World.Food
+namespace _Game.Scripts.GamePlay.Entities.Plant
 {
-public class FoodHealth: IStartable, IDisposable
+public class PlantHealth: IStartable, IDisposable
 {
     [Inject] private EntityConfig _config;
     [Inject] private HealthModule _health;
@@ -21,18 +21,19 @@ public class FoodHealth: IStartable, IDisposable
 
     public void Start()
     {
-        _health.OnDamageTaken += SpawnParticles;
+        _hitBox.OnHit += TakeDamage;
         _health.OnDeath += Die;
-        _hitBox.OnBite += TakeBite;
     }
 
-    private void TakeBite(float damage, float penetration)
+    private void TakeDamage(HitInfo hit)
     {
-        var appliedDamage = _defense.ApplyResistance(damage, penetration);
-        _health.TakeDamage(appliedDamage);
+        var damage = _defense.ApplyResistance(hit.Damage, hit.IgnoreResistance);
+        _health.TakeDamage(damage);
+        hit.Source?.SetDamageDealt(damage);
+        SpawnParticles();
     }
 
-    private void SpawnParticles(float dmg)
+    private void SpawnParticles()
     {
         _particles.Spawn(
             _config.AnimationSettings.OnHitParticles, 
@@ -43,13 +44,12 @@ public class FoodHealth: IStartable, IDisposable
 
     private void Die(HealthModule health)
     {
-        _hitBox.SetEaten(_experience.Level);
         _entitiesRegistry.DestroyEntityByHealth(health);
     }
     
     public void Dispose()
     {
-        _health.OnDamageTaken -= SpawnParticles;
+        _hitBox.OnHit -= TakeDamage;
         _health.OnDeath -= Die;
     }
 }
