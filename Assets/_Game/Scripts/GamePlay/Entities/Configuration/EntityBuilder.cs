@@ -27,7 +27,7 @@ public class EntityBuilder
     {
         switch (config)
         {
-            case EntityAI.Food:
+            case EntityAI.Plant:
                 builder.RegisterEntryPoint<PlantAI>(Lifetime.Scoped);
                 break;
             

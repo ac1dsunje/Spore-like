@@ -5,7 +5,7 @@ namespace _Game.Scripts.GamePlay.Entities.Configuration
 {
 public enum EntityAI
 {
-    Food = 0,
+    Plant = 0,
     Player = 1,
     SeaUrchin = 2,
 }
