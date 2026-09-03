@@ -6,16 +6,16 @@ namespace _Game.Scripts.GamePlay.Entities.Attack
 {
 public class EntityWeaponHolder: MonoBehaviour
 {
-    [SerializeField] private MeleeWeaponItem _meleeWeaponObject;
+    [SerializeField] private Projectile _projectilePrefab;
 
     public void SetAttack(Vector2 mousePosition, Vector2 entityPosition, HitInfo hitInfo, float range)
     {
-        var weapon = Instantiate(_meleeWeaponObject, null);
+        var weapon = Instantiate(_projectilePrefab, null);
         UpdateAttackPosition(mousePosition, entityPosition, range, weapon);
         weapon.SetHit(hitInfo);
     }
 
-    private void UpdateAttackPosition(Vector2 mousePosition, Vector2 entityPosition, float range, MeleeWeaponItem weapon)
+    private void UpdateAttackPosition(Vector2 mousePosition, Vector2 entityPosition, float range, Projectile weapon)
     {
         var offset = mousePosition - entityPosition;
         var rawDistance = offset.magnitude;

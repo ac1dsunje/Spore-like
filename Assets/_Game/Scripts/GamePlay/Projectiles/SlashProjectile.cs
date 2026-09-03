@@ -1,18 +1,17 @@
 ﻿using System.Collections;
 using _Game.Scripts.GamePlay.Interfaces;
+using _Game.Scripts.GamePlay.Weapons;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.Weapons
+namespace _Game.Scripts.GamePlay.Projectiles
 {
-public class MeleeWeaponItem: MonoBehaviour
+public class SlashProjectile: Projectile
 {
     [SerializeField] private float _hitTime = 0.1f;
     
-    private HitInfo _hit;
-    
-    public void SetHit(HitInfo hit)
+    public override void SetHit(HitInfo hit)
     {
-        _hit = hit;
+        base.SetHit(hit);
         StartCoroutine(Hit());
     }
 
@@ -20,8 +19,8 @@ public class MeleeWeaponItem: MonoBehaviour
     {
         if (other.TryGetComponent(out IDamageReceiver damageReceiver))
         {
-            if (damageReceiver == _hit.Receiver) return;
-            damageReceiver.TakeDamage(_hit);
+            if (damageReceiver == HitInfo.Receiver) return;
+            damageReceiver.TakeDamage(HitInfo);
         }
     }
 
