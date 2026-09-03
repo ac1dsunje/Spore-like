@@ -1,13 +1,12 @@
-﻿using _Game.Scripts.GamePlay.Entities.Attack;
-using _Game.Scripts.GamePlay.Interfaces;
+﻿using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace _Game.Scripts.GamePlay.Player
+namespace _Game.Scripts.GamePlay.Entities.Attack
 {
-public class PlayerAttack : ITickable, IDamageSource, IAttackController
+public class EntityWeaponAttack : ITickable, IDamageSource, IAttackController
 {
     [Inject] private AttackModule _attack;
     [Inject] private MovementModule _movement;

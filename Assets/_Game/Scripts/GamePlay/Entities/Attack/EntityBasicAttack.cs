@@ -5,7 +5,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Entities.Attack
 {
-public class EntityBasicAttackBehaviour : IDamageSource, IAttackController
+public class EntityBasicAttack : IDamageSource, IAttackController
 {
     [Inject] private AttackModule _module;
     [Inject] private IDamageReceiver _receiver;

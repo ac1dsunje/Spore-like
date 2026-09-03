@@ -19,7 +19,7 @@ public enum EntityHealth
 public enum EntityAttack
 {
     Basic = 0,
-    Player = 1,
+    Weapon = 1,
 }
 
 public enum EntityDeath

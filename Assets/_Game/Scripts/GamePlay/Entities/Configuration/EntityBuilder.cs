@@ -61,10 +61,10 @@ public class EntityBuilder
         switch (config)
         {
             case EntityAttack.Basic:
-                builder.RegisterEntryPoint<EntityBasicAttackBehaviour>().As<IDamageSource>().As<IAttackController>();
+                builder.RegisterEntryPoint<EntityBasicAttack>().As<IDamageSource>().As<IAttackController>();
                 break;
-            case EntityAttack.Player:
-                builder.RegisterEntryPoint<PlayerAttack>().As<IDamageSource>().As<IAttackController>();
+            case EntityAttack.Weapon:
+                builder.RegisterEntryPoint<EntityWeaponAttack>().As<IDamageSource>().As<IAttackController>();
                 break;
         }
     }
