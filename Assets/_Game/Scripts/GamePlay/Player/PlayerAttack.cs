@@ -8,13 +8,13 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Player
 {
-public class PlayerAttack : MonoBehaviour, IDamageSource, IDamageSourceController, IAttackController
+public class PlayerAttack : MonoBehaviour, IDamageSource, IAttackController
 {
     [SerializeField] private MeleeWeaponItem _meleeWeaponObject;
     
     private AttackModule _attack;
     private MovementModule _movement;
-    private IDamageReceiver _receiver;
+    [Inject] private IDamageReceiver _receiver;
 
     private float _attackCooldownTimer;
     private bool CanAttack => _attackCooldownTimer <= 0f;
@@ -26,8 +26,6 @@ public class PlayerAttack : MonoBehaviour, IDamageSource, IDamageSourceControlle
         _movement = movement;
         _meleeWeaponObject.transform.SetParent(null);
     }
-
-    public void SetDamageReceiver(IDamageReceiver damageReceiver) => _receiver = damageReceiver;
 
     private void Update()
     {

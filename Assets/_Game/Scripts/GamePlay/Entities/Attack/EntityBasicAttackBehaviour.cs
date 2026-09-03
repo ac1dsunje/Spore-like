@@ -5,12 +5,10 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Entities.Attack
 {
-public class EntityBasicAttackBehaviour : IDamageSource, IAttackController, IDamageSourceController
+public class EntityBasicAttackBehaviour : IDamageSource, IAttackController
 {
     [Inject] private AttackModule _module;
-    private IDamageReceiver _receiver;
-
-    public void SetDamageReceiver(IDamageReceiver damageReceiver) => _receiver = damageReceiver;
+    [Inject] private IDamageReceiver _receiver;
 
     public void RequestAttack(IDamageReceiver damageReceiver, Vector2 mousePosition)
     {

@@ -113,7 +113,6 @@ public class EntityScope: LifetimeScope
                 builder.RegisterComponent(GetComponentInChildren<PlayerAttack>())
                     .AsSelf()
                     .As<IDamageSource>()
-                    .As<IDamageSourceController>()
                     .As<IAttackController>();
                 builder.RegisterEntryPoint<PlayerMouth>();
                 builder.RegisterEntryPoint<PlayerVision>(Lifetime.Scoped);
@@ -128,7 +127,6 @@ public class EntityScope: LifetimeScope
                 builder.RegisterEntryPoint<EntityBasicAttackBehaviour>()
                     .AsSelf()
                     .As<IDamageSource>()
-                    .As<IDamageSourceController>()
                     .As<IAttackController>();
                 break;
         }
