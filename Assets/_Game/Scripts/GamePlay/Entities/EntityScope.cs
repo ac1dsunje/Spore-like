@@ -95,39 +95,64 @@ public class EntityScope: LifetimeScope
         // Coroutines
         builder.RegisterComponent(GetComponentInChildren<CoroutineRunner>());
 
-        ChooseBehaviour(_entityConfig.EntityType, builder);
+        ChooseBehaviour(_entityConfig, builder);
     }
 
-    private void ChooseBehaviour(EntityType entityType, IContainerBuilder builder)
+    private void ChooseBehaviour(EntityConfig config, IContainerBuilder builder)
     {
-        switch (entityType)
+        switch (config.AIType)
         {
-            case EntityType.Food:
+            case EntityAI.Food:
                 builder.RegisterEntryPoint<PlantAI>(Lifetime.Scoped);
-                builder.RegisterEntryPoint<EntityBasicHealth>()
-                    .As<IHealthController>();
-                builder.RegisterEntryPoint<EntityDeathModule>();
                 break;
             
-            case EntityType.Player:
+            case EntityAI.Player:
                 builder.RegisterEntryPoint<PlayerAI>(Lifetime.Scoped);
-                builder.RegisterEntryPoint<EntityReflectiveHealth>()
-                    .As<IHealthController>();
-                builder.RegisterEntryPoint<EntityRegeneration>(Lifetime.Scoped);
-                builder.RegisterComponent(GetComponentInChildren<PlayerAttack>())
-                    .As<IDamageSource>()
-                    .As<IAttackController>();
                 builder.RegisterEntryPoint<PlayerVision>(Lifetime.Scoped);
                 break;
             
-            case EntityType.SeaUrchin:
+            case EntityAI.SeaUrchin:
                 builder.RegisterEntryPoint<SeaUrchinAI>(Lifetime.Scoped);
-                builder.RegisterEntryPoint<EntityReflectiveHealth>()
-                    .As<IHealthController>();
-                builder.RegisterEntryPoint<EntityBasicAttackBehaviour>()
-                    .As<IDamageSource>()
-                    .As<IAttackController>();
+                break;
+        }
+
+        switch (config.HealthType)
+        {
+            case EntityHealth.Basic:
+                builder.RegisterEntryPoint<EntityBasicHealth>().As<IHealthController>();
+                break;
+            
+            case EntityHealth.Reflective:
+                builder.RegisterEntryPoint<EntityReflectiveHealth>().As<IHealthController>();
+                break;
+        }
+
+        switch (config.RegenerationType)
+        {
+            case EntityRegeneration.Disabled:
+                break;
+            
+            case EntityRegeneration.Enabled:
+                builder.RegisterEntryPoint<EntityRegeneration>(Lifetime.Scoped);
+                break;
+        }
+
+        switch (config.AttackType)
+        {
+            case EntityAttack.Basic:
+                builder.RegisterEntryPoint<EntityBasicAttackBehaviour>().As<IDamageSource>().As<IAttackController>();
+                break;
+            case EntityAttack.Player:
+                builder.RegisterComponent(GetComponentInChildren<PlayerAttack>()).As<IDamageSource>().As<IAttackController>();
+                break;
+        }
+
+        switch (config.DeathType)
+        {
+            case EntityDeath.Basic:
                 builder.RegisterEntryPoint<EntityDeathModule>();
+                break;
+            case EntityDeath.Player:
                 break;
         }
     }

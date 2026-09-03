@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0030ccaa56b24bdfbe9c600651de2505, type: 3}
   m_Name: SeaUrchin
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.EntityConfig
-  <EntityType>k__BackingField: 2
+  <AIType>k__BackingField: 2
+  <HealthType>k__BackingField: 1
+  <RegenerationType>k__BackingField: 0
+  <AttackType>k__BackingField: 0
+  <DeathType>k__BackingField: 0
   <EntityStatsConfig>k__BackingField: {fileID: 11400000, guid: e69bf7fb22b6fc3448d073f856b03521, type: 2}
-  <ExperienceAmount>k__BackingField: 1
   <ExperienceConfig>k__BackingField:
     <LevelScaler>k__BackingField: 1
     <ExperienceConfig>k__BackingField:
       <LevelSet>k__BackingField: 10
+      <Level>k__BackingField: 1
       <ExperienceTypes>k__BackingField:
       - <Type>k__BackingField: 2
         <Amount>k__BackingField: 1
