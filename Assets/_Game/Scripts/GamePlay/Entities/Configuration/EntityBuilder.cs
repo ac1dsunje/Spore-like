@@ -89,9 +89,10 @@ public class EntityBuilder
         switch (config)
         {
             case EntityDeath.Basic:
-                builder.RegisterEntryPoint<EntityDeathModule>();
+                builder.RegisterEntryPoint<EntityBasicDeath>();
                 break;
-            case EntityDeath.Player:
+            case EntityDeath.Revival:
+                builder.RegisterEntryPoint<EntityRevivalDeath>();
                 break;
         }
     }

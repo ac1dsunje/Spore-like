@@ -1,12 +1,13 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Modules;
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities.Death
 {
-public class EntityDeathModule: IStartable, IDisposable
+public class EntityRevivalDeath: IStartable, IDisposable
 {
     [Inject] private EntitiesRegistry _entitiesRegistry;
     [Inject] private ExperienceModule _experience;
@@ -19,7 +20,7 @@ public class EntityDeathModule: IStartable, IDisposable
 
     private void Die(HealthModule health)
     {
-        _entitiesRegistry.DestroyEntityByHealth(health);
+        Debug.Log("Reviving");
     }
     
     public void Dispose()
