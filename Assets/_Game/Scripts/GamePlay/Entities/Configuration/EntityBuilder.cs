@@ -42,7 +42,7 @@ public class EntityBuilder
         }
     }
 
-    protected void SetHealth(EntityHealth config, IContainerBuilder builder)
+    private void SetHealth(EntityHealth config, IContainerBuilder builder)
     {
         switch (config)
         {
