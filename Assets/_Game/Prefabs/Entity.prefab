@@ -322,7 +322,6 @@ Transform:
   - {fileID: 1421485344981635687}
   - {fileID: 75556837252982781}
   - {fileID: 2747833205990612459}
-  - {fileID: 2276668657644396992}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1894985776445635346
@@ -404,7 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2b12dad6764d9bac737e510e796024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.Attack.EntityWeaponHolder
-  _meleeWeaponObject: {fileID: 6363633533278675784}
+  _meleeWeaponObject: {fileID: 1631030185061358863, guid: 3146c2eaa0bb53241a8931255589c33b, type: 3}
 --- !u!1 &8266466559747868771
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,76 +501,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fafde3d9342547a6b4eb90f6876ec8ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.EntityLighting
---- !u!1001 &5688820060367584839
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 4515079076315579977}
-    m_Modifications:
-    - target: {fileID: 1101888749806095241, guid: 3146c2eaa0bb53241a8931255589c33b, type: 3}
-      propertyPath: m_Name
-      value: Slash
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866753943106461575, guid: 3146c2eaa0bb53241a8931255589c33b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866753943106461575, guid: 3146c2eaa0bb53241a8931255589c33b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866753943106461575, guid: 3146c2eaa0bb53241a8931255589c33b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866753943106461575, guid: 3146c2eaa0bb53241a8931255589c33b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866753943106461575, guid: 3146c2eaa0bb53241a8931255589c33b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866753943106461575, guid: 3146c2eaa0bb53241a8931255589c33b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866753943106461575, guid: 3146c2eaa0bb53241a8931255589c33b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866753943106461575, guid: 3146c2eaa0bb53241a8931255589c33b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866753943106461575, guid: 3146c2eaa0bb53241a8931255589c33b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866753943106461575, guid: 3146c2eaa0bb53241a8931255589c33b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3146c2eaa0bb53241a8931255589c33b, type: 3}
---- !u!4 &2276668657644396992 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5866753943106461575, guid: 3146c2eaa0bb53241a8931255589c33b, type: 3}
-  m_PrefabInstance: {fileID: 5688820060367584839}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6363633533278675784 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1631030185061358863, guid: 3146c2eaa0bb53241a8931255589c33b, type: 3}
-  m_PrefabInstance: {fileID: 5688820060367584839}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ac457af23bf41cfadf1dcf9549090ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.AttackItem

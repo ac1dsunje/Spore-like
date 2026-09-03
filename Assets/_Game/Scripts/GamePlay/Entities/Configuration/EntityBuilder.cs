@@ -1,5 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Enemies.SeaUrchin;
 using _Game.Scripts.GamePlay.Entities.Attack;
+using _Game.Scripts.GamePlay.Entities.Death;
 using _Game.Scripts.GamePlay.Entities.Health;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Player;

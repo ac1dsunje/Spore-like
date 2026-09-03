@@ -4,7 +4,7 @@ using _Game.Scripts.GamePlay.Modules;
 using VContainer;
 using VContainer.Unity;
 
-namespace _Game.Scripts.GamePlay.Entities
+namespace _Game.Scripts.GamePlay.Entities.Death
 {
 public class EntityDeathModule: IStartable, IDisposable
 {
