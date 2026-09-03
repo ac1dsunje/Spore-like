@@ -1,11 +1,10 @@
-﻿using _Game.Scripts.GamePlay.Entities.Health;
-using _Game.Scripts.GamePlay.Interfaces;
+﻿using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using VContainer;
 
-namespace _Game.Scripts.GamePlay.World.Biomes.Plant
+namespace _Game.Scripts.GamePlay.Entities.Health
 {
-public class PlantHealth: IHealthController
+public class EntityBasicHealth: IHealthController
 {
     [Inject] private HealthModule _health;
     [Inject] private DefenseModule _defense;

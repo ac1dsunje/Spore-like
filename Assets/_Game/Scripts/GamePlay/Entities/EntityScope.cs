@@ -104,7 +104,7 @@ public class EntityScope: LifetimeScope
         {
             case EntityType.Food:
                 builder.RegisterEntryPoint<PlantAI>(Lifetime.Scoped);
-                builder.RegisterEntryPoint<PlantHealth>()
+                builder.RegisterEntryPoint<EntityBasicHealth>()
                     .As<IHealthController>();
                 builder.RegisterEntryPoint<EntityDeathModule>();
                 break;
