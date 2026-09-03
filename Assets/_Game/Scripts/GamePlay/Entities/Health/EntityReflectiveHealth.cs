@@ -1,11 +1,10 @@
-﻿using _Game.Scripts.GamePlay.Entities.Health;
-using _Game.Scripts.GamePlay.Interfaces;
+﻿using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using VContainer;
 
-namespace _Game.Scripts.GamePlay.Enemies.SeaUrchin
+namespace _Game.Scripts.GamePlay.Entities.Health
 {
-public class SeaUrchinHealth: IHealthController
+public class EntityReflectiveHealth : IHealthController
 {
     [Inject] private HealthModule _health;
     [Inject] private DefenseModule _defense;
@@ -16,7 +15,7 @@ public class SeaUrchinHealth: IHealthController
         var damage = _defense.ApplyResistance(hit.Damage, hit.IgnoreResistance);
         _health.TakeDamage(damage);
         var returnedDamage = _defense.ReflectDamage(damage);
-        HitInfo returnedHit = new(returnedDamage, 0, _damageSource, null);
+        var returnedHit = new HitInfo(returnedDamage, 0, _damageSource, null);
         hit.Receiver?.TakeDamage(returnedHit);
         hit.Source?.SetDamageDealt(damage);
     }
