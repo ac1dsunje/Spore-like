@@ -113,6 +113,7 @@ public class EntityScope: LifetimeScope
                 builder.RegisterEntryPoint<PlayerAI>(Lifetime.Scoped);
                 builder.RegisterEntryPoint<PlayerHealth>()
                     .As<IHealthController>();
+                builder.RegisterEntryPoint<EntityRegeneration>(Lifetime.Scoped);
                 builder.RegisterComponent(GetComponentInChildren<PlayerAttack>())
                     .As<IDamageSource>()
                     .As<IAttackController>();
