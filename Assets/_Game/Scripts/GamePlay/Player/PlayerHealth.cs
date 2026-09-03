@@ -10,7 +10,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Player
 {
-public class PlayerHealth : IStartable, IDamageReceiverController, IDisposable
+public class PlayerHealth : IStartable, IDisposable
 {
     private const string RegenerationKey = "Regeneration";
     private const string WaitKey = "WaitBeforeRegeneration";
@@ -19,16 +19,13 @@ public class PlayerHealth : IStartable, IDamageReceiverController, IDisposable
     [Inject] private DefenseModule _defense;
     [Inject] private BodyHitbox _hitbox;
     [Inject] private CoroutineRunner _runner;
-
-    private IDamageSource _damageSource;
+    [Inject] private IDamageSource _damageSource;
 
     public void Start()
     {
         _health.OnDamageTaken += StopRegeneration;
         _hitbox.OnHit += TakeDamage;
     }
-
-    public void SetDamageSource(IDamageSource source) => _damageSource = source;
 
     private void TakeDamage(HitInfo hit)
     {

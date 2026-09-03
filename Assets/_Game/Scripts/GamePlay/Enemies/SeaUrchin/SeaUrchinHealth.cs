@@ -8,21 +8,19 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Enemies.SeaUrchin
 {
-public class SeaUrchinHealth: IStartable, IDisposable, IDamageReceiverController
+public class SeaUrchinHealth: IStartable, IDisposable
 {
     [Inject] private HealthModule _healthModule;
     [Inject] private DefenseModule _defenseModule;
     [Inject] private BodyHitbox _hitbox;
     [Inject] private EntitiesRegistry _entitiesRegistry;
-    private IDamageSource _damageSource;
+    [Inject] private IDamageSource _damageSource;
 
     public void Start()
     {
         _healthModule.OnDeath += Die;
         _hitbox.OnHit += TakeDamage;
     }
-
-    public void SetDamageSource(IDamageSource source) => _damageSource = source;
 
     private void TakeDamage(HitInfo hit)
     {
