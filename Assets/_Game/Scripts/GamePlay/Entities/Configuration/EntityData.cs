@@ -1,10 +1,8 @@
-﻿using _Game.Scripts.GamePlay.Entities.Animation;
-using _Game.Scripts.GamePlay.Entities.Experience;   
+﻿using System;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.Entities
+namespace _Game.Scripts.GamePlay.Entities.Configuration
 {
-
 public enum EntityAI
 {
     Food = 0,
@@ -36,17 +34,13 @@ public enum EntityDeath
     Player = 1
 }
 
-[CreateAssetMenu(fileName = "New entity Config", menuName = "Game/Entities/Config")]
-public class EntityConfig: ScriptableObject
+[Serializable]
+public class EntityData
 {
     [field: SerializeField] public EntityAI AIType { get; private set; }
     [field: SerializeField] public EntityHealth HealthType { get; private set; }
     [field: SerializeField] public EntityRegeneration RegenerationType { get; private set; }
     [field: SerializeField] public EntityAttack AttackType { get; private set; }
     [field: SerializeField] public EntityDeath DeathType { get; private set; }
-    [field: SerializeField] public StatsConfig EntityStatsConfig { get; private set; }
-    [field: SerializeField] public EntityExperienceConfig ExperienceConfig { get; private set; }
-    [field: SerializeField] public AnimationSettings AnimationSettings { get; private set; }
-    
 }
 }

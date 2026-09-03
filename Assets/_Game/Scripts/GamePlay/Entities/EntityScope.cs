@@ -1,6 +1,7 @@
 ﻿using _Game.Scripts.GamePlay.Enemies.SeaUrchin;
 using _Game.Scripts.GamePlay.Entities.Animation;
 using _Game.Scripts.GamePlay.Entities.Attack;
+using _Game.Scripts.GamePlay.Entities.Configuration;
 using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Entities.Health;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
@@ -12,6 +13,7 @@ using _Game.Scripts.GamePlay.World.Biomes.Plant;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
+using EntityRegeneration = _Game.Scripts.GamePlay.Entities.Configuration.EntityRegeneration;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
@@ -95,10 +97,10 @@ public class EntityScope: LifetimeScope
         // Coroutines
         builder.RegisterComponent(GetComponentInChildren<CoroutineRunner>());
 
-        ChooseBehaviour(_entityConfig, builder);
+        ChooseBehaviour(_entityConfig.Data, builder);
     }
 
-    private void ChooseBehaviour(EntityConfig config, IContainerBuilder builder)
+    private void ChooseBehaviour(EntityData config, IContainerBuilder builder)
     {
         switch (config.AIType)
         {

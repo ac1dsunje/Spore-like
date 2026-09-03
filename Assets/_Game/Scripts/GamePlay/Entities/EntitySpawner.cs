@@ -1,4 +1,5 @@
 ﻿using System;
+using _Game.Scripts.GamePlay.Entities.Configuration;
 using UnityEngine;
 using VContainer;
 
