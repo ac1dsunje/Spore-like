@@ -1,5 +1,6 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Entities;
+using _Game.Scripts.GamePlay.Entities.Animation;
 using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Entities.Health;
 using _Game.Scripts.GamePlay.Interfaces;
@@ -11,7 +12,7 @@ namespace _Game.Scripts.GamePlay.World.Biomes.Plant
 {
 public class PlantHealth: IStartable, IDisposable, IHealthController
 {
-    [Inject] private EntityConfig _config;
+    [Inject] private AnimationSettings _config;
     [Inject] private HealthModule _health;
     [Inject] private DefenseModule _defense;
     [Inject] private MovementModule _movement;
@@ -35,9 +36,9 @@ public class PlantHealth: IStartable, IDisposable, IHealthController
     private void SpawnParticles()
     {
         _particles.Spawn(
-            _config.AnimationSettings.OnHitParticles, 
+            _config.OnHitParticles, 
             _movement.Transform.position, 
-            _config.AnimationSettings.Color
+            _config.Color
             );
     }
 
