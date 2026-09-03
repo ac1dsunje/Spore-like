@@ -106,6 +106,7 @@ public class EntityScope: LifetimeScope
                 builder.RegisterEntryPoint<PlantAI>(Lifetime.Scoped);
                 builder.RegisterEntryPoint<PlantHealth>()
                     .As<IHealthController>();
+                builder.RegisterEntryPoint<EntityDeathModule>();
                 break;
             
             case EntityType.Player:
@@ -125,6 +126,7 @@ public class EntityScope: LifetimeScope
                 builder.RegisterEntryPoint<EntityBasicAttackBehaviour>()
                     .As<IDamageSource>()
                     .As<IAttackController>();
+                builder.RegisterEntryPoint<EntityDeathModule>();
                 break;
         }
     }
