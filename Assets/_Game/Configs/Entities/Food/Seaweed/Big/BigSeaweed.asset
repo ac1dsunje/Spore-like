@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0030ccaa56b24bdfbe9c600651de2505, type: 3}
   m_Name: BigSeaweed
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Food.FoodConfig
+  <EntityType>k__BackingField: 0
   <EntityStatsConfig>k__BackingField: {fileID: 11400000, guid: 8252c73f553db4746bbbb8c57a4756e3, type: 2}
-  <ExperienceAmount>k__BackingField: 4
   <ExperienceConfig>k__BackingField:
     <LevelScaler>k__BackingField: 1
     <ExperienceConfig>k__BackingField:
       <LevelSet>k__BackingField: 10
+      <Level>k__BackingField: 4
       <ExperienceTypes>k__BackingField: []
   <AnimationSettings>k__BackingField:
     <Sprite>k__BackingField: {fileID: 8763638489087072838, guid: 94e3e3bc75c7e424582d4d594ef60ee3, type: 3}

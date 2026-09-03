@@ -1,5 +1,6 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Entities;
+using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Modules;
 using VContainer;
@@ -13,6 +14,7 @@ public class FoodHealth: IStartable, IDisposable
     [Inject] private HealthModule _health;
     [Inject] private DefenseModule _defense;
     [Inject] private MovementModule _movement;
+    [Inject] private ExperienceModule _experience;
     [Inject] private BodyHitbox _hitBox;
     [Inject] private ParticlesSpawner _particles;
     [Inject] private EntitiesRegistry _entitiesRegistry;
@@ -41,7 +43,7 @@ public class FoodHealth: IStartable, IDisposable
 
     private void Die(HealthModule health)
     {
-        _hitBox.SetEaten(_config.ExperienceAmount);
+        _hitBox.SetEaten(_experience.Level);
         _entitiesRegistry.DestroyEntityByHealth(health);
     }
     

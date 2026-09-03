@@ -9,12 +9,13 @@ namespace _Game.Scripts.GamePlay.Entities.Experience
 {
 public class ExperienceModule: IStartable, IDisposable, IResource
 {
+    public int Level { get; private set; }
+
     private int _levelSet;
     private int _experience;
 
     private readonly List<ExperienceService> _experienceServices = new();
-    
-    private int _level;
+
     private int _levelScaler;
     
     [Inject] private EntityExperienceConfig _config;
@@ -31,7 +32,15 @@ public class ExperienceModule: IStartable, IDisposable, IResource
         
         _levelSet = _config.ExperienceConfig.LevelSet;
         _levelScaler = _config.LevelScaler;
-        if (_config.ExperienceConfig == null || _config.ExperienceConfig.ExperienceTypes.Count == 0) return;
+        Level = _config.ExperienceConfig.Level;
+        
+        for (var i = 0; i < Level; i++)
+        {
+            _levelSet += _levelScaler;
+            _levelScaler++;
+        }
+        
+        if (_config.ExperienceConfig.ExperienceTypes.Count == 0) return;
         SubscribeExperienceServices(_config.ExperienceConfig, _model);
     }
     
@@ -57,8 +66,8 @@ public class ExperienceModule: IStartable, IDisposable, IResource
         while (_experience >= _levelSet)
         {
             UpdateExperience(-_levelSet);
-            _level++;
-            OnLevelChanged?.Invoke(_level);
+            Level++;
+            OnLevelChanged?.Invoke(Level);
             _levelSet += _levelScaler;
             OnValueChanged?.Invoke(_experience, _levelSet);
             _levelScaler++;

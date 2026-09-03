@@ -15,7 +15,6 @@ public class EntityConfig: ScriptableObject
 {
     [field: SerializeField] public EntityType EntityType { get; private set; }
     [field: SerializeField] public StatsConfig EntityStatsConfig { get; private set; }
-    [field: SerializeField] public int ExperienceAmount { get; private set; } = 1;
     [field: SerializeField] public EntityExperienceConfig ExperienceConfig { get; private set; }
     [field: SerializeField] public AnimationSettings AnimationSettings { get; private set; }
     
