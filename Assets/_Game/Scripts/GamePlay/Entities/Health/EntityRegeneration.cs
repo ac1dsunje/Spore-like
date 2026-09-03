@@ -28,6 +28,7 @@ public class EntityRegeneration: IStartable, IDisposable
 
     private void StopRegeneration(float damage)
     {
+        if (_health.Regeneration <= 0f) return;
         _runner.Stop(RegenerationKey);
         _runner.Stop(WaitKey);
         _runner.Run(WaitKey, WaitBeforeRegeneration());
