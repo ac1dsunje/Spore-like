@@ -8,7 +8,7 @@ public class MouthHitbox: MonoBehaviour
 {
     [Inject] private StomachModule _stomach;
 
-    public void GetExperience()
+    public void GetFood()
     {
         _stomach.GetExperienceFromFood(1);
     }
