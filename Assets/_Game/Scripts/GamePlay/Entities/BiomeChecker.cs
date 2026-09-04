@@ -11,20 +11,20 @@ namespace _Game.Scripts.GamePlay.Entities
 {
 public class BiomeChecker: IStartable, IDisposable
 {
-    private WorldModel _worldModel;
+    private readonly WorldModel _worldModel;
     
-    private TemperatureModule _temperature;
-    private BreathingModule _breathing;
+    private readonly TemperatureModule _temperature;
+    private readonly BreathingModule _breathing;
     
-    private MovementModule _movement;
-    private BiomeModule _biomeModule;
+    private readonly MovementModule _movement;
+    private readonly BiomeModule _biomeModule;
     
-    private BuffsModule _buffsModule;
+    private readonly BuffsModule _buffsModule;
     
     private Biome _currentBiome;
     
     [Inject]
-    private void Construct(WorldModel worldModel, TemperatureModule temperature, MovementModule movement,
+    public BiomeChecker(WorldModel worldModel, TemperatureModule temperature, MovementModule movement,
         BiomeModule biome, BreathingModule breathing, BuffsModule buffsModule)
     {
         _worldModel = worldModel;
@@ -33,11 +33,13 @@ public class BiomeChecker: IStartable, IDisposable
         _movement = movement;
         _biomeModule = biome;
         _buffsModule = buffsModule;
-        
-        _movement.OnGridPositionChanged += TryEnterBiome;
     }
 
-    public void Start() => EnterBiome(_worldModel.GetBiome(_movement.GridPosition));
+    public void Start()
+    {
+        _movement.OnGridPositionChanged += TryEnterBiome;
+        EnterBiome(_worldModel.GetBiome(_movement.GridPosition));
+    }
 
     private void TryEnterBiome(Vector3Int position)
     {
