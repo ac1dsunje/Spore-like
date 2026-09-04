@@ -12,13 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0030ccaa56b24bdfbe9c600651de2505, type: 3}
   m_Name: Fern
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Food.FoodConfig
+  <Data>k__BackingField:
+    <AIType>k__BackingField: 0
+    <HealthType>k__BackingField: 0
+    <DeathType>k__BackingField: 0
   <EntityStatsConfig>k__BackingField: {fileID: 11400000, guid: 3db7cfd2b6ff7d14f978fe607cb8d347, type: 2}
-  <ExperienceAmount>k__BackingField: 1
   <ExperienceConfig>k__BackingField:
     <LevelScaler>k__BackingField: 1
     <ExperienceConfig>k__BackingField:
       <LevelSet>k__BackingField: 10
+      <Level>k__BackingField: 1
       <ExperienceTypes>k__BackingField: []
+  <Projectile>k__BackingField: {fileID: 0}
+  <Food>k__BackingField: {fileID: 11400000, guid: 09a456aa10bbc1649b0b975c4fa17b9e, type: 2}
   <AnimationSettings>k__BackingField:
     <Sprite>k__BackingField: {fileID: -2092127190153496815, guid: eb56520efa74a9748bacad14d90b74ae, type: 3}
     <Controller>k__BackingField: {fileID: -1783843613245162241, guid: eb56520efa74a9748bacad14d90b74ae, type: 3}

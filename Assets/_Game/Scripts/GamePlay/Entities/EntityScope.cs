@@ -2,6 +2,7 @@
 using _Game.Scripts.GamePlay.Entities.Animation;
 using _Game.Scripts.GamePlay.Entities.Attack;
 using _Game.Scripts.GamePlay.Entities.Configuration;
+using _Game.Scripts.GamePlay.Entities.Drops;
 using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Entities.Health;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
@@ -24,6 +25,7 @@ public class EntityScope: LifetimeScope
     private StatsConfig _entityStatsConfig;
     private EntityConfig _entityConfig;
     private EntityExperienceConfig _entityExperienceConfig;
+    private FoodConfig _foodConfig;
 
     public void SetConfig(EntityConfig entityConfig)
     {
@@ -31,6 +33,7 @@ public class EntityScope: LifetimeScope
         _animationSettings = entityConfig.AnimationSettings;
         _entityStatsConfig = entityConfig.EntityStatsConfig;
         _entityExperienceConfig = entityConfig.ExperienceConfig;
+        _foodConfig = entityConfig.Food;
     }
 
     public EntityController GetEntityController() => Container.Resolve<EntityController>();
@@ -42,6 +45,7 @@ public class EntityScope: LifetimeScope
         builder.RegisterInstance(_entityStatsConfig);
         builder.RegisterInstance(_entityConfig);
         builder.RegisterInstance(_entityExperienceConfig);
+        builder.RegisterInstance(_foodConfig);
         
         // Modules
         builder.Register<EntityModel>(Lifetime.Scoped);
@@ -77,6 +81,8 @@ public class EntityScope: LifetimeScope
         builder.RegisterEntryPoint<EntityEndurance>(Lifetime.Scoped);
         
         builder.RegisterComponent(GetComponentInChildren<RigidbodyController>());
+        builder.RegisterComponent(GetComponentInChildren<FoodDropper>());
+        builder.RegisterComponent(GetComponentInChildren<MouthHitbox>());
         builder.RegisterEntryPoint<EntityBasicMovement>(Lifetime.Scoped)
             .As<IMovementController>();
         
