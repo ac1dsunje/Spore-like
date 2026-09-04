@@ -1,6 +1,5 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Entities.Drops;
-using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
@@ -14,7 +13,6 @@ public class EntityPicker: IStartable, ITickable, IDisposable
     [Inject] private PickerHitbox _pickerHitbox;
     [Inject] private PickingModule _pickingModule;
     [Inject] private StomachModule _stomach;
-    [Inject] private ExperienceModule _experienceModule;
 
     public void Start()
     {
@@ -35,6 +33,7 @@ public class EntityPicker: IStartable, ITickable, IDisposable
                 break;
             case DropType.Experience:
                 // ToDo: add experience picking method 
+                _pickingModule.GetExperiencePoint(1);
                 Debug.Log("experience point got!");
                 break;
         }

@@ -13,5 +13,6 @@ public enum ExperienceType
     DamageDealing = 9,
     StartSprinting = 10,
     UnnoticedStaying = 15,
+    ExperienceCollecting = 16
 }
 }

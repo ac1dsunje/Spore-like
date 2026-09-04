@@ -25,6 +25,8 @@ MonoBehaviour:
       <ExperienceTypes>k__BackingField:
       - <Type>k__BackingField: 1
         <Amount>k__BackingField: 1
+      - <Type>k__BackingField: 16
+        <Amount>k__BackingField: 1
   <Projectile>k__BackingField: {fileID: 11400000, guid: 01353b3e9ceab2b4b90db1f6c4021cfc, type: 2}
   <Drops>k__BackingField:
     <Drops>k__BackingField:
