@@ -8,7 +8,6 @@ using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
-using _Game.Scripts.GamePlay.Projectiles;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -25,7 +24,6 @@ public class EntityScope: LifetimeScope
     private StatsConfig _entityStatsConfig;
     private EntityConfig _entityConfig;
     private EntityExperienceConfig _entityExperienceConfig;
-    private ProjectileConfig _projectileConfig;
 
     public void SetConfig(EntityConfig entityConfig)
     {
@@ -33,7 +31,6 @@ public class EntityScope: LifetimeScope
         _animationSettings = entityConfig.AnimationSettings;
         _entityStatsConfig = entityConfig.EntityStatsConfig;
         _entityExperienceConfig = entityConfig.ExperienceConfig;
-        _projectileConfig = entityConfig.Projectile;
     }
 
     public EntityController GetEntityController() => Container.Resolve<EntityController>();
@@ -45,11 +42,6 @@ public class EntityScope: LifetimeScope
         builder.RegisterInstance(_entityStatsConfig);
         builder.RegisterInstance(_entityConfig);
         builder.RegisterInstance(_entityExperienceConfig);
-        
-        if (_projectileConfig != null)
-        {
-            builder.RegisterInstance(_projectileConfig);
-        }
         
         // Modules
         builder.Register<EntityModel>(Lifetime.Scoped);
@@ -106,7 +98,7 @@ public class EntityScope: LifetimeScope
         builder.RegisterComponent(GetComponentInChildren<CoroutineRunner>());
         builder.RegisterEntryPoint<EntityRegeneration>(Lifetime.Scoped);
 
-        _entityBuilder.ChooseBehaviour(_entityConfig.Data, builder);
+        _entityBuilder.ChooseBehaviour(_entityConfig.Data, builder, _entityConfig.Projectile);
     }
 }
 }

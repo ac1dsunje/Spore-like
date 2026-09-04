@@ -4,6 +4,7 @@ using _Game.Scripts.GamePlay.Entities.Death;
 using _Game.Scripts.GamePlay.Entities.Health;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Player;
+using _Game.Scripts.GamePlay.Projectiles;
 using VContainer;
 using VContainer.Unity;
 
@@ -11,13 +12,13 @@ namespace _Game.Scripts.GamePlay.Entities.Configuration
 {
 public class EntityBuilder
 {
-    public void ChooseBehaviour(EntityData config, IContainerBuilder builder)
+    public void ChooseBehaviour(EntityData config, IContainerBuilder builder, ProjectileConfig projectileConfig)
     {
         SetAI(config.AIType, builder);
         
         SetHealth(config.HealthType, builder);
         
-        SetAttack(config.AttackType, builder);
+        SetAttack(projectileConfig, builder);
         
         SetDeath(config.DeathType, builder);
     }
@@ -55,16 +56,17 @@ public class EntityBuilder
         }
     }
 
-    private void SetAttack(EntityAttack config, IContainerBuilder builder)
+    private void SetAttack(ProjectileConfig config, IContainerBuilder builder)
     {
-        switch (config)
+        
+        if (config != null)
         {
-            case EntityAttack.Basic:
-                builder.RegisterEntryPoint<EntityBasicAttack>().As<IDamageSource>().As<IAttackController>();
-                break;
-            case EntityAttack.Weapon:
-                builder.RegisterEntryPoint<EntityWeaponAttack>().As<IDamageSource>().As<IAttackController>();
-                break;
+            builder.RegisterInstance(config);
+            builder.RegisterEntryPoint<EntityWeaponAttack>().As<IDamageSource>().As<IAttackController>();
+        }
+        else
+        {
+            builder.RegisterEntryPoint<EntityBasicAttack>();
         }
     }
 

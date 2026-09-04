@@ -15,7 +15,6 @@ MonoBehaviour:
   <Data>k__BackingField:
     <AIType>k__BackingField: 2
     <HealthType>k__BackingField: 1
-    <AttackType>k__BackingField: 1
     <DeathType>k__BackingField: 0
   <EntityStatsConfig>k__BackingField: {fileID: 11400000, guid: e69bf7fb22b6fc3448d073f856b03521, type: 2}
   <ExperienceConfig>k__BackingField:
