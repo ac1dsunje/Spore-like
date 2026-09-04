@@ -10,7 +10,7 @@ public class EntityWeaponHolder: MonoBehaviour
 
     public void SetAttack(Vector2 mousePosition, Vector2 entityPosition, HitInfo hitInfo, float range)
     {
-        var weapon = Instantiate(_projectilePrefab, null);
+        var weapon = Instantiate(_projectilePrefab);
         UpdateAttackPosition(mousePosition, entityPosition, range, weapon);
         weapon.SetHit(hitInfo);
     }
