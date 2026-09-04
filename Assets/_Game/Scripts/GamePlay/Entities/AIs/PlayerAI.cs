@@ -19,9 +19,6 @@ public class PlayerAI : IStartable, ITickable, IDisposable
     [Inject] private IHealthController _health;
     [Inject] private BodyHitbox _hitBox;
     [Inject] private CameraController _camera;
-    [Inject] private BuffsModule _buffs;
-    [Inject] private MouthHitbox _mouthHitbox;
-    [Inject] private StomachModule _stomach;
 
     public void Start()
     {
@@ -37,8 +34,6 @@ public class PlayerAI : IStartable, ITickable, IDisposable
     {
         HandleMovement();
         HandleAttack();
-        _buffs.Set(BuffType.Overeating, _stomach.Hunger > _stomach.MaxHunger);
-        _buffs.Set(BuffType.Starvation, _stomach.Hunger <= 0f);
     }
 
     private void HandleMovement()

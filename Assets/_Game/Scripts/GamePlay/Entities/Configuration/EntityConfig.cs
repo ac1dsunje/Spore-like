@@ -13,7 +13,7 @@ public class EntityConfig: ScriptableObject
     [field: SerializeField] public StatsConfig EntityStatsConfig { get; private set; }
     [field: SerializeField] public EntityExperienceConfig ExperienceConfig { get; private set; }
     [field: SerializeField] public ProjectileConfig Projectile { get; private set; }
-    [field: SerializeField] public FoodConfig Food { get; private set; }
+    [field: SerializeField] public FoodConfig Drops { get; private set; }
     [field: SerializeField] public AnimationSettings AnimationSettings { get; private set; }
 }
 

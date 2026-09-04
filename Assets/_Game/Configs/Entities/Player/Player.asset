@@ -26,7 +26,7 @@ MonoBehaviour:
       - <Type>k__BackingField: 1
         <Amount>k__BackingField: 1
   <Projectile>k__BackingField: {fileID: 11400000, guid: 5e5c4297305e9254690810fc7283ddf3, type: 2}
-  <Food>k__BackingField: {fileID: 11400000, guid: fa06a686091fd6940938824b703a740e, type: 2}
+  <Drops>k__BackingField: {fileID: 11400000, guid: fa06a686091fd6940938824b703a740e, type: 2}
   <AnimationSettings>k__BackingField:
     <Sprite>k__BackingField: {fileID: -9048744825557176607, guid: 7e660a4087c8141408b939d08c80a53f, type: 3}
     <Controller>k__BackingField: {fileID: 7898678084846905597, guid: 7e660a4087c8141408b939d08c80a53f, type: 3}

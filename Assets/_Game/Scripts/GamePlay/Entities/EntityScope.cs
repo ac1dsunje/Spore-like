@@ -7,6 +7,7 @@ using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Entities.Health;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Entities.Movement;
+using _Game.Scripts.GamePlay.Entities.Stomach;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
@@ -33,7 +34,7 @@ public class EntityScope: LifetimeScope
         _animationSettings = entityConfig.AnimationSettings;
         _entityStatsConfig = entityConfig.EntityStatsConfig;
         _entityExperienceConfig = entityConfig.ExperienceConfig;
-        _foodConfig = entityConfig.Food;
+        _foodConfig = entityConfig.Drops;
     }
 
     public EntityController GetEntityController() => Container.Resolve<EntityController>();
@@ -99,6 +100,7 @@ public class EntityScope: LifetimeScope
         builder.RegisterEntryPoint<ParticlesModule>(Lifetime.Scoped)
             .AsSelf();
         builder.RegisterComponent(GetComponentInChildren<EntityWeaponHolder>());
+        builder.RegisterEntryPoint<EntityBasicStomach>(Lifetime.Scoped);
         
         // Coroutines
         builder.RegisterComponent(GetComponentInChildren<CoroutineRunner>());
