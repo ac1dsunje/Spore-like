@@ -1,5 +1,4 @@
-﻿using _Game.Scripts.Core.Services;
-using _Game.Scripts.GamePlay.Modules;
+﻿using _Game.Scripts.GamePlay.Modules;
 
 namespace _Game.Scripts.GamePlay.Abilities.Types
 {
@@ -7,8 +6,8 @@ public class SprintAbility: Ability
 {
     private readonly MovementModule _movement;
 
-    public SprintAbility(MovementModule movement, EnduranceModule endurance, AbilityConfig config, 
-        Ticker ticker) : base(endurance, config, ticker)
+    public SprintAbility(MovementModule movement, EnduranceModule endurance, AbilityConfig config)
+        : base(endurance, config)
     {
         _movement = movement;
     }

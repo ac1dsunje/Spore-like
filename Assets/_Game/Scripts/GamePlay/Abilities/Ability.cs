@@ -1,5 +1,4 @@
 ﻿using System;
-using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
@@ -8,28 +7,24 @@ namespace _Game.Scripts.GamePlay.Abilities
 {
 public enum AbilityActivationType
 {
-    Pressing,
-    Toggle,
+    Pressing = 0,
+    Toggle = 1,
 }
 public abstract class Ability: IDisposable, IEnduranceUser
 {
     private readonly AbilityConfig _config;
 
     private readonly EnduranceModule _endurance;
-
-    private readonly Ticker _ticker;
     
     private bool _isActive;
     
-    protected Ability(EnduranceModule endurance, AbilityConfig config, Ticker ticker)
+    protected Ability(EnduranceModule endurance, AbilityConfig config)
     {
         _config = config;
         _endurance = endurance;
-        _ticker = ticker;
-        _ticker.OnTick += Update;
     }
     
-    private void Update(float deltaTime)
+    public void Update(float deltaTime)
     {
         switch (_config.ActivationType)
         {
@@ -56,7 +51,7 @@ public abstract class Ability: IDisposable, IEnduranceUser
 
     private void UpdatePressing()
     {
-        if (Input.GetKey(_config.Key) &&
+        if (Input.GetKeyDown(_config.Key) &&
             !_isActive &&
             _endurance.HasEnoughEndurance(_config.StartCost))
         {
@@ -101,7 +96,6 @@ public abstract class Ability: IDisposable, IEnduranceUser
 
     public void Dispose()
     {
-        _ticker.OnTick -= Update;
         if (_isActive) Disable();
     }
 }
