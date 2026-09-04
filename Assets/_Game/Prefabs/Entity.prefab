@@ -500,6 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.Dropper
   _dropPrefab: {fileID: -1689008738557556690, guid: c2c71fc196c21d843ba87a4d636c3aeb, type: 3}
+  _spawnRadius: 0.7
 --- !u!1 &8266466559747868771
 GameObject:
   m_ObjectHideFlags: 0
