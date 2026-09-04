@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Buffs;
 using _Game.Scripts.GamePlay.Buffs.Types;
@@ -11,12 +10,13 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
-public class BuffsModule: IStartable
+public class BuffsModule: IStartable, IDisposable
 {
     public event Action<Buff> OnBuffActivated;
     public event Action<Buff> OnBuffDeactivated;
     
-    private readonly List<Buff> _buffs = new();
+    private readonly Dictionary<BuffType, Buff> _buffs = new();
+    private readonly List<Buff> _activeBuffs = new();
 
     [Inject] private EntityStats _stats;
     [Inject] private HealthModule _health;
@@ -25,62 +25,61 @@ public class BuffsModule: IStartable
     
     public void Start()
     {
-        foreach (var buff in _dataDatabase.Buffs)
+        RegisterBuffs();
+        _ticker.OnTick += Tick;
+    }
+
+    private void RegisterBuffs()
+    {
+        foreach (var buffConfig in _dataDatabase.Buffs)
         {
-            switch (buff.Type)
+            Buff buff = buffConfig.Type switch
             {
-                case BuffType.Suffocating:
-                {
-                    _buffs.Add(new SuffocatingDebuff(_stats, _health, _ticker, buff));
-                    break;
-                }
-                case BuffType.BadPassAbility:
-                {
-                    _buffs.Add(new BadPassAbility(_stats, _ticker, buff));
-                    break;
-                }
-                case BuffType.Heat:
-                {
-                    _buffs.Add(new HeatDebuff(_stats, _health, _ticker, buff));
-                    break;
-                }
-                case BuffType.Cold:
-                {
-                    _buffs.Add(new ColdDebuff(_stats, _health, _ticker, buff));
-                    break;
-                }
-                case BuffType.Starvation:
-                    _buffs.Add(new StarvationDebuff(_stats, _health, _ticker, buff));
-                    break;
-                case BuffType.Overeating:
-                    _buffs.Add(new OvereatingDebuff(_stats, _health, _ticker, buff));
-                    break;
-                default:
-                    Debug.Log($"Buff with type {buff.Type} is not implemented");
-                    break;
-            }
+                BuffType.Suffocating => new SuffocatingDebuff(_stats, _health, buffConfig),
+                BuffType.BadPassAbility => new BadPassAbility(_stats, buffConfig),
+                BuffType.Heat => new HeatDebuff(_stats, _health, buffConfig),
+                BuffType.Cold => new ColdDebuff(_stats, _health, buffConfig),
+                BuffType.Starvation => new StarvationDebuff(_stats, _health, buffConfig),
+                BuffType.Overeating => new OvereatingDebuff(_stats, _health, buffConfig),
+                _ => null
+            };
+
+            if (buff != null)
+                _buffs[buffConfig.Type] = buff;
+            else
+                Debug.Log($"Buff with type {buffConfig.Type} is not implemented");
+        }
+    }
+
+    private void Tick(float deltaTime)
+    {
+        for (int i = _activeBuffs.Count - 1; i >= 0; i--)
+        {
+            _activeBuffs[i].Do(deltaTime);
         }
     }
 
     public void Set(BuffType type, bool state)
     {
-        var currentBuff = _buffs.FirstOrDefault(buff => buff.Type == type);
-
-        if (currentBuff == null)
-        {
-            return;
-        }
+        if (!_buffs.TryGetValue(type, out var currentBuff)) return;
 
         if (state && !currentBuff.IsActive)
         {
             currentBuff.Activate();
+            _activeBuffs.Add(currentBuff);
             OnBuffActivated?.Invoke(currentBuff);
         }
         else if (!state && currentBuff.IsActive)
         {
             currentBuff.Deactivate();
+            _activeBuffs.Remove(currentBuff);
             OnBuffDeactivated?.Invoke(currentBuff);
         }
+    }
+    
+    public void Dispose()
+    {
+        _ticker.OnTick -= Tick;
     }
 }
 }

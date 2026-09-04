@@ -7,13 +7,13 @@ public class SuffocatingDebuff: Buff
 {
     private readonly HealthModule _healthModule;
     
-    public SuffocatingDebuff(EntityStats entityStats, HealthModule health, Ticker ticker, BuffConfig config)
-        : base(entityStats, config, ticker)
+    public SuffocatingDebuff(EntityStats entityStats, HealthModule health, BuffConfig config)
+        : base(entityStats, config)
     {
         _healthModule = health;
     }
 
-    protected override void Do(float deltatTime)
+    public override void Do(float deltatTime)
     {
         _healthModule.TakeDamage(deltatTime * 5f);
     }

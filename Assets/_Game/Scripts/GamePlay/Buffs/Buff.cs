@@ -16,25 +16,17 @@ public abstract class Buff: IStatSource
     public bool IsActive => _isActive;
     
     private readonly BuffConfig _config;
-    private readonly  Ticker _ticker;
     private readonly EntityStats _entityStats;
 
     private bool _isActive;
 
-    protected Buff(EntityStats entityStats, BuffConfig config, Ticker ticker)
+    protected Buff(EntityStats entityStats, BuffConfig config)
     {
         _entityStats = entityStats;
         _config = config;
-        _ticker = ticker;
-        _ticker.OnTick += OnTick;
     }
 
-    private void OnTick(float timeDelta)
-    {
-        if (_isActive) Do(timeDelta);
-    }
-
-    protected virtual void Do(float timeDelta) { }
+    public virtual void Do(float timeDelta) { }
 
     public void Activate()
     {
