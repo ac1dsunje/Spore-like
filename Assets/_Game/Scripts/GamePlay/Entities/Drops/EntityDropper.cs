@@ -3,7 +3,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Entities.Drops
 {
-public class FoodDropper: MonoBehaviour
+public class EntityDropper: MonoBehaviour
 {
     [SerializeField] private Drop _dropPrefab;
     [SerializeField, Range(0.1f, 5f)] private float _spawnRadius; 
