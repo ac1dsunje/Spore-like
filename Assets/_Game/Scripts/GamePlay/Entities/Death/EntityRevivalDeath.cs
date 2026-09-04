@@ -1,7 +1,6 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Modules;
-using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
@@ -20,7 +19,7 @@ public class EntityRevivalDeath: IStartable, IDisposable
 
     private void Die(HealthModule health)
     {
-        Debug.Log("Reviving");
+        //TODO: do something
     }
     
     public void Dispose()
