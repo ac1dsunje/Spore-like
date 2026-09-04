@@ -44,7 +44,7 @@ public class GameplayScope: LifetimeScope
         builder.Register<WorldModel>(Lifetime.Singleton);
         
         // UI
-        builder.Register<EvolutionFormatter>(Lifetime.Singleton);
+        builder.Register<EvolutionFormatter>(Lifetime.Transient);
         
         builder.RegisterComponentInHierarchy<UIManager>();
         builder.RegisterComponentInHierarchy<EvolutionChooseUIScreen>();
@@ -62,8 +62,8 @@ public class GameplayScope: LifetimeScope
         builder.RegisterComponentInHierarchy<CinemachineCamera>();
         
         // Factories
-        builder.Register<AbilityFactory>(Lifetime.Scoped);
-        builder.Register<ExperienceFactory>(Lifetime.Scoped);
+        builder.Register<AbilityFactory>(Lifetime.Singleton);
+        builder.Register<ExperienceFactory>(Lifetime.Singleton);
         
         // Entities
         builder.RegisterComponentInHierarchy<EntitySpawner>();
