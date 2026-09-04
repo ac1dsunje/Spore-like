@@ -11,23 +11,23 @@ public class WorldGenerator: MonoBehaviour
     [SerializeField] private int _renderDistance = 1;
     
     private WorldModel _model;
-    private PlayerRegistry _playerRegistry;
+    private EntitiesRegistry _registry;
     private WorldTileRenderer _tileRendererGenerator;
     
     private MovementModule _player;
     private readonly HashSet<Vector3Int> _loadedTiles = new();
     
     [Inject]
-    private void Construct(WorldModel model, PlayerRegistry playerRegistry, WorldTileRenderer tileRendererGenerator)
+    private void Construct(WorldModel model, EntitiesRegistry registry, WorldTileRenderer tileRendererGenerator)
     {
         _model = model;
-        _playerRegistry = playerRegistry;
+        _registry = registry;
         _tileRendererGenerator = tileRendererGenerator;
         
-        _playerRegistry.OnPlayerInitialized += InitializePlayer;
+        _registry.OnPlayerInitialized += Initialize;
     }
 
-    private void InitializePlayer(EntityController player)
+    private void Initialize(EntityController player)
     {
         _player = player.Model.Movement;
         _player.OnGridPositionChanged += Generate;
@@ -79,7 +79,7 @@ public class WorldGenerator: MonoBehaviour
         {
             _player.OnGridPositionChanged -= Generate;
         }
-        _playerRegistry.OnPlayerInitialized -= InitializePlayer;
+        _registry.OnPlayerInitialized -= Initialize;
     }
 }
 }

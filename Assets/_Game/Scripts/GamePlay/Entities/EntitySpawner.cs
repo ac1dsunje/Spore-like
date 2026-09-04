@@ -1,7 +1,6 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Entities.Configuration;
 using UnityEngine;
-using VContainer;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
@@ -12,10 +11,9 @@ public class EntitySpawner: MonoBehaviour
 
     [SerializeField] private Vector2 _enemySpawnPoint;
     [SerializeField] private EntityConfig _enemyConfig;
-    
-    [Inject] private PlayerRegistry _playerRegistry;
 
     public event Action<EntityScope> OnEntitySpawn;
+    public event Action<EntityScope> OnPlayerSpawn;
     
     private void Awake()
     {
@@ -26,7 +24,7 @@ public class EntitySpawner: MonoBehaviour
     private void SpawnPlayer()
     {
         var player = Spawn(transform.position, transform, _playerConfig);
-        _playerRegistry.AddPlayer(player.GetEntityController());
+        OnPlayerSpawn?.Invoke(player);
     }
 
     [ContextMenu("Spawn Enemy")]
@@ -36,11 +34,11 @@ public class EntitySpawner: MonoBehaviour
         OnEntitySpawn?.Invoke(enemy);
     }
 
-    public EntityScope SpawnPlant(Vector2 spawnPoint, Transform parent, EntityConfig entityConfig)
+    public EntityScope SpawnEntity(Vector2 spawnPoint, Transform parent, EntityConfig entityConfig)
     {
-        var plant = Spawn(spawnPoint, parent, entityConfig);
-        OnEntitySpawn?.Invoke(plant);
-        return plant;
+        var entity = Spawn(spawnPoint, parent, entityConfig);
+        OnEntitySpawn?.Invoke(entity);
+        return entity;
     }
     
     private EntityScope Spawn(Vector2 spawnPoint, Transform parent, EntityConfig entityConfig)

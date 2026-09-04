@@ -79,7 +79,7 @@ public class EnvironmentSpawner: MonoBehaviour
     {
         var position = new Vector3(setPos.x + 0.5f, setPos.y + 0.5f, setPos.z);
         
-        _spawnedObjects[setPos] = _spawner.SpawnPlant(position, parent, config);
+        _spawnedObjects[setPos] = _spawner.SpawnEntity(position, parent, config);
     }
 
     private void OnDestroy()

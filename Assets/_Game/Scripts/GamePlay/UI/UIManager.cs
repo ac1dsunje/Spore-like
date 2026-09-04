@@ -11,7 +11,7 @@ public class UIManager: MonoBehaviour
 {
     private EvolutionsModule _evolutionsModule;
     private AbilitiesModule _abilitiesModule;
-    private PlayerRegistry _registry;
+    private EntitiesRegistry _registry;
     
     [Inject] private PauseUIScreen _pauseUIScreen;
     [Inject] private EvolutionChooseUIScreen _evolutionChooseUIScreen;
@@ -24,7 +24,7 @@ public class UIManager: MonoBehaviour
     [Inject] private DescriptionUI _descriptionUI;
 
     [Inject]
-    private void Construct(PlayerRegistry registry)
+    private void Construct(EntitiesRegistry registry)
     {
         _registry = registry;
         _registry.OnPlayerInitialized += AddPlayer;

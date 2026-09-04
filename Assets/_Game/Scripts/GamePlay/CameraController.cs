@@ -11,13 +11,13 @@ public class CameraController: IInitializable, IDisposable
 {
     [Inject] public Camera Camera { get; private set; }
     [Inject] private CinemachineCamera _cineMachineCamera;
-    [Inject] private PlayerRegistry _playerRegistry;
+    [Inject] private EntitiesRegistry _registry;
 
     public float Aspect => Camera.aspect;
 
     public void Initialize()
     {
-        _playerRegistry.OnPlayerInitialized += AddPlayer;
+        _registry.OnPlayerInitialized += AddPlayer;
     }
 
     public void SetSize(float radius)
@@ -32,7 +32,7 @@ public class CameraController: IInitializable, IDisposable
 
     public void Dispose()
     {
-        _playerRegistry.OnPlayerInitialized -= AddPlayer;
+        _registry.OnPlayerInitialized -= AddPlayer;
     }
 }
 }

@@ -71,7 +71,6 @@ public class GameplayScope: LifetimeScope
         
         // Entities
         builder.RegisterComponentInHierarchy<EntitiesRegistry>();
-        builder.Register<PlayerRegistry>(Lifetime.Singleton);
     }
 }
 }
