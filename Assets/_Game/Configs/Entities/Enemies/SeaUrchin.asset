@@ -23,10 +23,13 @@ MonoBehaviour:
       <LevelSet>k__BackingField: 10
       <Level>k__BackingField: 1
       <ExperienceTypes>k__BackingField:
-      - <Type>k__BackingField: 2
+      - <Type>k__BackingField: 1
         <Amount>k__BackingField: 1
   <Projectile>k__BackingField: {fileID: 11400000, guid: 01353b3e9ceab2b4b90db1f6c4021cfc, type: 2}
-  <Drops>k__BackingField: {fileID: 11400000, guid: fa06a686091fd6940938824b703a740e, type: 2}
+  <Drops>k__BackingField:
+    <Drops>k__BackingField:
+    - {fileID: 11400000, guid: fa06a686091fd6940938824b703a740e, type: 2}
+    - {fileID: 11400000, guid: 46a2c78f47e04c4489da93bef214f6ce, type: 2}
   <AnimationSettings>k__BackingField:
     <Sprite>k__BackingField: {fileID: 3147233298308361737, guid: e1e8f9e2112581f4c848d9ee20c89f4a, type: 3}
     <Controller>k__BackingField: {fileID: 0}

@@ -5,10 +5,10 @@ namespace _Game.Scripts.GamePlay.Entities.Drops
 {
 public class FoodDropper: MonoBehaviour
 {
-    [SerializeField] private FoodDrop _dropPrefab;
+    [SerializeField] private Drop _dropPrefab;
     [SerializeField, Range(0.1f, 5f)] private float _spawnRadius; 
         
-    [Inject] private FoodConfig _foodConfig;
+    [Inject] private DropsConfig _dropConfigs;
 
     public void Spawn(int amount)
     {
@@ -18,8 +18,11 @@ public class FoodDropper: MonoBehaviour
             
             var spawnPosition = transform.position + new Vector3(randomOffset.x, randomOffset.y, 0f);
             
-            var food = Instantiate(_dropPrefab, spawnPosition, transform.rotation, null);
-            food.SetSprite(_foodConfig.Sprite);
+            var drop = Instantiate(_dropPrefab, spawnPosition, transform.rotation, null);
+
+            var config = _dropConfigs.Drops[Random.Range(0, _dropConfigs.Drops.Count)];
+            
+            drop.SetConfig(config);
         }
     }
 }

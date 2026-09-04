@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f49c09f15ee4deeb7930c42ad1efd32, type: 3}
+  m_Name: ExperiencePoint
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.Drops.FoodConfig
+  <Sprite>k__BackingField: {fileID: -2443887350462181347, guid: 0f8e089a68247e04ba948cc3e30076a1, type: 3}
+  <DropType>k__BackingField: 1

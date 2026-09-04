@@ -1,15 +1,15 @@
-﻿using _Game.Scripts.GamePlay.Modules;
+﻿using System;
+using _Game.Scripts.GamePlay.Entities.Drops;
 using UnityEngine;
-using VContainer;
 
 namespace _Game.Scripts.GamePlay.Entities.Hitboxes
 {
 [RequireComponent(typeof(CircleCollider2D))]
 public class PickerHitbox: MonoBehaviour
 {
-    private CircleCollider2D _collider;
+    public event Action<DropType> OnPicked;
     
-    [Inject] private StomachModule _stomach;
+    private CircleCollider2D _collider;
 
     private void Awake()
     {
@@ -20,10 +20,12 @@ public class PickerHitbox: MonoBehaviour
     {
         _collider.radius = size;
     }
-
-    public void GetFood()
+    
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        _stomach.GetExperienceFromFood(1);
+        if (!other.TryGetComponent(out Drop drop)) return;
+        OnPicked?.Invoke(drop.GetDropType());
+        Destroy(drop.gameObject);
     }
 }
 }

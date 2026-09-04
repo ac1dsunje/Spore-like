@@ -27,7 +27,7 @@ public class EntityScope: LifetimeScope
     private StatsConfig _entityStatsConfig;
     private EntityConfig _entityConfig;
     private EntityExperienceConfig _entityExperienceConfig;
-    private FoodConfig _foodConfig;
+    private DropsConfig _dropConfig;
 
     public void SetConfig(EntityConfig entityConfig)
     {
@@ -35,7 +35,7 @@ public class EntityScope: LifetimeScope
         _animationSettings = entityConfig.AnimationSettings;
         _entityStatsConfig = entityConfig.EntityStatsConfig;
         _entityExperienceConfig = entityConfig.ExperienceConfig;
-        _foodConfig = entityConfig.Drops;
+        _dropConfig = entityConfig.Drops;
     }
 
     public EntityController GetEntityController() => Container.Resolve<EntityController>();
@@ -47,7 +47,7 @@ public class EntityScope: LifetimeScope
         builder.RegisterInstance(_entityStatsConfig);
         builder.RegisterInstance(_entityConfig);
         builder.RegisterInstance(_entityExperienceConfig);
-        builder.RegisterInstance(_foodConfig);
+        builder.RegisterInstance(_dropConfig);
         
         // Modules
         builder.Register<EntityModel>(Lifetime.Scoped);
