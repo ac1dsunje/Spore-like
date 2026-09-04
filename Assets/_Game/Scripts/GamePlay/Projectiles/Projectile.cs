@@ -5,13 +5,12 @@ namespace _Game.Scripts.GamePlay.Projectiles
 {
 public abstract class Projectile: MonoBehaviour
 {
-    [SerializeField, Min(0.1f)] protected float HitTime;
-    [SerializeField] protected bool FollowSource;
+    [SerializeField] protected ProjectileConfig Config;
     private HitInfo _hitInfo;
     
     public void SetSource(Transform source)
     {
-        if (FollowSource)
+        if (Config.FollowSource)
         {
             transform.SetParent(source);
         }
@@ -26,11 +25,11 @@ public abstract class Projectile: MonoBehaviour
     {
         if (other.TryGetComponent(out IDamageReceiver damageReceiver))
         {
-            DoDamage(damageReceiver);
+            OnTrigger(damageReceiver);
         }
     }
 
-    protected virtual void DoDamage(IDamageReceiver damageReceiver)
+    protected virtual void OnTrigger(IDamageReceiver damageReceiver)
     {
         if (damageReceiver == _hitInfo.Receiver) return;
         damageReceiver.TakeDamage(_hitInfo);

@@ -14,7 +14,7 @@ public class SlashProjectile: Projectile
 
     private IEnumerator Hit()
     {
-        yield return new WaitForSeconds(HitTime);
+        yield return new WaitForSeconds(Config.HitTime);
         Destroy(gameObject);
     }
 }
