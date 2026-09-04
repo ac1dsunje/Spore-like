@@ -19,7 +19,7 @@ public class EntityRevivalDeath: IStartable, IDisposable
 
     private void Die(HealthModule health)
     {
-        //TODO: do something
+        _health.Revive();
     }
     
     public void Dispose()

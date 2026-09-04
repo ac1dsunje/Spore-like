@@ -16,11 +16,17 @@ public class HealthModule: StatModule, IResource
     public event Action OnHitTaken;
     public event Action<float> OnHealed;
     public event Action<float, float> OnValueChanged;
+    private bool _isDead;
 
     protected override void Configure()
     {
         BindStat(StatType.MaxHealth, UpdateMaxHealth);
         BindStat(StatType.Regeneration, UpdateRegeneration);
+    }
+
+    public void Revive()
+    {
+        _isDead = false;
     }
     
     public void TakeDamage(float amount)
@@ -66,6 +72,11 @@ public class HealthModule: StatModule, IResource
 
     private void UpdateRegeneration(float value) => Regeneration = value;
 
-    private void Die() => OnDeath?.Invoke(this);
+    private void Die()
+    {
+        if (_isDead) return;
+        _isDead = true;
+        OnDeath?.Invoke(this);
+    }
 }
 }
