@@ -32,7 +32,6 @@ public class EntityPicker: IStartable, ITickable, IDisposable
                 _stomach.GetExperienceFromFood(1);
                 break;
             case DropType.Experience:
-                // ToDo: add experience picking method 
                 _pickingModule.GetExperiencePoint(1);
                 Debug.Log("experience point got!");
                 break;

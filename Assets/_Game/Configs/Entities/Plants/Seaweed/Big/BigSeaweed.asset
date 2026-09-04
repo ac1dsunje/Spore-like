@@ -22,7 +22,9 @@ MonoBehaviour:
     <ExperienceConfig>k__BackingField:
       <LevelSet>k__BackingField: 10
       <Level>k__BackingField: 4
-      <ExperienceTypes>k__BackingField: []
+      <ExperienceTypes>k__BackingField:
+      - <Type>k__BackingField: 16
+        <Amount>k__BackingField: 1
   <Projectile>k__BackingField: {fileID: 0}
   <Drops>k__BackingField:
     <Drops>k__BackingField:
