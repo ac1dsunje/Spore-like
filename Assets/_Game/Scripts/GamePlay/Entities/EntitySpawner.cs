@@ -44,6 +44,7 @@ public class EntitySpawner: MonoBehaviour
     private EntityScope Spawn(Vector2 spawnPoint, Transform parent, EntityConfig entityConfig)
     {
         var entity = Instantiate(_entityPrefab, spawnPoint, Quaternion.identity, parent);
+        entity.gameObject.name = entityConfig.name;
         entity.SetConfig(entityConfig);
         entity.Build();
         return entity;

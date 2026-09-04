@@ -39,7 +39,6 @@ public class GameplayScope: LifetimeScope
         builder.RegisterComponentInHierarchy<WorldGenerator>();
         builder.RegisterComponentInHierarchy<WorldTileRenderer>();
         builder.RegisterComponentInHierarchy<EnvironmentSpawner>();
-        builder.RegisterComponentInHierarchy<EntitySpawner>();
 
         builder.RegisterComponentInHierarchy<DayNightManager>();
         builder.Register<WorldModel>(Lifetime.Singleton);
@@ -67,6 +66,7 @@ public class GameplayScope: LifetimeScope
         builder.Register<ExperienceFactory>(Lifetime.Scoped);
         
         // Entities
+        builder.RegisterComponentInHierarchy<EntitySpawner>();
         builder.RegisterComponentInHierarchy<EntitiesRegistry>();
         builder.RegisterComponentInHierarchy<DropSpawner>();
         builder.RegisterComponentInHierarchy<ParticlesSpawner>();
