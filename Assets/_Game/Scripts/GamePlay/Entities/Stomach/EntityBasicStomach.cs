@@ -1,4 +1,7 @@
-﻿using _Game.Scripts.GamePlay.Buffs;
+﻿using System;
+using System.Collections;
+using _Game.Scripts.Core.Services;
+using _Game.Scripts.GamePlay.Buffs;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 using VContainer;
@@ -6,34 +9,44 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities.Stomach
 {
-public class EntityBasicStomach: IStartable, ITickable
+public class EntityBasicStomach: IStartable, IDisposable
 {
     [Inject] private StomachModule _stomach;
     [Inject] private BuffsModule _buffs;
+    [Inject] private CoroutineRunner _coroutineRunner;
 
     private const float LoseHungerTime = 5f;
-    private float _loseHungerTimer;
-
+    private const string HungerCoroutineKey = "HungerLoop";
+    
     public void Start()
     {
-        _loseHungerTimer = LoseHungerTime;
+        _stomach.OnValueChanged += UpdateBuffs;
+        _coroutineRunner.Run(HungerCoroutineKey, HungerLoop());
     }
     
-    public void Tick()
+    private IEnumerator HungerLoop()
     {
-        if (_loseHungerTimer > 0f)
+        while (true)
         {
-            _loseHungerTimer -= Time.deltaTime;
-
-            if (_loseHungerTimer <= 0f)
-            {
-                _loseHungerTimer = LoseHungerTime;
-                _stomach.LoseHunger(1);
-            }
+            yield return new WaitForSeconds(LoseHungerTime);
+            _stomach.LoseHunger(1);
         }
+    }
+
+    private void UpdateBuffs(float current, float max)
+    {
+        _buffs.Set(BuffType.Overeating, current > max);
+        _buffs.Set(BuffType.Starvation, current <= 0f);
+    }
+
+    public void Dispose()
+    {
+        _stomach.OnValueChanged -= UpdateBuffs;
         
-        _buffs.Set(BuffType.Overeating, _stomach.Hunger > _stomach.MaxHunger);
-        _buffs.Set(BuffType.Starvation, _stomach.Hunger <= 0f);
+        if (_coroutineRunner != null && _coroutineRunner.gameObject != null)
+        {
+            _coroutineRunner.Stop(HungerCoroutineKey);
+        }
     }
 }
 }
