@@ -165,7 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac457af23bf41cfadf1dcf9549090ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.AttackItem
-  _hitTime: 0.1
+  HitTime: 0.1
+  FollowSource: 0
 --- !u!95 &6959065788070740454
 Animator:
   serializedVersion: 7

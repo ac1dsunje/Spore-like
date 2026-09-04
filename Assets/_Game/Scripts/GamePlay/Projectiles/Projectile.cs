@@ -5,7 +5,17 @@ namespace _Game.Scripts.GamePlay.Projectiles
 {
 public abstract class Projectile: MonoBehaviour
 {
+    [SerializeField, Min(0.1f)] protected float HitTime;
+    [SerializeField] protected bool FollowSource;
     private HitInfo _hitInfo;
+    
+    public void SetSource(Transform source)
+    {
+        if (FollowSource)
+        {
+            transform.SetParent(source);
+        }
+    }
     
     public virtual void SetHit(HitInfo hit)
     {

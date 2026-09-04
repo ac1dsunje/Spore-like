@@ -12,6 +12,9 @@ public class EntityWeaponHolder: MonoBehaviour
     {
         var weapon = Instantiate(_projectilePrefab);
         UpdateAttackPosition(mousePosition, entityPosition, range, weapon);
+
+        weapon.SetSource(transform);
+
         weapon.SetHit(hitInfo);
     }
 
