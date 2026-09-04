@@ -7,6 +7,7 @@ using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Entities.Health;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Entities.Movement;
+using _Game.Scripts.GamePlay.Entities.Picker;
 using _Game.Scripts.GamePlay.Entities.Stomach;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
@@ -61,7 +62,7 @@ public class EntityScope: LifetimeScope
         
         builder.RegisterEntryPoint<EnduranceModule>(Lifetime.Scoped).AsSelf();
         
-        builder.RegisterEntryPoint<MouthModule>(Lifetime.Scoped).AsSelf();
+        builder.RegisterEntryPoint<PickingModule>(Lifetime.Scoped).AsSelf();
         builder.RegisterEntryPoint<StomachModule>(Lifetime.Scoped).AsSelf();
         
         builder.RegisterEntryPoint<MovementModule>(Lifetime.Scoped).AsSelf();
@@ -83,7 +84,7 @@ public class EntityScope: LifetimeScope
         
         builder.RegisterComponent(GetComponentInChildren<RigidbodyController>());
         builder.RegisterComponent(GetComponentInChildren<FoodDropper>());
-        builder.RegisterComponent(GetComponentInChildren<MouthHitbox>());
+        builder.RegisterComponent(GetComponentInChildren<PickerHitbox>());
         builder.RegisterEntryPoint<EntityBasicMovement>(Lifetime.Scoped)
             .As<IMovementController>();
         
@@ -101,6 +102,7 @@ public class EntityScope: LifetimeScope
             .AsSelf();
         builder.RegisterComponent(GetComponentInChildren<EntityWeaponHolder>());
         builder.RegisterEntryPoint<EntityBasicStomach>(Lifetime.Scoped);
+        builder.RegisterEntryPoint<EntityPicker>(Lifetime.Scoped);
         
         // Coroutines
         builder.RegisterComponent(GetComponentInChildren<CoroutineRunner>());

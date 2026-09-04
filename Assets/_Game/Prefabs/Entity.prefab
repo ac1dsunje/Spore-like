@@ -91,7 +91,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0041ce9358db43aba6d780e75e071830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.EntityVisionHitbox
-  _visionCollider: {fileID: 8492993795575088708}
 --- !u!1 &6216429508767283393
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +296,7 @@ GameObject:
   - component: {fileID: 1414096660894937302}
   - component: {fileID: 2955578197431277409}
   m_Layer: 0
-  m_Name: MouthHitbox
+  m_Name: PickerHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

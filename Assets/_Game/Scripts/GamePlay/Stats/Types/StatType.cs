@@ -2,16 +2,14 @@
 {
 public enum StatType
 {
-    Inertia = 8,
     MoveSpeed = 0,
-    MaxHealth = 10,
-    DamageReflection = 4,
     VisionRadius = 1,
-    Regeneration = 7,
     Acceleration = 3,
+    DamageReflection = 4,
     PhysicalDamage = 6,
-    EatingStrength = 11,
-    EatingTime = 13,
+    Regeneration = 7,
+    Inertia = 8,
+    MaxHealth = 10,
     MaxEndurance = 14,
     EnduranceRecovery = 15,
     SprintMultiplier = 16,
@@ -27,6 +25,7 @@ public enum StatType
     Disguise = 28,
     LightingRadius = 29,
     Passability = 30,
+    PickingRange = 31,
     AttackSpeed = 32,
     DisguiseInRest = 33,
     OxygenBreathing = 34,

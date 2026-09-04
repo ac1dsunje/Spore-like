@@ -20,7 +20,7 @@ public class FoodDrop: MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.TryGetComponent(out MouthHitbox mouth)) return;
+        if (!other.TryGetComponent(out PickerHitbox mouth)) return;
         mouth.GetFood();
         Destroy(gameObject);
     }
