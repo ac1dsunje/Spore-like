@@ -403,7 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2b12dad6764d9bac737e510e796024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.Attack.EntityWeaponHolder
-  _projectilePrefab: {fileID: 1631030185061358863, guid: 3146c2eaa0bb53241a8931255589c33b, type: 3}
+  _projectilePrefab: {fileID: 5065209077788698527, guid: 862bc4508bcaf9f4192f622606c6a7db, type: 3}
 --- !u!1 &8266466559747868771
 GameObject:
   m_ObjectHideFlags: 0

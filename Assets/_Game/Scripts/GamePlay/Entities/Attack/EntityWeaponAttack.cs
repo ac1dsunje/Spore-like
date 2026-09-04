@@ -1,5 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
+using _Game.Scripts.GamePlay.Projectiles;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -12,6 +13,7 @@ public class EntityWeaponAttack : ITickable, IDamageSource, IAttackController
     [Inject] private MovementModule _movement;
     [Inject] private IDamageReceiver _receiver;
     [Inject] private EntityWeaponHolder _weapon;
+    [Inject] private ProjectileConfig _projectileConfig;
 
     private float _attackCooldownTimer;
     private bool CanAttack => _attackCooldownTimer <= 0f;
@@ -28,7 +30,7 @@ public class EntityWeaponAttack : ITickable, IDamageSource, IAttackController
     {
         if (!CanAttack) return;
         var hit = new HitInfo(_attack.PhysicalDamage, _attack.IgnoreResistance, this, _receiver);
-        _weapon.SetAttack(mousePosition, _movement.Transform.position, hit, _attack.AttackRange);
+        _weapon.SetAttack(mousePosition, _movement.Transform.position, hit, _attack.AttackRange, _projectileConfig);
         _attackCooldownTimer = _attack.AttackSpeed;
     }
     

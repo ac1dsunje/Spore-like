@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ef6c43a1cbd4b1583d934a3ac8e2212, type: 3}
-  m_Name: Slash
+  m_Name: Spikes
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Projectiles.ProjectileConfig
-  <HitTime>k__BackingField: 0.1
-  <FollowSource>k__BackingField: 0
-  <Sprite>k__BackingField: {fileID: -2349473456294781332, guid: c46653d5fdf011b409394423678c6fd2, type: 3}
-  <Controller>k__BackingField: {fileID: -4696559884705081445, guid: c46653d5fdf011b409394423678c6fd2, type: 3}
+  <HitTime>k__BackingField: 0.5
+  <FollowSource>k__BackingField: 1
+  <Sprite>k__BackingField: {fileID: 7918002445262337001, guid: 428b1b6ea82deb44f9b88d36f0eead74, type: 3}
+  <Controller>k__BackingField: {fileID: 0}

@@ -15,8 +15,7 @@ MonoBehaviour:
   <Data>k__BackingField:
     <AIType>k__BackingField: 2
     <HealthType>k__BackingField: 1
-    <RegenerationType>k__BackingField: 0
-    <AttackType>k__BackingField: 0
+    <AttackType>k__BackingField: 1
     <DeathType>k__BackingField: 0
   <EntityStatsConfig>k__BackingField: {fileID: 11400000, guid: e69bf7fb22b6fc3448d073f856b03521, type: 2}
   <ExperienceConfig>k__BackingField:
@@ -27,6 +26,7 @@ MonoBehaviour:
       <ExperienceTypes>k__BackingField:
       - <Type>k__BackingField: 2
         <Amount>k__BackingField: 1
+  <Projectile>k__BackingField: {fileID: 11400000, guid: 01353b3e9ceab2b4b90db1f6c4021cfc, type: 2}
   <AnimationSettings>k__BackingField:
     <Sprite>k__BackingField: {fileID: 3147233298308361737, guid: e1e8f9e2112581f4c848d9ee20c89f4a, type: 3}
     <Controller>k__BackingField: {fileID: 0}

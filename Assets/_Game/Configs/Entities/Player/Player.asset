@@ -15,7 +15,6 @@ MonoBehaviour:
   <Data>k__BackingField:
     <AIType>k__BackingField: 1
     <HealthType>k__BackingField: 1
-    <RegenerationType>k__BackingField: 1
     <AttackType>k__BackingField: 1
     <DeathType>k__BackingField: 1
   <EntityStatsConfig>k__BackingField: {fileID: 11400000, guid: 480bfc51254c2764c9973f2d212f8e44, type: 2}
@@ -29,6 +28,7 @@ MonoBehaviour:
         <Amount>k__BackingField: 1
       - <Type>k__BackingField: 6
         <Amount>k__BackingField: 1
+  <Projectile>k__BackingField: {fileID: 11400000, guid: 5e5c4297305e9254690810fc7283ddf3, type: 2}
   <AnimationSettings>k__BackingField:
     <Sprite>k__BackingField: {fileID: -9048744825557176607, guid: 7e660a4087c8141408b939d08c80a53f, type: 3}
     <Controller>k__BackingField: {fileID: 7898678084846905597, guid: 7e660a4087c8141408b939d08c80a53f, type: 3}
