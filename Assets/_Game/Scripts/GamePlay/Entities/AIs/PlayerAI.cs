@@ -8,7 +8,7 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace _Game.Scripts.GamePlay.Player
+namespace _Game.Scripts.GamePlay.Entities.AIs
 {
 public class PlayerAI : IStartable, ITickable, IDisposable
 {

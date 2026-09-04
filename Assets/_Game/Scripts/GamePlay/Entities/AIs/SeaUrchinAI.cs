@@ -10,7 +10,7 @@ using VContainer.Unity;
 using Random = UnityEngine.Random;
 using Vector2 = UnityEngine.Vector2;
 
-namespace _Game.Scripts.GamePlay.Enemies.SeaUrchin
+namespace _Game.Scripts.GamePlay.Entities.AIs
 {
 public class SeaUrchinAI : IStartable, ITickable, IDisposable
 {

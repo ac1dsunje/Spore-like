@@ -5,7 +5,7 @@ using _Game.Scripts.GamePlay.Interfaces;
 using VContainer;
 using VContainer.Unity;
 
-namespace _Game.Scripts.GamePlay.World.Biomes.Plant
+namespace _Game.Scripts.GamePlay.Entities.AIs
 {
 public class PlantAI : IStartable, IDisposable
 {
