@@ -11,19 +11,19 @@ public class EntityWeaponHolder: MonoBehaviour
     public void SetAttack(Vector2 mousePosition, Vector2 entityPosition, HitInfo hitInfo, float range, ProjectileConfig config)
     {
         var weapon = Instantiate(_projectilePrefab);
-        UpdateAttackPosition(mousePosition, entityPosition, range, weapon);
+        UpdateAttackPosition(mousePosition, entityPosition, range, weapon, config);
 
         weapon.Initialize(config, transform);
 
         weapon.SetHit(hitInfo);
     }
 
-    private void UpdateAttackPosition(Vector2 mousePosition, Vector2 entityPosition, float range, Projectile weapon)
+    private void UpdateAttackPosition(Vector2 mousePosition, Vector2 entityPosition, float range, Projectile weapon, ProjectileConfig config)
     {
         var offset = mousePosition - entityPosition;
         var rawDistance = offset.magnitude;
 
-        var distance = Mathf.Clamp(rawDistance, 0.5f, range);
+        var distance = Mathf.Clamp(rawDistance, config.MinRange, config.MaxRange > range? range: config.MaxRange);
 
         var direction = rawDistance > Mathf.Epsilon ? offset.normalized : Vector2.right;
 

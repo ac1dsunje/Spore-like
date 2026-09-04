@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Projectiles.ProjectileConfig
   <HitTime>k__BackingField: 0.1
   <FollowSource>k__BackingField: 0
+  <MinRange>k__BackingField: 0.5
+  <MaxRange>k__BackingField: 999999
   <Sprite>k__BackingField: {fileID: -2349473456294781332, guid: c46653d5fdf011b409394423678c6fd2, type: 3}
   <Controller>k__BackingField: {fileID: -4696559884705081445, guid: c46653d5fdf011b409394423678c6fd2, type: 3}
