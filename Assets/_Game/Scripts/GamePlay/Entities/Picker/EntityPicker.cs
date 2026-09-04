@@ -2,7 +2,6 @@
 using _Game.Scripts.GamePlay.Entities.Drops;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Modules;
-using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
@@ -33,7 +32,6 @@ public class EntityPicker: IStartable, ITickable, IDisposable
                 break;
             case DropType.Experience:
                 _pickingModule.GetExperiencePoint(1);
-                Debug.Log("experience point got!");
                 break;
         }
     }
