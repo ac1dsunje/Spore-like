@@ -12,7 +12,9 @@ public class EntityBasicDeath: IStartable, IDisposable
     [Inject] private EntitiesRegistry _entitiesRegistry;
     [Inject] private ExperienceModule _experience;
     [Inject] private HealthModule _health;
-    [Inject] private EntityDropper _entityDropper;
+    [Inject] private DropSpawner _dropSpawner;
+    [Inject] private DropsConfig _dropConfigs;
+    [Inject] private MovementModule _movement;
 
     public void Start()
     {
@@ -21,7 +23,7 @@ public class EntityBasicDeath: IStartable, IDisposable
 
     private void Die(HealthModule health)
     {
-        _entityDropper.Spawn(_experience.Level);
+        _dropSpawner.Spawn(_experience.Level, _movement.Transform.position, _dropConfigs);
         _entitiesRegistry.DestroyEntityByHealth(health);
     }
     

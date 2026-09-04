@@ -66,11 +66,10 @@ public class GameplayScope: LifetimeScope
         builder.Register<AbilityFactory>(Lifetime.Scoped);
         builder.Register<ExperienceFactory>(Lifetime.Scoped);
         
-        // Particles
-        builder.RegisterComponentInHierarchy<ParticlesSpawner>();
-        
         // Entities
         builder.RegisterComponentInHierarchy<EntitiesRegistry>();
+        builder.RegisterComponentInHierarchy<DropSpawner>();
+        builder.RegisterComponentInHierarchy<ParticlesSpawner>();
     }
 }
 }

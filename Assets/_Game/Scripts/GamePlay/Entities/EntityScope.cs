@@ -83,7 +83,6 @@ public class EntityScope: LifetimeScope
         builder.RegisterEntryPoint<EntityEndurance>(Lifetime.Scoped);
         
         builder.RegisterComponent(GetComponentInChildren<RigidbodyController>());
-        builder.RegisterComponent(GetComponentInChildren<EntityDropper>());
         builder.RegisterComponent(GetComponentInChildren<PickerHitbox>());
         builder.RegisterEntryPoint<EntityBasicMovement>(Lifetime.Scoped)
             .As<IMovementController>();

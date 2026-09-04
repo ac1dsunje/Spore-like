@@ -603,6 +603,7 @@ GameObject:
   - component: {fileID: 1986825668}
   - component: {fileID: 1986825669}
   - component: {fileID: 1986825670}
+  - component: {fileID: 1986825671}
   m_Layer: 0
   m_Name: Scope
   m_TagString: Untagged
@@ -698,6 +699,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54af409f29824c6bb2e6e876f48ef4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.EntitiesRegistry
+--- !u!114 &1986825671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986825660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b109944881254cb3af43ac6c24218837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.Drops.EntityDropper
+  _dropPrefab: {fileID: -1689008738557556690, guid: c2c71fc196c21d843ba87a4d636c3aeb, type: 3}
+  _spawnRadius: 0.5
 --- !u!1001 &2140936592
 PrefabInstance:
   m_ObjectHideFlags: 0

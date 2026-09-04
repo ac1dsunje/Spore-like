@@ -379,7 +379,6 @@ GameObject:
   - component: {fileID: 5752819248030171916}
   - component: {fileID: 7141615740822153795}
   - component: {fileID: 5817664088192976576}
-  - component: {fileID: 1529321544416022883}
   m_Layer: 0
   m_Name: Entity
   m_TagString: Untagged
@@ -486,20 +485,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.Attack.EntityWeaponHolder
   _projectilePrefab: {fileID: 5065209077788698527, guid: 862bc4508bcaf9f4192f622606c6a7db, type: 3}
---- !u!114 &1529321544416022883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254078283856608112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b109944881254cb3af43ac6c24218837, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.Dropper
-  _dropPrefab: {fileID: -1689008738557556690, guid: c2c71fc196c21d843ba87a4d636c3aeb, type: 3}
-  _spawnRadius: 0.7
 --- !u!1 &8266466559747868771
 GameObject:
   m_ObjectHideFlags: 0
