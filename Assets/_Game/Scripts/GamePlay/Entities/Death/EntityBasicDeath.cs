@@ -23,15 +23,8 @@ public class EntityBasicDeath: IStartable, IDisposable
 
     private void Die(HealthModule health)
     {
-        if (_health.ExtraLives > 0f)
-        {
-            _health.Revive();
-        }
-        else
-        {
-            _dropSpawner.Spawn(_experience.Level, _movement.Transform.position, _dropConfigs);
-            _entitiesRegistry.DestroyEntityByHealth(health);
-        }
+        _dropSpawner.Spawn(_experience.Level, _movement.Transform.position, _dropConfigs);
+        _entitiesRegistry.DestroyEntityByHealth(health);
     }
     
     public void Dispose()

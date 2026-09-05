@@ -13,6 +13,7 @@ public class HealthModule: StatModule, IResource
     public float ExtraLives { get; private set; }
     
     public event Action<HealthModule> OnDeath;
+    public event Action<HealthModule> OnRevived;
     public event Action<float> OnDamageTaken;
     public event Action OnHitTaken;
     public event Action<float> OnHealed;
@@ -28,8 +29,9 @@ public class HealthModule: StatModule, IResource
         BindStat(StatType.ExtraLife, UpdateExtraLife);
     }
 
-    public void Revive()
+    private void Revive()
     {
+        OnRevived?.Invoke(this);
         _isDead = false;
         Health = MaxHealth;
         _extraLivesUsed++;
@@ -38,6 +40,7 @@ public class HealthModule: StatModule, IResource
     
     public void TakeDamage(float amount)
     {
+        if (_isDead) return;
         Health -= amount;
         Health = Mathf.Max(0, Health);
         OnHitTaken?.Invoke();
@@ -84,7 +87,14 @@ public class HealthModule: StatModule, IResource
     {
         if (_isDead) return;
         _isDead = true;
-        OnDeath?.Invoke(this);
+        if (ExtraLives > 0f)
+        {
+            Revive();
+        }
+        else
+        {
+            OnDeath?.Invoke(this);
+        }
     }
 }
 }
