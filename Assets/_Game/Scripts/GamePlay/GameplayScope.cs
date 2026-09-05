@@ -36,7 +36,7 @@ public class GameplayScope: LifetimeScope
         builder.RegisterInstance(_buffsDatabase);
         
         // World
-        builder.RegisterComponentInHierarchy<WorldGenerator>();
+        builder.RegisterEntryPoint<WorldGenerator>().AsSelf();
         builder.RegisterComponentInHierarchy<WorldTileRenderer>();
         builder.RegisterComponentInHierarchy<EnvironmentSpawner>();
 

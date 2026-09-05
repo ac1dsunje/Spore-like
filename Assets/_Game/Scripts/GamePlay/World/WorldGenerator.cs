@@ -7,10 +7,10 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.World
 {
-public class WorldGenerator: MonoBehaviour
+public class WorldGenerator: IDisposable
 {
-    [SerializeField] private int _renderDistance = 1;
-    
+    private const int RenderDistance = 1;
+
     private WorldModel _model;
     private EntitiesRegistry _registry;
     
@@ -36,7 +36,7 @@ public class WorldGenerator: MonoBehaviour
         Generate(_player.GridPosition);
     }
 
-    private int GetDistance() => _renderDistance * _model.ChunkSize;
+    private int GetDistance() => RenderDistance * _model.ChunkSize;
     
     private void Generate(Vector3Int pos)
     {
@@ -75,7 +75,7 @@ public class WorldGenerator: MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    public void Dispose()
     {
         if (_player != null)
         {
