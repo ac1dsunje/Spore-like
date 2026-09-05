@@ -37,8 +37,8 @@ public class GameplayScope: LifetimeScope
         
         // World
         builder.RegisterEntryPoint<WorldGenerator>().AsSelf();
+        builder.RegisterEntryPoint<EnvironmentSpawner>();
         builder.RegisterComponentInHierarchy<WorldTileRenderer>();
-        builder.RegisterComponentInHierarchy<EnvironmentSpawner>();
 
         builder.RegisterComponentInHierarchy<DayNightManager>();
         builder.Register<WorldModel>(Lifetime.Singleton);

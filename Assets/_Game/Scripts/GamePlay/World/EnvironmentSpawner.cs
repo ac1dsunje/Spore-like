@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Entities.Configuration;
 using _Game.Scripts.GamePlay.World.Biomes;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 using Random = UnityEngine.Random;
 
 namespace _Game.Scripts.GamePlay.World
@@ -21,19 +23,25 @@ public readonly struct SpawnedFood
     }
 }
 
-public class EnvironmentSpawner: MonoBehaviour
+public class EnvironmentSpawner: IStartable, IDisposable
 {
     private WorldTileRenderer _tileRenderer;
     private EntitySpawner _spawner;
+    private EntitiesRegistry _entitiesRegistry;
     
     private readonly Dictionary<Vector3Int, SpawnedFood> _spawnedFoods = new();
     private readonly Dictionary<Vector3Int, EntityScope> _spawnedObjects = new();
     
     [Inject]
-    private void Construct(WorldTileRenderer generator, EntitySpawner spawner)
+    private void Construct(WorldTileRenderer generator, EntitySpawner spawner, EntitiesRegistry entitiesRegistry)
     {
         _tileRenderer = generator;
         _spawner = spawner;
+        _entitiesRegistry = entitiesRegistry;
+    }
+
+    public void Start()
+    {
         _tileRenderer.OnTileCreated += TryCreateEnvironment;
         _tileRenderer.OnTileLoaded += TryLoadEnvironment;
         _tileRenderer.OnTileUnloaded += UnloadEnvironment;
@@ -68,8 +76,7 @@ public class EnvironmentSpawner: MonoBehaviour
             _spawnedFoods.Remove(position);
             return;
         }
-        
-        Destroy(item.gameObject);
+        _entitiesRegistry.DestroyEntityByScope(item);
         _spawnedObjects.Remove(position);
     }
     
@@ -82,7 +89,7 @@ public class EnvironmentSpawner: MonoBehaviour
         _spawnedObjects[setPos] = _spawner.SpawnEntity(position, parent, config);
     }
 
-    private void OnDestroy()
+    public void Dispose()
     {
         _tileRenderer.OnTileLoaded -= TryLoadEnvironment;
         _tileRenderer.OnTileCreated -= TryCreateEnvironment;
