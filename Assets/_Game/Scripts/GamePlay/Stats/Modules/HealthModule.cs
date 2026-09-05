@@ -31,11 +31,12 @@ public class HealthModule: StatModule, IResource
 
     private void Revive()
     {
-        OnRevived?.Invoke(this);
         _isDead = false;
         Health = MaxHealth;
         _extraLivesUsed++;
         ExtraLives--;
+        OnValueChanged?.Invoke(Health, MaxHealth);
+        OnRevived?.Invoke(this);
     }
     
     public void TakeDamage(float amount)
