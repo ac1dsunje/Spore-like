@@ -4,6 +4,7 @@ public enum StatType
 {
     MoveSpeed = 0,
     VisionRadius = 1,
+    ExtraLife = 2,
     Acceleration = 3,
     DamageReflection = 4,
     PhysicalDamage = 6,

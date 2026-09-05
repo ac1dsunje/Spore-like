@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0030ccaa56b24bdfbe9c600651de2505, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.EntityConfig
-  <Data>k__BackingField:
-    <AIType>k__BackingField: 1
-    <HealthType>k__BackingField: 1
-    <DeathType>k__BackingField: 1
+  <AIType>k__BackingField: 1
   <EntityStatsConfig>k__BackingField: {fileID: 11400000, guid: 480bfc51254c2764c9973f2d212f8e44, type: 2}
   <ExperienceConfig>k__BackingField:
     <LevelScaler>k__BackingField: 1

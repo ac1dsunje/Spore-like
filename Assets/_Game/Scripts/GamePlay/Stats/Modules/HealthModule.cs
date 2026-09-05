@@ -10,23 +10,30 @@ public class HealthModule: StatModule, IResource
     public float MaxHealth {get;  private set; }
     public float Health { get; private set; }
     public float Regeneration { get; private set; }
+    public float ExtraLives { get; private set; }
     
     public event Action<HealthModule> OnDeath;
     public event Action<float> OnDamageTaken;
     public event Action OnHitTaken;
     public event Action<float> OnHealed;
     public event Action<float, float> OnValueChanged;
+    
     private bool _isDead;
+    private float _extraLivesUsed;
 
     protected override void Configure()
     {
         BindStat(StatType.MaxHealth, UpdateMaxHealth);
         BindStat(StatType.Regeneration, UpdateRegeneration);
+        BindStat(StatType.ExtraLife, UpdateExtraLife);
     }
 
     public void Revive()
     {
         _isDead = false;
+        Health = MaxHealth;
+        _extraLivesUsed++;
+        ExtraLives--;
     }
     
     public void TakeDamage(float amount)
@@ -71,6 +78,7 @@ public class HealthModule: StatModule, IResource
     }
 
     private void UpdateRegeneration(float value) => Regeneration = value;
+    private void UpdateExtraLife(float value) => ExtraLives = value - _extraLivesUsed;
 
     private void Die()
     {

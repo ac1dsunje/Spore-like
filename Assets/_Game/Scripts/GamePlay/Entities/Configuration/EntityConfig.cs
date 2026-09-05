@@ -6,15 +6,21 @@ using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Entities.Configuration
 {
+public enum EntityAI
+{
+    Plant = 0,
+    Player = 1,
+    SeaUrchin = 2,
+}
+
 [CreateAssetMenu(fileName = "New entity Config", menuName = "Game/Entities/Config")]
 public class EntityConfig: ScriptableObject
 {
-    [field: SerializeField] public EntityData Data { get; private set; }
+    [field: SerializeField] public EntityAI AIType { get; private set; }
     [field: SerializeField] public StatsConfig EntityStatsConfig { get; private set; }
     [field: SerializeField] public EntityExperienceConfig ExperienceConfig { get; private set; }
     [field: SerializeField] public ProjectileConfig Projectile { get; private set; }
     [field: SerializeField] public DropsConfig Drops { get; private set; }
     [field: SerializeField] public AnimationSettings AnimationSettings { get; private set; }
 }
-
 }

@@ -1,6 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Entities.AIs;
 using _Game.Scripts.GamePlay.Entities.Attack;
-using _Game.Scripts.GamePlay.Entities.Death;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Player;
 using _Game.Scripts.GamePlay.Projectiles;
@@ -11,18 +10,16 @@ namespace _Game.Scripts.GamePlay.Entities.Configuration
 {
 public class EntityBuilder
 {
-    public void ChooseBehaviour(EntityData config, IContainerBuilder builder, ProjectileConfig projectileConfig)
+    public void ChooseBehaviour(EntityAI aiType, IContainerBuilder builder, ProjectileConfig projectileConfig)
     {
-        SetAI(config.AIType, builder);
+        SetAI(aiType, builder);
         
         SetAttack(projectileConfig, builder);
-        
-        SetDeath(config.DeathType, builder);
     }
 
-    private void SetAI(EntityAI config, IContainerBuilder builder)
+    private void SetAI(EntityAI aiType, IContainerBuilder builder)
     {
-        switch (config)
+        switch (aiType)
         {
             case EntityAI.Plant:
                 builder.RegisterEntryPoint<PlantAI>(Lifetime.Scoped);
@@ -50,19 +47,6 @@ public class EntityBuilder
         else
         {
             builder.RegisterEntryPoint<EntityBasicAttack>();
-        }
-    }
-
-    private void SetDeath(EntityDeath config, IContainerBuilder builder)
-    {
-        switch (config)
-        {
-            case EntityDeath.Basic:
-                builder.RegisterEntryPoint<EntityBasicDeath>();
-                break;
-            case EntityDeath.Revival:
-                builder.RegisterEntryPoint<EntityRevivalDeath>();
-                break;
         }
     }
 }
