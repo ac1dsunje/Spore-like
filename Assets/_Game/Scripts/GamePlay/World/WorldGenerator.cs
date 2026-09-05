@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
@@ -12,17 +13,18 @@ public class WorldGenerator: MonoBehaviour
     
     private WorldModel _model;
     private EntitiesRegistry _registry;
-    private WorldTileRenderer _tileRendererGenerator;
     
     private MovementModule _player;
     private readonly HashSet<Vector3Int> _loadedTiles = new();
     
+    public event Action<Vector3Int> OnTileAddRequested;
+    public event Action<Vector3Int> OnTileRemoveRequested;
+    
     [Inject]
-    private void Construct(WorldModel model, EntitiesRegistry registry, WorldTileRenderer tileRendererGenerator)
+    private void Construct(WorldModel model, EntitiesRegistry registry)
     {
         _model = model;
         _registry = registry;
-        _tileRendererGenerator = tileRendererGenerator;
         
         _registry.OnPlayerInitialized += Initialize;
     }
@@ -54,7 +56,7 @@ public class WorldGenerator: MonoBehaviour
         {
             if (!newTiles.Contains(position))
             {
-                _tileRendererGenerator.TryUnloadTile(position);
+                OnTileRemoveRequested?.Invoke(position);
             }
         }
 
@@ -62,7 +64,7 @@ public class WorldGenerator: MonoBehaviour
         {
             if (!_loadedTiles.Contains(position))
             {
-                _tileRendererGenerator.TryPlaceTile(position);
+                OnTileAddRequested?.Invoke(position);
             }
         }
 

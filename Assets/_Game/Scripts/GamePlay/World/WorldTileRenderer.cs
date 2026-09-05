@@ -20,11 +20,15 @@ public class WorldTileRenderer: MonoBehaviour
     public event Action<Vector3Int, Biome, Transform> OnTileLoaded;
 
     private WorldModel _model;
+    private WorldGenerator _generator;
 
     [Inject]
-    private void Construct(WorldModel model)
+    private void Construct(WorldModel model, WorldGenerator generator)
     {
         _model = model;
+        _generator = generator;
+        _generator.OnTileAddRequested += TryPlaceTile;
+        _generator.OnTileRemoveRequested += TryUnloadTile;
         CreateTileMaps();
     }
     
@@ -86,6 +90,12 @@ public class WorldTileRenderer: MonoBehaviour
         {
             tilemap.SetTile(position, tile);
         }
+    }
+
+    private void OnDestroy()
+    {
+        _generator.OnTileAddRequested -= TryPlaceTile;
+        _generator.OnTileRemoveRequested -= TryUnloadTile;
     }
 }
 }
