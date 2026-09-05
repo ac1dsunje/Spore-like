@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Food.FoodConfig
   <Data>k__BackingField:
     <AIType>k__BackingField: 0
-    <HealthType>k__BackingField: 0
+    <HealthType>k__BackingField: 1
     <DeathType>k__BackingField: 0
   <EntityStatsConfig>k__BackingField: {fileID: 11400000, guid: 5578ff647fa96724b81e42d191ea7642, type: 2}
   <ExperienceConfig>k__BackingField:

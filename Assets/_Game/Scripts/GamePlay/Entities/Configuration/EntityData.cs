@@ -10,12 +10,6 @@ public enum EntityAI
     SeaUrchin = 2,
 }
 
-public enum EntityHealth
-{
-    Basic = 0,
-    Reflective = 1,
-}
-
 public enum EntityDeath
 {
     Basic = 0,
@@ -26,7 +20,6 @@ public enum EntityDeath
 public class EntityData
 {
     [field: SerializeField] public EntityAI AIType { get; private set; }
-    [field: SerializeField] public EntityHealth HealthType { get; private set; }
     [field: SerializeField] public EntityDeath DeathType { get; private set; }
 }
 }

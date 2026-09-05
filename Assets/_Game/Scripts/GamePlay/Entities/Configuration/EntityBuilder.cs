@@ -1,7 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Entities.AIs;
 using _Game.Scripts.GamePlay.Entities.Attack;
 using _Game.Scripts.GamePlay.Entities.Death;
-using _Game.Scripts.GamePlay.Entities.Health;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Player;
 using _Game.Scripts.GamePlay.Projectiles;
@@ -15,8 +14,6 @@ public class EntityBuilder
     public void ChooseBehaviour(EntityData config, IContainerBuilder builder, ProjectileConfig projectileConfig)
     {
         SetAI(config.AIType, builder);
-        
-        SetHealth(config.HealthType, builder);
         
         SetAttack(projectileConfig, builder);
         
@@ -38,20 +35,6 @@ public class EntityBuilder
             
             case EntityAI.SeaUrchin:
                 builder.RegisterEntryPoint<SeaUrchinAI>(Lifetime.Scoped);
-                break;
-        }
-    }
-
-    private void SetHealth(EntityHealth config, IContainerBuilder builder)
-    {
-        switch (config)
-        {
-            case EntityHealth.Basic:
-                builder.RegisterEntryPoint<EntityBasicHealth>().As<IHealthController>();
-                break;
-            
-            case EntityHealth.Reflective:
-                builder.RegisterEntryPoint<EntityReflectiveHealth>().As<IHealthController>();
                 break;
         }
     }

@@ -102,6 +102,7 @@ public class EntityScope: LifetimeScope
         builder.RegisterComponent(GetComponentInChildren<EntityWeaponHolder>());
         builder.RegisterEntryPoint<EntityBasicStomach>(Lifetime.Scoped);
         builder.RegisterEntryPoint<EntityPicker>(Lifetime.Scoped);
+        builder.RegisterEntryPoint<EntityBasicHealth>().As<IHealthController>();
         
         // Coroutines
         builder.RegisterComponent(GetComponentInChildren<CoroutineRunner>());
