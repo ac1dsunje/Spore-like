@@ -51,14 +51,14 @@ public class BiomeChecker: IStartable, IDisposable
     private void EnterBiome(Biome biome)
     {
         _currentBiome = biome;
-        CheckPassability();
+        CheckPassability(biome.PassAbility);
         ApplyTemperature(biome.Temperature);
         CheckBreathing(biome.OxygenBreathing, biome.HydrogenBreathing);
     }
 
-    private void CheckPassability()
+    private void CheckPassability(float passability)
     {
-        _buffsModule.Set(BuffType.BadPassAbility, _currentBiome.PassAbility > _biomeModule.PassAbility);
+        _buffsModule.Set(BuffType.BadPassAbility, passability > _biomeModule.PassAbility);
     }
 
     private void ApplyTemperature(float temperature)
