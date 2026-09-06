@@ -18,12 +18,10 @@ namespace _Game.Scripts.GamePlay
 {
 public class GameplayScope: LifetimeScope
 {
-    [Header("Configs")]
     [SerializeField] private WorldGenerationConfig _worldConfig;
     [SerializeField] private StatTypeConfig _statTypeConfig;
     [SerializeField] private EvolutionsDatabase _evolutionsDatabase;
     [SerializeField] private RaritiesDatabase _raritiesDatabase;
-    
     [SerializeField] private BuffsDatabase _buffsDatabase;
 
     protected override void Configure(IContainerBuilder builder)
