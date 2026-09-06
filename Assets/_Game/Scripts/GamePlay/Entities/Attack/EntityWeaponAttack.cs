@@ -16,7 +16,7 @@ public class EntityWeaponAttack : ITickable, IDamageSource, IAttackController
     [Inject] private ProjectileConfig _projectileConfig;
 
     private float _attackCooldownTimer;
-    private bool CanAttack => _attackCooldownTimer <= 0f && _attack.AttackSpeed >= 0f;
+    private bool CanAttack => _attackCooldownTimer <= 0f && _attack.AttackTime >= 0f;
 
     public void Tick()
     {
@@ -31,7 +31,7 @@ public class EntityWeaponAttack : ITickable, IDamageSource, IAttackController
         if (!CanAttack) return;
         var hit = new HitInfo(_attack.PhysicalDamage, _attack.IgnoreResistance, this, _receiver);
         _weapon.SetAttack(mousePosition, _movement.Transform.position, hit, _attack.AttackRange, _projectileConfig);
-        _attackCooldownTimer = _attack.AttackSpeed;
+        _attackCooldownTimer = _attack.AttackTime;
     }
     
     public void SetDamageDealt(float damage) => _attack.SetDamageDealt(damage);

@@ -27,7 +27,7 @@ public enum StatType
     LightingRadius = 29,
     Passability = 30,
     PickingRange = 31,
-    AttackSpeed = 32,
+    AttackTime = 32,
     DisguiseInRest = 33,
     OxygenBreathing = 34,
     HydrogenBreathing = 35,
