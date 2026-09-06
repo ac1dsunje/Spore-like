@@ -110,7 +110,7 @@ public class EntityScope: LifetimeScope
         builder.RegisterComponent(GetComponentInChildren<CoroutineRunner>());
         builder.RegisterEntryPoint<EntityRegeneration>(Lifetime.Scoped);
 
-        _entityBuilder.ChooseBehaviour(_entityConfig.AITypeType, builder, _entityConfig.Projectile);
+        _entityBuilder.ChooseBehaviour(_entityConfig.AIType, builder, _entityConfig.Projectile);
     }
 }
 }

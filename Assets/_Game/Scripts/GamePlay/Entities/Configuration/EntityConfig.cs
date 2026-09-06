@@ -15,7 +15,7 @@ public enum EntityAIType
 [CreateAssetMenu(fileName = "New entity Config", menuName = "Game/Entities/Config")]
 public class EntityConfig: ScriptableObject
 {
-    [field: SerializeField] public EntityAIType AITypeType { get; private set; }
+    [field: SerializeField] public EntityAIType AIType { get; private set; }
     [field: SerializeField] public StatsConfig EntityStatsConfig { get; private set; }
     [field: SerializeField] public EntityExperienceConfig ExperienceConfig { get; private set; }
     [field: SerializeField] public ProjectileConfig Projectile { get; private set; }
