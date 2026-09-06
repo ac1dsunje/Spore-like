@@ -44,7 +44,7 @@ public class WorldTileRenderer: MonoBehaviour
         }
     }
 
-    public void TryPlaceTile(Vector3Int position)
+    private void TryPlaceTile(Vector3Int position)
     {
         if (_renderedTiles.TryGetValue(position, out var renderedTile))
         {
@@ -76,7 +76,7 @@ public class WorldTileRenderer: MonoBehaviour
         _renderedTiles.Add(position, new RenderedTile(biome, tile));
     }
 
-    public void TryUnloadTile(Vector3Int position)
+    private void TryUnloadTile(Vector3Int position)
     {
         if (!_renderedTiles.TryGetValue(position, out var renderedTile)) return;
 
