@@ -10,28 +10,24 @@ namespace _Game.Scripts.GamePlay.Entities.Configuration
 {
 public class EntityBuilder
 {
-    public void ChooseBehaviour(EntityAI aiType, IContainerBuilder builder, ProjectileConfig projectileConfig)
+    public void ChooseBehaviour(EntityAIType aiTypeType, IContainerBuilder builder, ProjectileConfig projectileConfig)
     {
-        SetAI(aiType, builder);
+        SetAI(aiTypeType, builder);
         
         SetAttack(projectileConfig, builder);
     }
 
-    private void SetAI(EntityAI aiType, IContainerBuilder builder)
+    private void SetAI(EntityAIType aiTypeType, IContainerBuilder builder)
     {
-        switch (aiType)
+        switch (aiTypeType)
         {
-            case EntityAI.Plant:
-                builder.RegisterEntryPoint<PlantAI>(Lifetime.Scoped);
+            case EntityAIType.Entity:
+                builder.RegisterEntryPoint<EntityAI>(Lifetime.Scoped);
                 break;
             
-            case EntityAI.Player:
+            case EntityAIType.Player:
                 builder.RegisterEntryPoint<PlayerAI>(Lifetime.Scoped);
                 builder.RegisterEntryPoint<PlayerVision>(Lifetime.Scoped);
-                break;
-            
-            case EntityAI.SeaUrchin:
-                builder.RegisterEntryPoint<SeaUrchinAI>(Lifetime.Scoped);
                 break;
         }
     }
@@ -46,7 +42,7 @@ public class EntityBuilder
         }
         else
         {
-            builder.RegisterEntryPoint<EntityBasicAttack>();
+            builder.RegisterEntryPoint<EntityEmptyAttack>();
         }
     }
 }

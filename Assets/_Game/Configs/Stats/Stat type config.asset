@@ -15,7 +15,7 @@ MonoBehaviour:
   <Types>k__BackingField:
   - <Name>k__BackingField: Max move speed
     <Type>k__BackingField: 0
-    <MinimalValue>k__BackingField: 0.1
+    <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
     <Sprite>k__BackingField: {fileID: 2228957621564684102, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Vision radius

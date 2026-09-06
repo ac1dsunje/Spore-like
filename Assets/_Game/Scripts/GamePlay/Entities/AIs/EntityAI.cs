@@ -14,7 +14,7 @@ using Vector2 = UnityEngine.Vector2;
 
 namespace _Game.Scripts.GamePlay.Entities.AIs
 {
-public class SeaUrchinAI : IStartable, ITickable, IDisposable
+public class EntityAI : IStartable, ITickable, IDisposable
 {
     [Inject] private IMovementController _movement;
     [Inject] private IAttackController _attacker;

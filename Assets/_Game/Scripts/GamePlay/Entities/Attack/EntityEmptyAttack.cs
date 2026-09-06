@@ -5,14 +5,14 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Entities.Attack
 {
-public class EntityBasicAttack : IDamageSource, IAttackController
+public class EntityEmptyAttack : IDamageSource, IAttackController
 {
     [Inject] private AttackModule _module;
     [Inject] private IDamageReceiver _receiver;
 
     public void RequestAttack(IDamageReceiver damageReceiver, Vector2 mousePosition)
     {
-        damageReceiver.TakeDamage(new HitInfo(_module.PhysicalDamage, _module.IgnoreResistance, this, _receiver));
+        
     }
 
     public void SetDamageDealt(float damage)
