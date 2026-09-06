@@ -10,8 +10,8 @@ public class RigidbodyController: MonoBehaviour
     private PhysicsMaterial2D _material2D;
     
     public Vector3Int GridPosition => new(
-        Mathf.RoundToInt(_rigidbody.position.x),
-        Mathf.RoundToInt(_rigidbody.position.y),
+        Mathf.FloorToInt(_rigidbody.position.x),
+        Mathf.FloorToInt(_rigidbody.position.y),
         0
     );
     
