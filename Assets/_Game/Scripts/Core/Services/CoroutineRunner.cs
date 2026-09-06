@@ -16,11 +16,17 @@ public class CoroutineRunner : MonoBehaviour
         }
 
         Stop(key);
-        var coroutine = StartCoroutine(routine);
+        var coroutine = StartCoroutine(RunAndCleanUp(key, routine));
         _coroutines[key] = coroutine;
         return coroutine;
     }
-        
+
+    private IEnumerator RunAndCleanUp(object key, IEnumerator routine)
+    {
+        yield return routine;
+        _coroutines.Remove(key);
+    }
+
     public Coroutine Run(IEnumerator routine)
     {
         return !gameObject.activeInHierarchy ? null : StartCoroutine(routine);

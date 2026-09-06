@@ -38,11 +38,11 @@ public class EntityBuilder
         if (config != null)
         {
             builder.RegisterInstance(config);
-            builder.RegisterEntryPoint<EntityWeaponAttack>().As<IDamageSource>().As<IAttackController>();
+            builder.Register<EntityWeaponAttack>(Lifetime.Scoped).As<IDamageSource>().As<IAttackController>();
         }
         else
         {
-            builder.RegisterEntryPoint<EntityEmptyAttack>();
+            builder.Register<EntityEmptyAttack>(Lifetime.Scoped).As<IDamageSource>().As<IAttackController>();
         }
     }
 }
