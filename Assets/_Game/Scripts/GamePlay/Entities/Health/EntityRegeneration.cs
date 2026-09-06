@@ -24,15 +24,15 @@ public class EntityRegeneration: IStartable, IDisposable
     private void StartRegeneration()
     {
         if (_health.Regeneration <= 0f) return;
-        _runner.Run(RegenerationKey, Regenerate());
+        _runner.Run(this, RegenerationKey, Regenerate());
     }
 
     private void StopRegeneration(float damage)
     {
         if (_health.Regeneration <= 0f) return;
-        _runner.Stop(RegenerationKey);
-        _runner.Stop(WaitKey);
-        _runner.Run(WaitKey, WaitBeforeRegeneration());
+        _runner.Stop(this, RegenerationKey);
+        _runner.Stop(this, WaitKey);
+        _runner.Run(this, WaitKey, WaitBeforeRegeneration());
     }
 
     private IEnumerator Regenerate()
@@ -52,8 +52,7 @@ public class EntityRegeneration: IStartable, IDisposable
 
     public void Dispose()
     {
-        _runner.Stop(RegenerationKey);
-        _runner.Stop(WaitKey);
+        _runner.Stop(this);
 
         _health.OnDamageTaken -= StopRegeneration;
     }

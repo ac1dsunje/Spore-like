@@ -6,34 +6,30 @@ namespace _Game.Scripts.Core.Services
 {
 public class CoroutineRunner : MonoBehaviour
 {
-    private readonly Dictionary<object, Coroutine> _coroutines = new();
+    private readonly Dictionary<(object owner, string coroutineKey), Coroutine> _coroutines = new();
 
-    public Coroutine Run(object key, IEnumerator routine)
+    public Coroutine Run(object owner, string coroutineKey, IEnumerator routine)
     {
         if (!gameObject.activeInHierarchy)
         {
             return null;
         }
 
-        Stop(key);
-        var coroutine = StartCoroutine(RunAndCleanUp(key, routine));
-        _coroutines[key] = coroutine;
+        Stop(owner, coroutineKey);
+        var coroutine = StartCoroutine(RunAndCleanUp(owner, coroutineKey, routine));
+        _coroutines[(owner, coroutineKey)] = coroutine;
         return coroutine;
     }
 
-    private IEnumerator RunAndCleanUp(object key, IEnumerator routine)
+    private IEnumerator RunAndCleanUp(object owner, string coroutineKey, IEnumerator routine)
     {
         yield return routine;
-        _coroutines.Remove(key);
+        _coroutines.Remove((owner, coroutineKey));
     }
 
-    public Coroutine Run(IEnumerator routine)
+    public void Stop(object owner, string coroutineKey)
     {
-        return !gameObject.activeInHierarchy ? null : StartCoroutine(routine);
-    }
-
-    public void Stop(object key)
-    {
+        var key = (owner, coroutineKey);
         if (_coroutines.TryGetValue(key, out var coroutine))
         {
             if (coroutine != null)
@@ -44,11 +40,20 @@ public class CoroutineRunner : MonoBehaviour
         }
     }
 
-    public void Stop(Coroutine coroutine)
+    public void Stop(object owner)
     {
-        if (coroutine != null)
+        var keysToRemove = new List<(object owner, string coroutineKey)>();
+        foreach (var key in _coroutines.Keys)
         {
-            StopCoroutine(coroutine);
+            if (key.owner == owner)
+            {
+                keysToRemove.Add(key);
+            }
+        }
+
+        foreach (var key in keysToRemove)
+        {
+            Stop(key.owner, key.coroutineKey);
         }
     }
 
@@ -58,9 +63,14 @@ public class CoroutineRunner : MonoBehaviour
         _coroutines.Clear();
     }
 
-    public bool IsRunning(object key)
+    public bool IsRunning(object owner, string coroutineKey)
     {
-        return _coroutines.ContainsKey(key);
+        return _coroutines.ContainsKey((owner, coroutineKey));
+    }
+
+    private void OnDestroy()
+    {
+        StopAll();
     }
 }
 }

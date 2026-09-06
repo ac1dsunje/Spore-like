@@ -21,7 +21,7 @@ public class EntityBasicStomach: IStartable, IDisposable
     public void Start()
     {
         _stomach.OnValueChanged += UpdateBuffs;
-        _coroutineRunner.Run(HungerCoroutineKey, HungerLoop());
+        _coroutineRunner.Run(this, HungerCoroutineKey, HungerLoop());
     }
     
     private IEnumerator HungerLoop()
@@ -45,7 +45,7 @@ public class EntityBasicStomach: IStartable, IDisposable
         
         if (_coroutineRunner != null && _coroutineRunner.gameObject != null)
         {
-            _coroutineRunner.Stop(HungerCoroutineKey);
+            _coroutineRunner.Stop(this);
         }
     }
 }

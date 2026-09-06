@@ -37,7 +37,7 @@ public class EntityAI : IStartable, IDisposable
         _hitBox.OnHit += TakeDamage;
         _evolutions.OnSlotsFilled += ChooseEvolution;
 
-        _coroutineRunner.Run(DirectionChangeKey, DirectionChangeRoutine());
+        _coroutineRunner.Run(this, DirectionChangeKey, DirectionChangeRoutine());
     }
 
     private IEnumerator DirectionChangeRoutine()
@@ -76,6 +76,7 @@ public class EntityAI : IStartable, IDisposable
 
     public void Dispose()
     {
+        _coroutineRunner.Stop(this);
         _hitBox.OnDamageReceiver -= DoDamage;
         _hitBox.OnHit -= TakeDamage;
         _evolutions.OnSlotsFilled -= ChooseEvolution;

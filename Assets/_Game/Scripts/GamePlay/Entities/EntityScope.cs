@@ -1,5 +1,4 @@
-﻿using _Game.Scripts.Core.Services;
-using _Game.Scripts.GamePlay.Entities.Animation;
+﻿using _Game.Scripts.GamePlay.Entities.Animation;
 using _Game.Scripts.GamePlay.Entities.Attack;
 using _Game.Scripts.GamePlay.Entities.Configuration;
 using _Game.Scripts.GamePlay.Entities.Death;
@@ -18,7 +17,6 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
-[RequireComponent(typeof(CoroutineRunner))]
 [RequireComponent(typeof(RigidbodyController))]
 public class EntityScope: LifetimeScope
 {
@@ -105,9 +103,6 @@ public class EntityScope: LifetimeScope
         builder.RegisterEntryPoint<EntityPicker>(Lifetime.Scoped);
         builder.RegisterEntryPoint<EntityBasicHealth>().As<IHealthController>();
         builder.RegisterEntryPoint<EntityBasicDeath>();
-        
-        // Coroutines
-        builder.RegisterComponent(GetComponentInChildren<CoroutineRunner>());
         builder.RegisterEntryPoint<EntityRegeneration>(Lifetime.Scoped);
 
         _entityBuilder.ChooseBehaviour(_entityConfig.AIType, builder, _entityConfig.Projectile);

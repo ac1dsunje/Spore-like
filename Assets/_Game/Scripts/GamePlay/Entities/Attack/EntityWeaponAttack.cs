@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
@@ -8,7 +9,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Entities.Attack
 {
-public class EntityWeaponAttack : IDamageSource, IAttackController
+public class EntityWeaponAttack : IDamageSource, IAttackController, IDisposable
 {
     [Inject] private AttackModule _attack;
     [Inject] private MovementModule _movement;
@@ -19,7 +20,7 @@ public class EntityWeaponAttack : IDamageSource, IAttackController
 
     private const string CooldownKey = "Attack cooldown";
 
-    private bool CanAttack => !_coroutineRunner.IsRunning(CooldownKey) && _attack.AttackTime > 0f;
+    private bool CanAttack => !_coroutineRunner.IsRunning(this, CooldownKey) && _attack.AttackTime > 0f;
 
     public void RequestAttack(IDamageReceiver damageReceiver, Vector2 mousePosition)
     {
@@ -28,7 +29,7 @@ public class EntityWeaponAttack : IDamageSource, IAttackController
         var hit = new HitInfo(_attack.PhysicalDamage, _attack.IgnoreResistance, this, _receiver);
         _weapon.SetAttack(mousePosition, _movement.Transform.position, hit, _attack.AttackRange, _projectileConfig);
         
-        _coroutineRunner.Run(CooldownKey, CooldownRoutine());
+        _coroutineRunner.Run(this, CooldownKey, CooldownRoutine());
     }
 
     private IEnumerator CooldownRoutine()
@@ -37,5 +38,10 @@ public class EntityWeaponAttack : IDamageSource, IAttackController
     }
     
     public void SetDamageDealt(float damage) => _attack.SetDamageDealt(damage);
+
+    public void Dispose()
+    {
+        _coroutineRunner.Stop(this);
+    }
 }
 }
