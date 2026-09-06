@@ -16,7 +16,7 @@ public class EntityWeaponAttack : ITickable, IDamageSource, IAttackController
     [Inject] private ProjectileConfig _projectileConfig;
 
     private float _attackCooldownTimer;
-    private bool CanAttack => _attackCooldownTimer <= 0f && _attack.AttackTime >= 0f;
+    private bool CanAttack => _attackCooldownTimer <= 0f && _attack.AttackTime > 0f;
 
     public void Tick()
     {
