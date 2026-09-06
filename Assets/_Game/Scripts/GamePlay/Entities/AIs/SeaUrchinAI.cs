@@ -76,6 +76,7 @@ public class SeaUrchinAI : IStartable, ITickable, IDisposable
     {
         _hitBox.OnDamageReceiver -= DoDamage;
         _hitBox.OnHit -= TakeDamage;
+        _evolutions.OnSlotsFilled -= ChooseEvolution;
     }
 }
 }
