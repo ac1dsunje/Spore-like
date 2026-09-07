@@ -1,5 +1,5 @@
-﻿using _Game.Scripts.GamePlay.Entities.Animation;
-using _Game.Scripts.GamePlay.Entities.Drops;
+﻿using _Game.Scripts.GamePlay.Drops;
+using _Game.Scripts.GamePlay.Entities.Animation;
 using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Projectiles;
 using UnityEngine;

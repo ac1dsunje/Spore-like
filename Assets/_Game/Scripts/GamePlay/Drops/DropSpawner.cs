@@ -1,7 +1,6 @@
-﻿using _Game.Scripts.GamePlay.Entities.Drops;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace _Game.Scripts.GamePlay
+namespace _Game.Scripts.GamePlay.Drops
 {
 public class DropSpawner: MonoBehaviour
 {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.Entities.Drops
+namespace _Game.Scripts.GamePlay.Drops
 {
 [RequireComponent(typeof(SpriteRenderer))]
 public class Drop: MonoBehaviour

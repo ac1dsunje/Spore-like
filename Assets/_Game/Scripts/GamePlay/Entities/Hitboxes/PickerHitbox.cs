@@ -1,5 +1,5 @@
 ﻿using System;
-using _Game.Scripts.GamePlay.Entities.Drops;
+using _Game.Scripts.GamePlay.Drops;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Entities.Hitboxes

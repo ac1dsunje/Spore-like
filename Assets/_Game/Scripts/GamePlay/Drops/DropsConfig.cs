@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.Entities.Drops
+namespace _Game.Scripts.GamePlay.Drops
 {
 [Serializable]
 public class DropsConfig

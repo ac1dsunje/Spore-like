@@ -1,5 +1,5 @@
 ﻿using System;
-using _Game.Scripts.GamePlay.Entities.Drops;
+using _Game.Scripts.GamePlay.Drops;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Modules;
 using VContainer;
