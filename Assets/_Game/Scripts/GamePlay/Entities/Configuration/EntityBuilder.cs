@@ -1,7 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Entities.AIs;
 using _Game.Scripts.GamePlay.Entities.Attack;
 using _Game.Scripts.GamePlay.Interfaces;
-using _Game.Scripts.GamePlay.Player;
 using _Game.Scripts.GamePlay.Projectiles;
 using VContainer;
 using VContainer.Unity;
@@ -27,7 +26,6 @@ public class EntityBuilder
             
             case EntityAIType.Player:
                 builder.RegisterEntryPoint<PlayerAI>(Lifetime.Scoped);
-                builder.RegisterEntryPoint<PlayerVision>(Lifetime.Scoped);
                 break;
         }
     }

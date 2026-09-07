@@ -1,5 +1,6 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Entities;
+using _Game.Scripts.GamePlay.Modules;
 using Unity.Cinemachine;
 using UnityEngine;
 using VContainer;
@@ -13,6 +14,8 @@ public class CameraController: IInitializable, IDisposable
     [Inject] private CinemachineCamera _cineMachineCamera;
     [Inject] private EntitiesRegistry _registry;
 
+    private VisionModule _playerVision;
+
     public float Aspect => Camera.aspect;
 
     public void Initialize()
@@ -20,18 +23,21 @@ public class CameraController: IInitializable, IDisposable
         _registry.OnPlayerInitialized += AddPlayer;
     }
 
-    public void SetSize(float radius)
+    private void SetSize(float radius)
     {
         _cineMachineCamera.Lens.OrthographicSize = radius;
     }
 
     private void AddPlayer(EntityController player)
     {
+        _playerVision = player.Model.Vision;
+        _playerVision.OnVisionRadiusUpdated += SetSize;
         _cineMachineCamera.Target.TrackingTarget = player.Model.Movement.Transform;
     }
 
     public void Dispose()
     {
+        _playerVision.OnVisionRadiusUpdated -= SetSize;
         _registry.OnPlayerInitialized -= AddPlayer;
     }
 }
