@@ -9,16 +9,16 @@ namespace _Game.Scripts.GamePlay.Entities.Configuration
 {
 public class EntityBuilder
 {
-    public void ChooseBehaviour(EntityAIType aiTypeType, IContainerBuilder builder, ProjectileConfig projectileConfig)
+    public void ChooseBehaviour(EntityAIType aiType, IContainerBuilder builder, ProjectileConfig projectileConfig)
     {
-        SetAI(aiTypeType, builder);
+        SetAI(aiType, builder);
         
         SetAttack(projectileConfig, builder);
     }
 
-    private void SetAI(EntityAIType aiTypeType, IContainerBuilder builder)
+    private void SetAI(EntityAIType aiType, IContainerBuilder builder)
     {
-        switch (aiTypeType)
+        switch (aiType)
         {
             case EntityAIType.Entity:
                 builder.RegisterEntryPoint<EntityAI>(Lifetime.Scoped);
