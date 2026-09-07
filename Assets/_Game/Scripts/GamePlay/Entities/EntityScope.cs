@@ -2,7 +2,6 @@
 using _Game.Scripts.GamePlay.Entities.Attack;
 using _Game.Scripts.GamePlay.Entities.Configuration;
 using _Game.Scripts.GamePlay.Entities.Death;
-using _Game.Scripts.GamePlay.Entities.Drops;
 using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Entities.Health;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
@@ -96,8 +95,8 @@ public class EntityScope: LifetimeScope
         builder.RegisterEntryPoint<EntityBasicHealth>().As<IHealthController>();
         builder.RegisterEntryPoint<EntityBasicDeath>();
         builder.RegisterEntryPoint<EntityRegeneration>(Lifetime.Scoped);
-
         builder.RegisterEntryPoint<EntityWeaponAttack>().As<IDamageSource>().As<IAttackController>();
+        
         _entityBuilder.ChooseBehaviour(_entityConfig.AIType, builder);
     }
 }

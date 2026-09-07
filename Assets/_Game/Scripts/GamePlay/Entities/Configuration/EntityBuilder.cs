@@ -8,11 +8,6 @@ public class EntityBuilder
 {
     public void ChooseBehaviour(EntityAIType aiType, IContainerBuilder builder)
     {
-        SetAI(aiType, builder);
-    }
-
-    private void SetAI(EntityAIType aiType, IContainerBuilder builder)
-    {
         switch (aiType)
         {
             case EntityAIType.Entity:
