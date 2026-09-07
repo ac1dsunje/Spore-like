@@ -1,7 +1,4 @@
 ﻿using _Game.Scripts.GamePlay.Entities.AIs;
-using _Game.Scripts.GamePlay.Entities.Attack;
-using _Game.Scripts.GamePlay.Interfaces;
-using _Game.Scripts.GamePlay.Projectiles;
 using VContainer;
 using VContainer.Unity;
 
@@ -9,11 +6,9 @@ namespace _Game.Scripts.GamePlay.Entities.Configuration
 {
 public class EntityBuilder
 {
-    public void ChooseBehaviour(EntityAIType aiType, IContainerBuilder builder, ProjectileConfig projectileConfig)
+    public void ChooseBehaviour(EntityAIType aiType, IContainerBuilder builder)
     {
         SetAI(aiType, builder);
-        
-        SetAttack(projectileConfig, builder);
     }
 
     private void SetAI(EntityAIType aiType, IContainerBuilder builder)
@@ -27,20 +22,6 @@ public class EntityBuilder
             case EntityAIType.Player:
                 builder.RegisterEntryPoint<PlayerAI>(Lifetime.Scoped);
                 break;
-        }
-    }
-
-    private void SetAttack(ProjectileConfig config, IContainerBuilder builder)
-    {
-        
-        if (config != null)
-        {
-            builder.RegisterInstance(config);
-            builder.RegisterEntryPoint<EntityWeaponAttack>().As<IDamageSource>().As<IAttackController>();
-        }
-        else
-        {
-            builder.RegisterEntryPoint<EntityEmptyAttack>().As<IDamageSource>().As<IAttackController>();
         }
     }
 }

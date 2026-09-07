@@ -22,19 +22,11 @@ public class EntityScope: LifetimeScope
 {
     private readonly EntityBuilder _entityBuilder = new();
     
-    private AnimationSettings _animationSettings;
-    private StatsConfig _entityStatsConfig;
     private EntityConfig _entityConfig;
-    private EntityExperienceConfig _entityExperienceConfig;
-    private DropsConfig _dropConfig;
 
     public void SetConfig(EntityConfig entityConfig)
     {
         _entityConfig = entityConfig;
-        _animationSettings = entityConfig.AnimationSettings;
-        _entityStatsConfig = entityConfig.EntityStatsConfig;
-        _entityExperienceConfig = entityConfig.ExperienceConfig;
-        _dropConfig = entityConfig.Drops;
     }
 
     public EntityController GetEntityController() => Container.Resolve<EntityController>();
@@ -42,11 +34,12 @@ public class EntityScope: LifetimeScope
     protected override void Configure(IContainerBuilder builder)
     {
         // Configs
-        builder.RegisterInstance(_animationSettings);
-        builder.RegisterInstance(_entityStatsConfig);
         builder.RegisterInstance(_entityConfig);
-        builder.RegisterInstance(_entityExperienceConfig);
-        builder.RegisterInstance(_dropConfig);
+        builder.RegisterInstance(_entityConfig.AnimationSettings);
+        builder.RegisterInstance(_entityConfig.EntityStatsConfig);
+        builder.RegisterInstance(_entityConfig.ExperienceConfig);
+        builder.RegisterInstance(_entityConfig.Drops);
+        builder.RegisterInstance(_entityConfig.Projectile);
         
         // Modules
         builder.Register<EntityModel>(Lifetime.Scoped);
@@ -104,7 +97,8 @@ public class EntityScope: LifetimeScope
         builder.RegisterEntryPoint<EntityBasicDeath>();
         builder.RegisterEntryPoint<EntityRegeneration>(Lifetime.Scoped);
 
-        _entityBuilder.ChooseBehaviour(_entityConfig.AIType, builder, _entityConfig.Projectile);
+        builder.RegisterEntryPoint<EntityWeaponAttack>().As<IDamageSource>().As<IAttackController>();
+        _entityBuilder.ChooseBehaviour(_entityConfig.AIType, builder);
     }
 }
 }
