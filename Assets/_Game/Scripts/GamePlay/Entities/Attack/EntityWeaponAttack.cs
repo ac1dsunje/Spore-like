@@ -22,12 +22,12 @@ public class EntityWeaponAttack : IDamageSource, IAttackController, IDisposable
 
     private bool CanAttack => !_coroutineRunner.IsRunning(this, CooldownKey) && _attack.AttackTime > 0f;
 
-    public void RequestAttack(IDamageReceiver damageReceiver, Vector2 mousePosition)
+    public void RequestAttack(IDamageReceiver damageReceiver, Vector2 targetPosition)
     {
         if (!CanAttack) return;
         
         var hit = new HitInfo(_attack.PhysicalDamage, _attack.IgnoreResistance, this, _receiver);
-        _weapon.SetAttack(mousePosition, _movement.Transform.position, hit, _projectileConfig);
+        _weapon.SetAttack(targetPosition, _movement.Transform.position, hit, _projectileConfig);
         
         _coroutineRunner.Run(this, CooldownKey, CooldownRoutine());
     }

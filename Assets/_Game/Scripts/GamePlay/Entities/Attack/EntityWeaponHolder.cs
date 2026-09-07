@@ -8,10 +8,10 @@ public class EntityWeaponHolder: MonoBehaviour
 {
     [SerializeField] private Projectile _projectilePrefab;
 
-    public void SetAttack(Vector2 mousePosition, Vector2 entityPosition, HitInfo hitInfo, ProjectileConfig config)
+    public void SetAttack(Vector2 targetPosition, Vector2 entityPosition, HitInfo hitInfo, ProjectileConfig config)
     {
         var weapon = Instantiate(_projectilePrefab);
-        UpdateAttackPosition(mousePosition, entityPosition, weapon, config);
+        UpdateAttackPosition(targetPosition, entityPosition, weapon, config);
 
         weapon.Initialize(config, transform);
 
