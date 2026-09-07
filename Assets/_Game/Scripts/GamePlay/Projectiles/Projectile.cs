@@ -34,8 +34,6 @@ public class Projectile: MonoBehaviour
 
     private void SetColliderShape(Sprite sprite)
     {
-        _collider.enabled = true;
-
         if (_currentSprite == sprite) return;
         _currentSprite = sprite;
 
