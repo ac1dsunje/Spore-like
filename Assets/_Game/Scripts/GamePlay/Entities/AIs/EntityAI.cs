@@ -33,7 +33,7 @@ public class EntityAI : IStartable, IDisposable
 
     public void Start()
     {
-        _hitBox.OnDamageReceiver += DoDamage;
+        _hitBox.OnTouch += DoDamage;
         _hitBox.OnHit += TakeDamage;
         _evolutions.OnSlotsFilled += ChooseEvolution;
 
@@ -77,7 +77,7 @@ public class EntityAI : IStartable, IDisposable
     public void Dispose()
     {
         _coroutineRunner.Stop(this);
-        _hitBox.OnDamageReceiver -= DoDamage;
+        _hitBox.OnTouch -= DoDamage;
         _hitBox.OnHit -= TakeDamage;
         _evolutions.OnSlotsFilled -= ChooseEvolution;
     }

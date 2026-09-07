@@ -8,7 +8,7 @@ public class BodyHitbox : MonoBehaviour, IDamageReceiver
 {
     public event Action<HitInfo> OnHit;
     
-    public event Action<IDamageReceiver> OnDamageReceiver;
+    public event Action<IDamageReceiver> OnTouch;
 
     private void OnTriggerEnter2D(Collider2D other) => TryGetEntity(other);
 
@@ -18,7 +18,7 @@ public class BodyHitbox : MonoBehaviour, IDamageReceiver
     {
         if (other.TryGetComponent(out IDamageReceiver receiver))
         {
-            OnDamageReceiver?.Invoke(receiver);
+            OnTouch?.Invoke(receiver);
         }
     }
 
