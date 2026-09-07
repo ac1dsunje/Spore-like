@@ -129,15 +129,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Slash
     originalName: 
-    pivot: {x: 0.53333336, y: 0.54545456}
+    pivot: {x: 1, y: 0.54545456}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
-      width: 15
+      y: 42
+      width: 8
       height: 11
     spriteID: a1c367ca4e3f1cc4081df8b62dae76e5
     spriteBone: []
@@ -145,16 +145,76 @@ ScriptedImporter:
     vertices: []
     spritePhysicsOutline:
     - outline:
-      - {x: 7.5, y: -2.5}
-      - {x: 7.5, y: 2.5}
-      - {x: 4.5, y: 5.5}
-      - {x: -7.5, y: 5.5}
-      - {x: -7.5, y: -5.5}
-      - {x: 4.5, y: -5.5}
+      - {x: 4, y: -2.5}
+      - {x: 4, y: 2.5}
+      - {x: 1, y: 5.5}
+      - {x: -4, y: 5.5}
+      - {x: -4, y: -5.5}
+      - {x: 1, y: -5.5}
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 42}
+  - name: Frame_1
+    originalName: 
+    pivot: {x: 0.54545456, y: 0.54545456}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 11
+      height: 11
+    spriteID: 2bf525f695eae3f479af720d53faedfa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: 5.5, y: -2.5}
+      - {x: 5.5, y: 2.5}
+      - {x: 2.5, y: 5.5}
+      - {x: -2.5, y: 5.5}
+      - {x: -5.5, y: 2.5}
+      - {x: -5.5, y: -2.5}
+      - {x: -2.5, y: -5.5}
+      - {x: 2.5, y: -5.5}
     indices: 
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Frame_2
+    originalName: 
+    pivot: {x: 0.27272728, y: 0.54545456}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 23
+      width: 11
+      height: 11
+    spriteID: ead0621a283928f46b4709d167f46cc7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline:
+    - outline:
+      - {x: 5.5, y: -2.5}
+      - {x: 5.5, y: 2.5}
+      - {x: 2.5, y: 5.5}
+      - {x: -2.5, y: 5.5}
+      - {x: -5.5, y: 2.5}
+      - {x: -5.5, y: -2.5}
+      - {x: -2.5, y: -5.5}
+      - {x: 2.5, y: -5.5}
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 23}
   spriteSheetImportData: []
   tileSetImportData: []
   asepriteLayers:
@@ -170,15 +230,33 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: Slash
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 2
-        width: 15
+        width: 8
         height: 11
       spriteId: a1c367ca4e3f1cc4081df8b62dae76e5
+    - name: Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 2
+        y: 2
+        width: 11
+        height: 11
+      spriteId: 2bf525f695eae3f479af720d53faedfa
+    - name: Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 5
+        y: 2
+        width: 11
+        height: 11
+      spriteId: ead0621a283928f46b4709d167f46cc7
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -225,4 +303,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 16, y: 16}
-  previousTextureSize: {x: 32, y: 32}
+  previousTextureSize: {x: 32, y: 64}
