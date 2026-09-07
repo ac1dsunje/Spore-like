@@ -14,6 +14,11 @@ public struct HitInfo
         Source = source;
         Receiver = receiver;
     }
+
+    public void AddDamage(float damage)
+    {
+        Damage += damage;
+    }
 }
 
 public interface IDamageSource

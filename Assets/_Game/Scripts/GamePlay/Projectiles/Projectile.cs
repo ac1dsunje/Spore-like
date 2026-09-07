@@ -64,7 +64,8 @@ public class Projectile: MonoBehaviour
     
     public void SetHit(HitInfo hit)
     {
-        _hitInfo = new(hit.Damage + _config.AdditionalDamage, hit.IgnoreResistance, hit.Source, hit.Receiver);
+        _hitInfo = hit;
+        _hitInfo.AddDamage(_config.AdditionalDamage);
         StartCoroutine(Hit());
     }
     
@@ -76,7 +77,7 @@ public class Projectile: MonoBehaviour
         }
     }
 
-    protected void OnTrigger(IDamageReceiver damageReceiver)
+    private void OnTrigger(IDamageReceiver damageReceiver)
     {
         if (damageReceiver == _hitInfo.Receiver) return;
         damageReceiver.TakeDamage(_hitInfo);
