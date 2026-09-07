@@ -12,10 +12,8 @@ namespace _Game.Scripts.GamePlay.Entities
 public class BiomeChecker: IStartable, IDisposable
 {
     private readonly WorldModel _worldModel;
-    
     private readonly MovementModule _movement;
     private readonly EnvironmentModule _environment;
-    
     private readonly BuffsModule _buffsModule;
     
     private Biome _currentBiome;
@@ -45,34 +43,11 @@ public class BiomeChecker: IStartable, IDisposable
     private void EnterBiome(Biome biome)
     {
         _currentBiome = biome;
-        CheckPassability(biome.PassAbility);
-        ApplyTemperature(biome.Temperature);
-        CheckBreathing(biome.OxygenBreathing, biome.HydrogenBreathing);
-    }
-
-    private void CheckPassability(float passability)
-    {
-        _buffsModule.Set(BuffType.BadPassAbility, passability > _environment.PassAbility);
-    }
-
-    private void ApplyTemperature(float temperature)
-    {
-        _buffsModule.Set(BuffType.Cold, temperature < _environment.MinimalComfortable);
-        _buffsModule.Set(BuffType.Heat, temperature > _environment.MaximumComfortable);
-    }
-
-    private void CheckBreathing(float oxygen, float hydrogen)
-    {
-        var oxygenRequirement = _environment.OxygenBreathing;
-        var hydrogenRequirement = _environment.HydrogenBreathing;
-
-        var hasOxygen = oxygenRequirement > 0f && oxygen >= oxygenRequirement;
-        var hasHydrogen = hydrogenRequirement > 0f && hydrogen >= hydrogenRequirement;
-
-        var needsToBreathe = oxygenRequirement > 0f || hydrogenRequirement > 0f;
-        var suffocate = needsToBreathe && !hasOxygen && !hasHydrogen;
-
-        _buffsModule.Set(BuffType.Suffocating, suffocate);
+        
+        _buffsModule.Set(BuffType.BadPassAbility, _environment.IsBadPassAbility(biome.PassAbility));
+        _buffsModule.Set(BuffType.Cold, _environment.IsCold(biome.Temperature));
+        _buffsModule.Set(BuffType.Heat, _environment.IsHot(biome.Temperature));
+        _buffsModule.Set(BuffType.Suffocating, _environment.IsSuffocating(biome.OxygenBreathing, biome.HydrogenBreathing));
     }
 
     public void Dispose()

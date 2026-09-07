@@ -8,7 +8,6 @@ namespace _Game.Scripts.GamePlay.Modules
 public class MovementModule : StatModule
 {
     public float MoveSpeed => _useSprint ? _moveSpeed * _sprintMultiplier : _moveSpeed;
-
     public float Acceleration => _acceleration / 100f;
     public float Inertia => _inertia / 100f;
     public float DashPower { get; private set; }

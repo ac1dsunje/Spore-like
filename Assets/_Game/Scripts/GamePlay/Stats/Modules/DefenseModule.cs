@@ -5,9 +5,8 @@ namespace _Game.Scripts.GamePlay.Modules
 {
 public class DefenseModule: StatModule
 {
-    public float DamageResistance { get; private set; }
-    
-    public float DamageReflection { get; private set; }
+    private float _damageResistance;
+    private float _damageReflection;
     
     public event Action<float> OnDamageReflected;
     public event Action<float> OnDamageResisted;
@@ -20,7 +19,7 @@ public class DefenseModule: StatModule
 
     public float ApplyResistance(float damage, float ignoreResistance)
     {
-        var resistedPercent = MathF.Max(0, DamageResistance - ignoreResistance);
+        var resistedPercent = MathF.Max(0, _damageResistance - ignoreResistance);
         var resisted = damage * resistedPercent;
         OnDamageResisted?.Invoke(resisted);
         return damage - resisted;
@@ -28,13 +27,13 @@ public class DefenseModule: StatModule
     
     public float ReflectDamage(float damage)
     {
-        var returnedDamage = damage * DamageReflection;
+        var returnedDamage = damage * _damageReflection;
         OnDamageReflected?.Invoke(returnedDamage);
         return returnedDamage;
     }
 
-    private void UpdateDamageReflection(float value) => DamageReflection = value / 100f;
+    private void UpdateDamageReflection(float value) => _damageReflection = value / 100f;
     
-    private void UpdateDamageResistance(float value) => DamageResistance = value / 100f;
+    private void UpdateDamageResistance(float value) => _damageResistance = value / 100f;
 }
 }

@@ -5,7 +5,7 @@ namespace _Game.Scripts.GamePlay.Modules
 {
 public class DisguiseModule: StatModule
 {
-    public float Disguise => _isMoving ? _disguise : _disguise + _disguiseInRest;
+    private float Disguise => _isMoving ? _disguise : _disguise + _disguiseInRest;
     
     private float _disguiseInRest;
     private float _disguise;

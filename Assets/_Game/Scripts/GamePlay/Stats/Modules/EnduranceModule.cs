@@ -9,12 +9,10 @@ namespace _Game.Scripts.GamePlay.Modules
 {
 public class EnduranceModule: StatModule, IResource
 {
-    private float _maxEndurance;
     public float EnduranceRecovery { get; private set; }
-    
-    private float _endurance;
-
     public bool IsUsed => _users.Count > 0;
+    private float _maxEndurance;
+    private float _endurance;
     
     private readonly HashSet<IEnduranceUser> _users = new();
     public event Action<float, float> OnValueChanged;

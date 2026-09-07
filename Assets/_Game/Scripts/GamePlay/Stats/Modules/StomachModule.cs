@@ -7,8 +7,8 @@ namespace _Game.Scripts.GamePlay.Modules
 {
 public class StomachModule: StatModule, IResource
 {
-    public float MaxHunger { get; private set; }
-    public float Hunger { get; private set; }
+    private float _maxHunger;
+    private float _hunger;
     
     public event Action<float, float> OnValueChanged;
 
@@ -21,25 +21,25 @@ public class StomachModule: StatModule, IResource
 
     public void LoseHunger(float value)
     {
-        Hunger -= value;
-        if (Hunger <= 0) Hunger = 0;
-        OnValueChanged?.Invoke(Hunger, MaxHunger);
+        _hunger -= value;
+        if (_hunger <= 0) _hunger = 0;
+        OnValueChanged?.Invoke(_hunger, _maxHunger);
     }
 
     private void UpdateMaxHunger(float value)
     {
-        var difference = value - MaxHunger;
-        MaxHunger = value;
-        Hunger = Mathf.Clamp(Hunger +difference, 0, MaxHunger);
+        var difference = value - _maxHunger;
+        _maxHunger = value;
+        _hunger = Mathf.Clamp(_hunger +difference, 0, _maxHunger);
         
-        OnValueChanged?.Invoke(Hunger, MaxHunger);
+        OnValueChanged?.Invoke(_hunger, _maxHunger);
     }
 
     public void GetExperienceFromFood(int value)
     {
-        Hunger += value;
+        _hunger += value;
         OnFoodPointsAchieved?.Invoke(value);
-        OnValueChanged?.Invoke(Hunger, MaxHunger);
+        OnValueChanged?.Invoke(_hunger, _maxHunger);
     }
 }
 }

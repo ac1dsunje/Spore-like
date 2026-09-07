@@ -10,7 +10,6 @@ public class HealthModule: StatModule, IResource
     public float MaxHealth {get;  private set; }
     public float Health { get; private set; }
     public float Regeneration { get; private set; }
-    public float ExtraLives { get; private set; }
     
     public event Action<HealthModule> OnDeath;
     public event Action<HealthModule> OnRevived;
@@ -20,6 +19,7 @@ public class HealthModule: StatModule, IResource
     public event Action<float, float> OnValueChanged;
     
     private bool _isDead;
+    private float _extraLives;
     private float _extraLivesUsed;
 
     protected override void Configure()
@@ -34,7 +34,7 @@ public class HealthModule: StatModule, IResource
         _isDead = false;
         Health = MaxHealth;
         _extraLivesUsed++;
-        ExtraLives--;
+        _extraLives--;
         OnValueChanged?.Invoke(Health, MaxHealth);
         OnRevived?.Invoke(this);
     }
@@ -82,13 +82,13 @@ public class HealthModule: StatModule, IResource
     }
 
     private void UpdateRegeneration(float value) => Regeneration = value;
-    private void UpdateExtraLife(float value) => ExtraLives = value - _extraLivesUsed;
+    private void UpdateExtraLife(float value) => _extraLives = value - _extraLivesUsed;
 
     private void Die()
     {
         if (_isDead) return;
         _isDead = true;
-        if (ExtraLives > 0f)
+        if (_extraLives > 0f)
         {
             Revive();
         }
