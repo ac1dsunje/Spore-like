@@ -13,6 +13,8 @@ public class EntitiesRegistry : MonoBehaviour
     
     private readonly Dictionary<HealthModule, EntityScope> _entityByHealth = new();
     private readonly HashSet<EntityScope> _allEntities = new();
+
+    public Transform Player;
     
     [Inject] 
     private void Construct(EntitySpawner spawner)
@@ -38,6 +40,8 @@ public class EntitiesRegistry : MonoBehaviour
         
         _entityByHealth.TryAdd(health, entity);
         _allEntities.Add(entity);
+
+        Player = player.Model.Movement.Transform;
         OnPlayerInitialized?.Invoke(player);
     }
 
