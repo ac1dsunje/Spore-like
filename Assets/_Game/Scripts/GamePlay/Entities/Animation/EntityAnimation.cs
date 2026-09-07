@@ -9,7 +9,7 @@ namespace _Game.Scripts.GamePlay.Entities.Animation
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(PolygonCollider2D))]
-public class EntityAnimation: MonoBehaviour, IVisible
+public class EntityAnimation: MonoBehaviour, IVisible, ISocial
 {
     private SpriteRenderer _renderer;
     private Animator _animator;
@@ -19,6 +19,7 @@ public class EntityAnimation: MonoBehaviour, IVisible
     
     [Inject] private AnimationSettings _config;
     [Inject] private DisguiseModule _disguise;
+    [Inject] private EntityModel _model;
 
     private void Awake()
     {
@@ -69,6 +70,9 @@ public class EntityAnimation: MonoBehaviour, IVisible
         _renderer.enabled = visible;
         _animator.enabled = visible;
     }
+
+    public EntityModel GetEntityModel() => _model;
+    public float GetInfluence() => _model.Social.Influence;
 
     private void SetSprite(Sprite sprite) => _renderer.sprite = sprite;
     

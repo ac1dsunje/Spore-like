@@ -28,6 +28,11 @@ public class VisionModule: StatModule
         BindStat(StatType.LightingRadius, UpdateLightingRadius);
     }
 
+    public bool CanSee()
+    {
+        return VisionRadius > 0.1f;
+    }
+
     public void SetLight(bool state)
     {
         _useLight = state;

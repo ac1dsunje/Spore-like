@@ -77,6 +77,7 @@ public class EntityScope: LifetimeScope
         builder.RegisterEntryPoint<EntityBasicMovement>(Lifetime.Scoped)
             .As<IMovementController>();
         builder.RegisterEntryPoint<EntityVision>(Lifetime.Scoped);
+        builder.RegisterEntryPoint<EntitySocial>(Lifetime.Scoped);
         
         // Important
         builder.RegisterEntryPoint<ExperienceModule>(Lifetime.Scoped)

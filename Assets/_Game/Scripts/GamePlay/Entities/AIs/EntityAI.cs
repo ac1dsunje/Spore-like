@@ -25,7 +25,6 @@ public class EntityAI : IStartable, IDisposable
     [Inject] private EvolutionsModule _evolutions;
     [Inject] private EntityModel _model;
     [Inject] private CoroutineRunner _coroutineRunner;
-    [Inject] private EntitiesRegistry _entitiesRegistry;
 
     private const string DirectionChangeKey = "DirectionChange";
 
@@ -69,10 +68,14 @@ public class EntityAI : IStartable, IDisposable
     private void ChangeDirection()
     {
         Vector2 direction;
+        EntityModel chasingEntity = null;
+
+        if (_model.Vision.CanSee())
+            chasingEntity = _model.Social.GetEntityWithHighestInfluence();
     
-        if (_entitiesRegistry.Player != null)
+        if (chasingEntity != null)
         {
-            var playerPosition = _entitiesRegistry.Player.position;
+            var playerPosition = chasingEntity.Movement.Transform.position;
             var creaturePosition = _model.Movement.Transform.position;
             direction = (playerPosition - creaturePosition).normalized;
         }
