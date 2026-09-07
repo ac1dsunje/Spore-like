@@ -21,13 +21,10 @@ public class EntityWeaponHolder: MonoBehaviour
     private void UpdateAttackPosition(Vector2 mousePosition, Vector2 entityPosition, Projectile weapon, ProjectileConfig config)
     {
         var offset = mousePosition - entityPosition;
-        var rawDistance = offset.magnitude;
+    
+        var direction = offset.sqrMagnitude > Mathf.Epsilon ? offset.normalized : Vector2.right;
 
-        var distance = Mathf.Clamp(rawDistance, config.MinRange, config.MaxRange);
-
-        var direction = rawDistance > Mathf.Epsilon ? offset.normalized : Vector2.right;
-
-        weapon.transform.position = entityPosition + direction * distance;
+        weapon.transform.position = entityPosition + direction * config.OffsetStartPoint;
 
         var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         weapon.transform.rotation = Quaternion.Euler(0f, 0f, angle);

@@ -20,7 +20,6 @@ public enum StatType
     HeatResistance = 20,
     MinimalComfortableTemperature = 22,
     MaximumComfortableTemperature = 23,
-    AttackRange = 25,
     IgnoreDamageResistance = 26,
     Sensorics = 27,
     Disguise = 28,
