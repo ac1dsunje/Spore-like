@@ -6,6 +6,7 @@ namespace _Game.Scripts.GamePlay.Projectiles
 public class ProjectileConfig: ScriptableObject
 {
     [field: SerializeField, Min(0.1f)] public float HitTime { get; private set; }
+    [field: SerializeField] public float AdditionalDamage { get; private set; }
     [field: SerializeField] public bool FollowSource { get; private set; }
     [field: SerializeField] public float OffsetStartPoint { get; private set; }
     [field: SerializeField] public Sprite Sprite { get; private set; }

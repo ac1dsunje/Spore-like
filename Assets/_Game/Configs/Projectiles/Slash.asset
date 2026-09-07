@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Slash
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Projectiles.ProjectileConfig
   <HitTime>k__BackingField: 0.3
+  <AdditionalDamage>k__BackingField: 1
   <FollowSource>k__BackingField: 0
   <OffsetStartPoint>k__BackingField: 0.7
   <Sprite>k__BackingField: {fileID: 7024241122124454229, guid: c46653d5fdf011b409394423678c6fd2, type: 3}

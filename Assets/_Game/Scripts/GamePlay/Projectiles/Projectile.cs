@@ -64,7 +64,7 @@ public class Projectile: MonoBehaviour
     
     public void SetHit(HitInfo hit)
     {
-        _hitInfo = hit;
+        _hitInfo = new(hit.Damage + _config.AdditionalDamage, hit.IgnoreResistance, hit.Source, hit.Receiver);
         StartCoroutine(Hit());
     }
     

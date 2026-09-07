@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Circle
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Projectiles.ProjectileConfig
   <HitTime>k__BackingField: 0.1
+  <AdditionalDamage>k__BackingField: 1
   <FollowSource>k__BackingField: 1
   <OffsetStartPoint>k__BackingField: 0
   <Sprite>k__BackingField: {fileID: 3800279861848321710, guid: 076acbe8622efb44898f367d4574e539, type: 3}
