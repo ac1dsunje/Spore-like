@@ -17,7 +17,7 @@ MonoBehaviour:
   <ExperienceConfig>k__BackingField:
     <LevelScaler>k__BackingField: 1
     <ExperienceConfig>k__BackingField:
-      <LevelSet>k__BackingField: 10
+      <LevelSet>k__BackingField: 5
       <Level>k__BackingField: 1
       <ExperienceTypes>k__BackingField:
       - <Type>k__BackingField: 16
