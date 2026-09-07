@@ -30,9 +30,11 @@ public class SocialModule: StatModule
                 continue;
             }
 
-            if (social.GetInfluence() > highest)
+            var temp = social.GetInfluence();
+            if (temp > highest)
             {
                 result = social;
+                highest = temp;
             }
         }
         return result?.GetEntityModel();
