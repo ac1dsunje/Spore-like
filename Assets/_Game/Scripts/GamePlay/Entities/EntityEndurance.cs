@@ -7,13 +7,7 @@ namespace _Game.Scripts.GamePlay.Entities
 {
 public class EntityEndurance: ITickable
 {
-    private EnduranceModule _module;
-    
-    [Inject]
-    private void Construct(EnduranceModule module)
-    {
-        _module = module;
-    }
+    [Inject] private EnduranceModule _module;
 
     public void Tick()
     {

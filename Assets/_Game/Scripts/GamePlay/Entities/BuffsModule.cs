@@ -53,7 +53,7 @@ public class BuffsModule: IStartable, IDisposable
 
     private void Tick(float deltaTime)
     {
-        for (int i = _activeBuffs.Count - 1; i >= 0; i--)
+        for (var i = _activeBuffs.Count - 1; i >= 0; i--)
         {
             _activeBuffs[i].Do(deltaTime);
         }
