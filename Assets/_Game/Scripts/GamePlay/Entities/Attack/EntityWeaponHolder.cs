@@ -8,22 +8,22 @@ public class EntityWeaponHolder: MonoBehaviour
 {
     [SerializeField] private Projectile _projectilePrefab;
 
-    public void SetAttack(Vector2 mousePosition, Vector2 entityPosition, HitInfo hitInfo, float range, ProjectileConfig config)
+    public void SetAttack(Vector2 mousePosition, Vector2 entityPosition, HitInfo hitInfo, ProjectileConfig config)
     {
         var weapon = Instantiate(_projectilePrefab);
-        UpdateAttackPosition(mousePosition, entityPosition, range, weapon, config);
+        UpdateAttackPosition(mousePosition, entityPosition, weapon, config);
 
         weapon.Initialize(config, transform);
 
         weapon.SetHit(hitInfo);
     }
 
-    private void UpdateAttackPosition(Vector2 mousePosition, Vector2 entityPosition, float range, Projectile weapon, ProjectileConfig config)
+    private void UpdateAttackPosition(Vector2 mousePosition, Vector2 entityPosition, Projectile weapon, ProjectileConfig config)
     {
         var offset = mousePosition - entityPosition;
         var rawDistance = offset.magnitude;
 
-        var distance = Mathf.Clamp(rawDistance, config.MinRange, config.MaxRange > range? range: config.MaxRange);
+        var distance = Mathf.Clamp(rawDistance, config.MinRange, config.MaxRange);
 
         var direction = rawDistance > Mathf.Epsilon ? offset.normalized : Vector2.right;
 

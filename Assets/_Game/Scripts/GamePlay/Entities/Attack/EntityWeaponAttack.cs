@@ -27,7 +27,7 @@ public class EntityWeaponAttack : IDamageSource, IAttackController, IDisposable
         if (!CanAttack) return;
         
         var hit = new HitInfo(_attack.PhysicalDamage, _attack.IgnoreResistance, this, _receiver);
-        _weapon.SetAttack(mousePosition, _movement.Transform.position, hit, _attack.AttackRange, _projectileConfig);
+        _weapon.SetAttack(mousePosition, _movement.Transform.position, hit, _projectileConfig);
         
         _coroutineRunner.Run(this, CooldownKey, CooldownRoutine());
     }
