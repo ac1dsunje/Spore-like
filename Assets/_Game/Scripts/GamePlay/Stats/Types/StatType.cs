@@ -7,6 +7,7 @@ public enum StatType
     ExtraLife = 2,
     Acceleration = 3,
     DamageReflection = 4,
+    Influence = 5,
     PhysicalDamage = 6,
     Regeneration = 7,
     Inertia = 8,

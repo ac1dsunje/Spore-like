@@ -18,8 +18,21 @@ public class EntityVision : IInitializable, IDisposable
     {
         _module.OnVisionRadiusUpdated += ApplyVision;
         _module.OnEntityDiscovered += RevealEntity;
+
+        _visionHitbox.OnEntityEntered += EnterEntity;
+        _visionHitbox.OnEntityLeft += ExitEntity;
         
         ApplyVision(_module.VisionRadius);
+    }
+
+    private void EnterEntity(IVisible entity)
+    {
+        _module.EnterEntity(entity);
+    }
+
+    private void ExitEntity(IVisible entity)
+    {
+        _module.ExitEntity(entity);
     }
 
     private void RevealEntity(IVisible entity, bool state)

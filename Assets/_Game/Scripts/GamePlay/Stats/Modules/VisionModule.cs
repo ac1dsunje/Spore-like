@@ -63,7 +63,7 @@ public class VisionModule: StatModule
         TryDiscoverEntity(visible);
     }
 
-    public void ExitObject(IVisible visible) => _objectsInVision.Remove(visible);
+    public void ExitEntity(IVisible visible) => _objectsInVision.Remove(visible);
 
     private void TryDiscoverEntity(IVisible visible)
     {

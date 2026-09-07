@@ -38,6 +38,11 @@ MonoBehaviour:
     <MinimalValue>k__BackingField: 0
     <MaximalValue>k__BackingField: 999999
     <Sprite>k__BackingField: {fileID: 5462820916524804147, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
+  - <Name>k__BackingField: Influence
+    <Type>k__BackingField: 5
+    <MinimalValue>k__BackingField: 0
+    <MaximalValue>k__BackingField: 999999
+    <Sprite>k__BackingField: {fileID: 0}
   - <Name>k__BackingField: Physical damage
     <Type>k__BackingField: 6
     <MinimalValue>k__BackingField: 0
@@ -103,11 +108,6 @@ MonoBehaviour:
     <MinimalValue>k__BackingField: -999999
     <MaximalValue>k__BackingField: 999999
     <Sprite>k__BackingField: {fileID: -7345716695485928888, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
-  - <Name>k__BackingField: Attack range
-    <Type>k__BackingField: 25
-    <MinimalValue>k__BackingField: 0.5
-    <MaximalValue>k__BackingField: 999999
-    <Sprite>k__BackingField: {fileID: 2801017030474523246, guid: b0cac7327783030449ba48e399bcb5bd, type: 3}
   - <Name>k__BackingField: Ignore damage resistance
     <Type>k__BackingField: 26
     <MinimalValue>k__BackingField: 0

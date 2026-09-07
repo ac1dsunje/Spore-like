@@ -1,7 +1,6 @@
-﻿using _Game.Scripts.GamePlay.Interfaces;
-using _Game.Scripts.GamePlay.Modules;
+﻿using System;
+using _Game.Scripts.GamePlay.Interfaces;
 using UnityEngine;
-using VContainer;
 
 namespace _Game.Scripts.GamePlay.Entities.Hitboxes
 {
@@ -9,42 +8,31 @@ namespace _Game.Scripts.GamePlay.Entities.Hitboxes
 public class VisionHitbox: MonoBehaviour
 {
     private BoxCollider2D _collider;
-    
-    [Inject] private VisionModule _vision;
+    public event Action<IVisible> OnEntityEntered;
+    public event Action<IVisible> OnEntityLeft;
 
     private void Awake()
     {
         _collider = GetComponent<BoxCollider2D>();
     }
-
-    private void Start()
-    {
-        CheckRadius();
-    }
     
     public void SetSize(Vector2 size)
     {
         _collider.size = size;
-        CheckRadius();
-    }
-
-    private void CheckRadius()
-    {
-        _collider.enabled = _vision.VisionRadius > 0f;
+        if (size.y > 0.1f)
+            _collider.enabled = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.TryGetComponent<IVisible>(out var visible)) return;
-
-        _vision.EnterEntity(visible);
+        OnEntityEntered?.Invoke(visible);
     }
     
     private void OnTriggerExit2D(Collider2D other)
     {
         if (!other.TryGetComponent<IVisible>(out var visible)) return;
-
-        _vision.ExitObject(visible);
+        OnEntityLeft?.Invoke(visible);
     }
 }
 }
