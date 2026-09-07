@@ -1,5 +1,4 @@
-﻿using _Game.Scripts.GamePlay.Entities.Experience;
-using _Game.Scripts.GamePlay.Modules;
+﻿using _Game.Scripts.GamePlay.Modules;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Entities
@@ -15,9 +14,7 @@ public class EntityModel
     [Inject] public StomachModule Stomach { get; private set; }
     [Inject] public AttackModule Attack { get; private set; }
     [Inject] public MovementModule Movement { get; private set; }
-    [Inject] public TemperatureModule Temperature { get; private set; }
     [Inject] public DisguiseModule Disguise { get; private set; }
-    [Inject] public BiomeModule Biome { get; private set; }
-    [Inject] public BreathingModule Breathing { get; private set; }
+    [Inject] public EnvironmentModule Environment { get; private set; }
 }
 }

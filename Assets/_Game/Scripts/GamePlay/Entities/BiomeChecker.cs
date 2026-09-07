@@ -13,25 +13,19 @@ public class BiomeChecker: IStartable, IDisposable
 {
     private readonly WorldModel _worldModel;
     
-    private readonly TemperatureModule _temperature;
-    private readonly BreathingModule _breathing;
-    
     private readonly MovementModule _movement;
-    private readonly BiomeModule _biomeModule;
+    private readonly EnvironmentModule _environment;
     
     private readonly BuffsModule _buffsModule;
     
     private Biome _currentBiome;
     
     [Inject]
-    public BiomeChecker(WorldModel worldModel, TemperatureModule temperature, MovementModule movement,
-        BiomeModule biome, BreathingModule breathing, BuffsModule buffsModule)
+    public BiomeChecker(WorldModel worldModel, MovementModule movement, EnvironmentModule environment, BuffsModule buffsModule)
     {
         _worldModel = worldModel;
-        _temperature = temperature;
-        _breathing = breathing;
         _movement = movement;
-        _biomeModule = biome;
+        _environment = environment;
         _buffsModule = buffsModule;
     }
 
@@ -58,19 +52,19 @@ public class BiomeChecker: IStartable, IDisposable
 
     private void CheckPassability(float passability)
     {
-        _buffsModule.Set(BuffType.BadPassAbility, passability > _biomeModule.PassAbility);
+        _buffsModule.Set(BuffType.BadPassAbility, passability > _environment.PassAbility);
     }
 
     private void ApplyTemperature(float temperature)
     {
-        _buffsModule.Set(BuffType.Cold, temperature < _temperature.MinimalComfortable);
-        _buffsModule.Set(BuffType.Heat, temperature > _temperature.MaximumComfortable);
+        _buffsModule.Set(BuffType.Cold, temperature < _environment.MinimalComfortable);
+        _buffsModule.Set(BuffType.Heat, temperature > _environment.MaximumComfortable);
     }
 
     private void CheckBreathing(float oxygen, float hydrogen)
     {
-        var oxygenRequirement = _breathing.OxygenBreathing;
-        var hydrogenRequirement = _breathing.HydrogenBreathing;
+        var oxygenRequirement = _environment.OxygenBreathing;
+        var hydrogenRequirement = _environment.HydrogenBreathing;
 
         var hasOxygen = oxygenRequirement > 0f && oxygen >= oxygenRequirement;
         var hasHydrogen = hydrogenRequirement > 0f && hydrogen >= hydrogenRequirement;
