@@ -5,9 +5,9 @@ using _Game.Scripts.GamePlay.Modules;
 using VContainer;
 using VContainer.Unity;
 
-namespace _Game.Scripts.GamePlay.Entities.Death
+namespace _Game.Scripts.GamePlay.Entities
 {
-public class EntityBasicDeath: IStartable, IDisposable
+public class EntityDeath: IStartable, IDisposable
 {
     [Inject] private EntitiesRegistry _entitiesRegistry;
     [Inject] private ExperienceModule _experience;

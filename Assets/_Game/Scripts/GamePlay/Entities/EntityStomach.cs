@@ -7,9 +7,9 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace _Game.Scripts.GamePlay.Entities.Stomach
+namespace _Game.Scripts.GamePlay.Entities
 {
-public class EntityBasicStomach: IStartable, IDisposable
+public class EntityStomach: IStartable, IDisposable
 {
     [Inject] private StomachModule _stomach;
     [Inject] private BuffsModule _buffs;

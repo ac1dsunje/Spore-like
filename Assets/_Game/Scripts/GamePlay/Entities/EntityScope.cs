@@ -1,13 +1,10 @@
 ﻿using _Game.Scripts.GamePlay.Entities.Animation;
 using _Game.Scripts.GamePlay.Entities.Attack;
 using _Game.Scripts.GamePlay.Entities.Configuration;
-using _Game.Scripts.GamePlay.Entities.Death;
 using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Entities.Health;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Entities.Movement;
-using _Game.Scripts.GamePlay.Entities.Picker;
-using _Game.Scripts.GamePlay.Entities.Stomach;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
@@ -92,10 +89,10 @@ public class EntityScope: LifetimeScope
         builder.RegisterEntryPoint<ParticlesModule>(Lifetime.Scoped)
             .AsSelf();
         builder.RegisterComponent(GetComponentInChildren<EntityWeaponHolder>());
-        builder.RegisterEntryPoint<EntityBasicStomach>(Lifetime.Scoped);
+        builder.RegisterEntryPoint<EntityStomach>(Lifetime.Scoped);
         builder.RegisterEntryPoint<EntityPicker>(Lifetime.Scoped);
-        builder.RegisterEntryPoint<EntityBasicHealth>().As<IHealthController>();
-        builder.RegisterEntryPoint<EntityBasicDeath>();
+        builder.RegisterEntryPoint<EntityHealth>().As<IHealthController>();
+        builder.RegisterEntryPoint<EntityDeath>();
         builder.RegisterEntryPoint<EntityRegeneration>(Lifetime.Scoped);
         builder.RegisterEntryPoint<EntityWeaponAttack>().As<IDamageSource>().As<IAttackController>();
         

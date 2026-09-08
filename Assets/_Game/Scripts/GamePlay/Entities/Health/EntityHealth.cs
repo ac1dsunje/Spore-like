@@ -4,7 +4,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.Entities.Health
 {
-public class EntityBasicHealth: IHealthController
+public class EntityHealth: IHealthController
 {
     [Inject] private HealthModule _health;
     [Inject] private DefenseModule _defense;

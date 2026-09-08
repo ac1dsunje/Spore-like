@@ -5,7 +5,7 @@ using _Game.Scripts.GamePlay.Modules;
 using VContainer;
 using VContainer.Unity;
 
-namespace _Game.Scripts.GamePlay.Entities.Picker
+namespace _Game.Scripts.GamePlay.Entities
 {
 public class EntityPicker: IStartable, ITickable, IDisposable
 {
