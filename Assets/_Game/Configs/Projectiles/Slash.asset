@@ -17,6 +17,7 @@ MonoBehaviour:
   <MaxHits>k__BackingField: 1
   <AdditionalDamage>k__BackingField: 1
   <FollowSource>k__BackingField: 0
+  <Type>k__BackingField: 1
   <OffsetStartPoint>k__BackingField: 0.7
   <Sprite>k__BackingField: {fileID: 7024241122124454229, guid: c46653d5fdf011b409394423678c6fd2, type: 3}
   <Controller>k__BackingField: {fileID: -4696559884705081445, guid: c46653d5fdf011b409394423678c6fd2, type: 3}

@@ -17,7 +17,8 @@ public class Projectile: MonoBehaviour
     private PolygonCollider2D _collider;
     
     private Sprite _currentSprite;
-    private HitInfo _hitInfo;
+    private HitInfo _setHit;
+    private HitInfo _realHit;
 
     private int _hitsDone;
     
@@ -69,8 +70,15 @@ public class Projectile: MonoBehaviour
     
     public void SetHit(HitInfo hit)
     {
-        _hitInfo = hit;
-        _hitInfo.AddDamage(_config.AdditionalDamage);
+        _setHit = hit;
+        
+        _realHit = new(
+            _setHit.Damage, 
+            _setHit.IgnoreResistance, 
+            _setHit.Source,
+            _config.Type == ProjectileType.Melee ? _setHit.Receiver : null);
+        
+        _setHit.AddDamage(_config.AdditionalDamage);
         StartCoroutine(Hit());
     }
     
@@ -84,8 +92,9 @@ public class Projectile: MonoBehaviour
 
     private void OnTrigger(IDamageReceiver damageReceiver)
     {
-        if (damageReceiver == _hitInfo.Receiver) return;
-        damageReceiver.TakeDamage(_hitInfo);
+        if (damageReceiver == _setHit.Receiver) return;
+        
+        damageReceiver.TakeDamage(_realHit);
         _hitsDone++;
         if (_config.MaxHits > 0 && _hitsDone >= _config.MaxHits)
         {
