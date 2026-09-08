@@ -17,7 +17,6 @@ public class EntityVision : IInitializable, IDisposable
     public void Initialize()
     {
         _module.OnVisionRadiusUpdated += ApplyVision;
-        _module.OnEntityDiscovered += RevealEntity;
 
         _visionHitbox.OnEntityEntered += EnterEntity;
         _visionHitbox.OnEntityLeft += ExitEntity;
@@ -29,14 +28,11 @@ public class EntityVision : IInitializable, IDisposable
 
     private void ExitEntity(IVisible entity) => _module.ExitEntity(entity);
 
-    private void RevealEntity(IVisible entity, bool state) => entity.SetVisible(state);
-
     private void ApplyVision(float value) => _visionHitbox.SetSize(new Vector2(_camController.Aspect, 1f) * (value * 2f));
 
     public void Dispose()
     {
         _module.OnVisionRadiusUpdated -= ApplyVision;
-        _module.OnEntityDiscovered -= RevealEntity;
 
         _visionHitbox.OnEntityEntered -= EnterEntity;
         _visionHitbox.OnEntityLeft -= ExitEntity;

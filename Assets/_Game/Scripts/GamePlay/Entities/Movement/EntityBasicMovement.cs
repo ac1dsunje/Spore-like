@@ -9,7 +9,6 @@ public class EntityBasicMovement: IInitializable, IFixedTickable, ITickable, IMo
 {
     [Inject] private RigidbodyController _controller;
     [Inject] private MovementModule _movement;
-    [Inject] private DisguiseModule _disguise;
 
     private Vector2 _lastMovementDirection = Vector2.right;
     private Vector3Int GridPosition => _controller.GridPosition;
@@ -36,8 +35,6 @@ public class EntityBasicMovement: IInitializable, IFixedTickable, ITickable, IMo
 
         Move(input);
         TryDash();
-        
-        _disguise.SetMoving(_controller.IsMoving);
         _movement.UpdateGridPosition(GridPosition);
         
         _controller.SetMaterial(_movement.Friction, _movement.Bounciness);

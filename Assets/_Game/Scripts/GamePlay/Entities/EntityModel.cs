@@ -14,7 +14,6 @@ public class EntityModel
     [Inject] public StomachModule Stomach { get; private set; }
     [Inject] public AttackModule Attack { get; private set; }
     [Inject] public MovementModule Movement { get; private set; }
-    [Inject] public DisguiseModule Disguise { get; private set; }
     [Inject] public EnvironmentModule Environment { get; private set; }
     [Inject] public SocialModule Social { get; private set; }
 }

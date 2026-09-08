@@ -8,35 +8,20 @@ namespace _Game.Scripts.GamePlay.Modules
 public class VisionModule: StatModule
 {
     public float VisionRadius { get; private set; }
-    public float LightingRadius { get; private set; }
-
-    private float _sensorics;
-
-    private bool _useLight;
 
     private readonly HashSet<IVisible> _objectsInVision = new();
 
-    public event Action<IVisible, bool> OnEntityDiscovered;
-
+    public event Action<IVisible> OnEntityDiscovered;
     public event Action<float> OnVisionRadiusUpdated;
-    public event Action<float, bool> OnLightingUpdated;
 
     protected override void Configure()
     {
         BindStat(StatType.VisionRadius, UpdateVisionRadius);
-        BindStat(StatType.Sensorics, UpdateSensorics);
-        BindStat(StatType.LightingRadius, UpdateLightingRadius);
     }
 
     public bool CanSee()
     {
         return VisionRadius > 0.1f;
-    }
-
-    public void SetLight(bool state)
-    {
-        _useLight = state;
-        OnLightingUpdated?.Invoke(LightingRadius, _useLight);
     }
 
     private void UpdateVisionRadius(float value)
@@ -45,34 +30,13 @@ public class VisionModule: StatModule
         OnVisionRadiusUpdated?.Invoke(VisionRadius);
     }
 
-    private void UpdateLightingRadius(float value)
-    {
-        LightingRadius = value;
-        OnLightingUpdated?.Invoke(LightingRadius, _useLight);
-    }
-
-    private void UpdateSensorics(float value)
-    {
-        _sensorics = value;
-
-        foreach (var visible in _objectsInVision)
-        {
-            TryDiscoverEntity(visible);
-        }
-    }
-
     public void EnterEntity(IVisible visible)
     {
         if (!_objectsInVision.Add(visible)) return;
 
-        TryDiscoverEntity(visible);
+        OnEntityDiscovered?.Invoke(visible);
     }
 
     public void ExitEntity(IVisible visible) => _objectsInVision.Remove(visible);
-
-    private void TryDiscoverEntity(IVisible visible)
-    {
-        OnEntityDiscovered?.Invoke(visible, visible.IsDetected(_sensorics));
-    }
 }
 }

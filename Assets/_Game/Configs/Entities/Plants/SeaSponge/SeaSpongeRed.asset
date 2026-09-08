@@ -20,7 +20,7 @@ MonoBehaviour:
       <LevelSet>k__BackingField: 5
       <Level>k__BackingField: 1
       <ExperienceTypes>k__BackingField:
-      - <Type>k__BackingField: 16
+      - <Type>k__BackingField: 1
         <Amount>k__BackingField: 1
   <Projectile>k__BackingField: {fileID: 11400000, guid: d07a3fb9769a01f45a2cb25e7faf1fcd, type: 2}
   <Drops>k__BackingField:

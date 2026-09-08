@@ -20,7 +20,6 @@ public class ExperienceFactory
             ExperienceType.EnduranceRecovering => new EnduranceRecovering(entityModel.Endurance, config.Amount),
             ExperienceType.DamageDealing => new DamageDealing(entityModel.Attack, config.Amount),
             ExperienceType.StartSprinting => new StartSprinting(entityModel.Movement, config.Amount),
-            ExperienceType.UnnoticedStaying => new UnnoticedStaying(entityModel.Disguise, config.Amount),
             ExperienceType.ExperienceCollecting => new ExperienceCollecting(entityModel.Picking, config.Amount),
             
             _ => throw new ArgumentOutOfRangeException(nameof(config), config, null)

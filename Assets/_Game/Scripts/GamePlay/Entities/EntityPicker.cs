@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Linq;
 using _Game.Scripts.GamePlay.Drops;
+using _Game.Scripts.GamePlay.Entities.Configuration;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
+using _Game.Scripts.GamePlay.Experience;
 using _Game.Scripts.GamePlay.Modules;
 using VContainer;
 using VContainer.Unity;
@@ -12,6 +15,7 @@ public class EntityPicker: IStartable, ITickable, IDisposable
     [Inject] private PickerHitbox _pickerHitbox;
     [Inject] private PickingModule _pickingModule;
     [Inject] private StomachModule _stomach;
+    [Inject] private EntityConfig _config;
 
     public void Start()
     {
@@ -23,15 +27,23 @@ public class EntityPicker: IStartable, ITickable, IDisposable
         _pickerHitbox.SetSize(_pickingModule.PickingRange);
     }
 
-    private void Pick(DropType dropType)
+    private void Pick(Drop drop)
     {
-        switch (dropType)
+        switch (drop.GetType)
         {
             case DropType.Food:
-                _stomach.GetExperienceFromFood(1);
+                if (_config.ExperienceConfig.ExperienceConfig.ExperienceTypes.Any(exp => exp.Type == ExperienceType.FoodEating))
+                {
+                    _stomach.GetExperienceFromFood(1);
+                    _pickerHitbox.DestroyDrop(drop);
+                }
                 break;
             case DropType.Experience:
-                _pickingModule.GetExperiencePoint(1);
+                if (_config.ExperienceConfig.ExperienceConfig.ExperienceTypes.Any(exp => exp.Type == ExperienceType.ExperienceCollecting))
+                {
+                    _pickingModule.GetExperiencePoint(1);
+                    _pickerHitbox.DestroyDrop(drop);
+                }
                 break;
         }
     }

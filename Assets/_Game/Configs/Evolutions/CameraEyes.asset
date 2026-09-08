@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Evolutions.EvolutionConfig
   <State>k__BackingField: 1
   <Name>k__BackingField: Camera Eyes
-  <CreatureType>k__BackingField: 0
   <Stats>k__BackingField:
   - <Type>k__BackingField: 1
     <Value>k__BackingField: 2
@@ -23,10 +22,10 @@ MonoBehaviour:
     <UpdatesByRarity>k__BackingField: 1
   <Abilities>k__BackingField: []
   <Requires>k__BackingField: []
-  <Blocks>k__BackingField:
-  - {fileID: 11400000, guid: 83b7a97d6aafa7540a2de2cce0fcc342, type: 2}
+  <Blocks>k__BackingField: []
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 20
+    <Level>k__BackingField: 1
     <ExperienceTypes>k__BackingField:
     - <Type>k__BackingField: 0
       <Amount>k__BackingField: 1

@@ -7,6 +7,8 @@ public class Drop: MonoBehaviour
 {
     private SpriteRenderer _spriteRenderer;
     private DropConfig _config;
+    
+    public DropType GetType => _config.DropType;
 
     private void Awake()
     {
@@ -17,11 +19,6 @@ public class Drop: MonoBehaviour
     {
         _config = config;
         _spriteRenderer.sprite = config.Sprite;
-    }
-    
-    public DropType GetDropType()
-    {
-        return _config.DropType;
     }
 }
 }

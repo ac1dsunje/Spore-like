@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Interfaces;
-using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 using VContainer;
 
@@ -18,7 +17,6 @@ public class EntityAnimation: MonoBehaviour, IVisible, ISocial
     private Sprite _currentSprite;
     
     [Inject] private AnimationSettings _config;
-    [Inject] private DisguiseModule _disguise;
     [Inject] private EntityModel _model;
 
     private void Awake()
@@ -58,17 +56,6 @@ public class EntityAnimation: MonoBehaviour, IVisible, ISocial
             sprite.GetPhysicsShape(i, shape);
             _collider.SetPath(i, shape);
         }
-    }
-    
-    public bool IsDetected(float sensorics)
-    {
-        return _disguise.TryNotice(sensorics);
-    }
-    
-    public void SetVisible(bool visible)
-    {
-        _renderer.enabled = visible;
-        _animator.enabled = visible;
     }
 
     public EntityModel GetEntityModel() => _model;

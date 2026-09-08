@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Drops;
 using UnityEngine;
 
@@ -7,9 +8,11 @@ namespace _Game.Scripts.GamePlay.Entities.Hitboxes
 [RequireComponent(typeof(CircleCollider2D))]
 public class PickerHitbox: MonoBehaviour
 {
-    public event Action<DropType> OnPicked;
+    public event Action<Drop> OnPicked;
     
     private CircleCollider2D _collider;
+
+    private readonly List<Drop> _drops = new();
 
     private void Awake()
     {
@@ -24,7 +27,13 @@ public class PickerHitbox: MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.TryGetComponent(out Drop drop)) return;
-        OnPicked?.Invoke(drop.GetDropType());
+        OnPicked?.Invoke(drop);
+        _drops.Add(drop);
+    }
+
+    public void DestroyDrop(Drop drop)
+    {
+        _drops.Remove(drop);
         Destroy(drop.gameObject);
     }
 }

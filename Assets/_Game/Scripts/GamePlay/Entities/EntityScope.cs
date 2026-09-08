@@ -42,7 +42,6 @@ public class EntityScope: LifetimeScope
         builder.RegisterEntryPoint<EntityStats>(Lifetime.Scoped).AsSelf();
         
         builder.RegisterEntryPoint<VisionModule>(Lifetime.Scoped).AsSelf();
-        builder.RegisterEntryPoint<DisguiseModule>(Lifetime.Scoped).AsSelf();
         
         builder.RegisterEntryPoint<HealthModule>(Lifetime.Scoped).AsSelf();
         builder.RegisterEntryPoint<AttackModule>(Lifetime.Scoped).AsSelf();
@@ -66,7 +65,6 @@ public class EntityScope: LifetimeScope
         builder.RegisterComponent(GetComponentInChildren<BodyHitbox>())
             .AsSelf()
             .As<IDamageReceiver>();
-        builder.RegisterComponent(GetComponentInChildren<EntityLighting>());
         builder.RegisterEntryPoint<EntityEndurance>(Lifetime.Scoped);
         
         builder.RegisterComponent(GetComponentInChildren<RigidbodyController>());
