@@ -10,13 +10,12 @@ namespace _Game.Scripts.GamePlay.Projectiles
 [RequireComponent(typeof(PolygonCollider2D))]
 public class Projectile: MonoBehaviour
 {
-    private ProjectileConfig _config;
-    
     private SpriteRenderer _renderer;
     private Animator _animator;
     private PolygonCollider2D _collider;
     
-    private Sprite _currentSprite;
+    private ProjectileConfig _config;
+    
     private HitInfo _setHit;
     private HitInfo _realHit;
 
@@ -29,11 +28,6 @@ public class Projectile: MonoBehaviour
         _collider = GetComponent<PolygonCollider2D>();
     }
 
-    private void LateUpdate()
-    {
-        SetColliderShape(_renderer.sprite);
-    }
-
     private void Update()
     {
         transform.Translate(transform.right * (_config.Speed * Time.deltaTime), Space.World);
@@ -41,9 +35,6 @@ public class Projectile: MonoBehaviour
 
     private void SetColliderShape(Sprite sprite)
     {
-        if (_currentSprite == sprite) return;
-        _currentSprite = sprite;
-
         var shapeCount = sprite.GetPhysicsShapeCount();
         _collider.pathCount = shapeCount;
 
@@ -66,6 +57,7 @@ public class Projectile: MonoBehaviour
         }
         SetSprite(_config.Sprite);
         SetAnimator(_config.Controller);
+        SetColliderShape(_config.Sprite);
     }
     
     public void SetHit(HitInfo hit)
