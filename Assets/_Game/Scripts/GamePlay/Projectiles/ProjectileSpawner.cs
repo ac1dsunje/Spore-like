@@ -1,8 +1,7 @@
 ﻿using _Game.Scripts.GamePlay.Interfaces;
-using _Game.Scripts.GamePlay.Projectiles;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay
+namespace _Game.Scripts.GamePlay.Projectiles
 {
 public class ProjectileSpawner: MonoBehaviour
 {

@@ -6,6 +6,7 @@ using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Evolutions.UI;
 using _Game.Scripts.GamePlay.Evolutions.UI.Choosing;
 using _Game.Scripts.GamePlay.Experience;
+using _Game.Scripts.GamePlay.Projectiles;
 using _Game.Scripts.GamePlay.Rarities;
 using _Game.Scripts.GamePlay.Types;
 using _Game.Scripts.GamePlay.UI;

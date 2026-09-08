@@ -18,6 +18,8 @@ public class Projectile: MonoBehaviour
     
     private Sprite _currentSprite;
     private HitInfo _hitInfo;
+
+    private int _hitsDone;
     
     private void Awake()
     {
@@ -65,8 +67,6 @@ public class Projectile: MonoBehaviour
         SetAnimator(_config.Controller);
     }
     
-    // Метод SetDirection больше не нужен!
-    
     public void SetHit(HitInfo hit)
     {
         _hitInfo = hit;
@@ -86,6 +86,11 @@ public class Projectile: MonoBehaviour
     {
         if (damageReceiver == _hitInfo.Receiver) return;
         damageReceiver.TakeDamage(_hitInfo);
+        _hitsDone++;
+        if (_config.MaxHits > 0 && _hitsDone >= _config.MaxHits)
+        {
+            Destroy(gameObject);
+        }
     }
     
     private void SetSprite(Sprite sprite) => _renderer.sprite = sprite;
@@ -94,7 +99,6 @@ public class Projectile: MonoBehaviour
     private IEnumerator Hit()
     {
         yield return new WaitForSeconds(_config.HitTime);
-        StopAllCoroutines();
         Destroy(gameObject);
     }
 }
