@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using _Game.Scripts.GamePlay.Entities.Configuration;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -13,6 +15,7 @@ public class Biome
     public float ChanceEnvironment => _config.ChanceEnvironment;
     public float OxygenBreathing => _config.OxygenBreathing;
     public float HydrogenBreathing => _config.HydrogenBreathing;
+    public List<EntityConfig> Enemies => _config.Enemies;
     
     private readonly BiomeConfig _config;
 

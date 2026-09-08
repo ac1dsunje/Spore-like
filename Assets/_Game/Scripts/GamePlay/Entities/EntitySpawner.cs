@@ -15,10 +15,9 @@ public class EntitySpawner: MonoBehaviour
     public event Action<EntityScope> OnEntitySpawn;
     public event Action<EntityScope> OnPlayerSpawn;
     
-    private void Awake()
+    private void Start()
     {
         SpawnPlayer();
-        SpawnEnemy();
     }
 
     private void SpawnPlayer()
@@ -27,18 +26,14 @@ public class EntitySpawner: MonoBehaviour
         OnPlayerSpawn?.Invoke(player);
     }
 
-    [ContextMenu("Spawn Enemy")]
-    private void SpawnEnemy()
-    {
-        var enemy = Spawn(_enemySpawnPoint, transform, _enemyConfig);
-        OnEntitySpawn?.Invoke(enemy);
-    }
-
     public EntityScope SpawnEntity(Vector2 spawnPoint, Transform parent, EntityConfig entityConfig)
     {
-        var entity = Spawn(spawnPoint, parent, entityConfig);
-        OnEntitySpawn?.Invoke(entity);
-        return entity;
+        return Spawn(spawnPoint, parent, entityConfig);
+    }
+    
+    public EntityScope SpawnEntity(Vector2 spawnPoint, EntityConfig entityConfig)
+    {
+        return Spawn(spawnPoint, transform, entityConfig);
     }
     
     private EntityScope Spawn(Vector2 spawnPoint, Transform parent, EntityConfig entityConfig)
@@ -47,6 +42,7 @@ public class EntitySpawner: MonoBehaviour
         entity.gameObject.name = entityConfig.name;
         entity.SetConfig(entityConfig);
         entity.Build();
+        OnEntitySpawn?.Invoke(entity);
         return entity;
     }
 }

@@ -1,0 +1,60 @@
+﻿using System;
+using System.Collections;
+using _Game.Scripts.GamePlay.Entities;
+using UnityEngine;
+using VContainer;
+using VContainer.Unity;
+using CoroutineRunner = _Game.Scripts.Core.Services.CoroutineRunner;
+using Random = UnityEngine.Random;
+
+namespace _Game.Scripts.GamePlay.World
+{
+public class EnemiesSpawner: IStartable, IDisposable
+{
+    private EntitiesRegistry _registry;
+    private EntitySpawner _spawner;
+    private WorldModel _world;
+    private CoroutineRunner _runner;
+
+    private EntityController _player;
+    
+    [Inject]
+    private void Construct(EntitySpawner spawner, EntitiesRegistry registry, WorldModel world, CoroutineRunner runner)
+    {
+        _registry = registry;
+        _world = world;
+        _runner = runner;
+        _spawner = spawner;
+    }
+
+    public void Start()
+    {
+        _registry.OnPlayerInitialized += AddPlayer;
+    }
+
+    private void AddPlayer(EntityController entity)
+    {
+        _player = entity;
+        _runner.Run(this, "Spawn Enemies", SpawnEnemies());
+    }
+
+    private IEnumerator SpawnEnemies()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(3f);
+            var playerPos = _player.Model.Movement.GridPosition;
+            var spawnPos = new Vector3Int(playerPos.x + Random.Range(-5, 5), playerPos.y + Random.Range(-5, 5), 0);
+            var enemies = _world.GetBiome(spawnPos).Enemies;
+            if (enemies.Count > 0)
+                _spawner.SpawnEntity(new Vector2( spawnPos.x,  spawnPos.y), enemies[Random.Range(0, enemies.Count)]);
+        }
+    }
+
+    public void Dispose()
+    {
+        _runner.Stop(this);
+        _registry.OnPlayerInitialized -= AddPlayer;
+    }
+}
+}

@@ -1,5 +1,4 @@
-﻿using _Game.Scripts.GamePlay.Entities;
-using _Game.Scripts.GamePlay.Entities.Configuration;
+﻿using _Game.Scripts.GamePlay.Entities.Configuration;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.World.Biomes
