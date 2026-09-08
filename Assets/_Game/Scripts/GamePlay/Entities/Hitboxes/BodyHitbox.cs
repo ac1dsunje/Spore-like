@@ -11,8 +11,10 @@ public class BodyHitbox : MonoBehaviour, IDamageReceiver
     public event Action<IDamageReceiver> OnTouch;
 
     private void OnTriggerEnter2D(Collider2D other) => TryGetEntity(other);
+    private void OnTriggerStay2D(Collider2D other) => TryGetEntity(other);
 
     private void OnCollisionEnter2D(Collision2D other) => TryGetEntity(other.collider);
+    private void OnCollisionStay2D(Collision2D other) => TryGetEntity(other.collider);
 
     private void TryGetEntity(Collider2D other)
     {

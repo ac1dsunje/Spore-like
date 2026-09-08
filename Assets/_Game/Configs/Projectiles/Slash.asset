@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef6c43a1cbd4b1583d934a3ac8e2212, type: 3}
   m_Name: Slash
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Projectiles.ProjectileConfig
-  <HitTime>k__BackingField: 0.3
+  <HitTime>k__BackingField: 0.6
   <Speed>k__BackingField: 5
   <MaxHits>k__BackingField: 1
   <AdditionalDamage>k__BackingField: 1
