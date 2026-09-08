@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Entities.Attack;
+using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Entities.Health;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Entities.Movement;
@@ -25,6 +27,7 @@ public class EntityAI : IStartable, IDisposable
     [Inject] private EvolutionsModule _evolutions;
     [Inject] private EntityModel _model;
     [Inject] private CoroutineRunner _coroutineRunner;
+    [Inject] private ExperienceModule _experience;
 
     private const string DirectionChangeKey = "DirectionChange";
 
@@ -36,8 +39,28 @@ public class EntityAI : IStartable, IDisposable
         _hitBox.OnTouch += DoDamage;
         _hitBox.OnHit += TakeDamage;
         _evolutions.OnSlotsFilled += ChooseEvolution;
+        
+        SetInitialEvolutions(_experience.Level);
 
         _coroutineRunner.Run(this, DirectionChangeKey, DirectionChangeRoutine());
+    }
+
+    private void SetInitialEvolutions(int amount)
+    {
+        for (var i = 0; i < amount; i++)
+        {
+            var availableEvolutions = _evolutions.Evolutions
+                .Where(e => e.State == EvolutionState.IsAble)
+                .ToList();
+
+            if (availableEvolutions.Count == 0)
+            {
+                break; 
+            }
+
+            var randomIndex = Random.Range(0, availableEvolutions.Count);
+            _evolutions.ChooseEvolution(availableEvolutions[randomIndex]);
+        }
     }
 
     private IEnumerator DirectionChangeRoutine()

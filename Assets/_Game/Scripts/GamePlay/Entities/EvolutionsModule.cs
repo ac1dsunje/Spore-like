@@ -21,8 +21,7 @@ public class EvolutionsModule: IStartable, IDisposable
     [Inject] private AbilitiesModule _abilities;
     private int _minEvolutions;
     
-    
-    private readonly List<Evolution> _evolutions = new();
+    public List<Evolution> Evolutions { get; } = new();
 
     public event Action<List<Evolution>> OnSlotsFilled;
     public event Action<Evolution> OnEvolutionApplied;
@@ -33,13 +32,13 @@ public class EvolutionsModule: IStartable, IDisposable
         _experience.OnLevelChanged += OnLevelUpdated;
         foreach (var evolution in _evolutionsDatabase.GenerateEvolutions())
         {
-            _evolutions.Add(evolution);
+            Evolutions.Add(evolution);
         }
     }
     
     private void OnLevelUpdated(int level)
     {
-        if (_evolutions.Count(evolution => evolution.State == EvolutionState.IsAble) <= 0) return;
+        if (Evolutions.Count(evolution => evolution.State == EvolutionState.IsAble) <= 0) return;
         
         FillSlots();
     }
@@ -70,7 +69,7 @@ public class EvolutionsModule: IStartable, IDisposable
 
     private void UnlockEvolutions()
     {
-        foreach (var evolution in _evolutions)
+        foreach (var evolution in Evolutions)
         {
             if (evolution.State != EvolutionState.IsHidden) continue;
             
@@ -78,7 +77,7 @@ public class EvolutionsModule: IStartable, IDisposable
             
             foreach (var requiredConfig in evolution.Config.Requires)
             {
-                var requiredEvolution = _evolutions.FirstOrDefault(e => e.Config == requiredConfig);
+                var requiredEvolution = Evolutions.FirstOrDefault(e => e.Config == requiredConfig);
                 
                 if (requiredEvolution != null && requiredEvolution.State == EvolutionState.IsActive)
                 {
@@ -95,7 +94,7 @@ public class EvolutionsModule: IStartable, IDisposable
     
     private void BlockEvolutions(Evolution evolution)
     {
-        foreach (var evo in _evolutions.Where(evo => evolution.Config.Blocks.Contains(evo.Config)))
+        foreach (var evo in Evolutions.Where(evo => evolution.Config.Blocks.Contains(evo.Config)))
         {
             evo.Block();
         }
@@ -115,7 +114,7 @@ public class EvolutionsModule: IStartable, IDisposable
 
     private List<Evolution> GetRandomEvolutions(int amount)
     {
-        var availableEvolutions = _evolutions.Where(evolution => evolution.State == EvolutionState.IsAble).ToList();
+        var availableEvolutions = Evolutions.Where(evolution => evolution.State == EvolutionState.IsAble).ToList();
         var slotsToFill = Mathf.Min(amount, availableEvolutions.Count);
     
         var evolutions = new List<Evolution>(slotsToFill);
@@ -134,7 +133,7 @@ public class EvolutionsModule: IStartable, IDisposable
     {
         _experience.OnLevelChanged -= OnLevelUpdated;
 
-        foreach (var evolution in _evolutions)
+        foreach (var evolution in Evolutions)
         {
             evolution.OnLevelUp -= OnEvolutionLevelUp;
             evolution.Dispose();
