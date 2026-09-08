@@ -11,12 +11,12 @@ using Random = UnityEngine.Random;
 namespace _Game.Scripts.GamePlay.World
 {
 
-public readonly struct SpawnedFood
+public readonly struct SpawnedEntity
 {
     public readonly Transform Parent;
     public readonly EntityConfig Config;
         
-    public  SpawnedFood(Transform parent, EntityConfig config)
+    public  SpawnedEntity(Transform parent, EntityConfig config)
     {
         Parent = parent;
         Config = config;
@@ -29,7 +29,7 @@ public class EnvironmentSpawner: IStartable, IDisposable
     private EntitySpawner _spawner;
     private EntitiesRegistry _entitiesRegistry;
     
-    private readonly Dictionary<Vector3Int, SpawnedFood> _spawnedFoods = new();
+    private readonly Dictionary<Vector3Int, SpawnedEntity> _spawnedEntities = new();
     private readonly Dictionary<Vector3Int, EntityScope> _spawnedObjects = new();
     
     [Inject]
@@ -49,7 +49,7 @@ public class EnvironmentSpawner: IStartable, IDisposable
     
     private void TryLoadEnvironment(Vector3Int position, Biome biome, Transform parent)
     {
-        if (!_spawnedFoods.TryGetValue(position, out var item)) return;
+        if (!_spawnedEntities.TryGetValue(position, out var item)) return;
         SpawnPlant(position, item.Parent, item.Config);
     }
 
@@ -62,7 +62,7 @@ public class EnvironmentSpawner: IStartable, IDisposable
         
         var config = environment.FoodItems[Random.Range(0, environment.FoodItems.Length)];
         
-        _spawnedFoods[position] = new(parent, config);
+        _spawnedEntities[position] = new(parent, config);
         SpawnPlant(position, parent, config);
     }
 
@@ -73,7 +73,7 @@ public class EnvironmentSpawner: IStartable, IDisposable
         if (!item)
         {
             _spawnedObjects.Remove(position);
-            _spawnedFoods.Remove(position);
+            _spawnedEntities.Remove(position);
             return;
         }
         _entitiesRegistry.DestroyEntityByScope(item);
