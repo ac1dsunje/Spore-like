@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: UnderWaterPlants
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Biome.EnvironmentConfig
   <FoodItems>k__BackingField:
-  - {fileID: 11400000, guid: 50f484e37a6981d40bebc653fb44bb00, type: 2}
   - {fileID: 11400000, guid: 2b431e0e606960644b69d1ea913c2712, type: 2}
   - {fileID: 11400000, guid: 0ee50afcce5a4264bacb827e4e47b871, type: 2}
   - {fileID: 11400000, guid: 5918d4f95e650584f8040c93f287116e, type: 2}

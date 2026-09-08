@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using _Game.Scripts.GamePlay.Interfaces;
+﻿using _Game.Scripts.GamePlay.Interfaces;
 using UnityEngine;
 using VContainer;
 
@@ -7,12 +6,12 @@ namespace _Game.Scripts.GamePlay.Entities.Animation
 {
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(PolygonCollider2D))]
+[RequireComponent(typeof(CircleCollider2D))]
 public class EntityAnimation: MonoBehaviour, IVisible, ISocial
 {
     private SpriteRenderer _renderer;
     private Animator _animator;
-    private PolygonCollider2D _collider;
+    private CircleCollider2D _collider;
     
     private Sprite _currentSprite;
     
@@ -23,7 +22,7 @@ public class EntityAnimation: MonoBehaviour, IVisible, ISocial
     {
         _renderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
-        _collider = GetComponent<PolygonCollider2D>();
+        _collider = GetComponent<CircleCollider2D>();
     }
 
     private void Start()
@@ -32,30 +31,6 @@ public class EntityAnimation: MonoBehaviour, IVisible, ISocial
         
         SetSprite(_config.Sprite);
         SetAnimator(_config.Controller);
-    }
-
-    private void LateUpdate()
-    {
-        SetColliderShape(_renderer.sprite);
-    }
-
-    private void SetColliderShape(Sprite sprite)
-    {
-        if (_currentSprite == sprite) return;
-        _currentSprite = sprite;
-
-        var shapeCount = sprite.GetPhysicsShapeCount();
-        _collider.pathCount = shapeCount;
-
-        var shape = new List<Vector2>();
-
-        for (var i = 0; i < shapeCount; i++)
-        {
-            shape.Clear();
-
-            sprite.GetPhysicsShape(i, shape);
-            _collider.SetPath(i, shape);
-        }
     }
 
     public EntityModel GetEntityModel() => _model;
