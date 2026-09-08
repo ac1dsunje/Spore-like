@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Slash
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Projectiles.ProjectileConfig
   <HitTime>k__BackingField: 0.3
+  <Speed>k__BackingField: 5
   <AdditionalDamage>k__BackingField: 1
   <FollowSource>k__BackingField: 0
   <OffsetStartPoint>k__BackingField: 0.7

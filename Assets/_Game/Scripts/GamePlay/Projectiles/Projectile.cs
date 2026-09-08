@@ -17,7 +17,6 @@ public class Projectile: MonoBehaviour
     private PolygonCollider2D _collider;
     
     private Sprite _currentSprite;
-    
     private HitInfo _hitInfo;
     
     private void Awake()
@@ -30,6 +29,11 @@ public class Projectile: MonoBehaviour
     private void LateUpdate()
     {
         SetColliderShape(_renderer.sprite);
+    }
+
+    private void Update()
+    {
+        transform.Translate(transform.right * (_config.Speed * Time.deltaTime), Space.World);
     }
 
     private void SetColliderShape(Sprite sprite)
@@ -45,7 +49,6 @@ public class Projectile: MonoBehaviour
         for (var i = 0; i < shapeCount; i++)
         {
             shape.Clear();
-
             sprite.GetPhysicsShape(i, shape);
             _collider.SetPath(i, shape);
         }
@@ -61,6 +64,8 @@ public class Projectile: MonoBehaviour
         SetSprite(_config.Sprite);
         SetAnimator(_config.Controller);
     }
+    
+    // Метод SetDirection больше не нужен!
     
     public void SetHit(HitInfo hit)
     {
@@ -84,7 +89,6 @@ public class Projectile: MonoBehaviour
     }
     
     private void SetSprite(Sprite sprite) => _renderer.sprite = sprite;
-    
     private void SetAnimator(RuntimeAnimatorController controller) => _animator.runtimeAnimatorController = controller;
 
     private IEnumerator Hit()

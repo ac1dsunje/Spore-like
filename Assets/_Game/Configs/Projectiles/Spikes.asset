@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Spikes
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Projectiles.ProjectileConfig
   <HitTime>k__BackingField: 0.5
+  <Speed>k__BackingField: 0
   <AdditionalDamage>k__BackingField: 2
   <FollowSource>k__BackingField: 1
   <OffsetStartPoint>k__BackingField: 0

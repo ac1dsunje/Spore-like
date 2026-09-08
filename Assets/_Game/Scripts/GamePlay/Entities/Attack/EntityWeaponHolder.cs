@@ -11,6 +11,7 @@ public class EntityWeaponHolder: MonoBehaviour
     public void SetAttack(Vector2 targetPosition, HitInfo hitInfo, ProjectileConfig config)
     {
         var weapon = Instantiate(_projectilePrefab);
+        weapon.transform.localScale = Vector3.one;
         UpdateAttackPosition(targetPosition, transform.position, weapon, config);
 
         weapon.Initialize(config, transform);
