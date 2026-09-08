@@ -90,6 +90,7 @@ public class Projectile: MonoBehaviour
     private IEnumerator Hit()
     {
         yield return new WaitForSeconds(_config.HitTime);
+        StopAllCoroutines();
         Destroy(gameObject);
     }
 }

@@ -29,7 +29,7 @@ public class EntityPicker: IStartable, ITickable, IDisposable
 
     private void Pick(Drop drop)
     {
-        switch (drop.GetType)
+        switch (drop.Type)
         {
             case DropType.Food:
                 if (_config.ExperienceConfig.ExperienceConfig.ExperienceTypes.Any(exp => exp.Type == ExperienceType.FoodEating))

@@ -12,7 +12,6 @@ namespace _Game.Scripts.GamePlay.Entities.Attack
 public class EntityWeaponAttack : IDamageSource, IAttackController, IDisposable
 {
     [Inject] private AttackModule _attack;
-    [Inject] private MovementModule _movement;
     [Inject] private IDamageReceiver _receiver;
     [Inject] private EntityWeaponHolder _weapon;
     [Inject] private ProjectileConfig _projectileConfig;
@@ -27,7 +26,7 @@ public class EntityWeaponAttack : IDamageSource, IAttackController, IDisposable
         if (!CanAttack) return;
         
         var hit = new HitInfo(_attack.PhysicalDamage, _attack.IgnoreResistance, this, _receiver);
-        _weapon.SetAttack(targetPosition, _movement.Transform.position, hit, _projectileConfig);
+        _weapon.SetAttack(targetPosition, hit, _projectileConfig);
         
         _coroutineRunner.Run(this, CooldownKey, CooldownRoutine());
     }
