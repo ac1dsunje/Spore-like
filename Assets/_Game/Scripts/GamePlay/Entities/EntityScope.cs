@@ -86,7 +86,6 @@ public class EntityScope: LifetimeScope
             .AsSelf();
         builder.RegisterEntryPoint<ParticlesModule>(Lifetime.Scoped)
             .AsSelf();
-        builder.RegisterComponent(GetComponentInChildren<EntityWeaponHolder>());
         builder.RegisterEntryPoint<EntityStomach>(Lifetime.Scoped);
         builder.RegisterEntryPoint<EntityPicker>(Lifetime.Scoped);
         builder.RegisterEntryPoint<EntityHealth>().As<IHealthController>();

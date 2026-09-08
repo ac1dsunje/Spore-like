@@ -377,7 +377,6 @@ GameObject:
   - component: {fileID: 1894985776445635346}
   - component: {fileID: 6766690008576938077}
   - component: {fileID: 7141615740822153795}
-  - component: {fileID: 5817664088192976576}
   m_Layer: 0
   m_Name: Entity
   m_TagString: Untagged
@@ -458,16 +457,3 @@ MonoBehaviour:
     TypeName: _Game.Scripts.GamePlay.GameplayScope
   autoRun: 0
   autoInjectGameObjects: []
---- !u!114 &5817664088192976576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254078283856608112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d2b12dad6764d9bac737e510e796024, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.Attack.EntityWeaponHolder
-  _projectilePrefab: {fileID: 5065209077788698527, guid: 862bc4508bcaf9f4192f622606c6a7db, type: 3}

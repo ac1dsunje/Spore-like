@@ -630,6 +630,51 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4755174928454083572, guid: e4e8ddd99a3638a4e966c0f3c24058e7, type: 3}
   m_PrefabInstance: {fileID: 4498920137526282035}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1376824918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1376824919}
+  - component: {fileID: 1376824920}
+  m_Layer: 0
+  m_Name: Projectiles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1376824919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376824918}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1986825661}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1376824920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376824918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d2b12dad6764d9bac737e510e796024, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.ProjectileSpawner
+  _projectilePrefab: {fileID: 5065209077788698527, guid: 862bc4508bcaf9f4192f622606c6a7db, type: 3}
 --- !u!224 &1380803052 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5765242464822062076, guid: 189aacc1d15c4f44f8d9bc18abf6bd1a, type: 3}
@@ -713,6 +758,7 @@ Transform:
   - {fileID: 2117726856}
   - {fileID: 1404025116}
   - {fileID: 328076482}
+  - {fileID: 1376824919}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1986825662

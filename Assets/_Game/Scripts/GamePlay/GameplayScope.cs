@@ -70,6 +70,7 @@ public class GameplayScope: LifetimeScope
         builder.RegisterComponentInHierarchy<EntitiesRegistry>();
         builder.RegisterComponentInHierarchy<DropSpawner>();
         builder.RegisterComponentInHierarchy<ParticlesSpawner>();
+        builder.RegisterComponentInHierarchy<ProjectileSpawner>();
     }
 }
 }

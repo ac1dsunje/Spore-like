@@ -13,7 +13,8 @@ public class EntityWeaponAttack : IDamageSource, IAttackController, IDisposable
 {
     [Inject] private AttackModule _attack;
     [Inject] private IDamageReceiver _receiver;
-    [Inject] private EntityWeaponHolder _weapon;
+    [Inject] private ProjectileSpawner _weapon;
+    [Inject] private MovementModule _movement;
     [Inject] private ProjectileConfig _projectileConfig;
     [Inject] private CoroutineRunner _coroutineRunner;
 
@@ -26,7 +27,7 @@ public class EntityWeaponAttack : IDamageSource, IAttackController, IDisposable
         if (!CanAttack) return;
         
         var hit = new HitInfo(_attack.PhysicalDamage, _attack.IgnoreResistance, this, _receiver);
-        _weapon.SetAttack(targetPosition, hit, _projectileConfig);
+        _weapon.SetAttack(targetPosition, _movement.Transform, hit, _projectileConfig);
         
         _coroutineRunner.Run(this, CooldownKey, CooldownRoutine());
     }

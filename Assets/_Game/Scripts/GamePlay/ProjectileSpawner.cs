@@ -2,19 +2,19 @@
 using _Game.Scripts.GamePlay.Projectiles;
 using UnityEngine;
 
-namespace _Game.Scripts.GamePlay.Entities.Attack
+namespace _Game.Scripts.GamePlay
 {
-public class EntityWeaponHolder: MonoBehaviour
+public class ProjectileSpawner: MonoBehaviour
 {
     [SerializeField] private Projectile _projectilePrefab;
 
-    public void SetAttack(Vector2 targetPosition, HitInfo hitInfo, ProjectileConfig config)
+    public void SetAttack(Vector2 targetPosition, Transform entity, HitInfo hitInfo, ProjectileConfig config)
     {
         var weapon = Instantiate(_projectilePrefab);
         weapon.transform.localScale = Vector3.one;
-        UpdateAttackPosition(targetPosition, transform.position, weapon, config);
+        UpdateAttackPosition(targetPosition, entity.position, weapon, config);
 
-        weapon.Initialize(config, transform);
+        weapon.Initialize(config, entity);
 
         weapon.SetHit(hitInfo);
     }
