@@ -2,7 +2,6 @@
 using System.Collections;
 using _Game.Scripts.GamePlay.Entities;
 using UnityEngine;
-using VContainer;
 using VContainer.Unity;
 using CoroutineRunner = _Game.Scripts.Core.Services.CoroutineRunner;
 using Random = UnityEngine.Random;
@@ -11,15 +10,14 @@ namespace _Game.Scripts.GamePlay.World
 {
 public class EnemiesSpawner: IStartable, IDisposable
 {
-    private EntitiesRegistry _registry;
-    private EntitySpawner _spawner;
-    private WorldModel _world;
-    private CoroutineRunner _runner;
+    private readonly EntitiesRegistry _registry;
+    private readonly EntitySpawner _spawner;
+    private readonly WorldModel _world;
+    private readonly CoroutineRunner _runner;
 
     private EntityController _player;
     
-    [Inject]
-    private void Construct(EntitySpawner spawner, EntitiesRegistry registry, WorldModel world, CoroutineRunner runner)
+    public EnemiesSpawner(EntitySpawner spawner, EntitiesRegistry registry, WorldModel world, CoroutineRunner runner)
     {
         _registry = registry;
         _world = world;

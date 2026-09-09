@@ -4,7 +4,6 @@ using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Entities.Configuration;
 using _Game.Scripts.GamePlay.World.Biomes;
 using UnityEngine;
-using VContainer;
 using VContainer.Unity;
 using Random = UnityEngine.Random;
 
@@ -24,15 +23,15 @@ public readonly struct SpawnedEntity
 
 public class EnvironmentSpawner: IStartable, IDisposable
 {
-    private WorldTileRenderer _tileRenderer;
-    private EntitySpawner _spawner;
-    private EntitiesRegistry _entitiesRegistry;
+    private readonly WorldTileRenderer _tileRenderer;
+    private readonly EntitySpawner _spawner;
+    private readonly EntitiesRegistry _entitiesRegistry;
     
     private readonly Dictionary<Vector3Int, SpawnedEntity> _spawnedEntities = new();
     private readonly Dictionary<Vector3Int, EntityScope> _spawnedObjects = new();
     
-    [Inject]
-    private void Construct(WorldTileRenderer generator, EntitySpawner spawner, EntitiesRegistry entitiesRegistry)
+    
+    public EnvironmentSpawner(WorldTileRenderer generator, EntitySpawner spawner, EntitiesRegistry entitiesRegistry)
     {
         _tileRenderer = generator;
         _spawner = spawner;

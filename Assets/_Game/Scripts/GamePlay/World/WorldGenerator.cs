@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
-using VContainer;
+using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.World
 {
-public class WorldGenerator: IDisposable
+public class WorldGenerator: IInitializable, IDisposable
 {
     private const int RenderDistance = 1;
 
-    private WorldModel _model;
-    private EntitiesRegistry _registry;
+    private readonly WorldModel _model;
+    private readonly EntitiesRegistry _registry;
     
     private MovementModule _player;
     private readonly HashSet<Vector3Int> _loadedTiles = new();
@@ -20,16 +20,18 @@ public class WorldGenerator: IDisposable
     public event Action<Vector3Int> OnTileAddRequested;
     public event Action<Vector3Int> OnTileRemoveRequested;
     
-    [Inject]
-    private void Construct(WorldModel model, EntitiesRegistry registry)
+    public WorldGenerator(WorldModel model, EntitiesRegistry registry)
     {
         _model = model;
         _registry = registry;
-        
-        _registry.OnPlayerInitialized += Initialize;
     }
 
-    private void Initialize(EntityController player)
+    public void Initialize()
+    {
+        _registry.OnPlayerInitialized += AddPlayer;
+    }
+
+    private void AddPlayer(EntityController player)
     {
         _player = player.Model.Movement;
         _player.OnGridPositionChanged += Generate;
@@ -81,7 +83,7 @@ public class WorldGenerator: IDisposable
         {
             _player.OnGridPositionChanged -= Generate;
         }
-        _registry.OnPlayerInitialized -= Initialize;
+        _registry.OnPlayerInitialized -= AddPlayer;
     }
 }
 }
