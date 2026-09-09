@@ -2,19 +2,29 @@
 using _Game.Scripts.GamePlay.Drops;
 using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Modules;
-using VContainer;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
 public class EntityDeath: IStartable, IDisposable
 {
-    [Inject] private EntitiesRegistry _entitiesRegistry;
-    [Inject] private ExperienceModule _experience;
-    [Inject] private HealthModule _health;
-    [Inject] private DropSpawner _dropSpawner;
-    [Inject] private DropsConfig _dropConfigs;
-    [Inject] private MovementModule _movement;
+    private readonly EntitiesRegistry _entitiesRegistry;
+    private readonly ExperienceModule _experience;
+    private readonly HealthModule _health;
+    private readonly DropSpawner _dropSpawner;
+    private readonly DropsConfig _dropConfigs;
+    private readonly MovementModule _movement;
+
+    public EntityDeath(EntitiesRegistry entitiesRegistry, ExperienceModule experience, HealthModule health,
+        DropSpawner dropSpawner, DropsConfig dropConfig, MovementModule movement)
+    {
+        _entitiesRegistry = entitiesRegistry;
+        _experience = experience;
+        _health = health;
+        _dropSpawner = dropSpawner;
+        _dropConfigs = dropConfig;
+        _movement = movement;
+    }
 
     public void Start()
     {

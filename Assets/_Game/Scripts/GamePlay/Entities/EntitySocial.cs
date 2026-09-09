@@ -2,15 +2,20 @@
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
-using VContainer;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
 public class EntitySocial : IInitializable, IDisposable
 {
-    [Inject] private VisionHitbox _visionHitbox;
-    [Inject] private SocialModule _social; 
+    private readonly VisionHitbox _visionHitbox;
+    private readonly SocialModule _social;
+
+    public EntitySocial(VisionHitbox visionHitbox, SocialModule social)
+    {
+        _visionHitbox = visionHitbox;
+        _social = social;
+    }
 
     public void Initialize()
     {

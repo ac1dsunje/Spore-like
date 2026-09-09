@@ -5,17 +5,25 @@ using _Game.Scripts.GamePlay.Entities.Configuration;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Experience;
 using _Game.Scripts.GamePlay.Modules;
-using VContainer;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
 public class EntityPicker: IStartable, ITickable, IDisposable
 {
-    [Inject] private PickerHitbox _pickerHitbox;
-    [Inject] private PickingModule _pickingModule;
-    [Inject] private StomachModule _stomach;
-    [Inject] private EntityConfig _config;
+    private readonly PickerHitbox _pickerHitbox;
+    private readonly PickingModule _pickingModule;
+    private readonly StomachModule _stomach;
+    private readonly EntityConfig _config;
+
+    public EntityPicker(PickerHitbox pickerHitbox, PickingModule pickingModule, StomachModule stomachModule,
+        EntityConfig entityConfig)
+    {
+        _pickerHitbox = pickerHitbox;
+        _pickingModule = pickingModule;
+        _stomach = stomachModule;
+        _config = entityConfig;
+    }
 
     public void Start()
     {

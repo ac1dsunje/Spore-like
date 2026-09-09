@@ -3,7 +3,6 @@ using System.Collections;
 using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
-using VContainer;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities.Health
@@ -13,8 +12,14 @@ public class EntityRegeneration: IStartable, IDisposable
     private const string RegenerationKey = "Regeneration";
     private const string WaitKey = "WaitBeforeRegeneration";
 
-    [Inject] private HealthModule _health;
-    [Inject] private CoroutineRunner _runner;
+    private readonly HealthModule _health;
+    private readonly CoroutineRunner _runner;
+
+    public EntityRegeneration(HealthModule health, CoroutineRunner runner)
+    {
+        _health = health;
+        _runner = runner;
+    }
 
     public void Start()
     {

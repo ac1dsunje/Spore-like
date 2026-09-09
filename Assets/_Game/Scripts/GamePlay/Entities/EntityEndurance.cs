@@ -1,13 +1,17 @@
 ﻿using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
-using VContainer;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
 public class EntityEndurance: ITickable
 {
-    [Inject] private EnduranceModule _module;
+    private readonly EnduranceModule _module;
+
+    public EntityEndurance(EnduranceModule module)
+    {
+        _module = module;
+    }
 
     public void Tick()
     {

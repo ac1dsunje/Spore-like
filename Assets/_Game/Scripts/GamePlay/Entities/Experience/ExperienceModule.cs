@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Experience;
 using _Game.Scripts.GamePlay.UI.Bar;
-using VContainer;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities.Experience
@@ -18,13 +17,20 @@ public class ExperienceModule: IStartable, IDisposable, IResource
 
     private int _levelScaler;
     
-    [Inject] private EntityExperienceConfig _config;
-    [Inject] private EntityModel _model;
-    [Inject] private ExperienceFactory _expFactory;
+    private readonly EntityExperienceConfig _config;
+    private readonly EntityModel _model;
+    private readonly ExperienceFactory _expFactory;
     
     public event Action<int> OnLevelChanged;
 
     public event Action<float, float> OnValueChanged;
+
+    public ExperienceModule(EntityExperienceConfig config, EntityModel model, ExperienceFactory factory)
+    {
+        _config = config;
+        _model = model;
+        _expFactory = factory;
+    }
 
     public void Start()
     {

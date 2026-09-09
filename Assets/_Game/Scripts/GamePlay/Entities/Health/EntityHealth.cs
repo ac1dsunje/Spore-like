@@ -1,14 +1,20 @@
 ﻿using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
-using VContainer;
 
 namespace _Game.Scripts.GamePlay.Entities.Health
 {
 public class EntityHealth: IHealthController
 {
-    [Inject] private HealthModule _health;
-    [Inject] private DefenseModule _defense;
-    [Inject] private IDamageSource _damageSource;
+    private readonly HealthModule _health;
+    private readonly DefenseModule _defense;
+    private readonly IDamageSource _damageSource;
+
+    public EntityHealth(HealthModule health, DefenseModule defense, IDamageSource damageSource)
+    {
+        _health = health;
+        _defense = defense;
+        _damageSource = damageSource;
+    }
 
     public void TakeDamage(HitInfo hit)
     {

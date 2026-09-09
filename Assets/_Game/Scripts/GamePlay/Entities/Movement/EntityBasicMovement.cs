@@ -1,19 +1,24 @@
 ﻿using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
-using VContainer;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities.Movement
 {
 public class EntityBasicMovement: IInitializable, IFixedTickable, ITickable, IMovementController
 {
-    [Inject] private RigidbodyController _controller;
-    [Inject] private MovementModule _movement;
+    private readonly RigidbodyController _controller;
+    private readonly MovementModule _movement;
 
     private Vector2 _lastMovementDirection = Vector2.right;
     private Vector3Int GridPosition => _controller.GridPosition;
 
     private Vector2 _direction;
+
+    public EntityBasicMovement(RigidbodyController controller, MovementModule movement)
+    {
+        _controller = controller;
+        _movement = movement;
+    }
 
     public void Initialize()
     {

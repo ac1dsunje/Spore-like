@@ -5,7 +5,6 @@ using _Game.Scripts.GamePlay.Buffs;
 using _Game.Scripts.GamePlay.Buffs.Types;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
-using VContainer;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
@@ -18,10 +17,18 @@ public class BuffsModule: IStartable, IDisposable
     private readonly Dictionary<BuffType, Buff> _buffs = new();
     private readonly List<Buff> _activeBuffs = new();
 
-    [Inject] private EntityStats _stats;
-    [Inject] private HealthModule _health;
-    [Inject] private BuffsDatabase _dataDatabase;
-    [Inject] private Ticker _ticker;
+    private readonly EntityStats _stats;
+    private readonly HealthModule _health;
+    private readonly BuffsDatabase _dataDatabase;
+    private readonly Ticker _ticker;
+
+    public BuffsModule(EntityStats stats, HealthModule health, BuffsDatabase dataDatabase, Ticker timer)
+    {
+        _stats = stats;
+        _health = health;
+        _dataDatabase = dataDatabase;
+        _ticker = timer;
+    }
     
     public void Start()
     {

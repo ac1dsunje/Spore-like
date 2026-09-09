@@ -1,17 +1,25 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Entities.Animation;
 using _Game.Scripts.GamePlay.Modules;
-using VContainer;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
 public class ParticlesModule: IStartable, IDisposable
 {
-    [Inject] private ParticlesSpawner _particles;
-    [Inject] private HealthModule _health;
-    [Inject] private AnimationSettings _config;
-    [Inject] private MovementModule _movement;
+    private readonly ParticlesSpawner _particles;
+    private readonly HealthModule _health;
+    private readonly AnimationSettings _config;
+    private readonly MovementModule _movement;
+
+    public ParticlesModule(ParticlesSpawner particlesSpawner, HealthModule health, AnimationSettings config,
+        MovementModule movement)
+    {
+        _particles = particlesSpawner;
+        _health = health;
+        _config = config;
+        _movement = movement;
+    }
     
     public void Start()
     {

@@ -4,19 +4,25 @@ using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Buffs;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
-using VContainer;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
 public class EntityStomach: IStartable, IDisposable
 {
-    [Inject] private StomachModule _stomach;
-    [Inject] private BuffsModule _buffs;
-    [Inject] private CoroutineRunner _coroutineRunner;
+    private readonly StomachModule _stomach;
+    private readonly BuffsModule _buffs;
+    private readonly CoroutineRunner _coroutineRunner;
 
     private const float LoseHungerTime = 5f;
     private const string HungerCoroutineKey = "HungerLoop";
+
+    public EntityStomach(StomachModule stomach, BuffsModule buffs, CoroutineRunner coroutineRunner)
+    {
+        _stomach = stomach;
+        _buffs = buffs;
+        _coroutineRunner = coroutineRunner;
+    }
     
     public void Start()
     {

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Abilities;
 using UnityEngine;
-using VContainer;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
@@ -13,9 +12,16 @@ public class AbilitiesModule: IStartable, IDisposable
     public event Action<AbilityConfig> OnAbilityAdded;
     
     private readonly HashSet<Ability> _abilities = new();
-    [Inject] private AbilityFactory _factory;
-    [Inject] private EntityModel _entityModel;
-    [Inject] private Ticker _ticker;
+    private readonly AbilityFactory _factory;
+    private readonly EntityModel _entityModel;
+    private readonly Ticker _ticker;
+
+    public AbilitiesModule(Ticker ticker, AbilityFactory factory, EntityModel entityModel)
+    {
+        _ticker = ticker;
+        _factory = factory;
+        _entityModel = entityModel;
+    }
 
     public void Start()
     {

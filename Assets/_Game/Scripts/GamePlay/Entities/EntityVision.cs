@@ -3,16 +3,22 @@ using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
-using VContainer;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
 public class EntityVision : IInitializable, IDisposable
 {
-    [Inject] private VisionModule _module;
-    [Inject] private CameraController _camController;
-    [Inject] private VisionHitbox _visionHitbox;
+    private readonly VisionModule _module;
+    private readonly CameraController _camController;
+    private readonly VisionHitbox _visionHitbox;
+
+    public EntityVision(VisionModule module, CameraController camController, VisionHitbox visionHitbox)
+    {
+        _module = module;
+        _camController = camController;
+        _visionHitbox = visionHitbox;
+    }
 
     public void Initialize()
     {
