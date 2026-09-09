@@ -1,16 +1,22 @@
 ﻿using _Game.Scripts.Core.Services;
-using UnityEngine;
-using VContainer;
+using VContainer.Unity;
 
 namespace _Game.Scripts.Bootstrap
 {
-public class Bootstrap: MonoBehaviour
+public class Bootstrap: IStartable
 {
-    [Inject] private SceneLoaderService _sceneLoaderService;
+    private readonly SceneLoaderService _sceneLoaderService;
+    private readonly CoroutineRunner _coroutineRunner;
 
-    private void Start()
+    public Bootstrap(SceneLoaderService sceneLoaderService, CoroutineRunner coroutineRunner)
     {
-        StartCoroutine(_sceneLoaderService.LoadMainMenu());
+        _sceneLoaderService = sceneLoaderService;
+        _coroutineRunner = coroutineRunner;
+    }
+
+    public void Start()
+    {
+        _coroutineRunner.Run(this, "LoadMainMenu", _sceneLoaderService.LoadMainMenu());
     }
 }
 }
