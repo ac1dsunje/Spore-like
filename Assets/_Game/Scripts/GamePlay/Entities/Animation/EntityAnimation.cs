@@ -13,8 +13,6 @@ public class EntityAnimation: MonoBehaviour, IVisible, ISocial
     private Animator _animator;
     private CircleCollider2D _collider;
     
-    private Sprite _currentSprite;
-    
     private AnimationSettings _config;
     private EntityModel _model;
 
