@@ -13,19 +13,29 @@ public class UIManager: MonoBehaviour
     private AbilitiesModule _abilitiesModule;
     private EntitiesRegistry _registry;
     
-    [Inject] private PauseUIScreen _pauseUIScreen;
-    [Inject] private EvolutionChooseUIScreen _evolutionChooseUIScreen;
-    
-    [Inject] private OverlayUIScreen _overlayUIScreen;
-    [Inject] private ActiveEvolutionsDisplay _activeEvolutionsDisplay;
-    [Inject] private ActiveAbilitiesDisplay  _activeAbilitiesDisplay;
-    [Inject] private ActiveBuffsDisplay _activeBuffsDisplay;
-    [Inject] private BarsPanelUI _barsPanelUI;
-    [Inject] private DescriptionUI _descriptionUI;
+    private PauseUIScreen _pauseUIScreen;
+    private EvolutionChooseUIScreen _evolutionChooseUIScreen;
+    private OverlayUIScreen _overlayUIScreen;
+    private ActiveEvolutionsDisplay _activeEvolutionsDisplay;
+    private ActiveAbilitiesDisplay  _activeAbilitiesDisplay;
+    private ActiveBuffsDisplay _activeBuffsDisplay;
+    private BarsPanelUI _barsPanelUI;
+    private DescriptionUI _descriptionUI;
 
     [Inject]
-    private void Construct(EntitiesRegistry registry)
+    private void Construct(EntitiesRegistry registry, PauseUIScreen pauseUIScreen,  EvolutionChooseUIScreen evolutionChooseUIScreen,
+        OverlayUIScreen overlayUIScreen, ActiveEvolutionsDisplay activeEvolutionsDisplay, ActiveAbilitiesDisplay activeAbilitiesDisplay,
+        ActiveBuffsDisplay activeBuffsDisplay, BarsPanelUI barsPanelUI, DescriptionUI descriptionUI)
     {
+        _pauseUIScreen = pauseUIScreen;
+        _evolutionChooseUIScreen = evolutionChooseUIScreen;
+        _overlayUIScreen = overlayUIScreen;
+        _activeEvolutionsDisplay = activeEvolutionsDisplay;
+        _activeAbilitiesDisplay = activeAbilitiesDisplay;
+        _activeBuffsDisplay = activeBuffsDisplay;
+        _barsPanelUI = barsPanelUI;
+        _descriptionUI = descriptionUI;
+        
         _registry = registry;
         _registry.OnPlayerInitialized += AddPlayer;
     }

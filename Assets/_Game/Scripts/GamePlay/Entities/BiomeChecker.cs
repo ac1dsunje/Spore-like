@@ -4,7 +4,6 @@ using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.World;
 using _Game.Scripts.GamePlay.World.Biomes;
 using UnityEngine;
-using VContainer;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
@@ -19,7 +18,6 @@ public class BiomeChecker: IStartable, IDisposable
     
     private Biome _currentBiome;
     
-    [Inject]
     public BiomeChecker(WorldModel worldModel, MovementModule movement, EnvironmentModule environment, 
         BuffsModule buffsModule, BreathingModule breathingModule)
     {

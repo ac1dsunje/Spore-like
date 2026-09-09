@@ -6,7 +6,6 @@ namespace _Game.Scripts.GamePlay.UI
 {
 public class ActiveAbilitiesDisplay: MonoBehaviour
 {
-    [Header("Abilities")]
     [SerializeField] private GameObject _slotPrefab;
     [SerializeField] private Transform  _container;
     

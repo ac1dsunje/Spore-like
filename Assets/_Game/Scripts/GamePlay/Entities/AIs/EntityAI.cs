@@ -11,7 +11,6 @@ using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Interfaces;
 using UnityEngine;
-using VContainer;
 using VContainer.Unity;
 using Random = UnityEngine.Random;
 using Vector2 = UnityEngine.Vector2;
@@ -20,19 +19,33 @@ namespace _Game.Scripts.GamePlay.Entities.AIs
 {
 public class EntityAI : IStartable, IDisposable
 {
-    [Inject] private IMovementController _movement;
-    [Inject] private IAttackController _attacker;
-    [Inject] private IHealthController _healthController;
-    [Inject] private BodyHitbox _hitBox;
-    [Inject] private EvolutionsModule _evolutions;
-    [Inject] private EntityModel _model;
-    [Inject] private CoroutineRunner _coroutineRunner;
-    [Inject] private ExperienceModule _experience;
+    private readonly IMovementController _movement;
+    private readonly IAttackController _attacker;
+    private readonly IHealthController _healthController;
+    private readonly BodyHitbox _hitBox;
+    private readonly EvolutionsModule _evolutions;
+    private readonly EntityModel _model;
+    private readonly CoroutineRunner _coroutineRunner;
+    private readonly ExperienceModule _experience;
 
     private const string DirectionChangeKey = "DirectionChange";
 
     private const float MinDirectionChangeTime = 0.5f;
     private const float MaxDirectionChangeTime = 2f;
+
+    public EntityAI(IMovementController movement, IAttackController attacker, IHealthController healthController,
+        BodyHitbox hitbox, EvolutionsModule evolutions, EntityModel model, CoroutineRunner coroutineRunner, 
+        ExperienceModule experience)
+    {
+        _movement = movement;
+        _attacker = attacker;
+        _healthController = healthController;
+        _hitBox = hitbox;
+        _evolutions = evolutions;
+        _model = model;
+        _coroutineRunner = coroutineRunner;
+        _experience = experience;
+    }
 
     public void Start()
     {

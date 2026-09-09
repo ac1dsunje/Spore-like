@@ -1,12 +1,16 @@
 ﻿using System.Text;
 using _Game.Scripts.GamePlay.Types;
-using VContainer;
 
 namespace _Game.Scripts.GamePlay.Evolutions.UI
 {
 public class EvolutionFormatter
 {
-    [Inject] private StatTypeConfig _statsConfig;
+    private readonly StatTypeConfig _statsConfig;
+
+    public EvolutionFormatter(StatTypeConfig statsConfig)
+    {
+        _statsConfig = statsConfig;
+    }
     
     private string FormatStats(SourceStat stat)
     {

@@ -5,19 +5,28 @@ using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Interfaces;
 using UnityEngine;
-using VContainer;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities.AIs
 {
 public class PlayerAI : IStartable, ITickable, IDisposable
 {
-    [Inject] private IMovementController _movement;
-    [Inject] private IAttackController _attack;
-    [Inject] private IHealthController _health;
-    [Inject] private BodyHitbox _hitBox;
-    [Inject] private CameraController _camera;
+    private readonly IMovementController _movement;
+    private readonly IAttackController _attack;
+    private readonly IHealthController _health;
+    private readonly BodyHitbox _hitBox;
+    private readonly CameraController _camera;
 
+    public PlayerAI(IMovementController movement, IAttackController attack, IHealthController health, BodyHitbox hitbox,
+        CameraController camera)
+    {
+        _movement = movement;
+        _attack = attack;
+        _health = health;
+        _hitBox = hitbox;
+        _camera = camera;
+    }
+    
     public void Start()
     {
         _hitBox.OnHit += TakeDamage;

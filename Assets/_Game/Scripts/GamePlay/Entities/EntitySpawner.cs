@@ -9,9 +9,6 @@ public class EntitySpawner: MonoBehaviour
     [SerializeField] private EntityScope _entityPrefab;
     [SerializeField] private EntityConfig _playerConfig;
 
-    [SerializeField] private Vector2 _enemySpawnPoint;
-    [SerializeField] private EntityConfig _enemyConfig;
-
     public event Action<EntityScope> OnEntitySpawn;
     public event Action<EntityScope> OnPlayerSpawn;
     
