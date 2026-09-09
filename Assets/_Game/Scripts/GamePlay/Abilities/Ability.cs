@@ -1,7 +1,6 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
-using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Abilities
 {
@@ -10,93 +9,70 @@ public enum AbilityActivationType
     Pressing = 0,
     Toggle = 1,
 }
+
 public abstract class Ability: IDisposable, IEnduranceUser
 {
-    private readonly AbilityConfig _config;
+    public AbilityConfig Config { get; }
+
+    public bool IsActive { get; private set; }
 
     private readonly EnduranceModule _endurance;
     
-    private bool _isActive;
-    
     protected Ability(EnduranceModule endurance, AbilityConfig config)
     {
-        _config = config;
+        Config = config;
         _endurance = endurance;
     }
     
     public void Update(float deltaTime)
     {
-        switch (_config.ActivationType)
-        {
-            case AbilityActivationType.Pressing:
-                UpdatePressing();
-                break;
-
-            case AbilityActivationType.Toggle:
-                UpdateToggle();
-                break;
-        }
-
-        if (!_isActive)
+        if (!IsActive)
             return;
 
-        if (_config.HasActivePhase)
-        {
-            if (_endurance.HasEnoughEndurance(_config.InUseCost * deltaTime))
-                Do(deltaTime);
-            else
-                Disable();
-        }
+        if (!Config.HasActivePhase) return;
+        if (_endurance.HasEnoughEndurance(Config.InUseCost * deltaTime))
+            Do(deltaTime);
+        else
+            Disable();
     }
 
-    private void UpdatePressing()
+    public void TryActivate()
     {
-        if (Input.GetKeyDown(_config.Key) &&
-            !_isActive &&
-            _endurance.HasEnoughEndurance(_config.StartCost))
-        {
-            Enable();
-        }
-
-        if (Input.GetKeyUp(_config.Key) && _isActive)
-        {
-            Disable();
-        }
+        if (IsActive) return;
+        if (!_endurance.HasEnoughEndurance(Config.StartCost)) return;
+        
+        Enable();
     }
 
-    private void UpdateToggle()
+    public void TryDeactivate()
     {
-        if (!Input.GetKeyDown(_config.Key))
-            return;
-
-        if (_isActive)
-            Disable();
-        else if (_endurance.HasEnoughEndurance(_config.StartCost))
-            Enable();
+        if (!IsActive) return;
+        
+        Disable();
     }
     
     protected virtual void Enable()
     {
-        _isActive = true;
+        IsActive = true;
         _endurance.AddUser(this);
-        _endurance.UseEndurance(_config.StartCost);
+        _endurance.UseEndurance(Config.StartCost);
     }
 
     protected virtual void Do(float deltaTime)
     {
-        if (!_config.HasActivePhase) return;
-        _endurance.UseEndurance(_config.InUseCost * deltaTime);
+        if (!Config.HasActivePhase) return;
+        _endurance.UseEndurance(Config.InUseCost * deltaTime);
     }
 
     protected virtual void Disable()
     {
-        _isActive = false;
+        IsActive = false;
         _endurance.RemoveUser(this);
     }
 
     public void Dispose()
     {
-        if (_isActive) Disable();
+        if (IsActive) Disable();
     }
 }
 }

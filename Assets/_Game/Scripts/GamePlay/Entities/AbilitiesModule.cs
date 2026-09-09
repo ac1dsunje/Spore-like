@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Abilities;
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
@@ -37,7 +38,39 @@ public class AbilitiesModule: IStartable, IDisposable
     {
         foreach (var ability in _abilities)
         {
+            HandleInput(ability);
             ability.Update(deltaTime);
+        }
+    }
+
+    private void HandleInput(Ability ability)
+    {
+        var config = ability.Config;
+        var isKeyDown = Input.GetKeyDown(config.Key);
+        var isKeyUp = Input.GetKeyUp(config.Key);
+
+        switch (config.ActivationType)
+        {
+            case AbilityActivationType.Pressing:
+                if (isKeyDown && !ability.IsActive)
+                {
+                    ability.TryActivate();
+                }
+                else if (isKeyUp && ability.IsActive)
+                {
+                    ability.TryDeactivate();
+                }
+                break;
+
+            case AbilityActivationType.Toggle:
+                if (isKeyDown)
+                {
+                    if (ability.IsActive)
+                        ability.TryDeactivate();
+                    else
+                        ability.TryActivate();
+                }
+                break;
         }
     }
 
