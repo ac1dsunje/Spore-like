@@ -15,6 +15,7 @@ public class ProjectileConfig: ScriptableObject
     [field: SerializeField] public float Speed { get; private set; }
     [field: SerializeField] public int MaxHits { get; private set; }
     [field: SerializeField] public float AdditionalDamage { get; private set; }
+    [field: SerializeField] public float IgnoreResistance { get; private set; }
     [field: SerializeField] public bool FollowSource { get; private set; }
     [field: SerializeField] public ProjectileType Type { get; private set; }
     [field: SerializeField] public float OffsetStartPoint { get; private set; }

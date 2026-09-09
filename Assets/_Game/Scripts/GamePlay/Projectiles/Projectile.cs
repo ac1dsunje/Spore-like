@@ -71,6 +71,7 @@ public class Projectile: MonoBehaviour
             _config.Type == ProjectileType.Melee ? _setHit.Receiver : null);
         
         _setHit.AddDamage(_config.AdditionalDamage);
+        _setHit.AddIgnoreResistance(_config.IgnoreResistance);
         StartCoroutine(Hit());
     }
     

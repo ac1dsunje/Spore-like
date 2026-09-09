@@ -19,6 +19,11 @@ public struct HitInfo
     {
         Damage += damage;
     }
+
+    public void AddIgnoreResistance(float ignoreResistance)
+    {
+        IgnoreResistance += ignoreResistance;
+    }
 }
 
 public interface IDamageSource
