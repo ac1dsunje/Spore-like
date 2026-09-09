@@ -10,13 +10,12 @@ using Random = UnityEngine.Random;
 
 namespace _Game.Scripts.GamePlay.World
 {
-
 public readonly struct SpawnedEntity
 {
     public readonly Transform Parent;
     public readonly EntityConfig Config;
         
-    public  SpawnedEntity(Transform parent, EntityConfig config)
+    public SpawnedEntity(Transform parent, EntityConfig config)
     {
         Parent = parent;
         Config = config;
@@ -58,9 +57,9 @@ public class EnvironmentSpawner: IStartable, IDisposable
         if (!CanPlaceObject(biome.ChanceEnvironment)) return;
         
         var environment = biome.GetRandomEnvironment();
-        if (!environment) return;
+        if (environment == null) return;
         
-        var config = environment.FoodItems[Random.Range(0, environment.FoodItems.Length)];
+        var config = environment.Entity;
         
         _spawnedEntities[position] = new(parent, config);
         SpawnPlant(position, parent, config);

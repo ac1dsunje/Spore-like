@@ -1,12 +1,13 @@
-﻿using _Game.Scripts.GamePlay.Entities.Configuration;
+﻿using System;
 using UnityEngine;
+using _Game.Scripts.GamePlay.Entities.Configuration;
 
 namespace _Game.Scripts.GamePlay.World.Biomes
 {
-[CreateAssetMenu(fileName = "New Environment Config", menuName = "Game/World/Biomes/Environment")]
-public class EnvironmentConfig: ScriptableObject
+[Serializable]
+public class EnvironmentConfig
 {
-    [field: SerializeField] public EntityConfig[] FoodItems { get; private set; }
+    [field: SerializeField] public EntityConfig Entity { get; private set; }
     [field: SerializeField] public int Chance { get; private set; } = 50;
 }
 }
