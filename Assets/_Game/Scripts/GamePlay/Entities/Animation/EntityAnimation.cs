@@ -15,8 +15,15 @@ public class EntityAnimation: MonoBehaviour, IVisible, ISocial
     
     private Sprite _currentSprite;
     
-    [Inject] private AnimationSettings _config;
-    [Inject] private EntityModel _model;
+    private AnimationSettings _config;
+    private EntityModel _model;
+
+    [Inject]
+    private void Construct(AnimationSettings config, EntityModel model)
+    {
+        _config = config;
+        _model = model;
+    }
 
     private void Awake()
     {
