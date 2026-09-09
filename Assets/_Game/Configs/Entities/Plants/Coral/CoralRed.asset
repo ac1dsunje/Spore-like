@@ -13,7 +13,63 @@ MonoBehaviour:
   m_Name: CoralRed
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Food.FoodConfig
   <AIType>k__BackingField: 0
-  <EntityStatsConfig>k__BackingField: {fileID: 11400000, guid: c7bd36ac0aa1bee4cb40beb322f8d1b7, type: 2}
+  <Stats>k__BackingField:
+  - <Type>k__BackingField: 0
+    <Value>k__BackingField: 0
+  - <Type>k__BackingField: 1
+    <Value>k__BackingField: 0
+  - <Type>k__BackingField: 2
+    <Value>k__BackingField: 0
+  - <Type>k__BackingField: 3
+    <Value>k__BackingField: 0
+  - <Type>k__BackingField: 4
+    <Value>k__BackingField: 0
+  - <Type>k__BackingField: 5
+    <Value>k__BackingField: 0
+  - <Type>k__BackingField: 6
+    <Value>k__BackingField: 0
+  - <Type>k__BackingField: 7
+    <Value>k__BackingField: 0
+  - <Type>k__BackingField: 8
+    <Value>k__BackingField: 0
+  - <Type>k__BackingField: 10
+    <Value>k__BackingField: 15
+  - <Type>k__BackingField: 14
+    <Value>k__BackingField: 0
+  - <Type>k__BackingField: 15
+    <Value>k__BackingField: 0
+  - <Type>k__BackingField: 16
+    <Value>k__BackingField: 0
+  - <Type>k__BackingField: 17
+    <Value>k__BackingField: 1
+  - <Type>k__BackingField: 18
+    <Value>k__BackingField: 0
+  - <Type>k__BackingField: 19
+    <Value>k__BackingField: 0
+  - <Type>k__BackingField: 20
+    <Value>k__BackingField: 0
+  - <Type>k__BackingField: 22
+    <Value>k__BackingField: 0
+  - <Type>k__BackingField: 23
+    <Value>k__BackingField: 30
+  - <Type>k__BackingField: 26
+    <Value>k__BackingField: 0
+  - <Type>k__BackingField: 30
+    <Value>k__BackingField: 1
+  - <Type>k__BackingField: 31
+    <Value>k__BackingField: 0.5
+  - <Type>k__BackingField: 32
+    <Value>k__BackingField: 1
+  - <Type>k__BackingField: 34
+    <Value>k__BackingField: 0
+  - <Type>k__BackingField: 35
+    <Value>k__BackingField: 5
+  - <Type>k__BackingField: 36
+    <Value>k__BackingField: 0
+  - <Type>k__BackingField: 37
+    <Value>k__BackingField: 0
+  - <Type>k__BackingField: 38
+    <Value>k__BackingField: 20
   <ExperienceConfig>k__BackingField:
     <LevelScaler>k__BackingField: 1
     <ExperienceConfig>k__BackingField:

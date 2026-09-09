@@ -32,7 +32,6 @@ public class EntityScope: LifetimeScope
         // Configs
         builder.RegisterInstance(_entityConfig);
         builder.RegisterInstance(_entityConfig.AnimationSettings);
-        builder.RegisterInstance(_entityConfig.EntityStatsConfig);
         builder.RegisterInstance(_entityConfig.ExperienceConfig);
         builder.RegisterInstance(_entityConfig.Drops);
         builder.RegisterInstance(_entityConfig.Projectile);

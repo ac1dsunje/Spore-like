@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Game.Scripts.GamePlay.Entities.Configuration;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Types;
 using VContainer;
@@ -17,7 +18,7 @@ public class EntityStats: IStartable
     public event Action<StatType, float> OnStatUpdated;
     
     [Inject] private StatTypeConfig _config;
-    [Inject] private StatsConfig _entityStatsConfig;
+    [Inject] private EntityConfig _entityStatsConfig;
     
     public void Start()
     {
