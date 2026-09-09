@@ -40,7 +40,7 @@ public class BuffsModule: IStartable, IDisposable
                 BuffType.Heat => new HeatDebuff(_stats, _health, buffConfig),
                 BuffType.Cold => new ColdDebuff(_stats, _health, buffConfig),
                 BuffType.Starvation => new StarvationDebuff(_stats, _health, buffConfig),
-                BuffType.Overeating => new OvereatingDebuff(_stats, _health, buffConfig),
+                BuffType.Overeating => new OvereatingDebuff(_stats, buffConfig),
                 _ => null
             };
 

@@ -54,6 +54,7 @@ public class EntityScope: LifetimeScope
         builder.RegisterEntryPoint<MovementModule>(Lifetime.Scoped).AsSelf();
         
         builder.RegisterEntryPoint<EnvironmentModule>(Lifetime.Scoped).AsSelf();
+        builder.RegisterEntryPoint<BreathingModule>(Lifetime.Scoped).AsSelf();
         builder.RegisterEntryPoint<SocialModule>(Lifetime.Scoped).AsSelf();
         
         // Behaviours

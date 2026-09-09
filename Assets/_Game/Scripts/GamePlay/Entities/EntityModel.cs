@@ -15,6 +15,7 @@ public class EntityModel
     [Inject] public AttackModule Attack { get; private set; }
     [Inject] public MovementModule Movement { get; private set; }
     [Inject] public EnvironmentModule Environment { get; private set; }
+    [Inject] public BreathingModule Breathing { get; private set; }
     [Inject] public SocialModule Social { get; private set; }
 }
 }
