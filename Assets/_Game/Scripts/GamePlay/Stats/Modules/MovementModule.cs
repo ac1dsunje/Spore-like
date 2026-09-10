@@ -19,7 +19,6 @@ public class MovementModule : StatModule
 
     public event Action<float> OnDistanceOvercome;
     public event Action<Vector3Int> OnGridPositionChanged;
-    public event Action OnSprint;
     
     private float _moveSpeed;
     private float _acceleration;
@@ -47,7 +46,6 @@ public class MovementModule : StatModule
     public void SetSprint(bool state)
     {
         _useSprint = state;
-        OnSprint?.Invoke();
     }
 
     public void UpdateGridPosition(Vector3Int position)
