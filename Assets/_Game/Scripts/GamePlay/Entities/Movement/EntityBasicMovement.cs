@@ -4,7 +4,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities.Movement
 {
-public class EntityBasicMovement: IInitializable, IFixedTickable, ITickable, IMovementController
+public class EntityBasicMovement: IFixedTickable, ITickable, IMovementController
 {
     private readonly RigidbodyController _controller;
     private readonly MovementModule _movement;
@@ -18,11 +18,6 @@ public class EntityBasicMovement: IInitializable, IFixedTickable, ITickable, IMo
     {
         _controller = controller;
         _movement = movement;
-    }
-
-    public void Initialize()
-    {
-        _movement.SetTransform(_controller.transform);
     }
     
     public void SetDirection(Vector2 direction) => _direction = direction;

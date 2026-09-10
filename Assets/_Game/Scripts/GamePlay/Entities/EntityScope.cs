@@ -29,6 +29,7 @@ public class EntityScope: LifetimeScope
     protected override void Configure(IContainerBuilder builder)
     {
         // Configs
+        builder.RegisterInstance(transform);
         builder.RegisterInstance(_entityConfig);
         builder.RegisterInstance(_entityConfig.AnimationSettings);
         builder.RegisterInstance(_entityConfig.ExperienceConfig);

@@ -13,7 +13,7 @@ public class EntityWeaponAttack : IDamageSource, IAttackController, IDisposable
     private readonly AttackModule _attack;
     private readonly IDamageReceiver _receiver;
     private readonly ProjectileSpawner _projectileSpawner;
-    private readonly MovementModule _movement;
+    private readonly Transform _transform;
     private readonly ProjectileConfig _projectileConfig;
     private readonly CoroutineRunner _coroutineRunner;
 
@@ -22,12 +22,12 @@ public class EntityWeaponAttack : IDamageSource, IAttackController, IDisposable
     private bool CanAttack => !_coroutineRunner.IsRunning(this, CooldownKey) && _attack.AttackTime > 0f;
 
     public EntityWeaponAttack(AttackModule attack, IDamageReceiver receiver, ProjectileSpawner projectileSpawner,
-        MovementModule movement, ProjectileConfig projectileConfig, CoroutineRunner coroutineRunner)
+        Transform transform, ProjectileConfig projectileConfig, CoroutineRunner coroutineRunner)
     {
         _attack = attack;
         _receiver = receiver;
         _projectileSpawner = projectileSpawner;
-        _movement = movement;
+        _transform = transform;
         _projectileConfig = projectileConfig;
         _coroutineRunner = coroutineRunner;
     }
@@ -37,7 +37,7 @@ public class EntityWeaponAttack : IDamageSource, IAttackController, IDisposable
         if (!CanAttack) return;
         
         var hit = new HitInfo(_attack.PhysicalDamage, _attack.IgnoreResistance, this, _receiver);
-        _projectileSpawner.SetAttack(targetPosition, _movement.Transform, hit, _projectileConfig);
+        _projectileSpawner.SetAttack(targetPosition, _transform, hit, _projectileConfig);
         
         _coroutineRunner.Run(this, CooldownKey, CooldownRoutine());
     }

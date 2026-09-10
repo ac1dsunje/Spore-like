@@ -113,7 +113,7 @@ public class EntityAI : IStartable, IDisposable
         if (chasingEntity != null)
         {
             var playerPosition = chasingEntity.position;
-            var creaturePosition = _entity.Get<MovementModule>().Transform.position;
+            var creaturePosition = _entity.Get<Transform>().position;
             direction = (playerPosition - creaturePosition).normalized;
         }
         else

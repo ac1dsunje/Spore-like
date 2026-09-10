@@ -1,6 +1,7 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Entities.Animation;
 using _Game.Scripts.GamePlay.Modules;
+using UnityEngine;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
@@ -10,15 +11,15 @@ public class ParticlesModule: IStartable, IDisposable
     private readonly ParticlesSpawner _particles;
     private readonly HealthModule _health;
     private readonly AnimationSettings _config;
-    private readonly MovementModule _movement;
+    private readonly Transform _transform;
 
     public ParticlesModule(ParticlesSpawner particlesSpawner, HealthModule health, AnimationSettings config,
-        MovementModule movement)
+        Transform transform)
     {
         _particles = particlesSpawner;
         _health = health;
         _config = config;
-        _movement = movement;
+        _transform = transform;
     }
     
     public void Start()
@@ -31,7 +32,7 @@ public class ParticlesModule: IStartable, IDisposable
         if (damage <= 0f) return;
         _particles.Spawn(
             _config.OnHitParticles, 
-            _movement.Transform.position, 
+            _transform.position, 
             _config.Color
         );
     }

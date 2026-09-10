@@ -55,7 +55,7 @@ public class CameraController : IInitializable, ITickable, IDisposable
     {
         _playerVision = player.Get<VisionModule>();
         _playerVision.OnVisionRadiusUpdated += SetSize;
-        _cineMachineCamera.Target.TrackingTarget = player.Get<MovementModule>().Transform;
+        _cineMachineCamera.Target.TrackingTarget = player.Get<Transform>();
 
         _targetSize = _playerVision.VisionRadius;
         _currentSize = _targetSize;

@@ -14,8 +14,6 @@ public class RigidbodyController: MonoBehaviour
         Mathf.FloorToInt(_rigidbody.position.y),
         0
     );
-    
-    public bool IsMoving => _rigidbody.linearVelocity != Vector2.zero;
 
     private void Awake()
     {
