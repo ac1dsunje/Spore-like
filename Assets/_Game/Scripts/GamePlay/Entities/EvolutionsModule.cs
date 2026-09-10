@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Evolutions;
+using _Game.Scripts.GamePlay.Experience;
 using _Game.Scripts.GamePlay.Rarities;
 using UnityEngine;
 using VContainer.Unity;
@@ -18,6 +19,7 @@ public class EvolutionsModule: IStartable, IDisposable
     private readonly ExperienceModule _experience;
     private readonly EntityStats _stats;
     private readonly AbilitiesModule _abilities;
+    private readonly ExperienceFactory _experienceFactory;
     
     private int _minEvolutions = 3; // temporarly! it should be deleted due to shop feature in the future
     
@@ -27,7 +29,7 @@ public class EvolutionsModule: IStartable, IDisposable
     public event Action<Evolution> OnEvolutionApplied;
 
     public EvolutionsModule(EvolutionsDatabase evolutionsDatabase, RaritiesDatabase raritiesDatabase,
-        EntityScope entity, ExperienceModule experience, EntityStats stats, AbilitiesModule abilities)
+        EntityScope entity, ExperienceModule experience, EntityStats stats, AbilitiesModule abilities, ExperienceFactory experienceFactory)
     {
         _evolutionsDatabase = evolutionsDatabase;
         _raritiesDatabase = raritiesDatabase;
@@ -35,6 +37,7 @@ public class EvolutionsModule: IStartable, IDisposable
         _experience = experience;
         _stats = stats;
         _abilities = abilities;
+        _experienceFactory = experienceFactory;
     }
 
     public void Start()
@@ -56,7 +59,7 @@ public class EvolutionsModule: IStartable, IDisposable
     public void ChooseEvolution(Evolution evolution)
     {
         evolution.OnLevelUp += OnEvolutionLevelUp;
-        evolution.Apply(_entity);
+        evolution.Apply(_entity, _experienceFactory);
         _stats.AddSource(evolution);
         _abilities.Add(evolution.Config.Abilities);
 

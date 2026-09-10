@@ -22,7 +22,6 @@ public class Evolution: IDisposable, IStatSource
     public event Action OnRarityChanged;
     
     //Level
-    private readonly ExperienceFactory _expFactory = new();
     private readonly List<ExperienceService> _experienceServices = new();
     private int _experiencePoints;
     private int _levelSet;
@@ -42,18 +41,18 @@ public class Evolution: IDisposable, IStatSource
         return Stats.Select(stat => new SourceStat(stat.Type, stat.CurrentValue, stat.Operation, stat.Target)).ToList();
     }
 
-    public void Apply(EntityScope entityModel)
+    public void Apply(EntityScope entityModel, ExperienceFactory experienceFactory)
     {
         _entity = entityModel;
         Activate();
-        SubscribeExperienceServices();
+        SubscribeExperienceServices(experienceFactory);
     }
 
-    private void SubscribeExperienceServices()
+    private void SubscribeExperienceServices(ExperienceFactory experienceFactory)
     {
         foreach (var config in Config.ExperienceConfig.ExperienceTypes)
         {
-            var experienceType = _expFactory.GetService(config, _entity);
+            var experienceType = experienceFactory.GetService(config, _entity);
             _experienceServices.Add(experienceType);
             experienceType.OnExperienceGained += UpdateExperience;
         }

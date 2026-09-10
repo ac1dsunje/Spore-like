@@ -25,27 +25,31 @@ public class EntityAI : IStartable, IDisposable
     private readonly IHealthController _healthController;
     private readonly BodyHitbox _hitBox;
     private readonly EvolutionsModule _evolutions;
-    private readonly EntityScope _entity;
-    private readonly CoroutineRunner _coroutineRunner;
     private readonly ExperienceModule _experience;
+    private readonly CoroutineRunner _coroutineRunner;
+    
+    private readonly VisionModule _vision;
+    private readonly SocialModule _social;
+    private readonly Transform _transform;
 
     private const string DirectionChangeKey = "DirectionChange";
-
     private const float MinDirectionChangeTime = 0.5f;
     private const float MaxDirectionChangeTime = 2f;
 
     public EntityAI(IMovementController movement, IAttackController attacker, IHealthController healthController,
-        BodyHitbox hitbox, EvolutionsModule evolutions, EntityScope entity, CoroutineRunner coroutineRunner, 
-        ExperienceModule experience)
+        BodyHitbox hitbox, EvolutionsModule evolutions, ExperienceModule experience, CoroutineRunner coroutineRunner, 
+        VisionModule vision, SocialModule social, Transform transform)
     {
         _movement = movement;
         _attacker = attacker;
         _healthController = healthController;
         _hitBox = hitbox;
         _evolutions = evolutions;
-        _entity = entity;
-        _coroutineRunner = coroutineRunner;
         _experience = experience;
+        _coroutineRunner = coroutineRunner;
+        _vision = vision;
+        _social = social;
+        _transform = transform;
     }
 
     public void Start()
@@ -67,10 +71,7 @@ public class EntityAI : IStartable, IDisposable
                 .Where(e => e.State == EvolutionState.IsAble)
                 .ToList();
 
-            if (availableEvolutions.Count == 0)
-            {
-                break; 
-            }
+            if (availableEvolutions.Count == 0) break; 
 
             var randomIndex = Random.Range(0, availableEvolutions.Count);
             _evolutions.ChooseEvolution(availableEvolutions[randomIndex]);
@@ -89,7 +90,7 @@ public class EntityAI : IStartable, IDisposable
     private void ChooseEvolution(List<Evolution> evolutions)
     {
         var evolution = evolutions[Random.Range(0, evolutions.Count)];
-        evolution.Apply(_entity);
+        _evolutions.ChooseEvolution(evolution);
     }
 
     private void TakeDamage(HitInfo hit)
@@ -107,13 +108,13 @@ public class EntityAI : IStartable, IDisposable
         Vector2 direction;
         Transform chasingEntity = null;
 
-        if (_entity.Get<VisionModule>().CanSee())
-            chasingEntity = _entity.Get<SocialModule>().GetEntityWithHighestInfluence();
-    
+        if (_vision.CanSee())
+            chasingEntity = _social.GetEntityWithHighestInfluence();
+
         if (chasingEntity != null)
         {
             var playerPosition = chasingEntity.position;
-            var creaturePosition = _entity.Get<Transform>().position;
+            var creaturePosition = _transform.position;
             direction = (playerPosition - creaturePosition).normalized;
         }
         else
