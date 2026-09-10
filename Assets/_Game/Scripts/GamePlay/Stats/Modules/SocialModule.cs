@@ -2,6 +2,7 @@
 using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Types;
+using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Modules
 {
@@ -16,7 +17,7 @@ public class SocialModule: StatModule
         BindStat(StatType.Influence, UpdateInfluence);
     }
 
-    public EntityModel GetEntityWithHighestInfluence()
+    public Transform GetEntityWithHighestInfluence()
     {
         ISocial result = null;
         float highest = 0;
@@ -37,7 +38,7 @@ public class SocialModule: StatModule
                 highest = temp;
             }
         }
-        return result?.GetEntityModel();
+        return result?.GetTransform();
     }
 
     private void UpdateInfluence(float value) => Influence = value;

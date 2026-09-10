@@ -38,7 +38,7 @@ public class EntityAnimation: MonoBehaviour, IVisible, ISocial
         SetAnimator(_config.Controller);
     }
 
-    public EntityModel GetEntityModel() => _model;
+    public Transform GetTransform() => _model.Movement.Transform;
     public float GetInfluence() => _model.Social.Influence;
 
     private void SetSprite(Sprite sprite) => _renderer.sprite = sprite;

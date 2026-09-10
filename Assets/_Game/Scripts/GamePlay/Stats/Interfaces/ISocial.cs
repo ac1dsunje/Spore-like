@@ -1,10 +1,10 @@
-﻿using _Game.Scripts.GamePlay.Entities;
+﻿using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Interfaces
 {
 public interface ISocial
 {
-    public EntityModel GetEntityModel();
+    public Transform GetTransform();
     public float GetInfluence();
 }
 }

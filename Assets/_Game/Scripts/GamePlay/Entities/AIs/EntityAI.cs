@@ -104,14 +104,14 @@ public class EntityAI : IStartable, IDisposable
     private void ChangeDirection()
     {
         Vector2 direction;
-        EntityModel chasingEntity = null;
+        Transform chasingEntity = null;
 
         if (_model.Vision.CanSee())
             chasingEntity = _model.Social.GetEntityWithHighestInfluence();
     
         if (chasingEntity != null)
         {
-            var playerPosition = chasingEntity.Movement.Transform.position;
+            var playerPosition = chasingEntity.position;
             var creaturePosition = _model.Movement.Transform.position;
             direction = (playerPosition - creaturePosition).normalized;
         }
