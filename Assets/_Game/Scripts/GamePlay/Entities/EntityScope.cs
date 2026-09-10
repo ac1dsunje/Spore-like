@@ -40,22 +40,22 @@ public class EntityScope: LifetimeScope
         builder.Register<EntityModel>(Lifetime.Scoped);
         builder.RegisterEntryPoint<EntityStats>(Lifetime.Scoped).AsSelf();
         
-        builder.RegisterEntryPoint<VisionModule>(Lifetime.Scoped).AsSelf();
+        builder.Register<VisionModule>(Lifetime.Scoped);
         
-        builder.RegisterEntryPoint<HealthModule>(Lifetime.Scoped).AsSelf();
-        builder.RegisterEntryPoint<AttackModule>(Lifetime.Scoped).AsSelf();
-        builder.RegisterEntryPoint<DefenseModule>(Lifetime.Scoped).AsSelf();
+        builder.Register<HealthModule>(Lifetime.Scoped);
+        builder.Register<AttackModule>(Lifetime.Scoped);
+        builder.Register<DefenseModule>(Lifetime.Scoped);
         
-        builder.RegisterEntryPoint<EnduranceModule>(Lifetime.Scoped).AsSelf();
+        builder.Register<EnduranceModule>(Lifetime.Scoped);
         
-        builder.RegisterEntryPoint<PickingModule>(Lifetime.Scoped).AsSelf();
-        builder.RegisterEntryPoint<StomachModule>(Lifetime.Scoped).AsSelf();
+        builder.Register<PickingModule>(Lifetime.Scoped);
+        builder.Register<StomachModule>(Lifetime.Scoped);
         
-        builder.RegisterEntryPoint<MovementModule>(Lifetime.Scoped).AsSelf();
+        builder.Register<MovementModule>(Lifetime.Scoped);
         
-        builder.RegisterEntryPoint<EnvironmentModule>(Lifetime.Scoped).AsSelf();
-        builder.RegisterEntryPoint<BreathingModule>(Lifetime.Scoped).AsSelf();
-        builder.RegisterEntryPoint<SocialModule>(Lifetime.Scoped).AsSelf();
+        builder.Register<EnvironmentModule>(Lifetime.Scoped);
+        builder.Register<BreathingModule>(Lifetime.Scoped);
+        builder.Register<SocialModule>(Lifetime.Scoped);
         
         // Behaviours
         builder.RegisterEntryPoint<EntityController>(Lifetime.Scoped)
@@ -88,10 +88,10 @@ public class EntityScope: LifetimeScope
             .AsSelf();
         builder.RegisterEntryPoint<EntityStomach>(Lifetime.Scoped);
         builder.RegisterEntryPoint<EntityPicker>(Lifetime.Scoped);
-        builder.RegisterEntryPoint<EntityHealth>().As<IHealthController>();
-        builder.RegisterEntryPoint<EntityDeath>();
+        builder.RegisterEntryPoint<EntityHealth>(Lifetime.Scoped).As<IHealthController>();
+        builder.RegisterEntryPoint<EntityDeath>(Lifetime.Scoped);
         builder.RegisterEntryPoint<EntityRegeneration>(Lifetime.Scoped);
-        builder.RegisterEntryPoint<EntityWeaponAttack>().As<IDamageSource>().As<IAttackController>();
+        builder.RegisterEntryPoint<EntityWeaponAttack>(Lifetime.Scoped).As<IDamageSource>().As<IAttackController>();
         
         _entityBuilder.ChooseBehaviour(_entityConfig.AIType, builder);
     }
