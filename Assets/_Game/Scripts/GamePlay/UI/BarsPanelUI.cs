@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.UI.Bar;
 using UnityEngine;
@@ -16,24 +17,16 @@ public class BarsPanelUI : MonoBehaviour
         {
             var bar = Instantiate(_prefab, transform);
 
-            switch (barConfig.BarType)
+            IResource resource = barConfig.BarType switch
             {
-                case BarType.Health:
-                    bar.Construct(player.Model.Health, barConfig);
-                    break;
-                
-                case BarType.Experience:
-                    bar.Construct(player.Experience, barConfig);
-                    break;
-                
-                case BarType.Endurance:
-                    bar.Construct(player.Model.Endurance, barConfig);
-                    break;
-                
-                case BarType.Hunger:
-                    bar.Construct(player.Model.Stomach, barConfig);
-                    break;
-            }
+                BarType.Health => player.Model.Health,
+                BarType.Experience => player.Experience,
+                BarType.Endurance => player.Model.Endurance,
+                BarType.Hunger => player.Model.Stomach,
+                _ => throw new ArgumentOutOfRangeException()
+            };
+            
+            bar.Construct(resource, barConfig);
         }
     }
 }

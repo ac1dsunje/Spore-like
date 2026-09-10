@@ -19,10 +19,15 @@ public class DefenseModule: StatModule
 
     public float ApplyResistance(float damage, float ignoreResistance)
     {
-        var resistedPercent = MathF.Max(0, _damageResistance - ignoreResistance);
-        var resisted = damage * resistedPercent;
-        OnDamageResisted?.Invoke(resisted);
-        return damage - resisted;
+        var rawResisted = _damageResistance - ignoreResistance;
+        var resisted = MathF.Max(0f, MathF.Min(1f, rawResisted));
+        var finalDamage = damage * (1f - resisted);
+    
+        if (resisted > 0)
+        {
+            OnDamageResisted?.Invoke(damage - finalDamage);
+        }
+        return finalDamage;
     }
     
     public float ReflectDamage(float damage)
@@ -34,6 +39,6 @@ public class DefenseModule: StatModule
 
     private void UpdateDamageReflection(float value) => _damageReflection = value / 100f;
     
-    private void UpdateDamageResistance(float value) => _damageResistance = value / 100f;
+    private void UpdateDamageResistance(float value) => _damageResistance = value;
 }
 }
