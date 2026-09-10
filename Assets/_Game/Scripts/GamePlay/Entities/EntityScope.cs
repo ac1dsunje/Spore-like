@@ -7,22 +7,21 @@ using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
-using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
-[RequireComponent(typeof(RigidbodyController))]
 public class EntityScope: LifetimeScope
 {
     private readonly EntityBuilder _entityBuilder = new();
     
     private EntityConfig _entityConfig;
 
-    public void SetConfig(EntityConfig entityConfig)
+    public void Initialize(EntityConfig entityConfig)
     {
         _entityConfig = entityConfig;
+        Build();
     }
 
     public T Get<T>() => Container.Resolve<T>();
