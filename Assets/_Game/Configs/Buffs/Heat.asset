@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Buffs.BuffConfig
   <Name>k__BackingField: Heat
   <Type>k__BackingField: 2
+  <DamagePerSecond>k__BackingField: 0.5
   <Stats>k__BackingField: []
   <Sprite>k__BackingField: {fileID: -6534822445362693070, guid: 6e757b2f16213b74a9024f89071fac6a, type: 3}

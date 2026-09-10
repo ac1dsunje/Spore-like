@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Buffs;
-using _Game.Scripts.GamePlay.Buffs.Types;
 using _Game.Scripts.GamePlay.Modules;
-using UnityEngine;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
-public class BuffsModule: IStartable, IDisposable
+public class BuffsModule : IStartable, IDisposable
 {
     public event Action<Buff> OnBuffActivated;
     public event Action<Buff> OnBuffDeactivated;
@@ -22,12 +20,12 @@ public class BuffsModule: IStartable, IDisposable
     private readonly BuffsDatabase _dataDatabase;
     private readonly Ticker _ticker;
 
-    public BuffsModule(EntityStats stats, HealthModule health, BuffsDatabase dataDatabase, Ticker timer)
+    public BuffsModule(EntityStats stats, HealthModule health, BuffsDatabase dataDatabase, Ticker ticker)
     {
         _stats = stats;
         _health = health;
         _dataDatabase = dataDatabase;
-        _ticker = timer;
+        _ticker = ticker;
     }
     
     public void Start()
@@ -40,21 +38,7 @@ public class BuffsModule: IStartable, IDisposable
     {
         foreach (var buffConfig in _dataDatabase.Buffs)
         {
-            Buff buff = buffConfig.Type switch
-            {
-                BuffType.Suffocating => new SuffocatingDebuff(_stats, _health, buffConfig),
-                BuffType.BadPassAbility => new BadPassAbility(_stats, buffConfig),
-                BuffType.Heat => new HeatDebuff(_stats, _health, buffConfig),
-                BuffType.Cold => new ColdDebuff(_stats, _health, buffConfig),
-                BuffType.Starvation => new StarvationDebuff(_stats, _health, buffConfig),
-                BuffType.Overeating => new OvereatingDebuff(_stats, buffConfig),
-                _ => null
-            };
-
-            if (buff != null)
-                _buffs[buffConfig.Type] = buff;
-            else
-                Debug.Log($"Buff with type {buffConfig.Type} is not implemented");
+            _buffs[buffConfig.Type] = new Buff(_stats, _health, buffConfig);
         }
     }
 

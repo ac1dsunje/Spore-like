@@ -5,7 +5,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.Bootstrap
 {
-public class BootstrapScope: LifetimeScope
+public class BootstrapScope : LifetimeScope
 {
     [SerializeField] [Scene] private string _mainMenuScene;
     [SerializeField] [Scene] private string _gameplayScene;

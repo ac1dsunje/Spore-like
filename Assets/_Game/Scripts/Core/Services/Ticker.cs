@@ -4,7 +4,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.Core.Services
 {
-public class Ticker: ITickable
+public class Ticker : ITickable
 {
     public event Action<float> OnTick;
     

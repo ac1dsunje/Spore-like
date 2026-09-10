@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Buffs.BuffConfig
   <Name>k__BackingField: Starvation
   <Type>k__BackingField: 4
+  <DamagePerSecond>k__BackingField: 0.5
   <Stats>k__BackingField: []
   <Sprite>k__BackingField: {fileID: 6162025295075766045, guid: 49e95e0063565e241812b39bc4994778, type: 3}

@@ -1,41 +1,48 @@
 ﻿using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Interfaces;
+using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Buffs
 {
-public abstract class Buff: IStatSource
+public class Buff : IStatSource
 {
     public BuffType Type => _config.Type;
     public string Name => _config.Name;
     public Sprite Sprite => _config.Sprite;
-    
+        
     public List<SourceStat> GetStats() => _config.Stats;
-    
-    public bool IsActive => _isActive;
-    
+        
+    public bool IsActive { get; private set; }
+        
     private readonly BuffConfig _config;
     private readonly EntityStats _entityStats;
+    private readonly HealthModule _health;
 
-    private bool _isActive;
-
-    protected Buff(EntityStats entityStats, BuffConfig config)
+    public Buff(EntityStats entityStats, HealthModule health, BuffConfig config)
     {
         _entityStats = entityStats;
+        _health = health;
         _config = config;
     }
 
-    public virtual void Do(float timeDelta) { }
+    public void Do(float timeDelta)
+    {
+        if (_config.DamagePerSecond > 0)
+        {
+            _health.TakeDamage(timeDelta * _config.DamagePerSecond);
+        }
+    }
 
     public void Activate()
     {
-        _isActive = true;
+        IsActive = true;
         _entityStats.AddSource(this);
     }
 
     public void Deactivate()
     {
-        _isActive = false;
+        IsActive = false;
         _entityStats.RemoveSource(this);
     }
 }

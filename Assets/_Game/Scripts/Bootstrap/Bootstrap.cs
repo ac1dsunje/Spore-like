@@ -3,7 +3,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.Bootstrap
 {
-public class Bootstrap: IStartable
+public class Bootstrap : IStartable
 {
     private readonly SceneLoaderService _sceneLoaderService;
     private readonly CoroutineRunner _coroutineRunner;
