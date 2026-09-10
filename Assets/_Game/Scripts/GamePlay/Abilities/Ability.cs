@@ -10,7 +10,7 @@ public enum AbilityActivationType
     Toggle = 1,
 }
 
-public abstract class Ability: IDisposable, IEnduranceUser
+public abstract class Ability : IDisposable, IEnduranceUser
 {
     public AbilityConfig Config { get; }
 

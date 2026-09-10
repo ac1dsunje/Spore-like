@@ -8,7 +8,7 @@ namespace _Game.Scripts.GamePlay.Entities.Animation
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(CircleCollider2D))]
-public class EntityAnimation: MonoBehaviour, IVisible, ISocial
+public class EntityAnimation : MonoBehaviour, IVisible, ISocial
 {
     private SpriteRenderer _renderer;
     private Animator _animator;

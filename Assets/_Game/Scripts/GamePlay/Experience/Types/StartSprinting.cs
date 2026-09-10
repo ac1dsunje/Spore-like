@@ -2,7 +2,7 @@
 
 namespace _Game.Scripts.GamePlay.Experience.Types
 {
-public class StartSprinting: ExperienceService
+public class StartSprinting : ExperienceService
 {
     private readonly MovementModule _module;
     

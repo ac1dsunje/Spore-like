@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace _Game.Scripts.GamePlay.UI.Bar
 {
-public class BarUI: MonoBehaviour
+public class BarUI : MonoBehaviour
 {
     [SerializeField] protected Image Bar;
     [SerializeField] protected Image Icon;

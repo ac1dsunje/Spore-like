@@ -3,7 +3,7 @@ using UnityEngine.Rendering.Universal;
 
 namespace _Game.Scripts.GamePlay.World
 {
-public class DayNightManager: MonoBehaviour
+public class DayNightManager : MonoBehaviour
 {
     [SerializeField] private float _step = 60;
     [SerializeField] private Light2D _light;

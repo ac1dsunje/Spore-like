@@ -11,7 +11,7 @@ public enum BarType
 }
 
 [CreateAssetMenu(fileName = "NewBarConfig", menuName = "Game/Bars/Bar")]
-public class BarConfig: ScriptableObject
+public class BarConfig : ScriptableObject
 {
     [field: SerializeField] public BarType BarType { get; private set; }
     [field: SerializeField] public bool MaxValue { get; private set; }

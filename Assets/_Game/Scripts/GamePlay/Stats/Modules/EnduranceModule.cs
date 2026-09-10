@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Modules
 {
-public class EnduranceModule: StatModule, IStatWithLimit
+public class EnduranceModule : StatModule, IStatWithLimit
 {
     public float EnduranceRecovery { get; private set; }
     public bool IsUsed => _users.Count > 0;

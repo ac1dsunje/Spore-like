@@ -2,7 +2,7 @@
 
 namespace _Game.Scripts.GamePlay.Modules
 {
-public class EnvironmentModule: StatModule
+public class EnvironmentModule : StatModule
 {
     private float _passAbility;
     private float _minimalComfortable;

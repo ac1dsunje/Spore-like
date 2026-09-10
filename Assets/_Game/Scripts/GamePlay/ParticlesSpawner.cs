@@ -2,7 +2,7 @@
 
 namespace _Game.Scripts.GamePlay
 {
-public class ParticlesSpawner: MonoBehaviour
+public class ParticlesSpawner : MonoBehaviour
 {
     public void Spawn(ParticleSystem prefab, Vector3 position, Color color)
     {

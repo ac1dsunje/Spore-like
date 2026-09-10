@@ -4,7 +4,7 @@ using _Game.Scripts.GamePlay.Modules;
 
 namespace _Game.Scripts.GamePlay.Experience.Types
 {
-public class EntitiesDiscovering: ExperienceService
+public class EntitiesDiscovering : ExperienceService
 {
     private readonly VisionModule _module;
     

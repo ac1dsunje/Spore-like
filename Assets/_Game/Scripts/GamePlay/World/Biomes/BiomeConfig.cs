@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 namespace _Game.Scripts.GamePlay.World.Biomes
 {
 [CreateAssetMenu(fileName = "New Biome Config", menuName = "Game/World/Biomes/Biome")]
-public class BiomeConfig: ScriptableObject
+public class BiomeConfig : ScriptableObject
 {
     [field: SerializeField] public float Temperature { get; private set; }
     [field: SerializeField] public float PassAbility { get; private set; }

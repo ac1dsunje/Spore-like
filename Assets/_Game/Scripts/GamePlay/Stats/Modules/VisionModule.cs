@@ -5,7 +5,7 @@ using _Game.Scripts.GamePlay.Types;
 
 namespace _Game.Scripts.GamePlay.Modules
 {
-public class VisionModule: StatModule
+public class VisionModule : StatModule
 {
     public float VisionRadius { get; private set; }
 

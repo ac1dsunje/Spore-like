@@ -6,7 +6,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.UI
 {
-public class PauseUIScreen: UIScreen
+public class PauseUIScreen : UIScreen
 {
     [SerializeField] private Button _resumeButton;
     [SerializeField] private Button _mainMenuButton;

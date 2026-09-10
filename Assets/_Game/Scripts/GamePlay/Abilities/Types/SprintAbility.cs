@@ -2,7 +2,7 @@
 
 namespace _Game.Scripts.GamePlay.Abilities.Types
 {
-public class SprintAbility: Ability
+public class SprintAbility : Ability
 {
     private readonly MovementModule _movement;
 

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace _Game.Scripts.GamePlay.Entities.Hitboxes
 {
 [RequireComponent(typeof(BoxCollider2D))]
-public class VisionHitbox: MonoBehaviour
+public class VisionHitbox : MonoBehaviour
 {
     private BoxCollider2D _collider;
     public event Action<IVisible> OnEntityEntered;

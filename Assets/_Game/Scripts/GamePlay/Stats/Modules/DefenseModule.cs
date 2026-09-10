@@ -3,7 +3,7 @@ using _Game.Scripts.GamePlay.Types;
 
 namespace _Game.Scripts.GamePlay.Modules
 {
-public class DefenseModule: StatModule
+public class DefenseModule : StatModule
 {
     private float _damageResistance;
     private float _damageReflection;

@@ -2,7 +2,7 @@
 
 namespace _Game.Scripts.GamePlay.Experience.Types
 {
-public class DamageDealing: ExperienceService
+public class DamageDealing : ExperienceService
 {
     private readonly AttackModule _module;
     

@@ -2,7 +2,7 @@
 
 namespace _Game.Scripts.GamePlay.Experience.Types
 {
-public class EnduranceRecovering: ExperienceService
+public class EnduranceRecovering : ExperienceService
 {
     private readonly EnduranceModule _module;
     

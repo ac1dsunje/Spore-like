@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.UI
 {
-public class ActiveAbilitiesDisplay: MonoBehaviour
+public class ActiveAbilitiesDisplay : MonoBehaviour
 {
     [SerializeField] private GameObject _slotPrefab;
     [SerializeField] private Transform  _container;

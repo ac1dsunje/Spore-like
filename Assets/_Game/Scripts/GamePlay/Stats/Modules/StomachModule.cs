@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Modules
 {
-public class StomachModule: StatModule, IStatWithLimit
+public class StomachModule : StatModule, IStatWithLimit
 {
     private float _maxHunger;
     private float _hunger;

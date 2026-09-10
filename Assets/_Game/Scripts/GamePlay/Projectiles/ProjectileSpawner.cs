@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Projectiles
 {
-public class ProjectileSpawner: MonoBehaviour
+public class ProjectileSpawner : MonoBehaviour
 {
     [SerializeField] private Projectile _projectilePrefab;
 

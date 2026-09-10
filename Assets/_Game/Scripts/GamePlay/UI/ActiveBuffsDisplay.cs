@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.UI
 {
-public class ActiveBuffsDisplay: MonoBehaviour
+public class ActiveBuffsDisplay : MonoBehaviour
 {
     [SerializeField] private GameObject _slotPrefab;
     [SerializeField] private Transform  _container;

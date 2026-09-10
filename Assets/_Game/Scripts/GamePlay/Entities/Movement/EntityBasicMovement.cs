@@ -4,7 +4,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities.Movement
 {
-public class EntityBasicMovement: IFixedTickable, ITickable, IMovementController
+public class EntityBasicMovement : IFixedTickable, ITickable, IMovementController
 {
     private readonly RigidbodyController _controller;
     private readonly MovementModule _movement;

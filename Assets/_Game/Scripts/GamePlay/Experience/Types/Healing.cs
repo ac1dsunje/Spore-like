@@ -2,7 +2,7 @@
 
 namespace _Game.Scripts.GamePlay.Experience.Types
 {
-public class Healing: ExperienceService
+public class Healing : ExperienceService
 {
     private readonly HealthModule _module;
     

@@ -3,7 +3,7 @@ using _Game.Scripts.GamePlay.Types;
 
 namespace _Game.Scripts.GamePlay.Modules
 {
-public class PickingModule: StatModule
+public class PickingModule : StatModule
 {
     public float PickingRange { get; private set; }
 

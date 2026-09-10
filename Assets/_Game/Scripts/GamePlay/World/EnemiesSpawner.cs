@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 
 namespace _Game.Scripts.GamePlay.World
 {
-public class EnemiesSpawner: IStartable, IDisposable
+public class EnemiesSpawner : IStartable, IDisposable
 {
     private readonly EntitiesRegistry _registry;
     private readonly EntitySpawner _spawner;

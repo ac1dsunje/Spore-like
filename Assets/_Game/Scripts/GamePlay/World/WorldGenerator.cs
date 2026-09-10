@@ -7,7 +7,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.World
 {
-public class WorldGenerator: IInitializable, IDisposable
+public class WorldGenerator : IInitializable, IDisposable
 {
     private const int RenderDistance = 1;
 

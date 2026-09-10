@@ -7,7 +7,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.World
 {
-public class WorldTileRenderer: MonoBehaviour
+public class WorldTileRenderer : MonoBehaviour
 {
     [SerializeField] private Transform _grid;
     [SerializeField] private GameObject _prefab;

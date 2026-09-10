@@ -2,7 +2,7 @@
 
 namespace _Game.Scripts.GamePlay.Experience.Types
 {
-public class ExperienceCollecting: ExperienceService
+public class ExperienceCollecting : ExperienceService
 {
     private readonly PickingModule _module;
     

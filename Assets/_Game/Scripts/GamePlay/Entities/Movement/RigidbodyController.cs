@@ -3,7 +3,7 @@
 namespace _Game.Scripts.GamePlay.Entities.Movement
 {
 [RequireComponent(typeof(Rigidbody2D))]
-public class RigidbodyController: MonoBehaviour
+public class RigidbodyController : MonoBehaviour
 {
     private Rigidbody2D _rigidbody;
     

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
-public class EntitySpawner: MonoBehaviour
+public class EntitySpawner : MonoBehaviour
 {
     [SerializeField] private EntityScope _entityPrefab;
     [SerializeField] private EntityConfig _playerConfig;

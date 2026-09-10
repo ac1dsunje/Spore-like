@@ -2,7 +2,7 @@
 
 namespace _Game.Scripts.GamePlay.Experience.Types
 {
-public class FoodEating: ExperienceService
+public class FoodEating : ExperienceService
 {
     private readonly StomachModule _module;
     

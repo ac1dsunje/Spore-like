@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Types;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Modules
 {
-public class SocialModule: StatModule
+public class SocialModule : StatModule
 {
     public float Influence { get; private set; }
 

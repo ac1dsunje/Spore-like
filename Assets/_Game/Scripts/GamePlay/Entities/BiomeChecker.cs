@@ -8,7 +8,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
-public class BiomeChecker: IStartable, IDisposable
+public class BiomeChecker : IStartable, IDisposable
 {
     private readonly WorldModel _worldModel;
     private readonly MovementModule _movement;

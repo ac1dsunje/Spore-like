@@ -8,7 +8,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
-public class EntityStomach: IStartable, IDisposable
+public class EntityStomach : IStartable, IDisposable
 {
     private readonly StomachModule _stomach;
     private readonly BuffsModule _buffs;

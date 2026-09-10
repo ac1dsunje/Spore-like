@@ -8,7 +8,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.UI
 {
-public class ActiveEvolutionsDisplay: MonoBehaviour
+public class ActiveEvolutionsDisplay : MonoBehaviour
 {
     [SerializeField] private GameObject _slotPrefab;
     [SerializeField] private Transform _container;

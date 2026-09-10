@@ -7,7 +7,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
-public class EntityDeath: IStartable, IDisposable
+public class EntityDeath : IStartable, IDisposable
 {
     private readonly EntitiesRegistry _entitiesRegistry;
     private readonly ExperienceModule _experience;

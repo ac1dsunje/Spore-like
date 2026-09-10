@@ -2,7 +2,7 @@
 
 namespace _Game.Scripts.GamePlay.Experience.Types
 {
-public class DistanceOvercoming: ExperienceService
+public class DistanceOvercoming : ExperienceService
 {
     private readonly MovementModule _module;
     

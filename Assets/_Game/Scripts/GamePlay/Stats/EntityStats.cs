@@ -7,7 +7,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay
 {
-public class EntityStats: IStartable
+public class EntityStats : IStartable
 {
     private readonly Dictionary<StatType, float> _stats = new();
     private readonly Dictionary<StatType, float> _basicStats = new();

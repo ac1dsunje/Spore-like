@@ -2,7 +2,7 @@
 
 namespace _Game.Scripts.GamePlay.Drops
 {
-public class DropSpawner: MonoBehaviour
+public class DropSpawner : MonoBehaviour
 {
     [SerializeField] private Drop _dropPrefab;
     [SerializeField, Range(0.1f, 5f)] private float _spawnRadius; 

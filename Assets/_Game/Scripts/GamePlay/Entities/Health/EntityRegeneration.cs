@@ -7,7 +7,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities.Health
 {
-public class EntityRegeneration: IStartable, IDisposable
+public class EntityRegeneration : IStartable, IDisposable
 {
     private const string RegenerationKey = "Regeneration";
     private const string WaitKey = "WaitBeforeRegeneration";

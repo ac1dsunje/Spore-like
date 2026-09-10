@@ -4,7 +4,7 @@ using UnityEngine;
 namespace _Game.Scripts.GamePlay.Rarities
 {
 [CreateAssetMenu(fileName = "NewRarityDatabase", menuName = "Game/Rarities/Database")]
-public class RaritiesDatabase: ScriptableObject
+public class RaritiesDatabase : ScriptableObject
 {
     [field: SerializeField] public RarityConfig[] Rarities { get; private set; }
     

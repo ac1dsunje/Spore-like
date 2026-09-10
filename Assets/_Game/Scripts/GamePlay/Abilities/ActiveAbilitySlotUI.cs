@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace _Game.Scripts.GamePlay.Abilities
 {
-public class ActiveAbilitySlotUI: MonoBehaviour
+public class ActiveAbilitySlotUI : MonoBehaviour
 {
     [SerializeField] private Image _image;
     [SerializeField] private TextMeshProUGUI _buttonText;

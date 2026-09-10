@@ -9,7 +9,7 @@ public enum DropType
 }
 
 [CreateAssetMenu(fileName = "New drop Config", menuName = "Game/Drop")]
-public class DropConfig: ScriptableObject
+public class DropConfig : ScriptableObject
 {
     [field: SerializeField] public Sprite Sprite { get; private set; }
     [field: SerializeField] public DropType DropType { get; private set; }

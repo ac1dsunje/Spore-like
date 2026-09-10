@@ -8,7 +8,7 @@ namespace _Game.Scripts.GamePlay.Projectiles
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(PolygonCollider2D))]
-public class Projectile: MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     private SpriteRenderer _renderer;
     private Animator _animator;

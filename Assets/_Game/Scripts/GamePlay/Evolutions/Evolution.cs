@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Evolutions
 {
-public class Evolution: IDisposable, IStatSource
+public class Evolution : IDisposable, IStatSource
 {
     public EvolutionConfig Config { get; private set; }
     public EvolutionState State { get; private set; }

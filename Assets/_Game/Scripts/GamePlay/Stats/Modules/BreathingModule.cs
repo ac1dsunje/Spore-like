@@ -2,7 +2,7 @@
 
 namespace _Game.Scripts.GamePlay.Modules
 {
-public class BreathingModule: StatModule
+public class BreathingModule : StatModule
 {
     private float _oxygenBreathing;
     private float _hydrogenBreathing;

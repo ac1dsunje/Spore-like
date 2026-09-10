@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace _Game.Scripts.GamePlay.Buffs
 {
-public class ActiveBuffSlotUI: MonoBehaviour
+public class ActiveBuffSlotUI : MonoBehaviour
 {
     [SerializeField] private Image _image;
     

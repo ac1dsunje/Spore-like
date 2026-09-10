@@ -9,7 +9,7 @@ public enum ProjectileType
 }
 
 [CreateAssetMenu(fileName = "NewProjectileConfig", menuName = "Game/Projectiles/Projectile")]
-public class ProjectileConfig: ScriptableObject
+public class ProjectileConfig : ScriptableObject
 {
     [field: SerializeField, Min(0.1f)] public float HitTime { get; private set; }
     [field: SerializeField] public float Speed { get; private set; }

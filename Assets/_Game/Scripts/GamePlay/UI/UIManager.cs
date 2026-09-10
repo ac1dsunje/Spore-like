@@ -7,7 +7,7 @@ using VContainer;
 
 namespace _Game.Scripts.GamePlay.UI
 {
-public class UIManager: MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     private EvolutionsModule _evolutionsModule;
     private AbilitiesModule _abilitiesModule;

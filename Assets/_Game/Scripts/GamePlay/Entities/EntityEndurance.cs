@@ -4,7 +4,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
-public class EntityEndurance: ITickable
+public class EntityEndurance : ITickable
 {
     private readonly EnduranceModule _module;
 

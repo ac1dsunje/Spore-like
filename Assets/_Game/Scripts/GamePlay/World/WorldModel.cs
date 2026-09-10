@@ -2,7 +2,6 @@
 using System.Linq;
 using _Game.Scripts.GamePlay.World.Biomes;
 using UnityEngine;
-using VContainer;
 
 namespace _Game.Scripts.GamePlay.World
 {
@@ -17,7 +16,6 @@ public class WorldModel
 
     private readonly List<Biome> _biomes = new();
 
-    [Inject]
     public WorldModel(WorldGenerationConfig config)
     {
         _config = config;

@@ -18,7 +18,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay
 {
-public class GameplayScope: LifetimeScope
+public class GameplayScope : LifetimeScope
 {
     [SerializeField] private WorldGenerationConfig _worldConfig;
     [SerializeField] private StatTypeConfig _statTypeConfig;

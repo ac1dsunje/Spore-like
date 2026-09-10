@@ -3,7 +3,7 @@ using _Game.Scripts.GamePlay.Modules;
 
 namespace _Game.Scripts.GamePlay.Entities.Health
 {
-public class EntityHealth: IHealthController
+public class EntityHealth : IHealthController
 {
     private readonly HealthModule _health;
     private readonly DefenseModule _defense;

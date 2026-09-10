@@ -6,7 +6,7 @@ using UnityEngine;
 namespace _Game.Scripts.GamePlay.Entities.Hitboxes
 {
 [RequireComponent(typeof(CircleCollider2D))]
-public class PickerHitbox: MonoBehaviour
+public class PickerHitbox : MonoBehaviour
 {
     public event Action<Drop> OnPicked;
     

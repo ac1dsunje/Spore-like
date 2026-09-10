@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace _Game.Scripts.GamePlay.UI
 {
-public class DescriptionUI: MonoBehaviour
+public class DescriptionUI : MonoBehaviour
 {
     [SerializeField] private Image _image;
     [SerializeField] private TextMeshProUGUI _name;

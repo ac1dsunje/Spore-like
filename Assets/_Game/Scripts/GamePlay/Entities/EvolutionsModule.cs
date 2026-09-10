@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
-public class EvolutionsModule: IStartable, IDisposable
+public class EvolutionsModule : IStartable, IDisposable
 {
     private readonly EvolutionsDatabase _evolutionsDatabase;
     private readonly RaritiesDatabase _raritiesDatabase;

@@ -12,7 +12,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
-public class EntityScope: LifetimeScope
+public class EntityScope : LifetimeScope
 {
     private readonly EntityBuilder _entityBuilder = new();
     

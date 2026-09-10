@@ -2,7 +2,7 @@
 
 namespace _Game.Scripts.GamePlay.Abilities.Types
 {
-public class DashAbility: Ability
+public class DashAbility : Ability
 {
     private readonly MovementModule _movement;
 

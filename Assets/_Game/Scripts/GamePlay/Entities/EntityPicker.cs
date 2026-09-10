@@ -9,7 +9,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
-public class EntityPicker: IStartable, ITickable, IDisposable
+public class EntityPicker : IStartable, ITickable, IDisposable
 {
     private readonly PickerHitbox _pickerHitbox;
     private readonly PickingModule _pickingModule;

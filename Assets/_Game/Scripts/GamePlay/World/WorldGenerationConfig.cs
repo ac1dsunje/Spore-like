@@ -5,7 +5,7 @@ using UnityEngine;
 namespace _Game.Scripts.GamePlay.World
 {
 [CreateAssetMenu(fileName = "New WorldGen Config", menuName = "Game/World/Generation")]
-public class WorldGenerationConfig: ScriptableObject
+public class WorldGenerationConfig : ScriptableObject
 {
     [field: SerializeField] public int ChunkSize {get; private set;} = 16;
     [field: SerializeField] public List<BiomeConfig> BiomeConfigs {get; private set;}

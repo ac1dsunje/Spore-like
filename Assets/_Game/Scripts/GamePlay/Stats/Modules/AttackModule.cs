@@ -3,7 +3,7 @@ using _Game.Scripts.GamePlay.Types;
 
 namespace _Game.Scripts.GamePlay.Modules
 {
-public class AttackModule: StatModule
+public class AttackModule : StatModule
 {
     public float PhysicalDamage { get; private set; }
     public float IgnoreResistance { get; private set; }

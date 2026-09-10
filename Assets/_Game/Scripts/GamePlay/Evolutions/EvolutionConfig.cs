@@ -6,7 +6,7 @@ using UnityEngine;
 namespace _Game.Scripts.GamePlay.Evolutions
 {
 [CreateAssetMenu(fileName = "NewEvolutionConfig", menuName = "Game/Evolutions/Evolution")]
-public class EvolutionConfig: ScriptableObject
+public class EvolutionConfig : ScriptableObject
 {
     [field: SerializeField] public EvolutionState State { get; private set; }
     [field: SerializeField] public string Name { get; private set; }

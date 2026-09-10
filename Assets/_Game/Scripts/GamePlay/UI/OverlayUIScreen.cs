@@ -2,7 +2,7 @@
 
 namespace _Game.Scripts.GamePlay.UI
 {
-public class OverlayUIScreen: UIScreen
+public class OverlayUIScreen : UIScreen
 {
     
 }

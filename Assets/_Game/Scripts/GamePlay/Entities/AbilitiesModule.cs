@@ -7,7 +7,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
 {
-public class AbilitiesModule: IStartable, IDisposable
+public class AbilitiesModule : IStartable, IDisposable
 {
     public event Action<AbilityConfig> OnAbilityAdded;
     

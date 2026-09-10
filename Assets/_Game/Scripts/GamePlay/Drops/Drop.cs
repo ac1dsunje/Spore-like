@@ -3,7 +3,7 @@
 namespace _Game.Scripts.GamePlay.Drops
 {
 [RequireComponent(typeof(SpriteRenderer))]
-public class Drop: MonoBehaviour
+public class Drop : MonoBehaviour
 {
     private SpriteRenderer _spriteRenderer;
     private DropConfig _config;

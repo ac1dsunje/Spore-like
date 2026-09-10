@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 namespace _Game.Scripts.GamePlay.World
 {
 
-public class EnvironmentSpawner: IStartable, IDisposable
+public class EnvironmentSpawner : IStartable, IDisposable
 {
     private readonly WorldTileRenderer _tileRenderer;
     private readonly EntitySpawner _spawner;

@@ -6,7 +6,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities.Experience
 {
-public class ExperienceModule: IStartable, IDisposable, IStatWithLimit
+public class ExperienceModule : IStartable, IDisposable, IStatWithLimit
 {
     public int Level { get; private set; }
 
