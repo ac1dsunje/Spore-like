@@ -11,7 +11,6 @@ public enum ExperienceType
     DistanceOvercoming = 6,
     EnduranceRecovering = 7,
     DamageDealing = 9,
-    StartSprinting = 10,
     ExperienceCollecting = 16
 }
 }

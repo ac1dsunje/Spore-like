@@ -20,7 +20,6 @@ public class ExperienceFactory
             ExperienceType.DistanceOvercoming => new DistanceOvercoming(entity.Get<MovementModule>(), config.Amount),
             ExperienceType.EnduranceRecovering => new EnduranceRecovering(entity.Get<EnduranceModule>(), config.Amount),
             ExperienceType.DamageDealing => new DamageDealing(entity.Get<AttackModule>(), config.Amount),
-            ExperienceType.StartSprinting => new StartSprinting(entity.Get<MovementModule>(), config.Amount),
             ExperienceType.ExperienceCollecting => new ExperienceCollecting(entity.Get<PickingModule>(), config.Amount),
             
             _ => throw new ArgumentOutOfRangeException(nameof(config), config, null)
