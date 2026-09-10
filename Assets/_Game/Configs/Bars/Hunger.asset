@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb38e7df0ead4d928c3e348bc7546c6d, type: 3}
   m_Name: Hunger
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.UI.Bar.BarConfig
+  <BarType>k__BackingField: 3
   <MaxValue>k__BackingField: 1
   <Color>k__BackingField: {r: 0.54901963, g: 0.22352941, b: 0.101960786, a: 1}
   <Sprite>k__BackingField: {fileID: -1753233493808227866, guid: af3b53907a818014a8d9ad50699209ca, type: 3}

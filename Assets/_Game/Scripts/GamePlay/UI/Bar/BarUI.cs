@@ -7,16 +7,17 @@ public class BarUI: MonoBehaviour
 {
     [SerializeField] protected Image Bar;
     [SerializeField] protected Image Icon;
-    [SerializeField] protected BarConfig Config;
+    private BarConfig _config;
     private IResource _module;
     
-    public void Construct(IResource module)
+    public void Construct(IResource module, BarConfig config)
     {
+        _config = config;
         _module = module;
-        UpdateBar(Config.MaxValue? 1: 0, 1);
+        UpdateBar(_config.MaxValue? 1: 0, 1);
         _module.OnValueChanged += UpdateBar;
-        Bar.color = Config.Color;
-        Icon.sprite = Config.Sprite;
+        Bar.color = _config.Color;
+        Icon.sprite = _config.Sprite;
     }
 
     private void UpdateBar(float min, float max) => Bar.fillAmount = min/max;

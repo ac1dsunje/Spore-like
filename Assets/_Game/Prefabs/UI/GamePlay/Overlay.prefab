@@ -329,21 +329,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5635474402350811490, guid: 70a2574be24426d47a428c24ae73ef26, type: 3}
-      propertyPath: _healthBarUI
+      propertyPath: _prefab
       value: 
-      objectReference: {fileID: 7809973364818811742}
+      objectReference: {fileID: 5330632809230057536, guid: 11d2f4953176aad4c874885cfaede0ed, type: 3}
     - target: {fileID: 5635474402350811490, guid: 70a2574be24426d47a428c24ae73ef26, type: 3}
-      propertyPath: _hungerBarUI
-      value: 
-      objectReference: {fileID: 609687400086171271}
+      propertyPath: _barConfigs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5635474402350811490, guid: 70a2574be24426d47a428c24ae73ef26, type: 3}
-      propertyPath: _enduranceBarUI
+      propertyPath: '_barConfigs.Array.data[0]'
       value: 
-      objectReference: {fileID: 5099798956253006629}
+      objectReference: {fileID: 11400000, guid: c7aaec295a548214482720980ff62acb, type: 2}
     - target: {fileID: 5635474402350811490, guid: 70a2574be24426d47a428c24ae73ef26, type: 3}
-      propertyPath: _experienceBarUI
+      propertyPath: '_barConfigs.Array.data[1]'
       value: 
-      objectReference: {fileID: 2571270006874674455}
+      objectReference: {fileID: 11400000, guid: 48dd8b58a543dc44791dad46ca141243, type: 2}
+    - target: {fileID: 5635474402350811490, guid: 70a2574be24426d47a428c24ae73ef26, type: 3}
+      propertyPath: '_barConfigs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 84664964105b97f4aa066eaef5bd2c3d, type: 2}
+    - target: {fileID: 5635474402350811490, guid: 70a2574be24426d47a428c24ae73ef26, type: 3}
+      propertyPath: '_barConfigs.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: bf600e31cdf3ba047be56d8c235399aa, type: 2}
     - target: {fileID: 7046225535444889020, guid: 70a2574be24426d47a428c24ae73ef26, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -361,59 +369,19 @@ PrefabInstance:
       value: BarsPanelUI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5865768609508323563, guid: 70a2574be24426d47a428c24ae73ef26, type: 3}
+    - {fileID: 2294388487515133257, guid: 70a2574be24426d47a428c24ae73ef26, type: 3}
+    - {fileID: 8844949270007778171, guid: 70a2574be24426d47a428c24ae73ef26, type: 3}
+    - {fileID: 3851694133873870130, guid: 70a2574be24426d47a428c24ae73ef26, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70a2574be24426d47a428c24ae73ef26, type: 3}
---- !u!114 &609687400086171271 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6580618748530178089, guid: 70a2574be24426d47a428c24ae73ef26, type: 3}
-  m_PrefabInstance: {fileID: 5991202125269456558}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1a307f766df4cd191b6f661dd9bd688, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.UI.BarUI
---- !u!114 &2571270006874674455 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8109851418202063801, guid: 70a2574be24426d47a428c24ae73ef26, type: 3}
-  m_PrefabInstance: {fileID: 5991202125269456558}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1a307f766df4cd191b6f661dd9bd688, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.UI.BarUI
---- !u!114 &5099798956253006629 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1577146859432844683, guid: 70a2574be24426d47a428c24ae73ef26, type: 3}
-  m_PrefabInstance: {fileID: 5991202125269456558}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1a307f766df4cd191b6f661dd9bd688, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.UI.BarUI
 --- !u!224 &5974030340757434762 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 129762603051312932, guid: 70a2574be24426d47a428c24ae73ef26, type: 3}
   m_PrefabInstance: {fileID: 5991202125269456558}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7809973364818811742 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4559789011161959920, guid: 70a2574be24426d47a428c24ae73ef26, type: 3}
-  m_PrefabInstance: {fileID: 5991202125269456558}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1a307f766df4cd191b6f661dd9bd688, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.UI.BarUI
 --- !u!1001 &6235232766316581505
 PrefabInstance:
   m_ObjectHideFlags: 0

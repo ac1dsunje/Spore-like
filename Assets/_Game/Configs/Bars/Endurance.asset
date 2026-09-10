@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb38e7df0ead4d928c3e348bc7546c6d, type: 3}
   m_Name: Endurance
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.UI.Bar.BarConfig
+  <BarType>k__BackingField: 2
   <MaxValue>k__BackingField: 1
   <Color>k__BackingField: {r: 1, g: 0, b: 0.8039216, a: 1}
   <Sprite>k__BackingField: {fileID: -3047751826750179631, guid: b76da92990b8b9443ae6c1081f8176b8, type: 3}
