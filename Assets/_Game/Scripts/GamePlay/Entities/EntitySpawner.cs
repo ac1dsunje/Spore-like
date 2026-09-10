@@ -22,11 +22,6 @@ public class EntitySpawner: MonoBehaviour
         var player = Spawn(transform.position, transform, _playerConfig);
         OnPlayerSpawn?.Invoke(player);
     }
-
-    public EntityScope SpawnEntity(Vector2 spawnPoint, Transform parent, EntityConfig entityConfig)
-    {
-        return Spawn(spawnPoint, parent, entityConfig);
-    }
     
     public EntityScope SpawnEntity(Vector2 spawnPoint, EntityConfig entityConfig)
     {

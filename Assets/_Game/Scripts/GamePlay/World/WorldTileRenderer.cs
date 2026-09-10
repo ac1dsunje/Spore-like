@@ -15,9 +15,9 @@ public class WorldTileRenderer: MonoBehaviour
     private readonly Dictionary<Biome, Tilemap> _tilemaps = new();
     private readonly Dictionary<Vector3Int, RenderedTile> _renderedTiles = new();
     
-    public event Action<Vector3Int, Biome, Transform> OnTileCreated;
+    public event Action<Vector3Int, Biome> OnTileCreated;
     public event Action<Vector3Int> OnTileUnloaded;
-    public event Action<Vector3Int, Biome, Transform> OnTileLoaded;
+    public event Action<Vector3Int, Biome> OnTileLoaded;
 
     private WorldModel _model;
     private WorldGenerator _generator;
@@ -62,7 +62,7 @@ public class WorldTileRenderer: MonoBehaviour
         var tilemap = _tilemaps[biome];
         PlaceTile(tilemap, position, renderedTile.Tile);
 
-        OnTileLoaded?.Invoke(position, biome, tilemap.transform);
+        OnTileLoaded?.Invoke(position, biome);
     }
 
     private void CreateTile(Vector3Int position, Biome biome)
@@ -71,7 +71,7 @@ public class WorldTileRenderer: MonoBehaviour
         var tilemap = _tilemaps[biome];
         PlaceTile(tilemap, position, tile);
 
-        OnTileCreated?.Invoke(position, biome, tilemap.transform);
+        OnTileCreated?.Invoke(position, biome);
 
         _renderedTiles.Add(position, new RenderedTile(biome, tile));
     }

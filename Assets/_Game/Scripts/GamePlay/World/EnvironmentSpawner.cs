@@ -9,17 +9,6 @@ using Random = UnityEngine.Random;
 
 namespace _Game.Scripts.GamePlay.World
 {
-public readonly struct SpawnedEntity
-{
-    public readonly Transform Parent;
-    public readonly EntityConfig Config;
-        
-    public SpawnedEntity(Transform parent, EntityConfig config)
-    {
-        Parent = parent;
-        Config = config;
-    }
-}
 
 public class EnvironmentSpawner: IStartable, IDisposable
 {
@@ -27,7 +16,7 @@ public class EnvironmentSpawner: IStartable, IDisposable
     private readonly EntitySpawner _spawner;
     private readonly EntitiesRegistry _entitiesRegistry;
     
-    private readonly Dictionary<Vector3Int, SpawnedEntity> _spawnedEntities = new();
+    private readonly Dictionary<Vector3Int, EntityConfig> _spawnedEntities = new();
     private readonly Dictionary<Vector3Int, EntityScope> _spawnedObjects = new();
     
     
@@ -45,13 +34,13 @@ public class EnvironmentSpawner: IStartable, IDisposable
         _tileRenderer.OnTileUnloaded += UnloadEnvironment;
     }
     
-    private void TryLoadEnvironment(Vector3Int position, Biome biome, Transform parent)
+    private void TryLoadEnvironment(Vector3Int position, Biome biome)
     {
         if (!_spawnedEntities.TryGetValue(position, out var item)) return;
-        SpawnPlant(position, item.Parent, item.Config);
+        SpawnPlant(position, item);
     }
 
-    private void TryCreateEnvironment(Vector3Int position, Biome biome, Transform parent)
+    private void TryCreateEnvironment(Vector3Int position, Biome biome)
     {
         if (!CanPlaceObject(biome.ChanceEnvironment)) return;
         
@@ -60,8 +49,8 @@ public class EnvironmentSpawner: IStartable, IDisposable
         
         var config = environment.Entity;
         
-        _spawnedEntities[position] = new(parent, config);
-        SpawnPlant(position, parent, config);
+        _spawnedEntities[position] = config;
+        SpawnPlant(position, config);
     }
 
     private void UnloadEnvironment(Vector3Int position)
@@ -80,11 +69,11 @@ public class EnvironmentSpawner: IStartable, IDisposable
     
     private bool CanPlaceObject(float chance) => Random.Range(0, 100) <= chance;
 
-    private void SpawnPlant(Vector3Int setPos, Transform parent, EntityConfig config)
+    private void SpawnPlant(Vector3Int setPos, EntityConfig config)
     {
         var position = new Vector3(setPos.x + 0.5f, setPos.y + 0.5f, setPos.z);
         
-        _spawnedObjects[setPos] = _spawner.SpawnEntity(position, parent, config);
+        _spawnedObjects[setPos] = _spawner.SpawnEntity(position, config);
     }
 
     public void Dispose()
