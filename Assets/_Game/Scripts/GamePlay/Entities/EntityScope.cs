@@ -25,7 +25,7 @@ public class EntityScope: LifetimeScope
         _entityConfig = entityConfig;
     }
 
-    public EntityController GetEntityController() => Container.Resolve<EntityController>();
+    public T Get<T>() => Container.Resolve<T>();
 
     protected override void Configure(IContainerBuilder builder)
     {
@@ -37,7 +37,6 @@ public class EntityScope: LifetimeScope
         builder.RegisterInstance(_entityConfig.Projectile);
         
         // Modules
-        builder.Register<EntityModel>(Lifetime.Scoped);
         builder.RegisterEntryPoint<EntityStats>(Lifetime.Scoped).AsSelf();
         
         builder.Register<VisionModule>(Lifetime.Scoped);
@@ -58,8 +57,6 @@ public class EntityScope: LifetimeScope
         builder.Register<SocialModule>(Lifetime.Scoped);
         
         // Behaviours
-        builder.RegisterEntryPoint<EntityController>(Lifetime.Scoped)
-            .AsSelf();
         builder.RegisterComponent(GetComponentInChildren<EntityAnimation>());
         builder.RegisterComponent(GetComponentInChildren<VisionHitbox>());
         builder.RegisterComponent(GetComponentInChildren<BodyHitbox>())

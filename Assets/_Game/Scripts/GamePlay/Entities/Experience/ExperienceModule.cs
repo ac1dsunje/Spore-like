@@ -18,17 +18,17 @@ public class ExperienceModule: IStartable, IDisposable, IStatWithLimit
     private int _levelScaler;
     
     private readonly EntityExperienceConfig _config;
-    private readonly EntityModel _model;
+    private readonly EntityScope _entity;
     private readonly ExperienceFactory _expFactory;
     
     public event Action<int> OnLevelChanged;
 
     public event Action<float, float> OnValueChanged;
 
-    public ExperienceModule(EntityExperienceConfig config, EntityModel model, ExperienceFactory factory)
+    public ExperienceModule(EntityExperienceConfig config, EntityScope entity, ExperienceFactory factory)
     {
         _config = config;
-        _model = model;
+        _entity = entity;
         _expFactory = factory;
     }
 
@@ -47,14 +47,14 @@ public class ExperienceModule: IStartable, IDisposable, IStatWithLimit
         }
         
         if (_config.ExperienceConfig.ExperienceTypes.Count == 0) return;
-        SubscribeExperienceServices(_config.ExperienceConfig, _model);
+        SubscribeExperienceServices(_config.ExperienceConfig);
     }
     
-    private void SubscribeExperienceServices(ExperienceConfig config, EntityModel model)
+    private void SubscribeExperienceServices(ExperienceConfig config)
     {
         foreach (var type in config.ExperienceTypes)
         {
-            var experienceType = _expFactory.GetService(type, model);
+            var experienceType = _expFactory.GetService(type, _entity);
             _experienceServices.Add(experienceType);
             experienceType.OnExperienceGained += UpdateExperience;
         }

@@ -9,7 +9,7 @@ namespace _Game.Scripts.GamePlay.Entities
 public class EntitiesRegistry : MonoBehaviour
 {
     private EntitySpawner _spawner;
-    public event Action<EntityController> OnPlayerInitialized;
+    public event Action<EntityScope> OnPlayerInitialized;
     
     private readonly Dictionary<HealthModule, EntityScope> _entityByHealth = new();
     private readonly HashSet<EntityScope> _allEntities = new();
@@ -24,8 +24,7 @@ public class EntitiesRegistry : MonoBehaviour
 
     private void AddEntity(EntityScope entity)
     {
-        var controller = entity.GetEntityController();
-        var health = controller.Model.Health;
+        var health = entity.Get<HealthModule>();
         
         _entityByHealth.TryAdd(health, entity);
         _allEntities.Add(entity);
@@ -33,12 +32,11 @@ public class EntitiesRegistry : MonoBehaviour
 
     private void AddPlayer(EntityScope entity)
     {
-        var player = entity.GetEntityController();
-        var health = player.Model.Health;
+        var health = entity.Get<HealthModule>();
         
         _entityByHealth.TryAdd(health, entity);
         _allEntities.Add(entity);
-        OnPlayerInitialized?.Invoke(player);
+        OnPlayerInitialized?.Invoke(entity);
     }
 
     public void DestroyEntityByHealth(HealthModule health)
@@ -51,8 +49,8 @@ public class EntitiesRegistry : MonoBehaviour
     public void DestroyEntityByScope(EntityScope scope)
     {
         if (!_allEntities.Remove(scope)) return;
-        
-        var health = scope.GetEntityController().Model.Health;
+
+        var health = scope.Get<HealthModule>();
         _entityByHealth.Remove(health);
         
         DestroyEntity(scope);

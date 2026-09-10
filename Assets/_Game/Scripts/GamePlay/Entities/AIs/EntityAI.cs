@@ -10,6 +10,7 @@ using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Interfaces;
+using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 using VContainer.Unity;
 using Random = UnityEngine.Random;
@@ -24,7 +25,7 @@ public class EntityAI : IStartable, IDisposable
     private readonly IHealthController _healthController;
     private readonly BodyHitbox _hitBox;
     private readonly EvolutionsModule _evolutions;
-    private readonly EntityModel _model;
+    private readonly EntityScope _entity;
     private readonly CoroutineRunner _coroutineRunner;
     private readonly ExperienceModule _experience;
 
@@ -34,7 +35,7 @@ public class EntityAI : IStartable, IDisposable
     private const float MaxDirectionChangeTime = 2f;
 
     public EntityAI(IMovementController movement, IAttackController attacker, IHealthController healthController,
-        BodyHitbox hitbox, EvolutionsModule evolutions, EntityModel model, CoroutineRunner coroutineRunner, 
+        BodyHitbox hitbox, EvolutionsModule evolutions, EntityScope entity, CoroutineRunner coroutineRunner, 
         ExperienceModule experience)
     {
         _movement = movement;
@@ -42,7 +43,7 @@ public class EntityAI : IStartable, IDisposable
         _healthController = healthController;
         _hitBox = hitbox;
         _evolutions = evolutions;
-        _model = model;
+        _entity = entity;
         _coroutineRunner = coroutineRunner;
         _experience = experience;
     }
@@ -88,7 +89,7 @@ public class EntityAI : IStartable, IDisposable
     private void ChooseEvolution(List<Evolution> evolutions)
     {
         var evolution = evolutions[Random.Range(0, evolutions.Count)];
-        evolution.Apply(_model);
+        evolution.Apply(_entity);
     }
 
     private void TakeDamage(HitInfo hit)
@@ -106,13 +107,13 @@ public class EntityAI : IStartable, IDisposable
         Vector2 direction;
         Transform chasingEntity = null;
 
-        if (_model.Vision.CanSee())
-            chasingEntity = _model.Social.GetEntityWithHighestInfluence();
+        if (_entity.Get<VisionModule>().CanSee())
+            chasingEntity = _entity.Get<SocialModule>().GetEntityWithHighestInfluence();
     
         if (chasingEntity != null)
         {
             var playerPosition = chasingEntity.position;
-            var creaturePosition = _model.Movement.Transform.position;
+            var creaturePosition = _entity.Get<MovementModule>().Transform.position;
             direction = (playerPosition - creaturePosition).normalized;
         }
         else

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using _Game.Scripts.GamePlay.Entities;
+using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 using VContainer.Unity;
 using CoroutineRunner = _Game.Scripts.Core.Services.CoroutineRunner;
@@ -15,7 +16,7 @@ public class EnemiesSpawner: IStartable, IDisposable
     private readonly WorldModel _world;
     private readonly CoroutineRunner _runner;
 
-    private EntityController _player;
+    private MovementModule _player;
     
     public EnemiesSpawner(EntitySpawner spawner, EntitiesRegistry registry, WorldModel world, CoroutineRunner runner)
     {
@@ -30,9 +31,9 @@ public class EnemiesSpawner: IStartable, IDisposable
         _registry.OnPlayerInitialized += AddPlayer;
     }
 
-    private void AddPlayer(EntityController entity)
+    private void AddPlayer(EntityScope entity)
     {
-        _player = entity;
+        _player = entity.Get<MovementModule>();
         _runner.Run(this, "Spawn Enemies", SpawnEnemies());
     }
 
@@ -41,7 +42,7 @@ public class EnemiesSpawner: IStartable, IDisposable
         while (true)
         {
             yield return new WaitForSeconds(3f);
-            var playerPos = _player.Model.Movement.GridPosition;
+            var playerPos = _player.GridPosition;
             var spawnPos = new Vector3Int(playerPos.x + Random.Range(-5, 5), playerPos.y + Random.Range(-5, 5), 0);
             var enemies = _world.GetBiome(spawnPos).Enemies;
             if (enemies.Count > 0)

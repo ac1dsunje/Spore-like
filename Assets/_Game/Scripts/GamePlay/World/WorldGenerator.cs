@@ -31,9 +31,9 @@ public class WorldGenerator: IInitializable, IDisposable
         _registry.OnPlayerInitialized += AddPlayer;
     }
 
-    private void AddPlayer(EntityController player)
+    private void AddPlayer(EntityScope player)
     {
-        _player = player.Model.Movement;
+        _player = player.Get<MovementModule>();
         _player.OnGridPositionChanged += Generate;
         Generate(_player.GridPosition);
     }

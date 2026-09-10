@@ -13,14 +13,14 @@ public class AbilitiesModule: IStartable, IDisposable
     
     private readonly HashSet<Ability> _abilities = new();
     private readonly AbilityFactory _factory;
-    private readonly EntityModel _entityModel;
+    private readonly EntityScope _entity;
     private readonly Ticker _ticker;
 
-    public AbilitiesModule(Ticker ticker, AbilityFactory factory, EntityModel entityModel)
+    public AbilitiesModule(Ticker ticker, AbilityFactory factory, EntityScope entity)
     {
         _ticker = ticker;
         _factory = factory;
-        _entityModel = entityModel;
+        _entity = entity;
     }
 
     public void Start()
@@ -33,7 +33,7 @@ public class AbilitiesModule: IStartable, IDisposable
         if (configs == null || configs.Length == 0) return;
         foreach (var ability in configs)
         {
-            if (_abilities.Add(_factory.Get(_entityModel, ability)))
+            if (_abilities.Add(_factory.Get(_entity, ability)))
             {
                 OnAbilityAdded?.Invoke(ability);
             }

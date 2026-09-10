@@ -18,7 +18,7 @@ public class Evolution: IDisposable, IStatSource
     public Sprite Frame => _rarity.Sprite;
     
     private RarityConfig _rarity;
-    private EntityModel _entity;
+    private EntityScope _entity;
     public event Action OnRarityChanged;
     
     //Level
@@ -42,7 +42,7 @@ public class Evolution: IDisposable, IStatSource
         return Stats.Select(stat => new SourceStat(stat.Type, stat.CurrentValue, stat.Operation, stat.Target)).ToList();
     }
 
-    public void Apply(EntityModel entityModel)
+    public void Apply(EntityScope entityModel)
     {
         _entity = entityModel;
         Activate();
@@ -77,7 +77,7 @@ public class Evolution: IDisposable, IStatSource
         UseRarity(rarity);
         
         OnRarityChanged?.Invoke();
-        _entity.Stats.UpdateSource(this);
+        _entity.Get<EntityStats>().UpdateSource(this);
     }
 
     private void UseRarity(RarityConfig rarity)

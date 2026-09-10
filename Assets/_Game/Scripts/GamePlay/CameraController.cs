@@ -51,11 +51,11 @@ public class CameraController : IInitializable, ITickable, IDisposable
         _targetSize = radius;
     }
 
-    private void AddPlayer(EntityController player)
+    private void AddPlayer(EntityScope player)
     {
-        _playerVision = player.Model.Vision;
+        _playerVision = player.Get<VisionModule>();
         _playerVision.OnVisionRadiusUpdated += SetSize;
-        _cineMachineCamera.Target.TrackingTarget = player.Model.Movement.Transform;
+        _cineMachineCamera.Target.TrackingTarget = player.Get<MovementModule>().Transform;
 
         _targetSize = _playerVision.VisionRadius;
         _currentSize = _targetSize;

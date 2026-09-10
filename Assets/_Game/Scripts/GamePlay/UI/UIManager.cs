@@ -40,10 +40,10 @@ public class UIManager: MonoBehaviour
         _registry.OnPlayerInitialized += AddPlayer;
     }
     
-    private void AddPlayer(EntityController player)
+    private void AddPlayer(EntityScope player)
     {
-        _evolutionsModule = player.Evolutions;
-        _abilitiesModule = player.Abilities;
+        _evolutionsModule = player.Get<EvolutionsModule>();
+        _abilitiesModule = player.Get<AbilitiesModule>();
         
         _evolutionsModule.OnSlotsFilled += OnSlotsFilled;
         
@@ -55,7 +55,7 @@ public class UIManager: MonoBehaviour
         _activeEvolutionsDisplay.Construct(_evolutionsModule);
         _evolutionChooseUIScreen.Construct(_evolutionsModule);
         _activeAbilitiesDisplay.Construct(_abilitiesModule);
-        _activeBuffsDisplay.Construct(player.Buffs);
+        _activeBuffsDisplay.Construct(player.Get<BuffsModule>());
     }
 
     private void Update()

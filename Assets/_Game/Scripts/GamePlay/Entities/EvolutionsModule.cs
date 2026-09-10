@@ -14,7 +14,7 @@ public class EvolutionsModule: IStartable, IDisposable
 {
     private readonly EvolutionsDatabase _evolutionsDatabase;
     private readonly RaritiesDatabase _raritiesDatabase;
-    private readonly EntityModel _entity;
+    private readonly EntityScope _entity;
     private readonly ExperienceModule _experience;
     private readonly EntityStats _stats;
     private readonly AbilitiesModule _abilities;
@@ -27,7 +27,7 @@ public class EvolutionsModule: IStartable, IDisposable
     public event Action<Evolution> OnEvolutionApplied;
 
     public EvolutionsModule(EvolutionsDatabase evolutionsDatabase, RaritiesDatabase raritiesDatabase,
-        EntityModel entity, ExperienceModule experience, EntityStats stats, AbilitiesModule abilities)
+        EntityScope entity, ExperienceModule experience, EntityStats stats, AbilitiesModule abilities)
     {
         _evolutionsDatabase = evolutionsDatabase;
         _raritiesDatabase = raritiesDatabase;

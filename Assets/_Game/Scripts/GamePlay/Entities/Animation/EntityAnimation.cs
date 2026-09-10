@@ -1,4 +1,5 @@
 ﻿using _Game.Scripts.GamePlay.Interfaces;
+using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 using VContainer;
 
@@ -14,13 +15,13 @@ public class EntityAnimation: MonoBehaviour, IVisible, ISocial
     private CircleCollider2D _collider;
     
     private AnimationSettings _config;
-    private EntityModel _model;
+    private EntityScope _entity;
 
     [Inject]
-    private void Construct(AnimationSettings config, EntityModel model)
+    private void Construct(AnimationSettings config, EntityScope model)
     {
         _config = config;
-        _model = model;
+        _entity = model;
     }
 
     private void Awake()
@@ -38,8 +39,8 @@ public class EntityAnimation: MonoBehaviour, IVisible, ISocial
         SetAnimator(_config.Controller);
     }
 
-    public Transform GetTransform() => _model.Movement.Transform;
-    public float GetInfluence() => _model.Social.Influence;
+    public Transform GetTransform() => _entity.Get<MovementModule>().Transform;
+    public float GetInfluence() => _entity.Get<SocialModule>().Influence;
 
     private void SetSprite(Sprite sprite) => _renderer.sprite = sprite;
     

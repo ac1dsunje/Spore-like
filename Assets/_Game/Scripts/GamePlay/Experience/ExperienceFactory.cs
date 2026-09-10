@@ -1,26 +1,27 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Experience.Types;
+using _Game.Scripts.GamePlay.Modules;
 
 namespace _Game.Scripts.GamePlay.Experience
 {
 public class ExperienceFactory
 {
-    public ExperienceService GetService(ExperienceServiceConfig config, EntityModel entityModel)
+    public ExperienceService GetService(ExperienceServiceConfig config, EntityScope entity)
     {
         return config.Type switch
         {
-            ExperienceType.DamageReflection => new DamageReflecting(entityModel.Defense, config.Amount),
-            ExperienceType.EntityDiscover => new EntitiesDiscovering(entityModel.Vision, config.Amount),
-            ExperienceType.FoodEating => new FoodEating(entityModel.Stomach, config.Amount),
-            ExperienceType.DamageResistance => new DamageResisting(entityModel.Defense, config.Amount),
-            ExperienceType.DamageTaking => new DamageTaking(entityModel.Health, config.Amount),
-            ExperienceType.Healing => new Healing(entityModel.Health, config.Amount),
-            ExperienceType.DistanceOvercoming => new DistanceOvercoming(entityModel.Movement, config.Amount),
-            ExperienceType.EnduranceRecovering => new EnduranceRecovering(entityModel.Endurance, config.Amount),
-            ExperienceType.DamageDealing => new DamageDealing(entityModel.Attack, config.Amount),
-            ExperienceType.StartSprinting => new StartSprinting(entityModel.Movement, config.Amount),
-            ExperienceType.ExperienceCollecting => new ExperienceCollecting(entityModel.Picking, config.Amount),
+            ExperienceType.DamageReflection => new DamageReflecting(entity.Get<DefenseModule>(), config.Amount),
+            ExperienceType.EntityDiscover => new EntitiesDiscovering(entity.Get<VisionModule>(), config.Amount),
+            ExperienceType.FoodEating => new FoodEating(entity.Get<StomachModule>(), config.Amount),
+            ExperienceType.DamageResistance => new DamageResisting(entity.Get<DefenseModule>(), config.Amount),
+            ExperienceType.DamageTaking => new DamageTaking(entity.Get<HealthModule>(), config.Amount),
+            ExperienceType.Healing => new Healing(entity.Get<HealthModule>(), config.Amount),
+            ExperienceType.DistanceOvercoming => new DistanceOvercoming(entity.Get<MovementModule>(), config.Amount),
+            ExperienceType.EnduranceRecovering => new EnduranceRecovering(entity.Get<EnduranceModule>(), config.Amount),
+            ExperienceType.DamageDealing => new DamageDealing(entity.Get<AttackModule>(), config.Amount),
+            ExperienceType.StartSprinting => new StartSprinting(entity.Get<MovementModule>(), config.Amount),
+            ExperienceType.ExperienceCollecting => new ExperienceCollecting(entity.Get<PickingModule>(), config.Amount),
             
             _ => throw new ArgumentOutOfRangeException(nameof(config), config, null)
         };
