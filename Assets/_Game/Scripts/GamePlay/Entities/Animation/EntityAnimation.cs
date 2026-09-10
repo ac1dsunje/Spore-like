@@ -15,13 +15,15 @@ public class EntityAnimation: MonoBehaviour, IVisible, ISocial
     private CircleCollider2D _collider;
     
     private AnimationSettings _config;
-    private EntityScope _entity;
+    private SocialModule _social;
+    private Transform _transform;
 
     [Inject]
-    private void Construct(AnimationSettings config, EntityScope model)
+    private void Construct(AnimationSettings config, Transform entityTransform, SocialModule socialModule)
     {
         _config = config;
-        _entity = model;
+        _social = socialModule;
+        _transform = entityTransform;
     }
 
     private void Awake()
@@ -39,8 +41,8 @@ public class EntityAnimation: MonoBehaviour, IVisible, ISocial
         SetAnimator(_config.Controller);
     }
 
-    public Transform GetTransform() => _entity.Get<Transform>();
-    public float GetInfluence() => _entity.Get<SocialModule>().Influence;
+    public Transform GetTransform() => _transform;
+    public float GetInfluence() => _social.Influence;
 
     private void SetSprite(Sprite sprite) => _renderer.sprite = sprite;
     
