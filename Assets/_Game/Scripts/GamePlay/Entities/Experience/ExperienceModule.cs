@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Experience;
+using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.UI.Bar;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities.Experience
 {
-public class ExperienceModule: IStartable, IDisposable, IResource
+public class ExperienceModule: IStartable, IDisposable, IStatWithLimit
 {
     public int Level { get; private set; }
 

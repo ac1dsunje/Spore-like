@@ -1,11 +1,12 @@
 ﻿using System;
+using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Types;
 using _Game.Scripts.GamePlay.UI.Bar;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Modules
 {
-public class HealthModule: StatModule, IResource
+public class HealthModule: StatModule, IStatWithLimit
 {
     public float MaxHealth {get;  private set; }
     public float Health { get; private set; }

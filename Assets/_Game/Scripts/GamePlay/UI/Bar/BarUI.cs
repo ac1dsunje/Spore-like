@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using _Game.Scripts.GamePlay.Interfaces;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace _Game.Scripts.GamePlay.UI.Bar
@@ -8,9 +9,9 @@ public class BarUI: MonoBehaviour
     [SerializeField] protected Image Bar;
     [SerializeField] protected Image Icon;
     private BarConfig _config;
-    private IResource _module;
+    private IStatWithLimit _module;
     
-    public void Construct(IResource module, BarConfig config)
+    public void Construct(IStatWithLimit module, BarConfig config)
     {
         _config = config;
         _module = module;

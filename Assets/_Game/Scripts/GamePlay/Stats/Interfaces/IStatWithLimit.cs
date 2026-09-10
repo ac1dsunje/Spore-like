@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace _Game.Scripts.GamePlay.UI.Bar
+namespace _Game.Scripts.GamePlay.Interfaces
 {
-public interface IResource
+public interface IStatWithLimit
 {
     public event Action<float, float> OnValueChanged;
 }
