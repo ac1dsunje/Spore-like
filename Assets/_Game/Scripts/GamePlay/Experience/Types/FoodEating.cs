@@ -1,17 +1,27 @@
-﻿using _Game.Scripts.GamePlay.Modules;
+﻿using System;
+using _Game.Scripts.GamePlay.Modules;
+using R3;
 
 namespace _Game.Scripts.GamePlay.Experience.Types
 {
 public class FoodEating : ExperienceService
 {
-    private readonly StomachModule _module;
+    private readonly IDisposable _subscription;
     
     public FoodEating(StomachModule module, float amount) : base(amount)
     {
-        _module = module;
-        _module.OnFoodPointsAchieved += AddAmount;
+        _subscription = module.Current
+            .Pairwise()
+            .Subscribe(pair =>
+            {
+                var delta = pair.Current - pair.Previous;
+                if (delta > 0)
+                {
+                    AddAmount(delta);
+                }
+            });
     }
 
-    public override void Dispose() => _module.OnFoodPointsAchieved -= AddAmount;
+    public override void Dispose() => _subscription?.Dispose();
 }
 }

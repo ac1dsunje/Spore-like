@@ -84,7 +84,6 @@ MonoBehaviour:
   <Drops>k__BackingField:
     <Drops>k__BackingField:
     - {fileID: 11400000, guid: fa06a686091fd6940938824b703a740e, type: 2}
-    - {fileID: 11400000, guid: 46a2c78f47e04c4489da93bef214f6ce, type: 2}
   <AnimationSettings>k__BackingField:
     <Sprite>k__BackingField: {fileID: 3147233298308361737, guid: e1e8f9e2112581f4c848d9ee20c89f4a, type: 3}
     <Controller>k__BackingField: {fileID: 0}

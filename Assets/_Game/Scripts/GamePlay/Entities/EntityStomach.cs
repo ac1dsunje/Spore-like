@@ -44,7 +44,7 @@ public class EntityStomach : IStartable, IDisposable
         while (true)
         {
             yield return new WaitForSeconds(LoseHungerTime);
-            _stomach.LoseHunger(1);
+            _stomach.Reduce(1);
         }
     }
 

@@ -5,7 +5,6 @@ namespace _Game.Scripts.GamePlay.Drops
 public enum DropType
 {
     Food = 0,
-    Experience = 1,
 }
 
 [CreateAssetMenu(fileName = "New drop Config", menuName = "Game/Drop")]

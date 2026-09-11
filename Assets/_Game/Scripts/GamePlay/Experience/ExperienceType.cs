@@ -10,7 +10,6 @@ public enum ExperienceType
     Healing = 5,
     DistanceOvercoming = 6,
     EnduranceRecovering = 7,
-    DamageDealing = 9,
-    ExperienceCollecting = 16
+    DamageDealing = 9
 }
 }

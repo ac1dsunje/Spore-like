@@ -1,5 +1,4 @@
-﻿using System;
-using _Game.Scripts.GamePlay.Types;
+﻿using _Game.Scripts.GamePlay.Types;
 using R3;
 using UnityEngine;
 
@@ -13,30 +12,26 @@ public class StomachModule : StatModule
     private readonly ReactiveProperty<float> _max = new();
     private readonly ReactiveProperty<float> _current = new();
 
-    public event Action<float> OnFoodPointsAchieved;
-
     protected override void Configure()
     {
-        BindStat(StatType.MaxHunger, UpdateMaxHunger);
+        BindStat(StatType.MaxHunger, UpdateMax);
     }
 
-    public void LoseHunger(float value)
+    public void Reduce(float amount)
     {
-        _current.Value -= value;
-        if (_current.Value <= 0) _current.Value = 0;
+        _current.Value = Mathf.Max(0, _current.Value - amount);
     }
 
-    private void UpdateMaxHunger(float value)
+    public void Add(float amount)
+    {
+        _current.Value = Mathf.Min(_max.Value, _current.Value + amount);
+    }
+
+    private void UpdateMax(float value)
     {
         var difference = value - _max.Value;
         _max.Value = value;
         _current.Value = Mathf.Clamp(_current.Value + difference, 0, _max.Value);
-    }
-
-    public void GetExperienceFromFood(int value)
-    {
-        _current.Value += value;
-        OnFoodPointsAchieved?.Invoke(value);
     }
 }
 }

@@ -42,17 +42,12 @@ public class EntityPicker : IStartable, ITickable, IDisposable
             case DropType.Food:
                 if (_config.ExperienceConfig.ExperienceConfig.ExperienceTypes.Any(exp => exp.Type == ExperienceType.FoodEating))
                 {
-                    _stomach.GetExperienceFromFood(1);
+                    _stomach.Add(1);
                     _pickerHitbox.DestroyDrop(drop);
                 }
                 break;
-            case DropType.Experience:
-                if (_config.ExperienceConfig.ExperienceConfig.ExperienceTypes.Any(exp => exp.Type == ExperienceType.ExperienceCollecting))
-                {
-                    _pickingModule.GetExperiencePoint(1);
-                    _pickerHitbox.DestroyDrop(drop);
-                }
-                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 
