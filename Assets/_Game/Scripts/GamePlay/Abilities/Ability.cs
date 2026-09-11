@@ -57,13 +57,13 @@ public abstract class Ability : IDisposable, IEnduranceUser
     {
         IsActive = true;
         _recovery.AddUser(this);
-        _endurance.UseEndurance(Config.StartCost);
+        _endurance.Reduce(Config.StartCost);
     }
 
     protected virtual void Do(float deltaTime)
     {
         if (!Config.HasActivePhase) return;
-        _endurance.UseEndurance(Config.InUseCost * deltaTime);
+        _endurance.Reduce(Config.InUseCost * deltaTime);
     }
 
     protected virtual void Disable()

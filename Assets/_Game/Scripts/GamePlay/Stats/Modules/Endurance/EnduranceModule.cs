@@ -19,14 +19,14 @@ public class EnduranceModule : StatModule
     
     public bool HasEnoughEndurance(float value) => _current.Value >= value;
 
-    public void AddEndurance(float value)
+    public void Add(float amount)
     {
-        _current.Value = Mathf.Min(_max.Value, _current.Value + value);
+        _current.Value = Mathf.Min(_max.Value, _current.Value + amount);
     }
     
-    public void UseEndurance(float value)
+    public void Reduce(float amount)
     {
-        _current.Value = Mathf.Max(0, _current.Value - value);
+        _current.Value = Mathf.Max(0, _current.Value - amount);
     }
     
     private void UpdateMaxEndurance(float value)

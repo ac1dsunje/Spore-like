@@ -19,7 +19,7 @@ public class EntityEndurance : ITickable
     {
         if (!_recovery.IsRecovering || _recovery.RecoveryRate <= 0f) return;
             
-        _endurance.AddEndurance(_recovery.RecoveryRate * Time.deltaTime);
+        _endurance.Add(_recovery.RecoveryRate * Time.deltaTime);
     }
 }
 }
