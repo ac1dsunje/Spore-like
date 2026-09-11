@@ -1,39 +1,52 @@
-﻿using _Game.Scripts.GamePlay.Modules;
+﻿using System;
+using _Game.Scripts.Core.Services;
+using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities.Movement
 {
-public class EntityBasicMovement : IFixedTickable, ITickable, IMovementController
+public class EntityBasicMovement : IStartable, IMovementController, IDisposable
 {
     private readonly RigidbodyController _controller;
     private readonly MovementModule _movement;
+    private readonly Ticker _ticker;
 
     private Vector2 _lastMovementDirection = Vector2.right;
     private Vector3Int GridPosition => _controller.GridPosition;
 
     private Vector2 _direction;
 
-    public EntityBasicMovement(RigidbodyController controller, MovementModule movement)
+    public EntityBasicMovement(RigidbodyController controller, MovementModule movement, Ticker ticker)
     {
         _controller = controller;
         _movement = movement;
+        _ticker = ticker;
     }
     
-    public void SetDirection(Vector2 direction) => _direction = direction;
-
-    public void Tick()
+    public void Start()
     {
-        TryFlip();
+        _ticker.OnFixedTick += FixedTick;
+    }
+    
+    public void SetDirection(Vector2 direction)
+    {
+        _direction = direction.normalized;
+        TryFlip(direction);
+        UpdateLastMovementDirection(_direction);
+    }
+
+    private void TryFlip(Vector2 direction)
+    {
+        if (direction.x != 0)
+        {
+            _controller.Flip(direction.x > 0);
+        }
     }
 
     public void FixedTick()
     {
-        var input = _direction.normalized;
-
-        UpdateLastMovementDirection(input);
-
-        Move(input);
+        Move(_direction);
         TryDash();
         _movement.UpdateGridPosition(GridPosition);
         
@@ -70,12 +83,9 @@ public class EntityBasicMovement : IFixedTickable, ITickable, IMovementControlle
         _movement.SetDash(false);
     }
 
-    private void TryFlip()
+    public void Dispose()
     {
-        if (_direction.x != 0)
-        {
-            _controller.Flip(_direction.x > 0);
-        }
+        _ticker.OnFixedTick -= FixedTick;
     }
 }
 }
