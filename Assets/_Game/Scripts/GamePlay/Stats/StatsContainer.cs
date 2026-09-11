@@ -7,7 +7,7 @@ using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay
 {
-public class EntityStats : IStartable
+public class StatsContainer : IStartable
 {
     private readonly Dictionary<StatType, float> _stats = new();
     private readonly Dictionary<StatType, float> _basicStats = new();
@@ -19,7 +19,7 @@ public class EntityStats : IStartable
     private readonly StatTypeConfig _config;
     private readonly EntityConfig _entityStatsConfig;
 
-    public EntityStats(StatTypeConfig config, EntityConfig entityStatsConfig)
+    public StatsContainer(StatTypeConfig config, EntityConfig entityStatsConfig)
     {
         _config = config;
         _entityStatsConfig = entityStatsConfig;

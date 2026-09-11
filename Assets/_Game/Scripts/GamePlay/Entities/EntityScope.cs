@@ -40,7 +40,8 @@ public class EntityScope : LifetimeScope
         builder.RegisterInstance(_entityConfig.Projectile);
         
         // Modules
-        builder.RegisterEntryPoint<EntityStats>(Lifetime.Scoped).AsSelf();
+        builder.RegisterEntryPoint<StatsContainer>(Lifetime.Scoped)
+            .AsSelf();
         
         builder.Register<HealthModule>(Lifetime.Scoped);
         builder.Register<RegenerationModule>(Lifetime.Scoped);
@@ -89,10 +90,13 @@ public class EntityScope : LifetimeScope
             .AsSelf();
         builder.RegisterEntryPoint<EntityStomach>(Lifetime.Scoped);
         builder.RegisterEntryPoint<EntityPicker>(Lifetime.Scoped);
-        builder.RegisterEntryPoint<EntityHealth>(Lifetime.Scoped).As<IHealthController>();
+        builder.RegisterEntryPoint<EntityHealth>(Lifetime.Scoped)
+            .As<IHealthController>();
         builder.RegisterEntryPoint<EntityLife>(Lifetime.Scoped);
         builder.RegisterEntryPoint<EntityRegeneration>(Lifetime.Scoped);
-        builder.RegisterEntryPoint<EntityWeaponAttack>(Lifetime.Scoped).As<IDamageSource>().As<IAttackController>();
+        builder.RegisterEntryPoint<EntityWeaponAttack>(Lifetime.Scoped)
+            .As<IDamageSource>()
+            .As<IAttackController>();
         
         _entityBuilder.ChooseBehaviour(_entityConfig.AIType, builder);
     }

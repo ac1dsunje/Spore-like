@@ -76,7 +76,7 @@ public class Evolution : IDisposable, IStatSource
         UseRarity(rarity);
         
         OnRarityChanged?.Invoke();
-        _entity.Get<EntityStats>().UpdateSource(this);
+        _entity.Get<StatsContainer>().UpdateSource(this);
     }
 
     private void UseRarity(RarityConfig rarity)

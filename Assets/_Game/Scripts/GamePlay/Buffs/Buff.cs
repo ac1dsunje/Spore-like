@@ -16,12 +16,12 @@ public class Buff : IStatSource
     public bool IsActive { get; private set; }
         
     private readonly BuffConfig _config;
-    private readonly EntityStats _entityStats;
+    private readonly StatsContainer _statsContainer;
     private readonly HealthModule _health;
 
-    public Buff(EntityStats entityStats, HealthModule health, BuffConfig config)
+    public Buff(StatsContainer statsContainer, HealthModule health, BuffConfig config)
     {
-        _entityStats = entityStats;
+        _statsContainer = statsContainer;
         _health = health;
         _config = config;
     }
@@ -37,13 +37,13 @@ public class Buff : IStatSource
     public void Activate()
     {
         IsActive = true;
-        _entityStats.AddSource(this);
+        _statsContainer.AddSource(this);
     }
 
     public void Deactivate()
     {
         IsActive = false;
-        _entityStats.RemoveSource(this);
+        _statsContainer.RemoveSource(this);
     }
 }
 }

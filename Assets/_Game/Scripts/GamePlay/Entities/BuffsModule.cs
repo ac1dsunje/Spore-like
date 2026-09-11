@@ -15,14 +15,14 @@ public class BuffsModule : IStartable, IDisposable
     private readonly Dictionary<BuffType, Buff> _buffs = new();
     private readonly List<Buff> _activeBuffs = new();
 
-    private readonly EntityStats _stats;
+    private readonly StatsContainer _statsContainer;
     private readonly HealthModule _health;
     private readonly BuffsDatabase _dataDatabase;
     private readonly Ticker _ticker;
 
-    public BuffsModule(EntityStats stats, HealthModule health, BuffsDatabase dataDatabase, Ticker ticker)
+    public BuffsModule(StatsContainer statsContainer, HealthModule health, BuffsDatabase dataDatabase, Ticker ticker)
     {
-        _stats = stats;
+        _statsContainer = statsContainer;
         _health = health;
         _dataDatabase = dataDatabase;
         _ticker = ticker;
@@ -38,7 +38,7 @@ public class BuffsModule : IStartable, IDisposable
     {
         foreach (var buffConfig in _dataDatabase.Buffs)
         {
-            _buffs[buffConfig.Type] = new Buff(_stats, _health, buffConfig);
+            _buffs[buffConfig.Type] = new Buff(_statsContainer, _health, buffConfig);
         }
     }
 

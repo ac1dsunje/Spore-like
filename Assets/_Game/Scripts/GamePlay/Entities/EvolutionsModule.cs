@@ -17,7 +17,7 @@ public class EvolutionsModule : IStartable, IDisposable
     private readonly RaritiesDatabase _raritiesDatabase;
     private readonly EntityScope _entity;
     private readonly ExperienceModule _experience;
-    private readonly EntityStats _stats;
+    private readonly StatsContainer _statsContainer;
     private readonly AbilitiesModule _abilities;
     private readonly ExperienceFactory _experienceFactory;
     
@@ -29,13 +29,13 @@ public class EvolutionsModule : IStartable, IDisposable
     public event Action<Evolution> OnEvolutionApplied;
 
     public EvolutionsModule(EvolutionsDatabase evolutionsDatabase, RaritiesDatabase raritiesDatabase,
-        EntityScope entity, ExperienceModule experience, EntityStats stats, AbilitiesModule abilities, ExperienceFactory experienceFactory)
+        EntityScope entity, ExperienceModule experience, StatsContainer statsContainer, AbilitiesModule abilities, ExperienceFactory experienceFactory)
     {
         _evolutionsDatabase = evolutionsDatabase;
         _raritiesDatabase = raritiesDatabase;
         _entity = entity;
         _experience = experience;
-        _stats = stats;
+        _statsContainer = statsContainer;
         _abilities = abilities;
         _experienceFactory = experienceFactory;
     }
@@ -60,7 +60,7 @@ public class EvolutionsModule : IStartable, IDisposable
     {
         evolution.OnLevelUp += OnEvolutionLevelUp;
         evolution.Apply(_entity, _experienceFactory);
-        _stats.AddSource(evolution);
+        _statsContainer.AddSource(evolution);
         _abilities.Add(evolution.Config.Abilities);
 
         UnlockEvolutions();
