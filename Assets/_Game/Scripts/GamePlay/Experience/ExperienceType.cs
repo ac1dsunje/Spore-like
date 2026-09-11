@@ -2,7 +2,6 @@
 {
 public enum ExperienceType
 {
-    EntityDiscover = 0,
     FoodEating = 1,
     DamageReflection = 2,
     DamageResistance = 3,

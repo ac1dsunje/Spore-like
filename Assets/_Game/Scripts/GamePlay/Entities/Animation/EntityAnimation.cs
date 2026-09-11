@@ -1,27 +1,21 @@
-﻿using _Game.Scripts.GamePlay.Interfaces;
-using _Game.Scripts.GamePlay.Modules;
-using UnityEngine;
+﻿using UnityEngine;
 using VContainer;
 
 namespace _Game.Scripts.GamePlay.Entities.Animation
 {
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(CircleCollider2D))]
-public class EntityAnimation : MonoBehaviour, IVisible, ISocial
+public class EntityAnimation : MonoBehaviour
 {
     private SpriteRenderer _renderer;
     private CircleCollider2D _collider;
     
     private AnimationSettings _config;
-    private SocialModule _social;
-    private Transform _transform;
 
     [Inject]
-    private void Construct(AnimationSettings config, Transform entityTransform, SocialModule socialModule)
+    private void Construct(AnimationSettings config)
     {
         _config = config;
-        _social = socialModule;
-        _transform = entityTransform;
     }
 
     private void Awake()
@@ -36,9 +30,6 @@ public class EntityAnimation : MonoBehaviour, IVisible, ISocial
         
         SetSprite(_config.Sprite);
     }
-
-    public Transform GetTransform() => _transform;
-    public float GetInfluence() => _social.Influence;
 
     private void SetSprite(Sprite sprite) => _renderer.sprite = sprite;
 }

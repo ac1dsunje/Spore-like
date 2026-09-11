@@ -10,7 +10,6 @@ using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Evolutions;
 using _Game.Scripts.GamePlay.Interfaces;
-using _Game.Scripts.GamePlay.Modules;
 using UnityEngine;
 using VContainer.Unity;
 using Random = UnityEngine.Random;
@@ -28,15 +27,15 @@ public class EntityAI : IStartable, IDisposable
     private readonly ExperienceModule _experience;
     private readonly CoroutineRunner _coroutineRunner;
     
-    private readonly VisionModule _vision;
-    private readonly SocialModule _social;
     private readonly Transform _transform;
+    
+    private readonly EntitiesRegistry _entitiesRegistry;
 
     private const string DirectionChangeKey = "DirectionChange";
 
     public EntityAI(IMovementController movement, IAttackController attacker, IHealthController healthController,
         BodyHitbox hitbox, EvolutionsModule evolutions, ExperienceModule experience, CoroutineRunner coroutineRunner, 
-        VisionModule vision, SocialModule social, Transform transform)
+        Transform transform, EntitiesRegistry entitiesRegistry)
     {
         _movement = movement;
         _attacker = attacker;
@@ -45,9 +44,9 @@ public class EntityAI : IStartable, IDisposable
         _evolutions = evolutions;
         _experience = experience;
         _coroutineRunner = coroutineRunner;
-        _vision = vision;
-        _social = social;
         _transform = transform;
+        
+        _entitiesRegistry = entitiesRegistry;
     }
 
     public void Start()
@@ -104,10 +103,7 @@ public class EntityAI : IStartable, IDisposable
     private void ChangeDirection()
     {
         Vector2 direction;
-        Transform chasingEntity = null;
-
-        if (_vision.CanSee())
-            chasingEntity = _social.GetEntityWithHighestInfluence();
+        var chasingEntity = _entitiesRegistry.Player;
 
         if (chasingEntity != null)
         {

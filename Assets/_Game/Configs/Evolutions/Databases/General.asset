@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Evolutions.Rarities.EvolutionRaritiesDatabase
   <Evolutions>k__BackingField:
   - {fileID: 11400000, guid: f2edac42fd00c09439efcb7b1641254b, type: 2}
-  - {fileID: 11400000, guid: 7e7bc9745c1d2f94291da6ac2f032cdf, type: 2}
   - {fileID: 11400000, guid: 40536e0bf67a4f2438b93918cefe86b6, type: 2}
   - {fileID: 11400000, guid: d30b4af745017b14cab80bd82b3480c1, type: 2}
   - {fileID: 11400000, guid: 0fb7db6c45b2c0c4493206471d616ff6, type: 2}

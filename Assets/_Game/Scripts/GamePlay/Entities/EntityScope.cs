@@ -42,8 +42,6 @@ public class EntityScope : LifetimeScope
         // Modules
         builder.RegisterEntryPoint<EntityStats>(Lifetime.Scoped).AsSelf();
         
-        builder.Register<VisionModule>(Lifetime.Scoped);
-        
         builder.Register<HealthModule>(Lifetime.Scoped);
         builder.Register<RegenerationModule>(Lifetime.Scoped);
         builder.Register<LifeModule>(Lifetime.Scoped);
@@ -67,7 +65,6 @@ public class EntityScope : LifetimeScope
         
         // Behaviours
         builder.RegisterComponent(GetComponentInChildren<EntityAnimation>());
-        builder.RegisterComponent(GetComponentInChildren<VisionHitbox>());
         builder.RegisterComponent(GetComponentInChildren<BodyHitbox>())
             .AsSelf()
             .As<IDamageReceiver>();
@@ -77,8 +74,6 @@ public class EntityScope : LifetimeScope
         builder.RegisterComponent(GetComponentInChildren<PickerHitbox>());
         builder.RegisterEntryPoint<EntityBasicMovement>(Lifetime.Scoped)
             .As<IMovementController>();
-        builder.RegisterEntryPoint<EntityVision>(Lifetime.Scoped);
-        builder.RegisterEntryPoint<EntitySocial>(Lifetime.Scoped);
         
         // Important
         builder.RegisterEntryPoint<ExperienceModule>(Lifetime.Scoped)
