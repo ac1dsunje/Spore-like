@@ -12,13 +12,10 @@ public class HealthModule : StatModule
     
     private readonly ReactiveProperty<float> _current = new();
     private readonly ReactiveProperty<float> _max = new();
-    public bool HasMaxHp => Mathf.Approximately(_current.Value, _max.Value);
     
     public event Action<HealthModule> OnDeath;
     public event Action<HealthModule> OnRevived;
-    public event Action<float> OnDamageTaken;
     public event Action OnHitTaken;
-    public event Action<float> OnHealed;
     
     private bool _isDead;
     private float _extraLives;
@@ -45,10 +42,6 @@ public class HealthModule : StatModule
         _current.Value -= amount;
         _current.Value = Mathf.Max(0, _current.Value);
         OnHitTaken?.Invoke();
-        if (amount > 0)
-        {
-            OnDamageTaken?.Invoke(amount);
-        }
         
         if (_current.Value <= 0)
         {
@@ -58,24 +51,20 @@ public class HealthModule : StatModule
 
     public void Heal(float amount)
     {
-        var health = _current.Value;
         _current.Value += amount;
         if (_current.Value > _max.Value)
         {
             _current.Value = _max.Value;
         }
-
-        if (Mathf.Approximately(health, _current.Value)) return;
-        OnHealed?.Invoke(amount);
     }
     
     private void UpdateMaxHealth(float newMaxHealth)
     {
         var difference = newMaxHealth - _max.Value;
         _max.Value = newMaxHealth;
-    
         _current.Value = Mathf.Clamp(_current.Value + difference, 0, _max.Value);
     }
+    
     private void UpdateExtraLife(float value) => _extraLives = value - _extraLivesUsed;
 
     private void Die()

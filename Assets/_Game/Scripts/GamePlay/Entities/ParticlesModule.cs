@@ -1,6 +1,7 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Entities.Animation;
 using _Game.Scripts.GamePlay.Modules;
+using R3;
 using UnityEngine;
 using VContainer.Unity;
 
@@ -12,6 +13,7 @@ public class ParticlesModule : IStartable, IDisposable
     private readonly HealthModule _health;
     private readonly AnimationSettings _config;
     private readonly Transform _transform;
+    private IDisposable _subscription;
 
     public ParticlesModule(ParticlesSpawner particlesSpawner, HealthModule health, AnimationSettings config,
         Transform transform)
@@ -24,12 +26,20 @@ public class ParticlesModule : IStartable, IDisposable
     
     public void Start()
     {
-        _health.OnDamageTaken += SpawnParticles;
+        _subscription = _health.Current
+            .Pairwise()
+            .Subscribe(pair =>
+            {
+                var delta = pair.Previous - pair.Current;
+                if (delta > 0)
+                {
+                    SpawnParticles();
+                }
+            });
     }
     
-    private void SpawnParticles(float damage)
+    private void SpawnParticles()
     {
-        if (damage <= 0f) return;
         _particles.Spawn(
             _config.OnHitParticles, 
             _transform.position, 
@@ -39,7 +49,7 @@ public class ParticlesModule : IStartable, IDisposable
 
     public void Dispose()
     {
-        _health.OnDamageTaken -= SpawnParticles;
+        _subscription?.Dispose();
     }
 }
 }
