@@ -2,6 +2,7 @@
 using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Experience.Types;
 using _Game.Scripts.GamePlay.Modules;
+using _Game.Scripts.GamePlay.Modules.Endurance;
 using _Game.Scripts.GamePlay.Modules.Health;
 
 namespace _Game.Scripts.GamePlay.Experience

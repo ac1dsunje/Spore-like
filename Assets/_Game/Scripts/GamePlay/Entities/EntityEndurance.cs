@@ -1,4 +1,4 @@
-﻿using _Game.Scripts.GamePlay.Modules;
+﻿using _Game.Scripts.GamePlay.Modules.Endurance;
 using UnityEngine;
 using VContainer.Unity;
 
@@ -6,19 +6,20 @@ namespace _Game.Scripts.GamePlay.Entities
 {
 public class EntityEndurance : ITickable
 {
-    private readonly EnduranceModule _module;
+    private readonly EnduranceModule _endurance;
+    private readonly EnduranceRecoveryModule _recovery;
 
-    public EntityEndurance(EnduranceModule module)
+    public EntityEndurance(EnduranceModule endurance, EnduranceRecoveryModule recovery)
     {
-        _module = module;
+        _endurance = endurance;
+        _recovery = recovery;
     }
 
     public void Tick()
     {
-        if (!_module.IsUsed)
-        {
-            _module.AddEndurance(_module.EnduranceRecovery * Time.deltaTime);
-        }
+        if (!_recovery.IsRecovering || _recovery.RecoveryRate <= 0f) return;
+            
+        _endurance.AddEndurance(_recovery.RecoveryRate * Time.deltaTime);
     }
 }
 }

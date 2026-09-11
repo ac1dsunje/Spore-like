@@ -7,6 +7,7 @@ using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
+using _Game.Scripts.GamePlay.Modules.Endurance;
 using _Game.Scripts.GamePlay.Modules.Health;
 using VContainer;
 using VContainer.Unity;
@@ -50,6 +51,7 @@ public class EntityScope : LifetimeScope
         builder.Register<DefenseModule>(Lifetime.Scoped);
         
         builder.Register<EnduranceModule>(Lifetime.Scoped);
+        builder.Register<EnduranceRecoveryModule>(Lifetime.Scoped);
         
         builder.Register<PickingModule>(Lifetime.Scoped);
         builder.Register<StomachModule>(Lifetime.Scoped);

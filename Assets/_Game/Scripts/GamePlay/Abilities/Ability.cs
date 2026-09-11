@@ -1,6 +1,6 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Interfaces;
-using _Game.Scripts.GamePlay.Modules;
+using _Game.Scripts.GamePlay.Modules.Endurance;
 
 namespace _Game.Scripts.GamePlay.Abilities
 {
@@ -17,11 +17,13 @@ public abstract class Ability : IDisposable, IEnduranceUser
     public bool IsActive { get; private set; }
 
     private readonly EnduranceModule _endurance;
+    private readonly EnduranceRecoveryModule _recovery;
     
-    protected Ability(EnduranceModule endurance, AbilityConfig config)
+    protected Ability(EnduranceModule endurance, EnduranceRecoveryModule recovery, AbilityConfig config)
     {
         Config = config;
         _endurance = endurance;
+        _recovery = recovery;
     }
     
     public void Update(float deltaTime)
@@ -54,7 +56,7 @@ public abstract class Ability : IDisposable, IEnduranceUser
     protected virtual void Enable()
     {
         IsActive = true;
-        _endurance.AddUser(this);
+        _recovery.AddUser(this);
         _endurance.UseEndurance(Config.StartCost);
     }
 
@@ -67,7 +69,7 @@ public abstract class Ability : IDisposable, IEnduranceUser
     protected virtual void Disable()
     {
         IsActive = false;
-        _endurance.RemoveUser(this);
+        _recovery.RemoveUser(this);
     }
 
     public void Dispose()
