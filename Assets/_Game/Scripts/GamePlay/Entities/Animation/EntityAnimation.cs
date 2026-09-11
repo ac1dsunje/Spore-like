@@ -6,12 +6,10 @@ using VContainer;
 namespace _Game.Scripts.GamePlay.Entities.Animation
 {
 [RequireComponent(typeof(SpriteRenderer))]
-[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(CircleCollider2D))]
 public class EntityAnimation : MonoBehaviour, IVisible, ISocial
 {
     private SpriteRenderer _renderer;
-    private Animator _animator;
     private CircleCollider2D _collider;
     
     private AnimationSettings _config;
@@ -29,7 +27,6 @@ public class EntityAnimation : MonoBehaviour, IVisible, ISocial
     private void Awake()
     {
         _renderer = GetComponent<SpriteRenderer>();
-        _animator = GetComponent<Animator>();
         _collider = GetComponent<CircleCollider2D>();
     }
 
@@ -38,14 +35,11 @@ public class EntityAnimation : MonoBehaviour, IVisible, ISocial
         _collider.isTrigger = !_config.IsObstacle;
         
         SetSprite(_config.Sprite);
-        SetAnimator(_config.Controller);
     }
 
     public Transform GetTransform() => _transform;
     public float GetInfluence() => _social.Influence;
 
     private void SetSprite(Sprite sprite) => _renderer.sprite = sprite;
-    
-    private void SetAnimator(RuntimeAnimatorController controller) => _animator.runtimeAnimatorController = controller;
 }
 }
