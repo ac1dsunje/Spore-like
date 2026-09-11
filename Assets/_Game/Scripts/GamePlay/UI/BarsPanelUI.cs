@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Entities.Experience;
-using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.UI.Bar;
 using UnityEngine;
@@ -20,16 +19,25 @@ public class BarsPanelUI : MonoBehaviour
         {
             var bar = Instantiate(_prefab, transform);
 
-            IStatWithLimit statWithLimit = barConfig.BarType switch
+            switch (barConfig.BarType)
             {
-                BarType.Health => player.Get<HealthModule>(),
-                BarType.Experience => player.Get<ExperienceModule>(),
-                BarType.Endurance => player.Get<EnduranceModule>(),
-                BarType.Hunger => player.Get<StomachModule>(),
-                _ => throw new ArgumentOutOfRangeException()
-            };
+                case BarType.Health:
+                    bar.Construct(player.Get<HealthModule>().Current, player.Get<HealthModule>().Max, barConfig);
+                    break;
+                case BarType.Experience:
+                    bar.Construct(player.Get<ExperienceModule>().Current, player.Get<ExperienceModule>().Max, barConfig);
+                    break;
+                case BarType.Endurance:
+                    bar.Construct(player.Get<EnduranceModule>().Current, player.Get<EnduranceModule>().Max, barConfig);
+                    break;
+                case BarType.Hunger:
+                    bar.Construct(player.Get<StomachModule>().Current, player.Get<StomachModule>().Max, barConfig);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
             
-            bar.Construct(statWithLimit, barConfig);
         }
     }
 }

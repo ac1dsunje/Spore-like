@@ -23,10 +23,10 @@ public class Evolution : IDisposable, IStatSource
     
     //Level
     private readonly List<ExperienceService> _experienceServices = new();
-    private int _experiencePoints;
+    private float _experiencePoints;
     private int _levelSet;
     private int _level;
-    public event Action<int> OnEvolutionExperienceChanged;
+    public event Action<float> OnEvolutionExperienceChanged;
     public event Action<Evolution, int> OnLevelUp;
 
     public Evolution(EvolutionConfig config)
@@ -104,7 +104,7 @@ public class Evolution : IDisposable, IStatSource
         }
     }
 
-    private void UpdateExperience(int amount)
+    private void UpdateExperience(float amount)
     {
         while (true)
         {

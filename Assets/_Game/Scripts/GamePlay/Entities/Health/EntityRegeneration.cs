@@ -42,7 +42,7 @@ public class EntityRegeneration : IStartable, IDisposable
 
     private IEnumerator Regenerate()
     {
-        while (_health.Health < _health.MaxHealth)
+        while (!_health.HasMaxHp)
         {
             yield return new WaitForSeconds(1f);
             _health.Heal(_health.Regeneration);

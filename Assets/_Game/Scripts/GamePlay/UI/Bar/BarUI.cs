@@ -1,4 +1,4 @@
-﻿using _Game.Scripts.GamePlay.Interfaces;
+﻿using R3;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,21 +8,31 @@ public class BarUI : MonoBehaviour
 {
     [SerializeField] protected Image Bar;
     [SerializeField] protected Image Icon;
-    private BarConfig _config;
-    private IStatWithLimit _module;
     
-    public void Construct(IStatWithLimit module, BarConfig config)
+    private float _currentValue;
+    private float _maxValue;
+    
+    public void Construct(ReadOnlyReactiveProperty<float> current, ReadOnlyReactiveProperty<float> max, BarConfig config)
     {
-        _config = config;
-        _module = module;
-        UpdateBar(_config.MaxValue? 1: 0, 1);
-        _module.OnValueChanged += UpdateBar;
-        Bar.color = _config.Color;
-        Icon.sprite = _config.Sprite;
+        Bar.color = config.Color;
+        Icon.sprite = config.Sprite;
+            
+        current.Subscribe(value =>
+        {
+            _currentValue = value;
+            UpdateBar();
+        }).AddTo(this);
+        
+        max.Subscribe(value =>
+        {
+            _maxValue = value;
+            UpdateBar();
+        }).AddTo(this);
     }
-
-    private void UpdateBar(float min, float max) => Bar.fillAmount = min/max;
-
-    private void OnDestroy() => _module.OnValueChanged -= UpdateBar;
+        
+    private void UpdateBar()
+    {
+        Bar.fillAmount = _maxValue > 0 ? _currentValue / _maxValue : 0f;
+    }
 }
 }

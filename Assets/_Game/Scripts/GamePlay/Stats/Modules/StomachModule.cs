@@ -1,16 +1,17 @@
 ﻿using System;
-using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Types;
+using R3;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Modules
 {
-public class StomachModule : StatModule, IStatWithLimit
+public class StomachModule : StatModule
 {
-    private float _maxHunger;
-    private float _hunger;
+    public ReadOnlyReactiveProperty<float> Max => _max;
+    public ReadOnlyReactiveProperty<float> Current => _current;
     
-    public event Action<float, float> OnValueChanged;
+    private readonly ReactiveProperty<float> _max = new();
+    private readonly ReactiveProperty<float> _current = new();
 
     public event Action<float> OnFoodPointsAchieved;
 
@@ -21,25 +22,21 @@ public class StomachModule : StatModule, IStatWithLimit
 
     public void LoseHunger(float value)
     {
-        _hunger -= value;
-        if (_hunger <= 0) _hunger = 0;
-        OnValueChanged?.Invoke(_hunger, _maxHunger);
+        _current.Value -= value;
+        if (_current.Value <= 0) _current.Value = 0;
     }
 
     private void UpdateMaxHunger(float value)
     {
-        var difference = value - _maxHunger;
-        _maxHunger = value;
-        _hunger = Mathf.Clamp(_hunger +difference, 0, _maxHunger);
-        
-        OnValueChanged?.Invoke(_hunger, _maxHunger);
+        var difference = value - _max.Value;
+        _max.Value = value;
+        _current.Value = Mathf.Clamp(_current.Value + difference, 0, _max.Value);
     }
 
     public void GetExperienceFromFood(int value)
     {
-        _hunger += value;
+        _current.Value += value;
         OnFoodPointsAchieved?.Invoke(value);
-        OnValueChanged?.Invoke(_hunger, _maxHunger);
     }
 }
 }

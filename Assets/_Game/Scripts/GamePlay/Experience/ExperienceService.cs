@@ -4,7 +4,7 @@ namespace _Game.Scripts.GamePlay.Experience
 {
 public abstract class ExperienceService
 {
-    public event Action<int> OnExperienceGained;
+    public event Action<float> OnExperienceGained;
 
     private readonly float _maxAmount;
     private float _currentAmount;

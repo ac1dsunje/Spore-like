@@ -1,22 +1,26 @@
 ﻿using System;
-using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Types;
+using R3;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Modules
 {
-public class HealthModule : StatModule, IStatWithLimit
+public class HealthModule : StatModule
 {
-    public float MaxHealth {get;  private set; }
-    public float Health { get; private set; }
+    public ReadOnlyReactiveProperty<float> Current => _current;
+    public ReadOnlyReactiveProperty<float> Max => _max;
+    
+    private readonly ReactiveProperty<float> _current = new();
+    private readonly ReactiveProperty<float> _max = new();
+    
     public float Regeneration { get; private set; }
+    public bool HasMaxHp => Mathf.Approximately(_current.Value, _max.Value);
     
     public event Action<HealthModule> OnDeath;
     public event Action<HealthModule> OnRevived;
     public event Action<float> OnDamageTaken;
     public event Action OnHitTaken;
     public event Action<float> OnHealed;
-    public event Action<float, float> OnValueChanged;
     
     private bool _isDead;
     private float _extraLives;
@@ -32,26 +36,24 @@ public class HealthModule : StatModule, IStatWithLimit
     private void Revive()
     {
         _isDead = false;
-        Health = MaxHealth;
+        _current.Value = _max.Value;
         _extraLivesUsed++;
         _extraLives--;
-        OnValueChanged?.Invoke(Health, MaxHealth);
         OnRevived?.Invoke(this);
     }
     
     public void TakeDamage(float amount)
     {
         if (_isDead) return;
-        Health -= amount;
-        Health = Mathf.Max(0, Health);
+        _current.Value -= amount;
+        _current.Value = Mathf.Max(0, _current.Value);
         OnHitTaken?.Invoke();
         if (amount > 0)
         {
             OnDamageTaken?.Invoke(amount);
-            OnValueChanged?.Invoke(Health, MaxHealth);
         }
         
-        if (Health <= 0)
+        if (_current.Value <= 0)
         {
             Die();
         }
@@ -59,26 +61,23 @@ public class HealthModule : StatModule, IStatWithLimit
 
     public void Heal(float amount)
     {
-        var health = Health;
-        Health += amount;
-        if (Health > MaxHealth)
+        var health = _current.Value;
+        _current.Value += amount;
+        if (_current.Value > _max.Value)
         {
-            Health = MaxHealth;
+            _current.Value = _max.Value;
         }
 
-        if (Mathf.Approximately(health, Health)) return;
+        if (Mathf.Approximately(health, _current.Value)) return;
         OnHealed?.Invoke(amount);
-        OnValueChanged?.Invoke(Health, MaxHealth);
     }
     
     private void UpdateMaxHealth(float newMaxHealth)
     {
-        var difference = newMaxHealth - MaxHealth;
-        MaxHealth = newMaxHealth;
+        var difference = newMaxHealth - _max.Value;
+        _max.Value = newMaxHealth;
     
-        Health = Mathf.Clamp(Health + difference, 0, MaxHealth);
-    
-        OnValueChanged?.Invoke(Health, MaxHealth);
+        _current.Value = Mathf.Clamp(_current.Value + difference, 0, _max.Value);
     }
 
     private void UpdateRegeneration(float value) => Regeneration = value;

@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Experience;
-using _Game.Scripts.GamePlay.Interfaces;
+using R3;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities.Experience
 {
-public class ExperienceModule : IStartable, IDisposable, IStatWithLimit
+public class ExperienceModule : IStartable, IDisposable
 {
     public int Level { get; private set; }
+    
+    public ReadOnlyReactiveProperty<float> Current => _current;
+    public ReadOnlyReactiveProperty<float> Max => _max;
 
-    private int _levelSet;
-    private int _experience;
+    private readonly ReactiveProperty<float> _max = new();
+    private readonly ReactiveProperty<float> _current = new();
 
     private readonly List<ExperienceService> _experienceServices = new();
 
@@ -22,8 +25,6 @@ public class ExperienceModule : IStartable, IDisposable, IStatWithLimit
     private readonly ExperienceFactory _expFactory;
     
     public event Action<int> OnLevelChanged;
-
-    public event Action<float, float> OnValueChanged;
 
     public ExperienceModule(EntityExperienceConfig config, EntityScope entity, ExperienceFactory factory)
     {
@@ -36,13 +37,13 @@ public class ExperienceModule : IStartable, IDisposable, IStatWithLimit
     {
         if (_config.ExperienceConfig == null) return;
         
-        _levelSet = _config.ExperienceConfig.LevelSet;
+        _max.Value = _config.ExperienceConfig.LevelSet;
         _levelScaler = _config.LevelScaler;
         Level = _config.ExperienceConfig.Level;
         
         for (var i = 0; i < Level; i++)
         {
-            _levelSet += _levelScaler;
+            _max.Value += _levelScaler;
             _levelScaler++;
         }
         
@@ -60,22 +61,20 @@ public class ExperienceModule : IStartable, IDisposable, IStatWithLimit
         }
     }
 
-    private void UpdateExperience(int amount)
+    private void UpdateExperience(float amount)
     {
-        _experience += amount;
-        OnValueChanged?.Invoke(_experience, _levelSet);
+        _current.Value += amount;
         UpdateLevel();
     }
     
     private void UpdateLevel()
     {
-        while (_experience >= _levelSet)
+        while (_current.Value >= _max.Value)
         {
-            UpdateExperience(-_levelSet);
+            UpdateExperience(-_max.Value);
             Level++;
             OnLevelChanged?.Invoke(Level);
-            _levelSet += _levelScaler;
-            OnValueChanged?.Invoke(_experience, _levelSet);
+            _max.Value += _levelScaler;
             _levelScaler++;
         }
     }
