@@ -7,6 +7,7 @@ namespace _Game.Scripts.GamePlay.Entities.Animation
 public class AnimationSettings
 {
     [field: SerializeField] public Sprite Sprite { get; private set; }
+    [field: SerializeField] public RuntimeAnimatorController Controller { get; private set; }
     [field: SerializeField] public Color Color { get; private set; } = Color.green;
     [field: SerializeField] public ParticleSystem OnHitParticles { get; private set; }
     [field: SerializeField] public bool IsObstacle { get; private set; }

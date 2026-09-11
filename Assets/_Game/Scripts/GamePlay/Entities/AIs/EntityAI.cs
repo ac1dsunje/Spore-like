@@ -32,6 +32,8 @@ public class EntityAI : IStartable, IDisposable
     private readonly EntitiesRegistry _entitiesRegistry;
 
     private const string DirectionChangeKey = "DirectionChange";
+    private const float MinDirectionChangeTime = 0.5f;
+    private const float MaxDirectionChangeTime = 2f;
 
     public EntityAI(IMovementController movement, IAttackController attacker, IHealthController healthController,
         BodyHitbox hitbox, EvolutionsModule evolutions, ExperienceModule experience, CoroutineRunner coroutineRunner, 
@@ -79,7 +81,7 @@ public class EntityAI : IStartable, IDisposable
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(Random.Range(MinDirectionChangeTime, MaxDirectionChangeTime));
             ChangeDirection();
         }
     }
