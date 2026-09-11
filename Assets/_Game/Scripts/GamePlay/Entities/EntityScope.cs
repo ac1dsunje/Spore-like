@@ -27,7 +27,7 @@ public class EntityScope : LifetimeScope
         Build();
     }
 
-    public T Get<T>() => Container.Resolve<T>();
+    public T Get<T>() => Container.TryResolve<T>(out var result) ? result : default;
 
     protected override void Configure(IContainerBuilder builder)
     {
