@@ -1,17 +1,24 @@
-﻿using _Game.Scripts.GamePlay.Modules;
+﻿using System;
+using _Game.Scripts.GamePlay.Modules;
+using R3;
 
 namespace _Game.Scripts.GamePlay.Experience.Types
 {
 public class DamageResisting : ExperienceService
 {
-    private readonly DefenseModule _module;
+    private readonly IDisposable _subscription;
     
     public DamageResisting(DefenseModule module, float amount) : base(amount)
     {
-        _module = module;
-        _module.OnDamageResisted += AddAmount;
+        _subscription = module.Resisted
+            .Pairwise()
+            .Subscribe(pair =>
+            {
+                var delta = pair.Current - pair.Previous;
+                if (delta > 0) AddAmount(delta);
+            });
     }
 
-    public override void Dispose() => _module.OnDamageResisted -= AddAmount;
+    public override void Dispose() => _subscription?.Dispose();
 }
 }
