@@ -1,6 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Types;
 
-namespace _Game.Scripts.GamePlay.Modules
+namespace _Game.Scripts.GamePlay.Modules.Environment
 {
 public class BreathingModule : StatModule
 {

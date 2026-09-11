@@ -10,7 +10,7 @@ public class DamageDealing : ExperienceService
     
     public DamageDealing(AttackModule module, float amount) : base(amount)
     {
-        _subscription = module.TotalDamaged
+        _subscription = module.Damaged
             .Pairwise()
             .Subscribe(pair =>
             {

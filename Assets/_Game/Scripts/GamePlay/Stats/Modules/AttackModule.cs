@@ -9,9 +9,9 @@ public class AttackModule : StatModule
     public float IgnoreResistance { get; private set; }
     public float AttackTime { get; private set; }
     
-    public ReadOnlyReactiveProperty<float> TotalDamaged => _totalDamaged;
+    public ReadOnlyReactiveProperty<float> Damaged => _damaged;
     
-    private readonly ReactiveProperty<float> _totalDamaged = new();
+    private readonly ReactiveProperty<float> _damaged = new();
     
     protected override void Configure()
     {
@@ -20,7 +20,7 @@ public class AttackModule : StatModule
         BindStat(StatType.AttackTime, UpdateAttackSpeed);
     }
     
-    public void SetDamageDealt(float damage) => _totalDamaged.Value += damage;
+    public void SetDamageDealt(float damage) => _damaged.Value += damage;
     
     private void UpdatePhysicalDamage(float value) => PhysicalDamage = value;
     private void UpdateIgnoreResistance(float value) => IgnoreResistance = value;

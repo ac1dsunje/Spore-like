@@ -1,6 +1,7 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Buffs;
 using _Game.Scripts.GamePlay.Modules;
+using _Game.Scripts.GamePlay.Modules.Environment;
 using _Game.Scripts.GamePlay.World;
 using _Game.Scripts.GamePlay.World.Biomes;
 using UnityEngine;
@@ -12,20 +13,22 @@ public class BiomeChecker : IStartable, IDisposable
 {
     private readonly WorldModel _worldModel;
     private readonly MovementModule _movement;
-    private readonly EnvironmentModule _environment;
+    private readonly TemperatureModule _temperature;
+    private readonly PassabilityModule _passability;
+    private readonly BreathingModule _breathing;
     private readonly BuffsModule _buffsModule;
-    private readonly BreathingModule _breathingModule;
     
     private Biome _currentBiome;
     
-    public BiomeChecker(WorldModel worldModel, MovementModule movement, EnvironmentModule environment, 
-        BuffsModule buffsModule, BreathingModule breathingModule)
+    public BiomeChecker(WorldModel worldModel, MovementModule movement, TemperatureModule temperature, PassabilityModule passability,
+        BuffsModule buffsModule, BreathingModule breathing)
     {
         _worldModel = worldModel;
         _movement = movement;
-        _environment = environment;
+        _temperature = temperature;
+        _passability = passability;
         _buffsModule = buffsModule;
-        _breathingModule = breathingModule;
+        _breathing = breathing;
     }
 
     public void Start()
@@ -45,10 +48,10 @@ public class BiomeChecker : IStartable, IDisposable
     {
         _currentBiome = biome;
         
-        _buffsModule.Set(BuffType.BadPassAbility, _environment.IsBadPassAbility(biome.PassAbility));
-        _buffsModule.Set(BuffType.Cold, _environment.IsCold(biome.Temperature));
-        _buffsModule.Set(BuffType.Heat, _environment.IsHot(biome.Temperature));
-        _buffsModule.Set(BuffType.Suffocating, _breathingModule.IsSuffocating(biome.OxygenBreathing, biome.HydrogenBreathing));
+        _buffsModule.Set(BuffType.BadPassAbility, _passability.IsBadPassAbility(biome.PassAbility));
+        _buffsModule.Set(BuffType.Cold, _temperature.IsCold(biome.Temperature));
+        _buffsModule.Set(BuffType.Heat, _temperature.IsHot(biome.Temperature));
+        _buffsModule.Set(BuffType.Suffocating, _breathing.IsSuffocating(biome.OxygenBreathing, biome.HydrogenBreathing));
     }
 
     public void Dispose()

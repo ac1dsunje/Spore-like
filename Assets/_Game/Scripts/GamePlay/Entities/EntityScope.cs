@@ -8,6 +8,7 @@ using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.Modules.Endurance;
+using _Game.Scripts.GamePlay.Modules.Environment;
 using _Game.Scripts.GamePlay.Modules.Health;
 using VContainer;
 using VContainer.Unity;
@@ -58,8 +59,10 @@ public class EntityScope : LifetimeScope
         
         builder.Register<MovementModule>(Lifetime.Scoped);
         
-        builder.Register<EnvironmentModule>(Lifetime.Scoped);
+        builder.Register<TemperatureModule>(Lifetime.Scoped);
         builder.Register<BreathingModule>(Lifetime.Scoped);
+        builder.Register<PassabilityModule>(Lifetime.Scoped);
+        
         builder.Register<SocialModule>(Lifetime.Scoped);
         
         // Behaviours
