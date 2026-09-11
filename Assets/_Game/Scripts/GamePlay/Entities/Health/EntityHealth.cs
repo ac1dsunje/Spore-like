@@ -19,7 +19,7 @@ public class EntityHealth : IHealthController
     public void TakeDamage(HitInfo hit)
     {
         var damage = _defense.ApplyResistance(hit.Damage, hit.IgnoreResistance);
-        _health.TakeDamage(damage);
+        _health.Reduce(damage);
         var returnedDamage = _defense.ReflectDamage(damage);
         var returnedHit = new HitInfo(returnedDamage, 0, _damageSource, null);
         hit.Receiver?.TakeDamage(returnedHit);

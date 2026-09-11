@@ -30,7 +30,7 @@ public class Buff : IStatSource
     {
         if (_config.DamagePerSecond > 0)
         {
-            _health.TakeDamage(timeDelta * _config.DamagePerSecond);
+            _health.Reduce(timeDelta * _config.DamagePerSecond);
         }
     }
 

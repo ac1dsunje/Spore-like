@@ -36,11 +36,10 @@ public class HealthModule : StatModule
         OnRevived?.Invoke(this);
     }
     
-    public void TakeDamage(float amount)
+    public void Reduce(float amount)
     {
         if (_isDead) return;
-        _current.Value -= amount;
-        _current.Value = Mathf.Max(0, _current.Value);
+        _current.Value = Mathf.Max(0, _current.Value - amount);
         OnHitTaken?.Invoke();
         
         if (_current.Value <= 0)
@@ -49,13 +48,9 @@ public class HealthModule : StatModule
         }
     }
 
-    public void Heal(float amount)
+    public void Add(float amount)
     {
-        _current.Value += amount;
-        if (_current.Value > _max.Value)
-        {
-            _current.Value = _max.Value;
-        }
+        _current.Value = Mathf.Min(_max.Value, _current.Value + amount);
     }
     
     private void UpdateMaxHealth(float newMaxHealth)

@@ -59,7 +59,7 @@ public class EntityRegeneration : IStartable, IDisposable
         while (!Mathf.Approximately(_health.Current.CurrentValue, _health.Max.CurrentValue))
         {
             yield return new WaitForSeconds(1f);
-            _health.Heal(_regeneration.Current);
+            _health.Add(_regeneration.Current);
         }
     }
 
