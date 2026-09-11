@@ -1,29 +1,40 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Entities;
-using _Game.Scripts.GamePlay.Experience.Types;
 using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.Modules.Endurance;
 using _Game.Scripts.GamePlay.Modules.Health;
 
 namespace _Game.Scripts.GamePlay.Experience
 {
+public enum DeltaDirection
+{
+    Increase,
+    Decrease
+}
+
 public class ExperienceFactory
 {
     public ExperienceService GetService(ExperienceServiceConfig config, EntityScope entity)
     {
-        return config.Type switch
+        var (observable, direction) = config.Type switch
         {
-            ExperienceType.DamageReflection => new DamageReflecting(entity.Get<DefenseModule>(), config.Amount),
-            ExperienceType.FoodEating => new FoodEating(entity.Get<StomachModule>(), config.Amount),
-            ExperienceType.DamageResistance => new DamageResisting(entity.Get<DefenseModule>(), config.Amount),
-            ExperienceType.DamageTaking => new DamageTaking(entity.Get<HealthModule>(), config.Amount),
-            ExperienceType.Healing => new Healing(entity.Get<HealthModule>(), config.Amount),
-            ExperienceType.DistanceOvercoming => new DistanceOvercoming(entity.Get<MovementModule>(), config.Amount),
-            ExperienceType.EnduranceRecovering => new EnduranceRecovering(entity.Get<EnduranceModule>(), config.Amount),
-            ExperienceType.DamageDealing => new DamageDealing(entity.Get<AttackModule>(), config.Amount),
+            ExperienceType.Healing             => (entity.Get<HealthModule>().Current, DeltaDirection.Increase),
+            ExperienceType.DamageTaking        => (entity.Get<HealthModule>().Current, DeltaDirection.Decrease),
+                
+            ExperienceType.FoodEating          => (entity.Get<StomachModule>().Current, DeltaDirection.Increase),
+                
+            ExperienceType.DamageReflection    => (entity.Get<DefenseModule>().Reflected, DeltaDirection.Increase), 
+            ExperienceType.DamageResistance    => (entity.Get<DefenseModule>().Resisted, DeltaDirection.Increase),
+                
+            ExperienceType.DistanceOvercoming  => (entity.Get<MovementModule>().TotalDistance, DeltaDirection.Increase),
+            ExperienceType.EnduranceRecovering => (entity.Get<EnduranceModule>().Current, DeltaDirection.Increase),
+            
+            ExperienceType.DamageDealing       => (entity.Get<AttackModule>().Damaged, DeltaDirection.Increase),
             
             _ => throw new ArgumentOutOfRangeException(nameof(config), config, null)
         };
+
+        return new ExperienceService(observable, config.Amount, direction);
     }
 }
 }

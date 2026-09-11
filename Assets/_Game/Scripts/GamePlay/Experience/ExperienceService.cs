@@ -1,30 +1,48 @@
 ﻿using System;
+using R3;
 
 namespace _Game.Scripts.GamePlay.Experience
 {
-public abstract class ExperienceService
+public class ExperienceService : IDisposable
 {
     public event Action<float> OnExperienceGained;
 
-    private readonly float _maxAmount;
-    private float _currentAmount;
+    private readonly float _max;
+    private float _current;
+    private readonly IDisposable _subscription;
     
-    protected ExperienceService(float amount)
+    public ExperienceService(Observable<float> observable, float amount, DeltaDirection direction)
     {
-        _maxAmount = amount;
+        _max = amount;
+            
+        _subscription = observable
+            .Pairwise()
+            .Subscribe(pair =>
+            {
+                var delta = pair.Current - pair.Previous;
+                    
+                var effectiveDelta = direction == DeltaDirection.Increase ? delta : -delta;
+
+                if (effectiveDelta > 0)
+                {
+                    AddAmount(effectiveDelta);
+                }
+            });
     }
 
-    protected void AddAmount(float amount)
+    private void AddAmount(float amount)
     {
-        _currentAmount += amount;
-        while (_currentAmount >= _maxAmount)
+        _current += amount;
+        while (_current >= _max)
         {
             OnExperienceGained?.Invoke(1);
-            _currentAmount -= _maxAmount;
+            _current -= _max;
         }
-        
     }
 
-    public abstract void Dispose();
+    public void Dispose()
+    {
+        _subscription?.Dispose();
+    }
 }
 }
