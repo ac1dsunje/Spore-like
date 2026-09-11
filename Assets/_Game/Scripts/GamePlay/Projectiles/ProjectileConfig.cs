@@ -20,6 +20,5 @@ public class ProjectileConfig : ScriptableObject
     [field: SerializeField] public ProjectileType Type { get; private set; }
     [field: SerializeField] public float OffsetStartPoint { get; private set; }
     [field: SerializeField] public Sprite Sprite { get; private set; }
-    [field: SerializeField] public RuntimeAnimatorController Controller { get; private set; }
 }
 }

@@ -6,12 +6,10 @@ using UnityEngine;
 namespace _Game.Scripts.GamePlay.Projectiles
 {
 [RequireComponent(typeof(SpriteRenderer))]
-[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(PolygonCollider2D))]
 public class Projectile : MonoBehaviour
 {
     private SpriteRenderer _renderer;
-    private Animator _animator;
     private PolygonCollider2D _collider;
     
     private ProjectileConfig _config;
@@ -24,7 +22,6 @@ public class Projectile : MonoBehaviour
     private void Awake()
     {
         _renderer = GetComponent<SpriteRenderer>();
-        _animator = GetComponent<Animator>();
         _collider = GetComponent<PolygonCollider2D>();
     }
 
@@ -48,7 +45,7 @@ public class Projectile : MonoBehaviour
         }
     }
     
-    public void Initialize(ProjectileConfig config, Transform source)
+    public void Initialize(ProjectileConfig config, Transform source, HitInfo hitInfo)
     {
         _config = config;
         if (_config.FollowSource)
@@ -56,11 +53,12 @@ public class Projectile : MonoBehaviour
             transform.SetParent(source);
         }
         SetSprite(_config.Sprite);
-        SetAnimator(_config.Controller);
         SetColliderShape(_config.Sprite);
+        
+        SetHit(hitInfo);
     }
     
-    public void SetHit(HitInfo hit)
+    private void SetHit(HitInfo hit)
     {
         _setHit = hit;
         
@@ -96,7 +94,6 @@ public class Projectile : MonoBehaviour
     }
     
     private void SetSprite(Sprite sprite) => _renderer.sprite = sprite;
-    private void SetAnimator(RuntimeAnimatorController controller) => _animator.runtimeAnimatorController = controller;
 
     private IEnumerator Hit()
     {
