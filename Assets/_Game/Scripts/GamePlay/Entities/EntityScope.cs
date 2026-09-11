@@ -7,6 +7,7 @@ using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Entities.Movement;
 using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
+using _Game.Scripts.GamePlay.Modules.Health;
 using VContainer;
 using VContainer.Unity;
 
@@ -43,6 +44,8 @@ public class EntityScope : LifetimeScope
         
         builder.Register<HealthModule>(Lifetime.Scoped);
         builder.Register<RegenerationModule>(Lifetime.Scoped);
+        builder.Register<LifeModule>(Lifetime.Scoped);
+        
         builder.Register<AttackModule>(Lifetime.Scoped);
         builder.Register<DefenseModule>(Lifetime.Scoped);
         
@@ -87,7 +90,7 @@ public class EntityScope : LifetimeScope
         builder.RegisterEntryPoint<EntityStomach>(Lifetime.Scoped);
         builder.RegisterEntryPoint<EntityPicker>(Lifetime.Scoped);
         builder.RegisterEntryPoint<EntityHealth>(Lifetime.Scoped).As<IHealthController>();
-        builder.RegisterEntryPoint<EntityDeath>(Lifetime.Scoped);
+        builder.RegisterEntryPoint<EntityLife>(Lifetime.Scoped);
         builder.RegisterEntryPoint<EntityRegeneration>(Lifetime.Scoped);
         builder.RegisterEntryPoint<EntityWeaponAttack>(Lifetime.Scoped).As<IDamageSource>().As<IAttackController>();
         

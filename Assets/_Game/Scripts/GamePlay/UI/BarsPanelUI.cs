@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Modules;
+using _Game.Scripts.GamePlay.Modules.Health;
 using _Game.Scripts.GamePlay.UI.Bar;
 using UnityEngine;
 

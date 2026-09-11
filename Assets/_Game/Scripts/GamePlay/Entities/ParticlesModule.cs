@@ -1,6 +1,6 @@
 ﻿using System;
 using _Game.Scripts.GamePlay.Entities.Animation;
-using _Game.Scripts.GamePlay.Modules;
+using _Game.Scripts.GamePlay.Modules.Health;
 using R3;
 using UnityEngine;
 using VContainer.Unity;

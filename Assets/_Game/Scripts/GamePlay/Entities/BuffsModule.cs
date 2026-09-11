@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Buffs;
-using _Game.Scripts.GamePlay.Modules;
+using _Game.Scripts.GamePlay.Modules.Health;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities

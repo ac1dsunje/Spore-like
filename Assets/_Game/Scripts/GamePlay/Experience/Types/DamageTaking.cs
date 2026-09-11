@@ -1,5 +1,5 @@
 ﻿using System;
-using _Game.Scripts.GamePlay.Modules;
+using _Game.Scripts.GamePlay.Modules.Health;
 using R3;
 
 namespace _Game.Scripts.GamePlay.Experience.Types

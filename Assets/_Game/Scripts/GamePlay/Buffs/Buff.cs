@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Interfaces;
-using _Game.Scripts.GamePlay.Modules;
+using _Game.Scripts.GamePlay.Modules.Health;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Buffs

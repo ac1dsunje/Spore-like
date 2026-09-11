@@ -1,5 +1,6 @@
 ﻿using _Game.Scripts.GamePlay.Interfaces;
 using _Game.Scripts.GamePlay.Modules;
+using _Game.Scripts.GamePlay.Modules.Health;
 
 namespace _Game.Scripts.GamePlay.Entities.Health
 {

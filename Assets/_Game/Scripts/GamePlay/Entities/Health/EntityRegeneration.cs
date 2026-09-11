@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using _Game.Scripts.Core.Services;
-using _Game.Scripts.GamePlay.Modules;
+using _Game.Scripts.GamePlay.Modules.Health;
 using R3;
 using UnityEngine;
 using VContainer.Unity;
