@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Entities;
 using _Game.Scripts.GamePlay.Modules;
+using R3;
 using UnityEngine;
 using VContainer.Unity;
 
@@ -13,9 +14,8 @@ public class WorldGenerator : IInitializable, IDisposable
 
     private readonly WorldModel _model;
     private readonly EntitiesRegistry _registry;
-    
-    private MovementModule _player;
     private readonly HashSet<Vector3Int> _loadedTiles = new();
+    private IDisposable _positionSubscription;
     
     public event Action<Vector3Int> OnTileAddRequested;
     public event Action<Vector3Int> OnTileRemoveRequested;
@@ -33,9 +33,10 @@ public class WorldGenerator : IInitializable, IDisposable
 
     private void AddPlayer(EntityScope player)
     {
-        _player = player.Get<MovementModule>();
-        _player.OnGridPositionChanged += Generate;
-        Generate(_player.GridPosition);
+        var movement = player.Get<MovementModule>();
+        
+        _positionSubscription = movement.GridPosition
+            .Subscribe(Generate);
     }
 
     private int GetDistance() => RenderDistance * _model.ChunkSize;
@@ -43,7 +44,6 @@ public class WorldGenerator : IInitializable, IDisposable
     private void Generate(Vector3Int pos)
     {
         var distance = GetDistance();
-        
         var newTiles = new HashSet<Vector3Int>();
 
         for (var x = pos.x - distance; x <= pos.x + distance; x++)
@@ -79,10 +79,7 @@ public class WorldGenerator : IInitializable, IDisposable
 
     public void Dispose()
     {
-        if (_player != null)
-        {
-            _player.OnGridPositionChanged -= Generate;
-        }
+        _positionSubscription?.Dispose();
         _registry.OnPlayerInitialized -= AddPlayer;
     }
 }

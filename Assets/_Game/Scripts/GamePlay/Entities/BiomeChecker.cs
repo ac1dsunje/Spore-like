@@ -4,6 +4,7 @@ using _Game.Scripts.GamePlay.Modules;
 using _Game.Scripts.GamePlay.Modules.Environment;
 using _Game.Scripts.GamePlay.World;
 using _Game.Scripts.GamePlay.World.Biomes;
+using R3;
 using UnityEngine;
 using VContainer.Unity;
 
@@ -19,9 +20,10 @@ public class BiomeChecker : IStartable, IDisposable
     private readonly BuffsModule _buffsModule;
     
     private Biome _currentBiome;
+    private IDisposable _positionSubscription;
     
-    public BiomeChecker(WorldModel worldModel, MovementModule movement, TemperatureModule temperature, PassabilityModule passability,
-        BuffsModule buffsModule, BreathingModule breathing)
+    public BiomeChecker(WorldModel worldModel, MovementModule movement, TemperatureModule temperature, 
+        PassabilityModule passability, BuffsModule buffsModule, BreathingModule breathing)
     {
         _worldModel = worldModel;
         _movement = movement;
@@ -33,8 +35,8 @@ public class BiomeChecker : IStartable, IDisposable
 
     public void Start()
     {
-        _movement.OnGridPositionChanged += TryEnterBiome;
-        EnterBiome(_worldModel.GetBiome(_movement.GridPosition));
+        _positionSubscription = _movement.GridPosition
+            .Subscribe(TryEnterBiome);
     }
 
     private void TryEnterBiome(Vector3Int position)
@@ -56,7 +58,7 @@ public class BiomeChecker : IStartable, IDisposable
 
     public void Dispose()
     {
-        _movement.OnGridPositionChanged -= TryEnterBiome;
+        _positionSubscription?.Dispose();
     }
 }
 }

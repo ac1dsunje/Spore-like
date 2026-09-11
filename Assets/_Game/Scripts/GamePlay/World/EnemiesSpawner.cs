@@ -17,7 +17,7 @@ public class EnemiesSpawner : IStartable, IDisposable
     private readonly CoroutineRunner _runner;
 
     private MovementModule _player;
-    
+        
     public EnemiesSpawner(EntitySpawner spawner, EntitiesRegistry registry, WorldModel world, CoroutineRunner runner)
     {
         _registry = registry;
@@ -42,11 +42,11 @@ public class EnemiesSpawner : IStartable, IDisposable
         while (true)
         {
             yield return new WaitForSeconds(3f);
-            var playerPos = _player.GridPosition;
+            var playerPos = _player.GridPosition.CurrentValue;
             var spawnPos = new Vector3Int(playerPos.x + Random.Range(-5, 5), playerPos.y + Random.Range(-5, 5), 0);
             var enemies = _world.GetBiome(spawnPos).Enemies;
             if (enemies.Count > 0)
-                _spawner.SpawnEntity(new Vector2( spawnPos.x,  spawnPos.y), enemies[Random.Range(0, enemies.Count)]);
+                _spawner.SpawnEntity(new Vector2(spawnPos.x, spawnPos.y), enemies[Random.Range(0, enemies.Count)]);
         }
     }
 
