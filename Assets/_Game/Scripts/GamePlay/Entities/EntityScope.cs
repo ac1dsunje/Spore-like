@@ -42,6 +42,7 @@ public class EntityScope : LifetimeScope
         builder.Register<VisionModule>(Lifetime.Scoped);
         
         builder.Register<HealthModule>(Lifetime.Scoped);
+        builder.Register<RegenerationModule>(Lifetime.Scoped);
         builder.Register<AttackModule>(Lifetime.Scoped);
         builder.Register<DefenseModule>(Lifetime.Scoped);
         

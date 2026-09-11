@@ -12,8 +12,6 @@ public class HealthModule : StatModule
     
     private readonly ReactiveProperty<float> _current = new();
     private readonly ReactiveProperty<float> _max = new();
-    
-    public float Regeneration { get; private set; }
     public bool HasMaxHp => Mathf.Approximately(_current.Value, _max.Value);
     
     public event Action<HealthModule> OnDeath;
@@ -29,7 +27,6 @@ public class HealthModule : StatModule
     protected override void Configure()
     {
         BindStat(StatType.MaxHealth, UpdateMaxHealth);
-        BindStat(StatType.Regeneration, UpdateRegeneration);
         BindStat(StatType.ExtraLife, UpdateExtraLife);
     }
 
@@ -79,8 +76,6 @@ public class HealthModule : StatModule
     
         _current.Value = Mathf.Clamp(_current.Value + difference, 0, _max.Value);
     }
-
-    private void UpdateRegeneration(float value) => Regeneration = value;
     private void UpdateExtraLife(float value) => _extraLives = value - _extraLivesUsed;
 
     private void Die()

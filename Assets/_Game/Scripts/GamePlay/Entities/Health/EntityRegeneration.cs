@@ -13,11 +13,13 @@ public class EntityRegeneration : IStartable, IDisposable
     private const string WaitKey = "WaitBeforeRegeneration";
 
     private readonly HealthModule _health;
+    private readonly RegenerationModule _regeneration;
     private readonly CoroutineRunner _runner;
 
-    public EntityRegeneration(HealthModule health, CoroutineRunner runner)
+    public EntityRegeneration(HealthModule health, RegenerationModule regeneration, CoroutineRunner runner)
     {
         _health = health;
+        _regeneration = regeneration;
         _runner = runner;
     }
 
@@ -28,13 +30,13 @@ public class EntityRegeneration : IStartable, IDisposable
 
     private void StartRegeneration()
     {
-        if (_health.Regeneration <= 0f) return;
+        if (_regeneration.Current <= 0f) return;
         _runner.Run(this, RegenerationKey, Regenerate());
     }
 
     private void StopRegeneration(float damage)
     {
-        if (_health.Regeneration <= 0f) return;
+        if (_regeneration.Current <= 0f) return;
         _runner.Stop(this, RegenerationKey);
         _runner.Stop(this, WaitKey);
         _runner.Run(this, WaitKey, WaitBeforeRegeneration());
@@ -45,7 +47,7 @@ public class EntityRegeneration : IStartable, IDisposable
         while (!_health.HasMaxHp)
         {
             yield return new WaitForSeconds(1f);
-            _health.Heal(_health.Regeneration);
+            _health.Heal(_regeneration.Current);
         }
     }
 
