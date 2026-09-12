@@ -16,8 +16,10 @@ public class EnemiesSpawner : IStartable, IDisposable
     private readonly WorldModel _world;
     private CancellationTokenSource _cts;
 
+    private readonly float _spawnDelay = 3f;
+
     private MovementModule _player;
-        
+    
     public EnemiesSpawner(EntitySpawner spawner, EntitiesRegistry registry, WorldModel world)
     {
         _registry = registry;
@@ -34,18 +36,35 @@ public class EnemiesSpawner : IStartable, IDisposable
     {
         _player = entity.Get<MovementModule>();
         _cts = new CancellationTokenSource();
-        SpawnEnemies(_cts.Token).Forget();
+        SpawnEnemies().Forget();
     }
 
-    private async UniTaskVoid SpawnEnemies(CancellationToken token)
+    private async UniTaskVoid SpawnEnemies()
     {
+        const int min = 6;
+        const int max = 10;
+        const int minSqr = min * min;
+        const int maxSqr = max * max;
+
         try
         {
             while (true)
             {
-                await UniTask.Delay(TimeSpan.FromSeconds(3), cancellationToken: token);
+                await UniTask.Delay(TimeSpan.FromSeconds(_spawnDelay), cancellationToken: _cts.Token);
                 var playerPos = _player.GridPosition.CurrentValue;
-                var spawnPos = new Vector3Int(playerPos.x + Random.Range(-5, 5), playerPos.y + Random.Range(-5, 5), 0);
+
+                int dx, dy;
+                int distSqr;
+                do
+                {
+                    dx = Random.Range(-max, max + 1);
+                    dy = Random.Range(-max, max + 1);
+                    distSqr = dx * dx + dy * dy;
+                }
+                while (distSqr < minSqr || distSqr > maxSqr);
+
+                var spawnPos = new Vector3Int(playerPos.x + dx, playerPos.y + dy, 0);
+
                 var enemies = _world.GetBiome(spawnPos).Enemies;
                 if (enemies.Count > 0)
                     _spawner.SpawnEntity(new Vector2(spawnPos.x, spawnPos.y), enemies[Random.Range(0, enemies.Count)]);
@@ -53,9 +72,7 @@ public class EnemiesSpawner : IStartable, IDisposable
         }
         catch (OperationCanceledException)
         {
-            
         }
-        
     }
 
     public void Dispose()
