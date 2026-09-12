@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0030ccaa56b24bdfbe9c600651de2505, type: 3}
-  m_Name: MossGolem
+  m_Name: SporeSlime
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.EntityConfig
   <AIType>k__BackingField: 0
   <Stats>k__BackingField:
   - <Type>k__BackingField: 0
-    <Value>k__BackingField: 1.25
+    <Value>k__BackingField: 1.5
   - <Type>k__BackingField: 2
     <Value>k__BackingField: 0
   - <Type>k__BackingField: 3
@@ -25,13 +25,13 @@ MonoBehaviour:
   - <Type>k__BackingField: 5
     <Value>k__BackingField: 0
   - <Type>k__BackingField: 6
-    <Value>k__BackingField: 10
+    <Value>k__BackingField: 5
   - <Type>k__BackingField: 7
     <Value>k__BackingField: 1
   - <Type>k__BackingField: 8
     <Value>k__BackingField: 100
   - <Type>k__BackingField: 10
-    <Value>k__BackingField: 100
+    <Value>k__BackingField: 80
   - <Type>k__BackingField: 14
     <Value>k__BackingField: 0
   - <Type>k__BackingField: 15
@@ -78,7 +78,7 @@ MonoBehaviour:
     <Drops>k__BackingField:
     - {fileID: 11400000, guid: 09a456aa10bbc1649b0b975c4fa17b9e, type: 2}
   <AnimationSettings>k__BackingField:
-    <Sprite>k__BackingField: {fileID: -3263788303436985855, guid: fd5b9f0ae363ac942a86447cc9708c9a, type: 3}
+    <Sprite>k__BackingField: {fileID: 4722304544410940122, guid: fcc784ec40b84d74d8e7415f6a404df5, type: 3}
     <Controller>k__BackingField: {fileID: 0}
     <Color>k__BackingField: {r: 0, g: 1, b: 0, a: 1}
     <OnHitParticles>k__BackingField: {fileID: 0}
