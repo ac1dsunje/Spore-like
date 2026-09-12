@@ -17,7 +17,5 @@ MonoBehaviour:
   <OxygenBreathing>k__BackingField: 25
   <HydrogenBreathing>k__BackingField: 5
   <Tile>k__BackingField: {fileID: 11400000, guid: e096a4ecb626b3a48b5128cd150ec37c, type: 2}
-  <Enemies>k__BackingField:
-  - {fileID: 11400000, guid: 2f2e867e51897714a91a8feba992ece0, type: 2}
-  <EnvironmentConfigs>k__BackingField: []
+  <Enemies>k__BackingField: []
   <ChanceEnvironment>k__BackingField: 0

@@ -14,7 +14,6 @@ public class BiomeConfig : ScriptableObject
     [field: SerializeField] public float HydrogenBreathing { get; private set; }
     [field: SerializeField] public TileBase Tile { get; private set; }
     [field: SerializeField] public List<EntityConfig> Enemies { get; private set; }
-    [field: SerializeField] public List<EnvironmentConfig> EnvironmentConfigs { get; private set; }
     [field: SerializeField] public int ChanceEnvironment { get; private set; } = 20;
 }
 }

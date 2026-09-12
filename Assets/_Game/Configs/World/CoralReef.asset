@@ -19,21 +19,10 @@ MonoBehaviour:
   <Tile>k__BackingField: {fileID: 11400000, guid: 63c04eb3f6745cd449112020c69243ff, type: 2}
   <Enemies>k__BackingField:
   - {fileID: 11400000, guid: 2f2e867e51897714a91a8feba992ece0, type: 2}
-  <EnvironmentConfigs>k__BackingField:
-  - <Entity>k__BackingField: {fileID: 11400000, guid: 7ccd7dc23e903cf4ba01b4dc1ccb6fb1, type: 2}
-    <Chance>k__BackingField: 50
-  - <Entity>k__BackingField: {fileID: 11400000, guid: 2013821da87334741af9100eb4c6d9fe, type: 2}
-    <Chance>k__BackingField: 50
-  - <Entity>k__BackingField: {fileID: 11400000, guid: a34abbfa8f5f8f34a862ef168db43085, type: 2}
-    <Chance>k__BackingField: 50
-  - <Entity>k__BackingField: {fileID: 11400000, guid: d1b1873bbc21ecd47a32c4e32a65efde, type: 2}
-    <Chance>k__BackingField: 50
-  - <Entity>k__BackingField: {fileID: 11400000, guid: 819d3b983680db54ca3a7ae7038a186c, type: 2}
-    <Chance>k__BackingField: 50
-  - <Entity>k__BackingField: {fileID: 11400000, guid: 56fea54bd5a3a5243a536ec8c1a37b7c, type: 2}
-    <Chance>k__BackingField: 50
-  - <Entity>k__BackingField: {fileID: 11400000, guid: 8399ec95802efb4419d9ebdbf6a6ad57, type: 2}
-    <Chance>k__BackingField: 70
-  - <Entity>k__BackingField: {fileID: 11400000, guid: d287eab7270643e44b397184f726779a, type: 2}
-    <Chance>k__BackingField: 70
+  - {fileID: 11400000, guid: 7ccd7dc23e903cf4ba01b4dc1ccb6fb1, type: 2}
+  - {fileID: 11400000, guid: 2013821da87334741af9100eb4c6d9fe, type: 2}
+  - {fileID: 11400000, guid: a34abbfa8f5f8f34a862ef168db43085, type: 2}
+  - {fileID: 11400000, guid: d1b1873bbc21ecd47a32c4e32a65efde, type: 2}
+  - {fileID: 11400000, guid: 819d3b983680db54ca3a7ae7038a186c, type: 2}
+  - {fileID: 11400000, guid: 56fea54bd5a3a5243a536ec8c1a37b7c, type: 2}
   <ChanceEnvironment>k__BackingField: 15

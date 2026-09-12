@@ -19,9 +19,5 @@ MonoBehaviour:
   <Tile>k__BackingField: {fileID: 11400000, guid: ef5da1d463ede5640bbf5d3ad5733c3f, type: 2}
   <Enemies>k__BackingField:
   - {fileID: 11400000, guid: 2f2e867e51897714a91a8feba992ece0, type: 2}
-  <EnvironmentConfigs>k__BackingField:
-  - <Entity>k__BackingField: {fileID: 11400000, guid: 2b431e0e606960644b69d1ea913c2712, type: 2}
-    <Chance>k__BackingField: 50
-  - <Entity>k__BackingField: {fileID: 11400000, guid: 5918d4f95e650584f8040c93f287116e, type: 2}
-    <Chance>k__BackingField: 10
+  - {fileID: 11400000, guid: 2b431e0e606960644b69d1ea913c2712, type: 2}
   <ChanceEnvironment>k__BackingField: 30

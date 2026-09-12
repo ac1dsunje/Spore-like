@@ -44,13 +44,13 @@ public class EnvironmentSpawner : IStartable, IDisposable
     {
         if (!CanPlaceObject(biome.ChanceEnvironment)) return;
         
-        var environment = biome.GetRandomEnvironment();
-        if (environment == null) return;
-        
-        var config = environment.Entity;
-        
-        _spawnedEntities[position] = config;
-        SpawnPlant(position, config);
+        // var environment = biome.GetRandomEnvironment();
+        // if (environment == null) return;
+        // 
+        // var config = environment.Entity;
+        // 
+        // _spawnedEntities[position] = config;
+        // SpawnPlant(position, config);
     }
 
     private void UnloadEnvironment(Vector3Int position)
