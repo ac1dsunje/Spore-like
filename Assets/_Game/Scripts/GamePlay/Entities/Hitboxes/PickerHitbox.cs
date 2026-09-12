@@ -20,6 +20,10 @@ public class PickerHitbox : MonoBehaviour
     
     public void SetSize(float size)
     {
+        if (size == 0)
+        {
+            _collider.enabled = false;
+        }
         _collider.radius = size;
     }
     
