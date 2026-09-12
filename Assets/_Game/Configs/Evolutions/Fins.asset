@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Evolutions.EvolutionConfig
   <State>k__BackingField: 1
   <Name>k__BackingField: Fins
-  <CreatureType>k__BackingField: 1
   <Stats>k__BackingField:
   - <Type>k__BackingField: 0
-    <Value>k__BackingField: 0.5
-    <Operation>k__BackingField: 0
+    <Value>k__BackingField: 50
+    <Operation>k__BackingField: 2
     <Target>k__BackingField: 0
     <UpdatesByRarity>k__BackingField: 1
   - <Type>k__BackingField: 18
@@ -34,6 +33,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e04bb15e2dd62b540a4c2f6e5608c4c1, type: 2}
   <ExperienceConfig>k__BackingField:
     <LevelSet>k__BackingField: 20
+    <Level>k__BackingField: 1
     <ExperienceTypes>k__BackingField:
     - <Type>k__BackingField: 6
       <Amount>k__BackingField: 1
