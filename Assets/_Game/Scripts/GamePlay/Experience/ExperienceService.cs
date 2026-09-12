@@ -33,11 +33,14 @@ public class ExperienceService : IDisposable
     private void AddAmount(float amount)
     {
         _current += amount;
-        while (_current >= _max)
-        {
-            OnExperienceGained?.Invoke(1);
-            _current -= _max;
-        }
+
+        var intAmount = (int)(_current / _max);
+
+        if (intAmount <= 0) return;
+        
+        OnExperienceGained?.Invoke(intAmount);
+        
+        _current -= intAmount * _max;
     }
 
     public void Dispose()

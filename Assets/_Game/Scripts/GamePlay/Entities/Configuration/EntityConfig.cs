@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using _Game.Scripts.GamePlay.Types;
 using _Game.Scripts.GamePlay.Drops;
 using _Game.Scripts.GamePlay.Entities.Animation;
-using _Game.Scripts.GamePlay.Entities.Experience;
+using _Game.Scripts.GamePlay.Experience;
 using _Game.Scripts.GamePlay.Projectiles;
 using UnityEngine;
 
@@ -20,7 +20,7 @@ public class EntityConfig : ScriptableObject
 {
     [field: SerializeField] public EntityAIType AIType { get; private set; }
     [field: SerializeField] public List<Stat> Stats { get; private set; } = new();
-    [field: SerializeField] public EntityExperienceConfig ExperienceConfig { get; private set; }
+    [field: SerializeField] public ExperienceConfig ExperienceConfig { get; private set; }
     [field: SerializeField] public ProjectileConfig Projectile { get; private set; }
     [field: SerializeField] public DropsConfig Drops { get; private set; }
     [field: SerializeField] public AnimationSettings AnimationSettings { get; private set; }

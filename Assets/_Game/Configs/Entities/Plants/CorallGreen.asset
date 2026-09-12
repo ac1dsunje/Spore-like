@@ -10,38 +10,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0030ccaa56b24bdfbe9c600651de2505, type: 3}
-  m_Name: Player
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.GamePlay.Entities.EntityConfig
-  <AIType>k__BackingField: 1
+  m_Name: CorallGreen
+  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Food.FoodConfig
+  <AIType>k__BackingField: 0
   <Stats>k__BackingField:
   - <Type>k__BackingField: 0
-    <Value>k__BackingField: 2
-  - <Type>k__BackingField: 1
-    <Value>k__BackingField: 3
+    <Value>k__BackingField: 0
   - <Type>k__BackingField: 2
-    <Value>k__BackingField: 999999
+    <Value>k__BackingField: 0
   - <Type>k__BackingField: 3
-    <Value>k__BackingField: 100
+    <Value>k__BackingField: 0
   - <Type>k__BackingField: 4
     <Value>k__BackingField: 0
   - <Type>k__BackingField: 5
-    <Value>k__BackingField: 10
+    <Value>k__BackingField: 0
   - <Type>k__BackingField: 6
-    <Value>k__BackingField: 10
+    <Value>k__BackingField: 0
   - <Type>k__BackingField: 7
-    <Value>k__BackingField: 1
+    <Value>k__BackingField: 0
   - <Type>k__BackingField: 8
-    <Value>k__BackingField: 100
+    <Value>k__BackingField: 0
   - <Type>k__BackingField: 10
-    <Value>k__BackingField: 100
+    <Value>k__BackingField: 15
   - <Type>k__BackingField: 14
-    <Value>k__BackingField: 10
+    <Value>k__BackingField: 0
   - <Type>k__BackingField: 15
-    <Value>k__BackingField: 1
+    <Value>k__BackingField: 0
   - <Type>k__BackingField: 16
     <Value>k__BackingField: 0
   - <Type>k__BackingField: 17
-    <Value>k__BackingField: 0
+    <Value>k__BackingField: 1
   - <Type>k__BackingField: 18
     <Value>k__BackingField: 0
   - <Type>k__BackingField: 19
@@ -49,13 +47,13 @@ MonoBehaviour:
   - <Type>k__BackingField: 20
     <Value>k__BackingField: 0
   - <Type>k__BackingField: 22
-    <Value>k__BackingField: 10
+    <Value>k__BackingField: 0
   - <Type>k__BackingField: 23
-    <Value>k__BackingField: 20
+    <Value>k__BackingField: 30
   - <Type>k__BackingField: 26
-    <Value>k__BackingField: 0
+    <Value>k__BackingField: 1
   - <Type>k__BackingField: 30
-    <Value>k__BackingField: 0
+    <Value>k__BackingField: 1
   - <Type>k__BackingField: 31
     <Value>k__BackingField: 0.5
   - <Type>k__BackingField: 32
@@ -63,28 +61,26 @@ MonoBehaviour:
   - <Type>k__BackingField: 34
     <Value>k__BackingField: 0
   - <Type>k__BackingField: 35
-    <Value>k__BackingField: 10
+    <Value>k__BackingField: 5
   - <Type>k__BackingField: 36
     <Value>k__BackingField: 0
   - <Type>k__BackingField: 37
     <Value>k__BackingField: 0
   - <Type>k__BackingField: 38
-    <Value>k__BackingField: 10
+    <Value>k__BackingField: 20
   <ExperienceConfig>k__BackingField:
-    <LevelScaler>k__BackingField: 1
-    <ExperienceConfig>k__BackingField:
-      <LevelSet>k__BackingField: 5
-      <Level>k__BackingField: 1
-      <ExperienceTypes>k__BackingField:
-      - <Type>k__BackingField: 1
-        <Amount>k__BackingField: 1
-  <Projectile>k__BackingField: {fileID: 11400000, guid: 5e5c4297305e9254690810fc7283ddf3, type: 2}
+    <LevelSet>k__BackingField: 5
+    <Level>k__BackingField: 1
+    <ExperienceTypes>k__BackingField:
+    - <Type>k__BackingField: 1
+      <Amount>k__BackingField: 0
+  <Projectile>k__BackingField: {fileID: 11400000, guid: d07a3fb9769a01f45a2cb25e7faf1fcd, type: 2}
   <Drops>k__BackingField:
     <Drops>k__BackingField:
-    - {fileID: 11400000, guid: fa06a686091fd6940938824b703a740e, type: 2}
+    - {fileID: 11400000, guid: 09a456aa10bbc1649b0b975c4fa17b9e, type: 2}
   <AnimationSettings>k__BackingField:
-    <Sprite>k__BackingField: {fileID: -9048744825557176607, guid: 7e660a4087c8141408b939d08c80a53f, type: 3}
-    <Controller>k__BackingField: {fileID: 7898678084846905597, guid: 7e660a4087c8141408b939d08c80a53f, type: 3}
-    <Color>k__BackingField: {r: 0.8027768, g: 0.8301887, b: 0.8027768, a: 1}
-    <OnHitParticles>k__BackingField: {fileID: 0}
-    <IsObstacle>k__BackingField: 1
+    <Sprite>k__BackingField: {fileID: -7633908966752013755, guid: 37d86e9e2d6867d4197f0518fd9d1d69, type: 3}
+    <Controller>k__BackingField: {fileID: 0}
+    <Color>k__BackingField: {r: 0.43137255, g: 0.92941177, b: 0.22352941, a: 1}
+    <OnHitParticles>k__BackingField: {fileID: 1057120428620177345, guid: d8e716c34125011438a86971c35e78c7, type: 3}
+    <IsObstacle>k__BackingField: 0

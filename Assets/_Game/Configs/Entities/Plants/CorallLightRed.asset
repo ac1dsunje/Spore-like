@@ -16,8 +16,6 @@ MonoBehaviour:
   <Stats>k__BackingField:
   - <Type>k__BackingField: 0
     <Value>k__BackingField: 0
-  - <Type>k__BackingField: 1
-    <Value>k__BackingField: 0
   - <Type>k__BackingField: 2
     <Value>k__BackingField: 0
   - <Type>k__BackingField: 3
@@ -71,13 +69,11 @@ MonoBehaviour:
   - <Type>k__BackingField: 38
     <Value>k__BackingField: 20
   <ExperienceConfig>k__BackingField:
-    <LevelScaler>k__BackingField: 1
-    <ExperienceConfig>k__BackingField:
-      <LevelSet>k__BackingField: 5
-      <Level>k__BackingField: 1
-      <ExperienceTypes>k__BackingField:
-      - <Type>k__BackingField: 1
-        <Amount>k__BackingField: 1
+    <LevelSet>k__BackingField: 5
+    <Level>k__BackingField: 1
+    <ExperienceTypes>k__BackingField:
+    - <Type>k__BackingField: 1
+      <Amount>k__BackingField: 0
   <Projectile>k__BackingField: {fileID: 11400000, guid: d07a3fb9769a01f45a2cb25e7faf1fcd, type: 2}
   <Drops>k__BackingField:
     <Drops>k__BackingField:

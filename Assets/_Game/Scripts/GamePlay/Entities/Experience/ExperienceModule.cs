@@ -20,13 +20,13 @@ public class ExperienceModule : IStartable, IDisposable
 
     private int _levelScaler;
     
-    private readonly EntityExperienceConfig _config;
+    private readonly ExperienceConfig _config;
     private readonly EntityScope _entity;
     private readonly ExperienceFactory _expFactory;
     
     public event Action<int> OnLevelChanged;
 
-    public ExperienceModule(EntityExperienceConfig config, EntityScope entity, ExperienceFactory factory)
+    public ExperienceModule(ExperienceConfig config, EntityScope entity, ExperienceFactory factory)
     {
         _config = config;
         _entity = entity;
@@ -35,11 +35,11 @@ public class ExperienceModule : IStartable, IDisposable
 
     public void Start()
     {
-        if (_config.ExperienceConfig == null) return;
+        if (_config == null) return;
         
-        _max.Value = _config.ExperienceConfig.LevelSet;
-        _levelScaler = _config.LevelScaler;
-        Level = _config.ExperienceConfig.Level;
+        _max.Value = _config.LevelSet;
+        _levelScaler = 1;
+        Level = _config.Level;
         
         for (var i = 0; i < Level; i++)
         {
@@ -47,8 +47,8 @@ public class ExperienceModule : IStartable, IDisposable
             _levelScaler++;
         }
         
-        if (_config.ExperienceConfig.ExperienceTypes.Count == 0) return;
-        SubscribeExperienceServices(_config.ExperienceConfig);
+        if (_config.ExperienceTypes.Count == 0) return;
+        SubscribeExperienceServices(_config);
     }
     
     private void SubscribeExperienceServices(ExperienceConfig config)

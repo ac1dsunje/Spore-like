@@ -7,6 +7,6 @@ namespace _Game.Scripts.GamePlay.Experience
 public class ExperienceServiceConfig
 {
     [field: SerializeField] public ExperienceType Type { get; private set; }
-    [field: SerializeField] public float Amount { get; private set; } = 1f;
+    [field: SerializeField, Range(1f, 100f)] public float Amount { get; private set; } = 1f;
 }
 }

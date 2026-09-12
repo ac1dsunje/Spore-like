@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0030ccaa56b24bdfbe9c600651de2505, type: 3}
-  m_Name: CoralRed
+  m_Name: CorallDarkRed
   m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.World.Food.FoodConfig
   <AIType>k__BackingField: 0
   <Stats>k__BackingField:
   - <Type>k__BackingField: 0
-    <Value>k__BackingField: 0
-  - <Type>k__BackingField: 1
     <Value>k__BackingField: 0
   - <Type>k__BackingField: 2
     <Value>k__BackingField: 0
@@ -71,20 +69,18 @@ MonoBehaviour:
   - <Type>k__BackingField: 38
     <Value>k__BackingField: 20
   <ExperienceConfig>k__BackingField:
-    <LevelScaler>k__BackingField: 1
-    <ExperienceConfig>k__BackingField:
-      <LevelSet>k__BackingField: 5
-      <Level>k__BackingField: 1
-      <ExperienceTypes>k__BackingField:
-      - <Type>k__BackingField: 1
-        <Amount>k__BackingField: 1
+    <LevelSet>k__BackingField: 5
+    <Level>k__BackingField: 1
+    <ExperienceTypes>k__BackingField:
+    - <Type>k__BackingField: 1
+      <Amount>k__BackingField: 0
   <Projectile>k__BackingField: {fileID: 11400000, guid: d07a3fb9769a01f45a2cb25e7faf1fcd, type: 2}
   <Drops>k__BackingField:
     <Drops>k__BackingField:
     - {fileID: 11400000, guid: 09a456aa10bbc1649b0b975c4fa17b9e, type: 2}
   <AnimationSettings>k__BackingField:
-    <Sprite>k__BackingField: {fileID: 2893469946120106599, guid: 1df7c3dd644211946bdec31376d30376, type: 3}
+    <Sprite>k__BackingField: {fileID: -6655980051483503646, guid: a3686d022d80bd54890668d45fa2f67b, type: 3}
     <Controller>k__BackingField: {fileID: 0}
-    <Color>k__BackingField: {r: 0.92941177, g: 0.2509804, b: 0.22352941, a: 1}
+    <Color>k__BackingField: {r: 0.6901961, g: 0.07450981, b: 0.047058824, a: 1}
     <OnHitParticles>k__BackingField: {fileID: 1057120428620177345, guid: d8e716c34125011438a86971c35e78c7, type: 3}
     <IsObstacle>k__BackingField: 0
