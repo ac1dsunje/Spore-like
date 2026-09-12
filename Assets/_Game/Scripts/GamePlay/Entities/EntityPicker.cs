@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using _Game.Scripts.GamePlay.Drops;
-using _Game.Scripts.GamePlay.Entities.Configuration;
 using _Game.Scripts.GamePlay.Entities.Hitboxes;
 using _Game.Scripts.GamePlay.Experience;
 using _Game.Scripts.GamePlay.Modules;
@@ -14,15 +13,17 @@ public class EntityPicker : IStartable, ITickable, IDisposable
     private readonly PickerHitbox _pickerHitbox;
     private readonly PickingModule _pickingModule;
     private readonly StomachModule _stomach;
-    private readonly EntityConfig _config;
+    private readonly ExperienceConfig _config;
+
+    private const float FoodFlySpeed = 6f; 
 
     public EntityPicker(PickerHitbox pickerHitbox, PickingModule pickingModule, StomachModule stomachModule,
-        EntityConfig entityConfig)
+        ExperienceConfig config)
     {
         _pickerHitbox = pickerHitbox;
         _pickingModule = pickingModule;
         _stomach = stomachModule;
-        _config = entityConfig;
+        _config = config;
     }
 
     public void Start()
@@ -40,15 +41,27 @@ public class EntityPicker : IStartable, ITickable, IDisposable
         switch (drop.Type)
         {
             case DropType.Food:
-                if (_config.ExperienceConfig.ExperienceConfig.ExperienceTypes.Any(exp => exp.Type == ExperienceType.FoodEating))
+                if (_config.ExperienceTypes.Any(exp => exp.Type == ExperienceType.FoodEating))
                 {
-                    _stomach.Add(1);
-                    _pickerHitbox.DestroyDrop(drop);
+                    drop.FlyTo(_pickerHitbox.transform, FoodFlySpeed);
+                    
+                    drop.OnReachedTarget += ConsumeDrop;
                 }
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
+    }
+
+    private void ConsumeDrop(Drop drop)
+    {
+        drop.OnReachedTarget -= ConsumeDrop;
+
+        if (drop.Type == DropType.Food)
+        {
+            _stomach.Add(1);
+        }
+        _pickerHitbox.DestroyDrop(drop);
     }
 
     public void Dispose()

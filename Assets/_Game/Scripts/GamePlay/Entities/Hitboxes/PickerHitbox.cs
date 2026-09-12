@@ -11,7 +11,6 @@ public class PickerHitbox : MonoBehaviour
     public event Action<Drop> OnPicked;
     
     private CircleCollider2D _collider;
-
     private readonly List<Drop> _drops = new();
 
     private void Awake()
@@ -27,8 +26,11 @@ public class PickerHitbox : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.TryGetComponent(out Drop drop)) return;
-        OnPicked?.Invoke(drop);
+        
+        if (_drops.Contains(drop)) return;
+
         _drops.Add(drop);
+        OnPicked?.Invoke(drop);
     }
 
     public void DestroyDrop(Drop drop)
