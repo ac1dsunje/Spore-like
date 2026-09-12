@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using _Game.Scripts.Core.Services;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using _Game.Scripts.GamePlay.Entities.Attack;
 using _Game.Scripts.GamePlay.Entities.Experience;
 using _Game.Scripts.GamePlay.Entities.Health;
@@ -25,18 +25,14 @@ public class EntityAI : IStartable, IDisposable
     private readonly BodyHitbox _hitBox;
     private readonly EvolutionsModule _evolutions;
     private readonly ExperienceModule _experience;
-    private readonly CoroutineRunner _coroutineRunner;
     
     private readonly Transform _transform;
-    
     private readonly EntitiesRegistry _entitiesRegistry;
 
-    private const string DirectionChangeKey = "DirectionChange";
-    private const float MinDirectionChangeTime = 0.5f;
-    private const float MaxDirectionChangeTime = 2f;
+    private CancellationTokenSource _cts;
 
     public EntityAI(IMovementController movement, IAttackController attacker, IHealthController healthController,
-        BodyHitbox hitbox, EvolutionsModule evolutions, ExperienceModule experience, CoroutineRunner coroutineRunner, 
+        BodyHitbox hitbox, EvolutionsModule evolutions, ExperienceModule experience, 
         Transform transform, EntitiesRegistry entitiesRegistry)
     {
         _movement = movement;
@@ -45,9 +41,7 @@ public class EntityAI : IStartable, IDisposable
         _hitBox = hitbox;
         _evolutions = evolutions;
         _experience = experience;
-        _coroutineRunner = coroutineRunner;
         _transform = transform;
-        
         _entitiesRegistry = entitiesRegistry;
     }
 
@@ -59,7 +53,8 @@ public class EntityAI : IStartable, IDisposable
         
         SetInitialEvolutions(_experience.Level);
 
-        _coroutineRunner.Run(this, DirectionChangeKey, DirectionChangeRoutine());
+        _cts = new CancellationTokenSource();
+        DirectionChangeLoopAsync(_cts.Token).Forget();
     }
 
     private void SetInitialEvolutions(int amount)
@@ -77,12 +72,19 @@ public class EntityAI : IStartable, IDisposable
         }
     }
 
-    private IEnumerator DirectionChangeRoutine()
+    private async UniTaskVoid DirectionChangeLoopAsync(CancellationToken token)
     {
-        while (true)
+        try
         {
-            yield return new WaitForSeconds(Random.Range(MinDirectionChangeTime, MaxDirectionChangeTime));
-            ChangeDirection();
+            while (true)
+            {
+                await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: token);
+                
+                ChangeDirection();
+            }
+        }
+        catch (OperationCanceledException)
+        {
         }
     }
 
@@ -125,7 +127,10 @@ public class EntityAI : IStartable, IDisposable
 
     public void Dispose()
     {
-        _coroutineRunner.Stop(this);
+        _cts?.Cancel();
+        _cts?.Dispose();
+        _cts = null;
+
         _hitBox.OnTouch -= DoDamage;
         _hitBox.OnHit -= TakeDamage;
         _evolutions.OnSlotsFilled -= ChooseEvolution;

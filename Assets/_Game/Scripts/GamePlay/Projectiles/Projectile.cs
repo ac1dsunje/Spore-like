@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using _Game.Scripts.GamePlay.Interfaces;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace _Game.Scripts.GamePlay.Projectiles
@@ -16,7 +18,7 @@ public class Projectile : MonoBehaviour
     
     private HitInfo _setHit;
     private HitInfo _realHit;
-
+    
     private int _hitsDone;
     
     private void Awake()
@@ -70,7 +72,8 @@ public class Projectile : MonoBehaviour
         
         _setHit.AddDamage(_config.AdditionalDamage);
         _setHit.AddIgnoreResistance(_config.IgnoreResistance);
-        StartCoroutine(Hit());
+        
+        Hit(this.GetCancellationTokenOnDestroy()).Forget();
     }
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -95,10 +98,17 @@ public class Projectile : MonoBehaviour
     
     private void SetSprite(Sprite sprite) => _renderer.sprite = sprite;
 
-    private IEnumerator Hit()
+    private async UniTaskVoid Hit(CancellationToken token)
     {
-        yield return new WaitForSeconds(_config.HitTime);
-        Destroy(gameObject);
+        try
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(_config.HitTime), cancellationToken: token);
+            Destroy(gameObject);
+        }
+        catch (OperationCanceledException)
+        {
+            
+        }
     }
 }
 }

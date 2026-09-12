@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections;
+using System.Threading;
 using _Game.Scripts.Core.Services;
 using _Game.Scripts.GamePlay.Buffs;
 using _Game.Scripts.GamePlay.Modules;
+using Cysharp.Threading.Tasks;
 using R3;
-using UnityEngine;
 using VContainer.Unity;
 
 namespace _Game.Scripts.GamePlay.Entities
@@ -13,20 +14,18 @@ public class EntityStomach : IStartable, IDisposable
 {
     private readonly StomachModule _stomach;
     private readonly BuffsModule _buffs;
-    private readonly CoroutineRunner _coroutineRunner;
     private readonly EntityScope _scope;
     
     private float _currentValue;
     private float _maxValue;
 
     private const float LoseHungerTime = 5f;
-    private const string HungerCoroutineKey = "HungerLoop";
+    private CancellationTokenSource _cts;
 
-    public EntityStomach(StomachModule stomach, BuffsModule buffs, CoroutineRunner coroutineRunner, EntityScope scope)
+    public EntityStomach(StomachModule stomach, BuffsModule buffs, EntityScope scope)
     {
         _stomach = stomach;
         _buffs = buffs;
-        _coroutineRunner = coroutineRunner;
         _scope = scope;
     }
     
@@ -36,16 +35,25 @@ public class EntityStomach : IStartable, IDisposable
             .Subscribe(x => UpdateBuffs(x.current, x.max))
             .AddTo(_scope);
         
-        _coroutineRunner.Run(this, HungerCoroutineKey, HungerLoop());
+        _cts = new CancellationTokenSource();
+        HungerLoop(_cts.Token).Forget();
     }
     
-    private IEnumerator HungerLoop()
+    private async UniTaskVoid HungerLoop(CancellationToken token)
     {
-        while (true)
+        try
         {
-            yield return new WaitForSeconds(LoseHungerTime);
-            _stomach.Reduce(1);
+            while (true)
+            {
+                await UniTask.Delay(TimeSpan.FromSeconds(LoseHungerTime), cancellationToken: token);
+                _stomach.Reduce(1);
+            }
         }
+        catch (OperationCanceledException)
+        {
+            
+        }
+        
     }
 
     private void UpdateBuffs(float current, float max)
@@ -56,10 +64,9 @@ public class EntityStomach : IStartable, IDisposable
 
     public void Dispose()
     {
-        if (_coroutineRunner != null && _coroutineRunner.gameObject != null)
-        {
-            _coroutineRunner.Stop(this);
-        }
+        _cts?.Cancel();
+        _cts?.Dispose();
+        _cts = null;
     }
 }
 }
