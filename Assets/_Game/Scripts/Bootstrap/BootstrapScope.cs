@@ -22,7 +22,6 @@ public class BootstrapScope : LifetimeScope
 
         builder.RegisterEntryPoint<Ticker>().AsSelf();
         builder.RegisterEntryPoint<Bootstrap>();
-        builder.RegisterComponentInHierarchy<CoroutineRunner>();
     }
 }
 }
