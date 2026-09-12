@@ -39,7 +39,7 @@ public class ExperienceModule : IStartable, IDisposable
         
         _max.Value = _config.LevelSet;
         _levelScaler = 1;
-        Level = _config.Level;
+        Level = 1;
         
         for (var i = 0; i < Level; i++)
         {
