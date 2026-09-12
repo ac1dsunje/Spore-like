@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections;
-using _Game.Scripts.Core.Services;
+using System.Threading;
 using _Game.Scripts.GamePlay.Modules.Health;
+using Cysharp.Threading.Tasks;
 using R3;
 using UnityEngine;
 using VContainer.Unity;
@@ -10,19 +10,19 @@ namespace _Game.Scripts.GamePlay.Entities.Health
 {
 public class EntityRegeneration : IStartable, IDisposable
 {
-    private const string RegenerationKey = "Regeneration";
-    private const string WaitKey = "WaitBeforeRegeneration";
-
     private readonly HealthModule _health;
     private readonly RegenerationModule _regeneration;
-    private readonly CoroutineRunner _runner;
+    
     private IDisposable _subscription;
 
-    public EntityRegeneration(HealthModule health, RegenerationModule regeneration, CoroutineRunner runner)
+    private readonly CancellationTokenSource _lifetimeCts = new();
+    
+    private CancellationTokenSource _cycleCts;
+
+    public EntityRegeneration(HealthModule health, RegenerationModule regeneration)
     {
         _health = health;
         _regeneration = regeneration;
-        _runner = runner;
     }
 
     public void Start()
@@ -31,49 +31,53 @@ public class EntityRegeneration : IStartable, IDisposable
             .Pairwise()
             .Subscribe(pair =>
             {
-                var delta = pair.Previous - pair.Current;
-                if (delta > 0)
+                if (pair.Previous > pair.Current)
                 {
-                    StopRegeneration();
+                    RestartRegenerationCycle();
                 }
             });
     }
 
-    private void StartRegeneration()
+    private void RestartRegenerationCycle()
     {
         if (_regeneration.Current <= 0f) return;
-        _runner.Run(this, RegenerationKey, Regenerate());
+
+        _cycleCts?.Cancel();
+        _cycleCts?.Dispose();
+
+        _cycleCts = CancellationTokenSource.CreateLinkedTokenSource(_lifetimeCts.Token);
+
+        RegenerationCycleAsync(_cycleCts.Token).Forget();
     }
 
-    private void StopRegeneration()
+    private async UniTaskVoid RegenerationCycleAsync(CancellationToken token)
     {
-        if (_regeneration.Current <= 0f) return;
-        _runner.Stop(this, RegenerationKey);
-        _runner.Stop(this, WaitKey);
-        _runner.Run(this, WaitKey, WaitBeforeRegeneration());
-    }
-
-    private IEnumerator Regenerate()
-    {
-        
-        while (!Mathf.Approximately(_health.Current.CurrentValue, _health.Max.CurrentValue))
+        try
         {
-            yield return new WaitForSeconds(1f);
-            _health.Add(_regeneration.Current);
-        }
-    }
+            await UniTask.Delay(TimeSpan.FromSeconds(1f), cancellationToken: token);
 
-    private IEnumerator WaitBeforeRegeneration()
-    {
-        yield return new WaitForSeconds(1f);
-        StartRegeneration();
+            while (!Mathf.Approximately(_health.Current.CurrentValue, _health.Max.CurrentValue))
+            {
+                await UniTask.Delay(TimeSpan.FromSeconds(1f), cancellationToken: token);
+                
+                _health.Add(_regeneration.Current);
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            
+        }
     }
 
     public void Dispose()
     {
-        _runner.Stop(this);
-
         _subscription?.Dispose();
+
+        _cycleCts?.Cancel();
+        _cycleCts?.Dispose();
+
+        _lifetimeCts.Cancel();
+        _lifetimeCts.Dispose();
     }
 }
 }
