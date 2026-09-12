@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2073166315826424497}
   - component: {fileID: 943004118271617939}
-  - component: {fileID: 7336996393603458929}
   m_Layer: 0
   m_Name: Boot
   m_TagString: Untagged
@@ -52,15 +51,3 @@ MonoBehaviour:
   _mainMenuScene: Assets/_Game/Scenes/MainMenu.unity
   _gameplayScene: Assets/_Game/Scenes/GamePlayScene.unity
   _loadingScene: Assets/_Game/Scenes/LoadingScene.unity
---- !u!114 &7336996393603458929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9104179343397295178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98c698df715449e7a6b63bd5ad30a9c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Game.Scripts.Core.Services.CoroutineRunner

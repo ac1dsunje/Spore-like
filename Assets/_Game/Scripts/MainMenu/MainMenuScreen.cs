@@ -1,12 +1,13 @@
 ﻿using _Game.Scripts.Core.Services;
 using _Game.Scripts.Core.UI;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
 
 namespace _Game.Scripts.MainMenu
 {
-public class MainMenuScreen: UIScreen
+public class MainMenuScreen : UIScreen
 {
     [SerializeField] private Button _playButton;
 
@@ -20,7 +21,12 @@ public class MainMenuScreen: UIScreen
 
     private void GoToGamePlay()
     {
-        StartCoroutine(_sceneLoaderService.LoadGameplay());
+        GoToGamePlayAsync().Forget();
+    }
+
+    private async UniTaskVoid GoToGamePlayAsync()
+    {
+        await _sceneLoaderService.LoadGameplay();
     }
 
     private void OnDestroy()

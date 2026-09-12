@@ -1,5 +1,6 @@
 ﻿using _Game.Scripts.Core.Services;
 using _Game.Scripts.Core.UI;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
@@ -24,7 +25,12 @@ public class PauseUIScreen : UIScreen
 
     private void GoToMainMenu()
     {
-        StartCoroutine(_sceneLoaderService.LoadMainMenu());
+        GoToMainMenuAsync().Forget();
+    }
+
+    private async UniTaskVoid GoToMainMenuAsync()
+    {
+        await _sceneLoaderService.LoadMainMenu();
     }
 
     private void Resume()

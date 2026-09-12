@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine.SceneManagement;
 
 namespace _Game.Scripts.Core.Services
@@ -19,36 +19,40 @@ public class SceneLoaderService
         _loadingScene = loadingScene;
     }
 
-    public IEnumerator LoadMainMenu()
+    public async UniTask LoadMainMenu(CancellationToken cancellationToken = default)
     {
-        yield return LoadScene(_mainMenuScene);
+        await LoadScene(_mainMenuScene, cancellationToken);
     }
 
-    public IEnumerator LoadGameplay()
+    public async UniTask LoadGameplay(CancellationToken cancellationToken = default)
     {
-        yield return LoadScene(_gameplayScene);
+        await LoadScene(_gameplayScene, cancellationToken);
     }
 
-    private IEnumerator LoadScene(string sceneName)
+    private async UniTask LoadScene(string sceneName, CancellationToken cancellationToken)
     {
-        var loading = SceneManager.LoadSceneAsync(_loadingScene, LoadSceneMode.Additive);
+        var loadingOperation = SceneManager.LoadSceneAsync(_loadingScene, LoadSceneMode.Additive);
+        await loadingOperation.ToUniTask(cancellationToken: cancellationToken);
 
-        yield return new WaitUntil(() => loading.isDone);
-
-
-        var scene = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-
-        yield return new WaitUntil(() => scene.isDone);
-
+        var sceneOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        await sceneOperation.ToUniTask(cancellationToken: cancellationToken);
 
         if (!string.IsNullOrEmpty(_currentScene))
         {
-            SceneManager.UnloadSceneAsync(_currentScene);
+            var unloadPreviousOperation = SceneManager.UnloadSceneAsync(_currentScene);
+            if (unloadPreviousOperation != null)
+            {
+                await unloadPreviousOperation.ToUniTask(cancellationToken: cancellationToken);
+            }
         }
 
         _currentScene = sceneName;
         
-        SceneManager.UnloadSceneAsync(_loadingScene);
+        var unloadLoadingOperation = SceneManager.UnloadSceneAsync(_loadingScene);
+        if (unloadLoadingOperation != null)
+        {
+            await unloadLoadingOperation.ToUniTask(cancellationToken: cancellationToken);
+        }
     }
 }
 }
