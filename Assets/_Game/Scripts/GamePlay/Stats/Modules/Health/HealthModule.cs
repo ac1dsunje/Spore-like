@@ -1,5 +1,4 @@
-﻿using System;
-using _Game.Scripts.GamePlay.Types;
+﻿using _Game.Scripts.GamePlay.Types;
 using R3;
 using UnityEngine;
 
@@ -12,7 +11,6 @@ public class HealthModule : StatModule
     
     private readonly ReactiveProperty<float> _current = new();
     private readonly ReactiveProperty<float> _max = new();
-    public event Action OnHitTaken;
 
     protected override void Configure()
     {
@@ -27,7 +25,6 @@ public class HealthModule : StatModule
     public void Reduce(float amount)
     {
         _current.Value = Mathf.Max(0, _current.Value - amount);
-        OnHitTaken?.Invoke();
     }
 
     public void Add(float amount)
